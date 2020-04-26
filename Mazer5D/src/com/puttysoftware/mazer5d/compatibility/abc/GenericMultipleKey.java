@@ -10,12 +10,4 @@ public abstract class GenericMultipleKey extends GenericKey {
     protected GenericMultipleKey() {
         super(true);
     }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_MULTIPLE_KEY);
-        this.type.set(TypeConstants.TYPE_KEY);
-        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
-    }
 }

@@ -48,11 +48,4 @@ public abstract class GenericField extends GenericInfiniteLock {
     public int getLayer() {
         return Layers.GROUND;
     }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_FIELD);
-        this.type.set(TypeConstants.TYPE_INFINITE_LOCK);
-        this.type.set(TypeConstants.TYPE_LOCK);
-    }
 }

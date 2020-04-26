@@ -52,11 +52,6 @@ public abstract class GenericTransientObject extends MazeObjectModel {
     }
 
     @Override
-    protected final void setTypes() {
-        // Do nothing
-    }
-
-    @Override
     public int getCustomProperty(final int propID) {
         return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }

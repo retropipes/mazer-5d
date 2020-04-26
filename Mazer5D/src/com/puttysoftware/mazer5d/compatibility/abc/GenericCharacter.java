@@ -54,11 +54,6 @@ public abstract class GenericCharacter extends MazeObjectModel {
     }
 
     @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_CHARACTER);
-    }
-
-    @Override
     public boolean arrowHitAction(final int locX, final int locY,
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {

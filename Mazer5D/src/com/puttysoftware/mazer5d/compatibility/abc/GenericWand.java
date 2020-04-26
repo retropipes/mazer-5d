@@ -31,12 +31,4 @@ public abstract class GenericWand extends GenericUsableObject {
 
     @Override
     public abstract void useHelper(int x, int y, int z);
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_WAND);
-        this.type.set(TypeConstants.TYPE_USABLE);
-        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
-    }
 }

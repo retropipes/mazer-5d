@@ -8,7 +8,6 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
-import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
@@ -64,15 +63,6 @@ class IcedBarrierGenerator extends GenericWall {
     @Override
     public String getDescription() {
         return "Iced Barrier Generators are Barrier Generators that have been hit by an Ice Arrow or Ice Bomb.";
-    }
-
-    @Override
-    protected void setTypes() {
-        super.setTypes();
-        this.type.set(TypeConstants.TYPE_REACTS_TO_ICE);
-        this.type.set(TypeConstants.TYPE_REACTS_TO_FIRE);
-        this.type.set(TypeConstants.TYPE_REACTS_TO_POISON);
-        this.type.set(TypeConstants.TYPE_GENERATOR);
     }
 
     @Override

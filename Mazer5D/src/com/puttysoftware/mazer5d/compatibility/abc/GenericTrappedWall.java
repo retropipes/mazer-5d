@@ -45,10 +45,4 @@ public abstract class GenericTrappedWall extends GenericWall {
             return "Trapped Walls " + this.number;
         }
     }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_TRAPPED_WALL);
-        this.type.set(TypeConstants.TYPE_WALL);
-    }
 }

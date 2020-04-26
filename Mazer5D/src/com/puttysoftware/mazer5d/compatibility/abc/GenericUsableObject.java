@@ -20,13 +20,6 @@ public abstract class GenericUsableObject extends GenericInventoryableObject {
     public abstract String getName();
 
     @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_USABLE);
-        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
-    }
-
-    @Override
     public int getLayer() {
         return Layers.OBJECT;
     }

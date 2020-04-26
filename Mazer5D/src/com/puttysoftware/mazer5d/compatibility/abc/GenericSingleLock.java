@@ -9,10 +9,4 @@ public abstract class GenericSingleLock extends GenericLock {
     protected GenericSingleLock(final GenericSingleKey mgk) {
         super(mgk);
     }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_SINGLE_LOCK);
-        this.type.set(TypeConstants.TYPE_LOCK);
-    }
 }

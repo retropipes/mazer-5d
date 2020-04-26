@@ -18,6 +18,7 @@ import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjectType;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public abstract class GenericProgrammableLock extends GenericSingleLock {
@@ -29,13 +30,6 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     }
 
     // Scriptability
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_PROGRAMMABLE_LOCK);
-        this.type.set(TypeConstants.TYPE_SINGLE_LOCK);
-        this.type.set(TypeConstants.TYPE_LOCK);
-    }
-
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
@@ -77,8 +71,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
         if (this.getKey() != GenericProgrammableLock.SIGNAL) {
             return !inv.isItemThere(this.getKey().getUniqueID());
         } else {
-            return !inv.isItemCategoryThere(
-                    TypeConstants.TYPE_PROGRAMMABLE_KEY);
+            return !inv.isItemCategoryThere(MazeObjectType.PROGRAMMABLE_USE);
         }
     }
 
@@ -94,7 +87,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
                 return !inv.isItemThere(this.getKey().getUniqueID());
             } else {
                 return !inv.isItemCategoryThere(
-                        TypeConstants.TYPE_PROGRAMMABLE_KEY);
+                        MazeObjectType.PROGRAMMABLE_USE);
             }
         }
     }

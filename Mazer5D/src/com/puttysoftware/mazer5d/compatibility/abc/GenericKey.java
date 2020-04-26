@@ -27,13 +27,6 @@ public abstract class GenericKey extends GenericInventoryableObject {
     }
 
     @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_KEY);
-        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
-    }
-
-    @Override
     public abstract String getName();
 
     @Override

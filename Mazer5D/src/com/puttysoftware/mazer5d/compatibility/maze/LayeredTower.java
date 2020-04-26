@@ -16,13 +16,13 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericMovingObject;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTeleport;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.RandomGenerationRule;
-import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.mazemodel.VisionModes;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjectType;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.randomrange.RandomRange;
@@ -512,8 +512,10 @@ class LayeredTower implements Cloneable {
                     final MazeObjectModel mo = this.getCell(y, x, z,
                             Layers.OBJECT);
                     if (mo != null) {
-                        if (mo.isOfType(TypeConstants.TYPE_WALL_TRAP) || mo
-                                .isOfType(TypeConstants.TYPE_TRAPPED_WALL)) {
+                        if (GameObjects.isOfType(mo.getUniqueID(),
+                                MazeObjectType.TRIGGER_TRAP) || GameObjects
+                                        .isOfType(mo.getUniqueID(),
+                                                MazeObjectType.TRIGGERED)) {
                             this.setCell(decayTo, y, x, z, Layers.OBJECT);
                         }
                     }
@@ -680,9 +682,9 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    final boolean reactsToIce = this.getCell(u, v, z,
-                            Layers.OBJECT).isOfType(
-                                    TypeConstants.TYPE_REACTS_TO_ICE);
+                    final boolean reactsToIce = GameObjects.isOfType(this
+                            .getCell(u, v, z, Layers.OBJECT).getUniqueID(),
+                            MazeObjectType.FREEZABLE);
                     if (reactsToIce) {
                         final MazeObjectModel there = this.getCell(u, v, z,
                                 Layers.OBJECT);
@@ -731,9 +733,9 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    final boolean reactsToFire = this.getCell(u, v, z,
-                            Layers.OBJECT).isOfType(
-                                    TypeConstants.TYPE_REACTS_TO_FIRE);
+                    final boolean reactsToFire = GameObjects.isOfType(this
+                            .getCell(u, v, z, Layers.OBJECT).getUniqueID(),
+                            MazeObjectType.BURNABLE);
                     if (reactsToFire) {
                         final MazeObjectModel there = this.getCell(u, v, z,
                                 Layers.OBJECT);
@@ -782,9 +784,9 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    final boolean reactsToPoison = this.getCell(u, v, z,
-                            Layers.OBJECT).isOfType(
-                                    TypeConstants.TYPE_REACTS_TO_POISON);
+                    final boolean reactsToPoison = GameObjects.isOfType(this
+                            .getCell(u, v, z, Layers.OBJECT).getUniqueID(),
+                            MazeObjectType.POISONABLE);
                     if (reactsToPoison) {
                         final MazeObjectModel there = this.getCell(u, v, z,
                                 Layers.OBJECT);
@@ -834,9 +836,9 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    final boolean reactsToShock = this.getCell(u, v, z,
-                            Layers.OBJECT).isOfType(
-                                    TypeConstants.TYPE_REACTS_TO_SHOCK);
+                    final boolean reactsToShock = GameObjects.isOfType(this
+                            .getCell(u, v, z, Layers.OBJECT).getUniqueID(),
+                            MazeObjectType.SHOCKABLE);
                     if (reactsToShock) {
                         final MazeObjectModel there = this.getCell(u, v, z,
                                 Layers.OBJECT);
@@ -941,8 +943,9 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    final boolean isEmpty = this.getCell(u, v, z, Layers.OBJECT)
-                            .isOfType(TypeConstants.TYPE_EMPTY_SPACE);
+                    final boolean isEmpty = !GameObjects.isOfType(this.getCell(
+                            u, v, z, Layers.OBJECT).getUniqueID(),
+                            MazeObjectType.WALL);
                     if (isEmpty) {
                         final RandomRange rr = new RandomRange(1, 5);
                         final int chance = rr.generate();
@@ -953,25 +956,31 @@ class LayeredTower implements Cloneable {
                                     Layers.OBJECT);
                         }
                     }
-                    final boolean isBreakable = this.getCell(u, v, z,
-                            Layers.OBJECT).isOfType(
-                                    TypeConstants.TYPE_BREAKABLE_WALL);
+                    final boolean isBreakable = GameObjects.isOfType(this
+                            .getCell(u, v, z, Layers.OBJECT).getUniqueID(),
+                            MazeObjectType.BREAKABLE) && GameObjects.isOfType(
+                                    this.getCell(u, v, z, Layers.OBJECT)
+                                            .getUniqueID(),
+                                    MazeObjectType.WALL);
                     if (isBreakable) {
                         // Destroy the wall
                         this.setCell(GameObjects.getEmptySpace(), u, v, z,
                                 Layers.OBJECT);
                     }
-                    final boolean isWall = this.getCell(u, v, z, Layers.OBJECT)
-                            .isOfType(TypeConstants.TYPE_PLAIN_WALL);
-                    if (isWall) {
+                    final boolean isBreakableWall = GameObjects.isOfType(this
+                            .getCell(u, v, z, Layers.OBJECT).getUniqueID(),
+                            MazeObjectType.WALL) && GameObjects.isOfType(this
+                                    .getCell(u, v, z, Layers.OBJECT)
+                                    .getUniqueID(), MazeObjectType.BREAKABLE);
+                    if (isBreakableWall) {
                         // Crack the wall
                         this.setCell(GameObjects.createObject(
                                 MazeObjects.CRACKED_WALL), u, v, z,
                                 Layers.OBJECT);
                     }
-                    final boolean isCharacter = this.getCell(u, v, z,
-                            Layers.OBJECT).isOfType(
-                                    TypeConstants.TYPE_CHARACTER);
+                    final boolean isCharacter = GameObjects.isOfType(this
+                            .getCell(u, v, z, Layers.OBJECT).getUniqueID(),
+                            MazeObjectType.CHARACTER);
                     if (isCharacter) {
                         final BagOStuff app = Mazer5D.getBagOStuff();
                         final MazeModel m = app.getMazeManager().getMaze();

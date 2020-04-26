@@ -39,11 +39,6 @@ public abstract class GenericPassThroughObject extends MazeObjectModel {
     }
 
     @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_PASS_THROUGH);
-    }
-
-    @Override
     public int getCustomProperty(final int propID) {
         return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }

@@ -115,13 +115,6 @@ public abstract class GenericContainer extends GenericLock {
     public abstract MazeObjectModel editorPropertiesHook();
 
     @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_CONTAINER);
-        this.type.set(TypeConstants.TYPE_SINGLE_LOCK);
-        this.type.set(TypeConstants.TYPE_LOCK);
-    }
-
-    @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         this.inside = GameObjects.readObject(reader, formatVersion);

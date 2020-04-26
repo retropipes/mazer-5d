@@ -44,11 +44,6 @@ public abstract class GenericTextHolder extends MazeObjectModel {
     }
 
     @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_TEXT_HOLDER);
-    }
-
-    @Override
     public int getCustomProperty(final int propID) {
         return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }

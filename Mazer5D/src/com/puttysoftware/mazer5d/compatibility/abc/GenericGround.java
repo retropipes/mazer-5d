@@ -39,11 +39,6 @@ public abstract class GenericGround extends MazeObjectModel {
     }
 
     @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_GROUND);
-    }
-
-    @Override
     public int getCustomProperty(final int propID) {
         return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }

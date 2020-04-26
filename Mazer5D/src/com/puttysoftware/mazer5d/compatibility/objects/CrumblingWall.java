@@ -9,7 +9,6 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
-import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
@@ -52,12 +51,6 @@ class CrumblingWall extends GenericWall {
     @Override
     public String getDescription() {
         return "Crumbling Walls crumble to nothing when hit.";
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_BREAKABLE_WALL);
-        this.type.set(TypeConstants.TYPE_WALL);
     }
 
     @Override

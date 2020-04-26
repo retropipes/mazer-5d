@@ -19,11 +19,6 @@ public abstract class GenericInventoryModifier extends MazeObjectModel {
             final int dirY, final ObjectInventory inv);
 
     @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_INVENTORY_MODIFIER);
-    }
-
-    @Override
     public int getLayer() {
         return Layers.OBJECT;
     }

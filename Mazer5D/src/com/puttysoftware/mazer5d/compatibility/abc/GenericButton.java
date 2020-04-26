@@ -85,11 +85,6 @@ public abstract class GenericButton extends MazeObjectModel {
     public abstract String getName();
 
     @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_BUTTON);
-    }
-
-    @Override
     public int getLayer() {
         return Layers.OBJECT;
     }

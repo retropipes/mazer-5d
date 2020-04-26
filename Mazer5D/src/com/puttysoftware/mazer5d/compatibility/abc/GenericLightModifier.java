@@ -28,11 +28,6 @@ public abstract class GenericLightModifier extends MazeObjectModel {
     }
 
     @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_LIGHT_MODIFIER);
-    }
-
-    @Override
     public int getLayer() {
         return Layers.OBJECT;
     }

@@ -137,11 +137,6 @@ public abstract class GenericTeleport extends MazeObjectModel {
     }
 
     @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_TELEPORT);
-    }
-
-    @Override
     public void editorProbeHook() {
         Mazer5D.getBagOStuff().showMessage(this.getName() + ": Destination ("
                 + (this.destCol + 1) + "," + (this.destRow + 1) + ","

@@ -28,11 +28,6 @@ public abstract class GenericTrap extends MazeObjectModel {
     }
 
     @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_TRAP);
-    }
-
-    @Override
     public int getCustomProperty(final int propID) {
         return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }

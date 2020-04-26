@@ -10,7 +10,6 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericField;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
@@ -159,14 +158,6 @@ class MetalButton extends GenericField {
     @Override
     public String getDescription() {
         return "Metal Buttons will not trigger without Metal Boots.";
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_BUTTON);
-        this.type.set(TypeConstants.TYPE_FIELD);
-        this.type.set(TypeConstants.TYPE_INFINITE_LOCK);
-        this.type.set(TypeConstants.TYPE_LOCK);
     }
 
     @Override
