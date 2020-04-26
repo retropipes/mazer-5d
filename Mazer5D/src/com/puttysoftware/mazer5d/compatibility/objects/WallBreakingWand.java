@@ -11,7 +11,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class WallBreakingWand extends GenericWand {
+class WallBreakingWand extends GenericWand {
     // Constructors
     public WallBreakingWand() {
         super();

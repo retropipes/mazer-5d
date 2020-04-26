@@ -15,7 +15,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class FinishTo extends Finish {
+class FinishTo extends Finish {
     // Fields
     private int destinationLevel;
 

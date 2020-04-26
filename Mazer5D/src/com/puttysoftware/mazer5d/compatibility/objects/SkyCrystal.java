@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericProgrammableKey;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class SkyCrystal extends GenericProgrammableKey {
+class SkyCrystal extends GenericProgrammableKey {
     // Constructors
     public SkyCrystal() {
         super("Sky");

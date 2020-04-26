@@ -16,13 +16,13 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class StairsUp extends GenericTeleport {
+class StairsUp extends GenericTeleport {
     // Constructors
     public StairsUp() {
         super(0, 0, 0);
     }
 
-    // For derived public classes only
+    // For derived classes only
     protected StairsUp(final boolean doesAcceptPushInto) {
         super(doesAcceptPushInto);
     }

@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMultipleLock;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class SilverWall extends GenericMultipleLock {
+class SilverWall extends GenericMultipleLock {
     // Constructors
     public SilverWall() {
         super(new SilverSquare());

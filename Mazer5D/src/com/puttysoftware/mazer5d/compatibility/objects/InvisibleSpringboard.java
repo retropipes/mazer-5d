@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class InvisibleSpringboard extends Springboard {
+class InvisibleSpringboard extends Springboard {
     // Constructors
     public InvisibleSpringboard() {
         super();

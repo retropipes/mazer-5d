@@ -17,7 +17,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class MetalButton extends GenericField {
+class MetalButton extends GenericField {
     // Fields
     private final int targetRow;
     private final int targetCol;

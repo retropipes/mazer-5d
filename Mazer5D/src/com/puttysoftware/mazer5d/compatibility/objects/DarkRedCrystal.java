@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericProgrammableKey;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class DarkRedCrystal extends GenericProgrammableKey {
+class DarkRedCrystal extends GenericProgrammableKey {
     // Constructors
     public DarkRedCrystal() {
         super("Dark Red");

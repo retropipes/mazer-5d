@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class OneWaySouthWall extends GenericWall {
+class OneWaySouthWall extends GenericWall {
     public OneWaySouthWall() {
         super(true, false, true, true, true, false, true, true);
     }

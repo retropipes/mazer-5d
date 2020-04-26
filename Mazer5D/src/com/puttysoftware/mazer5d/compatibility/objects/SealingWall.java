@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class SealingWall extends GenericWall {
+class SealingWall extends GenericWall {
     // Constructors
     public SealingWall() {
         super();

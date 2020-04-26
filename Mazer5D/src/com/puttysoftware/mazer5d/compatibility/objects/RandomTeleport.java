@@ -14,7 +14,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class RandomTeleport extends GenericRandomTeleport {
+class RandomTeleport extends GenericRandomTeleport {
     // Constructors
     public RandomTeleport() {
         super(0, 0);

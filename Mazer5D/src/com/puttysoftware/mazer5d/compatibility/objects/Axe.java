@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericInfiniteKey;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Axe extends GenericInfiniteKey {
+class Axe extends GenericInfiniteKey {
     // Constructors
     public Axe() {
         super();

@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericSingleKey;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class MetalKey extends GenericSingleKey {
+class MetalKey extends GenericSingleKey {
     // Constructors
     public MetalKey() {
         super();

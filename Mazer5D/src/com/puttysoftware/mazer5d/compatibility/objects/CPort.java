@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPort;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class CPort extends GenericPort {
+class CPort extends GenericPort {
     // Constructors
     public CPort() {
         super(new CPlug(), 'C');

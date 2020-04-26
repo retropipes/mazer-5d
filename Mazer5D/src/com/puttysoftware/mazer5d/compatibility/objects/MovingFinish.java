@@ -17,7 +17,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class MovingFinish extends Finish {
+class MovingFinish extends Finish {
     // Fields
     private boolean active;
 

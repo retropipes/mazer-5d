@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class ArrowTrap extends GenericTrap {
+class ArrowTrap extends GenericTrap {
     // Constructors
     public ArrowTrap() {
         super();

@@ -14,7 +14,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.randomrange.RandomRange;
 
-public class VariableHealTrap extends GenericTrap {
+class VariableHealTrap extends GenericTrap {
     // Fields
     private RandomRange healingGiven;
     private static final int MIN_HEALING = 1;

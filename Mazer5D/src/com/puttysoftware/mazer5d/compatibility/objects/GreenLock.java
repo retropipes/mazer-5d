@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class GreenLock extends GenericSingleLock {
+class GreenLock extends GenericSingleLock {
     // Constructors
     public GreenLock() {
         super(new GreenKey());

@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class SkyLock extends GenericSingleLock {
+class SkyLock extends GenericSingleLock {
     // Constructors
     public SkyLock() {
         super(new SkyKey());

@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericCarpet;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class WhiteCarpet extends GenericCarpet {
+class WhiteCarpet extends GenericCarpet {
     // Constructors
     public WhiteCarpet() {
         super("White");

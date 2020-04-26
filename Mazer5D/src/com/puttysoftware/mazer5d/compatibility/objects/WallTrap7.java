@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWallTrap;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class WallTrap7 extends GenericWallTrap {
+class WallTrap7 extends GenericWallTrap {
     public WallTrap7() {
         super(7, new TrappedWall7());
     }

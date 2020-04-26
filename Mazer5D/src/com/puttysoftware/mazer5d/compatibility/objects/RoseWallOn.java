@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericToggleWall;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class RoseWallOn extends GenericToggleWall {
+class RoseWallOn extends GenericToggleWall {
     // Constructors
     public RoseWallOn() {
         super(true);

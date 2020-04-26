@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Bounds extends GenericWall {
+class Bounds extends GenericWall {
     // Properties
     private String currAppearance;
 

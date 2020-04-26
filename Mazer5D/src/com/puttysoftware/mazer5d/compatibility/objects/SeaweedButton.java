@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericButton;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class SeaweedButton extends GenericButton {
+class SeaweedButton extends GenericButton {
     public SeaweedButton() {
         super(new SeaweedWallOff(), new SeaweedWallOn());
     }

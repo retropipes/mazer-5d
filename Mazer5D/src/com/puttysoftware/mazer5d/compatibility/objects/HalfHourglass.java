@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class HalfHourglass extends GenericTimeModifier {
+class HalfHourglass extends GenericTimeModifier {
     // Fields
     private static final long SCORE_GRAB = 5L;
 

@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Lock extends GenericSingleLock {
+class Lock extends GenericSingleLock {
     // Constructors
     public Lock() {
         super(new Key());

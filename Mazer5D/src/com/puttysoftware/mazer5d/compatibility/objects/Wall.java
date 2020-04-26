@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Wall extends GenericWall {
+class Wall extends GenericWall {
     // Constructors
     public Wall() {
         super();

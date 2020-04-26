@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBoots;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class HotBoots extends GenericBoots {
+class HotBoots extends GenericBoots {
     // Constructors
     public HotBoots() {
         super();

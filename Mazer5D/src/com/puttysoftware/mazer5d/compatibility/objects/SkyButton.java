@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericButton;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class SkyButton extends GenericButton {
+class SkyButton extends GenericButton {
     public SkyButton() {
         super(new SkyWallOff(), new SkyWallOn());
     }

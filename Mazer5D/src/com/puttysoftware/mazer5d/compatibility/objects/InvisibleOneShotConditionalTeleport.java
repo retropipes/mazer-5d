@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericConditionalTeleport;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class InvisibleOneShotConditionalTeleport extends
+class InvisibleOneShotConditionalTeleport extends
         GenericConditionalTeleport {
     // Constructors
     public InvisibleOneShotConditionalTeleport() {

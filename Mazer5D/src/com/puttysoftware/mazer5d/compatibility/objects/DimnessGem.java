@@ -12,7 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericGem;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class DimnessGem extends GenericGem {
+class DimnessGem extends GenericGem {
     // Constructors
     public DimnessGem() {
         super();

@@ -15,7 +15,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class DarkWand extends GenericWand {
+class DarkWand extends GenericWand {
     // Constructors
     public DarkWand() {
         super();

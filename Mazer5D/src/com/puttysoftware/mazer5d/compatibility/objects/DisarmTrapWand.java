@@ -11,7 +11,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class DisarmTrapWand extends GenericWand {
+class DisarmTrapWand extends GenericWand {
     // Constructors
     public DisarmTrapWand() {
         super();

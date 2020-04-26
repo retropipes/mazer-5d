@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTransientObject;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class GhostArrow extends GenericTransientObject {
+class GhostArrow extends GenericTransientObject {
     // Constructors
     public GhostArrow() {
         super("Ghost Arrow");

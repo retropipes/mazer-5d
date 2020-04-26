@@ -17,7 +17,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Finish extends GenericTeleport {
+class Finish extends GenericTeleport {
     // Constructors
     public Finish() {
         super(0, 0, 0);

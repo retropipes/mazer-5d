@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericSingleKey;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class SkyKey extends GenericSingleKey {
+class SkyKey extends GenericSingleKey {
     // Constructors
     public SkyKey() {
         super();

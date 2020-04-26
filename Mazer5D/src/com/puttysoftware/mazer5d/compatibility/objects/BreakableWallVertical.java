@@ -15,7 +15,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class BreakableWallVertical extends GenericWall {
+class BreakableWallVertical extends GenericWall {
     // Constructors
     public BreakableWallVertical() {
         super(true, true);

@@ -11,7 +11,7 @@ import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class NormalAmulet extends GenericAmulet {
+class NormalAmulet extends GenericAmulet {
     // Constructors
     public NormalAmulet() {
         super();

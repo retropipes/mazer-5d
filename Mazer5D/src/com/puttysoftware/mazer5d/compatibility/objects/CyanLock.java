@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class CyanLock extends GenericSingleLock {
+class CyanLock extends GenericSingleLock {
     // Constructors
     public CyanLock() {
         super(new CyanKey());

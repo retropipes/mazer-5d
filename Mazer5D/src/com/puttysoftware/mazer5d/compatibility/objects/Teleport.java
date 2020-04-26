@@ -11,7 +11,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Teleport extends GenericTeleport {
+class Teleport extends GenericTeleport {
     // Constructors
     public Teleport() {
         super(0, 0, 0);

@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericProgrammableLock;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class CrystalWall extends GenericProgrammableLock {
+class CrystalWall extends GenericProgrammableLock {
     // Constructors
     public CrystalWall() {
         super();

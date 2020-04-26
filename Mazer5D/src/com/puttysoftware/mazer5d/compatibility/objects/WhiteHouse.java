@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class WhiteHouse extends FinishTo {
+class WhiteHouse extends FinishTo {
     // Constructors
     public WhiteHouse() {
         super();

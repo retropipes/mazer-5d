@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMultipleLock;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class TopazWall extends GenericMultipleLock {
+class TopazWall extends GenericMultipleLock {
     // Constructors
     public TopazWall() {
         super(new TopazSquare());

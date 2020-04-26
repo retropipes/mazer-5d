@@ -14,7 +14,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class IceBomb extends GenericUsableObject {
+class IceBomb extends GenericUsableObject {
     // Constants
     private static final int EFFECT_RADIUS = 2;
 

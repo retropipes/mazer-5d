@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericGround;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Sand extends GenericGround {
+class Sand extends GenericGround {
     // Constructors
     public Sand() {
         super();

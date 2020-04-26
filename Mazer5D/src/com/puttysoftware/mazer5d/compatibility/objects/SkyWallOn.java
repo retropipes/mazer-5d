@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericToggleWall;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class SkyWallOn extends GenericToggleWall {
+class SkyWallOn extends GenericToggleWall {
     // Constructors
     public SkyWallOn() {
         super(true);

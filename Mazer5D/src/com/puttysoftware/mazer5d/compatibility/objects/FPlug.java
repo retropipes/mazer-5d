@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPlug;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class FPlug extends GenericPlug {
+class FPlug extends GenericPlug {
     // Constructors
     public FPlug() {
         super('F');

@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericGround;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class SunkenBlock extends GenericGround {
+class SunkenBlock extends GenericGround {
     // Constructors
     public SunkenBlock() {
         super(true, true, true, true);

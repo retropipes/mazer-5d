@@ -16,7 +16,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class ExplodingWall extends GenericWall {
+class ExplodingWall extends GenericWall {
     // Constructors
     public ExplodingWall() {
         super(true, true);

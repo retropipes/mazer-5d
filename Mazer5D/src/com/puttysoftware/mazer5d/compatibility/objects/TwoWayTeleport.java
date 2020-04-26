@@ -16,7 +16,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class TwoWayTeleport extends GenericTeleport {
+class TwoWayTeleport extends GenericTeleport {
     public TwoWayTeleport() {
         super(0, 0, 0);
     }

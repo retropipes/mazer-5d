@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTextHolder;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Sign extends GenericTextHolder {
+class Sign extends GenericTextHolder {
     // Constructors
     public Sign() {
         super();

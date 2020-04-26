@@ -17,7 +17,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Springboard extends StairsUp {
+class Springboard extends StairsUp {
     // Constructors
     public Springboard() {
         super(true);

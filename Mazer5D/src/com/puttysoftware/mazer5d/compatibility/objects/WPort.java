@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPort;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class WPort extends GenericPort {
+class WPort extends GenericPort {
     // Constructors
     public WPort() {
         super(new WPlug(), 'W');

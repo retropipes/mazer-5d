@@ -15,7 +15,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class WarpBomb extends GenericUsableObject {
+class WarpBomb extends GenericUsableObject {
     // Constants
     private static final int EFFECT_RADIUS = 3;
 

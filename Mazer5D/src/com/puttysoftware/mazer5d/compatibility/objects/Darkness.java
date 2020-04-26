@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPassThroughObject;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Darkness extends GenericPassThroughObject {
+class Darkness extends GenericPassThroughObject {
     // Constructors
     public Darkness() {
         super();

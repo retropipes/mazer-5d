@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMovableObject;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class PullableBlock extends GenericMovableObject {
+class PullableBlock extends GenericMovableObject {
     // Constructors
     public PullableBlock() {
         super(false, true);

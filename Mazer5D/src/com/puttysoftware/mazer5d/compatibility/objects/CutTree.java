@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPassThroughObject;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class CutTree extends GenericPassThroughObject {
+class CutTree extends GenericPassThroughObject {
     // Constructors
     public CutTree() {
         super();

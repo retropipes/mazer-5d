@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericButton;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class PurpleButton extends GenericButton {
+class PurpleButton extends GenericButton {
     public PurpleButton() {
         super(new PurpleWallOff(), new PurpleWallOn());
     }

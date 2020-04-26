@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMultipleKey;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class TopazSquare extends GenericMultipleKey {
+class TopazSquare extends GenericMultipleKey {
     // Constructors
     public TopazSquare() {
         super();

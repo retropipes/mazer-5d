@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericCarpet;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class SkyCarpet extends GenericCarpet {
+class SkyCarpet extends GenericCarpet {
     // Constructors
     public SkyCarpet() {
         super("Sky");

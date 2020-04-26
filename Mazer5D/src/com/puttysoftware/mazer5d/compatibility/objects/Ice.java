@@ -12,7 +12,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Ice extends GenericGround {
+class Ice extends GenericGround {
     public Ice() {
         super(true, true, false, false, false);
     }

@@ -14,7 +14,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class TreasureChest extends GenericContainer {
+class TreasureChest extends GenericContainer {
     // Constructors
     public TreasureChest() {
         super(new Key());

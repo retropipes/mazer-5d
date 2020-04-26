@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBoots;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class SlipperyBoots extends GenericBoots {
+class SlipperyBoots extends GenericBoots {
     // Constructors
     public SlipperyBoots() {
         super();

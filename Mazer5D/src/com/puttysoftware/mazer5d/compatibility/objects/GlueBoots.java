@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBoots;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class GlueBoots extends GenericBoots {
+class GlueBoots extends GenericBoots {
     // Constructors
     public GlueBoots() {
         super();

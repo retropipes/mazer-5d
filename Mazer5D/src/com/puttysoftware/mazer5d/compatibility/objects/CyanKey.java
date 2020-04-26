@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericSingleKey;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class CyanKey extends GenericSingleKey {
+class CyanKey extends GenericSingleKey {
     // Constructors
     public CyanKey() {
         super();

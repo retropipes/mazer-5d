@@ -14,7 +14,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class DamagedWall extends GenericWall {
+class DamagedWall extends GenericWall {
     // Constructors
     public DamagedWall() {
         super();

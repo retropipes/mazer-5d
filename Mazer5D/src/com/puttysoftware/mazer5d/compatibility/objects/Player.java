@@ -11,7 +11,7 @@ import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Player extends GenericCharacter {
+class Player extends GenericCharacter {
     // Constructors
     public Player() {
         super();

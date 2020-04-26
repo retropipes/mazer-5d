@@ -14,7 +14,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class ShuffleBomb extends GenericUsableObject {
+class ShuffleBomb extends GenericUsableObject {
     // Constants
     private static final int EFFECT_RADIUS = 3;
 

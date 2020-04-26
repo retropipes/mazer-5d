@@ -11,7 +11,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class FadingWall extends GenericWall {
+class FadingWall extends GenericWall {
     // Fields
     private static final int SCAN_LIMIT = 3;
 

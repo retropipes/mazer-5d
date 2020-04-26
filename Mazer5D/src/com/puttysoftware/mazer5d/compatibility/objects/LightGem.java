@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericLightModifier;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class LightGem extends GenericLightModifier {
+class LightGem extends GenericLightModifier {
     // Constructors
     public LightGem() {
         super();

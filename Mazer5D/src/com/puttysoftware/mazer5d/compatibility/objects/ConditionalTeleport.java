@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericConditionalTeleport;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class ConditionalTeleport extends GenericConditionalTeleport {
+class ConditionalTeleport extends GenericConditionalTeleport {
     // Constructors
     public ConditionalTeleport() {
         super();

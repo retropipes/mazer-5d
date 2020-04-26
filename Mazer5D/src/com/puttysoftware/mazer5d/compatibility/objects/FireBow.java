@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class FireBow extends GenericBow {
+class FireBow extends GenericBow {
     // Constants
     private static final int BOW_USES = 30;
 

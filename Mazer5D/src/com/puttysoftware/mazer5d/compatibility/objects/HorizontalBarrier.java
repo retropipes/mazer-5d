@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBarrier;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class HorizontalBarrier extends GenericBarrier {
+class HorizontalBarrier extends GenericBarrier {
     // Constructors
     public HorizontalBarrier() {
         super();

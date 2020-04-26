@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class BrickWall extends GenericSingleLock {
+class BrickWall extends GenericSingleLock {
     // Constructors
     public BrickWall() {
         super(new Hammer());

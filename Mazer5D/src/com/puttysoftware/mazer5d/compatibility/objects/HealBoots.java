@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBoots;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class HealBoots extends GenericBoots {
+class HealBoots extends GenericBoots {
     // Constants
     private static final int HEAL_AMOUNT = 1;
 

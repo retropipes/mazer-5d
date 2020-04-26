@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPass;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class EnergySphere extends GenericPass {
+class EnergySphere extends GenericPass {
     // Constructors
     public EnergySphere() {
         super();

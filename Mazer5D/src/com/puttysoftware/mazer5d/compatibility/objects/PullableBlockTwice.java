@@ -16,7 +16,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class PullableBlockTwice extends GenericMovableObject {
+class PullableBlockTwice extends GenericMovableObject {
     // Constructors
     public PullableBlockTwice() {
         super(false, true);

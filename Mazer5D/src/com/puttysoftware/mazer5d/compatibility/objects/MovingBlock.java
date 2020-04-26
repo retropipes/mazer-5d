@@ -10,7 +10,7 @@ import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.randomrange.RandomRange;
 
-public class MovingBlock extends GenericMovingObject implements Cloneable {
+class MovingBlock extends GenericMovingObject implements Cloneable {
     // Constructors
     public MovingBlock() {
         super(true);

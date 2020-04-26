@@ -15,7 +15,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class RotationWand extends GenericWand {
+class RotationWand extends GenericWand {
     // Fields
     private static final boolean CLOCKWISE = true;
     private static final boolean COUNTERCLOCKWISE = false;

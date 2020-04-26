@@ -12,7 +12,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class PoisonedBarrierGenerator extends GenericGenerator {
+class PoisonedBarrierGenerator extends GenericGenerator {
     // Fields
     private int POISON_CYCLES;
     private static final int POISON_LIMIT = 2;

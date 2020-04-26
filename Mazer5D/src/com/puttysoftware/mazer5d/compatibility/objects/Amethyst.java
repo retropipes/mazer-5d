@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericScoreIncreaser;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Amethyst extends GenericScoreIncreaser {
+class Amethyst extends GenericScoreIncreaser {
     // Fields
     private static final long SCORE_INCREASE = 50L;
 

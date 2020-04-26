@@ -12,7 +12,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class ShockedBarrierGenerator extends GenericGenerator {
+class ShockedBarrierGenerator extends GenericGenerator {
     // Fields
     private int SHOCK_CYCLES;
     private static final int SHOCK_LIMIT = 2;

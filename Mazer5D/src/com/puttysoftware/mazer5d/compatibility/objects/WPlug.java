@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPlug;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class WPlug extends GenericPlug {
+class WPlug extends GenericPlug {
     // Constructors
     public WPlug() {
         super('W');

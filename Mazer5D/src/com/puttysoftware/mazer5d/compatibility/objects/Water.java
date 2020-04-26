@@ -16,7 +16,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Water extends GenericField {
+class Water extends GenericField {
     // Constructors
     public Water() {
         super(new AquaBoots(), true);

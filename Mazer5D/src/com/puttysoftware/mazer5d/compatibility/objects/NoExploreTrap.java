@@ -14,7 +14,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.mazemodel.VisionModes;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class NoExploreTrap extends GenericTrap {
+class NoExploreTrap extends GenericTrap {
     // Constructors
     public NoExploreTrap() {
         super();

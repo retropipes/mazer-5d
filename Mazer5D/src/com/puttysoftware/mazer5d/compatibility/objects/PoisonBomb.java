@@ -14,7 +14,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class PoisonBomb extends GenericUsableObject {
+class PoisonBomb extends GenericUsableObject {
     // Constants
     private static final int EFFECT_RADIUS = 2;
 

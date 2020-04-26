@@ -15,7 +15,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.randomrange.RandomRange;
 
-public class WarpTrap extends GenericTrap {
+class WarpTrap extends GenericTrap {
     // Fields
     private RandomRange rr, rc, rf;
 

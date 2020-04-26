@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMultipleLock;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class RubyWall extends GenericMultipleLock {
+class RubyWall extends GenericMultipleLock {
     // Constructors
     public RubyWall() {
         super(new RubySquare());

@@ -10,7 +10,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericAmulet;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class GhostAmulet extends GenericAmulet {
+class GhostAmulet extends GenericAmulet {
     // Constants
     private static final int EFFECT_DURATION = 30;
 

@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPotion;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class SuperHurtPotion extends GenericPotion {
+class SuperHurtPotion extends GenericPotion {
     // Constructors
     public SuperHurtPotion() {
         super(false);

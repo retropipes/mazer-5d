@@ -14,7 +14,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class SunStone extends GenericInventoryableObject {
+class SunStone extends GenericInventoryableObject {
     // Constants
     private static final long SCORE_GRAB_STONE = 1L;
 

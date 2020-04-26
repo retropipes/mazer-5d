@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPotion;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class MinorHealPotion extends GenericPotion {
+class MinorHealPotion extends GenericPotion {
     // Fields
     private static final int MIN_HEAL = 1;
     private static final int MAX_HEAL = 5;

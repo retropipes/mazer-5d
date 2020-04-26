@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericSingleKey;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class SeaweedKey extends GenericSingleKey {
+class SeaweedKey extends GenericSingleKey {
     // Constructors
     public SeaweedKey() {
         super();

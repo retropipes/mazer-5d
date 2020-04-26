@@ -15,7 +15,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class ControllableTeleport extends GenericTeleport {
+class ControllableTeleport extends GenericTeleport {
     // Constructors
     public ControllableTeleport() {
         super(0, 0, 0);

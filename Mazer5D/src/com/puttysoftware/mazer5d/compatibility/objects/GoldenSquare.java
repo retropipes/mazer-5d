@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMultipleKey;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class GoldenSquare extends GenericMultipleKey {
+class GoldenSquare extends GenericMultipleKey {
     // Constructors
     public GoldenSquare() {
         super();

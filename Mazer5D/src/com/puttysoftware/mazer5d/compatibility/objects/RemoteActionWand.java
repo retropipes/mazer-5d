@@ -11,7 +11,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class RemoteActionWand extends GenericWand {
+class RemoteActionWand extends GenericWand {
     // Constructors
     public RemoteActionWand() {
         super();

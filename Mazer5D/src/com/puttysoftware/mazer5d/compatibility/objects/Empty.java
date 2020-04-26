@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericPassThroughObject;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Empty extends GenericPassThroughObject {
+class Empty extends GenericPassThroughObject {
     // Constructors
     public Empty() {
         super(true, true, true, true);

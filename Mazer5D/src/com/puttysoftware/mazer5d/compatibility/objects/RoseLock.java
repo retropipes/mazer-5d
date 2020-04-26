@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class RoseLock extends GenericSingleLock {
+class RoseLock extends GenericSingleLock {
     // Constructors
     public RoseLock() {
         super(new RoseKey());

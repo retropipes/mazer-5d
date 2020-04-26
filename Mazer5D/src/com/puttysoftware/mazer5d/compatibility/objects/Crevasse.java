@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class Crevasse extends GenericWall {
+class Crevasse extends GenericWall {
     // Constructors
     public Crevasse() {
         super();

@@ -14,7 +14,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.randomrange.RandomRange;
 
-public class VariableHurtTrap extends GenericTrap {
+class VariableHurtTrap extends GenericTrap {
     // Fields
     private RandomRange damageDealt;
     private static final int MIN_DAMAGE = 1;

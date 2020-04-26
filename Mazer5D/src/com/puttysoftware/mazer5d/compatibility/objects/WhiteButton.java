@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericButton;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class WhiteButton extends GenericButton {
+class WhiteButton extends GenericButton {
     public WhiteButton() {
         super(new WhiteWallOff(), new WhiteWallOn());
     }

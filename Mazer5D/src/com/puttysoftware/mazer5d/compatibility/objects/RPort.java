@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPort;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class RPort extends GenericPort {
+class RPort extends GenericPort {
     // Constructors
     public RPort() {
         super(new RPlug(), 'R');

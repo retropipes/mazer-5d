@@ -16,7 +16,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class InvisibleChainTeleport extends GenericInvisibleTeleport {
+class InvisibleChainTeleport extends GenericInvisibleTeleport {
     // Constructors
     public InvisibleChainTeleport() {
         super(0, 0, 0);

@@ -29,7 +29,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class OneShotChainTeleport extends GenericTeleport {
+class OneShotChainTeleport extends GenericTeleport {
     // Constructors
     public OneShotChainTeleport() {
         super(0, 0, 0);

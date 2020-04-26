@@ -12,7 +12,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class EnragedBarrierGenerator extends GenericGenerator {
+class EnragedBarrierGenerator extends GenericGenerator {
     // Fields
     private int RAGE_CYCLES;
     private static final int RAGE_LIMIT = 3;
