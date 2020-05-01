@@ -18,6 +18,10 @@ final class CustomTexts {
         this.texts = new ArrayList<>();
     }
 
+    public CustomTexts(final CustomTexts source) {
+        this.texts = new ArrayList<>(source.texts);
+    }
+
     // Methods
     public int length() {
         return this.texts.size();

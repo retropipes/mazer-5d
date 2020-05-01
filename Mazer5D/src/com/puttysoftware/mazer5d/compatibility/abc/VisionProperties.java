@@ -34,6 +34,10 @@ class VisionProperties {
                 Directions.COUNT);
     }
 
+    public VisionProperties(final VisionProperties source) {
+        this.visionData = new FlagStorage(source.visionData);
+    }
+
     // Methods
     @Override
     public boolean equals(final Object obj) {
@@ -62,50 +66,35 @@ class VisionProperties {
         for (int dir = 0; dir < Directions.COUNT; dir++) {
             result = result || this.visionData.getCell(
                     VisionDataTypes.EXTERNAL.index, dir);
-        }
-        return result;
-    }
-
-    public boolean isInternallySightBlocking() {
-        boolean result = false;
-        for (int dir = 0; dir < Directions.COUNT; dir++) {
             result = result || this.visionData.getCell(
                     VisionDataTypes.INTERNAL.index, dir);
         }
         return result;
     }
 
-    public boolean isDirectionallySightBlocking(final int dirX,
-            final int dirY) {
+    public boolean isDirectionallySightBlocking(final boolean ie,
+            final int dirX, final int dirY) {
         final int dir = DirectionResolver.resolve(dirX, dirY);
-        return this.visionData.getCell(VisionDataTypes.EXTERNAL.index, dir);
-    }
-
-    public boolean isInternallyDirectionallySightBlocking(final int dirX,
-            final int dirY) {
-        final int dir = DirectionResolver.resolve(dirX, dirY);
-        return this.visionData.getCell(VisionDataTypes.INTERNAL.index, dir);
+        if (ie) {
+            return this.visionData.getCell(VisionDataTypes.EXTERNAL.index, dir);
+        } else {
+            return this.visionData.getCell(VisionDataTypes.INTERNAL.index, dir);
+        }
     }
 
     public void setSightBlocking(final boolean value) {
         for (int dir = 0; dir < Directions.COUNT; dir++) {
             this.visionData.setCell(value, VisionDataTypes.EXTERNAL.index, dir);
-        }
-    }
-
-    public void setInternallySightBlocking(final boolean value) {
-        for (int dir = 0; dir < Directions.COUNT; dir++) {
             this.visionData.setCell(value, VisionDataTypes.INTERNAL.index, dir);
         }
     }
 
-    public void setDirectionallySightBlocking(final int dir,
+    public void setDirectionallySightBlocking(final boolean ie, final int dir,
             final boolean value) {
-        this.visionData.setCell(value, VisionDataTypes.EXTERNAL.index, dir);
-    }
-
-    public void setInternallyDirectionallySightBlocking(final int dir,
-            final boolean value) {
-        this.visionData.setCell(value, VisionDataTypes.INTERNAL.index, dir);
+        if (ie) {
+            this.visionData.setCell(value, VisionDataTypes.EXTERNAL.index, dir);
+        } else {
+            this.visionData.setCell(value, VisionDataTypes.INTERNAL.index, dir);
+        }
     }
 }

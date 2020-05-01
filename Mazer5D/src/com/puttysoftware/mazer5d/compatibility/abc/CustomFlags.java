@@ -18,6 +18,10 @@ final class CustomFlags {
         this.flags = new ArrayList<>();
     }
 
+    public CustomFlags(final CustomFlags source) {
+        this.flags = new ArrayList<>(source.flags);
+    }
+
     // Methods
     public int length() {
         return this.flags.size();

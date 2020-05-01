@@ -32,6 +32,10 @@ class OtherCounters {
         this.otherData = new NumberStorage(OtherCounters.OTHER_DATA_TYPES);
     }
 
+    public OtherCounters(final OtherCounters source) {
+        this.otherData = new NumberStorage(source.otherData);
+    }
+
     // Methods
     @Override
     public boolean equals(final Object obj) {
@@ -71,8 +75,22 @@ class OtherCounters {
         return this.otherData.getCell(OtherDataTypes.TIMER_TICKS.index);
     }
 
+    public boolean timeExpired() {
+        return this.otherData.getCell(OtherDataTypes.TIMER_TICKS.index) == 0;
+    }
+
     public void setTimerTicks(final int value) {
         this.otherData.setCell(value, OtherDataTypes.TIMER_TICKS.index);
+    }
+
+    public void extendTimer(final int value) {
+        this.otherData.setCell(this.getTimerTicks() + value,
+                OtherDataTypes.TIMER_TICKS.index);
+    }
+
+    public void extendTimerByReset() {
+        this.otherData.setCell(this.getTimerTicks() + this.getTimerReset(),
+                OtherDataTypes.TIMER_TICKS.index);
     }
 
     public void tickTimer() {

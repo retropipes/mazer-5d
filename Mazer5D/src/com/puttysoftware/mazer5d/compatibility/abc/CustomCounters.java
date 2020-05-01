@@ -18,6 +18,10 @@ final class CustomCounters {
         this.counters = new ArrayList<>();
     }
 
+    public CustomCounters(final CustomCounters source) {
+        this.counters = new ArrayList<>(source.counters);
+    }
+
     // Methods
     public int length() {
         return this.counters.size();

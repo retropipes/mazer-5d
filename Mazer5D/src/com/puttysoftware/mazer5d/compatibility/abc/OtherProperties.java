@@ -38,6 +38,10 @@ class OtherProperties {
         this.setDestroyable(true);
     }
 
+    public OtherProperties(final OtherProperties source) {
+        this.otherData = new FlagStorage(source.otherData);
+    }
+
     // Methods
     @Override
     public boolean equals(final Object obj) {
@@ -92,6 +96,11 @@ class OtherProperties {
 
     public boolean isChainReactingHorizontally() {
         return this.otherData.getCell(OtherDataTypes.CHAINS_HORIZONTAL.index);
+    }
+
+    public void setChainReacting(final boolean value) {
+        this.otherData.setCell(value, OtherDataTypes.CHAINS_HORIZONTAL.index);
+        this.otherData.setCell(value, OtherDataTypes.CHAINS_VERTICAL.index);
     }
 
     public void setChainReactingHorizontally(final boolean value) {

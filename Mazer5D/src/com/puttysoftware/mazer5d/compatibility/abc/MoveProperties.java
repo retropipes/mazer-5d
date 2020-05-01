@@ -38,6 +38,10 @@ class MoveProperties {
                 Directions.COUNT);
     }
 
+    public MoveProperties(final MoveProperties source) {
+        this.moveData = new FlagStorage(source.moveData);
+    }
+
     // Methods
     @Override
     public boolean equals(final Object obj) {

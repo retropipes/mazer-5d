@@ -29,22 +29,14 @@ import com.puttysoftware.randomrange.RandomRange;
 public abstract class MazeObjectModel implements RandomGenerationRule {
     // Properties
     private SolidProperties sp;
-    private boolean pushable;
-    private boolean pushableInto;
-    private boolean pushableOut;
-    private boolean pullable;
-    private boolean pullableInto;
-    private boolean pullableOut;
-    private boolean friction;
-    private boolean usable;
-    private int uses;
-    private boolean destroyable;
-    private boolean chainReacts;
-    private boolean isInventoryable;
+    private MoveProperties mp;
+    private OtherProperties op;
+    private OtherCounters oc;
+    private VisionProperties vp;
+    private CustomCounters cc;
+    private CustomFlags cf;
+    private CustomTexts ct;
     protected BitSet type;
-    private int timerValue;
-    private int initialTimerValue;
-    private boolean timerActive;
     private RuleSet ruleSet;
     public static final int DEFAULT_CUSTOM_VALUE = 0;
     protected static final int CUSTOM_FORMAT_MANUAL_OVERRIDE = -1;
@@ -53,22 +45,14 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public MazeObjectModel(final boolean isSolid) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
-        this.pushable = false;
-        this.pushableInto = false;
-        this.pushableOut = false;
-        this.pullable = false;
-        this.pullableInto = false;
-        this.pullableOut = false;
-        this.friction = true;
-        this.usable = false;
-        this.uses = 0;
-        this.destroyable = true;
-        this.chainReacts = false;
-        this.isInventoryable = false;
+        this.mp = new MoveProperties();
+        this.op = new OtherProperties();
+        this.oc = new OtherCounters();
+        this.vp = new VisionProperties();
+        this.cc = new CustomCounters();
+        this.cf = new CustomFlags();
+        this.ct = new CustomTexts();
         this.type = new BitSet(TypeConstants.TYPES_COUNT);
-        this.timerValue = 0;
-        this.initialTimerValue = 0;
-        this.timerActive = false;
         this.setTypes();
     }
 
@@ -93,21 +77,40 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         this.sp.setDirectionallySolid(false, Directions.SOUTHEAST, true);
         this.sp.setDirectionallySolid(false, Directions.NORTHWEST, true);
         this.sp.setDirectionallySolid(false, Directions.SOUTHWEST, true);
-        this.pushable = false;
-        this.pushableInto = false;
-        this.pushableOut = false;
-        this.pullable = false;
-        this.pullableInto = false;
-        this.pullableOut = false;
-        this.friction = true;
-        this.usable = false;
-        this.uses = 0;
-        this.destroyable = true;
-        this.chainReacts = false;
-        this.isInventoryable = false;
+        this.mp = new MoveProperties();
+        this.op = new OtherProperties();
+        this.oc = new OtherCounters();
+        this.vp = new VisionProperties();
+        this.vp.setDirectionallySightBlocking(true, Directions.NORTH,
+                isSolidXN);
+        this.vp.setDirectionallySightBlocking(true, Directions.SOUTH,
+                isSolidXS);
+        this.vp.setDirectionallySightBlocking(true, Directions.EAST, isSolidXE);
+        this.vp.setDirectionallySightBlocking(true, Directions.WEST, isSolidXW);
+        this.vp.setDirectionallySightBlocking(false, Directions.NORTH,
+                isSolidIN);
+        this.vp.setDirectionallySightBlocking(false, Directions.SOUTH,
+                isSolidIS);
+        this.vp.setDirectionallySightBlocking(false, Directions.EAST,
+                isSolidIE);
+        this.vp.setDirectionallySightBlocking(false, Directions.WEST,
+                isSolidIW);
+        this.vp.setDirectionallySightBlocking(true, Directions.NORTHEAST, true);
+        this.vp.setDirectionallySightBlocking(true, Directions.SOUTHEAST, true);
+        this.vp.setDirectionallySightBlocking(true, Directions.NORTHWEST, true);
+        this.vp.setDirectionallySightBlocking(true, Directions.SOUTHWEST, true);
+        this.vp.setDirectionallySightBlocking(false, Directions.NORTHEAST,
+                true);
+        this.vp.setDirectionallySightBlocking(false, Directions.SOUTHEAST,
+                true);
+        this.vp.setDirectionallySightBlocking(false, Directions.NORTHWEST,
+                true);
+        this.vp.setDirectionallySightBlocking(false, Directions.SOUTHWEST,
+                true);
+        this.cc = new CustomCounters();
+        this.cf = new CustomFlags();
+        this.ct = new CustomTexts();
         this.type = new BitSet(TypeConstants.TYPES_COUNT);
-        this.timerValue = 0;
-        this.timerActive = false;
         this.setTypes();
     }
 
@@ -118,21 +121,24 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             final boolean isUsable, final int newUses) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
-        this.pushable = isPushable;
-        this.pushableInto = doesAcceptPushInto;
-        this.pushableOut = doesAcceptPushOut;
-        this.pullable = isPullable;
-        this.pullableInto = doesAcceptPullInto;
-        this.pullableOut = doesAcceptPullOut;
-        this.friction = hasFriction;
-        this.usable = isUsable;
-        this.uses = newUses;
-        this.destroyable = true;
-        this.chainReacts = false;
-        this.isInventoryable = false;
+        this.mp = new MoveProperties();
+        this.mp.setPushable(isPushable);
+        this.mp.setPushableInto(doesAcceptPushInto);
+        this.mp.setPushableOut(doesAcceptPushOut);
+        this.mp.setPullable(isPullable);
+        this.mp.setPullableInto(doesAcceptPullInto);
+        this.mp.setPullableOut(doesAcceptPullOut);
+        this.op = new OtherProperties();
+        this.op.setFriction(hasFriction);
+        this.op.setUsable(isUsable);
+        this.oc = new OtherCounters();
+        this.oc.setUses(newUses);
+        this.vp = new VisionProperties();
+        this.vp.setSightBlocking(isSolid);
+        this.cc = new CustomCounters();
+        this.cf = new CustomFlags();
+        this.ct = new CustomTexts();
         this.type = new BitSet(TypeConstants.TYPES_COUNT);
-        this.timerValue = 0;
-        this.timerActive = false;
         this.setTypes();
     }
 
@@ -144,21 +150,25 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             final boolean isDestroyable, final boolean doesChainReact) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
-        this.pushable = isPushable;
-        this.pushableInto = doesAcceptPushInto;
-        this.pushableOut = doesAcceptPushOut;
-        this.pullable = isPullable;
-        this.pullableInto = doesAcceptPullInto;
-        this.pullableOut = doesAcceptPullOut;
-        this.friction = hasFriction;
-        this.usable = isUsable;
-        this.uses = newUses;
-        this.destroyable = isDestroyable;
-        this.chainReacts = doesChainReact;
-        this.isInventoryable = false;
+        this.mp = new MoveProperties();
+        this.mp.setPushable(isPushable);
+        this.mp.setPushableInto(doesAcceptPushInto);
+        this.mp.setPushableOut(doesAcceptPushOut);
+        this.mp.setPullable(isPullable);
+        this.mp.setPullableInto(doesAcceptPullInto);
+        this.mp.setPullableOut(doesAcceptPullOut);
+        this.op = new OtherProperties();
+        this.op.setFriction(hasFriction);
+        this.op.setUsable(isUsable);
+        this.op.setDestroyable(isDestroyable);
+        this.op.setChainReacting(doesChainReact);
+        this.oc = new OtherCounters();
+        this.oc.setUses(newUses);
+        this.vp = new VisionProperties();
+        this.cc = new CustomCounters();
+        this.cf = new CustomFlags();
+        this.ct = new CustomTexts();
         this.type = new BitSet(TypeConstants.TYPES_COUNT);
-        this.timerValue = 0;
-        this.timerActive = false;
         this.setTypes();
     }
 
@@ -166,41 +176,30 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             final int newUses, final boolean canBeInventoried) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
-        this.pushable = false;
-        this.pushableInto = false;
-        this.pushableOut = false;
-        this.pullable = false;
-        this.pullableInto = false;
-        this.pullableOut = false;
-        this.friction = true;
-        this.usable = isUsable;
-        this.uses = newUses;
-        this.destroyable = true;
-        this.chainReacts = false;
-        this.isInventoryable = canBeInventoried;
+        this.mp = new MoveProperties();
+        this.op = new OtherProperties();
+        this.op.setUsable(isUsable);
+        this.op.setCarryable(canBeInventoried);
+        this.oc = new OtherCounters();
+        this.oc.setUses(newUses);
+        this.vp = new VisionProperties();
+        this.cc = new CustomCounters();
+        this.cf = new CustomFlags();
+        this.ct = new CustomTexts();
         this.type = new BitSet(TypeConstants.TYPES_COUNT);
-        this.timerValue = 0;
-        this.timerActive = false;
         this.setTypes();
     }
 
     public MazeObjectModel() {
         this.sp = new SolidProperties();
-        this.pushable = false;
-        this.pushableInto = false;
-        this.pushableOut = false;
-        this.pullable = false;
-        this.pullableInto = false;
-        this.pullableOut = false;
-        this.friction = true;
-        this.usable = false;
-        this.uses = 0;
-        this.destroyable = true;
-        this.chainReacts = false;
-        this.isInventoryable = false;
+        this.mp = new MoveProperties();
+        this.op = new OtherProperties();
+        this.oc = new OtherCounters();
+        this.vp = new VisionProperties();
+        this.cc = new CustomCounters();
+        this.cf = new CustomFlags();
+        this.ct = new CustomTexts();
         this.type = new BitSet(TypeConstants.TYPES_COUNT);
-        this.timerValue = 0;
-        this.timerActive = false;
         this.setTypes();
     }
 
@@ -210,23 +209,15 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         try {
             final MazeObjectModel copy = this.getClass().getConstructor()
                     .newInstance();
-            copy.sp = this.sp.clone();
-            copy.pushable = this.pushable;
-            copy.pushableInto = this.pushableInto;
-            copy.pushableOut = this.pushableOut;
-            copy.pullable = this.pullable;
-            copy.pullableInto = this.pullableInto;
-            copy.pullableOut = this.pullableOut;
-            copy.friction = this.friction;
-            copy.usable = this.usable;
-            copy.uses = this.uses;
-            copy.destroyable = this.destroyable;
-            copy.chainReacts = this.chainReacts;
-            copy.isInventoryable = this.isInventoryable;
+            copy.sp = new SolidProperties(this.sp);
+            copy.mp = new MoveProperties(this.mp);
+            copy.op = new OtherProperties(this.op);
+            copy.oc = new OtherCounters(this.oc);
+            copy.vp = new VisionProperties(this.vp);
+            copy.cc = new CustomCounters(this.cc);
+            copy.cf = new CustomFlags(this.cf);
+            copy.ct = new CustomTexts(this.ct);
             copy.type = (BitSet) this.type.clone();
-            copy.timerValue = this.timerValue;
-            copy.initialTimerValue = this.initialTimerValue;
-            copy.timerActive = this.timerActive;
             if (this.ruleSet != null) {
                 copy.ruleSet = this.ruleSet.clone();
             }
@@ -242,24 +233,16 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (this.chainReacts ? 1231 : 1237);
-        result = prime * result + (this.destroyable ? 1231 : 1237);
-        result = prime * result + (this.friction ? 1231 : 1237);
-        result = prime * result + this.initialTimerValue;
-        result = prime * result + (this.isInventoryable ? 1231 : 1237);
-        result = prime * result + (this.pullable ? 1231 : 1237);
-        result = prime * result + (this.pullableInto ? 1231 : 1237);
-        result = prime * result + (this.pullableOut ? 1231 : 1237);
-        result = prime * result + (this.pushable ? 1231 : 1237);
-        result = prime * result + (this.pushableInto ? 1231 : 1237);
-        result = prime * result + (this.pushableOut ? 1231 : 1237);
+        result = prime * result + (this.mp == null ? 0 : this.mp.hashCode());
         result = prime * result + (this.sp == null ? 0 : this.sp.hashCode());
-        result = prime * result + (this.timerActive ? 1231 : 1237);
-        result = prime * result + this.timerValue;
+        result = prime * result + (this.op == null ? 0 : this.op.hashCode());
+        result = prime * result + (this.oc == null ? 0 : this.oc.hashCode());
+        result = prime * result + (this.vp == null ? 0 : this.vp.hashCode());
+        result = prime * result + (this.cc == null ? 0 : this.cc.hashCode());
+        result = prime * result + (this.cf == null ? 0 : this.cf.hashCode());
+        result = prime * result + (this.ct == null ? 0 : this.ct.hashCode());
         result = prime * result + (this.type == null ? 0
                 : this.type.hashCode());
-        result = prime * result + (this.usable ? 1231 : 1237);
-        result = prime * result + this.uses;
         return result;
     }
 
@@ -275,37 +258,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             return false;
         }
         final MazeObjectModel other = (MazeObjectModel) obj;
-        if (this.chainReacts != other.chainReacts) {
-            return false;
-        }
-        if (this.destroyable != other.destroyable) {
-            return false;
-        }
-        if (this.friction != other.friction) {
-            return false;
-        }
-        if (this.initialTimerValue != other.initialTimerValue) {
-            return false;
-        }
-        if (this.isInventoryable != other.isInventoryable) {
-            return false;
-        }
-        if (this.pullable != other.pullable) {
-            return false;
-        }
-        if (this.pullableInto != other.pullableInto) {
-            return false;
-        }
-        if (this.pullableOut != other.pullableOut) {
-            return false;
-        }
-        if (this.pushable != other.pushable) {
-            return false;
-        }
-        if (this.pushableInto != other.pushableInto) {
-            return false;
-        }
-        if (this.pushableOut != other.pushableOut) {
+        if (this.mp == null) {
+            if (other.mp != null) {
+                return false;
+            }
+        } else if (!this.mp.equals(other.mp)) {
             return false;
         }
         if (this.sp == null) {
@@ -315,10 +272,46 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         } else if (!this.sp.equals(other.sp)) {
             return false;
         }
-        if (this.timerActive != other.timerActive) {
+        if (this.op == null) {
+            if (other.op != null) {
+                return false;
+            }
+        } else if (!this.op.equals(other.op)) {
             return false;
         }
-        if (this.timerValue != other.timerValue) {
+        if (this.oc == null) {
+            if (other.oc != null) {
+                return false;
+            }
+        } else if (!this.oc.equals(other.oc)) {
+            return false;
+        }
+        if (this.vp == null) {
+            if (other.vp != null) {
+                return false;
+            }
+        } else if (!this.vp.equals(other.vp)) {
+            return false;
+        }
+        if (this.cc == null) {
+            if (other.cc != null) {
+                return false;
+            }
+        } else if (!this.cc.equals(other.cc)) {
+            return false;
+        }
+        if (this.cf == null) {
+            if (other.cf != null) {
+                return false;
+            }
+        } else if (!this.cf.equals(other.cf)) {
+            return false;
+        }
+        if (this.ct == null) {
+            if (other.ct != null) {
+                return false;
+            }
+        } else if (!this.ct.equals(other.ct)) {
             return false;
         }
         if (this.type == null) {
@@ -326,12 +319,6 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
                 return false;
             }
         } else if (!this.type.equals(other.type)) {
-            return false;
-        }
-        if (this.usable != other.usable) {
-            return false;
-        }
-        if (this.uses != other.uses) {
             return false;
         }
         return true;
@@ -383,6 +370,15 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         return this.sp.isDirectionallySolid(ie, dirX, dirY);
     }
 
+    public boolean isSightBlocking() {
+        return this.vp.isSightBlocking();
+    }
+
+    public boolean isDirectionallySightBlocking(final boolean ie,
+            final int dirX, final int dirY) {
+        return this.vp.isDirectionallySightBlocking(ie, dirX, dirY);
+    }
+
     public boolean isOfType(final int testType) {
         return this.type.get(testType);
     }
@@ -390,51 +386,51 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     protected abstract void setTypes();
 
     public boolean isPushable() {
-        return this.pushable;
+        return this.mp.isPushable();
     }
 
     public boolean isPullable() {
-        return this.pullable;
+        return this.mp.isPullable();
     }
 
     public boolean isPullableInto() {
-        return this.pullableInto;
+        return this.mp.isPullableInto();
     }
 
     public boolean isPushableInto() {
-        return this.pushableInto;
+        return this.mp.isPushableInto();
     }
 
     public boolean isPullableOut() {
-        return this.pullableOut;
+        return this.mp.isPullableOut();
     }
 
     public boolean isPushableOut() {
-        return this.pushableOut;
+        return this.mp.isPushableOut();
     }
 
     public boolean hasFriction() {
-        return this.friction;
+        return this.op.hasFriction();
     }
 
     public boolean isUsable() {
-        return this.usable;
+        return this.op.isUsable();
     }
 
     public int getUses() {
-        return this.uses;
+        return this.oc.getUses();
     }
 
     public boolean isDestroyable() {
-        return this.destroyable;
+        return this.op.isDestroyable();
     }
 
     public boolean doesChainReact() {
-        return this.chainReacts;
+        return this.op.isChainReacting();
     }
 
     public boolean isInventoryable() {
-        return this.isInventoryable;
+        return this.op.isCarryable();
     }
 
     // Scripting
@@ -642,41 +638,41 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     }
 
     public final void activateTimer(final int ticks) {
-        this.timerActive = true;
-        this.timerValue = ticks;
-        this.initialTimerValue = ticks;
+        this.op.setTimerTicking(true);
+        this.oc.setTimerTicks(ticks);
+        this.oc.setTimerReset(ticks);
     }
 
     public final void deactivateTimer() {
-        this.timerActive = false;
-        this.timerValue = 0;
-        this.initialTimerValue = 0;
+        this.op.setTimerTicking(false);
+        this.oc.setTimerTicks(0);
+        this.oc.setTimerReset(0);
     }
 
     public final void extendTimer(final int ticks) {
-        if (this.timerActive) {
-            this.timerValue += ticks;
+        if (this.op.isTimerTicking()) {
+            this.oc.extendTimer(ticks);
         }
     }
 
     public final void extendTimerByInitialValue() {
-        if (this.timerActive) {
-            this.timerValue += this.initialTimerValue;
+        if (this.op.isTimerTicking()) {
+            this.oc.extendTimerByReset();
         }
     }
 
     public final void resetTimer() {
-        if (this.timerActive) {
-            this.timerValue = this.initialTimerValue;
+        if (this.op.isTimerTicking()) {
+            this.oc.resetTimer();
         }
     }
 
     public final void tickTimer(final int dirX, final int dirY) {
-        if (this.timerActive) {
-            this.timerValue--;
-            if (this.timerValue == 0) {
-                this.timerActive = false;
-                this.initialTimerValue = 0;
+        if (this.op.isTimerTicking()) {
+            this.oc.tickTimer();
+            if (this.oc.timeExpired()) {
+                this.op.setTimerTicking(false);
+                this.oc.setTimerReset(0);
                 this.timerExpiredAction(dirX, dirY);
             }
         }
@@ -842,11 +838,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final void writeMazeObjectXML(final XDataWriter writer)
             throws IOException {
         writer.writeString(this.getXMLIdentifier());
-        final int cc = this.getCustomFormat();
-        if (cc == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+        final int ccf = this.getCustomFormat();
+        if (ccf == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
             this.writeMazeObjectHookXML(writer);
         } else {
-            for (int x = 0; x < cc; x++) {
+            for (int x = 0; x < ccf; x++) {
                 final int cx = this.getCustomProperty(x + 1);
                 writer.writeInt(cx);
             }
@@ -856,11 +852,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final MazeObjectModel readMazeObjectXML(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
-            final int cc = this.getCustomFormat();
-            if (cc == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+            final int ccf = this.getCustomFormat();
+            if (ccf == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readMazeObjectHookXML(reader, ver);
             } else {
-                for (int x = 0; x < cc; x++) {
+                for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomProperty(x + 1, cx);
                 }
@@ -874,11 +870,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final MazeObjectModel readMazeObjectXML2(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
-            final int cc = this.getCustomFormat();
-            if (cc == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+            final int ccf = this.getCustomFormat();
+            if (ccf == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readMazeObjectHookXML(reader, ver);
             } else {
-                for (int x = 0; x < cc; x++) {
+                for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomProperty(x + 1, cx);
                 }
@@ -892,11 +888,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final MazeObjectModel readMazeObjectXML3(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
-            final int cc = this.getCustomFormat();
-            if (cc == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+            final int ccf = this.getCustomFormat();
+            if (ccf == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readMazeObjectHookXML(reader, ver);
             } else {
-                for (int x = 0; x < cc; x++) {
+                for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomProperty(x + 1, cx);
                 }
@@ -910,11 +906,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final MazeObjectModel readMazeObjectXML4(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
-            final int cc = this.getCustomFormat();
-            if (cc == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+            final int ccf = this.getCustomFormat();
+            if (ccf == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readMazeObjectHookXML(reader, ver);
             } else {
-                for (int x = 0; x < cc; x++) {
+                for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomProperty(x + 1, cx);
                 }
@@ -928,11 +924,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final MazeObjectModel readMazeObjectXML5(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
-            final int cc = this.getCustomFormat();
-            if (cc == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+            final int ccf = this.getCustomFormat();
+            if (ccf == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readMazeObjectHookXML(reader, ver);
             } else {
-                for (int x = 0; x < cc; x++) {
+                for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomProperty(x + 1, cx);
                 }
