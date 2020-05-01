@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericAmulet;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
+import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class PoisonousAmulet extends GenericAmulet {
     // Constants

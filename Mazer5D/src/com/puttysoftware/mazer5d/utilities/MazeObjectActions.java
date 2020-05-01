@@ -1,4 +1,4 @@
-package com.puttysoftware.mazer5d.objectmodel;
+package com.puttysoftware.mazer5d.utilities;
 
 import java.nio.LongBuffer;
 import java.util.BitSet;

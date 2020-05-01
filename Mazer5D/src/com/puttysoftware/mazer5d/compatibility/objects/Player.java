@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericCharacter;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
+import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class Player extends GenericCharacter {
     // Constructors

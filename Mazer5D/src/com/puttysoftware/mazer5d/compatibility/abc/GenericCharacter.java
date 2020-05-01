@@ -15,9 +15,9 @@ import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
-import com.puttysoftware.mazer5d.objectmodel.ArrowTypes;
-import com.puttysoftware.mazer5d.objectmodel.Layers;
-import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
+import com.puttysoftware.mazer5d.utilities.ArrowTypes;
+import com.puttysoftware.mazer5d.utilities.Layers;
+import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericCharacter extends MazeObjectModel {
     // Fields

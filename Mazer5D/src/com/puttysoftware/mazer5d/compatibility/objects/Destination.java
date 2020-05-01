@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTeleport;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
+import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class Destination extends GenericTeleport {
     // Constructors

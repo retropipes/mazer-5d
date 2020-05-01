@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericConditionalTeleport;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
+import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class OneShotConditionalTeleport extends GenericConditionalTeleport {
     // Constructors

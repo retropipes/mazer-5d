@@ -14,8 +14,8 @@ import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
-import com.puttysoftware.mazer5d.objectmodel.RandomGenerationRule;
+import com.puttysoftware.mazer5d.utilities.MazeObjects;
+import com.puttysoftware.mazer5d.utilities.RandomGenerationRule;
 
 class Finish extends GenericTeleport {
     // Constructors

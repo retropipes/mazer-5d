@@ -9,9 +9,9 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
-import com.puttysoftware.mazer5d.objectmodel.ArrowTypes;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
-import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
+import com.puttysoftware.mazer5d.utilities.ArrowTypes;
+import com.puttysoftware.mazer5d.utilities.MazeObjects;
+import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 class IcedBarrierGenerator extends GenericWall {
     // Constants

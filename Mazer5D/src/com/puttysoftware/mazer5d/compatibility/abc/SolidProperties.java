@@ -5,23 +5,46 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.compatibility.abc;
 
-import java.util.Arrays;
+import java.util.Objects;
 
 import com.puttysoftware.mazer5d.utilities.DirectionResolver;
 import com.puttysoftware.mazer5d.utilities.Directions;
+import com.puttysoftware.storage.FlagStorage;
 
-class SolidProperties implements Cloneable {
+class SolidProperties {
+    // Private enumeration
+    private enum SolidDataTypes {
+        EXTERNAL(0),
+        INTERNAL(1);
+
+        private int index;
+
+        SolidDataTypes(final int value) {
+            this.index = value;
+        }
+    }
+
     // Properties
-    private final boolean[] solidX;
-    private final boolean[] solidI;
+    private final FlagStorage solidData;
+    private static final int SOLID_DATA_TYPES = 2;
 
     // Constructors
     public SolidProperties() {
-        this.solidX = new boolean[Directions.COUNT];
-        this.solidI = new boolean[Directions.COUNT];
+        this.solidData = new FlagStorage(SolidProperties.SOLID_DATA_TYPES,
+                Directions.COUNT);
+    }
+
+    public SolidProperties(final SolidProperties source) {
+        this.solidData = new FlagStorage(source.solidData);
     }
 
     // Methods
+    @Override
+    @Deprecated
+    public SolidProperties clone() {
+        return new SolidProperties(this);
+    }
+
     @Override
     public boolean equals(final Object obj) {
         if (obj == null) {
@@ -31,10 +54,7 @@ class SolidProperties implements Cloneable {
             return false;
         }
         final SolidProperties other = (SolidProperties) obj;
-        if (!Arrays.equals(this.solidX, other.solidX)) {
-            return false;
-        }
-        if (!Arrays.equals(this.solidI, other.solidI)) {
+        if (!Objects.equals(this.solidData, other.solidData)) {
             return false;
         }
         return true;
@@ -43,24 +63,17 @@ class SolidProperties implements Cloneable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 89 * hash + Arrays.hashCode(this.solidX);
-        hash = 89 * hash + Arrays.hashCode(this.solidI);
+        hash = 89 * hash + Objects.hashCode(this.solidData);
         return hash;
-    }
-
-    @Override
-    public SolidProperties clone() {
-        final SolidProperties copy = new SolidProperties();
-        System.arraycopy(this.solidX, 0, copy.solidX, 0, this.solidX.length);
-        System.arraycopy(this.solidI, 0, copy.solidI, 0, this.solidI.length);
-        return copy;
     }
 
     public boolean isSolid() {
         boolean result = false;
-        for (int x = 0; x < Directions.COUNT; x++) {
-            result = result || this.solidX[x];
-            result = result || this.solidI[x];
+        for (int dir = 0; dir < Directions.COUNT; dir++) {
+            result = result || this.solidData.getCell(
+                    SolidDataTypes.EXTERNAL.index, dir);
+            result = result || this.solidData.getCell(
+                    SolidDataTypes.INTERNAL.index, dir);
         }
         return result;
     }
@@ -69,49 +82,25 @@ class SolidProperties implements Cloneable {
             final int dirY) {
         final int dir = DirectionResolver.resolve(dirX, dirY);
         if (ie) {
-            try {
-                if (dir != Directions.NONE) {
-                    return this.solidX[dir];
-                } else {
-                    return false;
-                }
-            } catch (final ArrayIndexOutOfBoundsException aioob) {
-                return true;
-            }
+            return this.solidData.getCell(SolidDataTypes.EXTERNAL.index, dir);
         } else {
-            try {
-                if (dir != Directions.NONE) {
-                    return this.solidI[dir];
-                } else {
-                    return false;
-                }
-            } catch (final ArrayIndexOutOfBoundsException aioob) {
-                return true;
-            }
+            return this.solidData.getCell(SolidDataTypes.INTERNAL.index, dir);
         }
     }
 
     public void setSolid(final boolean value) {
-        for (int x = 0; x < Directions.COUNT; x++) {
-            this.solidX[x] = value;
-            this.solidI[x] = value;
+        for (int dir = 0; dir < Directions.COUNT; dir++) {
+            this.solidData.setCell(value, SolidDataTypes.EXTERNAL.index, dir);
+            this.solidData.setCell(value, SolidDataTypes.INTERNAL.index, dir);
         }
     }
 
     public void setDirectionallySolid(final boolean ie, final int dir,
             final boolean value) {
         if (ie) {
-            try {
-                this.solidX[dir] = value;
-            } catch (final ArrayIndexOutOfBoundsException aioob) {
-                // Do nothing
-            }
+            this.solidData.setCell(value, SolidDataTypes.EXTERNAL.index, dir);
         } else {
-            try {
-                this.solidI[dir] = value;
-            } catch (final ArrayIndexOutOfBoundsException aioob) {
-                // Do nothing
-            }
+            this.solidData.setCell(value, SolidDataTypes.INTERNAL.index, dir);
         }
     }
 }

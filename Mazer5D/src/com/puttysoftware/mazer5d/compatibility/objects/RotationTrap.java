@@ -17,7 +17,7 @@ import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
+import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class RotationTrap extends GenericTrap implements Cloneable {
     // Fields

@@ -18,13 +18,13 @@ import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
-import com.puttysoftware.mazer5d.objectmodel.Layers;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
-import com.puttysoftware.mazer5d.objectmodel.RandomGenerationRule;
-import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
-import com.puttysoftware.mazer5d.objectmodel.VisionModes;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.mazer5d.utilities.DirectionResolver;
+import com.puttysoftware.mazer5d.utilities.Layers;
+import com.puttysoftware.mazer5d.utilities.MazeObjects;
+import com.puttysoftware.mazer5d.utilities.RandomGenerationRule;
+import com.puttysoftware.mazer5d.utilities.TypeConstants;
+import com.puttysoftware.mazer5d.utilities.VisionModes;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.storage.FlagStorage;
 

@@ -12,7 +12,7 @@ import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
-import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
+import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericRandomInvisibleTeleport extends
         GenericRandomTeleport {

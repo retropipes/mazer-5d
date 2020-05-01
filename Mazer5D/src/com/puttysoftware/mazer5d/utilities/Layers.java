@@ -1,4 +1,4 @@
-package com.puttysoftware.mazer5d.objectmodel;
+package com.puttysoftware.mazer5d.utilities;
 
 public class Layers {
     public static final int GROUND = 0;

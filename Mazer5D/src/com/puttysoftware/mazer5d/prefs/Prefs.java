@@ -54,7 +54,7 @@ import com.puttysoftware.mazer5d.files.versions.PrefsVersionException;
 import com.puttysoftware.mazer5d.files.versions.PrefsVersions;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.gui.MainWindow;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
+import com.puttysoftware.mazer5d.utilities.MazeObjects;
 import com.puttysoftware.updater.ProductData;
 import com.puttysoftware.updater.UpdateCheckResults;
 

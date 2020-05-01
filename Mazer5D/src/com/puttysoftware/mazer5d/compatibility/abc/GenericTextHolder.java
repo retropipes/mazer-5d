@@ -11,8 +11,8 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.objectmodel.Layers;
-import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
+import com.puttysoftware.mazer5d.utilities.Layers;
+import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericTextHolder extends MazeObjectModel {
     // Fields

@@ -42,9 +42,9 @@ import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
-import com.puttysoftware.mazer5d.objectmodel.Layers;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.mazer5d.prefs.Prefs;
+import com.puttysoftware.mazer5d.utilities.Layers;
+import com.puttysoftware.mazer5d.utilities.MazeObjects;
 import com.puttysoftware.picturepicker.PicturePicker;
 
 public class MazeEditor {

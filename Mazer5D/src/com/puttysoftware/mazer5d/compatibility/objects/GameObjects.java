@@ -20,9 +20,9 @@ import com.puttysoftware.mazer5d.compatibility.files.xml.XMLFormatConstants;
 import com.puttysoftware.mazer5d.compatibility.loaders.ObjectImageManager;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
-import com.puttysoftware.mazer5d.objectmodel.Layers;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
-import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
+import com.puttysoftware.mazer5d.utilities.Layers;
+import com.puttysoftware.mazer5d.utilities.MazeObjects;
+import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public class GameObjects {
     // Fields

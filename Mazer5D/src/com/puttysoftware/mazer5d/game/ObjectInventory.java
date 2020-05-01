@@ -14,8 +14,8 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
-import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
+import com.puttysoftware.mazer5d.utilities.MazeObjects;
+import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public final class ObjectInventory implements Cloneable {
     // Properties

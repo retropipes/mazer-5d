@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.files.FileExtensions;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjectActions;
+import com.puttysoftware.mazer5d.utilities.MazeObjectActions;
 
 public class DataLoader {
     private DataLoader() {

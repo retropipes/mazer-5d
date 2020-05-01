@@ -11,7 +11,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
-import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.utilities.Layers;
 
 class SavedTowerState implements Cloneable {
     // Properties

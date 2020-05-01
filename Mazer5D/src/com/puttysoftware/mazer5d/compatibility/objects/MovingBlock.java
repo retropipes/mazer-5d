@@ -7,7 +7,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericMovingObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
+import com.puttysoftware.mazer5d.utilities.MazeObjects;
 import com.puttysoftware.randomrange.RandomRange;
 
 class MovingBlock extends GenericMovingObject implements Cloneable {

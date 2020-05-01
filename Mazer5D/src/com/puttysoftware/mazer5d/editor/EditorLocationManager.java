@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.editor;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
-import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.utilities.Layers;
 
 public class EditorLocationManager {
     // Fields

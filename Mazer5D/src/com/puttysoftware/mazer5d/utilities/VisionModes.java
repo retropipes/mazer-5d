@@ -1,4 +1,4 @@
-package com.puttysoftware.mazer5d.objectmodel;
+package com.puttysoftware.mazer5d.utilities;
 
 public class VisionModes {
     public static final int NONE = 0;

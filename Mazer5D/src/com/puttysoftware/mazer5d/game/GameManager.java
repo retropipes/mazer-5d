@@ -49,11 +49,11 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.loaders.MusicPlayer;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
-import com.puttysoftware.mazer5d.objectmodel.ArrowTypes;
-import com.puttysoftware.mazer5d.objectmodel.Layers;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
-import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
 import com.puttysoftware.mazer5d.prefs.Prefs;
+import com.puttysoftware.mazer5d.utilities.ArrowTypes;
+import com.puttysoftware.mazer5d.utilities.Layers;
+import com.puttysoftware.mazer5d.utilities.MazeObjects;
+import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public class GameManager implements MazeEffectConstants {
     // Fields
