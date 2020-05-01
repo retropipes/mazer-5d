@@ -47,6 +47,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
+import com.puttysoftware.mazer5d.loaders.ImageConstants;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.loaders.MusicPlayer;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
@@ -1629,9 +1630,9 @@ public class GameManager implements MazeEffectConstants {
                 .getOffsetFactorX();
         final int yOffset = this.vwMgr.getViewingWindowLocationY() - this.vwMgr
                 .getOffsetFactorY();
-        final int destX = x / ObjectImageManager.getObjectImageSize()
+        final int destX = x / ImageConstants.SIZE
                 + this.vwMgr.getViewingWindowLocationX() - xOffset + yOffset;
-        final int destY = y / ObjectImageManager.getObjectImageSize()
+        final int destY = y / ImageConstants.SIZE
                 + this.vwMgr.getViewingWindowLocationY() + xOffset - yOffset;
         final int destZ = this.plMgr.getPlayerLocationZ();
         if (this.usingAnItem() && Modes.inGame()) {
@@ -1721,10 +1722,10 @@ public class GameManager implements MazeEffectConstants {
                     - this.vwMgr.getOffsetFactorX();
             final int yOffset = this.vwMgr.getViewingWindowLocationY()
                     - this.vwMgr.getOffsetFactorY();
-            final int destX = x / ObjectImageManager.getObjectImageSize()
+            final int destX = x / ImageConstants.SIZE
                     + this.vwMgr.getViewingWindowLocationX() - xOffset
                     + yOffset;
-            final int destY = y / ObjectImageManager.getObjectImageSize()
+            final int destY = y / ImageConstants.SIZE
                     + this.vwMgr.getViewingWindowLocationY() + xOffset
                     - yOffset;
             final int destZ = this.plMgr.getPlayerLocationZ();
@@ -1741,9 +1742,9 @@ public class GameManager implements MazeEffectConstants {
                 .getOffsetFactorX();
         final int yOffset = this.vwMgr.getViewingWindowLocationY() - this.vwMgr
                 .getOffsetFactorY();
-        final int destX = x / ObjectImageManager.getObjectImageSize()
+        final int destX = x / ImageConstants.SIZE
                 + this.vwMgr.getViewingWindowLocationX() - xOffset + yOffset;
-        final int destY = y / ObjectImageManager.getObjectImageSize()
+        final int destY = y / ImageConstants.SIZE
                 + this.vwMgr.getViewingWindowLocationY() + xOffset - yOffset;
         final int destZ = this.plMgr.getPlayerLocationZ();
         try {

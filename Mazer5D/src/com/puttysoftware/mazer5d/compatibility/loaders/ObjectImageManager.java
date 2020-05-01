@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.loaders.ImageConstants;
 
 public class ObjectImageManager {
     private static final String DEFAULT_LOAD_PATH = "/assets/image/object/";
@@ -29,10 +30,8 @@ public class ObjectImageManager {
                     .getCachedObjectImage(obj, game);
             final BufferedImageIcon result = new BufferedImageIcon(icon);
             if (icon != null) {
-                for (int x = 0; x < ObjectImageManager
-                        .getObjectImageSize(); x++) {
-                    for (int y = 0; y < ObjectImageManager
-                            .getObjectImageSize(); y++) {
+                for (int x = 0; x < ImageConstants.SIZE; x++) {
+                    for (int y = 0; y < ImageConstants.SIZE; y++) {
                         final int pixel = icon.getRGB(x, y);
                         final Color c = new Color(pixel);
                         if (c.equals(ObjectImageManager.TRANSPARENT)) {
@@ -62,10 +61,8 @@ public class ObjectImageManager {
                     .getCachedObjectImage(obj2, game);
             final BufferedImageIcon result = new BufferedImageIcon(icon2);
             if (icon1 != null && icon2 != null) {
-                for (int x = 0; x < ObjectImageManager
-                        .getObjectImageSize(); x++) {
-                    for (int y = 0; y < ObjectImageManager
-                            .getObjectImageSize(); y++) {
+                for (int x = 0; x < ImageConstants.SIZE; x++) {
+                    for (int y = 0; y < ImageConstants.SIZE; y++) {
                         final int pixel = icon2.getRGB(x, y);
                         final Color c = new Color(pixel);
                         if (c.equals(ObjectImageManager.TRANSPARENT)) {
@@ -94,10 +91,8 @@ public class ObjectImageManager {
                     .getCompositeImage(obj1, obj2, game);
             final BufferedImageIcon result = new BufferedImageIcon(icon3);
             if (icon3 != null && icon2 != null) {
-                for (int x = 0; x < ObjectImageManager
-                        .getObjectImageSize(); x++) {
-                    for (int y = 0; y < ObjectImageManager
-                            .getObjectImageSize(); y++) {
+                for (int x = 0; x < ImageConstants.SIZE; x++) {
+                    for (int y = 0; y < ImageConstants.SIZE; y++) {
                         final int pixel = icon3.getRGB(x, y);
                         final Color c = new Color(pixel);
                         if (c.equals(ObjectImageManager.TRANSPARENT)) {
@@ -155,9 +150,5 @@ public class ObjectImageManager {
             }
         }
         return sb.toString().toLowerCase();
-    }
-
-    public static int getObjectImageSize() {
-        return 64;
     }
 }

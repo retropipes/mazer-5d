@@ -42,6 +42,7 @@ import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
+import com.puttysoftware.mazer5d.loaders.ImageConstants;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.mazer5d.utilities.Layers;
@@ -421,9 +422,9 @@ public class MazeEditor {
                 .getMinimum();
         final int yOffset = this.horzScroll.getValue() - this.horzScroll
                 .getMinimum();
-        final int gridX = x / ObjectImageManager.getObjectImageSize()
+        final int gridX = x / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationX() - xOffset + yOffset;
-        final int gridY = y / ObjectImageManager.getObjectImageSize()
+        final int gridY = y / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         try {
             this.savedMazeObject = app.getMazeManager().getMaze().getCell(gridX,
@@ -471,9 +472,9 @@ public class MazeEditor {
                 .getMinimum();
         final int yOffset = this.horzScroll.getValue() - this.horzScroll
                 .getMinimum();
-        final int gridX = x / ObjectImageManager.getObjectImageSize()
+        final int gridX = x / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationX() - xOffset + yOffset;
-        final int gridY = y / ObjectImageManager.getObjectImageSize()
+        final int gridY = y / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         try {
             final MazeObjectModel mo = app.getMazeManager().getMaze().getCell(
@@ -497,9 +498,9 @@ public class MazeEditor {
                 .getMinimum();
         final int yOffset = this.horzScroll.getValue() - this.horzScroll
                 .getMinimum();
-        final int gridX = x / ObjectImageManager.getObjectImageSize()
+        final int gridX = x / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationX() - xOffset + yOffset;
-        final int gridY = y / ObjectImageManager.getObjectImageSize()
+        final int gridY = y / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         try {
             final MazeObjectModel mo = app.getMazeManager().getMaze().getCell(
@@ -1000,9 +1001,9 @@ public class MazeEditor {
                 .getMinimum();
         final int yOffset = this.horzScroll.getValue() - this.horzScroll
                 .getMinimum();
-        final int destX = x / ObjectImageManager.getObjectImageSize()
+        final int destX = x / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationX() - xOffset + yOffset;
-        final int destY = y / ObjectImageManager.getObjectImageSize()
+        final int destY = y / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         final int destZ = this.elMgr.getEditorLocationZ();
         try {
@@ -1130,9 +1131,9 @@ public class MazeEditor {
                 .getMinimum();
         final int yOffset = this.horzScroll.getValue() - this.horzScroll
                 .getMinimum();
-        final int destX = x / ObjectImageManager.getObjectImageSize()
+        final int destX = x / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationX() - xOffset + yOffset;
-        final int destY = y / ObjectImageManager.getObjectImageSize()
+        final int destY = y / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         final int destZ = this.elMgr.getEditorLocationZ();
         if (this.instanceBeingEdited != null) {
@@ -1165,9 +1166,9 @@ public class MazeEditor {
                 .getMinimum();
         final int yOffset = this.horzScroll.getValue() - this.horzScroll
                 .getMinimum();
-        final int destX = x / ObjectImageManager.getObjectImageSize()
+        final int destX = x / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationX() - xOffset + yOffset;
-        final int destY = y / ObjectImageManager.getObjectImageSize()
+        final int destY = y / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         final int destZ = this.elMgr.getEditorLocationZ();
         try {
@@ -1276,9 +1277,9 @@ public class MazeEditor {
                 .getMinimum();
         final int yOffset = this.horzScroll.getValue() - this.horzScroll
                 .getMinimum();
-        final int destX = x / ObjectImageManager.getObjectImageSize()
+        final int destX = x / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationX() - xOffset + yOffset;
-        final int destY = y / ObjectImageManager.getObjectImageSize()
+        final int destY = y / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         final int oldX = app.getMazeManager().getMaze().getStartColumn();
         final int oldY = app.getMazeManager().getMaze().getStartRow();
@@ -1735,10 +1736,10 @@ public class MazeEditor {
                     .getMinimum();
             final int yOffset = this.horzScroll.getValue() - this.horzScroll
                     .getMinimum();
-            final int locX = x / ObjectImageManager.getObjectImageSize()
+            final int locX = x / ImageConstants.SIZE
                     + this.evMgr.getViewingWindowLocationX() - xOffset
                     + yOffset;
-            final int locY = y / ObjectImageManager.getObjectImageSize()
+            final int locY = y / ImageConstants.SIZE
                     + this.evMgr.getViewingWindowLocationY() + xOffset
                     - yOffset;
             final int locZ = this.elMgr.getEditorLocationZ();
