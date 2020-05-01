@@ -5,8 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.compatibility.objects;
 
-import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
+import com.puttysoftware.mazer5d.objectmodel.ArrowTypes;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 class IceBow extends GenericBow {
@@ -15,7 +15,7 @@ class IceBow extends GenericBow {
 
     // Constructors
     public IceBow() {
-        super(IceBow.BOW_USES, ArrowTypeConstants.ARROW_TYPE_ICE);
+        super(IceBow.BOW_USES, ArrowTypes.ICE);
     }
 
     @Override

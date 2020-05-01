@@ -6,10 +6,10 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
+import com.puttysoftware.mazer5d.objectmodel.ArrowTypes;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
 
@@ -38,7 +38,7 @@ class IcedBarrierGenerator extends GenericWall {
     public boolean arrowHitAction(final int locX, final int locY,
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
-        if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
+        if (arrowType == ArrowTypes.ICE) {
             // Extend iced effect, if arrow was an ice arrow
             this.extendTimer(IcedBarrierGenerator.TIMER_DELAY);
         } else {

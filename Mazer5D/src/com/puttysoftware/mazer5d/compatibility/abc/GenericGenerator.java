@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.ArrowTypes;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
@@ -576,7 +577,7 @@ public abstract class GenericGenerator extends GenericWall {
             final ObjectInventory inv) {
         // Behave as if the generator was walked into, unless the arrow was an
         // ice arrow
-        if (arrowType == ArrowTypeConstants.ARROW_TYPE_PLAIN) {
+        if (arrowType == ArrowTypes.PLAIN) {
             this.preMoveAction(false, locX, locY, inv);
         } else {
             this.arrowHitActionHook(locX, locY, locZ, arrowType, inv);

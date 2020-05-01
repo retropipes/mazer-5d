@@ -18,6 +18,7 @@ import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.ArrowTypes;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
@@ -720,7 +721,7 @@ public abstract class MazeObjectModel implements DirectionConstants,
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
         // Stop non-ghost arrows passing through solid objects
-        if (arrowType == ArrowTypeConstants.ARROW_TYPE_GHOST) {
+        if (arrowType == ArrowTypes.GHOST) {
             return true;
         } else {
             if (this.isConditionallySolid(inv)) {

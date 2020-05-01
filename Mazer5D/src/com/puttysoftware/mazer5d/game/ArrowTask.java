@@ -8,7 +8,6 @@ package com.puttysoftware.mazer5d.game;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.DirectionResolver;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTransientObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
@@ -16,6 +15,7 @@ import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.ArrowTypes;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
@@ -91,22 +91,22 @@ public class ArrowTask extends Thread {
 
     private static GenericTransientObject createArrowForType(final int type) {
         switch (type) {
-        case ArrowTypeConstants.ARROW_TYPE_PLAIN:
+        case ArrowTypes.PLAIN:
             return (GenericTransientObject) GameObjects.createObject(
                     MazeObjects.ARROW);
-        case ArrowTypeConstants.ARROW_TYPE_ICE:
+        case ArrowTypes.ICE:
             return (GenericTransientObject) GameObjects.createObject(
                     MazeObjects.ICE_ARROW);
-        case ArrowTypeConstants.ARROW_TYPE_FIRE:
+        case ArrowTypes.FIRE:
             return (GenericTransientObject) GameObjects.createObject(
                     MazeObjects.FIRE_ARROW);
-        case ArrowTypeConstants.ARROW_TYPE_POISON:
+        case ArrowTypes.POISON:
             return (GenericTransientObject) GameObjects.createObject(
                     MazeObjects.POISON_ARROW);
-        case ArrowTypeConstants.ARROW_TYPE_SHOCK:
+        case ArrowTypes.SHOCK:
             return (GenericTransientObject) GameObjects.createObject(
                     MazeObjects.SHOCK_ARROW);
-        case ArrowTypeConstants.ARROW_TYPE_GHOST:
+        case ArrowTypes.GHOST:
             return (GenericTransientObject) GameObjects.createObject(
                     MazeObjects.GHOST_ARROW);
         default:

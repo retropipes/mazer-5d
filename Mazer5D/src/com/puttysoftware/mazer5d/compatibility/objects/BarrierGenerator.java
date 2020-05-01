@@ -6,10 +6,10 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericGenerator;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.objectmodel.ArrowTypes;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 class BarrierGenerator extends GenericGenerator {
@@ -43,13 +43,13 @@ class BarrierGenerator extends GenericGenerator {
     protected void arrowHitActionHook(final int locX, final int locY,
             final int locZ, final int arrowType, final ObjectInventory inv) {
         final GameManager gm = Mazer5D.getBagOStuff().getGameManager();
-        if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
+        if (arrowType == ArrowTypes.ICE) {
             gm.morph(new IcedBarrierGenerator(), locX, locY, locZ);
-        } else if (arrowType == ArrowTypeConstants.ARROW_TYPE_FIRE) {
+        } else if (arrowType == ArrowTypes.FIRE) {
             gm.morph(new EnragedBarrierGenerator(), locX, locY, locZ);
-        } else if (arrowType == ArrowTypeConstants.ARROW_TYPE_POISON) {
+        } else if (arrowType == ArrowTypes.POISON) {
             gm.morph(new PoisonedBarrierGenerator(), locX, locY, locZ);
-        } else if (arrowType == ArrowTypeConstants.ARROW_TYPE_SHOCK) {
+        } else if (arrowType == ArrowTypes.SHOCK) {
             gm.morph(new ShockedBarrierGenerator(), locX, locY, locZ);
         } else {
             this.preMoveAction(false, locX, locY, inv);

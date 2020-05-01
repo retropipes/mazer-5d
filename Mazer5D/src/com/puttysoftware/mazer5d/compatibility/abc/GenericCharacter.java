@@ -15,6 +15,7 @@ import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.ArrowTypes;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
 
@@ -65,7 +66,7 @@ public abstract class GenericCharacter extends MazeObjectModel {
             final ObjectInventory inv) {
         // Shot self
         Mazer5D.getBagOStuff().showMessage("Ouch, you shot yourself!");
-        if (arrowType == ArrowTypeConstants.ARROW_TYPE_PLAIN) {
+        if (arrowType == ArrowTypes.PLAIN) {
             Mazer5D.getBagOStuff().getMazeManager().getMaze().doDamage(
                     GenericCharacter.SHOT_SELF_NORMAL_DAMAGE);
         } else {
