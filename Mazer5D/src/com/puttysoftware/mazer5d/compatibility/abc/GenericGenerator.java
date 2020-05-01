@@ -16,6 +16,7 @@ import com.puttysoftware.mazer5d.objectmodel.ArrowTypes;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
+import com.puttysoftware.mazer5d.utilities.Directions;
 
 public abstract class GenericGenerator extends GenericWall {
     // Fields
@@ -84,37 +85,37 @@ public abstract class GenericGenerator extends GenericWall {
             mo8UID = invalidUID;
         }
         if (mo2UID.equals(horzUID)) {
-            scanResult = this.scan(DirectionConstants.DIRECTION_WEST, dirX,
+            scanResult = this.scan(Directions.WEST, dirX,
                     dirY, pz, this.SCAN_LIMIT, false);
             if (scanResult) {
-                this.generate(DirectionConstants.DIRECTION_WEST, dirX, dirY, pz,
+                this.generate(Directions.WEST, dirX, dirY, pz,
                         this.SCAN_LIMIT, false);
                 flag = true;
             }
         }
         if (mo4UID.equals(vertUID)) {
-            scanResult = this.scan(DirectionConstants.DIRECTION_NORTH, dirX,
+            scanResult = this.scan(Directions.NORTH, dirX,
                     dirY, pz, this.SCAN_LIMIT, false);
             if (scanResult) {
-                this.generate(DirectionConstants.DIRECTION_NORTH, dirX, dirY,
+                this.generate(Directions.NORTH, dirX, dirY,
                         pz, this.SCAN_LIMIT, false);
                 flag = true;
             }
         }
         if (mo6UID.equals(vertUID)) {
-            scanResult = this.scan(DirectionConstants.DIRECTION_SOUTH, dirX,
+            scanResult = this.scan(Directions.SOUTH, dirX,
                     dirY, pz, this.SCAN_LIMIT, false);
             if (scanResult) {
-                this.generate(DirectionConstants.DIRECTION_SOUTH, dirX, dirY,
+                this.generate(Directions.SOUTH, dirX, dirY,
                         pz, this.SCAN_LIMIT, false);
                 flag = true;
             }
         }
         if (mo8UID.equals(horzUID)) {
-            scanResult = this.scan(DirectionConstants.DIRECTION_EAST, dirX,
+            scanResult = this.scan(Directions.EAST, dirX,
                     dirY, pz, this.SCAN_LIMIT, false);
             if (scanResult) {
-                this.generate(DirectionConstants.DIRECTION_EAST, dirX, dirY, pz,
+                this.generate(Directions.EAST, dirX, dirY, pz,
                         this.SCAN_LIMIT, false);
                 flag = true;
             }
@@ -183,37 +184,37 @@ public abstract class GenericGenerator extends GenericWall {
             mo8UID = invalidUID;
         }
         if (!mo2UID.equals(horzUID)) {
-            scanResult = this.scan(DirectionConstants.DIRECTION_WEST, dirX,
+            scanResult = this.scan(Directions.WEST, dirX,
                     dirY, pz, this.SCAN_LIMIT, true);
             if (scanResult) {
-                this.generate(DirectionConstants.DIRECTION_WEST, dirX, dirY, pz,
+                this.generate(Directions.WEST, dirX, dirY, pz,
                         this.SCAN_LIMIT, true);
                 flag = true;
             }
         }
         if (!mo4UID.equals(vertUID)) {
-            scanResult = this.scan(DirectionConstants.DIRECTION_NORTH, dirX,
+            scanResult = this.scan(Directions.NORTH, dirX,
                     dirY, pz, this.SCAN_LIMIT, true);
             if (scanResult) {
-                this.generate(DirectionConstants.DIRECTION_NORTH, dirX, dirY,
+                this.generate(Directions.NORTH, dirX, dirY,
                         pz, this.SCAN_LIMIT, true);
                 flag = true;
             }
         }
         if (!mo6UID.equals(vertUID)) {
-            scanResult = this.scan(DirectionConstants.DIRECTION_SOUTH, dirX,
+            scanResult = this.scan(Directions.SOUTH, dirX,
                     dirY, pz, this.SCAN_LIMIT, true);
             if (scanResult) {
-                this.generate(DirectionConstants.DIRECTION_SOUTH, dirX, dirY,
+                this.generate(Directions.SOUTH, dirX, dirY,
                         pz, this.SCAN_LIMIT, true);
                 flag = true;
             }
         }
         if (!mo8UID.equals(horzUID)) {
-            scanResult = this.scan(DirectionConstants.DIRECTION_EAST, dirX,
+            scanResult = this.scan(Directions.EAST, dirX,
                     dirY, pz, this.SCAN_LIMIT, true);
             if (scanResult) {
-                this.generate(DirectionConstants.DIRECTION_EAST, dirX, dirY, pz,
+                this.generate(Directions.EAST, dirX, dirY, pz,
                         this.SCAN_LIMIT, true);
                 flag = true;
             }
@@ -230,7 +231,7 @@ public abstract class GenericGenerator extends GenericWall {
             final int limit, final boolean o) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         final MazeObjects invalidUID = MazeObjects.BOUNDS;
-        if (dir == DirectionConstants.DIRECTION_EAST) {
+        if (dir == Directions.EAST) {
             for (int l = 1; l < limit; l++) {
                 final MazeObjectModel mo = app.getMazeManager().getMazeObject(x
                         + l, y, z, Layers.OBJECT);
@@ -263,7 +264,7 @@ public abstract class GenericGenerator extends GenericWall {
                     }
                 }
             }
-        } else if (dir == DirectionConstants.DIRECTION_NORTH) {
+        } else if (dir == Directions.NORTH) {
             for (int l = 1; l < limit; l++) {
                 final MazeObjectModel mo = app.getMazeManager().getMazeObject(x,
                         y - l, z, Layers.OBJECT);
@@ -296,7 +297,7 @@ public abstract class GenericGenerator extends GenericWall {
                     }
                 }
             }
-        } else if (dir == DirectionConstants.DIRECTION_SOUTH) {
+        } else if (dir == Directions.SOUTH) {
             for (int l = 1; l < limit; l++) {
                 final MazeObjectModel mo = app.getMazeManager().getMazeObject(x,
                         y + l, z, Layers.OBJECT);
@@ -329,7 +330,7 @@ public abstract class GenericGenerator extends GenericWall {
                     }
                 }
             }
-        } else if (dir == DirectionConstants.DIRECTION_WEST) {
+        } else if (dir == Directions.WEST) {
             for (int l = 1; l < limit; l++) {
                 final MazeObjectModel mo = app.getMazeManager().getMazeObject(x
                         - l, y, z, Layers.OBJECT);
@@ -370,7 +371,7 @@ public abstract class GenericGenerator extends GenericWall {
             final int z, final int limit, final boolean o) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         final MazeObjects invalidUID = MazeObjects.BOUNDS;
-        if (dir == DirectionConstants.DIRECTION_EAST) {
+        if (dir == Directions.EAST) {
             for (int l = 1; l < limit; l++) {
                 final MazeObjectModel mo = app.getMazeManager().getMazeObject(x
                         + l, y, z, Layers.OBJECT);
@@ -421,7 +422,7 @@ public abstract class GenericGenerator extends GenericWall {
                     }
                 }
             }
-        } else if (dir == DirectionConstants.DIRECTION_NORTH) {
+        } else if (dir == Directions.NORTH) {
             for (int l = 1; l < limit; l++) {
                 final MazeObjectModel mo = app.getMazeManager().getMazeObject(x,
                         y - l, z, Layers.OBJECT);
@@ -471,7 +472,7 @@ public abstract class GenericGenerator extends GenericWall {
                     }
                 }
             }
-        } else if (dir == DirectionConstants.DIRECTION_SOUTH) {
+        } else if (dir == Directions.SOUTH) {
             for (int l = 1; l < limit; l++) {
                 final MazeObjectModel mo = app.getMazeManager().getMazeObject(x,
                         y + l, z, Layers.OBJECT);
@@ -521,7 +522,7 @@ public abstract class GenericGenerator extends GenericWall {
                     }
                 }
             }
-        } else if (dir == DirectionConstants.DIRECTION_WEST) {
+        } else if (dir == Directions.WEST) {
             for (int l = 1; l < limit; l++) {
                 final MazeObjectModel mo = app.getMazeManager().getMazeObject(x
                         - l, y, z, Layers.OBJECT);

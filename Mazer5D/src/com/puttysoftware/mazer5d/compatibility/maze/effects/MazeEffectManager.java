@@ -11,7 +11,7 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.abc.DirectionResolver;
+import com.puttysoftware.mazer5d.utilities.DirectionResolver;
 
 public class MazeEffectManager {
     // Fields
@@ -183,11 +183,11 @@ public class MazeEffectManager {
 
     public int[] doEffects(final int x, final int y) {
         int[] res = new int[] { x, y };
-        int dir = DirectionResolver.resolveRelativeDirection(x, y);
+        int dir = DirectionResolver.resolve(x, y);
         for (int z = 0; z < MazeEffectManager.NUM_EFFECTS; z++) {
             if (this.activeEffects[z].isActive()) {
                 dir = this.activeEffects[z].modifyMove1(dir);
-                res = DirectionResolver.unresolveRelativeDirection(dir);
+                res = DirectionResolver.unresolve(dir);
                 res = this.activeEffects[z].modifyMove2(res);
             }
         }

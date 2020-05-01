@@ -5,7 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.compatibility.maze.effects;
 
-import com.puttysoftware.mazer5d.compatibility.abc.DirectionConstants;
+import com.puttysoftware.mazer5d.utilities.Directions;
 import com.puttysoftware.randomrange.RandomRange;
 
 public class Dizzy extends MazeEffect {
@@ -74,40 +74,40 @@ public class Dizzy extends MazeEffect {
     public int modifyMove1(final int arg) {
         this.state = this.r.generate();
         switch (arg) {
-        case DirectionConstants.DIRECTION_NORTH:
+        case Directions.NORTH:
             switch (this.state) {
             case DIZZY_STATE_UDRL:
             case DIZZY_STATE_ULDR:
             case DIZZY_STATE_ULRD:
             case DIZZY_STATE_URDL:
             case DIZZY_STATE_URLD:
-                return DirectionConstants.DIRECTION_NORTH;
+                return Directions.NORTH;
             case DIZZY_STATE_DULR:
             case DIZZY_STATE_DURL:
             case DIZZY_STATE_DLUR:
             case DIZZY_STATE_DLRU:
             case DIZZY_STATE_DRUL:
             case DIZZY_STATE_DRLU:
-                return DirectionConstants.DIRECTION_SOUTH;
+                return Directions.SOUTH;
             case DIZZY_STATE_LDUR:
             case DIZZY_STATE_LDRU:
             case DIZZY_STATE_LUDR:
             case DIZZY_STATE_LURD:
             case DIZZY_STATE_LRDU:
             case DIZZY_STATE_LRUD:
-                return DirectionConstants.DIRECTION_WEST;
+                return Directions.WEST;
             case DIZZY_STATE_RDLU:
             case DIZZY_STATE_RDUL:
             case DIZZY_STATE_RLDU:
             case DIZZY_STATE_RLUD:
             case DIZZY_STATE_RUDL:
             case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_EAST;
+                return Directions.EAST;
             default:
                 break;
             }
             break;
-        case DirectionConstants.DIRECTION_SOUTH:
+        case Directions.SOUTH:
             switch (this.state) {
             case DIZZY_STATE_DULR:
             case DIZZY_STATE_DURL:
@@ -115,32 +115,32 @@ public class Dizzy extends MazeEffect {
             case DIZZY_STATE_LURD:
             case DIZZY_STATE_RUDL:
             case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_NORTH;
+                return Directions.NORTH;
             case DIZZY_STATE_UDRL:
             case DIZZY_STATE_LDUR:
             case DIZZY_STATE_LDRU:
             case DIZZY_STATE_RDLU:
             case DIZZY_STATE_RDUL:
-                return DirectionConstants.DIRECTION_SOUTH;
+                return Directions.SOUTH;
             case DIZZY_STATE_ULDR:
             case DIZZY_STATE_ULRD:
             case DIZZY_STATE_DLUR:
             case DIZZY_STATE_DLRU:
             case DIZZY_STATE_RLDU:
             case DIZZY_STATE_RLUD:
-                return DirectionConstants.DIRECTION_WEST;
+                return Directions.WEST;
             case DIZZY_STATE_URDL:
             case DIZZY_STATE_URLD:
             case DIZZY_STATE_DRUL:
             case DIZZY_STATE_DRLU:
             case DIZZY_STATE_LRDU:
             case DIZZY_STATE_LRUD:
-                return DirectionConstants.DIRECTION_EAST;
+                return Directions.EAST;
             default:
                 break;
             }
             break;
-        case DirectionConstants.DIRECTION_WEST:
+        case Directions.WEST:
             switch (this.state) {
             case DIZZY_STATE_DLUR:
             case DIZZY_STATE_DRUL:
@@ -148,32 +148,32 @@ public class Dizzy extends MazeEffect {
             case DIZZY_STATE_LRUD:
             case DIZZY_STATE_RDUL:
             case DIZZY_STATE_RLUD:
-                return DirectionConstants.DIRECTION_NORTH;
+                return Directions.NORTH;
             case DIZZY_STATE_ULDR:
             case DIZZY_STATE_URDL:
             case DIZZY_STATE_LUDR:
             case DIZZY_STATE_LRDU:
             case DIZZY_STATE_RLDU:
             case DIZZY_STATE_RUDL:
-                return DirectionConstants.DIRECTION_SOUTH;
+                return Directions.SOUTH;
             case DIZZY_STATE_URLD:
             case DIZZY_STATE_DULR:
             case DIZZY_STATE_DRLU:
             case DIZZY_STATE_RDLU:
             case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_WEST;
+                return Directions.WEST;
             case DIZZY_STATE_DURL:
             case DIZZY_STATE_DLRU:
             case DIZZY_STATE_UDRL:
             case DIZZY_STATE_ULRD:
             case DIZZY_STATE_LDRU:
             case DIZZY_STATE_LURD:
-                return DirectionConstants.DIRECTION_EAST;
+                return Directions.EAST;
             default:
                 break;
             }
             break;
-        case DirectionConstants.DIRECTION_EAST:
+        case Directions.EAST:
             switch (this.state) {
             case DIZZY_STATE_DLRU:
             case DIZZY_STATE_DRLU:
@@ -181,65 +181,65 @@ public class Dizzy extends MazeEffect {
             case DIZZY_STATE_LRDU:
             case DIZZY_STATE_RDLU:
             case DIZZY_STATE_RLDU:
-                return DirectionConstants.DIRECTION_NORTH;
+                return Directions.NORTH;
             case DIZZY_STATE_ULRD:
             case DIZZY_STATE_URLD:
             case DIZZY_STATE_LURD:
             case DIZZY_STATE_LRUD:
             case DIZZY_STATE_RLUD:
             case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_SOUTH;
+                return Directions.SOUTH;
             case DIZZY_STATE_UDRL:
             case DIZZY_STATE_URDL:
             case DIZZY_STATE_DURL:
             case DIZZY_STATE_DRUL:
             case DIZZY_STATE_RDUL:
             case DIZZY_STATE_RUDL:
-                return DirectionConstants.DIRECTION_WEST;
+                return Directions.WEST;
             case DIZZY_STATE_ULDR:
             case DIZZY_STATE_DULR:
             case DIZZY_STATE_DLUR:
             case DIZZY_STATE_LDUR:
             case DIZZY_STATE_LUDR:
-                return DirectionConstants.DIRECTION_EAST;
+                return Directions.EAST;
             default:
                 break;
             }
             break;
-        case DirectionConstants.DIRECTION_NORTHWEST:
+        case Directions.NORTHWEST:
             switch (this.state) {
             case DIZZY_STATE_UDRL:
             case DIZZY_STATE_ULDR:
             case DIZZY_STATE_ULRD:
             case DIZZY_STATE_URDL:
             case DIZZY_STATE_URLD:
-                return DirectionConstants.DIRECTION_NORTHWEST;
+                return Directions.NORTHWEST;
             case DIZZY_STATE_DULR:
             case DIZZY_STATE_DURL:
             case DIZZY_STATE_DLUR:
             case DIZZY_STATE_DLRU:
             case DIZZY_STATE_DRUL:
             case DIZZY_STATE_DRLU:
-                return DirectionConstants.DIRECTION_SOUTHEAST;
+                return Directions.SOUTHEAST;
             case DIZZY_STATE_LDUR:
             case DIZZY_STATE_LDRU:
             case DIZZY_STATE_LUDR:
             case DIZZY_STATE_LURD:
             case DIZZY_STATE_LRDU:
             case DIZZY_STATE_LRUD:
-                return DirectionConstants.DIRECTION_SOUTHWEST;
+                return Directions.SOUTHWEST;
             case DIZZY_STATE_RDLU:
             case DIZZY_STATE_RDUL:
             case DIZZY_STATE_RLDU:
             case DIZZY_STATE_RLUD:
             case DIZZY_STATE_RUDL:
             case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_NORTHEAST;
+                return Directions.NORTHEAST;
             default:
                 break;
             }
             break;
-        case DirectionConstants.DIRECTION_NORTHEAST:
+        case Directions.NORTHEAST:
             switch (this.state) {
             case DIZZY_STATE_DULR:
             case DIZZY_STATE_DURL:
@@ -247,32 +247,32 @@ public class Dizzy extends MazeEffect {
             case DIZZY_STATE_LURD:
             case DIZZY_STATE_RUDL:
             case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_NORTHWEST;
+                return Directions.NORTHWEST;
             case DIZZY_STATE_UDRL:
             case DIZZY_STATE_LDUR:
             case DIZZY_STATE_LDRU:
             case DIZZY_STATE_RDLU:
             case DIZZY_STATE_RDUL:
-                return DirectionConstants.DIRECTION_SOUTHEAST;
+                return Directions.SOUTHEAST;
             case DIZZY_STATE_ULDR:
             case DIZZY_STATE_ULRD:
             case DIZZY_STATE_DLUR:
             case DIZZY_STATE_DLRU:
             case DIZZY_STATE_RLDU:
             case DIZZY_STATE_RLUD:
-                return DirectionConstants.DIRECTION_SOUTHWEST;
+                return Directions.SOUTHWEST;
             case DIZZY_STATE_URDL:
             case DIZZY_STATE_URLD:
             case DIZZY_STATE_DRUL:
             case DIZZY_STATE_DRLU:
             case DIZZY_STATE_LRDU:
             case DIZZY_STATE_LRUD:
-                return DirectionConstants.DIRECTION_NORTHEAST;
+                return Directions.NORTHEAST;
             default:
                 break;
             }
             break;
-        case DirectionConstants.DIRECTION_SOUTHWEST:
+        case Directions.SOUTHWEST:
             switch (this.state) {
             case DIZZY_STATE_DLUR:
             case DIZZY_STATE_DRUL:
@@ -280,32 +280,32 @@ public class Dizzy extends MazeEffect {
             case DIZZY_STATE_LRUD:
             case DIZZY_STATE_RDUL:
             case DIZZY_STATE_RLUD:
-                return DirectionConstants.DIRECTION_NORTHWEST;
+                return Directions.NORTHWEST;
             case DIZZY_STATE_ULDR:
             case DIZZY_STATE_URDL:
             case DIZZY_STATE_LUDR:
             case DIZZY_STATE_LRDU:
             case DIZZY_STATE_RLDU:
             case DIZZY_STATE_RUDL:
-                return DirectionConstants.DIRECTION_SOUTHEAST;
+                return Directions.SOUTHEAST;
             case DIZZY_STATE_URLD:
             case DIZZY_STATE_DULR:
             case DIZZY_STATE_DRLU:
             case DIZZY_STATE_RDLU:
             case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_SOUTHWEST;
+                return Directions.SOUTHWEST;
             case DIZZY_STATE_DURL:
             case DIZZY_STATE_DLRU:
             case DIZZY_STATE_UDRL:
             case DIZZY_STATE_ULRD:
             case DIZZY_STATE_LDRU:
             case DIZZY_STATE_LURD:
-                return DirectionConstants.DIRECTION_NORTHEAST;
+                return Directions.NORTHEAST;
             default:
                 break;
             }
             break;
-        case DirectionConstants.DIRECTION_SOUTHEAST:
+        case Directions.SOUTHEAST:
             switch (this.state) {
             case DIZZY_STATE_DLRU:
             case DIZZY_STATE_DRLU:
@@ -313,27 +313,27 @@ public class Dizzy extends MazeEffect {
             case DIZZY_STATE_LRDU:
             case DIZZY_STATE_RDLU:
             case DIZZY_STATE_RLDU:
-                return DirectionConstants.DIRECTION_NORTHWEST;
+                return Directions.NORTHWEST;
             case DIZZY_STATE_ULRD:
             case DIZZY_STATE_URLD:
             case DIZZY_STATE_LURD:
             case DIZZY_STATE_LRUD:
             case DIZZY_STATE_RLUD:
             case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_SOUTHEAST;
+                return Directions.SOUTHEAST;
             case DIZZY_STATE_UDRL:
             case DIZZY_STATE_URDL:
             case DIZZY_STATE_DURL:
             case DIZZY_STATE_DRUL:
             case DIZZY_STATE_RDUL:
             case DIZZY_STATE_RUDL:
-                return DirectionConstants.DIRECTION_SOUTHWEST;
+                return Directions.SOUTHWEST;
             case DIZZY_STATE_ULDR:
             case DIZZY_STATE_DULR:
             case DIZZY_STATE_DLUR:
             case DIZZY_STATE_LDUR:
             case DIZZY_STATE_LUDR:
-                return DirectionConstants.DIRECTION_NORTHEAST;
+                return Directions.NORTHEAST;
             default:
                 break;
             }

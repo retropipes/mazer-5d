@@ -10,7 +10,6 @@ import java.util.Arrays;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.abc.DirectionResolver;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericLightModifier;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMovingObject;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTeleport;
@@ -25,6 +24,7 @@ import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
 import com.puttysoftware.mazer5d.prefs.Prefs;
+import com.puttysoftware.mazer5d.utilities.DirectionResolver;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.storage.FlagStorage;
 
@@ -1548,7 +1548,7 @@ class LayeredTower implements Cloneable {
 
     public void updateMovingBlockPosition(final int move, final int xLoc,
             final int yLoc, final GenericMovingObject block) {
-        final int[] dirMove = DirectionResolver.unresolveRelativeDirection(
+        final int[] dirMove = DirectionResolver.unresolve(
                 move);
         final int zLoc = Mazer5D.getBagOStuff().getGameManager()
                 .getPlayerManager().getPlayerLocationZ();

@@ -7,15 +7,18 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 
 import java.util.Arrays;
 
-class SolidProperties implements Cloneable, DirectionConstants {
+import com.puttysoftware.mazer5d.utilities.DirectionResolver;
+import com.puttysoftware.mazer5d.utilities.Directions;
+
+class SolidProperties implements Cloneable {
     // Properties
     private final boolean[] solidX;
     private final boolean[] solidI;
 
     // Constructors
     public SolidProperties() {
-        this.solidX = new boolean[DirectionConstants.DIRECTION_COUNT];
-        this.solidI = new boolean[DirectionConstants.DIRECTION_COUNT];
+        this.solidX = new boolean[Directions.COUNT];
+        this.solidI = new boolean[Directions.COUNT];
     }
 
     // Methods
@@ -55,7 +58,7 @@ class SolidProperties implements Cloneable, DirectionConstants {
 
     public boolean isSolid() {
         boolean result = false;
-        for (int x = 0; x < DirectionConstants.DIRECTION_COUNT; x++) {
+        for (int x = 0; x < Directions.COUNT; x++) {
             result = result || this.solidX[x];
             result = result || this.solidI[x];
         }
@@ -64,10 +67,10 @@ class SolidProperties implements Cloneable, DirectionConstants {
 
     public boolean isDirectionallySolid(final boolean ie, final int dirX,
             final int dirY) {
-        final int dir = DirectionResolver.resolveRelativeDirection(dirX, dirY);
+        final int dir = DirectionResolver.resolve(dirX, dirY);
         if (ie) {
             try {
-                if (dir != DirectionConstants.DIRECTION_NONE) {
+                if (dir != Directions.NONE) {
                     return this.solidX[dir];
                 } else {
                     return false;
@@ -77,7 +80,7 @@ class SolidProperties implements Cloneable, DirectionConstants {
             }
         } else {
             try {
-                if (dir != DirectionConstants.DIRECTION_NONE) {
+                if (dir != Directions.NONE) {
                     return this.solidI[dir];
                 } else {
                     return false;
@@ -89,7 +92,7 @@ class SolidProperties implements Cloneable, DirectionConstants {
     }
 
     public void setSolid(final boolean value) {
-        for (int x = 0; x < DirectionConstants.DIRECTION_COUNT; x++) {
+        for (int x = 0; x < Directions.COUNT; x++) {
             this.solidX[x] = value;
             this.solidI[x] = value;
         }

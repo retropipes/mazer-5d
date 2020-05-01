@@ -8,7 +8,6 @@ package com.puttysoftware.mazer5d.game;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.abc.DirectionResolver;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTransientObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
@@ -18,6 +17,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.ArrowTypes;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
+import com.puttysoftware.mazer5d.utilities.DirectionResolver;
 
 public class ArrowTask extends Thread {
     // Fields
@@ -58,8 +58,8 @@ public class ArrowTask extends Thread {
             o = GameObjects.createObject(MazeObjects.WALL);
         }
         final GenericTransientObject a = ArrowTask.createArrowForType(this.at);
-        final String suffix = DirectionResolver.resolveDirectionConstantToName(
-                DirectionResolver.resolveRelativeDirection(incX, incY));
+        final String suffix = DirectionResolver.resolveToName(
+                DirectionResolver.resolve(incX, incY));
         a.setNameSuffix(suffix);
         SoundPlayer.playSound(SoundIndex.ARROW_FIRED, SoundGroup.GAME);
         while (res) {

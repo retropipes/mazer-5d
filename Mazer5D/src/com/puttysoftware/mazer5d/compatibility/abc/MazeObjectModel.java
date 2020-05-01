@@ -22,10 +22,10 @@ import com.puttysoftware.mazer5d.objectmodel.ArrowTypes;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
+import com.puttysoftware.mazer5d.utilities.Directions;
 import com.puttysoftware.randomrange.RandomRange;
 
-public abstract class MazeObjectModel implements DirectionConstants,
-        RandomGenerationRule {
+public abstract class MazeObjectModel implements RandomGenerationRule {
     // Properties
     private SolidProperties sp;
     private boolean pushable;
@@ -76,38 +76,22 @@ public abstract class MazeObjectModel implements DirectionConstants,
             final boolean isSolidIN, final boolean isSolidIS,
             final boolean isSolidIE, final boolean isSolidIW) {
         this.sp = new SolidProperties();
-        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_NORTH,
-                isSolidXN);
-        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_SOUTH,
-                isSolidXS);
-        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_EAST,
-                isSolidXE);
-        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_WEST,
-                isSolidXW);
-        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTH,
-                isSolidIN);
-        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTH,
-                isSolidIS);
-        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_EAST,
-                isSolidIE);
-        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_WEST,
-                isSolidIW);
-        this.sp.setDirectionallySolid(true,
-                DirectionConstants.DIRECTION_NORTHEAST, true);
-        this.sp.setDirectionallySolid(true,
-                DirectionConstants.DIRECTION_SOUTHEAST, true);
-        this.sp.setDirectionallySolid(true,
-                DirectionConstants.DIRECTION_NORTHWEST, true);
-        this.sp.setDirectionallySolid(true,
-                DirectionConstants.DIRECTION_SOUTHWEST, true);
-        this.sp.setDirectionallySolid(false,
-                DirectionConstants.DIRECTION_NORTHEAST, true);
-        this.sp.setDirectionallySolid(false,
-                DirectionConstants.DIRECTION_SOUTHEAST, true);
-        this.sp.setDirectionallySolid(false,
-                DirectionConstants.DIRECTION_NORTHWEST, true);
-        this.sp.setDirectionallySolid(false,
-                DirectionConstants.DIRECTION_SOUTHWEST, true);
+        this.sp.setDirectionallySolid(true, Directions.NORTH, isSolidXN);
+        this.sp.setDirectionallySolid(true, Directions.SOUTH, isSolidXS);
+        this.sp.setDirectionallySolid(true, Directions.EAST, isSolidXE);
+        this.sp.setDirectionallySolid(true, Directions.WEST, isSolidXW);
+        this.sp.setDirectionallySolid(false, Directions.NORTH, isSolidIN);
+        this.sp.setDirectionallySolid(false, Directions.SOUTH, isSolidIS);
+        this.sp.setDirectionallySolid(false, Directions.EAST, isSolidIE);
+        this.sp.setDirectionallySolid(false, Directions.WEST, isSolidIW);
+        this.sp.setDirectionallySolid(true, Directions.NORTHEAST, true);
+        this.sp.setDirectionallySolid(true, Directions.SOUTHEAST, true);
+        this.sp.setDirectionallySolid(true, Directions.NORTHWEST, true);
+        this.sp.setDirectionallySolid(true, Directions.SOUTHWEST, true);
+        this.sp.setDirectionallySolid(false, Directions.NORTHEAST, true);
+        this.sp.setDirectionallySolid(false, Directions.SOUTHEAST, true);
+        this.sp.setDirectionallySolid(false, Directions.NORTHWEST, true);
+        this.sp.setDirectionallySolid(false, Directions.SOUTHWEST, true);
         this.pushable = false;
         this.pushableInto = false;
         this.pushableOut = false;
