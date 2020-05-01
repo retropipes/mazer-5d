@@ -38,6 +38,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericCharacter;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMovableObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.ObjectImageManager;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
@@ -51,7 +52,6 @@ import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.loaders.MusicPlayer;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjectType;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
@@ -533,8 +533,8 @@ public class GameManager implements MazeEffectConstants {
                         if (groundInto.overridesDefaultPostMove()) {
                             groundInto.postMoveAction(false, px, py,
                                     this.objectInv);
-                            if (GameObjects.isOfType(this.savedMazeObject
-                                    .getUniqueID(), MazeObjectType.WALL)) {
+                            if (!this.savedMazeObject.isOfType(
+                                    TypeConstants.TYPE_PASS_THROUGH)) {
                                 this.savedMazeObject.postMoveAction(false, px,
                                         py, this.objectInv);
                             }
@@ -582,9 +582,8 @@ public class GameManager implements MazeEffectConstants {
                                 if (groundInto.overridesDefaultPostMove()) {
                                     groundInto.postMoveAction(false, px, py,
                                             this.objectInv);
-                                    if (GameObjects.isOfType(
-                                            this.savedMazeObject.getUniqueID(),
-                                            MazeObjectType.WALL)) {
+                                    if (!this.savedMazeObject.isOfType(
+                                            TypeConstants.TYPE_PASS_THROUGH)) {
                                         this.savedMazeObject.postMoveAction(
                                                 false, px, py, this.objectInv);
                                     }
@@ -1183,9 +1182,9 @@ public class GameManager implements MazeEffectConstants {
                                         true));
                     }
                 } else {
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
-                            GameObjects.createObject(MazeObjects.DARKNESS),
-                            true));
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                            .load(GameObjects.createObject(
+                                    MazeObjects.DARKNESS), true));
                 }
                 this.drawGrid[xFix][yFix].repaint();
             } catch (final ArrayIndexOutOfBoundsException ae) {
@@ -1670,14 +1669,14 @@ public class GameManager implements MazeEffectConstants {
                     Mazer5D.getBagOStuff().showMessage(
                             "Can't create a finish there");
                 }
-                if ((!target.isDestroyable() || !GameObjects.isOfType(target
-                        .getUniqueID(), MazeObjectType.WALL)) && uid.equals(
+                if ((!target.isDestroyable() || !target.isOfType(
+                        TypeConstants.TYPE_WALL)) && uid.equals(
                                 MazeObjects.WALL_BREAKING_WAND)) {
                     this.setUsingAnItem(false);
                     Mazer5D.getBagOStuff().showMessage("Aim at a wall");
                 }
-                if ((!target.isDestroyable() || !GameObjects.isOfType(target
-                        .getUniqueID(), MazeObjectType.TRAP)) && uid.equals(
+                if ((!target.isDestroyable() || !target.isOfType(
+                        TypeConstants.TYPE_TRAP)) && uid.equals(
                                 MazeObjects.DISARM_TRAP_WAND)) {
                     this.setUsingAnItem(false);
                     Mazer5D.getBagOStuff().showMessage("Aim at a trap");

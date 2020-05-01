@@ -35,6 +35,12 @@ public abstract class GenericInventoryableObject extends MazeObjectModel {
     }
 
     @Override
+    protected void setTypes() {
+        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
+        this.type.set(TypeConstants.TYPE_CONTAINABLE);
+    }
+
+    @Override
     public int getLayer() {
         return Layers.OBJECT;
     }

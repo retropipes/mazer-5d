@@ -164,6 +164,11 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
     }
 
     @Override
+    protected void setTypes() {
+        this.type.set(TypeConstants.TYPE_TELEPORT);
+    }
+
+    @Override
     public void editorProbeHook() {
         Mazer5D.getBagOStuff().showMessage(this.getName() + ": Trigger Value "
                 + this.triggerVal);

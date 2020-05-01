@@ -13,7 +13,6 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjectType;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public abstract class GenericGenerator extends GenericWall {
@@ -241,8 +240,7 @@ public abstract class GenericGenerator extends GenericWall {
                 }
                 if (o) {
                     try {
-                        if (GameObjects.isOfType(mo.getUniqueID(),
-                                MazeObjectType.GENERATOR)) {
+                        if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                             return true;
                         }
                         if (mo.isSolid()) {
@@ -254,8 +252,7 @@ public abstract class GenericGenerator extends GenericWall {
                 } else {
                     if (!moUID.equals(MazeObjects.HORIZONTAL_BARRIER)) {
                         try {
-                            if (GameObjects.isOfType(mo.getUniqueID(),
-                                    MazeObjectType.GENERATOR)) {
+                            if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 return true;
                             }
                         } catch (final NullPointerException np) {
@@ -276,8 +273,7 @@ public abstract class GenericGenerator extends GenericWall {
                 }
                 if (o) {
                     try {
-                        if (GameObjects.isOfType(mo.getUniqueID(),
-                                MazeObjectType.GENERATOR)) {
+                        if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                             return true;
                         }
                         if (mo.isSolid()) {
@@ -289,8 +285,7 @@ public abstract class GenericGenerator extends GenericWall {
                 } else {
                     if (!moUID.equals(MazeObjects.VERTICAL_BARRIER)) {
                         try {
-                            if (GameObjects.isOfType(mo.getUniqueID(),
-                                    MazeObjectType.GENERATOR)) {
+                            if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 return true;
                             }
                         } catch (final NullPointerException np) {
@@ -311,8 +306,7 @@ public abstract class GenericGenerator extends GenericWall {
                 }
                 if (o) {
                     try {
-                        if (GameObjects.isOfType(mo.getUniqueID(),
-                                MazeObjectType.GENERATOR)) {
+                        if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                             return true;
                         }
                         if (mo.isSolid()) {
@@ -324,8 +318,7 @@ public abstract class GenericGenerator extends GenericWall {
                 } else {
                     if (!moUID.equals(MazeObjects.VERTICAL_BARRIER)) {
                         try {
-                            if (GameObjects.isOfType(mo.getUniqueID(),
-                                    MazeObjectType.GENERATOR)) {
+                            if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 return true;
                             }
                         } catch (final NullPointerException np) {
@@ -346,8 +339,7 @@ public abstract class GenericGenerator extends GenericWall {
                 }
                 if (o) {
                     try {
-                        if (GameObjects.isOfType(mo.getUniqueID(),
-                                MazeObjectType.GENERATOR)) {
+                        if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                             return true;
                         }
                         if (mo.isSolid()) {
@@ -359,8 +351,7 @@ public abstract class GenericGenerator extends GenericWall {
                 } else {
                     if (!moUID.equals(MazeObjects.HORIZONTAL_BARRIER)) {
                         try {
-                            if (GameObjects.isOfType(mo.getUniqueID(),
-                                    MazeObjectType.GENERATOR)) {
+                            if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 return true;
                             }
                         } catch (final NullPointerException np) {
@@ -392,8 +383,7 @@ public abstract class GenericGenerator extends GenericWall {
                         break;
                     } else {
                         try {
-                            if (GameObjects.isOfType(mo.getUniqueID(),
-                                    MazeObjectType.GENERATOR)) {
+                            if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 break;
                             }
                         } catch (final NullPointerException np) {
@@ -413,8 +403,7 @@ public abstract class GenericGenerator extends GenericWall {
                         break;
                     } else {
                         try {
-                            if (GameObjects.isOfType(mo.getUniqueID(),
-                                    MazeObjectType.GENERATOR)) {
+                            if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 break;
                             }
                         } catch (final NullPointerException np) {
@@ -445,8 +434,7 @@ public abstract class GenericGenerator extends GenericWall {
                         break;
                     } else {
                         try {
-                            if (GameObjects.isOfType(mo.getUniqueID(),
-                                    MazeObjectType.GENERATOR)) {
+                            if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 break;
                             }
                         } catch (final NullPointerException np) {
@@ -465,8 +453,7 @@ public abstract class GenericGenerator extends GenericWall {
                         break;
                     } else {
                         try {
-                            if (GameObjects.isOfType(mo.getUniqueID(),
-                                    MazeObjectType.GENERATOR)) {
+                            if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 break;
                             }
                         } catch (final NullPointerException np) {
@@ -497,8 +484,7 @@ public abstract class GenericGenerator extends GenericWall {
                         break;
                     } else {
                         try {
-                            if (GameObjects.isOfType(mo.getUniqueID(),
-                                    MazeObjectType.GENERATOR)) {
+                            if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 break;
                             }
                         } catch (final NullPointerException np) {
@@ -517,8 +503,7 @@ public abstract class GenericGenerator extends GenericWall {
                         break;
                     } else {
                         try {
-                            if (GameObjects.isOfType(mo.getUniqueID(),
-                                    MazeObjectType.GENERATOR)) {
+                            if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 break;
                             }
                         } catch (final NullPointerException np) {
@@ -548,8 +533,7 @@ public abstract class GenericGenerator extends GenericWall {
                     if (moUID.equals(MazeObjects.HORIZONTAL_BARRIER)) {
                         break;
                     } else {
-                        if (GameObjects.isOfType(mo.getUniqueID(),
-                                MazeObjectType.GENERATOR)) {
+                        if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                             break;
                         }
                         try {
@@ -566,8 +550,7 @@ public abstract class GenericGenerator extends GenericWall {
                         break;
                     } else {
                         try {
-                            if (GameObjects.isOfType(mo.getUniqueID(),
-                                    MazeObjectType.GENERATOR)) {
+                            if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 break;
                             }
                         } catch (final NullPointerException np) {
@@ -602,4 +585,14 @@ public abstract class GenericGenerator extends GenericWall {
 
     protected abstract void arrowHitActionHook(int locX, int locY, int locZ,
             int arrowType, ObjectInventory inv);
+
+    @Override
+    protected void setTypes() {
+        super.setTypes();
+        this.type.set(TypeConstants.TYPE_REACTS_TO_ICE);
+        this.type.set(TypeConstants.TYPE_REACTS_TO_FIRE);
+        this.type.set(TypeConstants.TYPE_REACTS_TO_POISON);
+        this.type.set(TypeConstants.TYPE_REACTS_TO_SHOCK);
+        this.type.set(TypeConstants.TYPE_GENERATOR);
+    }
 }

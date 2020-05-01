@@ -34,5 +34,11 @@ public abstract class GenericInvisibleTeleport extends GenericTeleport {
     public abstract String getName();
 
     @Override
+    protected void setTypes() {
+        this.type.set(TypeConstants.TYPE_INVISIBLE_TELEPORT);
+        this.type.set(TypeConstants.TYPE_TELEPORT);
+    }
+
+    @Override
     public abstract MazeObjectModel editorPropertiesHook();
 }

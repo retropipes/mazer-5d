@@ -19,6 +19,11 @@ public abstract class GenericTimeModifier extends MazeObjectModel {
             final int dirY, final ObjectInventory inv);
 
     @Override
+    protected void setTypes() {
+        this.type.set(TypeConstants.TYPE_TIME_MODIFIER);
+    }
+
+    @Override
     public int getLayer() {
         return Layers.OBJECT;
     }

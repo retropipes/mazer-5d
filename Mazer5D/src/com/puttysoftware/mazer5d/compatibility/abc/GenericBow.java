@@ -42,4 +42,12 @@ public abstract class GenericBow extends GenericUsableObject {
     public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
+
+    @Override
+    protected void setTypes() {
+        this.type.set(TypeConstants.TYPE_BOW);
+        this.type.set(TypeConstants.TYPE_USABLE);
+        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
+        this.type.set(TypeConstants.TYPE_CONTAINABLE);
+    }
 }

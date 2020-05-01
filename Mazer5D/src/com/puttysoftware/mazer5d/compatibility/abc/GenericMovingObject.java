@@ -41,6 +41,11 @@ public abstract class GenericMovingObject extends MazeObjectModel {
     }
 
     @Override
+    protected void setTypes() {
+        this.type.set(TypeConstants.TYPE_DUNGEON);
+    }
+
+    @Override
     public int getCustomProperty(final int propID) {
         return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }

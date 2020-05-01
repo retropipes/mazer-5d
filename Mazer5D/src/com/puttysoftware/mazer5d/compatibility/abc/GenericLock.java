@@ -122,6 +122,11 @@ public abstract class GenericLock extends MazeObjectModel {
     public abstract String getName();
 
     @Override
+    protected void setTypes() {
+        this.type.set(TypeConstants.TYPE_LOCK);
+    }
+
+    @Override
     public int getLayer() {
         return Layers.OBJECT;
     }

@@ -37,4 +37,13 @@ public abstract class GenericProgrammableKey extends GenericSingleKey {
         return this.color
                 + " Crystals may open Crystal Walls, and can be used only once.";
     }
+
+    @Override
+    protected void setTypes() {
+        this.type.set(TypeConstants.TYPE_PROGRAMMABLE_KEY);
+        this.type.set(TypeConstants.TYPE_SINGLE_KEY);
+        this.type.set(TypeConstants.TYPE_KEY);
+        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
+        this.type.set(TypeConstants.TYPE_CONTAINABLE);
+    }
 }

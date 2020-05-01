@@ -46,4 +46,10 @@ public abstract class GenericRandomInvisibleTeleport extends
                 MazeEditor.TELEPORT_TYPE_RANDOM_INVISIBLE);
         return mo;
     }
+
+    @Override
+    protected void setTypes() {
+        this.type.set(TypeConstants.TYPE_RANDOM_INVISIBLE_TELEPORT);
+        this.type.set(TypeConstants.TYPE_RANDOM_TELEPORT);
+    }
 }

@@ -54,6 +54,12 @@ public abstract class GenericPotion extends MazeObjectModel {
     }
 
     @Override
+    protected void setTypes() {
+        this.type.set(TypeConstants.TYPE_POTION);
+        this.type.set(TypeConstants.TYPE_CONTAINABLE);
+    }
+
+    @Override
     public final void postMoveAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         final MazeModel m = Mazer5D.getBagOStuff().getMazeManager().getMaze();

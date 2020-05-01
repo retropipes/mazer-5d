@@ -25,6 +25,12 @@ public abstract class GenericMultipleLock extends GenericLock {
 
     // Methods
     @Override
+    protected void setTypes() {
+        this.type.set(TypeConstants.TYPE_MULTIPLE_LOCK);
+        this.type.set(TypeConstants.TYPE_LOCK);
+    }
+
+    @Override
     public boolean isConditionallySolid(final ObjectInventory inv) {
         return inv.getItemCount(this.getKey().getUniqueID()) < this.keyCount;
     }

@@ -7,24 +7,23 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.BitSet;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
-import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSet;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjectType;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.randomrange.RandomRange;
 
 public abstract class MazeObjectModel implements DirectionConstants,
-        ArrowTypeConstants, RandomGenerationRule {
+        TypeConstants, ArrowTypeConstants, RandomGenerationRule {
     // Properties
     private SolidProperties sp;
     private boolean pushable;
@@ -39,6 +38,7 @@ public abstract class MazeObjectModel implements DirectionConstants,
     private boolean destroyable;
     private boolean chainReacts;
     private boolean isInventoryable;
+    protected BitSet type;
     private int timerValue;
     private int initialTimerValue;
     private boolean timerActive;
@@ -62,9 +62,11 @@ public abstract class MazeObjectModel implements DirectionConstants,
         this.destroyable = true;
         this.chainReacts = false;
         this.isInventoryable = false;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
         this.timerValue = 0;
         this.initialTimerValue = 0;
         this.timerActive = false;
+        this.setTypes();
     }
 
     public MazeObjectModel(final boolean isSolidXN, final boolean isSolidXS,
@@ -116,8 +118,10 @@ public abstract class MazeObjectModel implements DirectionConstants,
         this.destroyable = true;
         this.chainReacts = false;
         this.isInventoryable = false;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
         this.timerValue = 0;
         this.timerActive = false;
+        this.setTypes();
     }
 
     public MazeObjectModel(final boolean isSolid, final boolean isPushable,
@@ -139,8 +143,10 @@ public abstract class MazeObjectModel implements DirectionConstants,
         this.destroyable = true;
         this.chainReacts = false;
         this.isInventoryable = false;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
         this.timerValue = 0;
         this.timerActive = false;
+        this.setTypes();
     }
 
     public MazeObjectModel(final boolean isSolid, final boolean isPushable,
@@ -163,8 +169,10 @@ public abstract class MazeObjectModel implements DirectionConstants,
         this.destroyable = isDestroyable;
         this.chainReacts = doesChainReact;
         this.isInventoryable = false;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
         this.timerValue = 0;
         this.timerActive = false;
+        this.setTypes();
     }
 
     public MazeObjectModel(final boolean isSolid, final boolean isUsable,
@@ -183,8 +191,10 @@ public abstract class MazeObjectModel implements DirectionConstants,
         this.destroyable = true;
         this.chainReacts = false;
         this.isInventoryable = canBeInventoried;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
         this.timerValue = 0;
         this.timerActive = false;
+        this.setTypes();
     }
 
     public MazeObjectModel() {
@@ -201,8 +211,10 @@ public abstract class MazeObjectModel implements DirectionConstants,
         this.destroyable = true;
         this.chainReacts = false;
         this.isInventoryable = false;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
         this.timerValue = 0;
         this.timerActive = false;
+        this.setTypes();
     }
 
     // Methods
@@ -224,6 +236,7 @@ public abstract class MazeObjectModel implements DirectionConstants,
             copy.destroyable = this.destroyable;
             copy.chainReacts = this.chainReacts;
             copy.isInventoryable = this.isInventoryable;
+            copy.type = (BitSet) this.type.clone();
             copy.timerValue = this.timerValue;
             copy.initialTimerValue = this.initialTimerValue;
             copy.timerActive = this.timerActive;
@@ -256,6 +269,8 @@ public abstract class MazeObjectModel implements DirectionConstants,
         result = prime * result + (this.sp == null ? 0 : this.sp.hashCode());
         result = prime * result + (this.timerActive ? 1231 : 1237);
         result = prime * result + this.timerValue;
+        result = prime * result + (this.type == null ? 0
+                : this.type.hashCode());
         result = prime * result + (this.usable ? 1231 : 1237);
         result = prime * result + this.uses;
         return result;
@@ -319,6 +334,13 @@ public abstract class MazeObjectModel implements DirectionConstants,
         if (this.timerValue != other.timerValue) {
             return false;
         }
+        if (this.type == null) {
+            if (other.type != null) {
+                return false;
+            }
+        } else if (!this.type.equals(other.type)) {
+            return false;
+        }
         if (this.usable != other.usable) {
             return false;
         }
@@ -373,6 +395,12 @@ public abstract class MazeObjectModel implements DirectionConstants,
             final int dirY) {
         return this.sp.isDirectionallySolid(ie, dirX, dirY);
     }
+
+    public boolean isOfType(final int testType) {
+        return this.type.get(testType);
+    }
+
+    protected abstract void setTypes();
 
     public boolean isPushable() {
         return this.pushable;
@@ -776,7 +804,7 @@ public abstract class MazeObjectModel implements DirectionConstants,
             final int col, final int floor, final int level, final int layer) {
         if (layer == Layers.OBJECT) {
             // Handle object layer
-            if (GameObjects.isOfType(this.getUniqueID(), MazeObjectType.WALL)) {
+            if (!this.isOfType(TypeConstants.TYPE_PASS_THROUGH)) {
                 // Limit generation of other objects to 20%, unless required
                 if (this.isRequired()) {
                     return true;
@@ -794,8 +822,7 @@ public abstract class MazeObjectModel implements DirectionConstants,
             }
         } else {
             // Handle ground layer
-            if (GameObjects.isOfType(this.getUniqueID(),
-                    MazeObjectType.FIELD)) {
+            if (this.isOfType(TypeConstants.TYPE_FIELD)) {
                 // Limit generation of fields to 20%
                 final RandomRange r = new RandomRange(1, 100);
                 if (r.generate() <= 20) {

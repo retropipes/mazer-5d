@@ -18,4 +18,10 @@ public abstract class GenericInfiniteLock extends GenericLock {
     protected GenericInfiniteLock(final boolean isSolid, final GenericKey mgk) {
         super(isSolid, mgk);
     }
+
+    @Override
+    protected void setTypes() {
+        this.type.set(TypeConstants.TYPE_INFINITE_LOCK);
+        this.type.set(TypeConstants.TYPE_LOCK);
+    }
 }

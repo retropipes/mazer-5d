@@ -25,6 +25,13 @@ public abstract class GenericAmulet extends GenericInventoryableObject {
     public abstract String getName();
 
     @Override
+    protected void setTypes() {
+        this.type.set(TypeConstants.TYPE_AMULET);
+        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
+        this.type.set(TypeConstants.TYPE_CONTAINABLE);
+    }
+
+    @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         final BagOStuff app = Mazer5D.getBagOStuff();

@@ -13,4 +13,14 @@ public abstract class GenericBoots extends GenericPass {
 
     @Override
     public abstract String getName();
+
+    @Override
+    protected void setTypes() {
+        this.type.set(TypeConstants.TYPE_BOOTS);
+        this.type.set(TypeConstants.TYPE_PASS);
+        this.type.set(TypeConstants.TYPE_INFINITE_KEY);
+        this.type.set(TypeConstants.TYPE_KEY);
+        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
+        this.type.set(TypeConstants.TYPE_CONTAINABLE);
+    }
 }

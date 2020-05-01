@@ -11,10 +11,10 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericAmulet;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBoots;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjectType;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public final class ObjectInventory implements Cloneable {
@@ -125,12 +125,11 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    public boolean isItemCategoryThere(final MazeObjectType cat) {
+    public boolean isItemCategoryThere(final int cat) {
         final MazeObjectModel[] objects = GameObjects
                 .getAllInventoryableObjectsMinusSpecial();
         for (int x = 0; x < objects.length; x++) {
-            if (GameObjects.isOfType(objects[x].getUniqueID(), cat)
-                    && this.contents[x] > 0) {
+            if (objects[x].isOfType(cat) && this.contents[x] > 0) {
                 return true;
             }
         }
@@ -398,15 +397,15 @@ public final class ObjectInventory implements Cloneable {
     }
 
     private static boolean isBoots(final MazeObjectModel mo) {
-        return GameObjects.isOfType(mo.getUniqueID(), MazeObjectType.BOOTS);
+        return mo.isOfType(TypeConstants.TYPE_BOOTS);
     }
 
     private static boolean isBow(final MazeObjectModel mo) {
-        return GameObjects.isOfType(mo.getUniqueID(), MazeObjectType.BOW);
+        return mo.isOfType(TypeConstants.TYPE_BOW);
     }
 
     private static boolean isAmulet(final MazeObjectModel mo) {
-        return GameObjects.isOfType(mo.getUniqueID(), MazeObjectType.AMULET);
+        return mo.isOfType(TypeConstants.TYPE_AMULET);
     }
 
     private int bowIndexOf(final MazeObjectModel mo) {

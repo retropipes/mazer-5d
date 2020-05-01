@@ -515,10 +515,8 @@ class MazeData {
                     final MazeObjectModel mo = this.getCell(y, x, z,
                             Layers.OBJECT);
                     if (mo != null) {
-                        if (GameObjects.isOfType(mo.getUniqueID(),
-                                MazeObjectType.TRIGGER_TRAP) || GameObjects
-                                        .isOfType(mo.getUniqueID(),
-                                                MazeObjectType.TRIGGERED)) {
+                        if (mo.isOfType(MazeObjectType.WALL_TRAP) || mo
+                                .isOfType(MazeObjectType.TRAPPED_WALL)) {
                             this.setCell(decayTo, y, x, z, Layers.OBJECT);
                         }
                     }
@@ -681,9 +679,9 @@ class MazeData {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    final boolean reactsToIce = GameObjects.isOfType(this
-                            .getCell(u, v, z, Layers.OBJECT).getUniqueID(),
-                            MazeObjectType.FREEZABLE);
+                    final boolean reactsToIce = this.getCell(u, v, z,
+                            Layers.OBJECT).isOfType(
+                                    MazeObjectType.REACTS_TO_ICE);
                     if (reactsToIce) {
                         // final MazeObjectModel there = this.getCell(u, v, z,
                         // Layers.OBJECT);
@@ -722,9 +720,9 @@ class MazeData {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    final boolean reactsToFire = GameObjects.isOfType(this
-                            .getCell(u, v, z, Layers.OBJECT).getUniqueID(),
-                            MazeObjectType.BURNABLE);
+                    final boolean reactsToFire = this.getCell(u, v, z,
+                            Layers.OBJECT).isOfType(
+                                    MazeObjectType.REACTS_TO_FIRE);
                     if (reactsToFire) {
                         // FIXME: Stub
                         // final MazeObjectModel there = this.getCell(u, v, z,
@@ -762,9 +760,9 @@ class MazeData {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    final boolean reactsToPoison = GameObjects.isOfType(this
-                            .getCell(u, v, z, Layers.OBJECT).getUniqueID(),
-                            MazeObjectType.POISONABLE);
+                    final boolean reactsToPoison = this.getCell(u, v, z,
+                            Layers.OBJECT).isOfType(
+                                    MazeObjectType.REACTS_TO_POISON);
                     if (reactsToPoison) {
                         // final MazeObjectModel there = this.getCell(u, v, z,
                         // Layers.OBJECT);
@@ -802,9 +800,9 @@ class MazeData {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    final boolean reactsToShock = GameObjects.isOfType(this
-                            .getCell(u, v, z, Layers.OBJECT).getUniqueID(),
-                            MazeObjectType.SHOCKABLE);
+                    final boolean reactsToShock = this.getCell(u, v, z,
+                            Layers.OBJECT).isOfType(
+                                    MazeObjectType.REACTS_TO_SHOCK);
                     if (reactsToShock) {
                         // final MazeObjectModel there = this.getCell(u, v, z,
                         // Layers.OBJECT);
@@ -898,9 +896,8 @@ class MazeData {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    final boolean isEmpty = !GameObjects.isOfType(this.getCell(
-                            u, v, z, Layers.OBJECT).getUniqueID(),
-                            MazeObjectType.WALL);
+                    final boolean isEmpty = this.getCell(u, v, z, Layers.OBJECT)
+                            .isOfType(MazeObjectType.EMPTY_SPACE);
                     if (isEmpty) {
                         final RandomRange rr = new RandomRange(1, 5);
                         final int chance = rr.generate();
@@ -909,24 +906,22 @@ class MazeData {
                             // FIXME: Stub
                         }
                     }
-                    final boolean isBreakable = GameObjects.isOfType(this
-                            .getCell(u, v, z, Layers.OBJECT).getUniqueID(),
-                            MazeObjectType.BREAKABLE);
+                    final boolean isBreakable = this.getCell(u, v, z,
+                            Layers.OBJECT).isOfType(
+                                    MazeObjectType.BREAKABLE_WALL);
                     if (isBreakable) {
                         // Destroy the wall
                         this.setCell(GameObjects.getEmptySpace(), u, v, z,
                                 Layers.OBJECT);
                     }
-                    final boolean isWall = GameObjects.isOfType(this.getCell(u,
-                            v, z, Layers.OBJECT).getUniqueID(),
-                            MazeObjectType.WALL);
+                    final boolean isWall = this.getCell(u, v, z, Layers.OBJECT)
+                            .isOfType(MazeObjectType.PLAIN_WALL);
                     if (isWall) {
                         // Crack the wall
                         // FIXME: Stub
                     }
-                    final boolean isCharacter = GameObjects.isOfType(this
-                            .getCell(u, v, z, Layers.OBJECT).getUniqueID(),
-                            MazeObjectType.CHARACTER);
+                    final boolean isCharacter = this.getCell(u, v, z,
+                            Layers.OBJECT).isOfType(MazeObjectType.CHARACTER);
                     if (isCharacter) {
                         // Hurt the player
                         // FIXME: Stub

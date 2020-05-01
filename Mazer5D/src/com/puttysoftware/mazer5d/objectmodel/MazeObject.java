@@ -640,6 +640,12 @@ final class MazeObject implements MazeObjectModel {
     }
 
     @Override
+    public boolean isOfType(final MazeObjectType testType) {
+        // FIXME: Stub
+        return false;
+    }
+
+    @Override
     public void dumpState(final XDataWriter writer) throws IOException {
         writer.writeMazeObjectID(this.getUniqueID());
         if (this.savedObject == null) {
