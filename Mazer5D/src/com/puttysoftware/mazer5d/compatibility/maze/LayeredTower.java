@@ -1548,8 +1548,7 @@ class LayeredTower implements Cloneable {
 
     public void updateMovingBlockPosition(final int move, final int xLoc,
             final int yLoc, final GenericMovingObject block) {
-        final int[] dirMove = DirectionResolver.unresolve(
-                move);
+        final int[] dirMove = DirectionResolver.unresolve(move);
         final int zLoc = Mazer5D.getBagOStuff().getGameManager()
                 .getPlayerManager().getPlayerLocationZ();
         try {
@@ -1632,7 +1631,15 @@ class LayeredTower implements Cloneable {
         if (this.timerActive) {
             return this.timerValue;
         } else {
-            return -1;
+            return 0;
+        }
+    }
+
+    public final int getInitialTimerValue() {
+        if (this.timerActive) {
+            return this.initialTimerValue;
+        } else {
+            return 1;
         }
     }
 

@@ -65,8 +65,9 @@ class StatGUI {
         final BufferedImageIcon poisonImage = EffectImageLoader.load(
                 EffectImageIndex.POISON);
         this.poisonLabel.setIcon(poisonImage);
-        final BufferedImageIcon timeImage = EffectImageLoader.load(
-                EffectImageIndex.TIME_19);
+        final MazeModel m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
+        final BufferedImageIcon timeImage = EffectImageLoader.loadTime(m
+                .getTimerValue(), m.getInitialTimerValue());
         this.timeLabel.setIcon(timeImage);
     }
 }

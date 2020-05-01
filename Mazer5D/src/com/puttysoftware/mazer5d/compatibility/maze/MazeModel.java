@@ -884,6 +884,10 @@ public class MazeModel {
         return this.mazeData.getTimerValue();
     }
 
+    public final int getInitialTimerValue() {
+        return this.mazeData.getInitialTimerValue();
+    }
+
     public final void extendTimerByInitialValue() {
         this.mazeData.extendTimerByInitialValue();
     }
