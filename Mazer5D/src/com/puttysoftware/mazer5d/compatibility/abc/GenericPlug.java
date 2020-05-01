@@ -33,8 +33,8 @@ public abstract class GenericPlug extends GenericInfiniteKey {
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_LETTER_KEY);
-        this.type.set(TypeConstants.TYPE_INFINITE_KEY);
+        this.type.set(TypeConstants.TYPE_PLUG);
+        this.type.set(TypeConstants.TYPE_INFINITE_USE);
         this.type.set(TypeConstants.TYPE_KEY);
         this.type.set(TypeConstants.TYPE_INVENTORYABLE);
         this.type.set(TypeConstants.TYPE_CONTAINABLE);

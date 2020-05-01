@@ -21,7 +21,7 @@ public abstract class GenericInfiniteLock extends GenericLock {
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_INFINITE_LOCK);
+        this.type.set(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
         this.type.set(TypeConstants.TYPE_LOCK);
     }
 }

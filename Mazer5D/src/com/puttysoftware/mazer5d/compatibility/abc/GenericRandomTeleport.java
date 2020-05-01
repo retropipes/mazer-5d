@@ -127,7 +127,7 @@ public abstract class GenericRandomTeleport extends MazeObjectModel {
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_RANDOM_TELEPORT);
+        this.type.set(TypeConstants.TYPE_RANDOM);
     }
 
     @Override

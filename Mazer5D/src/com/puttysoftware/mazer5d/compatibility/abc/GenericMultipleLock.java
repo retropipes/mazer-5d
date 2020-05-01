@@ -26,7 +26,7 @@ public abstract class GenericMultipleLock extends GenericLock {
     // Methods
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_MULTIPLE_LOCK);
+        this.type.set(TypeConstants.TYPE_UNLOCKED_LOSE_MULTIPLE_KEYS);
         this.type.set(TypeConstants.TYPE_LOCK);
     }
 

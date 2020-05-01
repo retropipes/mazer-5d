@@ -31,8 +31,8 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     // Scriptability
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_PROGRAMMABLE_LOCK);
-        this.type.set(TypeConstants.TYPE_SINGLE_LOCK);
+        this.type.set(TypeConstants.TYPE_UNLOCKED_LOSE_CHOSEN_KEY);
+        this.type.set(TypeConstants.TYPE_UNLOCKED_LOSE_KEY);
         this.type.set(TypeConstants.TYPE_LOCK);
     }
 
@@ -78,7 +78,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
             return !inv.isItemThere(this.getKey().getUniqueID());
         } else {
             return !inv.isItemCategoryThere(
-                    TypeConstants.TYPE_PROGRAMMABLE_KEY);
+                    TypeConstants.TYPE_PROGRAMMABLE_USE);
         }
     }
 
@@ -94,7 +94,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
                 return !inv.isItemThere(this.getKey().getUniqueID());
             } else {
                 return !inv.isItemCategoryThere(
-                        TypeConstants.TYPE_PROGRAMMABLE_KEY);
+                        TypeConstants.TYPE_PROGRAMMABLE_USE);
             }
         }
     }

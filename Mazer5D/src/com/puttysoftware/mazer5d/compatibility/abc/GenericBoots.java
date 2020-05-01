@@ -18,7 +18,7 @@ public abstract class GenericBoots extends GenericPass {
     protected void setTypes() {
         this.type.set(TypeConstants.TYPE_BOOTS);
         this.type.set(TypeConstants.TYPE_PASS);
-        this.type.set(TypeConstants.TYPE_INFINITE_KEY);
+        this.type.set(TypeConstants.TYPE_INFINITE_USE);
         this.type.set(TypeConstants.TYPE_KEY);
         this.type.set(TypeConstants.TYPE_INVENTORYABLE);
         this.type.set(TypeConstants.TYPE_CONTAINABLE);

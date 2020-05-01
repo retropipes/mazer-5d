@@ -12,7 +12,7 @@ public abstract class GenericSingleLock extends GenericLock {
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_SINGLE_LOCK);
+        this.type.set(TypeConstants.TYPE_UNLOCKED_LOSE_KEY);
         this.type.set(TypeConstants.TYPE_LOCK);
     }
 }

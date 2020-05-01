@@ -13,7 +13,7 @@ public abstract class GenericSingleKey extends GenericKey {
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_SINGLE_KEY);
+        this.type.set(TypeConstants.TYPE_SINGLE_USE);
         this.type.set(TypeConstants.TYPE_KEY);
         this.type.set(TypeConstants.TYPE_INVENTORYABLE);
         this.type.set(TypeConstants.TYPE_CONTAINABLE);

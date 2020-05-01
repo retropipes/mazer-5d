@@ -50,6 +50,6 @@ public abstract class GenericRandomInvisibleTeleport extends
     @Override
     protected void setTypes() {
         this.type.set(TypeConstants.TYPE_RANDOM_INVISIBLE_TELEPORT);
-        this.type.set(TypeConstants.TYPE_RANDOM_TELEPORT);
+        this.type.set(TypeConstants.TYPE_RANDOM);
     }
 }

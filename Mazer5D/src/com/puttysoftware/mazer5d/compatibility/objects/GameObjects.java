@@ -1119,7 +1119,7 @@ public class GameObjects {
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x].isOfType(
-                    TypeConstants.TYPE_PROGRAMMABLE_KEY)) {
+                    TypeConstants.TYPE_PROGRAMMABLE_USE)) {
                 tempAllProgrammableKeys[x] = GameObjects.allObjects[x];
             }
         }
@@ -1144,7 +1144,7 @@ public class GameObjects {
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x].isOfType(
-                    TypeConstants.TYPE_PROGRAMMABLE_KEY)) {
+                    TypeConstants.TYPE_PROGRAMMABLE_USE)) {
                 tempAllProgrammableKeyNames[x] = GameObjects.allObjects[x]
                         .getName();
             }

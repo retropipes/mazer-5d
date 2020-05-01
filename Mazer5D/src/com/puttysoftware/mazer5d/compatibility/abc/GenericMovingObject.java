@@ -42,7 +42,7 @@ public abstract class GenericMovingObject extends MazeObjectModel {
 
     @Override
     protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_DUNGEON);
+        this.type.set(TypeConstants.TYPE_TRANSIENT);
     }
 
     @Override
