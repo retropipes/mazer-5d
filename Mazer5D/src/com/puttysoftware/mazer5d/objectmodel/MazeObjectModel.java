@@ -105,7 +105,7 @@ public interface MazeObjectModel extends RandomGenerationRule {
 
     int getLayer();
 
-    boolean isOfType(MazeObjectType testType);
+    boolean isOfType(int testType);
 
     void dumpState(XDataWriter writer) throws IOException;
 

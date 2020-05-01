@@ -5,6 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.compatibility.abc;
 
+import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
+
 public abstract class GenericInfiniteKey extends GenericKey {
     // Constructors
     protected GenericInfiniteKey() {

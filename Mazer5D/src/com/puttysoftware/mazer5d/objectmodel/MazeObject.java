@@ -640,7 +640,7 @@ final class MazeObject implements MazeObjectModel {
     }
 
     @Override
-    public boolean isOfType(final MazeObjectType testType) {
+    public boolean isOfType(final int testType) {
         // FIXME: Stub
         return false;
     }

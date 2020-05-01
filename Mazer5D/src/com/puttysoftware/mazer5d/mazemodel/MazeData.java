@@ -12,7 +12,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objectmodel.GameObjects;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjectModel;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjectType;
+import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
 import com.puttysoftware.mazer5d.utilities.DirectionResolver;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.storage.FlagStorage;
@@ -515,8 +515,8 @@ class MazeData {
                     final MazeObjectModel mo = this.getCell(y, x, z,
                             Layers.OBJECT);
                     if (mo != null) {
-                        if (mo.isOfType(MazeObjectType.WALL_TRAP) || mo
-                                .isOfType(MazeObjectType.TRAPPED_WALL)) {
+                        if (mo.isOfType(TypeConstants.TYPE_WALL_TRAP) || mo
+                                .isOfType(TypeConstants.TYPE_TRAPPED_WALL)) {
                             this.setCell(decayTo, y, x, z, Layers.OBJECT);
                         }
                     }
@@ -681,7 +681,7 @@ class MazeData {
                 try {
                     final boolean reactsToIce = this.getCell(u, v, z,
                             Layers.OBJECT).isOfType(
-                                    MazeObjectType.REACTS_TO_ICE);
+                                    TypeConstants.TYPE_REACTS_TO_ICE);
                     if (reactsToIce) {
                         // final MazeObjectModel there = this.getCell(u, v, z,
                         // Layers.OBJECT);
@@ -722,7 +722,7 @@ class MazeData {
                 try {
                     final boolean reactsToFire = this.getCell(u, v, z,
                             Layers.OBJECT).isOfType(
-                                    MazeObjectType.REACTS_TO_FIRE);
+                                    TypeConstants.TYPE_REACTS_TO_FIRE);
                     if (reactsToFire) {
                         // FIXME: Stub
                         // final MazeObjectModel there = this.getCell(u, v, z,
@@ -762,7 +762,7 @@ class MazeData {
                 try {
                     final boolean reactsToPoison = this.getCell(u, v, z,
                             Layers.OBJECT).isOfType(
-                                    MazeObjectType.REACTS_TO_POISON);
+                                    TypeConstants.TYPE_REACTS_TO_POISON);
                     if (reactsToPoison) {
                         // final MazeObjectModel there = this.getCell(u, v, z,
                         // Layers.OBJECT);
@@ -802,7 +802,7 @@ class MazeData {
                 try {
                     final boolean reactsToShock = this.getCell(u, v, z,
                             Layers.OBJECT).isOfType(
-                                    MazeObjectType.REACTS_TO_SHOCK);
+                                    TypeConstants.TYPE_REACTS_TO_SHOCK);
                     if (reactsToShock) {
                         // final MazeObjectModel there = this.getCell(u, v, z,
                         // Layers.OBJECT);
@@ -897,7 +897,7 @@ class MazeData {
             for (v = y - r; v <= y + r; v++) {
                 try {
                     final boolean isEmpty = this.getCell(u, v, z, Layers.OBJECT)
-                            .isOfType(MazeObjectType.EMPTY_SPACE);
+                            .isOfType(TypeConstants.TYPE_EMPTY_SPACE);
                     if (isEmpty) {
                         final RandomRange rr = new RandomRange(1, 5);
                         final int chance = rr.generate();
@@ -908,20 +908,21 @@ class MazeData {
                     }
                     final boolean isBreakable = this.getCell(u, v, z,
                             Layers.OBJECT).isOfType(
-                                    MazeObjectType.BREAKABLE_WALL);
+                                    TypeConstants.TYPE_BREAKABLE_WALL);
                     if (isBreakable) {
                         // Destroy the wall
                         this.setCell(GameObjects.getEmptySpace(), u, v, z,
                                 Layers.OBJECT);
                     }
                     final boolean isWall = this.getCell(u, v, z, Layers.OBJECT)
-                            .isOfType(MazeObjectType.PLAIN_WALL);
+                            .isOfType(TypeConstants.TYPE_PLAIN_WALL);
                     if (isWall) {
                         // Crack the wall
                         // FIXME: Stub
                     }
                     final boolean isCharacter = this.getCell(u, v, z,
-                            Layers.OBJECT).isOfType(MazeObjectType.CHARACTER);
+                            Layers.OBJECT).isOfType(
+                                    TypeConstants.TYPE_CHARACTER);
                     if (isCharacter) {
                         // Hurt the player
                         // FIXME: Stub

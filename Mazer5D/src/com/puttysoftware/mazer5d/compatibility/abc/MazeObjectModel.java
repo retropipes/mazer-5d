@@ -20,10 +20,11 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
+import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
 import com.puttysoftware.randomrange.RandomRange;
 
 public abstract class MazeObjectModel implements DirectionConstants,
-        TypeConstants, ArrowTypeConstants, RandomGenerationRule {
+        RandomGenerationRule {
     // Properties
     private SolidProperties sp;
     private boolean pushable;
