@@ -23,6 +23,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
 import com.puttysoftware.mazer5d.compatibility.files.TempDirCleanup;
@@ -62,19 +63,13 @@ public class GUIManager implements QuitHandler {
 
     public void showGUI() {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        app.setInGUI(true);
+        Modes.setInGUI();
         this.guiFrame.setVisible(true);
         app.getMenuManager().setMainMenus();
         app.getMenuManager().checkFlags();
     }
 
     public void hideGUI() {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.setInGUI(false);
-        this.guiFrame.setVisible(false);
-    }
-
-    public void hideGUITemporarily() {
         this.guiFrame.setVisible(false);
     }
 

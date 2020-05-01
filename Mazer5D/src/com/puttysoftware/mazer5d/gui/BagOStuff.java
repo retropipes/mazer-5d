@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.integration.NativeIntegration;
+import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
@@ -31,16 +32,10 @@ public class BagOStuff {
     private MazeEditor editor;
     private RuleSetPicker rsPicker;
     private final GUIManager guiMgr;
-    private boolean IN_GUI, IN_PREFS, IN_GAME, IN_EDITOR;
     private static final int VERSION_MAJOR = 9;
     private static final int VERSION_MINOR = 0;
     private static final int VERSION_BUGFIX = 0;
     private static final int VERSION_BETA = 2;
-    public static final int STATUS_GUI = 0;
-    public static final int STATUS_GAME = 1;
-    public static final int STATUS_EDITOR = 2;
-    public static final int STATUS_PREFS = 3;
-    public static final int STATUS_NULL = 4;
 
     // Constructors
     public BagOStuff(final NativeIntegration ni) {
@@ -53,56 +48,10 @@ public class BagOStuff {
     }
 
     // Methods
-    public void setInGUI(final boolean value) {
-        this.IN_GUI = value;
-    }
-
-    public void setInPrefs(final boolean value) {
-        this.IN_PREFS = value;
-    }
-
-    public void setInGame(final boolean value) {
-        this.IN_GAME = value;
-    }
-
-    public void setInEditor(final boolean value) {
-        this.IN_EDITOR = value;
-    }
-
-    public int getMode() {
-        if (this.IN_PREFS) {
-            return BagOStuff.STATUS_PREFS;
-        } else if (this.IN_GUI) {
-            return BagOStuff.STATUS_GUI;
-        } else if (this.IN_GAME) {
-            return BagOStuff.STATUS_GAME;
-        } else if (this.IN_EDITOR) {
-            return BagOStuff.STATUS_EDITOR;
-        } else {
-            return BagOStuff.STATUS_NULL;
-        }
-    }
-
-    public int getFormerMode() {
-        if (this.IN_GUI) {
-            return BagOStuff.STATUS_GUI;
-        } else if (this.IN_GAME) {
-            return BagOStuff.STATUS_GAME;
-        } else if (this.IN_EDITOR) {
-            return BagOStuff.STATUS_EDITOR;
-        } else {
-            return BagOStuff.STATUS_NULL;
-        }
-    }
-
     public void showMessage(final String msg) {
-        if (this.IN_PREFS) {
-            CommonDialogs.showDialog(msg);
-        } else if (this.IN_GUI) {
-            CommonDialogs.showDialog(msg);
-        } else if (this.IN_GAME) {
+        if (Modes.inGame()) {
             this.getGameManager().setStatusMessage(msg);
-        } else if (this.IN_EDITOR) {
+        } else if (Modes.inEditor()) {
             this.getEditor().setStatusMessage(msg);
         } else {
             CommonDialogs.showDialog(msg);
@@ -174,21 +123,7 @@ public class BagOStuff {
     }
 
     public JFrame getOutputFrame() {
-        try {
-            if (this.getMode() == BagOStuff.STATUS_PREFS) {
-                return MainWindow.owner();
-            } else if (this.getMode() == BagOStuff.STATUS_GUI) {
-                return this.getGUIManager().getGUIFrame();
-            } else if (this.getMode() == BagOStuff.STATUS_GAME) {
-                return this.getGameManager().getOutputFrame();
-            } else if (this.getMode() == BagOStuff.STATUS_EDITOR) {
-                return this.getEditor().getOutputFrame();
-            } else {
-                return null;
-            }
-        } catch (final NullPointerException npe) {
-            return null;
-        }
+        return MainWindow.owner();
     }
 
     public boolean isBetaModeEnabled() {

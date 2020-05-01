@@ -28,6 +28,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
@@ -1182,9 +1183,9 @@ public class GameManager implements MazeEffectConstants {
                                         true));
                     }
                 } else {
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                            .load(GameObjects.createObject(
-                                    MazeObjects.DARKNESS), true));
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
+                            GameObjects.createObject(MazeObjects.DARKNESS),
+                            true));
                 }
                 this.drawGrid[xFix][yFix].repaint();
             } catch (final ArrayIndexOutOfBoundsException ae) {
@@ -1432,7 +1433,6 @@ public class GameManager implements MazeEffectConstants {
         app.getMazeManager().setDirty(false);
         // Exit game
         this.hideOutput();
-        app.setInGame(false);
         app.getGUIManager().showGUI();
     }
 
@@ -1634,7 +1634,7 @@ public class GameManager implements MazeEffectConstants {
         final int destY = y / ObjectImageManager.getObjectImageSize()
                 + this.vwMgr.getViewingWindowLocationY() + xOffset - yOffset;
         final int destZ = this.plMgr.getPlayerLocationZ();
-        if (this.usingAnItem() && app.getMode() == BagOStuff.STATUS_GAME) {
+        if (this.usingAnItem() && Modes.inGame()) {
             final boolean visible = app.getMazeManager().getMaze()
                     .isSquareVisible(this.plMgr.getPlayerLocationX(), this.plMgr
                             .getPlayerLocationY(), destX, destY);
@@ -1790,7 +1790,7 @@ public class GameManager implements MazeEffectConstants {
         final MazeModel m = app.getMazeManager().getMaze();
         if (app.getMazeManager().getLoaded()) {
             app.getGUIManager().hideGUI();
-            app.setInGame(true);
+            Modes.setInGame();
             if (this.stateChanged) {
                 // Initialize only if the maze state has changed
                 this.poisonCounter = 0;

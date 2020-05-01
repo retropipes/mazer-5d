@@ -37,10 +37,6 @@ public final class ColorReplaceRules {
         return result;
     }
 
-    public void clear() {
-        this.rules.clear();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(this.rules);

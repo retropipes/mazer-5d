@@ -17,6 +17,7 @@ import javax.swing.filechooser.FileFilter;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.files.locking.LockedFilter;
 import com.puttysoftware.mazer5d.compatibility.files.locking.LockedLoadTask;
@@ -107,12 +108,10 @@ public class MazeManager implements OpenFilesHandler {
 
     public int showSaveDialog() {
         String type, source;
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        final int mode = app.getMode();
-        if (mode == BagOStuff.STATUS_EDITOR) {
+        if (Modes.inEditor()) {
             type = "maze";
             source = "Editor";
-        } else if (mode == BagOStuff.STATUS_GAME) {
+        } else if (Modes.inGame()) {
             type = "game";
             source = "Mazer5D";
         } else {
@@ -369,8 +368,7 @@ public class MazeManager implements OpenFilesHandler {
         this.setMazeXML1Compatible(false);
         this.setMazeXML2Compatible(false);
         this.setMazeXML4Compatible(false);
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        if (app.getMode() == BagOStuff.STATUS_GAME) {
+        if (Modes.inGame()) {
             if (this.lastUsedGameFile != null && !this.lastUsedGameFile.equals(
                     "")) {
                 final String extension = MazeManager.getExtension(
@@ -429,7 +427,7 @@ public class MazeManager implements OpenFilesHandler {
         final XMLMazeFilter xmf = new XMLMazeFilter();
         final XMLGameFilter xgf = new XMLGameFilter();
         fc.setAcceptAllFileFilterUsed(false);
-        if (app.getMode() == BagOStuff.STATUS_GAME) {
+        if (Modes.inGame()) {
             fc.addChoosableFileFilter(xgf);
             fc.setFileFilter(xgf);
         } else {
@@ -455,7 +453,7 @@ public class MazeManager implements OpenFilesHandler {
                 } else {
                     Prefs.setLastDirSave(fc.getCurrentDirectory()
                             .getAbsolutePath());
-                    if (app.getMode() == BagOStuff.STATUS_GAME) {
+                    if (Modes.inGame()) {
                         if (extension != null) {
                             if (!extension.equals(XMLExtension
                                     .getXMLGameExtension())) {

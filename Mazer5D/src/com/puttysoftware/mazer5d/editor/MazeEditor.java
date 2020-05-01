@@ -30,6 +30,7 @@ import javax.swing.border.EmptyBorder;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericConditionalTeleport;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericContainer;
@@ -213,7 +214,7 @@ public class MazeEditor {
 
     private void checkMenus() {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        if (app.getMode() == BagOStuff.STATUS_EDITOR) {
+        if (Modes.inEditor()) {
             final MazeModel m = app.getMazeManager().getMaze();
             if (m.getLevels() == MazeModel.getMinLevels()) {
                 app.getMenuManager().disableRemoveLevel();
@@ -336,14 +337,14 @@ public class MazeEditor {
                     final MazeObjectModel obj1 = app.getMazeManager().getMaze()
                             .getCell(y, x, this.elMgr.getEditorLocationZ(),
                                     Layers.GROUND);
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                            .load(obj1, false));
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
+                            obj1, false));
                 } catch (final ArrayIndexOutOfBoundsException ae) {
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                            .load(MazeEditor.VOID, false));
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
+                            MazeEditor.VOID, false));
                 } catch (final NullPointerException np) {
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                            .load(MazeEditor.VOID, false));
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
+                            MazeEditor.VOID, false));
                 }
             }
         }
@@ -375,11 +376,11 @@ public class MazeEditor {
                     this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
                             .getCompositeImage(obj1, obj2, false));
                 } catch (final ArrayIndexOutOfBoundsException ae) {
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                            .load(MazeEditor.VOID, false));
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
+                            MazeEditor.VOID, false));
                 } catch (final NullPointerException np) {
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                            .load(MazeEditor.VOID, false));
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
+                            MazeEditor.VOID, false));
                 }
             }
         }
@@ -1326,7 +1327,7 @@ public class MazeEditor {
         final BagOStuff app = Mazer5D.getBagOStuff();
         if (app.getMazeManager().getLoaded()) {
             app.getGUIManager().hideGUI();
-            app.setInEditor(true);
+            Modes.setInEditor();
             // Reset game state
             app.getGameManager().resetGameState();
             // Create the managers
@@ -1794,7 +1795,6 @@ public class MazeEditor {
         final BagOStuff app = Mazer5D.getBagOStuff();
         // Hide the editor
         this.hideOutput();
-        app.setInEditor(false);
         final MazeManager mm = app.getMazeManager();
         final GameManager gm = app.getGameManager();
         // Save the entire level

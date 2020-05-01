@@ -20,6 +20,7 @@ import javax.swing.KeyStroke;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.integration.NativeIntegration;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
@@ -405,7 +406,7 @@ public class MenuManager {
         } else {
             this.setMenusLoadedOff();
         }
-        if (app.getMode() == BagOStuff.STATUS_EDITOR) {
+        if (Modes.inEditor()) {
             if (app.getMazeManager().getMaze().isPasteBlocked()) {
                 this.disablePasteLevel();
                 this.disableInsertLevelFromClipboard();
@@ -435,7 +436,7 @@ public class MenuManager {
 
     private void setMenusLoadedOn() {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        if (app.getMode() == BagOStuff.STATUS_GUI) {
+        if (Modes.inGUI()) {
             this.fileClose.setEnabled(false);
             this.fileSaveAs.setEnabled(false);
             this.fileSaveLocked.setEnabled(false);
@@ -787,9 +788,9 @@ public class MenuManager {
                 app.getMazeManager().setLoaded(loaded);
             } else if (cmd.equals("Close")) {
                 // Close the window
-                if (app.getMode() == BagOStuff.STATUS_EDITOR) {
+                if (Modes.inEditor()) {
                     app.getEditor().handleCloseWindow();
-                } else if (app.getMode() == BagOStuff.STATUS_GAME) {
+                } else if (Modes.inGame()) {
                     boolean saved = true;
                     int status = 0;
                     if (app.getMazeManager().getDirty()) {
