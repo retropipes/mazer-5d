@@ -14,8 +14,8 @@ import javax.swing.SwingConstants;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.EffectImageIndex;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.loaders.EffectImageLoader;
+import com.puttysoftware.mazer5d.maze.MazeModel;
 
 class StatGUI {
     // Fields

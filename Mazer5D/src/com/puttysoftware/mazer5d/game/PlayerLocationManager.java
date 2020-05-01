@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.game;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
+import com.puttysoftware.mazer5d.maze.MazeModel;
 
 public class PlayerLocationManager {
     // Fields

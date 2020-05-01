@@ -1,6 +1,6 @@
 package com.puttysoftware.mazer5d.utilities;
 
-import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
+import com.puttysoftware.mazer5d.maze.MazeModel;
 
 public interface RandomGenerationRule {
     int NO_LIMIT = 0;
