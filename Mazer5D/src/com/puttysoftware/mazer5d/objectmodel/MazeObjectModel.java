@@ -5,7 +5,6 @@ import java.io.IOException;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.assets.ColorShader;
 import com.puttysoftware.mazer5d.assets.ObjectImageIndex;
-import com.puttysoftware.mazer5d.compatibility.abc.RandomGenerationRule;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 

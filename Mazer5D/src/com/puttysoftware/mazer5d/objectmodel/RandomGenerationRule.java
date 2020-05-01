@@ -1,4 +1,4 @@
-package com.puttysoftware.mazer5d.compatibility.abc;
+package com.puttysoftware.mazer5d.objectmodel;
 
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 

@@ -21,6 +21,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.ArrowTypes;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
+import com.puttysoftware.mazer5d.objectmodel.RandomGenerationRule;
 import com.puttysoftware.mazer5d.objectmodel.TypeConstants;
 import com.puttysoftware.mazer5d.utilities.Directions;
 import com.puttysoftware.randomrange.RandomRange;
