@@ -38,7 +38,7 @@ import com.puttysoftware.mazer5d.files.MazeManager;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.ImageConstants;
-import com.puttysoftware.mazer5d.loaders.ObjectImageManager;
+import com.puttysoftware.mazer5d.loaders.ObjectImageLoader;
 import com.puttysoftware.mazer5d.maze.MazeModel;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.prefs.Prefs;
@@ -333,13 +333,13 @@ public class MazeEditor {
                     final MazeObjectModel obj1 = app.getMazeManager().getMaze()
                             .getCell(y, x, this.elMgr.getEditorLocationZ(),
                                     Layers.GROUND);
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader.load(
                             obj1, false));
                 } catch (final ArrayIndexOutOfBoundsException ae) {
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader.load(
                             MazeEditor.VOID, false));
                 } catch (final NullPointerException np) {
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader.load(
                             MazeEditor.VOID, false));
                 }
             }
@@ -369,13 +369,13 @@ public class MazeEditor {
                     final MazeObjectModel obj2 = app.getMazeManager().getMaze()
                             .getCell(y, x, this.elMgr.getEditorLocationZ(),
                                     Layers.OBJECT);
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader
                             .getCompositeImage(obj1, obj2, false));
                 } catch (final ArrayIndexOutOfBoundsException ae) {
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader.load(
                             MazeEditor.VOID, false));
                 } catch (final NullPointerException np) {
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader.load(
                             MazeEditor.VOID, false));
                 }
             }
@@ -399,7 +399,7 @@ public class MazeEditor {
                     .getEditorLocationZ(), Layers.GROUND);
             obj2 = app.getMazeManager().getMaze().getCell(y, x, this.elMgr
                     .getEditorLocationZ(), Layers.OBJECT);
-            this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+            this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader
                     .getVirtualCompositeImage(obj1, obj2, obj3, false));
             this.drawGrid[xFix][yFix].repaint();
         } catch (final ArrayIndexOutOfBoundsException ae) {

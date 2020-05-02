@@ -39,7 +39,7 @@ import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.ImageConstants;
 import com.puttysoftware.mazer5d.loaders.MusicPlayer;
-import com.puttysoftware.mazer5d.loaders.ObjectImageManager;
+import com.puttysoftware.mazer5d.loaders.ObjectImageLoader;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.maze.MazeModel;
 import com.puttysoftware.mazer5d.maze.effects.MazeEffectConstants;
@@ -1098,34 +1098,34 @@ public class GameManager implements MazeEffectConstants {
                         name2 = app.getMazeManager().getMaze().getCell(y, x,
                                 this.plMgr.getPlayerLocationZ(), Layers.OBJECT);
                         if (this.trueSightFlag) {
-                            this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                            this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader
                                     .getCompositeImage(name1, name2, false));
                         } else {
-                            this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                            this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader
                                     .getCompositeImage(name1, name2, true));
                         }
                     } else {
-                        this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                        this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader
                                 .load(GameObjects.createObject(
                                         MazeObjects.DARKNESS), true));
                     }
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     if (this.trueSightFlag) {
-                        this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                        this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader
                                 .load(GameObjects.createObject(
                                         MazeObjects.BOUNDS), true));
                     } else {
-                        this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                        this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader
                                 .load(GameObjects.createObject(
                                         MazeObjects.BOUNDS), true));
                     }
                 } catch (final NullPointerException np) {
                     if (this.trueSightFlag) {
-                        this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                        this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader
                                 .load(GameObjects.createObject(
                                         MazeObjects.BOUNDS), true));
                     } else {
-                        this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                        this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader
                                 .load(GameObjects.createObject(
                                         MazeObjects.BOUNDS), true));
                     }
@@ -1158,16 +1158,16 @@ public class GameManager implements MazeEffectConstants {
                 name2 = app.getMazeManager().getMaze().getCell(x, y, this.plMgr
                         .getPlayerLocationZ(), Layers.OBJECT);
                 if (this.trueSightFlag) {
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader
                             .getVirtualCompositeImage(name1, name2, obj3,
                                     false));
                 } else {
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader
                             .getVirtualCompositeImage(name1, name2, obj3,
                                     true));
                 }
             } else {
-                this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
+                this.drawGrid[xFix][yFix].setIcon(ObjectImageLoader.load(
                         GameObjects.createObject(MazeObjects.DARKNESS), true));
             }
             this.drawGrid[xFix][yFix].repaint();

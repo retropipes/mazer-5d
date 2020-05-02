@@ -19,7 +19,7 @@ import com.puttysoftware.mazer5d.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.files.format.XMLFormatConstants;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
-import com.puttysoftware.mazer5d.loaders.ObjectImageManager;
+import com.puttysoftware.mazer5d.loaders.ObjectImageLoader;
 import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
@@ -1132,7 +1132,7 @@ public class GameObjects {
     public static BufferedImageIcon[] getAllEditorAppearances() {
         final BufferedImageIcon[] allEditorAppearances = new BufferedImageIcon[GameObjects.allObjects.length];
         for (int x = 0; x < allEditorAppearances.length; x++) {
-            allEditorAppearances[x] = ObjectImageManager.getTransformedImage(
+            allEditorAppearances[x] = ObjectImageLoader.getTransformedImage(
                     GameObjects.allObjects[x], false);
         }
         return allEditorAppearances;
@@ -1143,7 +1143,7 @@ public class GameObjects {
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x].getLayer() == Layers.GROUND) {
-                tempAllGroundLayerEditorAppearances[x] = ObjectImageManager
+                tempAllGroundLayerEditorAppearances[x] = ObjectImageLoader
                         .getTransformedImage(GameObjects.allObjects[x], false);
             }
         }
@@ -1168,7 +1168,7 @@ public class GameObjects {
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x].getLayer() == Layers.OBJECT) {
-                tempAllObjectLayerEditorAppearances[x] = ObjectImageManager
+                tempAllObjectLayerEditorAppearances[x] = ObjectImageLoader
                         .getTransformedImage(GameObjects.allObjects[x], false);
             }
         }
@@ -1194,7 +1194,7 @@ public class GameObjects {
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x].isOfType(
                     TypeConstants.TYPE_CONTAINABLE)) {
-                tempAllContainableObjectEditorAppearances[x] = ObjectImageManager
+                tempAllContainableObjectEditorAppearances[x] = ObjectImageLoader
                         .getTransformedImage(GameObjects.allObjects[x], false);
             }
         }

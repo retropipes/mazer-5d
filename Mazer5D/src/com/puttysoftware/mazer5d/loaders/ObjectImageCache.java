@@ -20,7 +20,7 @@ public class ObjectImageCache {
             final boolean game) {
         final String name = obj.getName();
         if (!ObjectImageCache.isInCache(name)) {
-            final BufferedImageIcon bii = ObjectImageManager
+            final BufferedImageIcon bii = ObjectImageLoader
                     .getUncachedObjectImage(obj, game);
             ObjectImageCache.addToCache(name, bii);
         }
