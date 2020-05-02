@@ -3,7 +3,7 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.dialog;
+package com.puttysoftware.mazer5d.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -23,7 +23,7 @@ import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
-public class ObjectHelpManager {
+public class ObjectHelpViewer {
     // Fields
     private JFrame helpFrame;
     private JButton export;
@@ -34,7 +34,7 @@ public class ObjectHelpManager {
     private boolean inited = false;
 
     // Constructors
-    public ObjectHelpManager() {
+    public ObjectHelpViewer() {
         // Do nothing
     }
 
@@ -81,7 +81,7 @@ public class ObjectHelpManager {
 
         @Override
         public void actionPerformed(final ActionEvent e) {
-            ObjectHelpManager.this.hv.exportHelp();
+            ObjectHelpViewer.this.hv.exportHelp();
         }
     }
 }

@@ -38,7 +38,7 @@ public class Mazer5D {
         final NativeIntegration ni = new NativeIntegration();
         ni.configureLookAndFeel();
         Mazer5D.bagOStuff = new BagOStuff(ni);
-        ni.setAboutHandler(Mazer5D.bagOStuff.getAboutDialog());
+        ni.setAboutHandler(Mazer5D.bagOStuff.getAboutThisGame());
         ni.setOpenFileHandler(Mazer5D.bagOStuff.getMazeManager());
         ni.setPreferencesHandler(new PreferencesLauncher());
         ni.setQuitHandler(Mazer5D.bagOStuff.getGUIManager());

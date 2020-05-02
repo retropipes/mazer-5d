@@ -77,7 +77,7 @@ public class Modes {
             Prefs.showPrefs();
             break;
         case ABOUT:
-            bag.getAboutDialog().showAboutDialog();
+            bag.getAboutThisGame().showAboutDialog();
             break;
         default:
             break;

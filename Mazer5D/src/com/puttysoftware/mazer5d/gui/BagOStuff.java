@@ -12,8 +12,6 @@ import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.dialog.AboutDialog;
-import com.puttysoftware.mazer5d.dialog.ObjectHelpManager;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetPicker;
 import com.puttysoftware.mazer5d.files.MazeManager;
@@ -23,11 +21,11 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class BagOStuff {
     // Fields
-    private final AboutDialog about;
+    private final AboutThisGame about;
     private GameManager gameMgr;
     private MazeManager mazeMgr;
     private final MenuManager menuMgr;
-    private final ObjectHelpManager oHelpMgr;
+    private final ObjectHelpViewer oHelpMgr;
     private MazeEditor editor;
     private RuleSetPicker rsPicker;
     private final GUIManager guiMgr;
@@ -38,9 +36,9 @@ public class BagOStuff {
 
     // Constructors
     public BagOStuff(final NativeIntegration ni) {
-        this.about = new AboutDialog(this.getVersionString());
+        this.about = new AboutThisGame(this.getVersionString());
         this.guiMgr = new GUIManager();
-        this.oHelpMgr = new ObjectHelpManager();
+        this.oHelpMgr = new ObjectHelpViewer();
         this.menuMgr = new MenuManager();
         this.guiMgr.updateLogo();
         this.menuMgr.configureMenus(ni);
@@ -79,7 +77,7 @@ public class BagOStuff {
         return this.mazeMgr;
     }
 
-    public ObjectHelpManager getObjectHelpManager() {
+    public ObjectHelpViewer getObjectHelpViewer() {
         return this.oHelpMgr;
     }
 
@@ -97,7 +95,7 @@ public class BagOStuff {
         return this.rsPicker;
     }
 
-    public AboutDialog getAboutDialog() {
+    public AboutThisGame getAboutThisGame() {
         return this.about;
     }
 

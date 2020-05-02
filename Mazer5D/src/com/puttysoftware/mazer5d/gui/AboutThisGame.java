@@ -3,7 +3,7 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.dialog;
+package com.puttysoftware.mazer5d.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -25,7 +25,7 @@ import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 
-public class AboutDialog implements AboutHandler {
+public class AboutThisGame implements AboutHandler {
     // Fields
     private JFrame aboutFrame;
     private Container aboutPane, textPane, buttonPane, logoPane;
@@ -34,7 +34,7 @@ public class AboutDialog implements AboutHandler {
     private JLabel miniLabel;
 
     // Constructors
-    public AboutDialog(final String ver) {
+    public AboutThisGame(final String ver) {
         this.setUpGUI(ver);
     }
 
@@ -92,7 +92,7 @@ public class AboutDialog implements AboutHandler {
         // Handle buttons
         @Override
         public void actionPerformed(final ActionEvent e) {
-            final AboutDialog ad = AboutDialog.this;
+            final AboutThisGame ad = AboutThisGame.this;
             final String cmd = e.getActionCommand();
             if (cmd.equals("OK")) {
                 ad.hideAboutDialog();

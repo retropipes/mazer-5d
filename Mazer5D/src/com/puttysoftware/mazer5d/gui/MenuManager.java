@@ -960,9 +960,9 @@ public class MenuManager {
             } else if (cmd.equals("Show Score Table")) {
                 app.getGameManager().showScoreTable();
             } else if (cmd.equals("About Mazer5D...")) {
-                app.getAboutDialog().showAboutDialog();
+                app.getAboutThisGame().showAboutDialog();
             } else if (cmd.equals("Mazer5D Object Help")) {
-                app.getObjectHelpManager().showHelp();
+                app.getObjectHelpViewer().showHelp();
             }
             MenuManager.this.checkFlags();
         }
