@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,6 +25,7 @@ public class ObjectHelpViewer {
     // Fields
     private MainWindow helpFrame;
     private JPanel helpPane;
+    private JPanel buttonPane;
     private JButton export, done;
     private String[] objectNames;
     private BufferedImageIcon[] objectAppearances;
@@ -61,8 +63,12 @@ public class ObjectHelpViewer {
         this.helpFrame = MainWindow.getMainWindow();
         this.helpPane = new JPanel();
         this.helpPane.setLayout(new BorderLayout());
+        this.buttonPane = new JPanel();
+        this.buttonPane.setLayout(new FlowLayout());
+        this.buttonPane.add(this.export);
+        this.buttonPane.add(this.done);
         this.helpPane.add(this.hv.getHelp(), BorderLayout.CENTER);
-        this.helpPane.add(this.export, BorderLayout.SOUTH);
+        this.buttonPane.add(this.buttonPane, BorderLayout.SOUTH);
         final int maxSize = Prefs.getViewingWindowSize();
         this.hv.setHelpSize(maxSize, maxSize);
     }
