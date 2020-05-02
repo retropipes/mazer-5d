@@ -5,6 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.files;
 
+import java.awt.Frame;
 import java.io.File;
 
 import javax.swing.JFileChooser;
@@ -33,7 +34,7 @@ public class RuleSetManager {
         final XMLRuleSetFilter xrsf = new XMLRuleSetFilter();
         fc.setAcceptAllFileFilterUsed(false);
         fc.addChoosableFileFilter(xrsf);
-        final int returnVal = fc.showOpenDialog((JFrame)null);
+        final int returnVal = fc.showOpenDialog((Frame) null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             final File file = fc.getSelectedFile();
             filename = file.getAbsolutePath();
@@ -73,7 +74,7 @@ public class RuleSetManager {
         fc.setAcceptAllFileFilterUsed(false);
         fc.addChoosableFileFilter(xrsf);
         while (!FilenameChecker.isFilenameOK(fileOnly)) {
-            final int returnVal = fc.showSaveDialog((JFrame)null);
+            final int returnVal = fc.showSaveDialog((JFrame) null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 extension = RuleSetManager.getExtension(file);

@@ -7,7 +7,6 @@ package com.puttysoftware.mazer5d.editor.rulesets;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -17,6 +16,7 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
@@ -34,7 +34,7 @@ import com.puttysoftware.picturepicker.PicturePicker;
 public class RuleSetPicker {
     // Declarations
     private JFrame outputFrame;
-    private Container outputPane, borderPane;
+    private JPanel outputPane, borderPane;
     private final EventHandler handler;
     private PicturePicker picker;
     private final String[] names;
@@ -107,8 +107,8 @@ public class RuleSetPicker {
         this.outputFrame = new JFrame("Rule Set Picker");
         final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
         this.outputFrame.setIconImage(iconlogo);
-        this.outputPane = new Container();
-        this.borderPane = new Container();
+        this.outputPane = new JPanel();
+        this.borderPane = new JPanel();
         this.create = new JButton("Create");
         this.destroy = new JButton("Destroy");
         this.edit = new JButton("Edit");

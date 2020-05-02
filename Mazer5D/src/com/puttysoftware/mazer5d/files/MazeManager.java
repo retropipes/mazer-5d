@@ -5,12 +5,12 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.files;
 
+import java.awt.Frame;
 import java.awt.desktop.OpenFilesEvent;
 import java.awt.desktop.OpenFilesHandler;
 import java.io.File;
 
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
@@ -248,7 +248,7 @@ public class MazeManager implements OpenFilesHandler {
             } else {
                 fc.setFileFilter(xgf);
             }
-            final int returnVal = fc.showOpenDialog((JFrame) null);
+            final int returnVal = fc.showOpenDialog((Frame) null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 final FileFilter ff = fc.getFileFilter();
@@ -311,7 +311,7 @@ public class MazeManager implements OpenFilesHandler {
             fc.setAcceptAllFileFilterUsed(false);
             fc.addChoosableFileFilter(lf);
             fc.setFileFilter(lf);
-            final int returnVal = fc.showOpenDialog((JFrame) null);
+            final int returnVal = fc.showOpenDialog((Frame) null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 Prefs.setLastDirOpen(fc.getCurrentDirectory()
@@ -429,7 +429,7 @@ public class MazeManager implements OpenFilesHandler {
             fc.setFileFilter(xmf);
         }
         while (!FilenameChecker.isFilenameOK(fileOnly)) {
-            final int returnVal = fc.showSaveDialog((JFrame) null);
+            final int returnVal = fc.showSaveDialog((Frame) null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 extension = MazeManager.getExtension(file);
@@ -504,7 +504,7 @@ public class MazeManager implements OpenFilesHandler {
         fc.addChoosableFileFilter(lf);
         fc.setFileFilter(lf);
         while (!FilenameChecker.isFilenameOK(fileOnly)) {
-            final int returnVal = fc.showSaveDialog((JFrame) null);
+            final int returnVal = fc.showSaveDialog((Frame) null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 extension = MazeManager.getExtension(file);

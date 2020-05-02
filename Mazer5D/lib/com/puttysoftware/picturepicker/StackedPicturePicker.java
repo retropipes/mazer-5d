@@ -1,7 +1,6 @@
 package com.puttysoftware.picturepicker;
 
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -9,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
@@ -21,7 +21,7 @@ public final class StackedPicturePicker {
     // Fields
     private BufferedImageIcon[] choices;
     private JLabel[] choiceArray;
-    private final Container pickerContainer;
+    private final JPanel pickerPanel;
     private final ButtonGroup radioGroup;
     private JRadioButton[] radioButtons;
     int index;
@@ -40,19 +40,19 @@ public final class StackedPicturePicker {
         this.stackCount = newStackCount;
         this.handler = new EventHandler();
         this.radioGroup = new ButtonGroup();
-        this.pickerContainer = new Container();
+        this.pickerPanel = new JPanel();
         this.updatePicker(pictures, enabled);
         this.index = 0;
-        this.savedCRCColor = this.pickerContainer.getBackground();
+        this.savedCRCColor = this.pickerPanel.getBackground();
     }
 
     // Methods
-    public Container getPicker() {
-        return this.pickerContainer;
+    public JPanel getPicker() {
+        return this.pickerPanel;
     }
 
     public void changePickerColor(final Color c) {
-        this.pickerContainer.setBackground(c);
+        this.pickerPanel.setBackground(c);
         for (int x = 0; x < this.choiceArray.length; x++) {
             this.choiceArray[x].setBackground(c);
             this.radioButtons[x].setBackground(c);
@@ -63,16 +63,16 @@ public final class StackedPicturePicker {
     }
 
     public void disablePicker() {
-        this.pickerContainer.setEnabled(false);
-        this.pickerContainer.setBackground(Color.gray);
+        this.pickerPanel.setEnabled(false);
+        this.pickerPanel.setBackground(Color.gray);
         for (final JRadioButton radioButton : this.radioButtons) {
             radioButton.setEnabled(false);
         }
     }
 
     public void enablePicker() {
-        this.pickerContainer.setEnabled(true);
-        this.pickerContainer.setBackground(this.savedCRCColor);
+        this.pickerPanel.setEnabled(true);
+        this.pickerPanel.setBackground(this.savedCRCColor);
         for (final JRadioButton radioButton : this.radioButtons) {
             radioButton.setEnabled(true);
         }
@@ -81,7 +81,7 @@ public final class StackedPicturePicker {
     public void updatePicker(final BufferedImageIcon[] newImages,
             final boolean[] enabled) {
         this.choices = newImages;
-        this.pickerContainer.removeAll();
+        this.pickerPanel.removeAll();
         int rows = this.choices.length / (this.stackCount / 2);
         final int extra = this.choices.length % (this.stackCount / 2);
         if (extra != 0) {
@@ -89,7 +89,7 @@ public final class StackedPicturePicker {
         }
         this.radioButtons = new JRadioButton[this.choices.length];
         this.choiceArray = new JLabel[this.choices.length];
-        this.pickerContainer.setLayout(new GridLayout(0, this.stackCount));
+        this.pickerPanel.setLayout(new GridLayout(0, this.stackCount));
         int picCounter = 0;
         int radioCounter = 0;
         int rowCounter = 0;
@@ -101,13 +101,13 @@ public final class StackedPicturePicker {
                     this.choiceArray[picCounter].setOpaque(true);
                     this.choiceArray[picCounter].setBackground(
                             this.savedCHColor);
-                    this.pickerContainer.add(this.choiceArray[picCounter]);
+                    this.pickerPanel.add(this.choiceArray[picCounter]);
                 } else if (rowCounter == rows - 2) {
                     // Add spacer
                     final JLabel spacer = new JLabel("", //$NON-NLS-1$
                             new BufferedImageIcon(this.imageSize,
                                     this.savedCHColor), SwingConstants.LEFT);
-                    this.pickerContainer.add(spacer);
+                    this.pickerPanel.add(spacer);
                 }
                 picCounter++;
             }
@@ -126,13 +126,13 @@ public final class StackedPicturePicker {
                     this.radioButtons[radioCounter].addActionListener(
                             this.handler);
                     this.radioButtons[x].setEnabled(enabled[x]);
-                    this.pickerContainer.add(this.radioButtons[radioCounter]);
+                    this.pickerPanel.add(this.radioButtons[radioCounter]);
                 } else if (rowCounter == rows - 1) {
                     // Add spacer
                     final JLabel spacer = new JLabel("", //$NON-NLS-1$
                             new BufferedImageIcon(this.imageSize,
                                     this.savedCHColor), SwingConstants.LEFT);
-                    this.pickerContainer.add(spacer);
+                    this.pickerPanel.add(spacer);
                 }
                 radioCounter++;
             }
@@ -148,11 +148,11 @@ public final class StackedPicturePicker {
     }
 
     public void updatePickerLayout(final int maxHeight) {
-        final int newPreferredWidth = this.pickerContainer.getLayout()
-                .preferredLayoutSize(this.pickerContainer).width;
-        final int newPreferredHeight = Math.min(maxHeight, this.pickerContainer
-                .getLayout().preferredLayoutSize(this.pickerContainer).height);
-        this.pickerContainer.setPreferredSize(new Dimension(newPreferredWidth,
+        final int newPreferredWidth = this.pickerPanel.getLayout()
+                .preferredLayoutSize(this.pickerPanel).width;
+        final int newPreferredHeight = Math.min(maxHeight, this.pickerPanel
+                .getLayout().preferredLayoutSize(this.pickerPanel).height);
+        this.pickerPanel.setPreferredSize(new Dimension(newPreferredWidth,
                 newPreferredHeight));
     }
 

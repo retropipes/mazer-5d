@@ -5,10 +5,10 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.game;
 
-import java.awt.Container;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import com.puttysoftware.images.BufferedImageIcon;
@@ -19,7 +19,7 @@ import com.puttysoftware.mazer5d.maze.MazeModel;
 
 class StatGUI {
     // Fields
-    private Container statsPane;
+    private JPanel statsPane;
     private JLabel hpLabel;
     private JLabel poisonLabel;
     private JLabel timeLabel;
@@ -30,7 +30,7 @@ class StatGUI {
     }
 
     // Methods
-    public Container getStatsPane() {
+    public JPanel getStatsPane() {
         return this.statsPane;
     }
 
@@ -42,7 +42,7 @@ class StatGUI {
     }
 
     private void setUpGUI() {
-        this.statsPane = new Container();
+        this.statsPane = new JPanel();
         this.statsPane.setLayout(new GridLayout(3, 1));
         final BufferedImageIcon hpImage = EffectImageLoader.load(
                 EffectImageIndex.HEALTH);

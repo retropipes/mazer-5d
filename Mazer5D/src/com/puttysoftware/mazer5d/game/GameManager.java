@@ -6,7 +6,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.game;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -21,6 +20,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
@@ -60,7 +60,7 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public class GameManager implements MazeEffectConstants {
     // Fields
     private JFrame outputFrame;
-    private Container outputPane, borderPane, progressPane;
+    private JPanel outputPane, borderPane, progressPane;
     private JLabel messageLabel;
     private JProgressBar autoFinishProgress, alternateAutoFinishProgress;
     private MazeObjectModel savedMazeObject, objectBeingUsed;
@@ -1837,7 +1837,7 @@ public class GameManager implements MazeEffectConstants {
             this.borderPane.add(this.getStatGUI().getStatsPane(),
                     BorderLayout.EAST);
             this.borderPane.add(this.progressPane, BorderLayout.WEST);
-            this.borderPane.add(this.em.getEffectMessageContainer(),
+            this.borderPane.add(this.em.getEffectMessagePanel (),
                     BorderLayout.SOUTH);
             CommonDialogs.showTitledDialog(m.getMazeStartMessage(), m
                     .getMazeTitle());
@@ -1870,9 +1870,9 @@ public class GameManager implements MazeEffectConstants {
     private void setUpGUI() {
         this.objectInv = new ObjectInventory();
         this.handler = new EventHandler();
-        this.borderPane = new Container();
+        this.borderPane = new JPanel();
         this.borderPane.setLayout(new BorderLayout());
-        this.progressPane = new Container();
+        this.progressPane = new JPanel();
         this.progressPane.setLayout(new BoxLayout(this.progressPane,
                 BoxLayout.Y_AXIS));
         this.autoFinishProgress = new JProgressBar(SwingConstants.VERTICAL);
@@ -1887,7 +1887,7 @@ public class GameManager implements MazeEffectConstants {
         this.outputFrame = new JFrame("Mazer5D");
         final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
         this.outputFrame.setIconImage(iconlogo);
-        this.outputPane = new Container();
+        this.outputPane = new JPanel();
         this.outputFrame.setContentPane(this.borderPane);
         this.outputFrame.setDefaultCloseOperation(
                 WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -1912,7 +1912,7 @@ public class GameManager implements MazeEffectConstants {
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
         this.borderPane.add(this.progressPane, BorderLayout.WEST);
-        this.borderPane.add(this.em.getEffectMessageContainer(),
+        this.borderPane.add(this.em.getEffectMessagePanel (),
                 BorderLayout.SOUTH);
         this.borderPane.add(this.getStatGUI().getStatsPane(),
                 BorderLayout.EAST);

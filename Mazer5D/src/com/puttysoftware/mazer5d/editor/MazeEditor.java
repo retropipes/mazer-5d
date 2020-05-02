@@ -8,7 +8,6 @@ package com.puttysoftware.mazer5d.editor;
 import java.awt.Adjustable;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -23,6 +22,7 @@ import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
@@ -53,8 +53,8 @@ public class MazeEditor {
     // Declarations
     private JFrame outputFrame;
     private final JFrame treasureFrame;
-    private Container outputPane, secondaryPane, borderPane;
-    private final Container treasurePane;
+    private JPanel outputPane, secondaryPane, borderPane;
+    private final JPanel treasurePane;
     private JLabel messageLabel;
     private MazeObjectModel savedMazeObject;
     private GridBagLayout gridbag;
@@ -1813,9 +1813,9 @@ public class MazeEditor {
         this.outputFrame = new JFrame("Editor");
         final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
         this.outputFrame.setIconImage(iconlogo);
-        this.outputPane = new Container();
-        this.secondaryPane = new Container();
-        this.borderPane = new Container();
+        this.outputPane = new JPanel();
+        this.secondaryPane = new JPanel();
+        this.borderPane = new JPanel();
         this.borderPane.setLayout(new BorderLayout());
         this.outputFrame.setContentPane(this.borderPane);
         this.outputFrame.setDefaultCloseOperation(

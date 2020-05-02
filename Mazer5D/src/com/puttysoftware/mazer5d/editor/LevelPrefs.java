@@ -6,7 +6,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.editor;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -21,6 +20,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
@@ -33,7 +33,7 @@ import com.puttysoftware.mazer5d.maze.MazeModel;
 public class LevelPrefs {
     // Fields
     private JFrame prefFrame;
-    private Container mainPrefPane, contentPane, buttonPane;
+    private JPanel mainPrefPane, contentPane, buttonPane;
     private JButton prefsOK, prefsCancel;
     private JCheckBox horizontalWrap;
     private JCheckBox verticalWrap;
@@ -197,9 +197,9 @@ public class LevelPrefs {
         this.prefFrame = new JFrame("Level Preferences");
         final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
         this.prefFrame.setIconImage(iconlogo);
-        this.mainPrefPane = new Container();
-        this.contentPane = new Container();
-        this.buttonPane = new Container();
+        this.mainPrefPane = new JPanel();
+        this.contentPane = new JPanel();
+        this.buttonPane = new JPanel();
         this.prefsOK = new JButton("OK");
         this.prefsOK.setDefaultCapable(true);
         this.prefFrame.getRootPane().setDefaultButton(this.prefsOK);

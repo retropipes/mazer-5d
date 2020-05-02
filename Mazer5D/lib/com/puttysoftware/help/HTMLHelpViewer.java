@@ -1,23 +1,23 @@
 package com.puttysoftware.help;
 
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.net.URL;
 
 import javax.swing.JEditorPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 public final class HTMLHelpViewer {
     // Fields
     private JEditorPane helpContents;
-    private final Container helpContainer;
+    private final JPanel helpPanel;
     private final JScrollPane scrollPane;
 
     // Constructor
     public HTMLHelpViewer(final URL helpPage) {
-        this.helpContainer = new Container();
-        this.helpContainer.setLayout(new FlowLayout());
+        this.helpPanel = new JPanel();
+        this.helpPanel.setLayout(new FlowLayout());
         try {
             this.helpContents = new JEditorPane(helpPage);
         } catch (final Exception e) {
@@ -26,12 +26,12 @@ public final class HTMLHelpViewer {
         }
         this.helpContents.setEditable(false);
         this.scrollPane = new JScrollPane(this.helpContents);
-        this.helpContainer.add(this.scrollPane);
+        this.helpPanel.add(this.scrollPane);
     }
 
     // Methods
-    public Container getHelp() {
-        return this.helpContainer;
+    public JPanel getHelp() {
+        return this.helpPanel;
     }
 
     public void setHelpSize(final int horz, final int vert) {

@@ -5,10 +5,10 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.maze.effects;
 
-import java.awt.Container;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.utilities.DirectionResolver;
@@ -18,7 +18,7 @@ public class MazeEffectManager {
     private final MazeEffect[] activeEffects;
     private static final int NUM_EFFECTS = 12;
     private static final int MAX_ACTIVE_EFFECTS = 3;
-    private final Container activeEffectMessageContainer;
+    private final JPanel activeEffectMessagePanel ;
     private final JLabel[] activeEffectMessages;
     private int newEffectIndex;
     private final int[] activeEffectIndices;
@@ -47,13 +47,13 @@ public class MazeEffectManager {
         this.activeEffects[MazeEffectConstants.EFFECT_TRUE_SIGHT] = new TrueSight(
                 0);
         // Create GUI
-        this.activeEffectMessageContainer = new Container();
+        this.activeEffectMessagePanel = new JPanel();
         this.activeEffectMessages = new JLabel[MazeEffectManager.MAX_ACTIVE_EFFECTS];
-        this.activeEffectMessageContainer.setLayout(new GridLayout(
+        this.activeEffectMessagePanel .setLayout(new GridLayout(
                 MazeEffectManager.MAX_ACTIVE_EFFECTS, 1));
         for (int z = 0; z < MazeEffectManager.MAX_ACTIVE_EFFECTS; z++) {
             this.activeEffectMessages[z] = new JLabel("");
-            this.activeEffectMessageContainer.add(this.activeEffectMessages[z]);
+            this.activeEffectMessagePanel .add(this.activeEffectMessages[z]);
         }
         // Set up miscellaneous things
         this.activeEffectIndices = new int[MazeEffectManager.MAX_ACTIVE_EFFECTS];
@@ -68,8 +68,8 @@ public class MazeEffectManager {
         return this.activeEffects[effectID].isActive();
     }
 
-    public Container getEffectMessageContainer() {
-        return this.activeEffectMessageContainer;
+    public JPanel getEffectMessagePanel () {
+        return this.activeEffectMessagePanel ;
     }
 
     public void decayEffects() {

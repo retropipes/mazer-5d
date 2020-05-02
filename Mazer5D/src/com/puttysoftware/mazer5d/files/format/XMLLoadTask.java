@@ -8,17 +8,11 @@ package com.puttysoftware.mazer5d.files.format;
 import java.io.File;
 import java.io.IOException;
 
-import javax.swing.JFrame;
-import javax.swing.JProgressBar;
-import javax.swing.WindowConstants;
-
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.files.InvalidMazeException;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
-import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.maze.MazeModel;
 
 public class XMLLoadTask extends Thread {
@@ -26,30 +20,17 @@ public class XMLLoadTask extends Thread {
     private MazeModel gameMaze;
     private final String filename;
     private final boolean isSavedGame;
-    private final JFrame loadFrame;
-    private final JProgressBar loadBar;
 
     // Constructors
     public XMLLoadTask(final String file, final boolean saved) {
         this.filename = file;
         this.isSavedGame = saved;
         this.setName("XML File Loader");
-        this.loadFrame = new JFrame("Loading...");
-        this.loadFrame.setIconImage(LogoImageLoader.load(
-                LogoImageIndex.MICRO_LOGO));
-        this.loadBar = new JProgressBar();
-        this.loadBar.setIndeterminate(true);
-        this.loadFrame.getContentPane().add(this.loadBar);
-        this.loadFrame.setResizable(false);
-        this.loadFrame.setDefaultCloseOperation(
-                WindowConstants.DO_NOTHING_ON_CLOSE);
-        this.loadFrame.pack();
     }
 
     // Methods
     @Override
     public void run() {
-        this.loadFrame.setVisible(true);
         final BagOStuff app = Mazer5D.getBagOStuff();
         int startW;
         String sg;
@@ -107,8 +88,6 @@ public class XMLLoadTask extends Thread {
             app.getMazeManager().handleDeferredSuccess(true);
         } catch (final IOException | InvalidMazeException e) {
             Mazer5D.logError(e);
-        } finally {
-            this.loadFrame.setVisible(false);
         }
     }
 }

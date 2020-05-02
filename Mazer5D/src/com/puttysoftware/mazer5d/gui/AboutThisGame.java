@@ -6,7 +6,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -18,6 +17,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
@@ -28,7 +28,7 @@ import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 public class AboutThisGame implements AboutHandler {
     // Fields
     private JFrame aboutFrame;
-    private Container aboutPane, textPane, buttonPane, logoPane;
+    private JPanel aboutPane, textPane, buttonPane, logoPane;
     private JButton aboutOK;
     private EventHandler handler;
     private JLabel miniLabel;
@@ -53,10 +53,10 @@ public class AboutThisGame implements AboutHandler {
         this.aboutFrame = new JFrame("About Mazer5D");
         final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
         this.aboutFrame.setIconImage(iconlogo);
-        this.aboutPane = new Container();
-        this.textPane = new Container();
-        this.buttonPane = new Container();
-        this.logoPane = new Container();
+        this.aboutPane = new JPanel();
+        this.textPane = new JPanel();
+        this.buttonPane = new JPanel();
+        this.logoPane = new JPanel();
         this.aboutOK = new JButton("OK");
         this.miniLabel = new JLabel("", LogoImageLoader.load(
                 LogoImageIndex.MINI_LOGO), SwingConstants.LEFT);

@@ -2,7 +2,6 @@ package com.puttysoftware.picturepicker;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -10,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -24,10 +24,10 @@ public final class AnonymousPicturePicker {
     // Fields
     private BufferedImageIcon[] choices;
     private JLabel[] choiceArray;
-    private final Container pickerContainer;
-    private final Container choiceContainer;
-    private final Container radioContainer;
-    private final Container choiceRadioContainer;
+    private final JPanel pickerPanel;
+    private final JPanel choicePanel;
+    private final JPanel radioPanel;
+    private final JPanel choiceRadioPanel;
     private final ButtonGroup radioGroup;
     private JRadioButton[] radioButtons;
     private final JScrollPane scrollPane;
@@ -44,42 +44,42 @@ public final class AnonymousPicturePicker {
     public AnonymousPicturePicker(final BufferedImageIcon[] pictures,
             final boolean[] enabled, final Color choiceColor) {
         this.handler = new EventHandler();
-        this.pickerContainer = new Container();
-        this.pickerContainer.setLayout(new BorderLayout());
-        this.choiceContainer = new Container();
-        this.radioContainer = new Container();
+        this.pickerPanel = new JPanel();
+        this.pickerPanel.setLayout(new BorderLayout());
+        this.choicePanel = new JPanel();
+        this.radioPanel = new JPanel();
         this.radioGroup = new ButtonGroup();
-        this.choiceRadioContainer = new Container();
-        this.choiceRadioContainer.setLayout(new BorderLayout());
-        this.choiceRadioContainer.add(this.radioContainer, BorderLayout.WEST);
-        this.choiceRadioContainer.add(this.choiceContainer,
+        this.choiceRadioPanel = new JPanel();
+        this.choiceRadioPanel.setLayout(new BorderLayout());
+        this.choiceRadioPanel.add(this.radioPanel, BorderLayout.WEST);
+        this.choiceRadioPanel.add(this.choicePanel,
                 BorderLayout.CENTER);
-        this.scrollPane = new JScrollPane(this.choiceRadioContainer);
+        this.scrollPane = new JScrollPane(this.choiceRadioPanel);
         this.scrollPane.setHorizontalScrollBarPolicy(
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         this.scrollPane.setVerticalScrollBarPolicy(
                 ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        this.pickerContainer.add(this.scrollPane, BorderLayout.CENTER);
+        this.pickerPanel.add(this.scrollPane, BorderLayout.CENTER);
         this.updatePicker(pictures, enabled);
         this.index = 0;
         this.savedSPColor = this.scrollPane.getBackground();
-        this.savedPCColor = this.pickerContainer.getBackground();
-        this.savedCCColor = this.choiceContainer.getBackground();
-        this.savedRCColor = this.radioContainer.getBackground();
-        this.savedCRCColor = this.choiceRadioContainer.getBackground();
+        this.savedPCColor = this.pickerPanel.getBackground();
+        this.savedCCColor = this.choicePanel.getBackground();
+        this.savedRCColor = this.radioPanel.getBackground();
+        this.savedCRCColor = this.choiceRadioPanel.getBackground();
         this.savedCHColor = choiceColor;
     }
 
     // Methods
-    public Container getPicker() {
-        return this.pickerContainer;
+    public JPanel getPicker() {
+        return this.pickerPanel;
     }
 
     public void changePickerColor(final Color c) {
-        this.pickerContainer.setBackground(c);
-        this.choiceContainer.setBackground(c);
-        this.radioContainer.setBackground(c);
-        this.choiceRadioContainer.setBackground(c);
+        this.pickerPanel.setBackground(c);
+        this.choicePanel.setBackground(c);
+        this.radioPanel.setBackground(c);
+        this.choiceRadioPanel.setBackground(c);
         this.scrollPane.setBackground(c);
         for (int x = 0; x < this.choiceArray.length; x++) {
             this.choiceArray[x].setBackground(c);
@@ -95,11 +95,11 @@ public final class AnonymousPicturePicker {
     }
 
     public void disablePicker() {
-        this.pickerContainer.setEnabled(false);
-        this.pickerContainer.setBackground(Color.gray);
-        this.choiceContainer.setBackground(Color.gray);
-        this.radioContainer.setBackground(Color.gray);
-        this.choiceRadioContainer.setBackground(Color.gray);
+        this.pickerPanel.setEnabled(false);
+        this.pickerPanel.setBackground(Color.gray);
+        this.choicePanel.setBackground(Color.gray);
+        this.radioPanel.setBackground(Color.gray);
+        this.choiceRadioPanel.setBackground(Color.gray);
         this.scrollPane.setBackground(Color.gray);
         for (final JRadioButton radioButton : this.radioButtons) {
             radioButton.setEnabled(false);
@@ -107,11 +107,11 @@ public final class AnonymousPicturePicker {
     }
 
     public void enablePicker() {
-        this.pickerContainer.setEnabled(true);
-        this.pickerContainer.setBackground(this.savedPCColor);
-        this.choiceContainer.setBackground(this.savedCCColor);
-        this.radioContainer.setBackground(this.savedRCColor);
-        this.choiceRadioContainer.setBackground(this.savedCRCColor);
+        this.pickerPanel.setEnabled(true);
+        this.pickerPanel.setBackground(this.savedPCColor);
+        this.choicePanel.setBackground(this.savedCCColor);
+        this.radioPanel.setBackground(this.savedRCColor);
+        this.choiceRadioPanel.setBackground(this.savedCRCColor);
         this.scrollPane.setBackground(this.savedSPColor);
         for (final JRadioButton radioButton : this.radioButtons) {
             radioButton.setEnabled(true);
@@ -121,18 +121,18 @@ public final class AnonymousPicturePicker {
     public void updatePicker(final BufferedImageIcon[] newImages,
             final boolean[] enabled) {
         this.choices = newImages;
-        this.choiceContainer.removeAll();
-        this.radioContainer.removeAll();
+        this.choicePanel.removeAll();
+        this.radioPanel.removeAll();
         this.radioButtons = new JRadioButton[this.choices.length];
-        this.choiceContainer.setLayout(new GridLayout(this.choices.length, 1));
-        this.radioContainer.setLayout(new GridLayout(this.choices.length, 1));
+        this.choicePanel.setLayout(new GridLayout(this.choices.length, 1));
+        this.radioPanel.setLayout(new GridLayout(this.choices.length, 1));
         this.choiceArray = new JLabel[this.choices.length];
         for (int x = 0; x < this.choices.length; x++) {
             this.choiceArray[x] = new JLabel("", this.choices[x], //$NON-NLS-1$
                     SwingConstants.LEFT);
             this.choiceArray[x].setOpaque(true);
             this.choiceArray[x].setBackground(this.savedCHColor);
-            this.choiceContainer.add(this.choiceArray[x]);
+            this.choicePanel.add(this.choiceArray[x]);
             this.radioButtons[x] = new JRadioButton();
             this.radioButtons[x].setOpaque(true);
             this.radioButtons[x].setBackground(this.savedCHColor);
@@ -141,7 +141,7 @@ public final class AnonymousPicturePicker {
             this.radioGroup.add(this.radioButtons[x]);
             this.radioButtons[x].addActionListener(this.handler);
             this.radioButtons[x].setEnabled(enabled[x]);
-            this.radioContainer.add(this.radioButtons[x]);
+            this.radioPanel.add(this.radioButtons[x]);
         }
         for (int x = 0; x < this.choices.length; x++) {
             if (enabled[x]) {
@@ -153,12 +153,12 @@ public final class AnonymousPicturePicker {
     }
 
     public void updatePickerLayout(final int maxHeight) {
-        final int newPreferredWidth = this.pickerContainer.getLayout()
-                .preferredLayoutSize(this.pickerContainer).width
+        final int newPreferredWidth = this.pickerPanel.getLayout()
+                .preferredLayoutSize(this.pickerPanel).width
                 + this.scrollPane.getVerticalScrollBar().getWidth();
-        final int newPreferredHeight = Math.min(maxHeight, this.pickerContainer
-                .getLayout().preferredLayoutSize(this.pickerContainer).height);
-        this.pickerContainer.setPreferredSize(new Dimension(newPreferredWidth,
+        final int newPreferredHeight = Math.min(maxHeight, this.pickerPanel
+                .getLayout().preferredLayoutSize(this.pickerPanel).height);
+        this.pickerPanel.setPreferredSize(new Dimension(newPreferredWidth,
                 newPreferredHeight));
     }
 

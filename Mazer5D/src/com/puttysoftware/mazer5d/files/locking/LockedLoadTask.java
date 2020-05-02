@@ -9,47 +9,28 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import javax.swing.JFrame;
-import javax.swing.JProgressBar;
-import javax.swing.WindowConstants;
-
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.files.InvalidMazeException;
 import com.puttysoftware.mazer5d.files.format.XMLPrefixHandler;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
-import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.maze.MazeModel;
 
 public class LockedLoadTask extends Thread {
     // Fields
     private MazeModel gameMaze;
     private final String filename;
-    private final JFrame loadFrame;
-    private final JProgressBar loadBar;
 
     // Constructors
     public LockedLoadTask(final String file) {
         this.filename = file;
         this.setName("Locked File Loader");
-        this.loadFrame = new JFrame("Loading...");
-        this.loadFrame.setIconImage(LogoImageLoader.load(
-                LogoImageIndex.MICRO_LOGO));
-        this.loadBar = new JProgressBar();
-        this.loadBar.setIndeterminate(true);
-        this.loadFrame.getContentPane().add(this.loadBar);
-        this.loadFrame.setResizable(false);
-        this.loadFrame.setDefaultCloseOperation(
-                WindowConstants.DO_NOTHING_ON_CLOSE);
-        this.loadFrame.pack();
     }
 
     // Methods
     @Override
     public void run() {
-        this.loadFrame.setVisible(true);
         final BagOStuff app = Mazer5D.getBagOStuff();
         int startW;
         String sg;
@@ -106,8 +87,6 @@ public class LockedLoadTask extends Thread {
         } catch (final InvalidMazeException ime) {
             CommonDialogs.showDialog(ime.getMessage());
             app.getMazeManager().handleDeferredSuccess(false);
-        } finally {
-            this.loadFrame.setVisible(false);
         }
     }
 }

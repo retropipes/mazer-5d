@@ -6,7 +6,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.editor.rulesets;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -19,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
@@ -30,7 +30,7 @@ class RuleSetEditor {
     // Fields
     private RuleSet generator;
     private JFrame editFrame;
-    private Container mainEditPane, contentPane, buttonPane;
+    private JPanel mainEditPane, contentPane, buttonPane;
     private JButton editOK, editCancel;
     private JCheckBox required;
     private JCheckBox percentage;
@@ -96,9 +96,9 @@ class RuleSetEditor {
         this.editFrame = new JFrame("Rule Set Editor");
         final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
         this.editFrame.setIconImage(iconlogo);
-        this.mainEditPane = new Container();
-        this.contentPane = new Container();
-        this.buttonPane = new Container();
+        this.mainEditPane = new JPanel();
+        this.contentPane = new JPanel();
+        this.buttonPane = new JPanel();
         this.editOK = new JButton("OK");
         this.editOK.setDefaultCapable(true);
         this.editFrame.getRootPane().setDefaultButton(this.editOK);

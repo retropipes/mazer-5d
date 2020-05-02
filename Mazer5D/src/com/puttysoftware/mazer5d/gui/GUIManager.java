@@ -5,7 +5,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.gui;
 
-import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.desktop.QuitEvent;
@@ -17,6 +16,7 @@ import java.awt.event.WindowListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
@@ -33,7 +33,7 @@ import com.puttysoftware.mazer5d.prefs.Prefs;
 public class GUIManager implements QuitHandler {
     // Fields
     private final JFrame guiFrame;
-    private final Container guiPane;
+    private final JPanel guiPane;
     private final JLabel logoLabel;
     private final CloseHandler cHandler;
 
@@ -41,7 +41,7 @@ public class GUIManager implements QuitHandler {
     public GUIManager() {
         this.cHandler = new CloseHandler();
         this.guiFrame = new JFrame("Mazer5D");
-        this.guiPane = this.guiFrame.getContentPane();
+        this.guiPane = new JPanel();
         this.guiFrame.setDefaultCloseOperation(
                 WindowConstants.DO_NOTHING_ON_CLOSE);
         this.guiFrame.setLayout(new GridLayout(1, 1));
