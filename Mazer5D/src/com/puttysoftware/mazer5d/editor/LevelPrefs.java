@@ -63,6 +63,7 @@ public class LevelPrefs {
         Modes.setInLevelPrefs();
         this.prefFrame.attachAndSave(this.mainPrefPane);
         this.prefFrame.setTitle("Level Preferences");
+        this.prefFrame.pack();
     }
 
     public void hidePrefs() {
@@ -279,7 +280,6 @@ public class LevelPrefs {
         this.mainPrefPane.add(this.buttonPane, BorderLayout.SOUTH);
         this.prefsOK.addActionListener(this.handler);
         this.prefsCancel.addActionListener(this.handler);
-        this.prefFrame.pack();
     }
 
     private class EventHandler implements ActionListener {

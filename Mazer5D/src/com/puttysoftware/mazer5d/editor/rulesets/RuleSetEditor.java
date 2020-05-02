@@ -48,6 +48,7 @@ class RuleSetEditor {
         Modes.setInRuleEditor();
         this.editFrame.attachAndSave(this.mainEditPane);
         this.editFrame.setTitle("Rule Set Editor");
+        this.editFrame.pack();
     }
 
     void hideRuleSetEditor() {
@@ -119,7 +120,6 @@ class RuleSetEditor {
         this.mainEditPane.add(this.buttonPane, BorderLayout.SOUTH);
         this.editOK.addActionListener(this.handler);
         this.editCancel.addActionListener(this.handler);
-        this.editFrame.pack();
     }
 
     private class EventHandler implements ActionListener {

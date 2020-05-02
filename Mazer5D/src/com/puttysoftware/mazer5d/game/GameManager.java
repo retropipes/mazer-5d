@@ -1857,6 +1857,7 @@ public class GameManager implements MazeEffectConstants {
         this.outputFrame.setTitle("Mazer5D");
         this.outputFrame.addKeyListener(this.handler);
         this.outputPane.addMouseListener(this.handler);
+        this.outputFrame.pack();
     }
 
     public void hideOutput() {

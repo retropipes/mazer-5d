@@ -86,6 +86,7 @@ public class RuleSetPicker {
         Modes.setInRulePicker();
         this.outputFrame.attachAndSave(this.borderPane);
         this.outputFrame.setTitle("Rule Set Picker");
+        this.outputFrame.pack();
     }
 
     public void hideOutput() {
@@ -130,7 +131,6 @@ public class RuleSetPicker {
         final int maxSize = Prefs.getViewingWindowSize();
         this.picker.updatePickerLayout(maxSize);
         this.borderPane.add(this.picker.getPicker(), BorderLayout.CENTER);
-        this.outputFrame.pack();
     }
 
     private class EventHandler implements ActionListener {

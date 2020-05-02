@@ -49,6 +49,7 @@ public class MazePrefs {
         Modes.setInMazePrefs();
         this.prefFrame.attachAndSave(this.mainPrefPane);
         this.prefFrame.setTitle("Maze Preferences");
+        this.prefFrame.pack();
     }
 
     public void hidePrefs() {
@@ -124,7 +125,6 @@ public class MazePrefs {
         this.mainPrefPane.add(this.buttonPane, BorderLayout.SOUTH);
         this.prefsOK.addActionListener(this.handler);
         this.prefsCancel.addActionListener(this.handler);
-        this.prefFrame.pack();
     }
 
     private class EventHandler implements ActionListener {
