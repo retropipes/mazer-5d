@@ -45,6 +45,8 @@ public class Mazer5D {
         // Set up Common Dialogs
         CommonDialogs.setDefaultTitle(Mazer5D.PROGRAM_NAME);
         CommonDialogs.setIcon(LogoImageLoader.load(LogoImageIndex.MICRO_LOGO));
+        // Set default prefs
+        Prefs.setDefaultPrefs();
         // Launch GUI
         Mazer5D.bagOStuff.playLogoSound();
         Mazer5D.bagOStuff.getGUIManager().showGUI();

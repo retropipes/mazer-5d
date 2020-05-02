@@ -31,6 +31,7 @@ import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.IOException;
 import java.time.Clock;
+import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -71,7 +72,8 @@ public class Prefs {
     private static JCheckBox checkUpdatesStartup;
     private static JCheckBox moveOneAtATime;
     private static JComboBox<String> editorFillChoices;
-    private static String[] editorFillChoiceArray;
+    private static ArrayList<MazeObjects> editorFillChoiceArray;
+    private static String[] editorFillNameArray;
     private static JComboBox<String> updateCheckInterval;
     private static String[] updateCheckIntervalValues;
     private static JComboBox<String> viewingWindowChoices;
@@ -315,12 +317,17 @@ public class Prefs {
         Prefs.fileMgr.writePreferencesFile();
     }
 
+    private static int getIndexForUID(final MazeObjects UID) {
+        return Prefs.editorFillChoiceArray.indexOf(UID);
+    }
+
     private static void loadPrefs() {
         if (!Prefs.guiSetUp) {
             Prefs.setUpGUI();
             Prefs.guiSetUp = true;
         }
-        Prefs.editorFillChoices.setSelectedIndex(Prefs.editorFill.ordinal());
+        Prefs.editorFillChoices.setSelectedIndex(Prefs.getIndexForUID(
+                Prefs.editorFill));
         for (int x = 0; x < Prefs.SOUNDS_LENGTH; x++) {
             Prefs.sounds[x].setSelected(Prefs.isSoundGroupEnabledImpl(x));
         }
@@ -441,9 +448,16 @@ public class Prefs {
         Prefs.prefsExport.setDefaultCapable(false);
         Prefs.prefsImport = new JButton("Import...");
         Prefs.prefsImport.setDefaultCapable(false);
-        Prefs.editorFillChoiceArray = new String[] { "Grass", "Dirt", "Sand",
+        Prefs.editorFillChoiceArray = new ArrayList<>();
+        Prefs.editorFillChoiceArray.add(MazeObjects.GRASS);
+        Prefs.editorFillChoiceArray.add(MazeObjects.DIRT);
+        Prefs.editorFillChoiceArray.add(MazeObjects.SAND);
+        Prefs.editorFillChoiceArray.add(MazeObjects.SNOW);
+        Prefs.editorFillChoiceArray.add(MazeObjects.TILE);
+        Prefs.editorFillChoiceArray.add(MazeObjects.TUNDRA);
+        Prefs.editorFillNameArray = new String[] { "Grass", "Dirt", "Sand",
                 "Snow", "Tile", "Tundra" };
-        Prefs.editorFillChoices = new JComboBox<>(Prefs.editorFillChoiceArray);
+        Prefs.editorFillChoices = new JComboBox<>(Prefs.editorFillNameArray);
         Prefs.sounds[Prefs.SOUNDS_ALL] = new JCheckBox("Enable ALL sounds",
                 true);
         Prefs.sounds[Prefs.SOUNDS_UI] = new JCheckBox(
