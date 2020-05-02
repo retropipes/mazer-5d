@@ -41,7 +41,9 @@ public class GUIManager implements QuitHandler {
         this.guiFrame = MainWindow.getMainWindow();
         this.guiPane = new JPanel();
         this.guiPane.setLayout(new GridLayout(1, 1));
-        this.logoLabel = new JLabel("", null, SwingConstants.CENTER);
+        final BufferedImageIcon logo = LogoImageLoader.load(
+                LogoImageIndex.LOGO);
+        this.logoLabel = new JLabel("", logo, SwingConstants.CENTER);
         this.logoLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
         this.guiPane.add(this.logoLabel);
     }
@@ -55,18 +57,12 @@ public class GUIManager implements QuitHandler {
         this.guiFrame.attachAndSave(this.guiPane);
         this.guiFrame.setTitle("Mazer5D");
         this.guiFrame.addWindowListener(this.cHandler);
+        this.guiFrame.pack();
     }
 
     public void hideGUI() {
         this.guiFrame.removeWindowListener(this.cHandler);
         this.guiFrame.restoreSaved();
-    }
-
-    public void updateLogo() {
-        final BufferedImageIcon logo = LogoImageLoader.load(
-                LogoImageIndex.LOGO);
-        this.logoLabel.setIcon(logo);
-        this.guiFrame.pack();
     }
 
     public boolean quitHandler() {

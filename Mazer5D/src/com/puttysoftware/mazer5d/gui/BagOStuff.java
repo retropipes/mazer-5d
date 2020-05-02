@@ -21,11 +21,11 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class BagOStuff {
     // Fields
-    private final AboutThisGame about;
+    private AboutThisGame about;
     private GameManager gameMgr;
     private MazeManager mazeMgr;
     private final MenuManager menuMgr;
-    private final ObjectHelpViewer oHelpMgr;
+    private ObjectHelpViewer oHelpMgr;
     private MazeEditor editor;
     private RuleSetPicker rsPicker;
     private final GUIManager guiMgr;
@@ -36,12 +36,9 @@ public class BagOStuff {
 
     // Constructors
     public BagOStuff(final NativeIntegration ni) {
-        this.about = new AboutThisGame(this.getVersionString());
-        this.guiMgr = new GUIManager();
-        this.oHelpMgr = new ObjectHelpViewer();
         this.menuMgr = new MenuManager();
-        this.guiMgr.updateLogo();
         this.menuMgr.configureMenus(ni);
+        this.guiMgr = new GUIManager();
     }
 
     // Methods
@@ -78,6 +75,9 @@ public class BagOStuff {
     }
 
     public ObjectHelpViewer getObjectHelpViewer() {
+        if (this.oHelpMgr == null) {
+            this.oHelpMgr = new ObjectHelpViewer();
+        }
         return this.oHelpMgr;
     }
 
@@ -96,6 +96,9 @@ public class BagOStuff {
     }
 
     public AboutThisGame getAboutThisGame() {
+        if (this.about == null) {
+            this.about = new AboutThisGame(this.getVersionString());
+        }
         return this.about;
     }
 
