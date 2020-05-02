@@ -6,25 +6,23 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.gui;
 
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.desktop.QuitEvent;
 import java.awt.desktop.QuitHandler;
 import java.awt.desktop.QuitResponse;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
+import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.files.MazeManager;
 import com.puttysoftware.mazer5d.files.TempDirCleanup;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
@@ -32,7 +30,7 @@ import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class GUIManager implements QuitHandler {
     // Fields
-    private final JFrame guiFrame;
+    private final MainWindow guiFrame;
     private final JPanel guiPane;
     private final JLabel logoLabel;
     private final CloseHandler cHandler;
@@ -40,45 +38,34 @@ public class GUIManager implements QuitHandler {
     // Constructors
     public GUIManager() {
         this.cHandler = new CloseHandler();
-        this.guiFrame = new JFrame("Mazer5D");
+        this.guiFrame = MainWindow.getMainWindow();
         this.guiPane = new JPanel();
-        this.guiFrame.setDefaultCloseOperation(
-                WindowConstants.DO_NOTHING_ON_CLOSE);
-        this.guiFrame.setLayout(new GridLayout(1, 1));
+        this.guiPane.setLayout(new GridLayout(1, 1));
         this.logoLabel = new JLabel("", null, SwingConstants.CENTER);
         this.logoLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
         this.guiPane.add(this.logoLabel);
-        this.guiFrame.setResizable(false);
-        this.guiFrame.addWindowListener(this.cHandler);
     }
 
     // Methods
-    public JFrame getGUIFrame() {
-        if (this.guiFrame.isVisible()) {
-            return this.guiFrame;
-        } else {
-            return null;
-        }
-    }
-
     public void showGUI() {
         final BagOStuff app = Mazer5D.getBagOStuff();
         Modes.setInGUI();
         app.getMenuManager().setMainMenus();
         app.getMenuManager().checkFlags();
-        this.guiFrame.setVisible(true);
+        this.guiFrame.attachAndSave(this.guiPane);
+        this.guiFrame.setTitle("Mazer5D");
+        this.guiFrame.addWindowListener(this.cHandler);
     }
 
     public void hideGUI() {
-        this.guiFrame.setVisible(false);
+        this.guiFrame.removeWindowListener(this.cHandler);
+        this.guiFrame.restoreSaved();
     }
 
     public void updateLogo() {
         final BufferedImageIcon logo = LogoImageLoader.load(
                 LogoImageIndex.LOGO);
         this.logoLabel.setIcon(logo);
-        final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
-        this.guiFrame.setIconImage(iconlogo);
         this.guiFrame.pack();
     }
 

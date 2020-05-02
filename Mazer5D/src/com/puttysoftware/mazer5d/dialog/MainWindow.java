@@ -32,10 +32,10 @@ public final class MainWindow {
     }
 
     static JFrame owner() {
-        return MainWindow.getOutputFrame().frame;
+        return MainWindow.getMainWindow().frame;
     }
 
-    public static MainWindow getOutputFrame() {
+    public static MainWindow getMainWindow() {
         if (MainWindow.window == null) {
             MainWindow.window = new MainWindow();
         }

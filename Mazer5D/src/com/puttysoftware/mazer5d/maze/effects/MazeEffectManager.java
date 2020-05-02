@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.utilities.DirectionResolver;
 
 public class MazeEffectManager {
@@ -18,7 +19,7 @@ public class MazeEffectManager {
     private final MazeEffect[] activeEffects;
     private static final int NUM_EFFECTS = 12;
     private static final int MAX_ACTIVE_EFFECTS = 3;
-    private final JPanel activeEffectMessagePanel ;
+    private final JPanel activeEffectMessagePanel;
     private final JLabel[] activeEffectMessages;
     private int newEffectIndex;
     private final int[] activeEffectIndices;
@@ -49,11 +50,11 @@ public class MazeEffectManager {
         // Create GUI
         this.activeEffectMessagePanel = new JPanel();
         this.activeEffectMessages = new JLabel[MazeEffectManager.MAX_ACTIVE_EFFECTS];
-        this.activeEffectMessagePanel .setLayout(new GridLayout(
+        this.activeEffectMessagePanel.setLayout(new GridLayout(
                 MazeEffectManager.MAX_ACTIVE_EFFECTS, 1));
         for (int z = 0; z < MazeEffectManager.MAX_ACTIVE_EFFECTS; z++) {
             this.activeEffectMessages[z] = new JLabel("");
-            this.activeEffectMessagePanel .add(this.activeEffectMessages[z]);
+            this.activeEffectMessagePanel.add(this.activeEffectMessages[z]);
         }
         // Set up miscellaneous things
         this.activeEffectIndices = new int[MazeEffectManager.MAX_ACTIVE_EFFECTS];
@@ -68,8 +69,8 @@ public class MazeEffectManager {
         return this.activeEffects[effectID].isActive();
     }
 
-    public JPanel getEffectMessagePanel () {
-        return this.activeEffectMessagePanel ;
+    public JPanel getEffectMessagePanel() {
+        return this.activeEffectMessagePanel;
     }
 
     public void decayEffects() {
@@ -84,8 +85,7 @@ public class MazeEffectManager {
                     // Clear effect grid
                     this.clearGridEntry(x);
                     // Pack
-                    Mazer5D.getBagOStuff().getGameManager().getOutputFrame()
-                            .pack();
+                    MainWindow.getMainWindow().pack();
                 }
             }
         }
@@ -115,7 +115,7 @@ public class MazeEffectManager {
     public void deactivateAllEffects() {
         this.clearAllGridEntries();
         // Pack
-        Mazer5D.getBagOStuff().getGameManager().getOutputFrame().pack();
+        MainWindow.getMainWindow().pack();
         for (int x = 0; x < MazeEffectManager.NUM_EFFECTS; x++) {
             this.activeEffects[x].deactivateEffect();
         }

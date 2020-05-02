@@ -292,7 +292,7 @@ public class Prefs {
             Prefs.setUpGUI();
             Prefs.guiSetUp = true;
         }
-        Prefs.prefFrame = MainWindow.getOutputFrame();
+        Prefs.prefFrame = MainWindow.getMainWindow();
         Prefs.prefFrame.setTitle("Preferences");
         Prefs.prefFrame.setDefaultButton(Prefs.prefsOK);
         Prefs.prefFrame.attachContent(Prefs.mainPrefPane);

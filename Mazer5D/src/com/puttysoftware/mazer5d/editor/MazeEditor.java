@@ -11,7 +11,6 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseEvent;
@@ -19,12 +18,10 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
-import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
@@ -35,12 +32,11 @@ import com.puttysoftware.mazer5d.abc.GenericConditionalTeleport;
 import com.puttysoftware.mazer5d.abc.GenericContainer;
 import com.puttysoftware.mazer5d.abc.GenericTeleport;
 import com.puttysoftware.mazer5d.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.assets.LogoImageIndex;
+import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.files.MazeManager;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.ImageConstants;
-import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.loaders.ObjectImageManager;
 import com.puttysoftware.mazer5d.maze.MazeModel;
 import com.puttysoftware.mazer5d.objects.GameObjects;
@@ -51,8 +47,7 @@ import com.puttysoftware.picturepicker.PicturePicker;
 
 public class MazeEditor {
     // Declarations
-    private JFrame outputFrame;
-    private final JFrame treasureFrame;
+    private MainWindow outputFrame;
     private JPanel outputPane, secondaryPane, borderPane;
     private final JPanel treasurePane;
     private JLabel messageLabel;
@@ -140,11 +135,6 @@ public class MazeEditor {
         this.containableObjects = GameObjects.getAllContainableObjects();
         this.containableEditorAppearances = GameObjects
                 .getAllContainableObjectEditorAppearances();
-        this.treasureFrame = new JFrame("Treasure Chest Contents");
-        final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
-        this.treasureFrame.setIconImage(iconlogo);
-        this.treasureFrame.setDefaultCloseOperation(
-                WindowConstants.HIDE_ON_CLOSE);
         this.treasurePicker = new PicturePicker(
                 this.containableEditorAppearances, this.containableNames,
                 new Color(223, 223, 223));
@@ -152,9 +142,6 @@ public class MazeEditor {
         final int maxSize = Prefs.getViewingWindowSize();
         this.treasurePicker.updatePickerLayout(maxSize);
         this.treasurePane = this.treasurePicker.getPicker();
-        this.treasureFrame.setContentPane(this.treasurePane);
-        this.treasureFrame.addWindowListener(this.rhandler);
-        this.treasureFrame.pack();
         this.mazeChanged = true;
         this.goToDestMode = false;
         this.instanceBeingEdited = null;
@@ -949,7 +936,10 @@ public class MazeEditor {
         Mazer5D.getBagOStuff().showMessage("Pick treasure chest contents");
         this.setDefaultContents();
         this.disableOutput();
-        this.treasureFrame.setVisible(true);
+        Modes.setInTreasure();
+        this.outputFrame.attachAndSave(this.treasurePane);
+        this.outputFrame.setTitle("Pick Treasure Chest Contents");
+        this.outputFrame.addWindowListener(this.rhandler);
         return null;
     }
 
@@ -1200,6 +1190,9 @@ public class MazeEditor {
     }
 
     public void setTreasureChestContents() {
+        this.outputFrame.removeWindowListener(this.rhandler);
+        this.outputFrame.restoreSaved();
+        Modes.restore();
         this.enableOutput();
         final BagOStuff app = Mazer5D.getBagOStuff();
         final MazeObjectModel contents = this.containableObjects[this.treasurePicker
@@ -1763,31 +1756,24 @@ public class MazeEditor {
     public void showOutput() {
         final BagOStuff app = Mazer5D.getBagOStuff();
         app.getMenuManager().setEditorMenus();
-        this.outputFrame.setVisible(true);
+        this.outputFrame.attachAndSave(this.borderPane);
+        this.outputFrame.setTitle("Editor");
+        this.outputFrame.addWindowListener(this.mhandler);
         this.outputFrame.pack();
     }
 
     public void hideOutput() {
-        if (this.outputFrame != null) {
-            this.outputFrame.setVisible(false);
-        }
+        this.outputFrame.removeWindowListener(this.mhandler);
+        this.outputFrame.restoreSaved();
     }
 
     void disableOutput() {
-        this.outputFrame.setEnabled(false);
+        this.outputPane.setEnabled(false);
     }
 
     void enableOutput() {
-        this.outputFrame.setEnabled(true);
+        this.outputPane.setEnabled(true);
         this.checkMenus();
-    }
-
-    public JFrame getOutputFrame() {
-        if (this.outputFrame != null && this.outputFrame.isVisible()) {
-            return this.outputFrame;
-        } else {
-            return null;
-        }
     }
 
     public void exitEditor() {
@@ -1805,21 +1791,12 @@ public class MazeEditor {
     }
 
     private void setUpGUI() {
-        // Destroy the old GUI, if one exists
-        if (this.outputFrame != null) {
-            this.outputFrame.dispose();
-        }
         this.messageLabel = new JLabel(" ");
-        this.outputFrame = new JFrame("Editor");
-        final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
-        this.outputFrame.setIconImage(iconlogo);
+        this.outputFrame = MainWindow.getMainWindow();
         this.outputPane = new JPanel();
         this.secondaryPane = new JPanel();
         this.borderPane = new JPanel();
         this.borderPane.setLayout(new BorderLayout());
-        this.outputFrame.setContentPane(this.borderPane);
-        this.outputFrame.setDefaultCloseOperation(
-                WindowConstants.DO_NOTHING_ON_CLOSE);
         this.drawGrid = new JLabel[this.evMgr
                 .getViewingWindowSizeX()][this.evMgr.getViewingWindowSizeY()];
         for (int x = 0; x < this.evMgr.getViewingWindowSizeX(); x++) {
@@ -1837,7 +1814,6 @@ public class MazeEditor {
         this.gridbag = new GridBagLayout();
         this.c = new GridBagConstraints();
         this.outputPane.setLayout(this.gridbag);
-        this.outputFrame.setResizable(false);
         this.c.fill = GridBagConstraints.BOTH;
         this.secondaryPane.setLayout(new GridLayout(this.evMgr
                 .getViewingWindowSizeX(), this.evMgr.getViewingWindowSizeY()));
@@ -1869,7 +1845,6 @@ public class MazeEditor {
         this.horzScroll.addAdjustmentListener(this.mhandler);
         this.vertScroll.addAdjustmentListener(this.mhandler);
         this.secondaryPane.addMouseListener(this.mhandler);
-        this.outputFrame.addWindowListener(this.mhandler);
         this.updatePicker();
         this.borderPane.add(this.picker.getPicker(), BorderLayout.EAST);
     }

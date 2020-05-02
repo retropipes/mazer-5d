@@ -8,32 +8,29 @@ package com.puttysoftware.mazer5d.editor.rulesets;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.WindowConstants;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.assets.LogoImageIndex;
+import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.files.RuleSetManager;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
-import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.picturepicker.PicturePicker;
 
 public class RuleSetPicker {
     // Declarations
-    private JFrame outputFrame;
+    private MainWindow outputFrame;
     private JPanel outputPane, borderPane;
     private final EventHandler handler;
     private PicturePicker picker;
@@ -88,13 +85,14 @@ public class RuleSetPicker {
     }
 
     public void showOutput() {
-        this.outputFrame.setVisible(true);
+        Modes.setInRulePicker();
+        this.outputFrame.attachAndSave(this.borderPane);
+        this.outputFrame.setTitle("Rule Set Picker");
     }
 
     public void hideOutput() {
-        if (this.outputFrame != null) {
-            this.outputFrame.setVisible(false);
-        }
+        this.outputFrame.restoreSaved();
+        Modes.restore();
     }
 
     void exitRuleSetEditor() {
@@ -104,9 +102,7 @@ public class RuleSetPicker {
     }
 
     private void setUpGUI() {
-        this.outputFrame = new JFrame("Rule Set Picker");
-        final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
-        this.outputFrame.setIconImage(iconlogo);
+        this.outputFrame = MainWindow.getMainWindow();
         this.outputPane = new JPanel();
         this.borderPane = new JPanel();
         this.create = new JButton("Create");
@@ -115,9 +111,6 @@ public class RuleSetPicker {
         this.importXML = new JButton("Load");
         this.exportXML = new JButton("Save");
         this.borderPane.setLayout(new BorderLayout());
-        this.outputFrame.setContentPane(this.borderPane);
-        this.outputFrame.setDefaultCloseOperation(
-                WindowConstants.DO_NOTHING_ON_CLOSE);
         this.borderPane.add(this.outputPane, BorderLayout.SOUTH);
         this.outputPane.setLayout(new FlowLayout());
         this.outputPane.add(this.create);
@@ -137,7 +130,6 @@ public class RuleSetPicker {
         final int maxSize = Prefs.getViewingWindowSize();
         this.picker.updatePickerLayout(maxSize);
         this.borderPane.add(this.picker.getPicker(), BorderLayout.CENTER);
-        this.outputFrame.setResizable(false);
         this.outputFrame.pack();
     }
 

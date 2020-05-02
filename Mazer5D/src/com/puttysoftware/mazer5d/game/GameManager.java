@@ -7,7 +7,6 @@ package com.puttysoftware.mazer5d.game;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -17,13 +16,11 @@ import java.awt.event.WindowListener;
 import java.io.IOException;
 
 import javax.swing.BoxLayout;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
@@ -33,17 +30,16 @@ import com.puttysoftware.mazer5d.abc.GenericBow;
 import com.puttysoftware.mazer5d.abc.GenericCharacter;
 import com.puttysoftware.mazer5d.abc.GenericMovableObject;
 import com.puttysoftware.mazer5d.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
+import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.files.MazeManager;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.ImageConstants;
-import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.loaders.MusicPlayer;
 import com.puttysoftware.mazer5d.loaders.ObjectImageManager;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
@@ -59,7 +55,7 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public class GameManager implements MazeEffectConstants {
     // Fields
-    private JFrame outputFrame;
+    private MainWindow outputFrame;
     private JPanel outputPane, borderPane, progressPane;
     private JLabel messageLabel;
     private JProgressBar autoFinishProgress, alternateAutoFinishProgress;
@@ -1066,142 +1062,129 @@ public class GameManager implements MazeEffectConstants {
     }
 
     public void redrawMaze() {
-        // Draw the maze, if it is visible
-        if (this.outputFrame.isVisible()) {
-            // Rebuild draw grid
-            final EmptyBorder eb = new EmptyBorder(0, 0, 0, 0);
-            this.outputPane.removeAll();
-            for (int x = 0; x < this.vwMgr.getViewingWindowSizeX(); x++) {
-                for (int y = 0; y < this.vwMgr.getViewingWindowSizeY(); y++) {
-                    this.drawGrid[x][y] = new JLabel();
-                    // Fix to make draw grid line up properly
-                    this.drawGrid[x][y].setBorder(eb);
-                    this.outputPane.add(this.drawGrid[x][y]);
-                }
+        // Draw the maze
+        final EmptyBorder eb = new EmptyBorder(0, 0, 0, 0);
+        this.outputPane.removeAll();
+        for (int x = 0; x < this.vwMgr.getViewingWindowSizeX(); x++) {
+            for (int y = 0; y < this.vwMgr.getViewingWindowSizeY(); y++) {
+                this.drawGrid[x][y] = new JLabel();
+                // Fix to make draw grid line up properly
+                this.drawGrid[x][y].setBorder(eb);
+                this.outputPane.add(this.drawGrid[x][y]);
             }
-            this.redrawMazeNoRebuild();
         }
+        this.redrawMazeNoRebuild();
     }
 
     public void redrawMazeNoRebuild() {
-        // Draw the maze, if it is visible
-        if (this.outputFrame.isVisible()) {
-            final BagOStuff app = Mazer5D.getBagOStuff();
-            int x, y, u, v;
-            int xFix, yFix;
-            boolean visible;
-            u = this.plMgr.getPlayerLocationX();
-            v = this.plMgr.getPlayerLocationY();
-            for (x = this.vwMgr.getViewingWindowLocationX(); x <= this.vwMgr
-                    .getLowerRightViewingWindowLocationX(); x++) {
-                for (y = this.vwMgr.getViewingWindowLocationY(); y <= this.vwMgr
-                        .getLowerRightViewingWindowLocationY(); y++) {
-                    xFix = x - this.vwMgr.getViewingWindowLocationX();
-                    yFix = y - this.vwMgr.getViewingWindowLocationY();
-                    visible = app.getMazeManager().getMaze().isSquareVisible(u,
-                            v, y, x);
-                    try {
-                        if (visible) {
-                            MazeObjectModel name1, name2;
-                            name1 = app.getMazeManager().getMaze().getCell(y, x,
-                                    this.plMgr.getPlayerLocationZ(),
-                                    Layers.GROUND);
-                            name2 = app.getMazeManager().getMaze().getCell(y, x,
-                                    this.plMgr.getPlayerLocationZ(),
-                                    Layers.OBJECT);
-                            if (this.trueSightFlag) {
-                                this.drawGrid[xFix][yFix].setIcon(
-                                        ObjectImageManager.getCompositeImage(
-                                                name1, name2, false));
-                            } else {
-                                this.drawGrid[xFix][yFix].setIcon(
-                                        ObjectImageManager.getCompositeImage(
-                                                name1, name2, true));
-                            }
-                        } else {
-                            this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                    .load(GameObjects.createObject(
-                                            MazeObjects.DARKNESS), true));
-                        }
-                    } catch (final ArrayIndexOutOfBoundsException ae) {
+        // Draw the maze
+        final BagOStuff app = Mazer5D.getBagOStuff();
+        int x, y, u, v;
+        int xFix, yFix;
+        boolean visible;
+        u = this.plMgr.getPlayerLocationX();
+        v = this.plMgr.getPlayerLocationY();
+        for (x = this.vwMgr.getViewingWindowLocationX(); x <= this.vwMgr
+                .getLowerRightViewingWindowLocationX(); x++) {
+            for (y = this.vwMgr.getViewingWindowLocationY(); y <= this.vwMgr
+                    .getLowerRightViewingWindowLocationY(); y++) {
+                xFix = x - this.vwMgr.getViewingWindowLocationX();
+                yFix = y - this.vwMgr.getViewingWindowLocationY();
+                visible = app.getMazeManager().getMaze().isSquareVisible(u, v,
+                        y, x);
+                try {
+                    if (visible) {
+                        MazeObjectModel name1, name2;
+                        name1 = app.getMazeManager().getMaze().getCell(y, x,
+                                this.plMgr.getPlayerLocationZ(), Layers.GROUND);
+                        name2 = app.getMazeManager().getMaze().getCell(y, x,
+                                this.plMgr.getPlayerLocationZ(), Layers.OBJECT);
                         if (this.trueSightFlag) {
                             this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                    .load(GameObjects.createObject(
-                                            MazeObjects.BOUNDS), true));
+                                    .getCompositeImage(name1, name2, false));
                         } else {
                             this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                    .load(GameObjects.createObject(
-                                            MazeObjects.BOUNDS), true));
+                                    .getCompositeImage(name1, name2, true));
                         }
-                    } catch (final NullPointerException np) {
-                        if (this.trueSightFlag) {
-                            this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                    .load(GameObjects.createObject(
-                                            MazeObjects.BOUNDS), true));
-                        } else {
-                            this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                    .load(GameObjects.createObject(
-                                            MazeObjects.BOUNDS), true));
-                        }
+                    } else {
+                        this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                                .load(GameObjects.createObject(
+                                        MazeObjects.DARKNESS), true));
+                    }
+                } catch (final ArrayIndexOutOfBoundsException ae) {
+                    if (this.trueSightFlag) {
+                        this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                                .load(GameObjects.createObject(
+                                        MazeObjects.BOUNDS), true));
+                    } else {
+                        this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                                .load(GameObjects.createObject(
+                                        MazeObjects.BOUNDS), true));
+                    }
+                } catch (final NullPointerException np) {
+                    if (this.trueSightFlag) {
+                        this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                                .load(GameObjects.createObject(
+                                        MazeObjects.BOUNDS), true));
+                    } else {
+                        this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                                .load(GameObjects.createObject(
+                                        MazeObjects.BOUNDS), true));
                     }
                 }
             }
-            if (this.knm) {
-                this.knm = false;
-            } else {
-                this.setStatusMessage(" ");
-            }
-            this.outputFrame.pack();
         }
+        if (this.knm) {
+            this.knm = false;
+        } else {
+            this.setStatusMessage(" ");
+        }
+        this.outputFrame.pack();
     }
 
     void redrawOneSquare(final int x, final int y, final boolean useDelay,
             final MazeObjectModel obj3) {
-        // Draw the square, if the maze is visible
+        // Draw the square
         final BagOStuff app = Mazer5D.getBagOStuff();
-        if (this.outputFrame.isVisible()) {
-            int xFix, yFix;
-            boolean visible;
-            xFix = y - this.vwMgr.getViewingWindowLocationX();
-            yFix = x - this.vwMgr.getViewingWindowLocationY();
-            visible = app.getMazeManager().getMaze().isSquareVisible(this.plMgr
-                    .getPlayerLocationX(), this.plMgr.getPlayerLocationY(), x,
-                    y);
-            try {
-                if (visible) {
-                    MazeObjectModel name1, name2;
-                    name1 = app.getMazeManager().getMaze().getCell(x, y,
-                            this.plMgr.getPlayerLocationZ(), Layers.GROUND);
-                    name2 = app.getMazeManager().getMaze().getCell(x, y,
-                            this.plMgr.getPlayerLocationZ(), Layers.OBJECT);
-                    if (this.trueSightFlag) {
-                        this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                .getVirtualCompositeImage(name1, name2, obj3,
-                                        false));
-                    } else {
-                        this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                .getVirtualCompositeImage(name1, name2, obj3,
-                                        true));
-                    }
+        int xFix, yFix;
+        boolean visible;
+        xFix = y - this.vwMgr.getViewingWindowLocationX();
+        yFix = x - this.vwMgr.getViewingWindowLocationY();
+        visible = app.getMazeManager().getMaze().isSquareVisible(this.plMgr
+                .getPlayerLocationX(), this.plMgr.getPlayerLocationY(), x, y);
+        try {
+            if (visible) {
+                MazeObjectModel name1, name2;
+                name1 = app.getMazeManager().getMaze().getCell(x, y, this.plMgr
+                        .getPlayerLocationZ(), Layers.GROUND);
+                name2 = app.getMazeManager().getMaze().getCell(x, y, this.plMgr
+                        .getPlayerLocationZ(), Layers.OBJECT);
+                if (this.trueSightFlag) {
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                            .getVirtualCompositeImage(name1, name2, obj3,
+                                    false));
                 } else {
-                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
-                            GameObjects.createObject(MazeObjects.DARKNESS),
-                            true));
+                    this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                            .getVirtualCompositeImage(name1, name2, obj3,
+                                    true));
                 }
-                this.drawGrid[xFix][yFix].repaint();
-            } catch (final ArrayIndexOutOfBoundsException ae) {
-                // Do nothing
-            } catch (final NullPointerException np) {
-                // Do nothing
+            } else {
+                this.drawGrid[xFix][yFix].setIcon(ObjectImageManager.load(
+                        GameObjects.createObject(MazeObjects.DARKNESS), true));
             }
-            this.outputFrame.pack();
-            if (useDelay) {
-                // Delay, for animation purposes
-                try {
-                    Thread.sleep(60);
-                } catch (final InterruptedException ie) {
-                    // Ignore
-                }
+            this.drawGrid[xFix][yFix].repaint();
+        } catch (final ArrayIndexOutOfBoundsException ae) {
+            // Do nothing
+        } catch (final NullPointerException np) {
+            // Do nothing
+        }
+        this.outputFrame.pack();
+        if (useDelay) {
+            // Delay, for animation purposes
+            try {
+                Thread.sleep(60);
+            } catch (final InterruptedException ie) {
+                // Ignore
             }
         }
     }
@@ -1447,10 +1430,6 @@ public class GameManager implements MazeEffectConstants {
         SoundPlayer.playSound(SoundIndex.GAME_OVER, SoundGroup.USER_INTERFACE);
         CommonDialogs.showDialog("You have died - Game Over!");
         this.exitGame();
-    }
-
-    public JFrame getOutputFrame() {
-        return this.outputFrame;
     }
 
     public void decay() {
@@ -1837,7 +1816,7 @@ public class GameManager implements MazeEffectConstants {
             this.borderPane.add(this.getStatGUI().getStatsPane(),
                     BorderLayout.EAST);
             this.borderPane.add(this.progressPane, BorderLayout.WEST);
-            this.borderPane.add(this.em.getEffectMessagePanel (),
+            this.borderPane.add(this.em.getEffectMessagePanel(),
                     BorderLayout.SOUTH);
             CommonDialogs.showTitledDialog(m.getMazeStartMessage(), m
                     .getMazeTitle());
@@ -1857,14 +1836,19 @@ public class GameManager implements MazeEffectConstants {
         final BagOStuff app = Mazer5D.getBagOStuff();
         app.getMenuManager().setGameMenus();
         MusicPlayer.playMusic(MusicIndex.EXPLORING, MusicGroup.GAME);
-        this.outputFrame.setVisible(true);
+        this.outputFrame.attachAndSave(this.borderPane);
+        this.outputFrame.setTitle("Mazer5D");
+        this.outputFrame.addKeyListener(this.handler);
+        this.outputFrame.addWindowListener(this.handler);
+        this.outputPane.addMouseListener(this.handler);
     }
 
     public void hideOutput() {
+        this.outputFrame.removeKeyListener(this.handler);
+        this.outputFrame.removeWindowListener(this.handler);
+        this.outputPane.removeMouseListener(this.handler);
         MusicPlayer.playMusic(MusicIndex.TITLE, MusicGroup.USER_INTERFACE);
-        if (this.outputFrame != null) {
-            this.outputFrame.setVisible(false);
-        }
+        this.outputFrame.restoreSaved();
     }
 
     private void setUpGUI() {
@@ -1884,19 +1868,10 @@ public class GameManager implements MazeEffectConstants {
         this.progressPane.add(this.alternateAutoFinishProgress);
         this.messageLabel = new JLabel(" ");
         this.messageLabel.setOpaque(true);
-        this.outputFrame = new JFrame("Mazer5D");
-        final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
-        this.outputFrame.setIconImage(iconlogo);
+        this.outputFrame = MainWindow.getMainWindow();
         this.outputPane = new JPanel();
-        this.outputFrame.setContentPane(this.borderPane);
-        this.outputFrame.setDefaultCloseOperation(
-                WindowConstants.DO_NOTHING_ON_CLOSE);
         this.outputPane.setLayout(new GridLayout(this.vwMgr
                 .getViewingWindowSizeX(), this.vwMgr.getViewingWindowSizeY()));
-        this.outputFrame.setResizable(false);
-        this.outputFrame.addKeyListener(this.handler);
-        this.outputFrame.addWindowListener(this.handler);
-        this.outputPane.addMouseListener(this.handler);
         this.drawGrid = new JLabel[this.vwMgr
                 .getViewingWindowSizeX()][this.vwMgr.getViewingWindowSizeY()];
         for (int x = 0; x < this.vwMgr.getViewingWindowSizeX(); x++) {
@@ -1912,7 +1887,7 @@ public class GameManager implements MazeEffectConstants {
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
         this.borderPane.add(this.progressPane, BorderLayout.WEST);
-        this.borderPane.add(this.em.getEffectMessagePanel (),
+        this.borderPane.add(this.em.getEffectMessagePanel(),
                 BorderLayout.SOUTH);
         this.borderPane.add(this.getStatGUI().getStatsPane(),
                 BorderLayout.EAST);

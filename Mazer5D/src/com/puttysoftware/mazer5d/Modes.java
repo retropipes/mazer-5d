@@ -18,6 +18,12 @@ public class Modes {
     private static final int PREFS = 3;
     private static final int ABOUT = 4;
     private static final int GUI = 5;
+    private static final int HELP = 6;
+    private static final int LEVEL_PREFS = 7;
+    private static final int MAZE_PREFS = 8;
+    private static final int TREASURE = 9;
+    private static final int RULE_PICKER = 10;
+    private static final int RULE_EDITOR = 11;
     private static int current;
     private static int former;
 
@@ -43,6 +49,32 @@ public class Modes {
         Modes.current = Modes.ABOUT;
     }
 
+    public static void setInHelp() {
+        Modes.save();
+        Modes.current = Modes.HELP;
+    }
+
+    public static void setInLevelPrefs() {
+        Modes.current = Modes.LEVEL_PREFS;
+    }
+
+    public static void setInMazePrefs() {
+        Modes.current = Modes.MAZE_PREFS;
+    }
+
+    public static void setInTreasure() {
+        Modes.current = Modes.TREASURE;
+    }
+
+    public static void setInRulePicker() {
+        Modes.current = Modes.RULE_PICKER;
+    }
+
+    public static void setInRuleEditor() {
+        Mazer5D.getBagOStuff().getRuleSetPicker().hideOutput();
+        Modes.current = Modes.RULE_EDITOR;
+    }
+
     public static boolean inGUI() {
         return Modes.current == Modes.GUI;
     }
@@ -61,26 +93,43 @@ public class Modes {
 
     public static void restore() {
         final BagOStuff bag = Mazer5D.getBagOStuff();
-        Modes.current = Modes.former;
-        switch (Modes.current) {
-        case GUI:
-            bag.getGUIManager().showGUI();
-            break;
-        case GAME:
-            bag.getGameManager().showOutput();
-            break;
-        case EDITOR:
+        if (Modes.current == Modes.LEVEL_PREFS
+                || Modes.current == Modes.MAZE_PREFS
+                || Modes.current == Modes.TREASURE
+                || Modes.current == Modes.RULE_PICKER) {
+            Modes.current = Modes.EDITOR;
             bag.getMenuManager().setEditorMenus();
             bag.getEditor().showOutput();
-            break;
-        case PREFS:
-            Prefs.showPrefs();
-            break;
-        case ABOUT:
-            bag.getAboutThisGame().showAboutDialog();
-            break;
-        default:
-            break;
+        } else if (Modes.current == Modes.RULE_EDITOR) {
+            Modes.current = Modes.RULE_PICKER;
+            Mazer5D.getBagOStuff().getRuleSetPicker().showOutput();
+        } else {
+            Modes.current = Modes.former;
+            switch (Modes.current) {
+            case GUI:
+                bag.getMenuManager().setMainMenus();
+                bag.getGUIManager().showGUI();
+                break;
+            case GAME:
+                bag.getMenuManager().setGameMenus();
+                bag.getGameManager().showOutput();
+                break;
+            case EDITOR:
+                bag.getMenuManager().setEditorMenus();
+                bag.getEditor().showOutput();
+                break;
+            case PREFS:
+                Prefs.showPrefs();
+                break;
+            case ABOUT:
+                bag.getAboutThisGame().showAboutDialog();
+                break;
+            case HELP:
+                bag.getObjectHelpViewer().showHelp();
+                break;
+            default:
+                break;
+            }
         }
     }
 }

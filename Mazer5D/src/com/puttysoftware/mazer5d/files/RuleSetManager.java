@@ -9,7 +9,6 @@ import java.awt.Frame;
 import java.io.File;
 
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
@@ -74,7 +73,7 @@ public class RuleSetManager {
         fc.setAcceptAllFileFilterUsed(false);
         fc.addChoosableFileFilter(xrsf);
         while (!FilenameChecker.isFilenameOK(fileOnly)) {
-            final int returnVal = fc.showSaveDialog((JFrame) null);
+            final int returnVal = fc.showSaveDialog((Frame) null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 extension = RuleSetManager.getExtension(file);

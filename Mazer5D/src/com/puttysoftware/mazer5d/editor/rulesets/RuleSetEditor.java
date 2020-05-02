@@ -8,7 +8,6 @@ package com.puttysoftware.mazer5d.editor.rulesets;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -16,20 +15,17 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.WindowConstants;
 
-import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assets.LogoImageIndex;
-import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
+import com.puttysoftware.mazer5d.Modes;
+import com.puttysoftware.mazer5d.dialog.MainWindow;
 
 class RuleSetEditor {
     // Fields
     private RuleSet generator;
-    private JFrame editFrame;
+    private MainWindow editFrame;
     private JPanel mainEditPane, contentPane, buttonPane;
     private JButton editOK, editCancel;
     private JCheckBox required;
@@ -51,13 +47,14 @@ class RuleSetEditor {
     }
 
     public void showRuleSetEditor() {
-        Mazer5D.getBagOStuff().getRuleSetPicker().hideOutput();
-        this.editFrame.setVisible(true);
+        Modes.setInRuleEditor();
+        this.editFrame.attachAndSave(this.mainEditPane);
+        this.editFrame.setTitle("Rule Set Editor");
     }
 
     void hideRuleSetEditor() {
-        this.editFrame.setVisible(false);
-        Mazer5D.getBagOStuff().getRuleSetPicker().showOutput();
+        this.editFrame.restoreSaved();
+        Modes.restore();
     }
 
     void saveRuleSetEditor() {
@@ -93,15 +90,13 @@ class RuleSetEditor {
 
     private void setUpGUI() {
         this.handler = new EventHandler();
-        this.editFrame = new JFrame("Rule Set Editor");
-        final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
-        this.editFrame.setIconImage(iconlogo);
+        this.editFrame = MainWindow.getMainWindow();
         this.mainEditPane = new JPanel();
         this.contentPane = new JPanel();
         this.buttonPane = new JPanel();
         this.editOK = new JButton("OK");
         this.editOK.setDefaultCapable(true);
-        this.editFrame.getRootPane().setDefaultButton(this.editOK);
+        this.editFrame.setDefaultButton(this.editOK);
         this.editCancel = new JButton("Cancel");
         this.editCancel.setDefaultCapable(false);
         this.required = new JCheckBox("Is Object Required?", true);
@@ -109,12 +104,8 @@ class RuleSetEditor {
         this.minQuantity = new JTextField("");
         this.maxQuantity = new JTextField("");
         this.generateQuantity = new JTextField("");
-        this.editFrame.setContentPane(this.mainEditPane);
-        this.editFrame.setDefaultCloseOperation(
-                WindowConstants.DO_NOTHING_ON_CLOSE);
         this.editFrame.addWindowListener(this.handler);
         this.mainEditPane.setLayout(new BorderLayout());
-        this.editFrame.setResizable(false);
         this.contentPane.setLayout(new GridLayout(8, 1));
         this.contentPane.add(this.required);
         this.contentPane.add(this.percentage);

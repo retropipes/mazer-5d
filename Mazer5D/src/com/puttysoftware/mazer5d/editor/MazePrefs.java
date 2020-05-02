@@ -8,7 +8,6 @@ package com.puttysoftware.mazer5d.editor;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -17,21 +16,19 @@ import java.awt.event.WindowListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.WindowConstants;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assets.LogoImageIndex;
-import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
+import com.puttysoftware.mazer5d.Modes;
+import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.maze.MazeModel;
 
 public class MazePrefs {
     // Fields
-    private JFrame prefFrame;
+    private MainWindow prefFrame;
     private JPanel mainPrefPane, contentPane, buttonPane;
     private JButton prefsOK, prefsCancel;
     private JComboBox<String> startLevelChoices;
@@ -51,11 +48,16 @@ public class MazePrefs {
     public void showPrefs() {
         this.loadPrefs();
         Mazer5D.getBagOStuff().getEditor().disableOutput();
-        this.prefFrame.setVisible(true);
+        Modes.setInMazePrefs();
+        this.prefFrame.attachAndSave(this.mainPrefPane);
+        this.prefFrame.setTitle("Maze Preferences");
+        this.prefFrame.addWindowListener(this.handler);
     }
 
     public void hidePrefs() {
-        this.prefFrame.setVisible(false);
+        this.prefFrame.removeWindowListener(this.handler);
+        this.prefFrame.restoreSaved();
+        Modes.restore();
         Mazer5D.getBagOStuff().getEditor().enableOutput();
         Mazer5D.getBagOStuff().getMazeManager().setDirty(true);
         Mazer5D.getBagOStuff().getEditor().redrawEditor();
@@ -93,15 +95,13 @@ public class MazePrefs {
 
     private void setUpGUI() {
         this.handler = new EventHandler();
-        this.prefFrame = new JFrame("Maze Preferences");
-        final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
-        this.prefFrame.setIconImage(iconlogo);
+        this.prefFrame = MainWindow.getMainWindow();
         this.mainPrefPane = new JPanel();
         this.contentPane = new JPanel();
         this.buttonPane = new JPanel();
         this.prefsOK = new JButton("OK");
         this.prefsOK.setDefaultCapable(true);
-        this.prefFrame.getRootPane().setDefaultButton(this.prefsOK);
+        this.prefFrame.setDefaultButton(this.prefsOK);
         this.prefsCancel = new JButton("Cancel");
         this.prefsCancel.setDefaultCapable(false);
         this.startLevelChoices = new JComboBox<>();
@@ -109,12 +109,7 @@ public class MazePrefs {
         this.mazeTitle = new JTextField("");
         this.mazeStartMessage = new JTextArea("");
         this.mazeEndMessage = new JTextArea("");
-        this.prefFrame.setContentPane(this.mainPrefPane);
-        this.prefFrame.setDefaultCloseOperation(
-                WindowConstants.DO_NOTHING_ON_CLOSE);
-        this.prefFrame.addWindowListener(this.handler);
         this.mainPrefPane.setLayout(new BorderLayout());
-        this.prefFrame.setResizable(false);
         this.contentPane.setLayout(new GridLayout(10, 1));
         this.contentPane.add(new JLabel("Starting Level"));
         this.contentPane.add(this.startLevelChoices);

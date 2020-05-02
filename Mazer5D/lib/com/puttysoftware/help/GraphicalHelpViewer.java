@@ -4,13 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FileDialog;
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -90,7 +90,7 @@ public final class GraphicalHelpViewer {
         String filename = ""; //$NON-NLS-1$
         String fileOnly = "\\"; //$NON-NLS-1$
         String extension;
-        final FileDialog fc = new FileDialog((JFrame) null, "Export Help", //$NON-NLS-1$
+        final FileDialog fc = new FileDialog((Frame) null, "Export Help", //$NON-NLS-1$
                 FileDialog.SAVE);
         while (!FilenameChecker.isFilenameOK(fileOnly)) {
             fc.setVisible(true);

@@ -8,26 +8,24 @@ package com.puttysoftware.mazer5d.gui;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.desktop.AboutEvent;
 import java.awt.desktop.AboutHandler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
 
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
+import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 
 public class AboutThisGame implements AboutHandler {
     // Fields
-    private JFrame aboutFrame;
+    private MainWindow aboutFrame;
     private JPanel aboutPane, textPane, buttonPane, logoPane;
     private JButton aboutOK;
     private EventHandler handler;
@@ -41,18 +39,18 @@ public class AboutThisGame implements AboutHandler {
     // Methods
     public void showAboutDialog() {
         Modes.setInAbout();
-        this.aboutFrame.setVisible(true);
+        this.aboutFrame.setTitle("About Mazer5D");
+        this.aboutFrame.attachAndSave(this.aboutPane);
     }
 
     void hideAboutDialog() {
-        this.aboutFrame.setVisible(false);
+        this.aboutFrame.restoreSaved();
+        Modes.restore();
     }
 
     private void setUpGUI(final String ver) {
         this.handler = new EventHandler();
-        this.aboutFrame = new JFrame("About Mazer5D");
-        final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
-        this.aboutFrame.setIconImage(iconlogo);
+        this.aboutFrame = MainWindow.getMainWindow();
         this.aboutPane = new JPanel();
         this.textPane = new JPanel();
         this.buttonPane = new JPanel();
@@ -61,8 +59,7 @@ public class AboutThisGame implements AboutHandler {
         this.miniLabel = new JLabel("", LogoImageLoader.load(
                 LogoImageIndex.MINI_LOGO), SwingConstants.LEFT);
         this.aboutOK.setDefaultCapable(true);
-        this.aboutFrame.getRootPane().setDefaultButton(this.aboutOK);
-        this.aboutFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        this.aboutFrame.setDefaultButton(this.aboutOK);
         this.aboutPane.setLayout(new BorderLayout());
         this.logoPane.setLayout(new FlowLayout());
         this.logoPane.add(this.miniLabel);
@@ -78,9 +75,7 @@ public class AboutThisGame implements AboutHandler {
         this.aboutPane.add(this.logoPane, BorderLayout.WEST);
         this.aboutPane.add(this.textPane, BorderLayout.CENTER);
         this.aboutPane.add(this.buttonPane, BorderLayout.SOUTH);
-        this.aboutFrame.setResizable(false);
         this.aboutOK.addActionListener(this.handler);
-        this.aboutFrame.setContentPane(this.aboutPane);
         this.aboutFrame.pack();
     }
 
