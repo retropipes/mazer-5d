@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: support@puttysoftwa
 package com.puttysoftware.mazer5d.dialog;
 
 import java.awt.event.KeyListener;
+import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,7 +17,7 @@ public final class MainWindow {
     private static MainWindow window;
     private final JFrame frame;
     private JPanel content;
-    private JPanel savedContent;
+    private LinkedList<JPanel> savedContentStack;
 
     private MainWindow() {
         super();
@@ -25,7 +26,7 @@ public final class MainWindow {
                 WindowConstants.DO_NOTHING_ON_CLOSE);
         this.frame.setResizable(false);
         this.content = new JPanel();
-        this.savedContent = this.content;
+        this.savedContentStack = new LinkedList<>();
         this.frame.setContentPane(this.content);
         this.frame.setVisible(true);
     }
@@ -41,19 +42,15 @@ public final class MainWindow {
         return MainWindow.window;
     }
 
-    public void attachContent(final JPanel customContent) {
-        this.content = customContent;
-        this.frame.setContentPane(this.content);
-    }
-
     public void attachAndSave(final JPanel customContent) {
-        this.savedContent = this.content;
+        this.savedContentStack.push(this.content);
         this.content = customContent;
         this.frame.setContentPane(this.content);
     }
 
     public void restoreSaved() {
-        this.content = this.savedContent;
+        this.setDefaultButton(null);
+        this.content = this.savedContentStack.pop();
         this.frame.setContentPane(this.content);
     }
 

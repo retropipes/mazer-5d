@@ -293,7 +293,7 @@ public class Prefs {
         Prefs.prefFrame = MainWindow.getMainWindow();
         Prefs.prefFrame.setTitle("Preferences");
         Prefs.prefFrame.setDefaultButton(Prefs.prefsOK);
-        Prefs.prefFrame.attachContent(Prefs.mainPrefPane);
+        Prefs.prefFrame.attachAndSave(Prefs.mainPrefPane);
         Prefs.prefFrame.pack();
         final BagOStuff app = Mazer5D.getBagOStuff();
         Modes.setInPrefs();
@@ -305,7 +305,7 @@ public class Prefs {
             Prefs.setUpGUI();
             Prefs.guiSetUp = true;
         }
-        Prefs.prefFrame.setDefaultButton(null);
+        Prefs.prefFrame.restoreSaved();
         Modes.restore();
     }
 
