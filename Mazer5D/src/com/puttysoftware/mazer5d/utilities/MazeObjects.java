@@ -1,7 +1,6 @@
 package com.puttysoftware.mazer5d.utilities;
 
 public enum MazeObjects {
-    _NONE,
     AMETHYST,
     ANNIHILATION_WAND,
     A_PLUG,
@@ -412,10 +411,6 @@ public enum MazeObjects {
     Y_PLUG,
     Y_PORT,
     Z_PLUG,
-    Z_PORT;
-
-    @Override
-    public String toString() {
-        return Integer.toString(this.ordinal());
-    }
+    Z_PORT,
+    _NONE;
 }

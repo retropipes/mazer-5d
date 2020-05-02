@@ -63,8 +63,10 @@ public class XDataReader implements AutoCloseable {
         final String line = this.br.readLine();
         if (line != null) {
             final String[] split = XDataReader.splitLine(line);
-            XDataReader.validateOpeningTag(split[0], XDataConstants.INT_TAG);
-            XDataReader.validateClosingTag(split[2], XDataConstants.INT_TAG);
+            XDataReader.validateOpeningTag(split[0],
+                    XDataConstants.OBJECT_ID_TAG);
+            XDataReader.validateClosingTag(split[2],
+                    XDataConstants.OBJECT_ID_TAG);
             return MazeObjects.valueOf(split[1]);
         }
         throw new IOException("End of file!"); //$NON-NLS-1$

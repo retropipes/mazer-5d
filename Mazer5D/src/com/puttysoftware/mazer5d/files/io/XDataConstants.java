@@ -11,4 +11,5 @@ class XDataConstants {
     public static final String BYTE_TAG = "byte"; //$NON-NLS-1$
     public static final String BOOLEAN_TAG = "boolean"; //$NON-NLS-1$
     public static final String STRING_TAG = "string"; //$NON-NLS-1$
+    public static final String OBJECT_ID_TAG = "object-id"; //$NON-NLS-1$
 }

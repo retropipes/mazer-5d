@@ -54,6 +54,7 @@ import com.puttysoftware.mazer5d.files.versions.PrefsVersionException;
 import com.puttysoftware.mazer5d.files.versions.PrefsVersions;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.gui.MainWindow;
+import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 import com.puttysoftware.updater.ProductData;
 import com.puttysoftware.updater.UpdateCheckResults;
@@ -347,8 +348,8 @@ public class Prefs {
             Prefs.setUpGUI();
             Prefs.guiSetUp = true;
         }
-        Prefs.editorFill = MazeObjects.valueOf(Integer.toString(
-                Prefs.editorFillChoices.getSelectedIndex()));
+        Prefs.editorFill = GameObjects.getUIDForIndex(Prefs.editorFillChoices
+                .getSelectedIndex());
         for (int x = 0; x < Prefs.SOUNDS_LENGTH; x++) {
             Prefs.setSoundGroupEnabledImpl(x, Prefs.sounds[x].isSelected());
         }

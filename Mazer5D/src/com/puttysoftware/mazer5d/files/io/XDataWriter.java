@@ -41,8 +41,8 @@ public class XDataWriter implements AutoCloseable {
     }
 
     public void writeMazeObjectID(final MazeObjects moid) throws IOException {
-        this.bw.write("<" + XDataConstants.INT_TAG + ">" + moid.toString() //$NON-NLS-1$ //$NON-NLS-2$
-                + "</" + XDataConstants.INT_TAG + ">" //$NON-NLS-1$ //$NON-NLS-2$
+        this.bw.write("<" + XDataConstants.OBJECT_ID_TAG + ">" + moid.toString() //$NON-NLS-1$ //$NON-NLS-2$
+                + "</" + XDataConstants.OBJECT_ID_TAG + ">" //$NON-NLS-1$ //$NON-NLS-2$
                 + XDataWriter.END_OF_LINE);
     }
 
