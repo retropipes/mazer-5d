@@ -9,8 +9,6 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
@@ -65,11 +63,9 @@ public class LevelPrefs {
         Modes.setInLevelPrefs();
         this.prefFrame.attachAndSave(this.mainPrefPane);
         this.prefFrame.setTitle("Level Preferences");
-        this.prefFrame.addWindowListener(this.handler);
     }
 
     public void hidePrefs() {
-        this.prefFrame.removeWindowListener(this.handler);
         this.prefFrame.restoreSaved();
         Modes.restore();
         Mazer5D.getBagOStuff().getEditor().enableOutput();
@@ -286,7 +282,7 @@ public class LevelPrefs {
         this.prefFrame.pack();
     }
 
-    private class EventHandler implements ActionListener, WindowListener {
+    private class EventHandler implements ActionListener {
         public EventHandler() {
             // Do nothing
         }
@@ -302,43 +298,6 @@ public class LevelPrefs {
             } else if (cmd.equals("Cancel")) {
                 lpm.hidePrefs();
             }
-        }
-
-        // handle window
-        @Override
-        public void windowOpened(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowClosing(final WindowEvent e) {
-            final LevelPrefs pm = LevelPrefs.this;
-            pm.hidePrefs();
-        }
-
-        @Override
-        public void windowClosed(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowIconified(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowDeiconified(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowActivated(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowDeactivated(final WindowEvent e) {
-            // Do nothing
         }
     }
 }

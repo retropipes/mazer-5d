@@ -10,8 +10,6 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -38,7 +36,7 @@ public class RuleSetPicker {
     private final MazeObjectModel[] objects;
     private final BufferedImageIcon[] editorAppearances;
     private int index;
-    private JButton create, destroy, edit, importXML, exportXML;
+    private JButton create, destroy, edit, importXML, exportXML, done;
     private final RuleSetEditor rsEditor;
 
     public RuleSetPicker() {
@@ -110,6 +108,7 @@ public class RuleSetPicker {
         this.edit = new JButton("Edit");
         this.importXML = new JButton("Load");
         this.exportXML = new JButton("Save");
+        this.done = new JButton("Done");
         this.borderPane.setLayout(new BorderLayout());
         this.borderPane.add(this.outputPane, BorderLayout.SOUTH);
         this.outputPane.setLayout(new FlowLayout());
@@ -118,12 +117,13 @@ public class RuleSetPicker {
         this.outputPane.add(this.edit);
         this.outputPane.add(this.importXML);
         this.outputPane.add(this.exportXML);
-        this.outputFrame.addWindowListener(this.handler);
+        this.outputPane.add(this.done);
         this.create.addActionListener(this.handler);
         this.destroy.addActionListener(this.handler);
         this.edit.addActionListener(this.handler);
         this.importXML.addActionListener(this.handler);
         this.exportXML.addActionListener(this.handler);
+        this.done.addActionListener(this.handler);
         this.picker = new PicturePicker(this.editorAppearances, this.names,
                 new Color(223, 223, 223));
         this.picker.changePickerColor(new Color(223, 223, 223));
@@ -133,7 +133,7 @@ public class RuleSetPicker {
         this.outputFrame.pack();
     }
 
-    private class EventHandler implements ActionListener, WindowListener {
+    private class EventHandler implements ActionListener {
         public EventHandler() {
             // Do nothing
         }
@@ -153,43 +153,9 @@ public class RuleSetPicker {
                 RuleSetManager.importRuleSet();
             } else if (cmd.equals("Save")) {
                 RuleSetManager.exportRuleSet();
+            } else if (cmd.equals("Done")) {
+                ge.exitRuleSetEditor();
             }
-        }
-
-        // Handle windows
-        @Override
-        public void windowActivated(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowClosed(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowClosing(final WindowEvent we) {
-            RuleSetPicker.this.exitRuleSetEditor();
-        }
-
-        @Override
-        public void windowDeactivated(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowDeiconified(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowIconified(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowOpened(final WindowEvent we) {
-            // Do nothing
         }
     }
 }

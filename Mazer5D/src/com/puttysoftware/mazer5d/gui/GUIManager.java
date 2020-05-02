@@ -9,8 +9,6 @@ import java.awt.GridLayout;
 import java.awt.desktop.QuitEvent;
 import java.awt.desktop.QuitHandler;
 import java.awt.desktop.QuitResponse;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -33,11 +31,9 @@ public class GUIManager implements QuitHandler {
     private final MainWindow guiFrame;
     private final JPanel guiPane;
     private final JLabel logoLabel;
-    private final CloseHandler cHandler;
 
     // Constructors
     public GUIManager() {
-        this.cHandler = new CloseHandler();
         this.guiFrame = MainWindow.getMainWindow();
         this.guiPane = new JPanel();
         this.guiPane.setLayout(new GridLayout(1, 1));
@@ -56,12 +52,10 @@ public class GUIManager implements QuitHandler {
         app.getMenuManager().checkFlags();
         this.guiFrame.attachAndSave(this.guiPane);
         this.guiFrame.setTitle("Mazer5D");
-        this.guiFrame.addWindowListener(this.cHandler);
         this.guiFrame.pack();
     }
 
     public void hideGUI() {
-        this.guiFrame.removeWindowListener(this.cHandler);
         this.guiFrame.restoreSaved();
     }
 
@@ -85,49 +79,6 @@ public class GUIManager implements QuitHandler {
             new TempDirCleanup().start();
         }
         return saved;
-    }
-
-    private class CloseHandler implements WindowListener {
-        public CloseHandler() {
-            // Do nothing
-        }
-
-        @Override
-        public void windowActivated(final WindowEvent arg0) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowClosed(final WindowEvent arg0) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowClosing(final WindowEvent arg0) {
-            if (GUIManager.this.quitHandler()) {
-                System.exit(0);
-            }
-        }
-
-        @Override
-        public void windowDeactivated(final WindowEvent arg0) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowDeiconified(final WindowEvent arg0) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowIconified(final WindowEvent arg0) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowOpened(final WindowEvent arg0) {
-            // Do nothing
-        }
     }
 
     @Override

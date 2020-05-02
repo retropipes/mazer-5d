@@ -11,13 +11,14 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -65,6 +66,7 @@ public class MazeEditor {
     private final MazePrefs mPrefs;
     private PicturePicker picker;
     private final PicturePicker treasurePicker;
+    private final JButton pick;
     private final String[] groundNames;
     private final String[] objectNames;
     private final MazeObjectModel[] groundObjects;
@@ -139,9 +141,15 @@ public class MazeEditor {
                 this.containableEditorAppearances, this.containableNames,
                 new Color(223, 223, 223));
         this.treasurePicker.changePickerColor(new Color(223, 223, 223));
+        this.pick = new JButton("Pick!");
+        this.pick.addActionListener(this.rhandler);
         final int maxSize = Prefs.getViewingWindowSize();
         this.treasurePicker.updatePickerLayout(maxSize);
-        this.treasurePane = this.treasurePicker.getPicker();
+        this.treasurePane = new JPanel();
+        this.treasurePane.setLayout(new BorderLayout());
+        this.treasurePane.add(this.treasurePicker.getPicker(),
+                BorderLayout.CENTER);
+        this.treasurePane.add(this.pick, BorderLayout.SOUTH);
         this.mazeChanged = true;
         this.goToDestMode = false;
         this.instanceBeingEdited = null;
@@ -939,7 +947,6 @@ public class MazeEditor {
         Modes.setInTreasure();
         this.outputFrame.attachAndSave(this.treasurePane);
         this.outputFrame.setTitle("Pick Treasure Chest Contents");
-        this.outputFrame.addWindowListener(this.rhandler);
         return null;
     }
 
@@ -1190,7 +1197,6 @@ public class MazeEditor {
     }
 
     public void setTreasureChestContents() {
-        this.outputFrame.removeWindowListener(this.rhandler);
         this.outputFrame.restoreSaved();
         Modes.restore();
         this.enableOutput();
@@ -1758,12 +1764,10 @@ public class MazeEditor {
         app.getMenuManager().setEditorMenus();
         this.outputFrame.attachAndSave(this.borderPane);
         this.outputFrame.setTitle("Editor");
-        this.outputFrame.addWindowListener(this.mhandler);
         this.outputFrame.pack();
     }
 
     public void hideOutput() {
-        this.outputFrame.removeWindowListener(this.mhandler);
         this.outputFrame.restoreSaved();
     }
 
@@ -1968,7 +1972,7 @@ public class MazeEditor {
         }
     }
 
-    public void handleCloseWindow() {
+    public void doneEditing() {
         final BagOStuff app = Mazer5D.getBagOStuff();
         boolean success = false;
         int status = JOptionPane.DEFAULT_OPTION;
@@ -1988,8 +1992,7 @@ public class MazeEditor {
         }
     }
 
-    private class EventHandler implements AdjustmentListener, MouseListener,
-            WindowListener {
+    private class EventHandler implements AdjustmentListener, MouseListener {
         public EventHandler() {
             // Do nothing
         }
@@ -2056,83 +2059,16 @@ public class MazeEditor {
         public void mouseExited(final MouseEvent e) {
             // Do nothing
         }
-
-        // Handle windows
-        @Override
-        public void windowActivated(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowClosed(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowClosing(final WindowEvent we) {
-            MazeEditor.this.handleCloseWindow();
-        }
-
-        @Override
-        public void windowDeactivated(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowDeiconified(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowIconified(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowOpened(final WindowEvent we) {
-            // Do nothing
-        }
     }
 
-    private class TreasureEventHandler implements WindowListener {
+    private class TreasureEventHandler implements ActionListener {
         public TreasureEventHandler() {
             // Do nothing
         }
 
-        // Handle windows
         @Override
-        public void windowActivated(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowClosed(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowClosing(final WindowEvent we) {
+        public void actionPerformed(final ActionEvent ae) {
             MazeEditor.this.setTreasureChestContents();
-        }
-
-        @Override
-        public void windowDeactivated(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowDeiconified(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowIconified(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowOpened(final WindowEvent we) {
-            // Do nothing
         }
     }
 

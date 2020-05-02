@@ -26,8 +26,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.IOException;
 import java.time.Clock;
@@ -296,7 +294,6 @@ public class Prefs {
         Prefs.prefFrame.setTitle("Preferences");
         Prefs.prefFrame.setDefaultButton(Prefs.prefsOK);
         Prefs.prefFrame.attachContent(Prefs.mainPrefPane);
-        Prefs.prefFrame.addWindowListener(Prefs.handler);
         Prefs.prefFrame.pack();
         final BagOStuff app = Mazer5D.getBagOStuff();
         Modes.setInPrefs();
@@ -309,7 +306,6 @@ public class Prefs {
             Prefs.guiSetUp = true;
         }
         Prefs.prefFrame.setDefaultButton(null);
-        Prefs.prefFrame.removeWindowListener(Prefs.handler);
         Modes.restore();
     }
 
@@ -748,8 +744,7 @@ public class Prefs {
         }
     }
 
-    private static class EventHandler implements ActionListener, ItemListener,
-            WindowListener {
+    private static class EventHandler implements ActionListener, ItemListener {
         public EventHandler() {
             // Do nothing
         }
@@ -803,41 +798,6 @@ public class Prefs {
                     }
                 }
             }
-        }
-
-        @Override
-        public void windowOpened(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowClosing(final WindowEvent e) {
-            Prefs.hidePrefs();
-        }
-
-        @Override
-        public void windowClosed(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowIconified(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowDeiconified(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowActivated(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowDeactivated(final WindowEvent e) {
-            // Do nothing
         }
     }
 }

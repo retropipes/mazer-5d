@@ -789,7 +789,7 @@ public class MenuManager {
             } else if (cmd.equals("Close")) {
                 // Close the window
                 if (Modes.inEditor()) {
-                    app.getEditor().handleCloseWindow();
+                    app.getEditor().doneEditing();
                 } else if (Modes.inGame()) {
                     boolean saved = true;
                     int status = 0;
@@ -804,7 +804,7 @@ public class MenuManager {
                         }
                     }
                     if (saved) {
-                        app.getGameManager().exitGame();
+                        app.getGameManager().endGame();
                     }
                 }
             } else if (cmd.equals("Save")) {

@@ -10,8 +10,6 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -104,7 +102,6 @@ class RuleSetEditor {
         this.minQuantity = new JTextField("");
         this.maxQuantity = new JTextField("");
         this.generateQuantity = new JTextField("");
-        this.editFrame.addWindowListener(this.handler);
         this.mainEditPane.setLayout(new BorderLayout());
         this.contentPane.setLayout(new GridLayout(8, 1));
         this.contentPane.add(this.required);
@@ -125,7 +122,7 @@ class RuleSetEditor {
         this.editFrame.pack();
     }
 
-    private class EventHandler implements ActionListener, WindowListener {
+    private class EventHandler implements ActionListener {
         public EventHandler() {
             // Do nothing
         }
@@ -141,43 +138,6 @@ class RuleSetEditor {
             } else if (cmd.equals("Cancel")) {
                 ge.hideRuleSetEditor();
             }
-        }
-
-        // handle window
-        @Override
-        public void windowOpened(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowClosing(final WindowEvent e) {
-            final RuleSetEditor pm = RuleSetEditor.this;
-            pm.hideRuleSetEditor();
-        }
-
-        @Override
-        public void windowClosed(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowIconified(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowDeiconified(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowActivated(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowDeactivated(final WindowEvent e) {
-            // Do nothing
         }
     }
 }

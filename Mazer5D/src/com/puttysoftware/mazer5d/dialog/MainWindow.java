@@ -6,7 +6,6 @@ Any questions should be directed to the author via email at: support@puttysoftwa
 package com.puttysoftware.mazer5d.dialog;
 
 import java.awt.event.KeyListener;
-import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -64,14 +63,6 @@ public final class MainWindow {
 
     public void pack() {
         this.frame.pack();
-    }
-
-    public void addWindowListener(final WindowListener l) {
-        this.frame.addWindowListener(l);
-    }
-
-    public void removeWindowListener(final WindowListener l) {
-        this.frame.removeWindowListener(l);
     }
 
     public void addKeyListener(final KeyListener l) {

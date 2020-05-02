@@ -10,8 +10,6 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -51,11 +49,9 @@ public class MazePrefs {
         Modes.setInMazePrefs();
         this.prefFrame.attachAndSave(this.mainPrefPane);
         this.prefFrame.setTitle("Maze Preferences");
-        this.prefFrame.addWindowListener(this.handler);
     }
 
     public void hidePrefs() {
-        this.prefFrame.removeWindowListener(this.handler);
         this.prefFrame.restoreSaved();
         Modes.restore();
         Mazer5D.getBagOStuff().getEditor().enableOutput();
@@ -131,7 +127,7 @@ public class MazePrefs {
         this.prefFrame.pack();
     }
 
-    private class EventHandler implements ActionListener, WindowListener {
+    private class EventHandler implements ActionListener {
         public EventHandler() {
             // Do nothing
         }
@@ -147,43 +143,6 @@ public class MazePrefs {
             } else if (cmd.equals("Cancel")) {
                 mpm.hidePrefs();
             }
-        }
-
-        // handle window
-        @Override
-        public void windowOpened(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowClosing(final WindowEvent e) {
-            final MazePrefs pm = MazePrefs.this;
-            pm.hidePrefs();
-        }
-
-        @Override
-        public void windowClosed(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowIconified(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowDeiconified(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowActivated(final WindowEvent e) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowDeactivated(final WindowEvent e) {
-            // Do nothing
         }
     }
 }

@@ -11,8 +11,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.IOException;
 
 import javax.swing.BoxLayout;
@@ -1396,7 +1394,26 @@ public class GameManager implements MazeEffectConstants {
         this.exitGame();
     }
 
-    public void exitGame() {
+    public void endGame() {
+        final BagOStuff app = Mazer5D.getBagOStuff();
+        boolean success = false;
+        int status = 0;
+        if (app.getMazeManager().getDirty()) {
+            status = app.getMazeManager().showSaveDialog();
+            if (status == JOptionPane.YES_OPTION) {
+                success = app.getMazeManager().saveMaze();
+                if (success) {
+                    this.exitGame();
+                }
+            } else if (status == JOptionPane.NO_OPTION) {
+                this.exitGame();
+            }
+        } else {
+            this.exitGame();
+        }
+    }
+
+    private void exitGame() {
         this.stateChanged = true;
         this.deactivateAllEffects();
         final BagOStuff app = Mazer5D.getBagOStuff();
@@ -1839,13 +1856,11 @@ public class GameManager implements MazeEffectConstants {
         this.outputFrame.attachAndSave(this.borderPane);
         this.outputFrame.setTitle("Mazer5D");
         this.outputFrame.addKeyListener(this.handler);
-        this.outputFrame.addWindowListener(this.handler);
         this.outputPane.addMouseListener(this.handler);
     }
 
     public void hideOutput() {
         this.outputFrame.removeKeyListener(this.handler);
-        this.outputFrame.removeWindowListener(this.handler);
         this.outputPane.removeMouseListener(this.handler);
         MusicPlayer.playMusic(MusicIndex.TITLE, MusicGroup.USER_INTERFACE);
         this.outputFrame.restoreSaved();
@@ -1893,8 +1908,7 @@ public class GameManager implements MazeEffectConstants {
                 BorderLayout.EAST);
     }
 
-    private class EventHandler implements KeyListener, WindowListener,
-            MouseListener {
+    private class EventHandler implements KeyListener, MouseListener {
         public EventHandler() {
             // Do nothing
         }
@@ -2086,57 +2100,6 @@ public class GameManager implements MazeEffectConstants {
             if (gm.isPullInProgress()) {
                 gm.setPullInProgress(false);
             }
-        }
-
-        // Handle windows
-        @Override
-        public void windowActivated(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowClosed(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowClosing(final WindowEvent we) {
-            final BagOStuff app = Mazer5D.getBagOStuff();
-            boolean success = false;
-            int status = 0;
-            if (app.getMazeManager().getDirty()) {
-                status = app.getMazeManager().showSaveDialog();
-                if (status == JOptionPane.YES_OPTION) {
-                    success = app.getMazeManager().saveMaze();
-                    if (success) {
-                        app.getGameManager().exitGame();
-                    }
-                } else if (status == JOptionPane.NO_OPTION) {
-                    app.getGameManager().exitGame();
-                }
-            } else {
-                app.getGameManager().exitGame();
-            }
-        }
-
-        @Override
-        public void windowDeactivated(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowDeiconified(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowIconified(final WindowEvent we) {
-            // Do nothing
-        }
-
-        @Override
-        public void windowOpened(final WindowEvent we) {
-            // Do nothing
         }
 
         // handle mouse
