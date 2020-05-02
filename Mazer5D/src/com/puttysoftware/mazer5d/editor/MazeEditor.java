@@ -149,7 +149,7 @@ public class MazeEditor {
                 this.containableEditorAppearances, this.containableNames,
                 new Color(223, 223, 223));
         this.treasurePicker.changePickerColor(new Color(223, 223, 223));
-        final int maxSize = Prefs.getEditorWindowSize();
+        final int maxSize = Prefs.getViewingWindowSize();
         this.treasurePicker.updatePickerLayout(maxSize);
         this.treasurePane = this.treasurePicker.getPicker();
         this.treasureFrame.setContentPane(this.treasurePane);

@@ -62,7 +62,7 @@ public class ObjectHelpManager {
             this.helpFrame.setLayout(new BorderLayout());
             this.helpFrame.add(this.hv.getHelp(), BorderLayout.CENTER);
             this.helpFrame.add(this.export, BorderLayout.SOUTH);
-            final int maxSize = Prefs.getEditorWindowSize();
+            final int maxSize = Prefs.getViewingWindowSize();
             this.hv.setHelpSize(maxSize, maxSize);
             this.helpFrame.pack();
             this.helpFrame.setResizable(false);

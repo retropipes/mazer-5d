@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
+import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 
@@ -39,6 +40,7 @@ public class AboutDialog implements AboutHandler {
 
     // Methods
     public void showAboutDialog() {
+        Modes.setInAbout();
         this.aboutFrame.setVisible(true);
     }
 

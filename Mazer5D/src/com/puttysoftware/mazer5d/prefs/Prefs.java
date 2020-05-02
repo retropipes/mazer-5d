@@ -74,7 +74,6 @@ public class Prefs {
     private static JComboBox<String> updateCheckInterval;
     private static String[] updateCheckIntervalValues;
     private static JComboBox<String> viewingWindowChoices;
-    private static JComboBox<String> editorWindowChoices;
     private static JRadioButton generatorConstrainedRandom;
     private static JRadioButton generatorTwister;
     private static JSlider randomRoomSize;
@@ -86,7 +85,6 @@ public class Prefs {
     private static boolean checkUpdatesStartupEnabled;
     private static boolean moveOneAtATimeEnabled;
     private static int viewingWindowIndex;
-    private static int editorWindowIndex;
     private static int updateCheckIntervalIndex;
     private static int randomRoomSizeIndex;
     private static int randomHallSizeIndex;
@@ -114,8 +112,7 @@ public class Prefs {
     private static final int DEFAULT_UPDATE_CHECK_INTERVAL_INDEX = 2;
     private static final long[] UPDATE_CHECK_INTERVAL_VALUES = new long[] {
             86400L, 172800L, 604800L, 1209600L, 2592000L };
-    private static final int DEFAULT_GAME_VIEW_SIZE_INDEX = 2;
-    private static final int DEFAULT_EDITOR_VIEW_SIZE_INDEX = 2;
+    private static final int DEFAULT_VIEW_SIZE_INDEX = 2;
     private static final String[] VIEWING_WINDOW_SIZE_NAMES = new String[] {
             "Tiny", "Small", "Medium", "Large", "Huge", "Tiny HD", "Small HD",
             "Medium HD", "Large HD", "Huge HD" };
@@ -166,12 +163,12 @@ public class Prefs {
         Prefs.lastFilterUsedOpen = value;
     }
 
-    public static boolean isWorldGeneratorConstrainedRandom() {
+    public static boolean isMazeGeneratorConstrainedRandom() {
         return Prefs.worldGenerator == Prefs.GENERATOR_OBSOLETE
                 || Prefs.worldGenerator == Prefs.GENERATOR_CONSTRAINED_RANDOM;
     }
 
-    public static boolean isWorldGeneratorTwister() {
+    public static boolean isMazeGeneratorTwister() {
         return Prefs.worldGenerator == Prefs.GENERATOR_TWISTER;
     }
 
@@ -235,14 +232,6 @@ public class Prefs {
 
     public static int getViewingWindowSizeIndex() {
         return Prefs.viewingWindowIndex;
-    }
-
-    public static int getEditorWindowSize() {
-        return Prefs.VIEWING_WINDOW_SIZES[Prefs.getEditorWindowSizeIndex()];
-    }
-
-    public static int getEditorWindowSizeIndex() {
-        return Prefs.editorWindowIndex;
     }
 
     public static boolean isSoundGroupEnabled(final SoundGroup group) {
@@ -325,11 +314,6 @@ public class Prefs {
         Prefs.fileMgr.writePreferencesFile();
     }
 
-    public static void resetPrefs() {
-        Prefs.fileMgr.deletePreferencesFile();
-        Prefs.resetDefaultPrefs();
-    }
-
     private static void loadPrefs() {
         if (!Prefs.guiSetUp) {
             Prefs.setUpGUI();
@@ -347,7 +331,6 @@ public class Prefs {
         Prefs.checkUpdatesStartup.setSelected(Prefs.checkUpdatesStartupEnabled);
         Prefs.moveOneAtATime.setSelected(Prefs.moveOneAtATimeEnabled);
         Prefs.viewingWindowChoices.setSelectedIndex(Prefs.viewingWindowIndex);
-        Prefs.editorWindowChoices.setSelectedIndex(Prefs.editorWindowIndex);
         if (Prefs.worldGenerator == Prefs.GENERATOR_CONSTRAINED_RANDOM) {
             Prefs.generatorConstrainedRandom.setSelected(true);
         } else if (Prefs.worldGenerator == Prefs.GENERATOR_TWISTER) {
@@ -379,7 +362,6 @@ public class Prefs {
         Prefs.moveOneAtATimeEnabled = Prefs.moveOneAtATime.isSelected();
         Prefs.viewingWindowIndex = Prefs.viewingWindowChoices
                 .getSelectedIndex();
-        Prefs.editorWindowIndex = Prefs.editorWindowChoices.getSelectedIndex();
         if (Prefs.generatorConstrainedRandom.isSelected()) {
             Prefs.worldGenerator = Prefs.GENERATOR_CONSTRAINED_RANDOM;
         } else if (Prefs.generatorTwister.isSelected()) {
@@ -409,10 +391,8 @@ public class Prefs {
         Prefs.checkUpdatesStartupEnabled = false;
         Prefs.moveOneAtATime.setSelected(true);
         Prefs.moveOneAtATimeEnabled = true;
-        Prefs.viewingWindowIndex = Prefs.DEFAULT_GAME_VIEW_SIZE_INDEX;
+        Prefs.viewingWindowIndex = Prefs.DEFAULT_VIEW_SIZE_INDEX;
         Prefs.viewingWindowChoices.setSelectedIndex(Prefs.viewingWindowIndex);
-        Prefs.editorWindowIndex = Prefs.DEFAULT_EDITOR_VIEW_SIZE_INDEX;
-        Prefs.editorWindowChoices.setSelectedIndex(Prefs.editorWindowIndex);
         Prefs.updateCheckIntervalIndex = Prefs.DEFAULT_UPDATE_CHECK_INTERVAL_INDEX;
         Prefs.updateCheckInterval.setSelectedIndex(
                 Prefs.DEFAULT_UPDATE_CHECK_INTERVAL_INDEX);
@@ -446,7 +426,6 @@ public class Prefs {
         Prefs.prefTabPane = new JTabbedPane();
         Prefs.mainPrefPane = new JPanel();
         final JPanel editorPane = new JPanel();
-        final JPanel generatorPane = new JPanel();
         Prefs.twisterPane = new JPanel();
         final JPanel soundPane = new JPanel();
         final JPanel musicPane = new JPanel();
@@ -501,12 +480,11 @@ public class Prefs {
         Prefs.randomHallSize.setPaintLabels(true);
         Prefs.mainPrefPane.setLayout(new BorderLayout());
         editorPane.setLayout(new GridLayout(Prefs.GRID_LENGTH, 1));
-        editorPane.add(new JLabel("Default fill for new worlds:"));
+        editorPane.add(new JLabel("Default fill for new mazes:"));
         editorPane.add(Prefs.editorFillChoices);
-        editorPane.add(new JLabel("Editor Window Size"));
-        Prefs.editorWindowChoices = new JComboBox<>(
-                Prefs.VIEWING_WINDOW_SIZE_NAMES);
-        editorPane.add(Prefs.editorWindowChoices);
+        editorPane.add(new JLabel("Maze Generation Method"));
+        editorPane.add(Prefs.generatorConstrainedRandom);
+        editorPane.add(Prefs.generatorTwister);
         soundPane.setLayout(new GridLayout(Prefs.GRID_LENGTH, 1));
         for (int x = 0; x < Prefs.SOUNDS_LENGTH; x++) {
             soundPane.add(Prefs.sounds[x]);
@@ -526,10 +504,6 @@ public class Prefs {
         Prefs.viewingWindowChoices = new JComboBox<>(
                 Prefs.VIEWING_WINDOW_SIZE_NAMES);
         viewPane.add(Prefs.viewingWindowChoices);
-        generatorPane.setLayout(new GridLayout(Prefs.GRID_LENGTH, 1));
-        generatorPane.add(new JLabel("World Generation Method"));
-        generatorPane.add(Prefs.generatorConstrainedRandom);
-        generatorPane.add(Prefs.generatorTwister);
         Prefs.twisterPane.setLayout(new GridLayout(Prefs.GRID_LENGTH, 1));
         Prefs.twisterPane.add(new JLabel("Room Size"));
         Prefs.twisterPane.add(Prefs.randomRoomSize);
@@ -541,7 +515,6 @@ public class Prefs {
         buttonPane.add(Prefs.prefsExport);
         buttonPane.add(Prefs.prefsImport);
         Prefs.prefTabPane.addTab("Editor", null, editorPane);
-        Prefs.prefTabPane.addTab("Generator", null, generatorPane);
         Prefs.prefTabPane.addTab("Generator Tweaks", null, Prefs.twisterPane);
         Prefs.prefTabPane.addTab("Sounds", null, soundPane);
         Prefs.prefTabPane.addTab("Music", null, musicPane);
@@ -564,11 +537,6 @@ public class Prefs {
         }
 
         // Methods
-        public void deletePreferencesFile() {
-            // Delete preferences file
-            CommonPaths.getPrefsFile().delete();
-        }
-
         public boolean readPreferencesFile() {
             if (!CommonPaths.getPrefsFile().exists()) {
                 // Abort early if the file does not exist
@@ -602,7 +570,6 @@ public class Prefs {
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     Prefs.musicEnabled[x] = reader.readBoolean();
                 }
-                Prefs.editorWindowIndex = reader.readInt();
                 Prefs.worldGenerator = reader.readInt();
                 Prefs.randomRoomSizeIndex = reader.readInt();
                 final int cachedMajor = reader.readInt();
@@ -653,7 +620,6 @@ public class Prefs {
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     writer.writeBoolean(Prefs.musicEnabled[x]);
                 }
-                writer.writeInt(Prefs.editorWindowIndex);
                 writer.writeInt(Prefs.worldGenerator);
                 writer.writeInt(Prefs.randomRoomSizeIndex);
                 writer.writeInt(Prefs.cachedMajorVersion);
@@ -704,7 +670,6 @@ public class Prefs {
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     Prefs.musicEnabled[x] = reader.readBoolean();
                 }
-                Prefs.editorWindowIndex = reader.readInt();
                 Prefs.worldGenerator = reader.readInt();
                 Prefs.randomRoomSizeIndex = reader.readInt();
                 final int cachedMajor = reader.readInt();
@@ -749,7 +714,6 @@ public class Prefs {
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     writer.writeBoolean(Prefs.musicEnabled[x]);
                 }
-                writer.writeInt(Prefs.editorWindowIndex);
                 writer.writeInt(Prefs.worldGenerator);
                 writer.writeInt(Prefs.randomRoomSizeIndex);
                 writer.writeInt(Prefs.cachedMajorVersion);
