@@ -85,38 +85,38 @@ public abstract class GenericGenerator extends GenericWall {
             mo8UID = invalidUID;
         }
         if (mo2UID.equals(horzUID)) {
-            scanResult = this.scan(Directions.WEST, dirX,
-                    dirY, pz, this.SCAN_LIMIT, false);
+            scanResult = this.scan(Directions.WEST, dirX, dirY, pz,
+                    this.SCAN_LIMIT, false);
             if (scanResult) {
-                this.generate(Directions.WEST, dirX, dirY, pz,
-                        this.SCAN_LIMIT, false);
+                this.generate(Directions.WEST, dirX, dirY, pz, this.SCAN_LIMIT,
+                        false);
                 flag = true;
             }
         }
         if (mo4UID.equals(vertUID)) {
-            scanResult = this.scan(Directions.NORTH, dirX,
-                    dirY, pz, this.SCAN_LIMIT, false);
+            scanResult = this.scan(Directions.NORTH, dirX, dirY, pz,
+                    this.SCAN_LIMIT, false);
             if (scanResult) {
-                this.generate(Directions.NORTH, dirX, dirY,
-                        pz, this.SCAN_LIMIT, false);
+                this.generate(Directions.NORTH, dirX, dirY, pz, this.SCAN_LIMIT,
+                        false);
                 flag = true;
             }
         }
         if (mo6UID.equals(vertUID)) {
-            scanResult = this.scan(Directions.SOUTH, dirX,
-                    dirY, pz, this.SCAN_LIMIT, false);
+            scanResult = this.scan(Directions.SOUTH, dirX, dirY, pz,
+                    this.SCAN_LIMIT, false);
             if (scanResult) {
-                this.generate(Directions.SOUTH, dirX, dirY,
-                        pz, this.SCAN_LIMIT, false);
+                this.generate(Directions.SOUTH, dirX, dirY, pz, this.SCAN_LIMIT,
+                        false);
                 flag = true;
             }
         }
         if (mo8UID.equals(horzUID)) {
-            scanResult = this.scan(Directions.EAST, dirX,
-                    dirY, pz, this.SCAN_LIMIT, false);
+            scanResult = this.scan(Directions.EAST, dirX, dirY, pz,
+                    this.SCAN_LIMIT, false);
             if (scanResult) {
-                this.generate(Directions.EAST, dirX, dirY, pz,
-                        this.SCAN_LIMIT, false);
+                this.generate(Directions.EAST, dirX, dirY, pz, this.SCAN_LIMIT,
+                        false);
                 flag = true;
             }
         }
@@ -184,38 +184,38 @@ public abstract class GenericGenerator extends GenericWall {
             mo8UID = invalidUID;
         }
         if (!mo2UID.equals(horzUID)) {
-            scanResult = this.scan(Directions.WEST, dirX,
-                    dirY, pz, this.SCAN_LIMIT, true);
+            scanResult = this.scan(Directions.WEST, dirX, dirY, pz,
+                    this.SCAN_LIMIT, true);
             if (scanResult) {
-                this.generate(Directions.WEST, dirX, dirY, pz,
-                        this.SCAN_LIMIT, true);
+                this.generate(Directions.WEST, dirX, dirY, pz, this.SCAN_LIMIT,
+                        true);
                 flag = true;
             }
         }
         if (!mo4UID.equals(vertUID)) {
-            scanResult = this.scan(Directions.NORTH, dirX,
-                    dirY, pz, this.SCAN_LIMIT, true);
+            scanResult = this.scan(Directions.NORTH, dirX, dirY, pz,
+                    this.SCAN_LIMIT, true);
             if (scanResult) {
-                this.generate(Directions.NORTH, dirX, dirY,
-                        pz, this.SCAN_LIMIT, true);
+                this.generate(Directions.NORTH, dirX, dirY, pz, this.SCAN_LIMIT,
+                        true);
                 flag = true;
             }
         }
         if (!mo6UID.equals(vertUID)) {
-            scanResult = this.scan(Directions.SOUTH, dirX,
-                    dirY, pz, this.SCAN_LIMIT, true);
+            scanResult = this.scan(Directions.SOUTH, dirX, dirY, pz,
+                    this.SCAN_LIMIT, true);
             if (scanResult) {
-                this.generate(Directions.SOUTH, dirX, dirY,
-                        pz, this.SCAN_LIMIT, true);
+                this.generate(Directions.SOUTH, dirX, dirY, pz, this.SCAN_LIMIT,
+                        true);
                 flag = true;
             }
         }
         if (!mo8UID.equals(horzUID)) {
-            scanResult = this.scan(Directions.EAST, dirX,
-                    dirY, pz, this.SCAN_LIMIT, true);
+            scanResult = this.scan(Directions.EAST, dirX, dirY, pz,
+                    this.SCAN_LIMIT, true);
             if (scanResult) {
-                this.generate(Directions.EAST, dirX, dirY, pz,
-                        this.SCAN_LIMIT, true);
+                this.generate(Directions.EAST, dirX, dirY, pz, this.SCAN_LIMIT,
+                        true);
                 flag = true;
             }
         }

@@ -33,9 +33,9 @@ public class EffectImageLoader {
     private static final int MAX_INDEX = 46;
 
     public static BufferedImageIcon load(final EffectImageIndex image) {
-        if (!cached) {
-            cacheAll();
-            cached = true;
+        if (!EffectImageLoader.cached) {
+            EffectImageLoader.cacheAll();
+            EffectImageLoader.cached = true;
         }
         if (image != EffectImageIndex._NONE) {
             final String imageExt = EffectImageLoader.fileExtensions
@@ -51,7 +51,7 @@ public class EffectImageLoader {
 
     public static BufferedImageIcon loadTime(final int ticks,
             final int maxTicks) {
-        int tickDiff = (maxTicks - ticks) % 20;
+        final int tickDiff = (maxTicks - ticks) % 20;
         EffectImageIndex timeImage;
         switch (tickDiff) {
         case 0:

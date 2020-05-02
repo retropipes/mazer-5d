@@ -734,7 +734,7 @@ public class GameObjects {
     }
 
     private static Collection<MazeObjectModel> removeNullValues(
-            Collection<MazeObjectModel> values) {
+            final Collection<MazeObjectModel> values) {
         return values.stream().filter(GameObjects.itemNotNull()).collect(
                 Collectors.<MazeObjectModel> toList());
     }
@@ -1382,7 +1382,7 @@ public class GameObjects {
     }
 
     public static MazeObjectModel createObject(final MazeObjects uid) {
-        MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
+        final MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
@@ -1399,7 +1399,7 @@ public class GameObjects {
     public static MazeObjectModel createContainerObject(final MazeObjects uid,
             final MazeObjects contentsUID) {
         final MazeObjectModel contents = GameObjects.createObject(contentsUID);
-        MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
+        final MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
@@ -1416,7 +1416,7 @@ public class GameObjects {
 
     public static MazeObjectModel createTeleportObject(final MazeObjects uid,
             final int dr, final int dc) {
-        MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
+        final MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
@@ -1433,7 +1433,7 @@ public class GameObjects {
 
     public static MazeObjectModel createTeleportObject(final MazeObjects uid,
             final int dr, final int dc, final int df) {
-        MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
+        final MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
@@ -1450,7 +1450,7 @@ public class GameObjects {
 
     public static MazeObjectModel createTeleportObject(final MazeObjects uid,
             final int dr, final int dc, final int df, final int dl) {
-        MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
+        final MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {

@@ -58,8 +58,8 @@ public class ArrowTask extends Thread {
             o = GameObjects.createObject(MazeObjects.WALL);
         }
         final GenericTransientObject a = ArrowTask.createArrowForType(this.at);
-        final String suffix = DirectionResolver.resolveToName(
-                DirectionResolver.resolve(incX, incY));
+        final String suffix = DirectionResolver.resolveToName(DirectionResolver
+                .resolve(incX, incY));
         a.setNameSuffix(suffix);
         SoundPlayer.playSound(SoundIndex.ARROW_FIRED, SoundGroup.GAME);
         while (res) {

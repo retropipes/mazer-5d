@@ -14,8 +14,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
-class InvisibleConditionalChainTeleport extends
-        GenericConditionalTeleport {
+class InvisibleConditionalChainTeleport extends GenericConditionalTeleport {
     // Constructors
     public InvisibleConditionalChainTeleport() {
         super();

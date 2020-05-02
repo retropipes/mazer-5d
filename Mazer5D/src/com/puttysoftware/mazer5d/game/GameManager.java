@@ -1630,10 +1630,10 @@ public class GameManager implements MazeEffectConstants {
                 .getOffsetFactorX();
         final int yOffset = this.vwMgr.getViewingWindowLocationY() - this.vwMgr
                 .getOffsetFactorY();
-        final int destX = x / ImageConstants.SIZE
-                + this.vwMgr.getViewingWindowLocationX() - xOffset + yOffset;
-        final int destY = y / ImageConstants.SIZE
-                + this.vwMgr.getViewingWindowLocationY() + xOffset - yOffset;
+        final int destX = x / ImageConstants.SIZE + this.vwMgr
+                .getViewingWindowLocationX() - xOffset + yOffset;
+        final int destY = y / ImageConstants.SIZE + this.vwMgr
+                .getViewingWindowLocationY() + xOffset - yOffset;
         final int destZ = this.plMgr.getPlayerLocationZ();
         if (this.usingAnItem() && Modes.inGame()) {
             final boolean visible = app.getMazeManager().getMaze()
@@ -1722,12 +1722,10 @@ public class GameManager implements MazeEffectConstants {
                     - this.vwMgr.getOffsetFactorX();
             final int yOffset = this.vwMgr.getViewingWindowLocationY()
                     - this.vwMgr.getOffsetFactorY();
-            final int destX = x / ImageConstants.SIZE
-                    + this.vwMgr.getViewingWindowLocationX() - xOffset
-                    + yOffset;
-            final int destY = y / ImageConstants.SIZE
-                    + this.vwMgr.getViewingWindowLocationY() + xOffset
-                    - yOffset;
+            final int destX = x / ImageConstants.SIZE + this.vwMgr
+                    .getViewingWindowLocationX() - xOffset + yOffset;
+            final int destY = y / ImageConstants.SIZE + this.vwMgr
+                    .getViewingWindowLocationY() + xOffset - yOffset;
             final int destZ = this.plMgr.getPlayerLocationZ();
             this.updatePositionAbsolute(destX, destY, destZ);
             SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
@@ -1742,10 +1740,10 @@ public class GameManager implements MazeEffectConstants {
                 .getOffsetFactorX();
         final int yOffset = this.vwMgr.getViewingWindowLocationY() - this.vwMgr
                 .getOffsetFactorY();
-        final int destX = x / ImageConstants.SIZE
-                + this.vwMgr.getViewingWindowLocationX() - xOffset + yOffset;
-        final int destY = y / ImageConstants.SIZE
-                + this.vwMgr.getViewingWindowLocationY() + xOffset - yOffset;
+        final int destX = x / ImageConstants.SIZE + this.vwMgr
+                .getViewingWindowLocationX() - xOffset + yOffset;
+        final int destY = y / ImageConstants.SIZE + this.vwMgr
+                .getViewingWindowLocationY() + xOffset - yOffset;
         final int destZ = this.plMgr.getPlayerLocationZ();
         try {
             final MazeObjectModel target1 = m.getCell(destX, destY, destZ,
