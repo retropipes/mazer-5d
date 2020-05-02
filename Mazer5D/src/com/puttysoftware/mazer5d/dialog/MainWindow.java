@@ -3,7 +3,7 @@ Copyleft (C) 2019 Eric Ahnell
 
 Any questions should be directed to the author via email at: support@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.gui;
+package com.puttysoftware.mazer5d.dialog;
 
 import java.awt.event.KeyListener;
 import java.awt.event.WindowListener;

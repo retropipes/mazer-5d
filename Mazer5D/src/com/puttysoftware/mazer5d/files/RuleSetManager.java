@@ -8,6 +8,7 @@ package com.puttysoftware.mazer5d.files;
 import java.io.File;
 
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
@@ -32,7 +33,7 @@ public class RuleSetManager {
         final XMLRuleSetFilter xrsf = new XMLRuleSetFilter();
         fc.setAcceptAllFileFilterUsed(false);
         fc.addChoosableFileFilter(xrsf);
-        final int returnVal = fc.showOpenDialog(app.getOutputFrame());
+        final int returnVal = fc.showOpenDialog((JFrame)null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             final File file = fc.getSelectedFile();
             filename = file.getAbsolutePath();
@@ -64,7 +65,6 @@ public class RuleSetManager {
     }
 
     public static boolean exportRuleSet() {
-        final BagOStuff app = Mazer5D.getBagOStuff();
         String filename = "";
         String fileOnly = "\\";
         String extension;
@@ -73,7 +73,7 @@ public class RuleSetManager {
         fc.setAcceptAllFileFilterUsed(false);
         fc.addChoosableFileFilter(xrsf);
         while (!FilenameChecker.isFilenameOK(fileOnly)) {
-            final int returnVal = fc.showSaveDialog(app.getOutputFrame());
+            final int returnVal = fc.showSaveDialog((JFrame)null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 extension = RuleSetManager.getExtension(file);

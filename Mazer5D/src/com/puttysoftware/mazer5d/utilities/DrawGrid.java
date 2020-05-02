@@ -3,7 +3,7 @@ Copyright (C) 2008-2020 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.gui;
+package com.puttysoftware.mazer5d.utilities;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.storage.ObjectStorage;

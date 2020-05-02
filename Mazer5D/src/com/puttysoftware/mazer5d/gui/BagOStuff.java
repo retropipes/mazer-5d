@@ -5,8 +5,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.gui;
 
-import javax.swing.JFrame;
-
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.integration.NativeIntegration;
 import com.puttysoftware.mazer5d.Modes;
@@ -14,6 +12,8 @@ import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
+import com.puttysoftware.mazer5d.dialog.AboutDialog;
+import com.puttysoftware.mazer5d.dialog.ObjectHelpManager;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetPicker;
 import com.puttysoftware.mazer5d.files.MazeManager;
@@ -119,10 +119,6 @@ public class BagOStuff {
             return "" + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR
                     + "." + BagOStuff.VERSION_BUGFIX;
         }
-    }
-
-    public JFrame getOutputFrame() {
-        return MainWindow.owner();
     }
 
     public boolean isBetaModeEnabled() {

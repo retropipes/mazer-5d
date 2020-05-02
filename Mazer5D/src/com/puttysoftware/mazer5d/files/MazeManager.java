@@ -141,11 +141,6 @@ public class MazeManager implements OpenFilesHandler {
     public void setDirty(final boolean newDirty) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         this.isDirty = newDirty;
-        final JFrame frame = app.getOutputFrame();
-        if (frame != null) {
-            frame.getRootPane().putClientProperty("Window.documentModified",
-                    Boolean.valueOf(newDirty));
-        }
         app.getMenuManager().checkFlags();
     }
 
@@ -253,7 +248,7 @@ public class MazeManager implements OpenFilesHandler {
             } else {
                 fc.setFileFilter(xgf);
             }
-            final int returnVal = fc.showOpenDialog(app.getOutputFrame());
+            final int returnVal = fc.showOpenDialog((JFrame) null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 final FileFilter ff = fc.getFileFilter();
@@ -316,7 +311,7 @@ public class MazeManager implements OpenFilesHandler {
             fc.setAcceptAllFileFilterUsed(false);
             fc.addChoosableFileFilter(lf);
             fc.setFileFilter(lf);
-            final int returnVal = fc.showOpenDialog(app.getOutputFrame());
+            final int returnVal = fc.showOpenDialog((JFrame) null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 Prefs.setLastDirOpen(fc.getCurrentDirectory()
@@ -414,7 +409,6 @@ public class MazeManager implements OpenFilesHandler {
         this.setMazeXML1Compatible(false);
         this.setMazeXML2Compatible(false);
         this.setMazeXML4Compatible(false);
-        final BagOStuff app = Mazer5D.getBagOStuff();
         String filename = "";
         String fileOnly = "\\";
         String extension;
@@ -435,7 +429,7 @@ public class MazeManager implements OpenFilesHandler {
             fc.setFileFilter(xmf);
         }
         while (!FilenameChecker.isFilenameOK(fileOnly)) {
-            final int returnVal = fc.showSaveDialog(app.getOutputFrame());
+            final int returnVal = fc.showSaveDialog((JFrame) null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 extension = MazeManager.getExtension(file);
@@ -496,7 +490,6 @@ public class MazeManager implements OpenFilesHandler {
         this.setMazeXML1Compatible(false);
         this.setMazeXML2Compatible(false);
         this.setMazeXML4Compatible(false);
-        final BagOStuff app = Mazer5D.getBagOStuff();
         String filename = "";
         String fileOnly = "\\";
         String extension;
@@ -511,7 +504,7 @@ public class MazeManager implements OpenFilesHandler {
         fc.addChoosableFileFilter(lf);
         fc.setFileFilter(lf);
         while (!FilenameChecker.isFilenameOK(fileOnly)) {
-            final int returnVal = fc.showSaveDialog(app.getOutputFrame());
+            final int returnVal = fc.showSaveDialog((JFrame) null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 extension = MazeManager.getExtension(file);

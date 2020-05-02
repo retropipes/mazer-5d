@@ -3,7 +3,7 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.gui;
+package com.puttysoftware.mazer5d.dialog;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
