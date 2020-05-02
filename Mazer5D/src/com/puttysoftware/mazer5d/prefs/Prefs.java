@@ -573,14 +573,7 @@ public class Prefs {
                     Prefs.soundsEnabled[x] = reader.readBoolean();
                 }
                 Prefs.updateCheckIntervalIndex = reader.readInt();
-                int cachedBugfix = -1;
-                if (version == 1) {
-                    reader.readString();
-                    reader.readString();
-                    reader.readInt();
-                } else {
-                    cachedBugfix = reader.readInt();
-                }
+                int cachedBugfix = reader.readInt();
                 Prefs.viewingWindowIndex = reader.readInt();
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     Prefs.musicEnabled[x] = reader.readBoolean();
@@ -590,16 +583,12 @@ public class Prefs {
                 final int cachedMajor = reader.readInt();
                 Prefs.randomHallSizeIndex = reader.readInt();
                 final int cachedMinor = reader.readInt();
-                if (version == 1) {
-                    Prefs.lastUpdateCheck = Prefs.DEFAULT_NEXT_UPDATE;
-                } else {
-                    Prefs.cachedMajorVersion = cachedMajor;
-                    Prefs.cachedMinorVersion = cachedMinor;
-                    Prefs.cachedBugfixVersion = cachedBugfix;
-                    Prefs.cachedPrereleaseVersion = reader.readInt();
-                    Prefs.cachedHasUpdate = reader.readBoolean();
-                    Prefs.lastUpdateCheck = reader.readLong();
-                }
+                Prefs.cachedMajorVersion = cachedMajor;
+                Prefs.cachedMinorVersion = cachedMinor;
+                Prefs.cachedBugfixVersion = cachedBugfix;
+                Prefs.cachedPrereleaseVersion = reader.readInt();
+                Prefs.cachedHasUpdate = reader.readBoolean();
+                Prefs.lastUpdateCheck = reader.readLong();
                 Prefs.loadPrefs();
                 return true;
             } catch (final PrefsVersionException pe) {
