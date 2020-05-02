@@ -29,7 +29,7 @@ import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 public class LogoImageLoader {
     private static String[] allFilenames;
     private static Properties fileExtensions;
-    private static final int MAX_INDEX = 3;
+    private static final int MAX_INDEX = 2;
 
     private static void preInit() {
         if (LogoImageLoader.allFilenames == null) {
