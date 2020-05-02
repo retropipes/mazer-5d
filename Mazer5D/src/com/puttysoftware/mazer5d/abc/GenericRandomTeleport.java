@@ -19,8 +19,6 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericRandomTeleport extends MazeObjectModel {
     // Fields
-    private int randomRangeX;
-    private int randomRangeY;
     private final Random generator;
 
     // Constructors
@@ -29,53 +27,20 @@ public abstract class GenericRandomTeleport extends MazeObjectModel {
         super(false);
         this.addCustomCounters(this.getCustomFormat());
         this.setRandomRangeX(newRandomRangeX);
-        this.randomRangeY = newRandomRangeY;
+        this.setRandomRangeY(newRandomRangeY);
         this.generator = new Random();
         this.setType(TypeConstants.TYPE_RANDOM);
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() != obj.getClass()) {
-            return false;
-        }
-        final GenericRandomTeleport other = (GenericRandomTeleport) obj;
-        if (this.randomRangeX != other.randomRangeX) {
-            return false;
-        }
-        if (this.randomRangeY != other.randomRangeY) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + this.randomRangeX;
-        hash = 89 * hash + this.randomRangeY;
-        return hash;
-    }
-
-    @Override
-    public GenericRandomTeleport clone() {
-        final GenericRandomTeleport copy = (GenericRandomTeleport) super.clone();
-        copy.randomRangeX = this.randomRangeX;
-        copy.randomRangeY = this.randomRangeY;
-        return copy;
     }
 
     // Methods
     @Override
     public int getDestinationRow() {
-        if (this.randomRangeY == 0) {
+        if (this.getRandomRangeY() == 0) {
             return 0;
         } else {
             int sign = this.generator.nextInt(2);
-            final int value = this.generator.nextInt(this.randomRangeY + 1);
+            final int value = this.generator.nextInt(this.getRandomRangeY()
+                    + 1);
             if (sign == 0) {
                 sign = -1;
             }
@@ -85,11 +50,12 @@ public abstract class GenericRandomTeleport extends MazeObjectModel {
 
     @Override
     public int getDestinationColumn() {
-        if (this.randomRangeX == 0) {
+        if (this.getRandomRangeX() == 0) {
             return 0;
         } else {
             int sign = this.generator.nextInt(2);
-            final int value = this.generator.nextInt(this.randomRangeX + 1);
+            final int value = this.generator.nextInt(this.getRandomRangeX()
+                    + 1);
             if (sign == 0) {
                 sign = -1;
             }
@@ -119,7 +85,7 @@ public abstract class GenericRandomTeleport extends MazeObjectModel {
     @Override
     public void editorProbeHook() {
         Mazer5D.getBagOStuff().showMessage(this.getName() + ": Row Radius "
-                + this.randomRangeY + ", Column Radius " + this.randomRangeX);
+                + getRandomRangeY() + ", Column Radius " + getRandomRangeX());
     }
 
     @Override

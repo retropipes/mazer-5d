@@ -65,13 +65,6 @@ public abstract class GenericLock extends MazeObjectModel {
         return hash;
     }
 
-    @Override
-    public GenericLock clone() {
-        final GenericLock copy = (GenericLock) super.clone();
-        copy.key = this.key.clone();
-        return copy;
-    }
-
     // Accessor methods
     public GenericKey getKey() {
         return this.key;
@@ -129,5 +122,4 @@ public abstract class GenericLock extends MazeObjectModel {
     public int getLayer() {
         return Layers.OBJECT;
     }
-
 }

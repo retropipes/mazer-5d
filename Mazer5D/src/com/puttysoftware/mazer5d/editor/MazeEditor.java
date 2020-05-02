@@ -963,7 +963,7 @@ public class MazeEditor {
                     this.elMgr.getEditorLocationX(), this.elMgr
                             .getEditorLocationY(), this.elMgr.getCameFromZ(),
                     Layers.OBJECT);
-            contents = tc.getInsideObject();
+            contents = tc.getSavedObject();
             for (int x = 0; x < this.containableObjects.length; x++) {
                 if (contents.getName().equals(this.containableObjects[x]
                         .getName())) {

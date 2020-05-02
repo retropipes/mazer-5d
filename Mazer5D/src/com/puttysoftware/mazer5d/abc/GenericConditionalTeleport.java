@@ -18,11 +18,6 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericConditionalTeleport extends GenericTeleport {
     // Fields
-    private int destRow2;
-    private int destCol2;
-    private int destFloor2;
-    private int triggerVal;
-    private int sunMoon;
     public static final int TRIGGER_SUN = 1;
     public static final int TRIGGER_MOON = 2;
 
@@ -30,60 +25,8 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
     protected GenericConditionalTeleport() {
         super();
         this.addCustomCounters(this.getCustomFormat());
-        this.sunMoon = GenericConditionalTeleport.TRIGGER_SUN;
+        this.setSunMoon(GenericConditionalTeleport.TRIGGER_SUN);
         this.setType(TypeConstants.TYPE_TELEPORT);
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() != obj.getClass()) {
-            return false;
-        }
-        if (!super.equals(obj)) {
-            return false;
-        }
-        final GenericConditionalTeleport other = (GenericConditionalTeleport) obj;
-        if (this.destRow2 != other.destRow2) {
-            return false;
-        }
-        if (this.destCol2 != other.destCol2) {
-            return false;
-        }
-        if (this.destFloor2 != other.destFloor2) {
-            return false;
-        }
-        if (this.triggerVal != other.triggerVal) {
-            return false;
-        }
-        if (this.sunMoon != other.sunMoon) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + this.destRow2;
-        hash = 67 * hash + this.destCol2;
-        hash = 67 * hash + this.destFloor2;
-        hash = 67 * hash + this.triggerVal;
-        hash = 67 * hash + this.sunMoon;
-        return hash;
-    }
-
-    @Override
-    public GenericConditionalTeleport clone() {
-        final GenericConditionalTeleport copy = (GenericConditionalTeleport) super.clone();
-        copy.destCol2 = this.destCol2;
-        copy.destFloor2 = this.destFloor2;
-        copy.destRow2 = this.destRow2;
-        copy.triggerVal = this.triggerVal;
-        copy.sunMoon = this.sunMoon;
-        return copy;
     }
 
     // Scriptability
@@ -92,14 +35,15 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
             final ObjectInventory inv) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         int testVal;
-        if (this.sunMoon == GenericConditionalTeleport.TRIGGER_SUN) {
+        if (this.getSunMoon() == GenericConditionalTeleport.TRIGGER_SUN) {
             testVal = inv.getItemCount(MazeObjects.SUN_STONE);
-        } else if (this.sunMoon == GenericConditionalTeleport.TRIGGER_MOON) {
+        } else if (this
+                .getSunMoon() == GenericConditionalTeleport.TRIGGER_MOON) {
             testVal = inv.getItemCount(MazeObjects.MOON_STONE);
         } else {
             testVal = 0;
         }
-        if (testVal >= this.triggerVal) {
+        if (testVal >= this.getTriggerValue()) {
             app.getGameManager().updatePositionAbsolute(this
                     .getDestinationRow2(), this.getDestinationColumn2(), this
                             .getDestinationFloor2());
@@ -127,7 +71,7 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
     @Override
     public void editorProbeHook() {
         Mazer5D.getBagOStuff().showMessage(this.getName() + ": Trigger Value "
-                + this.triggerVal);
+                + this.getTriggerValue());
     }
 
     @Override

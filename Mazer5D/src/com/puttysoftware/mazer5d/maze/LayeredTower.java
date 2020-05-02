@@ -28,7 +28,7 @@ import com.puttysoftware.mazer5d.utilities.VisionModes;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.storage.FlagStorage;
 
-class LayeredTower implements Cloneable {
+class LayeredTower {
     // Properties
     private LowLevelDataStore data;
     private SavedTowerState savedTowerState;
@@ -131,23 +131,6 @@ class LayeredTower implements Cloneable {
     }
 
     // Methods
-    @Override
-    public LayeredTower clone() {
-        final LayeredTower copy = new LayeredTower(this.getRows(), this
-                .getColumns(), this.getFloors());
-        copy.data = (LowLevelDataStore) this.data.clone();
-        copy.savedTowerState = this.savedTowerState.clone();
-        System.arraycopy(this.playerData, 0, copy.playerData, 0,
-                this.playerData.length);
-        System.arraycopy(this.findResult, 0, copy.findResult, 0,
-                this.findResult.length);
-        copy.visionRadius = this.visionRadius;
-        copy.horizontalWraparoundEnabled = this.horizontalWraparoundEnabled;
-        copy.verticalWraparoundEnabled = this.verticalWraparoundEnabled;
-        copy.thirdDimensionWraparoundEnabled = this.thirdDimensionWraparoundEnabled;
-        return copy;
-    }
-
     public int getExploreRadius() {
         return this.visionModeExploreRadius;
     }

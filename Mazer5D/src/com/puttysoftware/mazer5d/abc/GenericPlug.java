@@ -22,13 +22,6 @@ public abstract class GenericPlug extends GenericInfiniteKey {
     }
 
     @Override
-    public GenericPlug clone() {
-        final GenericPlug copy = (GenericPlug) super.clone();
-        copy.letter = this.letter;
-        return copy;
-    }
-
-    @Override
     public String getName() {
         return this.letter + " Plug";
     }

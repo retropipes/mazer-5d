@@ -6,7 +6,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.abc;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
@@ -38,7 +37,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     private TypeProperties tp;
     private RuleSet ruleSet;
     private MazeObjectModel savedObject;
-    public static final int DEFAULT_CUSTOM_VALUE = 0;
+    private static final int NO_CUSTOM_COUNTERS = 0;
 
     // Constructors
     public MazeObjectModel(final boolean isSolid) {
@@ -207,32 +206,6 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         this.cf = new CustomFlags(source.cf);
         this.ct = new CustomTexts(source.ct);
         this.tp = new TypeProperties(source.tp);
-    }
-
-    // Obsolete methods
-    @Override
-    public MazeObjectModel clone() {
-        try {
-            final MazeObjectModel copy = this.getClass().getConstructor()
-                    .newInstance();
-            copy.sp = new SolidProperties(this.sp);
-            copy.mp = new MoveProperties(this.mp);
-            copy.op = new OtherProperties(this.op);
-            copy.oc = new OtherCounters(this.oc);
-            copy.vp = new VisionProperties(this.vp);
-            copy.cc = new CustomCounters(this.cc);
-            copy.cf = new CustomFlags(this.cf);
-            copy.ct = new CustomTexts(this.ct);
-            copy.tp = new TypeProperties(this.tp);
-            if (this.ruleSet != null) {
-                copy.ruleSet = new RuleSet(this.ruleSet);
-            }
-            return copy;
-        } catch (final InstantiationException | IllegalAccessException
-                | IllegalArgumentException | InvocationTargetException
-                | NoSuchMethodException | SecurityException e) {
-            throw new AssertionError("Should not ever get here!");
-        }
     }
 
     // General methods
@@ -518,6 +491,10 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
 
     public final boolean isMoving() {
         return this.isOfType(TypeConstants.TYPE_MOVING);
+    }
+
+    public final boolean isInfinite() {
+        return this.isOfType(TypeConstants.TYPE_INFINITE_USE);
     }
 
     // Custom object state methods
@@ -1094,8 +1071,8 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final void writeMazeObjectXML(final XDataWriter writer)
             throws IOException {
         writer.writeString(this.getXMLIdentifier());
-        final int ccf = this.getCustomFormat();
-        if (ccf != MazeObjectModel.DEFAULT_CUSTOM_VALUE) {
+        final int ccf = this.customCounterCount();
+        if (ccf != MazeObjectModel.NO_CUSTOM_COUNTERS) {
             for (int x = 0; x < ccf; x++) {
                 writer.writeInt(this.getCustomCounter(x + 1));
             }
@@ -1106,8 +1083,8 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final MazeObjectModel readMazeObjectXML(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
-            final int ccf = this.getCustomFormat();
-            if (ccf != MazeObjectModel.DEFAULT_CUSTOM_VALUE) {
+            final int ccf = this.customCounterCount();
+            if (ccf != MazeObjectModel.NO_CUSTOM_COUNTERS) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);
@@ -1122,8 +1099,8 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final MazeObjectModel readMazeObjectXML2(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
-            final int ccf = this.getCustomFormat();
-            if (ccf != MazeObjectModel.DEFAULT_CUSTOM_VALUE) {
+            final int ccf = this.customCounterCount();
+            if (ccf != MazeObjectModel.NO_CUSTOM_COUNTERS) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);
@@ -1138,8 +1115,8 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final MazeObjectModel readMazeObjectXML3(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
-            final int ccf = this.getCustomFormat();
-            if (ccf != MazeObjectModel.DEFAULT_CUSTOM_VALUE) {
+            final int ccf = this.customCounterCount();
+            if (ccf != MazeObjectModel.NO_CUSTOM_COUNTERS) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);
@@ -1154,8 +1131,8 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final MazeObjectModel readMazeObjectXML4(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
-            final int ccf = this.getCustomFormat();
-            if (ccf != MazeObjectModel.DEFAULT_CUSTOM_VALUE) {
+            final int ccf = this.customCounterCount();
+            if (ccf != MazeObjectModel.NO_CUSTOM_COUNTERS) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);
@@ -1170,8 +1147,8 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final MazeObjectModel readMazeObjectXML5(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
-            final int ccf = this.getCustomFormat();
-            if (ccf != MazeObjectModel.DEFAULT_CUSTOM_VALUE) {
+            final int ccf = this.customCounterCount();
+            if (ccf != MazeObjectModel.NO_CUSTOM_COUNTERS) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);

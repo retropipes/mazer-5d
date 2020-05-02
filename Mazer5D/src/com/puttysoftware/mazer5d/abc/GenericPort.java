@@ -24,13 +24,6 @@ public abstract class GenericPort extends GenericInfiniteLock {
         this.setType(TypeConstants.TYPE_LOCK);
     }
 
-    @Override
-    public GenericPort clone() {
-        final GenericPort copy = (GenericPort) super.clone();
-        copy.letter = this.letter;
-        return copy;
-    }
-
     // Scriptability
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,

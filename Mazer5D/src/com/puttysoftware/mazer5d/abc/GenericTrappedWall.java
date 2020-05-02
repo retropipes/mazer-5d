@@ -21,13 +21,6 @@ public abstract class GenericTrappedWall extends GenericWall {
     }
 
     @Override
-    public GenericTrappedWall clone() {
-        final GenericTrappedWall copy = (GenericTrappedWall) super.clone();
-        copy.number = this.number;
-        return copy;
-    }
-
-    @Override
     public String getName() {
         if (this.number == GenericTrappedWall.NUMBER_MASTER) {
             return "Master Trapped Wall";

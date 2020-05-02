@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.utilities.Layers;
 
-class SavedTowerState implements Cloneable {
+class SavedTowerState {
     // Properties
     private final int r, c, f;
     private final MazeObjectModel[][][][] saveData;
@@ -24,24 +24,6 @@ class SavedTowerState implements Cloneable {
         this.c = cols;
         this.r = rows;
         this.f = floors;
-    }
-
-    @Override
-    public SavedTowerState clone() {
-        final SavedTowerState copy = new SavedTowerState(this.r, this.c,
-                this.f);
-        int x, y, z, e;
-        for (x = 0; x < this.c; x++) {
-            for (y = 0; y < this.r; y++) {
-                for (z = 0; z < this.f; z++) {
-                    for (e = 0; e < Layers.COUNT; e++) {
-                        copy.saveData[x][y][z][e] = this.saveData[x][y][z][e]
-                                .clone();
-                    }
-                }
-            }
-        }
-        return copy;
     }
 
     public MazeObjectModel getDataCell(final int x, final int y, final int z,

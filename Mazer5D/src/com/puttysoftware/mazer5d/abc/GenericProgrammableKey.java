@@ -23,13 +23,6 @@ public abstract class GenericProgrammableKey extends GenericSingleKey {
     }
 
     @Override
-    public GenericProgrammableKey clone() {
-        final GenericProgrammableKey copy = (GenericProgrammableKey) super.clone();
-        copy.color = this.color;
-        return copy;
-    }
-
-    @Override
     public String getName() {
         return this.color + " Crystal";
     }

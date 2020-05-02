@@ -42,15 +42,6 @@ public abstract class GenericPotion extends MazeObjectModel {
     }
 
     @Override
-    public GenericPotion clone() {
-        final GenericPotion copy = (GenericPotion) super.clone();
-        copy.effectValue = this.effectValue;
-        copy.effectValueIsPercentage = this.effectValueIsPercentage;
-        copy.effect = this.effect;
-        return copy;
-    }
-
-    @Override
     public abstract String getName();
 
     @Override
@@ -109,5 +100,4 @@ public abstract class GenericPotion extends MazeObjectModel {
             return 0;
         }
     }
-
 }

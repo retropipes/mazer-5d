@@ -32,14 +32,6 @@ public abstract class GenericWallTrap extends MazeObjectModel {
         this.setType(TypeConstants.TYPE_WALL_TRAP);
     }
 
-    @Override
-    public GenericWallTrap clone() {
-        final GenericWallTrap copy = (GenericWallTrap) super.clone();
-        copy.number = this.number;
-        copy.trigger = this.trigger.clone();
-        return copy;
-    }
-
     // Scriptability
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
@@ -87,5 +79,4 @@ public abstract class GenericWallTrap extends MazeObjectModel {
     public int getLayer() {
         return Layers.OBJECT;
     }
-
 }

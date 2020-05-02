@@ -21,13 +21,10 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericContainer extends GenericLock {
-    // Fields
-    private MazeObjectModel inside;
-
     // Constructors
     protected GenericContainer(final GenericSingleKey mgk) {
         super(mgk);
-        this.inside = GameObjects.getEmptySpace();
+        this.setSavedObject(GameObjects.getEmptySpace());
         this.setType(TypeConstants.TYPE_CONTAINER);
         this.setType(TypeConstants.TYPE_UNLOCKED_LOSE_KEY);
         this.setType(TypeConstants.TYPE_LOCK);
@@ -36,49 +33,15 @@ public abstract class GenericContainer extends GenericLock {
     protected GenericContainer(final GenericSingleKey mgk,
             final MazeObjectModel insideObject) {
         super(mgk);
-        this.inside = insideObject;
+        this.setSavedObject(insideObject);
         this.setType(TypeConstants.TYPE_CONTAINER);
         this.setType(TypeConstants.TYPE_UNLOCKED_LOSE_KEY);
         this.setType(TypeConstants.TYPE_LOCK);
     }
 
-    public MazeObjectModel getInsideObject() {
-        return this.inside;
-    }
-
     @Override
     public boolean defersSetProperties() {
         return true;
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() != obj.getClass()) {
-            return false;
-        }
-        final GenericContainer other = (GenericContainer) obj;
-        if (this.inside != other.inside && (this.inside == null || !this.inside
-                .equals(other.inside))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 83 * hash + (this.inside != null ? this.inside.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public GenericContainer clone() {
-        final GenericContainer copy = (GenericContainer) super.clone();
-        copy.inside = this.inside.clone();
-        return copy;
     }
 
     @Override
@@ -93,8 +56,9 @@ public abstract class GenericContainer extends GenericLock {
             }
             final int pz = app.getGameManager().getPlayerManager()
                     .getPlayerLocationZ();
-            if (this.inside != null) {
-                app.getGameManager().morph(this.inside, dirX, dirY, pz);
+            if (this.getSavedObject() != null) {
+                app.getGameManager().morph(this.getSavedObject(), dirX, dirY,
+                        pz);
             } else {
                 app.getGameManager().decay();
             }
@@ -109,9 +73,9 @@ public abstract class GenericContainer extends GenericLock {
 
     @Override
     public void editorProbeHook() {
-        if (!this.inside.getName().equals("Empty")) {
+        if (!this.getSavedObject().getName().equals("Empty")) {
             Mazer5D.getBagOStuff().showMessage(this.getName() + ": Contains "
-                    + this.inside.getName());
+                    + this.getSavedObject().getName());
         } else {
             Mazer5D.getBagOStuff().showMessage(this.getName()
                     + ": Contains Nothing");
@@ -124,17 +88,17 @@ public abstract class GenericContainer extends GenericLock {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        this.inside = GameObjects.readObject(reader, formatVersion);
+        this.setSavedObject(GameObjects.readObject(reader, formatVersion));
         return this;
     }
 
     @Override
     protected void writeMazeObjectHookXML(final XDataWriter writer)
             throws IOException {
-        if (this.inside == null) {
+        if (this.getSavedObject() == null) {
             GameObjects.getEmptySpace().writeMazeObjectXML(writer);
         } else {
-            this.inside.writeMazeObjectXML(writer);
+            this.getSavedObject().writeMazeObjectXML(writer);
         }
     }
 }

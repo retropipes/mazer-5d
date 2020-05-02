@@ -56,14 +56,6 @@ public abstract class GenericButton extends MazeObjectModel {
         return hash;
     }
 
-    @Override
-    public GenericButton clone() {
-        final GenericButton copy = (GenericButton) super.clone();
-        copy.offState = (GenericToggleWall) this.offState.clone();
-        copy.onState = (GenericToggleWall) this.onState.clone();
-        return copy;
-    }
-
     // Scriptability
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
@@ -90,5 +82,4 @@ public abstract class GenericButton extends MazeObjectModel {
     public int getLayer() {
         return Layers.OBJECT;
     }
-
 }

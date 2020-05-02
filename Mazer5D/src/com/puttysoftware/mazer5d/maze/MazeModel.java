@@ -459,12 +459,12 @@ public class MazeModel {
     }
 
     public void copyLevel() {
-        this.clipboard = this.mazeData.clone();
+        this.clipboard = this.mazeData;
     }
 
     public void pasteLevel() {
         if (this.clipboard != null) {
-            this.mazeData = this.clipboard.clone();
+            this.mazeData = this.clipboard;
             Mazer5D.getBagOStuff().getMazeManager().setDirty(true);
         }
     }
@@ -479,7 +479,7 @@ public class MazeModel {
 
     public boolean insertLevelFromClipboard() {
         if (this.levelCount < MazeModel.MAX_LEVELS) {
-            this.mazeData = this.clipboard.clone();
+            this.mazeData = this.clipboard;
             this.levelCount++;
             return true;
         } else {

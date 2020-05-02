@@ -2,7 +2,7 @@ package com.puttysoftware.mazer5d.maze;
 
 import com.puttysoftware.mazer5d.abc.MazeObjectModel;
 
-class LowLevelDataStore implements Cloneable {
+class LowLevelDataStore {
     // Fields
     private final MazeObjectModel[] dataStore;
     private final int[] dataShape;
@@ -35,15 +35,6 @@ class LowLevelDataStore implements Cloneable {
             res += loc[x] * this.interProd[x];
         }
         return res;
-    }
-
-    @Override
-    public Object clone() {
-        final LowLevelDataStore copy = new LowLevelDataStore(this.dataShape);
-        for (int x = 0; x < this.dataStore.length; x++) {
-            copy.dataStore[x] = this.dataStore[x].clone();
-        }
-        return copy;
     }
 
     public int[] getShape() {
