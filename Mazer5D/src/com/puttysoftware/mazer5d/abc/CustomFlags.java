@@ -41,14 +41,6 @@ final class CustomFlags {
         }
     }
 
-    public void append(final int count) {
-        this.flags.addAll(Collections.nCopies(count, false));
-    }
-
-    public void appendOne() {
-        this.flags.add(false);
-    }
-
     public boolean get(final int index) {
         return this.flags.get(index);
     }

@@ -28,7 +28,7 @@ final class CustomCounters {
     }
 
     public boolean add(final int count) {
-        if (this.counters.size() <= count) {
+        if (this.counters.size() != 0) {
             return false;
         }
         this.counters.addAll(Collections.nCopies(count, 0));
@@ -39,14 +39,6 @@ final class CustomCounters {
         if (this.counters.size() == 0) {
             this.counters.add(0);
         }
-    }
-
-    public void append(final int count) {
-        this.counters.addAll(Collections.nCopies(count, 0));
-    }
-
-    public void appendOne() {
-        this.counters.add(0);
     }
 
     public int get(final int index) {

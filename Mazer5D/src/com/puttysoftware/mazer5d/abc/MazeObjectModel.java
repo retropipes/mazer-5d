@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collections;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
@@ -377,7 +378,8 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         return this.mp.isPushable();
     }
 
-    public final boolean isDirectionallyPushable(final int dirX, final int dirY) {
+    public final boolean isDirectionallyPushable(final int dirX,
+            final int dirY) {
         return this.mp.isDirectionallyPushable(dirX, dirY);
     }
 
@@ -385,7 +387,8 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         return this.mp.isPullable();
     }
 
-    public final boolean isDirectionallyPullable(final int dirX, final int dirY) {
+    public final boolean isDirectionallyPullable(final int dirX,
+            final int dirY) {
         return this.mp.isDirectionallyPullable(dirX, dirY);
     }
 
@@ -393,7 +396,8 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         return this.mp.isPullableInto();
     }
 
-    public final boolean isDirectionallyPullableInto(final int dirX, final int dirY) {
+    public final boolean isDirectionallyPullableInto(final int dirX,
+            final int dirY) {
         return this.mp.isDirectionallyPullableInto(dirX, dirY);
     }
 
@@ -401,7 +405,8 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         return this.mp.isPushableInto();
     }
 
-    public final boolean isDirectionallyPushableInto(final int dirX, final int dirY) {
+    public final boolean isDirectionallyPushableInto(final int dirX,
+            final int dirY) {
         return this.mp.isDirectionallyPushableInto(dirX, dirY);
     }
 
@@ -409,7 +414,8 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         return this.mp.isPullableOut();
     }
 
-    public final boolean isDirectionallyPullableOut(final int dirX, final int dirY) {
+    public final boolean isDirectionallyPullableOut(final int dirX,
+            final int dirY) {
         return this.mp.isDirectionallyPullableOut(dirX, dirY);
     }
 
@@ -417,7 +423,8 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         return this.mp.isPushableOut();
     }
 
-    public final boolean isDirectionallyPushableOut(final int dirX, final int dirY) {
+    public final boolean isDirectionallyPushableOut(final int dirX,
+            final int dirY) {
         return this.mp.isDirectionallyPushableOut(dirX, dirY);
     }
 
@@ -501,6 +508,86 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final boolean isMoving() {
         return this.isOfType(TypeConstants.TYPE_MOVING);
     }
+
+    // Custom object state methods
+    public final int customCounterCount() {
+        return this.cc.length();
+    }
+
+    public final boolean addCustomCounters(final int count) {
+        return this.cc.add(count);
+    }
+
+    public final void addOneCustomCounter() {
+        this.cc.addOne();
+    }
+
+    public final int getCustomCounter(final int index) {
+        return this.cc.get(index);
+    }
+
+    public final boolean decrementCustomCounter(final int index) {
+        return this.cc.decrement(index);
+    }
+
+    public final boolean incrementCustomCounter(final int index) {
+        return this.cc.increment(index);
+    }
+
+    public final boolean offsetCustomCounter(final int index, final int value) {
+        return this.cc.offset(index, value);
+    }
+
+    public final boolean setCustomCounter(final int index, final int value) {
+        return this.cc.set(index, value);
+    }
+
+    public final int customFlagCount() {
+        return this.cf.length();
+    }
+
+    public final boolean addCustomFlags(final int count) {
+        return this.cf.add(count);
+    }
+
+    public final void addOneCustomFlag() {
+        this.cf.addOne();
+    }
+
+    public final boolean getCustomFlag(final int index) {
+        return this.cf.get(index);
+    }
+
+    public final boolean toggleCustomFlag(final int index) {
+        return this.cf.toggle(index);
+    }
+
+    public final boolean setCustomFlag(final int index, final boolean value) {
+        return this.cf.set(index, value);
+    }
+
+    public final int customTextCount() {
+        return this.ct.length();
+    }
+
+    public final boolean addCustomTexts(final int count) {
+        return this.ct.add(count);
+    }
+
+    public final void addOneCustomText() {
+        this.ct.addOne();
+    }
+
+    public final String getCustomText(final int index) {
+        return this.ct.get(index);
+    }
+
+    public final boolean setCustomText(final int index, final String value) {
+        return this.ct.set(index, value);
+    }
+
+    // Custom object state method aliases
+
 
     // Scripting
     public boolean isConditionallySolid(final ObjectInventory inv) {

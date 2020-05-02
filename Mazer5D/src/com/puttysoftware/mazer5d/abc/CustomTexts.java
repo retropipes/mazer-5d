@@ -28,7 +28,7 @@ final class CustomTexts {
     }
 
     public boolean add(final int count) {
-        if (this.texts.size() <= count) {
+        if (this.texts.size() != 0) {
             return false;
         }
         this.texts.addAll(Collections.nCopies(count, ""));
@@ -39,14 +39,6 @@ final class CustomTexts {
         if (this.texts.size() == 0) {
             this.texts.add("");
         }
-    }
-
-    public void append(final int count) {
-        this.texts.addAll(Collections.nCopies(count, ""));
-    }
-
-    public void appendOne() {
-        this.texts.add("");
     }
 
     public String get(final int index) {
