@@ -27,18 +27,16 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
         this.rng = new RandomRange(1, 100);
     }
 
-    // Methods
-    @Override
-    public RuleSet clone() {
-        final RuleSet copy = new RuleSet();
-        copy.maxQuantity = this.maxQuantity;
-        copy.minQuantity = this.minQuantity;
-        copy.percentageFlag = this.percentageFlag;
-        copy.required = this.required;
-        copy.generateQuantity = this.generateQuantity;
-        return copy;
+    public RuleSet(final RuleSet source) {
+        this.maxQuantity = source.maxQuantity;
+        this.minQuantity = source.minQuantity;
+        this.percentageFlag = source.percentageFlag;
+        this.required = source.required;
+        this.generateQuantity = source.generateQuantity;
+        this.rng = source.rng;
     }
 
+    // Methods
     public void setQuantityAbsolute(final int min, final int max) {
         // Check for valid arguments
         if (min < 0) {

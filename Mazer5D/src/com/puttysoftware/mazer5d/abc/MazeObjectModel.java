@@ -225,7 +225,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             copy.ct = new CustomTexts(this.ct);
             copy.tp = new TypeProperties(this.tp);
             if (this.ruleSet != null) {
-                copy.ruleSet = this.ruleSet.clone();
+                copy.ruleSet = new RuleSet(this.ruleSet);
             }
             return copy;
         } catch (final InstantiationException | IllegalAccessException
