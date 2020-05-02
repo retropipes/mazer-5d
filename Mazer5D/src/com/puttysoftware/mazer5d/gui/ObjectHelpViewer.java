@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 
 import com.puttysoftware.help.GraphicalHelpViewer;
 import com.puttysoftware.images.BufferedImageIcon;
-import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.objects.GameObjects;
@@ -32,7 +31,6 @@ public class ObjectHelpViewer {
     private BufferedImageIcon[] objectAppearances;
     GraphicalHelpViewer hv;
     private ButtonHandler buttonHandler;
-    private boolean inited = false;
 
     // Constructors
     public ObjectHelpViewer() {
@@ -44,6 +42,7 @@ public class ObjectHelpViewer {
         Modes.setInHelp();
         this.helpFrame.attachAndSave(this.helpPane);
         this.helpFrame.setTitle("Mazer5D Object Help");
+        this.helpFrame.pack();
     }
 
     void hideHelp() {
@@ -52,28 +51,20 @@ public class ObjectHelpViewer {
     }
 
     private void initHelp() {
-        if (!this.inited) {
-            this.buttonHandler = new ButtonHandler();
-            this.objectNames = GameObjects.getAllDescriptions();
-            this.objectAppearances = GameObjects.getAllEditorAppearances();
-            this.hv = new GraphicalHelpViewer(this.objectAppearances,
-                    this.objectNames, new Color(223, 223, 223));
-            this.export = new JButton("Export");
-            this.export.addActionListener(this.buttonHandler);
-            this.helpFrame = MainWindow.getMainWindow();
-            this.helpPane = new JPanel();
-            this.helpPane.setLayout(new BorderLayout());
-            this.helpPane.add(this.hv.getHelp(), BorderLayout.CENTER);
-            this.helpPane.add(this.export, BorderLayout.SOUTH);
-            final int maxSize = Prefs.getViewingWindowSize();
-            this.hv.setHelpSize(maxSize, maxSize);
-            this.helpFrame.pack();
-            // Mac OS X-specific fixes
-            if (System.getProperty("os.name").startsWith("Mac OS X")) {
-                Mazer5D.getBagOStuff().getMenuManager().setHelpMenus();
-            }
-            this.inited = true;
-        }
+        this.buttonHandler = new ButtonHandler();
+        this.objectNames = GameObjects.getAllDescriptions();
+        this.objectAppearances = GameObjects.getAllEditorAppearances();
+        this.hv = new GraphicalHelpViewer(this.objectAppearances,
+                this.objectNames, new Color(223, 223, 223));
+        this.export = new JButton("Export");
+        this.export.addActionListener(this.buttonHandler);
+        this.helpFrame = MainWindow.getMainWindow();
+        this.helpPane = new JPanel();
+        this.helpPane.setLayout(new BorderLayout());
+        this.helpPane.add(this.hv.getHelp(), BorderLayout.CENTER);
+        this.helpPane.add(this.export, BorderLayout.SOUTH);
+        final int maxSize = Prefs.getViewingWindowSize();
+        this.hv.setHelpSize(maxSize, maxSize);
     }
 
     private class ButtonHandler implements ActionListener, WindowListener {
