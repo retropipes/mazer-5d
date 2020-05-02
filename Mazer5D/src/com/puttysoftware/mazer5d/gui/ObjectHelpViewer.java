@@ -19,7 +19,6 @@ import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.objects.GameObjects;
-import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class ObjectHelpViewer {
     // Fields
@@ -69,7 +68,7 @@ public class ObjectHelpViewer {
         this.buttonPane.add(this.done);
         this.helpPane.add(this.hv.getHelp(), BorderLayout.CENTER);
         this.helpPane.add(this.buttonPane, BorderLayout.SOUTH);
-        final int maxSize = Prefs.getViewingWindowSize();
+        final int maxSize = 700;
         this.hv.setHelpSize(maxSize, maxSize);
     }
 
