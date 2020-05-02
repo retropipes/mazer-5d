@@ -597,7 +597,103 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final boolean setCustomText(final int index, final String value) {
         return this.ct.set(index, value);
     }
+
     // Custom object state method aliases
+    public int getDestinationRow() {
+        return this.getCustomCounter(1);
+    }
+
+    public int getDestinationColumn() {
+        return this.getCustomCounter(0);
+    }
+
+    public int getDestinationFloor() {
+        return this.getCustomCounter(2);
+    }
+
+    public int getDestinationLevel() {
+        return this.getCustomCounter(3);
+    }
+
+    public final int getRandomRangeX() {
+        return this.getCustomCounter(1);
+    }
+
+    public final int getRandomRangeY() {
+        return this.getCustomCounter(0);
+    }
+
+    public final void setDestinationRow(final int destinationRow) {
+        this.setCustomCounter(1, destinationRow);
+    }
+
+    public final void setDestinationColumn(final int destinationColumn) {
+        this.setCustomCounter(0, destinationColumn);
+    }
+
+    public final void setDestinationFloor(final int destinationFloor) {
+        this.setCustomCounter(2, destinationFloor);
+    }
+
+    public void setDestinationLevel(final int destinationLevel) {
+        this.setCustomCounter(3, destinationLevel);
+    }
+
+    public final void setRandomRangeX(final int rrx) {
+        this.setCustomCounter(1, rrx);
+    }
+
+    public final void setRandomRangeY(final int rry) {
+        this.setCustomCounter(0, rry);
+    }
+
+    public final int getDestinationRow2() {
+        return this.getCustomCounter(3);
+    }
+
+    public final int getDestinationColumn2() {
+        return this.getCustomCounter(4);
+    }
+
+    public final int getDestinationFloor2() {
+        return this.getCustomCounter(5);
+    }
+
+    public final int getTriggerValue() {
+        return this.getCustomCounter(6);
+    }
+
+    public final int getSunMoon() {
+        return this.getCustomCounter(7);
+    }
+
+    public final void setDestinationRow2(final int destinationRow2) {
+        this.setCustomCounter(3, destinationRow2);
+    }
+
+    public final void setDestinationColumn2(final int destinationColumn2) {
+        this.setCustomCounter(4, destinationColumn2);
+    }
+
+    public final void setDestinationFloor2(final int destinationFloor2) {
+        this.setCustomCounter(5, destinationFloor2);
+    }
+
+    public final void setTriggerValue(final int t) {
+        this.setCustomCounter(6, t);
+    }
+
+    public final void setSunMoon(final int sm) {
+        this.setCustomCounter(7, sm);
+    }
+
+    protected final int getKeyCount() {
+        return this.getCustomCounter(0);
+    }
+
+    protected final void setKeyCount(final int kc) {
+        this.setCustomCounter(0, kc);
+    }
 
     // Scripting
     public boolean isConditionallySolid(final ObjectInventory inv) {
@@ -908,10 +1004,6 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
 
     abstract public int getLayer();
 
-    abstract public int getCustomProperty(int propID);
-
-    abstract public void setCustomProperty(int propID, int value);
-
     public int getCustomFormat() {
         return 0;
     }
@@ -984,7 +1076,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             this.writeMazeObjectHookXML(writer);
         } else {
             for (int x = 0; x < ccf; x++) {
-                final int cx = this.getCustomProperty(x + 1);
+                final int cx = this.getCustomCounter(x + 1);
                 writer.writeInt(cx);
             }
         }
@@ -999,7 +1091,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             } else {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
-                    this.setCustomProperty(x + 1, cx);
+                    this.setCustomCounter(x + 1, cx);
                 }
             }
             return this;
@@ -1017,7 +1109,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             } else {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
-                    this.setCustomProperty(x + 1, cx);
+                    this.setCustomCounter(x + 1, cx);
                 }
             }
             return this;
@@ -1035,7 +1127,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             } else {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
-                    this.setCustomProperty(x + 1, cx);
+                    this.setCustomCounter(x + 1, cx);
                 }
             }
             return this;
@@ -1053,7 +1145,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             } else {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
-                    this.setCustomProperty(x + 1, cx);
+                    this.setCustomCounter(x + 1, cx);
                 }
             }
             return this;
@@ -1071,7 +1163,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             } else {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
-                    this.setCustomProperty(x + 1, cx);
+                    this.setCustomCounter(x + 1, cx);
                 }
             }
             return this;

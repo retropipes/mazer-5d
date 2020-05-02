@@ -39,13 +39,4 @@ public abstract class GenericBow extends GenericUsableObject {
         return this.AT;
     }
 
-    @Override
-    public int getCustomProperty(final int propID) {
-        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
-    }
-
-    @Override
-    public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
-    }
 }

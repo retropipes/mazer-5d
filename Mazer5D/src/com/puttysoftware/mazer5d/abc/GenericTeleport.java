@@ -15,26 +15,21 @@ import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericTeleport extends MazeObjectModel {
-    // Fields
-    private int destRow;
-    private int destCol;
-    private int destFloor;
-
+    // Constants
     // Constructors
     protected GenericTeleport() {
         super(false);
-        this.destRow = 0;
-        this.destCol = 0;
-        this.destFloor = 0;
         this.setType(TypeConstants.TYPE_TELEPORT);
+        this.addCustomCounters(this.getCustomFormat());
     }
 
     protected GenericTeleport(final int destinationRow,
             final int destinationColumn, final int destinationFloor) {
         super(false);
-        this.destRow = destinationRow;
-        this.destCol = destinationColumn;
-        this.destFloor = destinationFloor;
+        this.addCustomCounters(this.getCustomFormat());
+        this.setDestinationRow(destinationRow);
+        this.setDestinationColumn(destinationColumn);
+        this.setDestinationFloor(destinationFloor);
         this.setType(TypeConstants.TYPE_TELEPORT);
     }
 
@@ -44,74 +39,11 @@ public abstract class GenericTeleport extends MazeObjectModel {
         this.setType(TypeConstants.TYPE_TELEPORT);
     }
 
-    @Override
-    public boolean equals(final Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() != obj.getClass()) {
-            return false;
-        }
-        final GenericTeleport other = (GenericTeleport) obj;
-        if (this.destRow != other.destRow) {
-            return false;
-        }
-        if (this.destCol != other.destCol) {
-            return false;
-        }
-        if (this.destFloor != other.destFloor) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + this.destRow;
-        hash = 67 * hash + this.destCol;
-        hash = 67 * hash + this.destFloor;
-        return hash;
-    }
-
-    @Override
-    public GenericTeleport clone() {
-        final GenericTeleport copy = (GenericTeleport) super.clone();
-        copy.destCol = this.destCol;
-        copy.destFloor = this.destFloor;
-        copy.destRow = this.destRow;
-        return copy;
-    }
-
     // Accessor methods
-    public int getDestinationRow() {
-        return this.destRow;
-    }
-
-    public int getDestinationColumn() {
-        return this.destCol;
-    }
-
-    public int getDestinationFloor() {
-        return this.destFloor;
-    }
-
+    @Override
     public int getDestinationLevel() {
         return Mazer5D.getBagOStuff().getGameManager().getPlayerManager()
                 .getPlayerLocationW();
-    }
-
-    // Transformer methods
-    public void setDestinationRow(final int destinationRow) {
-        this.destRow = destinationRow;
-    }
-
-    public void setDestinationColumn(final int destinationColumn) {
-        this.destCol = destinationColumn;
-    }
-
-    public void setDestinationFloor(final int destinationFloor) {
-        this.destFloor = destinationFloor;
     }
 
     // Scriptability
@@ -143,8 +75,9 @@ public abstract class GenericTeleport extends MazeObjectModel {
     @Override
     public void editorProbeHook() {
         Mazer5D.getBagOStuff().showMessage(this.getName() + ": Destination ("
-                + (this.destCol + 1) + "," + (this.destRow + 1) + ","
-                + (this.destFloor + 1) + ")");
+                + (this.getDestinationColumn() + 1) + "," + (this
+                        .getDestinationRow() + 1) + "," + (this
+                                .getDestinationFloor() + 1) + ")");
     }
 
     @Override
@@ -156,41 +89,11 @@ public abstract class GenericTeleport extends MazeObjectModel {
     }
 
     @Override
-    public int getCustomProperty(final int propID) {
-        switch (propID) {
-        case 1:
-            return this.destRow;
-        case 2:
-            return this.destCol;
-        case 3:
-            return this.destFloor;
-        default:
-            return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
-        }
-    }
-
-    @Override
-    public void setCustomProperty(final int propID, final int value) {
-        switch (propID) {
-        case 1:
-            this.destRow = value;
-            break;
-        case 2:
-            this.destCol = value;
-            break;
-        case 3:
-            this.destFloor = value;
-            break;
-        default:
-            break;
-        }
-    }
-
-    @Override
     public int getCustomFormat() {
         return 3;
     }
 
+    @Override
     public void setDestinationLevel(final int inDestW) {
         // Do nothing
     }

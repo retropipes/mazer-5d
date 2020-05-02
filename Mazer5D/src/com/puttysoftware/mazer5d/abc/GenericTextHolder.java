@@ -45,15 +45,6 @@ public abstract class GenericTextHolder extends MazeObjectModel {
         return Layers.OBJECT;
     }
 
-    @Override
-    public int getCustomProperty(final int propID) {
-        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
-    }
-
-    @Override
-    public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
-    }
 
     @Override
     public MazeObjectModel editorPropertiesHook() {

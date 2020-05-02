@@ -15,13 +15,10 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericMultipleLock extends GenericLock {
-    // Fields
-    private int keyCount;
-
     // Constructors
     protected GenericMultipleLock(final GenericMultipleKey mgk) {
         super(mgk);
-        this.keyCount = 0;
+        this.addOneCustomCounter();
         this.setType(TypeConstants.TYPE_UNLOCKED_LOSE_MULTIPLE_KEYS);
         this.setType(TypeConstants.TYPE_LOCK);
     }
@@ -29,7 +26,8 @@ public abstract class GenericMultipleLock extends GenericLock {
     // Methods
     @Override
     public boolean isConditionallySolid(final ObjectInventory inv) {
-        return inv.getItemCount(this.getKey().getUniqueID()) < this.keyCount;
+        return inv.getItemCount(this.getKey().getUniqueID()) < this
+                .getKeyCount();
     }
 
     @Override
@@ -40,8 +38,8 @@ public abstract class GenericMultipleLock extends GenericLock {
                 MazeObjects.GHOST_AMULET)) {
             return false;
         } else {
-            return inv.getItemCount(this.getKey()
-                    .getUniqueID()) < this.keyCount;
+            return inv.getItemCount(this.getKey().getUniqueID()) < this
+                    .getKeyCount();
         }
     }
 
@@ -49,33 +47,23 @@ public abstract class GenericMultipleLock extends GenericLock {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         String fill = "";
-        if (this.keyCount > 1) {
+        if (this.getKeyCount() > 1) {
             fill = "s";
         } else {
             fill = "";
         }
-        Mazer5D.getBagOStuff().showMessage("You need " + this.keyCount + " "
-                + this.getKey().getName() + fill);
+        Mazer5D.getBagOStuff().showMessage("You need " + this.getKeyCount()
+                + " " + this.getKey().getName() + fill);
         SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
-    }
-
-    @Override
-    public int getCustomProperty(final int propID) {
-        return this.keyCount;
-    }
-
-    @Override
-    public void setCustomProperty(final int propID, final int value) {
-        this.keyCount = value;
     }
 
     @Override
     public MazeObjectModel editorPropertiesHook() {
         try {
-            this.keyCount = Integer.parseInt(CommonDialogs
+            this.setKeyCount(Integer.parseInt(CommonDialogs
                     .showTextInputDialogWithDefault("Set Key Count for " + this
-                            .getName(), "Editor", Integer.toString(
-                                    this.keyCount)));
+                            .getName(), "Editor", Integer.toString(this
+                                    .getKeyCount()))));
         } catch (final NumberFormatException nf) {
             // Ignore
         }

@@ -41,15 +41,6 @@ public abstract class GenericGround extends MazeObjectModel {
         return Layers.GROUND;
     }
 
-    @Override
-    public int getCustomProperty(final int propID) {
-        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
-    }
-
-    @Override
-    public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
-    }
 
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,

@@ -27,7 +27,8 @@ public abstract class GenericRandomTeleport extends MazeObjectModel {
     public GenericRandomTeleport(final int newRandomRangeY,
             final int newRandomRangeX) {
         super(false);
-        this.randomRangeX = newRandomRangeX;
+        this.addCustomCounters(this.getCustomFormat());
+        this.setRandomRangeX(newRandomRangeX);
         this.randomRangeY = newRandomRangeY;
         this.generator = new Random();
         this.setType(TypeConstants.TYPE_RANDOM);
@@ -68,6 +69,7 @@ public abstract class GenericRandomTeleport extends MazeObjectModel {
     }
 
     // Methods
+    @Override
     public int getDestinationRow() {
         if (this.randomRangeY == 0) {
             return 0;
@@ -81,6 +83,7 @@ public abstract class GenericRandomTeleport extends MazeObjectModel {
         }
     }
 
+    @Override
     public int getDestinationColumn() {
         if (this.randomRangeX == 0) {
             return 0;
@@ -125,32 +128,6 @@ public abstract class GenericRandomTeleport extends MazeObjectModel {
         final MazeObjectModel mo = me.editTeleportDestination(
                 MazeEditor.TELEPORT_TYPE_RANDOM);
         return mo;
-    }
-
-    @Override
-    public int getCustomProperty(final int propID) {
-        switch (propID) {
-        case 1:
-            return this.randomRangeX;
-        case 2:
-            return this.randomRangeY;
-        default:
-            return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
-        }
-    }
-
-    @Override
-    public void setCustomProperty(final int propID, final int value) {
-        switch (propID) {
-        case 1:
-            this.randomRangeX = value;
-            break;
-        case 2:
-            this.randomRangeY = value;
-            break;
-        default:
-            break;
-        }
     }
 
     @Override

@@ -93,16 +93,6 @@ class StairsDown extends GenericTeleport {
     }
 
     @Override
-    public int getCustomProperty(final int propID) {
-        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
-    }
-
-    @Override
-    public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
-    }
-
-    @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.STAIRS_DOWN;
     }

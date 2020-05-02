@@ -151,37 +151,6 @@ class MovingFinish extends Finish {
     }
 
     @Override
-    public int getCustomProperty(final int propID) {
-        switch (propID) {
-        case 1:
-            return this.getDestinationRow();
-        case 2:
-            return this.getDestinationColumn();
-        case 3:
-            return this.getDestinationFloor();
-        default:
-            return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
-        }
-    }
-
-    @Override
-    public void setCustomProperty(final int propID, final int value) {
-        switch (propID) {
-        case 1:
-            this.setDestinationRow(value);
-            break;
-        case 2:
-            this.setDestinationColumn(value);
-            break;
-        case 3:
-            this.setDestinationFloor(value);
-            break;
-        default:
-            break;
-        }
-    }
-
-    @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.MOVING_FINISH;
     }

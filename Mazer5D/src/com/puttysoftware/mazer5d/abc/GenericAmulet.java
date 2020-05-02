@@ -42,13 +42,4 @@ public abstract class GenericAmulet extends GenericInventoryableObject {
 
     public abstract void postMoveActionHook();
 
-    @Override
-    public int getCustomProperty(final int propID) {
-        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
-    }
-
-    @Override
-    public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
-    }
 }

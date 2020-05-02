@@ -34,13 +34,4 @@ public abstract class GenericKey extends GenericInventoryableObject {
     @Override
     public abstract String getName();
 
-    @Override
-    public int getCustomProperty(final int propID) {
-        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
-    }
-
-    @Override
-    public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
-    }
 }

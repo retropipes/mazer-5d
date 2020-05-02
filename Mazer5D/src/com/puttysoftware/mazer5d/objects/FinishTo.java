@@ -16,13 +16,10 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class FinishTo extends Finish {
-    // Fields
-    private int destinationLevel;
-
     // Constructors
     public FinishTo() {
         super();
-        this.destinationLevel = 0;
+        this.addOneCustomCounter();
     }
 
     // Scriptability
@@ -32,42 +29,6 @@ class FinishTo extends Finish {
         final BagOStuff app = Mazer5D.getBagOStuff();
         SoundPlayer.playSound(SoundIndex.FINISH, SoundGroup.GAME);
         app.getGameManager().solvedLevelWarp(this.getDestinationLevel());
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + this.destinationLevel;
-        return result;
-    }
-
-    @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!super.equals(obj)) {
-            return false;
-        }
-        if (!(obj instanceof FinishTo)) {
-            return false;
-        }
-        final FinishTo other = (FinishTo) obj;
-        if (this.destinationLevel != other.destinationLevel) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public int getDestinationLevel() {
-        return this.destinationLevel;
-    }
-
-    @Override
-    public void setDestinationLevel(final int level) {
-        this.destinationLevel = level;
     }
 
     @Override
@@ -107,16 +68,6 @@ class FinishTo extends Finish {
     @Override
     public int getCustomFormat() {
         return 1;
-    }
-
-    @Override
-    public int getCustomProperty(final int propID) {
-        return this.destinationLevel;
-    }
-
-    @Override
-    public void setCustomProperty(final int propID, final int value) {
-        this.destinationLevel = value;
     }
 
     @Override
