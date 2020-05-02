@@ -22,6 +22,8 @@ public abstract class GenericInventoryableObject extends MazeObjectModel {
     protected GenericInventoryableObject(final boolean isUsable,
             final int newUses) {
         super(false, isUsable, newUses, true);
+        this.setType(TypeConstants.TYPE_INVENTORYABLE);
+        this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
@@ -33,12 +35,6 @@ public abstract class GenericInventoryableObject extends MazeObjectModel {
         SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
         Mazer5D.getBagOStuff().getGameManager().addToScore(
                 GenericInventoryableObject.SCORE_GRAB);
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override

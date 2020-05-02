@@ -18,6 +18,8 @@ public abstract class GenericScoreIncreaser extends MazeObjectModel {
     // Constructors
     protected GenericScoreIncreaser() {
         super(false);
+        this.setType(TypeConstants.TYPE_SCORE_INCREASER);
+        this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
@@ -30,12 +32,6 @@ public abstract class GenericScoreIncreaser extends MazeObjectModel {
     }
 
     public abstract void postMoveActionHook();
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_SCORE_INCREASER);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
-    }
 
     @Override
     public int getLayer() {

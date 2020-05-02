@@ -27,6 +27,11 @@ public abstract class GenericGenerator extends GenericWall {
     protected GenericGenerator() {
         super();
         this.activateTimer(this.TIMER_DELAY);
+        this.setType(TypeConstants.TYPE_REACTS_TO_ICE);
+        this.setType(TypeConstants.TYPE_REACTS_TO_FIRE);
+        this.setType(TypeConstants.TYPE_REACTS_TO_POISON);
+        this.setType(TypeConstants.TYPE_REACTS_TO_SHOCK);
+        this.setType(TypeConstants.TYPE_GENERATOR);
     }
 
     protected abstract boolean preMoveActionHook(int dirX, int dirY, int dirZ,
@@ -588,14 +593,4 @@ public abstract class GenericGenerator extends GenericWall {
 
     protected abstract void arrowHitActionHook(int locX, int locY, int locZ,
             int arrowType, ObjectInventory inv);
-
-    @Override
-    protected void setTypes() {
-        super.setTypes();
-        this.type.set(TypeConstants.TYPE_REACTS_TO_ICE);
-        this.type.set(TypeConstants.TYPE_REACTS_TO_FIRE);
-        this.type.set(TypeConstants.TYPE_REACTS_TO_POISON);
-        this.type.set(TypeConstants.TYPE_REACTS_TO_SHOCK);
-        this.type.set(TypeConstants.TYPE_GENERATOR);
-    }
 }

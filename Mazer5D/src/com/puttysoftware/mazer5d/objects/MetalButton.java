@@ -29,6 +29,10 @@ class MetalButton extends GenericField {
         this.targetRow = 0;
         this.targetCol = 0;
         this.targetFloor = 0;
+        this.setType(TypeConstants.TYPE_BUTTON);
+        this.setType(TypeConstants.TYPE_FIELD);
+        this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
+        this.setType(TypeConstants.TYPE_LOCK);
     }
 
     public MetalButton(final int tRow, final int tCol, final int tFloor) {
@@ -36,6 +40,10 @@ class MetalButton extends GenericField {
         this.targetRow = tRow;
         this.targetCol = tCol;
         this.targetFloor = tFloor;
+        this.setType(TypeConstants.TYPE_BUTTON);
+        this.setType(TypeConstants.TYPE_FIELD);
+        this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
+        this.setType(TypeConstants.TYPE_LOCK);
     }
 
     @Override
@@ -159,14 +167,6 @@ class MetalButton extends GenericField {
     @Override
     public String getDescription() {
         return "Metal Buttons will not trigger without Metal Boots.";
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_BUTTON);
-        this.type.set(TypeConstants.TYPE_FIELD);
-        this.type.set(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
-        this.type.set(TypeConstants.TYPE_LOCK);
     }
 
     @Override

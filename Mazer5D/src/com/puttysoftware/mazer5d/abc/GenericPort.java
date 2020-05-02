@@ -19,6 +19,9 @@ public abstract class GenericPort extends GenericInfiniteLock {
     protected GenericPort(final GenericPlug mgk, final char newLetter) {
         super(mgk);
         this.letter = Character.toUpperCase(newLetter);
+        this.setType(TypeConstants.TYPE_PORT);
+        this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
+        this.setType(TypeConstants.TYPE_LOCK);
     }
 
     @Override
@@ -60,13 +63,6 @@ public abstract class GenericPort extends GenericInfiniteLock {
         } else {
             return false;
         }
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_PORT);
-        this.type.set(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
-        this.type.set(TypeConstants.TYPE_LOCK);
     }
 
     @Override

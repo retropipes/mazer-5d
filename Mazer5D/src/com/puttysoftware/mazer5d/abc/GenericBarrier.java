@@ -21,6 +21,8 @@ public abstract class GenericBarrier extends GenericWall {
     // Constructors
     protected GenericBarrier() {
         super();
+        this.setType(TypeConstants.TYPE_BARRIER);
+        this.setType(TypeConstants.TYPE_WALL);
     }
 
     @Override
@@ -41,11 +43,5 @@ public abstract class GenericBarrier extends GenericWall {
     @Override
     public int getLayer() {
         return Layers.OBJECT;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_BARRIER);
-        this.type.set(TypeConstants.TYPE_WALL);
     }
 }

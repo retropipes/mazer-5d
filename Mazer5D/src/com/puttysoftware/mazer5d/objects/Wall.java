@@ -13,6 +13,8 @@ class Wall extends GenericWall {
     // Constructors
     public Wall() {
         super();
+        this.setType(TypeConstants.TYPE_PLAIN_WALL);
+        this.setType(TypeConstants.TYPE_WALL);
     }
 
     @Override
@@ -28,12 +30,6 @@ class Wall extends GenericWall {
     @Override
     public String getDescription() {
         return "Walls are impassable - you'll need to go around them.";
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_PLAIN_WALL);
-        this.type.set(TypeConstants.TYPE_WALL);
     }
 
     @Override

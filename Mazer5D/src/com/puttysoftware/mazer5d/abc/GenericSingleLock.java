@@ -10,11 +10,7 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public abstract class GenericSingleLock extends GenericLock {
     protected GenericSingleLock(final GenericSingleKey mgk) {
         super(mgk);
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_UNLOCKED_LOSE_KEY);
-        this.type.set(TypeConstants.TYPE_LOCK);
+        this.setType(TypeConstants.TYPE_UNLOCKED_LOSE_KEY);
+        this.setType(TypeConstants.TYPE_LOCK);
     }
 }

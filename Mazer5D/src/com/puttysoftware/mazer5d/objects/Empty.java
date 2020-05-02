@@ -13,6 +13,8 @@ class Empty extends GenericPassThroughObject {
     // Constructors
     public Empty() {
         super(true, true, true, true);
+        this.setType(TypeConstants.TYPE_PASS_THROUGH);
+        this.setType(TypeConstants.TYPE_EMPTY_SPACE);
     }
 
     @Override
@@ -28,12 +30,6 @@ class Empty extends GenericPassThroughObject {
     @Override
     public String getDescription() {
         return "Squares of Emptiness are what fills areas that aren't occupied by other objects.";
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_PASS_THROUGH);
-        this.type.set(TypeConstants.TYPE_EMPTY_SPACE);
     }
 
     @Override

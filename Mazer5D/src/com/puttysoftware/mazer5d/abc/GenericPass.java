@@ -11,17 +11,13 @@ public abstract class GenericPass extends GenericInfiniteKey {
     // Constructors
     protected GenericPass() {
         super();
+        this.setType(TypeConstants.TYPE_PASS);
+        this.setType(TypeConstants.TYPE_INFINITE_USE);
+        this.setType(TypeConstants.TYPE_KEY);
+        this.setType(TypeConstants.TYPE_INVENTORYABLE);
+        this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
     public abstract String getName();
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_PASS);
-        this.type.set(TypeConstants.TYPE_INFINITE_USE);
-        this.type.set(TypeConstants.TYPE_KEY);
-        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
-    }
 }

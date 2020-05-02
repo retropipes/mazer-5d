@@ -20,6 +20,8 @@ public abstract class GenericRandomInvisibleTeleport extends
     public GenericRandomInvisibleTeleport(final int newRandomRangeY,
             final int newRandomRangeX) {
         super(newRandomRangeY, newRandomRangeX);
+        this.setType(TypeConstants.TYPE_RANDOM_INVISIBLE_TELEPORT);
+        this.setType(TypeConstants.TYPE_RANDOM);
     }
 
     // Scriptability
@@ -46,11 +48,5 @@ public abstract class GenericRandomInvisibleTeleport extends
         final MazeObjectModel mo = me.editTeleportDestination(
                 MazeEditor.TELEPORT_TYPE_RANDOM_INVISIBLE);
         return mo;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_RANDOM_INVISIBLE_TELEPORT);
-        this.type.set(TypeConstants.TYPE_RANDOM);
     }
 }

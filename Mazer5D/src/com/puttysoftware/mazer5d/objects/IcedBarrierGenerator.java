@@ -21,6 +21,10 @@ class IcedBarrierGenerator extends GenericWall {
     public IcedBarrierGenerator() {
         super();
         this.activateTimer(IcedBarrierGenerator.TIMER_DELAY);
+        this.setType(TypeConstants.TYPE_REACTS_TO_ICE);
+        this.setType(TypeConstants.TYPE_REACTS_TO_FIRE);
+        this.setType(TypeConstants.TYPE_REACTS_TO_POISON);
+        this.setType(TypeConstants.TYPE_GENERATOR);
     }
 
     @Override
@@ -64,15 +68,6 @@ class IcedBarrierGenerator extends GenericWall {
     @Override
     public String getDescription() {
         return "Iced Barrier Generators are Barrier Generators that have been hit by an Ice Arrow or Ice Bomb.";
-    }
-
-    @Override
-    protected void setTypes() {
-        super.setTypes();
-        this.type.set(TypeConstants.TYPE_REACTS_TO_ICE);
-        this.type.set(TypeConstants.TYPE_REACTS_TO_FIRE);
-        this.type.set(TypeConstants.TYPE_REACTS_TO_POISON);
-        this.type.set(TypeConstants.TYPE_GENERATOR);
     }
 
     @Override

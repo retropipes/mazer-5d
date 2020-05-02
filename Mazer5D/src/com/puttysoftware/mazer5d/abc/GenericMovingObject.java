@@ -11,6 +11,7 @@ public abstract class GenericMovingObject extends MazeObjectModel {
     // Constructors
     public GenericMovingObject(final boolean solid) {
         super(solid);
+        this.setType(TypeConstants.TYPE_MOVING);
     }
 
     // Methods
@@ -39,11 +40,6 @@ public abstract class GenericMovingObject extends MazeObjectModel {
     @Override
     public int getLayer() {
         return Layers.OBJECT;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_TRANSIENT);
     }
 
     @Override

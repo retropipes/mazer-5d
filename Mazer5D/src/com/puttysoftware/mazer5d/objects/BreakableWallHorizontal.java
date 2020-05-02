@@ -20,6 +20,8 @@ class BreakableWallHorizontal extends GenericWall {
     // Constructors
     public BreakableWallHorizontal() {
         super(true, true);
+        this.setType(TypeConstants.TYPE_BREAKABLE_WALL);
+        this.setType(TypeConstants.TYPE_WALL);
     }
 
     @Override
@@ -82,12 +84,6 @@ class BreakableWallHorizontal extends GenericWall {
     @Override
     public String getDescription() {
         return "Breakable Walls Horizontal disintegrate when touched, causing other Breakable Walls Horizontal nearby to also disintegrate.";
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_BREAKABLE_WALL);
-        this.type.set(TypeConstants.TYPE_WALL);
     }
 
     @Override

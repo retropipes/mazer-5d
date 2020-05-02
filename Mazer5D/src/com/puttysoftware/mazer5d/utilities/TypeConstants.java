@@ -43,7 +43,7 @@ public class TypeConstants {
     public static final int TYPE_BARRIER = 30;
     public static final int TYPE_CONTAINER = 31;
     public static final int TYPE_CONTAINABLE = 32;
-    public static final int TYPE_TRANSIENT = 33;
+    public static final int TYPE_MOVING = 33;
     public static final int TYPE_BOW = 34;
     public static final int TYPE_REACTS_TO_ICE = 35;
     public static final int TYPE_REACTS_TO_FIRE = 36;

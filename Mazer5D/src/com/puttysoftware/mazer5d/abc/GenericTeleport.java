@@ -26,6 +26,7 @@ public abstract class GenericTeleport extends MazeObjectModel {
         this.destRow = 0;
         this.destCol = 0;
         this.destFloor = 0;
+        this.setType(TypeConstants.TYPE_TELEPORT);
     }
 
     protected GenericTeleport(final int destinationRow,
@@ -34,11 +35,13 @@ public abstract class GenericTeleport extends MazeObjectModel {
         this.destRow = destinationRow;
         this.destCol = destinationColumn;
         this.destFloor = destinationFloor;
+        this.setType(TypeConstants.TYPE_TELEPORT);
     }
 
     protected GenericTeleport(final boolean doesAcceptPushInto) {
         super(false, false, doesAcceptPushInto, false, false, false, false,
                 true, false, 0);
+        this.setType(TypeConstants.TYPE_TELEPORT);
     }
 
     @Override
@@ -135,11 +138,6 @@ public abstract class GenericTeleport extends MazeObjectModel {
     @Override
     public int getLayer() {
         return Layers.OBJECT;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_TELEPORT);
     }
 
     @Override

@@ -30,6 +30,7 @@ public abstract class GenericRandomTeleport extends MazeObjectModel {
         this.randomRangeX = newRandomRangeX;
         this.randomRangeY = newRandomRangeY;
         this.generator = new Random();
+        this.setType(TypeConstants.TYPE_RANDOM);
     }
 
     @Override
@@ -124,11 +125,6 @@ public abstract class GenericRandomTeleport extends MazeObjectModel {
         final MazeObjectModel mo = me.editTeleportDestination(
                 MazeEditor.TELEPORT_TYPE_RANDOM);
         return mo;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_RANDOM);
     }
 
     @Override

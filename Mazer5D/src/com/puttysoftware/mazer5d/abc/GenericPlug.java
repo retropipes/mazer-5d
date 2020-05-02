@@ -14,6 +14,11 @@ public abstract class GenericPlug extends GenericInfiniteKey {
     protected GenericPlug(final char newLetter) {
         super();
         this.letter = Character.toUpperCase(newLetter);
+        this.setType(TypeConstants.TYPE_PLUG);
+        this.setType(TypeConstants.TYPE_INFINITE_USE);
+        this.setType(TypeConstants.TYPE_KEY);
+        this.setType(TypeConstants.TYPE_INVENTORYABLE);
+        this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
@@ -31,15 +36,6 @@ public abstract class GenericPlug extends GenericInfiniteKey {
     @Override
     public String getPluralName() {
         return this.letter + " Plugs";
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_PLUG);
-        this.type.set(TypeConstants.TYPE_INFINITE_USE);
-        this.type.set(TypeConstants.TYPE_KEY);
-        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override

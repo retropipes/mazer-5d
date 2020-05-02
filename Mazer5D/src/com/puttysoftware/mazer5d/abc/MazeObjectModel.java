@@ -7,7 +7,6 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.BitSet;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
@@ -36,7 +35,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     private CustomCounters cc;
     private CustomFlags cf;
     private CustomTexts ct;
-    protected BitSet type;
+    private TypeProperties tp;
     private RuleSet ruleSet;
     public static final int DEFAULT_CUSTOM_VALUE = 0;
     protected static final int CUSTOM_FORMAT_MANUAL_OVERRIDE = -1;
@@ -52,8 +51,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         this.cc = new CustomCounters();
         this.cf = new CustomFlags();
         this.ct = new CustomTexts();
-        this.type = new BitSet(TypeConstants.TYPES_COUNT);
-        this.setTypes();
+        this.tp = new TypeProperties();
     }
 
     public MazeObjectModel(final boolean isSolidXN, final boolean isSolidXS,
@@ -110,8 +108,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         this.cc = new CustomCounters();
         this.cf = new CustomFlags();
         this.ct = new CustomTexts();
-        this.type = new BitSet(TypeConstants.TYPES_COUNT);
-        this.setTypes();
+        this.tp = new TypeProperties();
     }
 
     public MazeObjectModel(final boolean isSolid, final boolean isPushable,
@@ -138,8 +135,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         this.cc = new CustomCounters();
         this.cf = new CustomFlags();
         this.ct = new CustomTexts();
-        this.type = new BitSet(TypeConstants.TYPES_COUNT);
-        this.setTypes();
+        this.tp = new TypeProperties();
     }
 
     public MazeObjectModel(final boolean isSolid, final boolean isPushable,
@@ -168,8 +164,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         this.cc = new CustomCounters();
         this.cf = new CustomFlags();
         this.ct = new CustomTexts();
-        this.type = new BitSet(TypeConstants.TYPES_COUNT);
-        this.setTypes();
+        this.tp = new TypeProperties();
     }
 
     public MazeObjectModel(final boolean isSolid, final boolean isUsable,
@@ -186,8 +181,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         this.cc = new CustomCounters();
         this.cf = new CustomFlags();
         this.ct = new CustomTexts();
-        this.type = new BitSet(TypeConstants.TYPES_COUNT);
-        this.setTypes();
+        this.tp = new TypeProperties();
     }
 
     public MazeObjectModel() {
@@ -199,11 +193,23 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         this.cc = new CustomCounters();
         this.cf = new CustomFlags();
         this.ct = new CustomTexts();
-        this.type = new BitSet(TypeConstants.TYPES_COUNT);
-        this.setTypes();
+        this.tp = new TypeProperties();
     }
 
-    // Methods
+    // Copy constructor
+    public MazeObjectModel(final MazeObjectModel source) {
+        this.sp = new SolidProperties(source.sp);
+        this.mp = new MoveProperties(source.mp);
+        this.op = new OtherProperties(source.op);
+        this.oc = new OtherCounters(source.oc);
+        this.vp = new VisionProperties(source.vp);
+        this.cc = new CustomCounters(source.cc);
+        this.cf = new CustomFlags(source.cf);
+        this.ct = new CustomTexts(source.ct);
+        this.tp = new TypeProperties(source.tp);
+    }
+
+    // Obsolete methods
     @Override
     public MazeObjectModel clone() {
         try {
@@ -217,7 +223,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             copy.cc = new CustomCounters(this.cc);
             copy.cf = new CustomFlags(this.cf);
             copy.ct = new CustomTexts(this.ct);
-            copy.type = (BitSet) this.type.clone();
+            copy.tp = new TypeProperties(this.tp);
             if (this.ruleSet != null) {
                 copy.ruleSet = this.ruleSet.clone();
             }
@@ -229,6 +235,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         }
     }
 
+    // General methods
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -241,8 +248,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         result = prime * result + (this.cc == null ? 0 : this.cc.hashCode());
         result = prime * result + (this.cf == null ? 0 : this.cf.hashCode());
         result = prime * result + (this.ct == null ? 0 : this.ct.hashCode());
-        result = prime * result + (this.type == null ? 0
-                : this.type.hashCode());
+        result = prime * result + (this.tp == null ? 0 : this.tp.hashCode());
         return result;
     }
 
@@ -314,16 +320,17 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         } else if (!this.ct.equals(other.ct)) {
             return false;
         }
-        if (this.type == null) {
-            if (other.type != null) {
+        if (this.tp == null) {
+            if (other.tp != null) {
                 return false;
             }
-        } else if (!this.type.equals(other.type)) {
+        } else if (!this.tp.equals(other.tp)) {
             return false;
         }
         return true;
     }
 
+    // Object state methods
     public boolean hasRuleSet() {
         return this.ruleSet != null;
     }
@@ -338,27 +345,6 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
 
     public RuleSet getRuleSet() {
         return this.ruleSet;
-    }
-
-    public boolean isConditionallySolid(final ObjectInventory inv) {
-        // Handle ghost amulet and passwall boots
-        if (inv.isItemThere(MazeObjects.GHOST_AMULET) || inv.isItemThere(
-                MazeObjects.PASSWALL_BOOTS)) {
-            return false;
-        } else {
-            return this.sp.isSolid();
-        }
-    }
-
-    public boolean isConditionallyDirectionallySolid(final boolean ie,
-            final int dirX, final int dirY, final ObjectInventory inv) {
-        // Handle ghost amulet and passwall boots
-        if (inv.isItemThere(MazeObjects.GHOST_AMULET) || inv.isItemThere(
-                MazeObjects.PASSWALL_BOOTS)) {
-            return false;
-        } else {
-            return this.sp.isDirectionallySolid(ie, dirX, dirY);
-        }
     }
 
     public boolean isSolid() {
@@ -380,33 +366,59 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     }
 
     public boolean isOfType(final int testType) {
-        return this.type.get(testType);
+        return this.tp.isOfType(testType);
     }
 
-    protected abstract void setTypes();
+    protected void setType(final int newType) {
+        this.tp.setType(newType, true);
+    }
 
     public boolean isPushable() {
         return this.mp.isPushable();
+    }
+
+    public boolean isDirectionallyPushable(final int dirX, final int dirY) {
+        return this.mp.isDirectionallyPushable(dirX, dirY);
     }
 
     public boolean isPullable() {
         return this.mp.isPullable();
     }
 
+    public boolean isDirectionallyPullable(final int dirX, final int dirY) {
+        return this.mp.isDirectionallyPullable(dirX, dirY);
+    }
+
     public boolean isPullableInto() {
         return this.mp.isPullableInto();
+    }
+
+    public boolean isDirectionallyPullableInto(final int dirX, final int dirY) {
+        return this.mp.isDirectionallyPullableInto(dirX, dirY);
     }
 
     public boolean isPushableInto() {
         return this.mp.isPushableInto();
     }
 
+    public boolean isDirectionallyPushableInto(final int dirX, final int dirY) {
+        return this.mp.isDirectionallyPushableInto(dirX, dirY);
+    }
+
     public boolean isPullableOut() {
         return this.mp.isPullableOut();
     }
 
+    public boolean isDirectionallyPullableOut(final int dirX, final int dirY) {
+        return this.mp.isDirectionallyPullableOut(dirX, dirY);
+    }
+
     public boolean isPushableOut() {
         return this.mp.isPushableOut();
+    }
+
+    public boolean isDirectionallyPushableOut(final int dirX, final int dirY) {
+        return this.mp.isDirectionallyPushableOut(dirX, dirY);
     }
 
     public boolean hasFriction() {
@@ -429,11 +441,81 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         return this.op.isChainReacting();
     }
 
+    public boolean doesChainReactHorizontally() {
+        return this.op.isChainReactingHorizontally();
+    }
+
+    public boolean doesChainReactVertically() {
+        return this.op.isChainReactingVertically();
+    }
+
     public boolean isInventoryable() {
         return this.op.isCarryable();
     }
 
+    public final void activateTimer(final int ticks) {
+        this.op.setTimerTicking(true);
+        this.oc.setTimerTicks(ticks);
+        this.oc.setTimerReset(ticks);
+    }
+
+    public final void deactivateTimer() {
+        this.op.setTimerTicking(false);
+        this.oc.setTimerTicks(0);
+        this.oc.setTimerReset(0);
+    }
+
+    public final void extendTimer(final int ticks) {
+        if (this.op.isTimerTicking()) {
+            this.oc.extendTimer(ticks);
+        }
+    }
+
+    public final void extendTimerByInitialValue() {
+        if (this.op.isTimerTicking()) {
+            this.oc.extendTimerByReset();
+        }
+    }
+
+    public final void resetTimer() {
+        if (this.op.isTimerTicking()) {
+            this.oc.resetTimer();
+        }
+    }
+
+    public final void tickTimer(final int dirX, final int dirY) {
+        if (this.op.isTimerTicking()) {
+            this.oc.tickTimer();
+            if (this.oc.timeExpired()) {
+                this.op.setTimerTicking(false);
+                this.oc.setTimerReset(0);
+                this.timerExpiredAction(dirX, dirY);
+            }
+        }
+    }
+
     // Scripting
+    public boolean isConditionallySolid(final ObjectInventory inv) {
+        // Handle ghost amulet and passwall boots
+        if (inv.isItemThere(MazeObjects.GHOST_AMULET) || inv.isItemThere(
+                MazeObjects.PASSWALL_BOOTS)) {
+            return false;
+        } else {
+            return this.isSolid();
+        }
+    }
+
+    public boolean isConditionallyDirectionallySolid(final boolean ie,
+            final int dirX, final int dirY, final ObjectInventory inv) {
+        // Handle ghost amulet and passwall boots
+        if (inv.isItemThere(MazeObjects.GHOST_AMULET) || inv.isItemThere(
+                MazeObjects.PASSWALL_BOOTS)) {
+            return false;
+        } else {
+            return this.isDirectionallySolid(ie, dirX, dirY);
+        }
+    }
+
     /**
      *
      * @param ie
@@ -637,47 +719,6 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         // Do nothing
     }
 
-    public final void activateTimer(final int ticks) {
-        this.op.setTimerTicking(true);
-        this.oc.setTimerTicks(ticks);
-        this.oc.setTimerReset(ticks);
-    }
-
-    public final void deactivateTimer() {
-        this.op.setTimerTicking(false);
-        this.oc.setTimerTicks(0);
-        this.oc.setTimerReset(0);
-    }
-
-    public final void extendTimer(final int ticks) {
-        if (this.op.isTimerTicking()) {
-            this.oc.extendTimer(ticks);
-        }
-    }
-
-    public final void extendTimerByInitialValue() {
-        if (this.op.isTimerTicking()) {
-            this.oc.extendTimerByReset();
-        }
-    }
-
-    public final void resetTimer() {
-        if (this.op.isTimerTicking()) {
-            this.oc.resetTimer();
-        }
-    }
-
-    public final void tickTimer(final int dirX, final int dirY) {
-        if (this.op.isTimerTicking()) {
-            this.oc.tickTimer();
-            if (this.oc.timeExpired()) {
-                this.op.setTimerTicking(false);
-                this.oc.setTimerReset(0);
-                this.timerExpiredAction(dirX, dirY);
-            }
-        }
-    }
-
     /**
      *
      * @param dirX
@@ -764,10 +805,6 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         return false;
     }
 
-    public final String getXMLIdentifier() {
-        return this.getName();
-    }
-
     abstract public String getPluralName();
 
     abstract public String getDescription();
@@ -834,6 +871,13 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public boolean isRequired() {
         return false;
     }
+
+    // File I/O-related methods
+    public final String getXMLIdentifier() {
+        return this.getName();
+    }
+
+    public abstract MazeObjects getUniqueID();
 
     public final void writeMazeObjectXML(final XDataWriter writer)
             throws IOException {
@@ -961,6 +1005,4 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         // Dummy implementation, subclasses can override
         return this;
     }
-
-    public abstract MazeObjects getUniqueID();
 }

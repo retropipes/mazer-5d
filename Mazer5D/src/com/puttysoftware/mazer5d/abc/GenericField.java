@@ -13,15 +13,24 @@ public abstract class GenericField extends GenericInfiniteLock {
     // Constructors
     protected GenericField(final GenericPass mgp) {
         super(mgp);
+        this.setType(TypeConstants.TYPE_FIELD);
+        this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
+        this.setType(TypeConstants.TYPE_LOCK);
     }
 
     protected GenericField(final GenericPass mgp,
             final boolean doesAcceptPushInto) {
         super(mgp, doesAcceptPushInto);
+        this.setType(TypeConstants.TYPE_FIELD);
+        this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
+        this.setType(TypeConstants.TYPE_LOCK);
     }
 
     protected GenericField(final boolean isSolid, final GenericPass mgp) {
         super(isSolid, mgp);
+        this.setType(TypeConstants.TYPE_FIELD);
+        this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
+        this.setType(TypeConstants.TYPE_LOCK);
     }
 
     // Scriptability
@@ -48,12 +57,5 @@ public abstract class GenericField extends GenericInfiniteLock {
     @Override
     public int getLayer() {
         return Layers.GROUND;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_FIELD);
-        this.type.set(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
-        this.type.set(TypeConstants.TYPE_LOCK);
     }
 }

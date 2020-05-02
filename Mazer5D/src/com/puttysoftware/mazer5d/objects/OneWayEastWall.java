@@ -12,6 +12,8 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 class OneWayEastWall extends GenericWall {
     public OneWayEastWall() {
         super(true, true, false, true, true, true, false, true);
+        this.setType(TypeConstants.TYPE_PLAIN_WALL);
+        this.setType(TypeConstants.TYPE_WALL);
     }
 
     @Override
@@ -27,12 +29,6 @@ class OneWayEastWall extends GenericWall {
     @Override
     public String getDescription() {
         return "One-Way East Walls allow movement through them only East.";
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_PLAIN_WALL);
-        this.type.set(TypeConstants.TYPE_WALL);
     }
 
     @Override

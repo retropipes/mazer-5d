@@ -17,6 +17,7 @@ public abstract class GenericToggleWall extends MazeObjectModel {
     // Constructors
     protected GenericToggleWall(final boolean solidState) {
         super(solidState);
+        this.setType(TypeConstants.TYPE_TOGGLE_WALL);
     }
 
     @Override
@@ -38,11 +39,6 @@ public abstract class GenericToggleWall extends MazeObjectModel {
     @Override
     public int getLayer() {
         return Layers.OBJECT;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_TOGGLE_WALL);
     }
 
     @Override

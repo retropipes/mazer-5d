@@ -18,6 +18,8 @@ public abstract class GenericInvisibleTeleport extends GenericTeleport {
     protected GenericInvisibleTeleport(final int destinationRow,
             final int destinationColumn, final int destinationFloor) {
         super(destinationRow, destinationColumn, destinationFloor);
+        this.setType(TypeConstants.TYPE_INVISIBLE_TELEPORT);
+        this.setType(TypeConstants.TYPE_TELEPORT);
     }
 
     // Scriptability
@@ -33,12 +35,6 @@ public abstract class GenericInvisibleTeleport extends GenericTeleport {
 
     @Override
     public abstract String getName();
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_INVISIBLE_TELEPORT);
-        this.type.set(TypeConstants.TYPE_TELEPORT);
-    }
 
     @Override
     public abstract MazeObjectModel editorPropertiesHook();

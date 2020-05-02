@@ -20,17 +20,13 @@ public abstract class GenericAmulet extends GenericInventoryableObject {
     // Constructors
     protected GenericAmulet() {
         super(false, 0);
+        this.setType(TypeConstants.TYPE_AMULET);
+        this.setType(TypeConstants.TYPE_INVENTORYABLE);
+        this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
     public abstract String getName();
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_AMULET);
-        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
-    }
 
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,

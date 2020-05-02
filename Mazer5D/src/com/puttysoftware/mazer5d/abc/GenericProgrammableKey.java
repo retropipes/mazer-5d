@@ -15,6 +15,11 @@ public abstract class GenericProgrammableKey extends GenericSingleKey {
     protected GenericProgrammableKey(final String newColor) {
         super();
         this.color = newColor;
+        this.setType(TypeConstants.TYPE_PROGRAMMABLE_USE);
+        this.setType(TypeConstants.TYPE_SINGLE_USE);
+        this.setType(TypeConstants.TYPE_KEY);
+        this.setType(TypeConstants.TYPE_INVENTORYABLE);
+        this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
@@ -38,14 +43,5 @@ public abstract class GenericProgrammableKey extends GenericSingleKey {
     public String getDescription() {
         return this.color
                 + " Crystals may open Crystal Walls, and can be used only once.";
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_PROGRAMMABLE_USE);
-        this.type.set(TypeConstants.TYPE_SINGLE_USE);
-        this.type.set(TypeConstants.TYPE_KEY);
-        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
     }
 }

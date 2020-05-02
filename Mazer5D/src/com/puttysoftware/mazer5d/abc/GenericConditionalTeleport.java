@@ -30,6 +30,7 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
     protected GenericConditionalTeleport() {
         super();
         this.sunMoon = GenericConditionalTeleport.TRIGGER_SUN;
+        this.setType(TypeConstants.TYPE_TELEPORT);
     }
 
     @Override
@@ -162,11 +163,6 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
     @Override
     public int getLayer() {
         return Layers.OBJECT;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_TELEPORT);
     }
 
     @Override

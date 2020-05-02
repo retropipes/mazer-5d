@@ -29,6 +29,7 @@ public abstract class GenericMovableObject extends MazeObjectModel {
         super(true, pushable, false, false, pullable, false, false, true, false,
                 0);
         this.savedObject = GameObjects.getEmptySpace();
+        this.setType(TypeConstants.TYPE_MOVABLE);
     }
 
     @Override
@@ -74,11 +75,6 @@ public abstract class GenericMovableObject extends MazeObjectModel {
     @Override
     public int getLayer() {
         return Layers.OBJECT;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_MOVABLE);
     }
 
     @Override

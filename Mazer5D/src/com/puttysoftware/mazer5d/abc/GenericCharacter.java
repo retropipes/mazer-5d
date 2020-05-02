@@ -30,6 +30,7 @@ public abstract class GenericCharacter extends MazeObjectModel {
     protected GenericCharacter() {
         super(false);
         this.savedObject = GameObjects.getEmptySpace();
+        this.setType(TypeConstants.TYPE_CHARACTER);
     }
 
     // Methods
@@ -53,11 +54,6 @@ public abstract class GenericCharacter extends MazeObjectModel {
     @Override
     public int getLayer() {
         return Layers.OBJECT;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_CHARACTER);
     }
 
     @Override

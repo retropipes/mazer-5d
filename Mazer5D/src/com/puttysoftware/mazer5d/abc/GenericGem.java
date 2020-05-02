@@ -22,6 +22,8 @@ public abstract class GenericGem extends MazeObjectModel {
     // Constructors
     protected GenericGem() {
         super(false);
+        this.setType(TypeConstants.TYPE_GEM);
+        this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
@@ -35,12 +37,6 @@ public abstract class GenericGem extends MazeObjectModel {
     }
 
     public abstract void postMoveActionHook();
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_GEM);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
-    }
 
     @Override
     public int getLayer() {

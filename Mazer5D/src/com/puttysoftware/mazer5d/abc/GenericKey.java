@@ -15,6 +15,9 @@ public abstract class GenericKey extends GenericInventoryableObject {
     protected GenericKey(final boolean infiniteUse) {
         super(false, 0);
         this.infinite = infiniteUse;
+        this.setType(TypeConstants.TYPE_KEY);
+        this.setType(TypeConstants.TYPE_INVENTORYABLE);
+        this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
@@ -26,13 +29,6 @@ public abstract class GenericKey extends GenericInventoryableObject {
 
     public boolean isInfinite() {
         return this.infinite;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_KEY);
-        this.type.set(TypeConstants.TYPE_INVENTORYABLE);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override

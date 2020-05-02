@@ -28,12 +28,18 @@ public abstract class GenericContainer extends GenericLock {
     protected GenericContainer(final GenericSingleKey mgk) {
         super(mgk);
         this.inside = GameObjects.getEmptySpace();
+        this.setType(TypeConstants.TYPE_CONTAINER);
+        this.setType(TypeConstants.TYPE_UNLOCKED_LOSE_KEY);
+        this.setType(TypeConstants.TYPE_LOCK);
     }
 
     protected GenericContainer(final GenericSingleKey mgk,
             final MazeObjectModel insideObject) {
         super(mgk);
         this.inside = insideObject;
+        this.setType(TypeConstants.TYPE_CONTAINER);
+        this.setType(TypeConstants.TYPE_UNLOCKED_LOSE_KEY);
+        this.setType(TypeConstants.TYPE_LOCK);
     }
 
     public MazeObjectModel getInsideObject() {
@@ -114,13 +120,6 @@ public abstract class GenericContainer extends GenericLock {
 
     @Override
     public abstract MazeObjectModel editorPropertiesHook();
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_CONTAINER);
-        this.type.set(TypeConstants.TYPE_UNLOCKED_LOSE_KEY);
-        this.type.set(TypeConstants.TYPE_LOCK);
-    }
 
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,

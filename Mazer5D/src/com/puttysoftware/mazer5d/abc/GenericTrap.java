@@ -13,6 +13,7 @@ public abstract class GenericTrap extends MazeObjectModel {
     // Constructors
     protected GenericTrap() {
         super(false);
+        this.setType(TypeConstants.TYPE_TRAP);
     }
 
     // Scriptability
@@ -26,11 +27,6 @@ public abstract class GenericTrap extends MazeObjectModel {
     @Override
     public int getLayer() {
         return Layers.OBJECT;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_TRAP);
     }
 
     @Override

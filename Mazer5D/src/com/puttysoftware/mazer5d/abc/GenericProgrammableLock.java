@@ -27,16 +27,12 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
 
     protected GenericProgrammableLock() {
         super(GenericProgrammableLock.SIGNAL);
+        this.setType(TypeConstants.TYPE_UNLOCKED_LOSE_CHOSEN_KEY);
+        this.setType(TypeConstants.TYPE_UNLOCKED_LOSE_KEY);
+        this.setType(TypeConstants.TYPE_LOCK);
     }
 
     // Scriptability
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_UNLOCKED_LOSE_CHOSEN_KEY);
-        this.type.set(TypeConstants.TYPE_UNLOCKED_LOSE_KEY);
-        this.type.set(TypeConstants.TYPE_LOCK);
-    }
-
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {

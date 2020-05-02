@@ -22,6 +22,7 @@ public abstract class GenericTextHolder extends MazeObjectModel {
     protected GenericTextHolder() {
         super(true);
         this.text = "Empty";
+        this.setType(TypeConstants.TYPE_TEXT_HOLDER);
     }
 
     @Override
@@ -42,11 +43,6 @@ public abstract class GenericTextHolder extends MazeObjectModel {
     @Override
     public int getLayer() {
         return Layers.OBJECT;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_TEXT_HOLDER);
     }
 
     @Override

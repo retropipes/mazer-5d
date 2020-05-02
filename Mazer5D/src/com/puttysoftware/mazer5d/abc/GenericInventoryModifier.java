@@ -13,16 +13,12 @@ public abstract class GenericInventoryModifier extends MazeObjectModel {
     // Constructors
     protected GenericInventoryModifier() {
         super(false);
+        this.setType(TypeConstants.TYPE_INVENTORY_MODIFIER);
     }
 
     @Override
     public abstract void postMoveAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv);
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_INVENTORY_MODIFIER);
-    }
 
     @Override
     public int getLayer() {

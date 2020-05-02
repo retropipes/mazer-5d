@@ -18,6 +18,8 @@ class DamagedWall extends GenericWall {
     // Constructors
     public DamagedWall() {
         super();
+        this.setType(TypeConstants.TYPE_BREAKABLE_WALL);
+        this.setType(TypeConstants.TYPE_WALL);
     }
 
     @Override
@@ -52,12 +54,6 @@ class DamagedWall extends GenericWall {
     @Override
     public String getDescription() {
         return "Damaged Walls turn into Crumbling Walls when hit.";
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_BREAKABLE_WALL);
-        this.type.set(TypeConstants.TYPE_WALL);
     }
 
     @Override

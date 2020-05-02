@@ -28,6 +28,8 @@ public abstract class GenericPotion extends MazeObjectModel {
     protected GenericPotion(final boolean usePercent) {
         super(false);
         this.effectValueIsPercentage = usePercent;
+        this.setType(TypeConstants.TYPE_POTION);
+        this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     protected GenericPotion(final boolean usePercent, final int min,
@@ -35,6 +37,8 @@ public abstract class GenericPotion extends MazeObjectModel {
         super(false);
         this.effectValueIsPercentage = usePercent;
         this.effect = new RandomRange(min, max);
+        this.setType(TypeConstants.TYPE_POTION);
+        this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
@@ -52,12 +56,6 @@ public abstract class GenericPotion extends MazeObjectModel {
     @Override
     public int getLayer() {
         return Layers.OBJECT;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_POTION);
-        this.type.set(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override

@@ -25,6 +25,7 @@ public abstract class GenericLock extends MazeObjectModel {
     protected GenericLock(final GenericKey mgk) {
         super(true);
         this.key = mgk;
+        this.setType(TypeConstants.TYPE_LOCK);
     }
 
     protected GenericLock(final GenericKey mgk,
@@ -32,11 +33,13 @@ public abstract class GenericLock extends MazeObjectModel {
         super(true, false, doesAcceptPushInto, false, false, false, false, true,
                 false, 0);
         this.key = mgk;
+        this.setType(TypeConstants.TYPE_LOCK);
     }
 
     protected GenericLock(final boolean isSolid, final GenericKey mgk) {
         super(isSolid);
         this.key = mgk;
+        this.setType(TypeConstants.TYPE_LOCK);
     }
 
     @Override
@@ -121,11 +124,6 @@ public abstract class GenericLock extends MazeObjectModel {
 
     @Override
     public abstract String getName();
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_LOCK);
-    }
 
     @Override
     public int getLayer() {

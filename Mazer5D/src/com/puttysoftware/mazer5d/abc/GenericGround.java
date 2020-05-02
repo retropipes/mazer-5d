@@ -21,6 +21,7 @@ public abstract class GenericGround extends MazeObjectModel {
         super(false, false, doesAcceptPushInto, doesAcceptPushOut, false,
                 doesAcceptPullInto, doesAcceptPullOut, true, false, 0, false,
                 false);
+        this.setType(TypeConstants.TYPE_GROUND);
     }
 
     protected GenericGround(final boolean doesAcceptPushInto,
@@ -29,6 +30,7 @@ public abstract class GenericGround extends MazeObjectModel {
         super(false, false, doesAcceptPushInto, doesAcceptPushOut, false,
                 doesAcceptPullInto, doesAcceptPullOut, hasFriction, false, 0,
                 false, false);
+        this.setType(TypeConstants.TYPE_GROUND);
     }
 
     @Override
@@ -37,11 +39,6 @@ public abstract class GenericGround extends MazeObjectModel {
     @Override
     public int getLayer() {
         return Layers.GROUND;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_GROUND);
     }
 
     @Override

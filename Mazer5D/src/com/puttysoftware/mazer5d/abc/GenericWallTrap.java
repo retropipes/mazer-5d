@@ -29,6 +29,7 @@ public abstract class GenericWallTrap extends MazeObjectModel {
         super(false);
         this.number = newNumber;
         this.trigger = newTrigger;
+        this.setType(TypeConstants.TYPE_WALL_TRAP);
     }
 
     @Override
@@ -85,11 +86,6 @@ public abstract class GenericWallTrap extends MazeObjectModel {
     @Override
     public int getLayer() {
         return Layers.OBJECT;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_WALL_TRAP);
     }
 
     @Override

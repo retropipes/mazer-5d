@@ -17,6 +17,7 @@ public abstract class GenericWall extends MazeObjectModel {
     // Constructors
     protected GenericWall() {
         super(true);
+        this.setType(TypeConstants.TYPE_WALL);
     }
 
     protected GenericWall(final boolean isSolidXN, final boolean isSolidXS,
@@ -25,12 +26,14 @@ public abstract class GenericWall extends MazeObjectModel {
             final boolean isSolidIE, final boolean isSolidIW) {
         super(isSolidXN, isSolidXS, isSolidXE, isSolidXW, isSolidIN, isSolidIS,
                 isSolidIE, isSolidIW);
+        this.setType(TypeConstants.TYPE_WALL);
     }
 
     protected GenericWall(final boolean isDestroyable,
             final boolean doesChainReact) {
         super(true, false, false, false, false, false, false, true, false, 0,
                 isDestroyable, doesChainReact);
+        this.setType(TypeConstants.TYPE_WALL);
     }
 
     @Override
@@ -53,11 +56,6 @@ public abstract class GenericWall extends MazeObjectModel {
     @Override
     public int getLayer() {
         return Layers.OBJECT;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_WALL);
     }
 
     @Override

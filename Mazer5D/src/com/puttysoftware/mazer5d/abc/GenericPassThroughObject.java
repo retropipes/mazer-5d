@@ -16,6 +16,7 @@ public abstract class GenericPassThroughObject extends MazeObjectModel {
     // Constructors
     protected GenericPassThroughObject() {
         super(false);
+        this.setType(TypeConstants.TYPE_PASS_THROUGH);
     }
 
     protected GenericPassThroughObject(final boolean acceptPushInto,
@@ -23,6 +24,7 @@ public abstract class GenericPassThroughObject extends MazeObjectModel {
             final boolean acceptPullOut) {
         super(false, false, acceptPushInto, acceptPushOut, false,
                 acceptPullInto, acceptPullOut, true, false, 0);
+        this.setType(TypeConstants.TYPE_PASS_THROUGH);
     }
 
     @Override
@@ -37,11 +39,6 @@ public abstract class GenericPassThroughObject extends MazeObjectModel {
     @Override
     public int getLayer() {
         return Layers.OBJECT;
-    }
-
-    @Override
-    protected void setTypes() {
-        this.type.set(TypeConstants.TYPE_PASS_THROUGH);
     }
 
     @Override
