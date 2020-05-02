@@ -32,11 +32,6 @@ public abstract class GenericMovableObject extends MazeObjectModel {
         this.setType(TypeConstants.TYPE_MOVABLE);
     }
 
-    @Override
-    public boolean canMove() {
-        return true;
-    }
-
     public MazeObjectModel getSavedObject() {
         return this.savedObject;
     }

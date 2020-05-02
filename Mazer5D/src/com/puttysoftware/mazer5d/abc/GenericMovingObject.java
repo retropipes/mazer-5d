@@ -15,11 +15,6 @@ public abstract class GenericMovingObject extends MazeObjectModel {
     }
 
     // Methods
-    @Override
-    public boolean isMoving() {
-        return true;
-    }
-
     public MazeObjectModel getSavedObject() {
         return this.savedObject;
     }

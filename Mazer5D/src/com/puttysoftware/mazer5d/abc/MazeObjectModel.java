@@ -331,125 +331,125 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     }
 
     // Object state methods
-    public boolean hasRuleSet() {
+    public final boolean hasRuleSet() {
         return this.ruleSet != null;
     }
 
-    public void giveRuleSet() {
+    public final void giveRuleSet() {
         this.ruleSet = new RuleSet();
     }
 
-    public void takeRuleSet() {
+    public final void takeRuleSet() {
         this.ruleSet = null;
     }
 
-    public RuleSet getRuleSet() {
+    public final RuleSet getRuleSet() {
         return this.ruleSet;
     }
 
-    public boolean isSolid() {
+    public final boolean isSolid() {
         return this.sp.isSolid();
     }
 
-    public boolean isDirectionallySolid(final boolean ie, final int dirX,
+    public final boolean isDirectionallySolid(final boolean ie, final int dirX,
             final int dirY) {
         return this.sp.isDirectionallySolid(ie, dirX, dirY);
     }
 
-    public boolean isSightBlocking() {
+    public final boolean isSightBlocking() {
         return this.vp.isSightBlocking();
     }
 
-    public boolean isDirectionallySightBlocking(final boolean ie,
+    public final boolean isDirectionallySightBlocking(final boolean ie,
             final int dirX, final int dirY) {
         return this.vp.isDirectionallySightBlocking(ie, dirX, dirY);
     }
 
-    public boolean isOfType(final int testType) {
+    public final boolean isOfType(final int testType) {
         return this.tp.isOfType(testType);
     }
 
-    protected void setType(final int newType) {
+    protected final void setType(final int newType) {
         this.tp.setType(newType, true);
     }
 
-    public boolean isPushable() {
+    public final boolean isPushable() {
         return this.mp.isPushable();
     }
 
-    public boolean isDirectionallyPushable(final int dirX, final int dirY) {
+    public final boolean isDirectionallyPushable(final int dirX, final int dirY) {
         return this.mp.isDirectionallyPushable(dirX, dirY);
     }
 
-    public boolean isPullable() {
+    public final boolean isPullable() {
         return this.mp.isPullable();
     }
 
-    public boolean isDirectionallyPullable(final int dirX, final int dirY) {
+    public final boolean isDirectionallyPullable(final int dirX, final int dirY) {
         return this.mp.isDirectionallyPullable(dirX, dirY);
     }
 
-    public boolean isPullableInto() {
+    public final boolean isPullableInto() {
         return this.mp.isPullableInto();
     }
 
-    public boolean isDirectionallyPullableInto(final int dirX, final int dirY) {
+    public final boolean isDirectionallyPullableInto(final int dirX, final int dirY) {
         return this.mp.isDirectionallyPullableInto(dirX, dirY);
     }
 
-    public boolean isPushableInto() {
+    public final boolean isPushableInto() {
         return this.mp.isPushableInto();
     }
 
-    public boolean isDirectionallyPushableInto(final int dirX, final int dirY) {
+    public final boolean isDirectionallyPushableInto(final int dirX, final int dirY) {
         return this.mp.isDirectionallyPushableInto(dirX, dirY);
     }
 
-    public boolean isPullableOut() {
+    public final boolean isPullableOut() {
         return this.mp.isPullableOut();
     }
 
-    public boolean isDirectionallyPullableOut(final int dirX, final int dirY) {
+    public final boolean isDirectionallyPullableOut(final int dirX, final int dirY) {
         return this.mp.isDirectionallyPullableOut(dirX, dirY);
     }
 
-    public boolean isPushableOut() {
+    public final boolean isPushableOut() {
         return this.mp.isPushableOut();
     }
 
-    public boolean isDirectionallyPushableOut(final int dirX, final int dirY) {
+    public final boolean isDirectionallyPushableOut(final int dirX, final int dirY) {
         return this.mp.isDirectionallyPushableOut(dirX, dirY);
     }
 
-    public boolean hasFriction() {
+    public final boolean hasFriction() {
         return this.op.hasFriction();
     }
 
-    public boolean isUsable() {
+    public final boolean isUsable() {
         return this.op.isUsable();
     }
 
-    public int getUses() {
+    public final int getUses() {
         return this.oc.getUses();
     }
 
-    public boolean isDestroyable() {
+    public final boolean isDestroyable() {
         return this.op.isDestroyable();
     }
 
-    public boolean doesChainReact() {
+    public final boolean doesChainReact() {
         return this.op.isChainReacting();
     }
 
-    public boolean doesChainReactHorizontally() {
+    public final boolean doesChainReactHorizontally() {
         return this.op.isChainReactingHorizontally();
     }
 
-    public boolean doesChainReactVertically() {
+    public final boolean doesChainReactVertically() {
         return this.op.isChainReactingVertically();
     }
 
-    public boolean isInventoryable() {
+    public final boolean isInventoryable() {
         return this.op.isCarryable();
     }
 
@@ -492,6 +492,14 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
                 this.timerExpiredAction(dirX, dirY);
             }
         }
+    }
+
+    public final boolean canMove() {
+        return this.isOfType(TypeConstants.TYPE_MOVABLE);
+    }
+
+    public final boolean isMoving() {
+        return this.isOfType(TypeConstants.TYPE_MOVING);
     }
 
     // Scripting
@@ -796,14 +804,6 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     }
 
     abstract public String getName();
-
-    public boolean canMove() {
-        return false;
-    }
-
-    public boolean isMoving() {
-        return false;
-    }
 
     abstract public String getPluralName();
 
