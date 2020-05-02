@@ -61,7 +61,6 @@ public abstract class GenericMovableObject extends MazeObjectModel {
         return Layers.OBJECT;
     }
 
-
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
@@ -77,10 +76,6 @@ public abstract class GenericMovableObject extends MazeObjectModel {
 
     @Override
     public int getCustomFormat() {
-        if (Mazer5D.getBagOStuff().getMazeManager().isMazeXML1Compatible()) {
-            return 0;
-        } else {
-            return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;
-        }
+        return 0;
     }
 }

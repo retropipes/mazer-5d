@@ -46,11 +46,6 @@ class MovingBlock extends GenericMovingObject implements Cloneable {
     }
 
     @Override
-    public int getCustomFormat() {
-        return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;
-    }
-
-    @Override
     protected void writeMazeObjectHookXML(final XDataWriter writer)
             throws IOException {
         this.getSavedObject().writeMazeObjectXML(writer);

@@ -96,7 +96,6 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
         }
     }
 
-
     @Override
     public MazeObjectModel editorPropertiesHook() {
         final String[] tempKeyNames = GameObjects.getAllProgrammableKeyNames();
@@ -149,10 +148,5 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     protected void writeMazeObjectHookXML(final XDataWriter writer)
             throws IOException {
         this.getKey().writeMazeObjectXML(writer);
-    }
-
-    @Override
-    public int getCustomFormat() {
-        return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;
     }
 }

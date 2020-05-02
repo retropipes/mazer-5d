@@ -66,13 +66,8 @@ public abstract class GenericCharacter extends MazeObjectModel {
 
     @Override
     public int getCustomFormat() {
-        if (Mazer5D.getBagOStuff().getMazeManager().isMazeXML2Compatible()) {
-            return 0;
-        } else {
-            return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;
-        }
+        return 0;
     }
-
 
     @Override
     protected void writeMazeObjectHookXML(final XDataWriter writer)

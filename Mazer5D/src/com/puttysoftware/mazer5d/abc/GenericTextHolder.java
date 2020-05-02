@@ -15,13 +15,11 @@ import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericTextHolder extends MazeObjectModel {
-    // Fields
-    private String text;
-
     // Constructors
     protected GenericTextHolder() {
         super(true);
-        this.text = "Empty";
+        this.addOneCustomText();
+        this.setSignText("Empty");
         this.setType(TypeConstants.TYPE_TEXT_HOLDER);
     }
 
@@ -34,7 +32,7 @@ public abstract class GenericTextHolder extends MazeObjectModel {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        CommonDialogs.showDialog(this.text);
+        CommonDialogs.showDialog(this.getSignText());
     }
 
     @Override
@@ -45,29 +43,24 @@ public abstract class GenericTextHolder extends MazeObjectModel {
         return Layers.OBJECT;
     }
 
-
     @Override
     public MazeObjectModel editorPropertiesHook() {
-        this.text = CommonDialogs.showTextInputDialogWithDefault("Set Text for "
-                + this.getName(), "Editor", this.text);
+        this.setSignText(CommonDialogs.showTextInputDialogWithDefault(
+                "Set Text for " + this.getName(), "Editor", this
+                        .getSignText()));
         return this;
     }
 
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        this.text = reader.readString();
+        this.setSignText(reader.readString());
         return this;
     }
 
     @Override
     protected void writeMazeObjectHookXML(final XDataWriter writer)
             throws IOException {
-        writer.writeString(this.text);
-    }
-
-    @Override
-    public int getCustomFormat() {
-        return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;
+        writer.writeString(this.getSignText());
     }
 }

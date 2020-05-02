@@ -39,7 +39,6 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     private RuleSet ruleSet;
     private MazeObjectModel savedObject;
     public static final int DEFAULT_CUSTOM_VALUE = 0;
-    protected static final int CUSTOM_FORMAT_MANUAL_OVERRIDE = -1;
 
     // Constructors
     public MazeObjectModel(final boolean isSolid) {
@@ -526,11 +525,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         return this.cc.length();
     }
 
-    public final boolean addCustomCounters(final int count) {
+    protected final boolean addCustomCounters(final int count) {
         return this.cc.add(count);
     }
 
-    public final void addOneCustomCounter() {
+    protected final void addOneCustomCounter() {
         this.cc.addOne();
     }
 
@@ -558,11 +557,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         return this.cf.length();
     }
 
-    public final boolean addCustomFlags(final int count) {
+    protected final boolean addCustomFlags(final int count) {
         return this.cf.add(count);
     }
 
-    public final void addOneCustomFlag() {
+    protected final void addOneCustomFlag() {
         this.cf.addOne();
     }
 
@@ -582,11 +581,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         return this.ct.length();
     }
 
-    public final boolean addCustomTexts(final int count) {
+    protected final boolean addCustomTexts(final int count) {
         return this.ct.add(count);
     }
 
-    public final void addOneCustomText() {
+    protected final void addOneCustomText() {
         this.ct.addOne();
     }
 
@@ -693,6 +692,30 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
 
     protected final void setKeyCount(final int kc) {
         this.setCustomCounter(0, kc);
+    }
+
+    protected final String getSignText() {
+        return this.getCustomText(0);
+    }
+
+    protected final void setSignText(final String st) {
+        this.setCustomText(0, st);
+    }
+
+    protected final int getRotationRadius() {
+        return this.getCustomCounter(0);
+    }
+
+    protected final void setRotationRadius(final int rr) {
+        this.setCustomCounter(0, rr);
+    }
+
+    protected final boolean getRotationDirection() {
+        return this.getCustomFlag(0);
+    }
+
+    protected final void setRotationDirection(final boolean rd) {
+        this.setCustomFlag(0, rd);
     }
 
     // Scripting
@@ -1072,29 +1095,25 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             throws IOException {
         writer.writeString(this.getXMLIdentifier());
         final int ccf = this.getCustomFormat();
-        if (ccf == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
-            this.writeMazeObjectHookXML(writer);
-        } else {
+        if (ccf != MazeObjectModel.DEFAULT_CUSTOM_VALUE) {
             for (int x = 0; x < ccf; x++) {
-                final int cx = this.getCustomCounter(x + 1);
-                writer.writeInt(cx);
+                writer.writeInt(this.getCustomCounter(x + 1));
             }
         }
+        this.writeMazeObjectHookXML(writer);
     }
 
     public final MazeObjectModel readMazeObjectXML(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int ccf = this.getCustomFormat();
-            if (ccf == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
-                return this.readMazeObjectHookXML(reader, ver);
-            } else {
+            if (ccf != MazeObjectModel.DEFAULT_CUSTOM_VALUE) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);
                 }
             }
-            return this;
+            return this.readMazeObjectHookXML(reader, ver);
         } else {
             return null;
         }
@@ -1104,15 +1123,13 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int ccf = this.getCustomFormat();
-            if (ccf == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
-                return this.readMazeObjectHookXML(reader, ver);
-            } else {
+            if (ccf != MazeObjectModel.DEFAULT_CUSTOM_VALUE) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);
                 }
             }
-            return this;
+            return this.readMazeObjectHookXML(reader, ver);
         } else {
             return null;
         }
@@ -1122,15 +1139,13 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int ccf = this.getCustomFormat();
-            if (ccf == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
-                return this.readMazeObjectHookXML(reader, ver);
-            } else {
+            if (ccf != MazeObjectModel.DEFAULT_CUSTOM_VALUE) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);
                 }
             }
-            return this;
+            return this.readMazeObjectHookXML(reader, ver);
         } else {
             return null;
         }
@@ -1140,15 +1155,13 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int ccf = this.getCustomFormat();
-            if (ccf == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
-                return this.readMazeObjectHookXML(reader, ver);
-            } else {
+            if (ccf != MazeObjectModel.DEFAULT_CUSTOM_VALUE) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);
                 }
             }
-            return this;
+            return this.readMazeObjectHookXML(reader, ver);
         } else {
             return null;
         }
@@ -1158,15 +1171,13 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int ccf = this.getCustomFormat();
-            if (ccf == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
-                return this.readMazeObjectHookXML(reader, ver);
-            } else {
+            if (ccf != MazeObjectModel.DEFAULT_CUSTOM_VALUE) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);
                 }
             }
-            return this;
+            return this.readMazeObjectHookXML(reader, ver);
         } else {
             return null;
         }

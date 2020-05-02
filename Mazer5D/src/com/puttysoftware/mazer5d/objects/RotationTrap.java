@@ -21,47 +21,41 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class RotationTrap extends GenericTrap implements Cloneable {
     // Fields
-    private int radius;
-    private boolean direction;
     private static final boolean CLOCKWISE = true;
     private static final boolean COUNTERCLOCKWISE = false;
 
     // Constructors
     public RotationTrap() {
         super();
-        this.radius = 1;
-        this.direction = RotationTrap.CLOCKWISE;
+        this.addOneCustomCounter();
+        this.addOneCustomFlag();
+        this.setRotationRadius(1);
+        this.setRotationDirection(RotationTrap.CLOCKWISE);
     }
 
     public RotationTrap(final int newRadius, final boolean newDirection) {
         super();
-        this.radius = newRadius;
-        this.direction = newDirection;
-    }
-
-    @Override
-    public RotationTrap clone() {
-        final RotationTrap copy = (RotationTrap) super.clone();
-        copy.radius = this.radius;
-        copy.direction = this.direction;
-        return copy;
+        this.addOneCustomCounter();
+        this.addOneCustomFlag();
+        this.setRotationRadius(newRadius);
+        this.setRotationDirection(newDirection);
     }
 
     @Override
     public void editorProbeHook() {
         String dir;
-        if (this.direction == RotationTrap.CLOCKWISE) {
+        if (this.getRotationDirection() == RotationTrap.CLOCKWISE) {
             dir = "Clockwise";
         } else {
             dir = "Counterclockwise";
         }
-        Mazer5D.getBagOStuff().showMessage(this.getName() + " (Radius "
-                + this.radius + ", Direction " + dir + ")");
+        Mazer5D.getBagOStuff().showMessage(this.getName() + " (Radius " + this
+                .getRotationRadius() + ", Direction " + dir + ")");
     }
 
     @Override
     public MazeObjectModel editorPropertiesHook() {
-        int r = this.radius;
+        int r = this.getRotationRadius();
         final String[] rChoices = new String[] { "1", "2", "3" };
         final String rres = CommonDialogs.showInputDialog("Rotation Radius:",
                 "Editor", rChoices, rChoices[r - 1]);
@@ -70,7 +64,7 @@ class RotationTrap extends GenericTrap implements Cloneable {
         } catch (final NumberFormatException nf) {
             // Ignore
         }
-        boolean d = this.direction;
+        boolean d = this.getRotationDirection();
         int di;
         if (d) {
             di = 0;
@@ -102,32 +96,27 @@ class RotationTrap extends GenericTrap implements Cloneable {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        this.radius = reader.readInt();
-        this.direction = reader.readBoolean();
+        this.setRotationRadius(reader.readInt());
+        this.setRotationDirection(reader.readBoolean());
         return this;
     }
 
     @Override
     protected void writeMazeObjectHookXML(final XDataWriter writer)
             throws IOException {
-        writer.writeInt(this.radius);
-        writer.writeBoolean(this.direction);
-    }
-
-    @Override
-    public int getCustomFormat() {
-        return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;
+        writer.writeInt(this.getRotationRadius());
+        writer.writeBoolean(this.getRotationDirection());
     }
 
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        if (this.direction) {
-            Mazer5D.getBagOStuff().getGameManager().doClockwiseRotate(
-                    this.radius);
+        if (this.getRotationDirection()) {
+            Mazer5D.getBagOStuff().getGameManager().doClockwiseRotate(this
+                    .getRotationRadius());
         } else {
             Mazer5D.getBagOStuff().getGameManager().doCounterclockwiseRotate(
-                    this.radius);
+                    this.getRotationRadius());
         }
         SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
     }

@@ -137,9 +137,4 @@ public abstract class GenericContainer extends GenericLock {
             this.inside.writeMazeObjectXML(writer);
         }
     }
-
-    @Override
-    public int getCustomFormat() {
-        return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;
-    }
 }
