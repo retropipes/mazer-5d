@@ -68,7 +68,7 @@ public class ObjectHelpViewer {
         this.buttonPane.add(this.export);
         this.buttonPane.add(this.done);
         this.helpPane.add(this.hv.getHelp(), BorderLayout.CENTER);
-        this.buttonPane.add(this.buttonPane, BorderLayout.SOUTH);
+        this.helpPane.add(this.buttonPane, BorderLayout.SOUTH);
         final int maxSize = Prefs.getViewingWindowSize();
         this.hv.setHelpSize(maxSize, maxSize);
     }
