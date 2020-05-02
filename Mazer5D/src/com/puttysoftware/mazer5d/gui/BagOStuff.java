@@ -29,7 +29,7 @@ public class BagOStuff {
     private MazeEditor editor;
     private RuleSetPicker rsPicker;
     private final GUIManager guiMgr;
-    private static final int VERSION_MAJOR = 9;
+    private static final int VERSION_MAJOR = 11;
     private static final int VERSION_MINOR = 0;
     private static final int VERSION_BUGFIX = 0;
     private static final int VERSION_BETA = 2;
