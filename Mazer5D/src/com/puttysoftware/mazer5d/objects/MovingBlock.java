@@ -14,21 +14,9 @@ class MovingBlock extends GenericMovingObject implements Cloneable {
     // Constructors
     public MovingBlock() {
         super(true);
-        this.savedObject = GameObjects.getEmptySpace();
+        this.setSavedObject(GameObjects.getEmptySpace());
         final RandomRange t = new RandomRange(1, 2);
         this.activateTimer(t.generate());
-    }
-
-    @Override
-    public MovingBlock clone() {
-        final MovingBlock copy = (MovingBlock) super.clone();
-        copy.savedObject = this.savedObject.clone();
-        return copy;
-    }
-
-    @Override
-    public void setSavedObject(final MazeObjectModel newSavedObject) {
-        this.savedObject = newSavedObject;
     }
 
     @Override
@@ -65,13 +53,13 @@ class MovingBlock extends GenericMovingObject implements Cloneable {
     @Override
     protected void writeMazeObjectHookXML(final XDataWriter writer)
             throws IOException {
-        this.savedObject.writeMazeObjectXML(writer);
+        this.getSavedObject().writeMazeObjectXML(writer);
     }
 
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        this.savedObject = GameObjects.readObject(reader, formatVersion);
+        this.setSavedObject(GameObjects.readObject(reader, formatVersion));
         return this;
     }
 

@@ -5,9 +5,6 @@ import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericMovingObject extends MazeObjectModel {
-    // Fields
-    protected MazeObjectModel savedObject;
-
     // Constructors
     public GenericMovingObject(final boolean solid) {
         super(solid);
@@ -15,10 +12,6 @@ public abstract class GenericMovingObject extends MazeObjectModel {
     }
 
     // Methods
-    public MazeObjectModel getSavedObject() {
-        return this.savedObject;
-    }
-
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
@@ -44,10 +37,6 @@ public abstract class GenericMovingObject extends MazeObjectModel {
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-        // Do nothing
-    }
-
-    public void setSavedObject(final MazeObjectModel inThere) {
         // Do nothing
     }
 }

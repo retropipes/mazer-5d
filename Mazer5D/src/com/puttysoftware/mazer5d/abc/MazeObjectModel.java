@@ -7,7 +7,6 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Collections;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
@@ -38,6 +37,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     private CustomTexts ct;
     private TypeProperties tp;
     private RuleSet ruleSet;
+    private MazeObjectModel savedObject;
     public static final int DEFAULT_CUSTOM_VALUE = 0;
     protected static final int CUSTOM_FORMAT_MANUAL_OVERRIDE = -1;
 
@@ -332,6 +332,18 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     }
 
     // Object state methods
+    public final MazeObjectModel getSavedObject() {
+        return this.savedObject;
+    }
+
+    public final boolean hasSavedObject() {
+        return this.savedObject != null;
+    }
+
+    public final void setSavedObject(final MazeObjectModel newSaved) {
+        this.savedObject = newSaved;
+    }
+
     public final boolean hasRuleSet() {
         return this.ruleSet != null;
     }
@@ -585,9 +597,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     public final boolean setCustomText(final int index, final String value) {
         return this.ct.set(index, value);
     }
-
     // Custom object state method aliases
-
 
     // Scripting
     public boolean isConditionallySolid(final ObjectInventory inv) {

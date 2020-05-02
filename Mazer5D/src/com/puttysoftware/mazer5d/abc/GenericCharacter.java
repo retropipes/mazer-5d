@@ -21,7 +21,6 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericCharacter extends MazeObjectModel {
     // Fields
-    private MazeObjectModel savedObject;
     public static final int FULL_HEAL_PERCENTAGE = 100;
     private static final int SHOT_SELF_NORMAL_DAMAGE = 5;
     private static final int SHOT_SELF_SPECIAL_DAMAGE = 10;
@@ -29,7 +28,7 @@ public abstract class GenericCharacter extends MazeObjectModel {
     // Constructors
     protected GenericCharacter() {
         super(false);
-        this.savedObject = GameObjects.getEmptySpace();
+        this.setSavedObject(GameObjects.getEmptySpace());
         this.setType(TypeConstants.TYPE_CHARACTER);
     }
 
@@ -38,14 +37,6 @@ public abstract class GenericCharacter extends MazeObjectModel {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         // Do nothing
-    }
-
-    public MazeObjectModel getSavedObject() {
-        return this.savedObject;
-    }
-
-    public void setSavedObject(final MazeObjectModel obj) {
-        this.savedObject = obj;
     }
 
     @Override
@@ -95,13 +86,13 @@ public abstract class GenericCharacter extends MazeObjectModel {
     @Override
     protected void writeMazeObjectHookXML(final XDataWriter writer)
             throws IOException {
-        this.savedObject.writeMazeObjectXML(writer);
+        this.getSavedObject().writeMazeObjectXML(writer);
     }
 
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        this.savedObject = GameObjects.readObject(reader, formatVersion);
+        this.setSavedObject(GameObjects.readObject(reader, formatVersion));
         return this;
     }
 }

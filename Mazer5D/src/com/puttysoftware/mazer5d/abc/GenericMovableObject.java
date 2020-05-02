@@ -20,24 +20,13 @@ import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericMovableObject extends MazeObjectModel {
-    // Fields
-    private MazeObjectModel savedObject;
-
     // Constructors
     protected GenericMovableObject(final boolean pushable,
             final boolean pullable) {
         super(true, pushable, false, false, pullable, false, false, true, false,
                 0);
-        this.savedObject = GameObjects.getEmptySpace();
+        this.setSavedObject(GameObjects.getEmptySpace());
         this.setType(TypeConstants.TYPE_MOVABLE);
-    }
-
-    public MazeObjectModel getSavedObject() {
-        return this.savedObject;
-    }
-
-    public void setSavedObject(final MazeObjectModel obj) {
-        this.savedObject = obj;
     }
 
     @Override
@@ -51,7 +40,7 @@ public abstract class GenericMovableObject extends MazeObjectModel {
             final int x, final int y, final int pushX, final int pushY) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
-        this.savedObject = mo;
+        this.setSavedObject(mo);
         SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
     }
 
@@ -60,7 +49,7 @@ public abstract class GenericMovableObject extends MazeObjectModel {
             final int x, final int y, final int pullX, final int pullY) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().updatePulledPosition(x, y, pullX, pullY, this);
-        this.savedObject = mo;
+        this.setSavedObject(mo);
         SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
     }
 
@@ -85,14 +74,14 @@ public abstract class GenericMovableObject extends MazeObjectModel {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        this.savedObject = GameObjects.readObject(reader, formatVersion);
+        this.setSavedObject(GameObjects.readObject(reader, formatVersion));
         return this;
     }
 
     @Override
     protected void writeMazeObjectHookXML(final XDataWriter writer)
             throws IOException {
-        this.savedObject.writeMazeObjectXML(writer);
+        this.getSavedObject().writeMazeObjectXML(writer);
     }
 
     @Override
