@@ -1,6 +1,3 @@
 logo
 micrologo
 minilogo
-darklogo
-darkmicrologo
-darkminilogo
