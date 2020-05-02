@@ -39,8 +39,9 @@ public class AboutThisGame implements AboutHandler {
     // Methods
     public void showAboutDialog() {
         Modes.setInAbout();
-        this.aboutFrame.setTitle("About Mazer5D");
         this.aboutFrame.attachAndSave(this.aboutPane);
+        this.aboutFrame.setTitle("About Mazer5D");
+        this.aboutFrame.pack();
     }
 
     void hideAboutDialog() {
@@ -76,7 +77,6 @@ public class AboutThisGame implements AboutHandler {
         this.aboutPane.add(this.textPane, BorderLayout.CENTER);
         this.aboutPane.add(this.buttonPane, BorderLayout.SOUTH);
         this.aboutOK.addActionListener(this.handler);
-        this.aboutFrame.pack();
     }
 
     private class EventHandler implements ActionListener {
