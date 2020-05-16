@@ -25,8 +25,8 @@ import com.puttysoftware.randomrange.RandomLongRange;
 
 public class MazeModel {
     // Properties
-    private LayeredTower mazeData;
-    private LayeredTower clipboard;
+    private MazeDataModel mazeData;
+    private MazeDataModel clipboard;
     private int startW;
     private int levelCount;
     private int activeLevel;
@@ -85,27 +85,27 @@ public class MazeModel {
     }
 
     public static int getMinFloors() {
-        return LayeredTower.getMinFloors();
+        return MazeDataModel.getMinFloors();
     }
 
     public static int getMaxFloors() {
-        return LayeredTower.getMaxFloors();
+        return MazeDataModel.getMaxFloors();
     }
 
     public static int getMinColumns() {
-        return LayeredTower.getMinColumns();
+        return MazeDataModel.getMinColumns();
     }
 
     public static int getMaxColumns() {
-        return LayeredTower.getMaxColumns();
+        return MazeDataModel.getMaxColumns();
     }
 
     public static int getMinRows() {
-        return LayeredTower.getMinRows();
+        return MazeDataModel.getMinRows();
     }
 
     public static int getMaxRows() {
-        return LayeredTower.getMaxRows();
+        return MazeDataModel.getMaxRows();
     }
 
     // Methods
@@ -341,7 +341,7 @@ public class MazeModel {
     }
 
     public static int getMaxPoisonPower() {
-        return LayeredTower.getMaxPoisonPower();
+        return MazeDataModel.getMaxPoisonPower();
     }
 
     public boolean getAutoFinishThresholdEnabled() {
@@ -498,7 +498,7 @@ public class MazeModel {
                     // Ignore
                 }
             }
-            this.mazeData = new LayeredTower(rows, cols, floors);
+            this.mazeData = new MazeDataModel(rows, cols, floors);
             this.levelCount++;
             this.activeLevel = this.levelCount - 1;
             return true;
@@ -984,23 +984,23 @@ public class MazeModel {
     private void readMazeLevelXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_1) {
-            this.mazeData = LayeredTower.readXMLLayeredTowerV1(reader,
+            this.mazeData = MazeDataModel.readXMLMazeDataModelV1(reader,
                     formatVersion);
             this.mazeData.readSavedTowerStateXML(reader, formatVersion);
         } else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_2) {
-            this.mazeData = LayeredTower.readXMLLayeredTowerV2(reader,
+            this.mazeData = MazeDataModel.readXMLMazeDataModelV2(reader,
                     formatVersion);
             this.mazeData.readSavedTowerStateXML(reader, formatVersion);
         } else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_3) {
-            this.mazeData = LayeredTower.readXMLLayeredTowerV3(reader,
+            this.mazeData = MazeDataModel.readXMLMazeDataModelV3(reader,
                     formatVersion);
             this.mazeData.readSavedTowerStateXML(reader, formatVersion);
         } else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_4) {
-            this.mazeData = LayeredTower.readXMLLayeredTowerV4(reader,
+            this.mazeData = MazeDataModel.readXMLMazeDataModelV4(reader,
                     formatVersion);
             this.mazeData.readSavedTowerStateXML(reader, formatVersion);
         } else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_5) {
-            this.mazeData = LayeredTower.readXMLLayeredTowerV5(reader,
+            this.mazeData = MazeDataModel.readXMLMazeDataModelV5(reader,
                     formatVersion);
             this.mazeData.readSavedTowerStateXML(reader, formatVersion);
         } else {

@@ -28,10 +28,10 @@ import com.puttysoftware.mazer5d.utilities.VisionModes;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.storage.FlagStorage;
 
-class LayeredTower {
+class MazeDataModel {
     // Properties
-    private LowLevelDataStore data;
-    private SavedTowerState savedTowerState;
+    private MazeStorage data;
+    private SavedState savedState;
     private final FlagStorage visionData;
     private final int[] playerData;
     private final int[] findResult;
@@ -74,9 +74,9 @@ class LayeredTower {
     private static final int MIN_ROWS = 2;
 
     // Constructors
-    public LayeredTower(final int rows, final int cols, final int floors) {
-        this.data = new LowLevelDataStore(cols, rows, floors, Layers.COUNT);
-        this.savedTowerState = new SavedTowerState(rows, cols, floors);
+    public MazeDataModel(final int rows, final int cols, final int floors) {
+        this.data = new MazeStorage(cols, rows, floors, Layers.COUNT);
+        this.savedState = new SavedState(rows, cols, floors);
         this.visionData = new FlagStorage(cols, rows, floors);
         this.playerData = new int[3];
         Arrays.fill(this.playerData, -1);
@@ -107,27 +107,27 @@ class LayeredTower {
 
     // Static methods
     public static int getMaxFloors() {
-        return LayeredTower.MAX_FLOORS;
+        return MazeDataModel.MAX_FLOORS;
     }
 
     public static int getMaxColumns() {
-        return LayeredTower.MAX_COLUMNS;
+        return MazeDataModel.MAX_COLUMNS;
     }
 
     public static int getMaxRows() {
-        return LayeredTower.MAX_ROWS;
+        return MazeDataModel.MAX_ROWS;
     }
 
     public static int getMinFloors() {
-        return LayeredTower.MIN_FLOORS;
+        return MazeDataModel.MIN_FLOORS;
     }
 
     public static int getMinColumns() {
-        return LayeredTower.MIN_COLUMNS;
+        return MazeDataModel.MIN_COLUMNS;
     }
 
     public static int getMinRows() {
-        return LayeredTower.MIN_ROWS;
+        return MazeDataModel.MIN_ROWS;
     }
 
     // Methods
@@ -235,7 +235,7 @@ class LayeredTower {
     }
 
     public static int getMaxPoisonPower() {
-        return LayeredTower.MAX_POISON_POWER;
+        return MazeDataModel.MAX_POISON_POWER;
     }
 
     public String getLevelTitle() {
@@ -357,7 +357,7 @@ class LayeredTower {
         if (this.thirdDimensionWraparoundEnabled) {
             fF = this.normalizeFloor(fF);
         }
-        return this.data.getCell(fC, fR, fF, extra);
+        return this.data.getMazeCell(fC, fR, fF, extra);
     }
 
     public int getFindResultRow() {
@@ -609,7 +609,7 @@ class LayeredTower {
 
     public void resize(final int x, final int y, final int z) {
         // Allocate temporary storage array
-        final LowLevelDataStore tempStorage = new LowLevelDataStore(y, x, z,
+        final MazeStorage tempStorage = new MazeStorage(y, x, z,
                 Layers.COUNT);
         // Copy existing maze into temporary array
         int u, v, w, e;
@@ -632,7 +632,7 @@ class LayeredTower {
         // Fill any blanks
         this.fillNulls();
         // Recreate saved tower state
-        this.savedTowerState = new SavedTowerState(y, x, z);
+        this.savedState = new SavedState(y, x, z);
     }
 
     public boolean radialScan(final int x, final int y, final int z,
@@ -900,7 +900,7 @@ class LayeredTower {
             }
         }
         // Do the shuffle
-        final MazeObjectModel[][][] postShuffle = LayeredTower.shuffleObjects(
+        final MazeObjectModel[][][] postShuffle = MazeDataModel.shuffleObjects(
                 preShuffle, r);
         // Load the maze with the postShuffle array
         for (u = x - r; u <= x + r; u++) {
@@ -999,7 +999,7 @@ class LayeredTower {
     public boolean isSquareVisible(final int x1, final int y1, final int x2,
             final int y2) {
         if (this.visionMode == VisionModes.NONE) {
-            return LayeredTower.isSquareVisibleNone();
+            return MazeDataModel.isSquareVisibleNone();
         } else {
             boolean result = true;
             if ((this.visionMode | VisionModes.RADIUS) == this.visionMode) {
@@ -1117,32 +1117,32 @@ class LayeredTower {
 
     public void setVisionRadius(final int newVR) {
         int fVR = newVR;
-        if (fVR > LayeredTower.MAX_VISION_RADIUS) {
-            fVR = LayeredTower.MAX_VISION_RADIUS;
+        if (fVR > MazeDataModel.MAX_VISION_RADIUS) {
+            fVR = MazeDataModel.MAX_VISION_RADIUS;
         }
-        if (fVR < LayeredTower.MIN_VISION_RADIUS) {
-            fVR = LayeredTower.MIN_VISION_RADIUS;
+        if (fVR < MazeDataModel.MIN_VISION_RADIUS) {
+            fVR = MazeDataModel.MIN_VISION_RADIUS;
         }
         this.visionRadius = fVR;
         this.initialVisionRadius = fVR;
     }
 
     public void setVisionRadiusToMaximum() {
-        this.visionRadius = LayeredTower.MAX_VISION_RADIUS;
+        this.visionRadius = MazeDataModel.MAX_VISION_RADIUS;
     }
 
     public void setVisionRadiusToMinimum() {
-        this.visionRadius = LayeredTower.MIN_VISION_RADIUS;
+        this.visionRadius = MazeDataModel.MIN_VISION_RADIUS;
     }
 
     public void incrementVisionRadius() {
-        if (this.visionRadius < LayeredTower.MAX_VISION_RADIUS) {
+        if (this.visionRadius < MazeDataModel.MAX_VISION_RADIUS) {
             this.visionRadius++;
         }
     }
 
     public void decrementVisionRadius() {
-        if (this.visionRadius > LayeredTower.MIN_VISION_RADIUS) {
+        if (this.visionRadius > MazeDataModel.MIN_VISION_RADIUS) {
             this.visionRadius--;
         }
     }
@@ -1507,7 +1507,7 @@ class LayeredTower {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
                     for (e = 0; e < Layers.COUNT; e++) {
-                        this.savedTowerState.setDataCell(this.getCell(y, x, z,
+                        this.savedState.setDataCell(this.getCell(y, x, z,
                                 e), x, y, z, e);
                     }
                 }
@@ -1521,7 +1521,7 @@ class LayeredTower {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
                     for (e = 0; e < Layers.COUNT; e++) {
-                        this.setCell(this.savedTowerState.getDataCell(x, y, z,
+                        this.setCell(this.savedState.getDataCell(x, y, z,
                                 e), y, x, z, e);
                     }
                 }
@@ -1671,7 +1671,7 @@ class LayeredTower {
             }
         }
         // Shuffle locations array
-        randomLocations = LayeredTower.shuffleArray(randomLocations);
+        randomLocations = MazeDataModel.shuffleArray(randomLocations);
         // Populate postShuffle array
         counter = 0;
         for (int x = 0; x < preShuffle.length; x++) {
@@ -1841,13 +1841,13 @@ class LayeredTower {
         writer.writeInt(this.alternateNextLevelOffset);
     }
 
-    public static LayeredTower readXMLLayeredTowerV1(final XDataReader reader,
+    public static MazeDataModel readXMLMazeDataModelV1(final XDataReader reader,
             final int ver) throws IOException {
         int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
         mazeSizeX = reader.readInt();
         mazeSizeY = reader.readInt();
         mazeSizeZ = reader.readInt();
-        final LayeredTower lt = new LayeredTower(mazeSizeX, mazeSizeY,
+        final MazeDataModel lt = new MazeDataModel(mazeSizeX, mazeSizeY,
                 mazeSizeZ);
         for (x = 0; x < lt.getColumns(); x++) {
             for (y = 0; y < lt.getRows(); y++) {
@@ -1876,61 +1876,17 @@ class LayeredTower {
         lt.timerValue = reader.readInt();
         lt.initialTimerValue = lt.timerValue;
         lt.timerActive = reader.readBoolean();
-        lt.initialVisionRadius = LayeredTower.MAX_VISION_RADIUS;
+        lt.initialVisionRadius = MazeDataModel.MAX_VISION_RADIUS;
         return lt;
     }
 
-    public static LayeredTower readXMLLayeredTowerV2(final XDataReader reader,
+    public static MazeDataModel readXMLMazeDataModelV2(final XDataReader reader,
             final int ver) throws IOException {
         int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
         mazeSizeX = reader.readInt();
         mazeSizeY = reader.readInt();
         mazeSizeZ = reader.readInt();
-        final LayeredTower lt = new LayeredTower(mazeSizeX, mazeSizeY,
-                mazeSizeZ);
-        for (x = 0; x < lt.getColumns(); x++) {
-            for (y = 0; y < lt.getRows(); y++) {
-                for (z = 0; z < lt.getFloors(); z++) {
-                    for (e = 0; e < Layers.COUNT; e++) {
-                        lt.setCell(GameObjects.readObject(reader, ver), y, x, z,
-                                e);
-                        if (lt.getCell(y, x, z, e) == null) {
-                            return null;
-                        }
-                    }
-                }
-            }
-        }
-        for (y = 0; y < 3; y++) {
-            lt.playerData[y] = reader.readInt();
-        }
-        lt.horizontalWraparoundEnabled = reader.readBoolean();
-        lt.verticalWraparoundEnabled = reader.readBoolean();
-        lt.thirdDimensionWraparoundEnabled = reader.readBoolean();
-        lt.levelTitle = reader.readString();
-        lt.levelStartMessage = reader.readString();
-        lt.levelEndMessage = reader.readString();
-        lt.poisonPower = reader.readInt();
-        lt.oldPoisonPower = lt.poisonPower;
-        lt.timerValue = reader.readInt();
-        lt.initialTimerValue = lt.timerValue;
-        lt.timerActive = reader.readBoolean();
-        lt.autoFinishThresholdEnabled = reader.readBoolean();
-        lt.autoFinishThreshold = reader.readInt();
-        lt.useOffset = reader.readBoolean();
-        lt.nextLevel = reader.readInt();
-        lt.nextLevelOffset = reader.readInt();
-        lt.initialVisionRadius = LayeredTower.MAX_VISION_RADIUS;
-        return lt;
-    }
-
-    public static LayeredTower readXMLLayeredTowerV3(final XDataReader reader,
-            final int ver) throws IOException {
-        int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
-        mazeSizeX = reader.readInt();
-        mazeSizeY = reader.readInt();
-        mazeSizeZ = reader.readInt();
-        final LayeredTower lt = new LayeredTower(mazeSizeX, mazeSizeY,
+        final MazeDataModel lt = new MazeDataModel(mazeSizeX, mazeSizeY,
                 mazeSizeZ);
         for (x = 0; x < lt.getColumns(); x++) {
             for (y = 0; y < lt.getRows(); y++) {
@@ -1964,17 +1920,61 @@ class LayeredTower {
         lt.useOffset = reader.readBoolean();
         lt.nextLevel = reader.readInt();
         lt.nextLevelOffset = reader.readInt();
-        lt.initialVisionRadius = LayeredTower.MAX_VISION_RADIUS;
+        lt.initialVisionRadius = MazeDataModel.MAX_VISION_RADIUS;
         return lt;
     }
 
-    public static LayeredTower readXMLLayeredTowerV4(final XDataReader reader,
+    public static MazeDataModel readXMLMazeDataModelV3(final XDataReader reader,
             final int ver) throws IOException {
         int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
         mazeSizeX = reader.readInt();
         mazeSizeY = reader.readInt();
         mazeSizeZ = reader.readInt();
-        final LayeredTower lt = new LayeredTower(mazeSizeX, mazeSizeY,
+        final MazeDataModel lt = new MazeDataModel(mazeSizeX, mazeSizeY,
+                mazeSizeZ);
+        for (x = 0; x < lt.getColumns(); x++) {
+            for (y = 0; y < lt.getRows(); y++) {
+                for (z = 0; z < lt.getFloors(); z++) {
+                    for (e = 0; e < Layers.COUNT; e++) {
+                        lt.setCell(GameObjects.readObject(reader, ver), y, x, z,
+                                e);
+                        if (lt.getCell(y, x, z, e) == null) {
+                            return null;
+                        }
+                    }
+                }
+            }
+        }
+        for (y = 0; y < 3; y++) {
+            lt.playerData[y] = reader.readInt();
+        }
+        lt.horizontalWraparoundEnabled = reader.readBoolean();
+        lt.verticalWraparoundEnabled = reader.readBoolean();
+        lt.thirdDimensionWraparoundEnabled = reader.readBoolean();
+        lt.levelTitle = reader.readString();
+        lt.levelStartMessage = reader.readString();
+        lt.levelEndMessage = reader.readString();
+        lt.poisonPower = reader.readInt();
+        lt.oldPoisonPower = lt.poisonPower;
+        lt.timerValue = reader.readInt();
+        lt.initialTimerValue = lt.timerValue;
+        lt.timerActive = reader.readBoolean();
+        lt.autoFinishThresholdEnabled = reader.readBoolean();
+        lt.autoFinishThreshold = reader.readInt();
+        lt.useOffset = reader.readBoolean();
+        lt.nextLevel = reader.readInt();
+        lt.nextLevelOffset = reader.readInt();
+        lt.initialVisionRadius = MazeDataModel.MAX_VISION_RADIUS;
+        return lt;
+    }
+
+    public static MazeDataModel readXMLMazeDataModelV4(final XDataReader reader,
+            final int ver) throws IOException {
+        int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
+        mazeSizeX = reader.readInt();
+        mazeSizeY = reader.readInt();
+        mazeSizeZ = reader.readInt();
+        final MazeDataModel lt = new MazeDataModel(mazeSizeX, mazeSizeY,
                 mazeSizeZ);
         for (x = 0; x < lt.getColumns(); x++) {
             for (y = 0; y < lt.getRows(); y++) {
@@ -2017,13 +2017,13 @@ class LayeredTower {
         return lt;
     }
 
-    public static LayeredTower readXMLLayeredTowerV5(final XDataReader reader,
+    public static MazeDataModel readXMLMazeDataModelV5(final XDataReader reader,
             final int ver) throws IOException {
         int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
         mazeSizeX = reader.readInt();
         mazeSizeY = reader.readInt();
         mazeSizeZ = reader.readInt();
-        final LayeredTower lt = new LayeredTower(mazeSizeX, mazeSizeY,
+        final MazeDataModel lt = new MazeDataModel(mazeSizeX, mazeSizeY,
                 mazeSizeZ);
         for (x = 0; x < lt.getColumns(); x++) {
             for (y = 0; y < lt.getRows(); y++) {
@@ -2074,12 +2074,12 @@ class LayeredTower {
 
     public void writeSavedTowerStateXML(final XDataWriter writer)
             throws IOException {
-        this.savedTowerState.writeSavedTowerStateXML(writer);
+        this.savedState.writeSavedTowerStateXML(writer);
     }
 
     public void readSavedTowerStateXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        this.savedTowerState = SavedTowerState.readSavedTowerStateXML(reader,
+        this.savedState = SavedState.readSavedStateXML(reader,
                 formatVersion);
     }
 }

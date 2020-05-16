@@ -13,13 +13,13 @@ import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.utilities.Layers;
 
-class SavedTowerState {
+class SavedState {
     // Properties
     private final int r, c, f;
     private final MazeObjectModel[][][][] saveData;
 
     // Constructors
-    public SavedTowerState(final int rows, final int cols, final int floors) {
+    public SavedState(final int rows, final int cols, final int floors) {
         this.saveData = new MazeObjectModel[cols][rows][floors][Layers.COUNT];
         this.c = cols;
         this.r = rows;
@@ -53,14 +53,14 @@ class SavedTowerState {
         }
     }
 
-    public static SavedTowerState readSavedTowerStateXML(
+    public static SavedState readSavedStateXML(
             final XDataReader reader, final int formatVersion)
             throws IOException {
         int x, y, z, e, sizeX, sizeY, sizeZ;
         sizeX = reader.readInt();
         sizeY = reader.readInt();
         sizeZ = reader.readInt();
-        final SavedTowerState sts = new SavedTowerState(sizeY, sizeX, sizeZ);
+        final SavedState sts = new SavedState(sizeY, sizeX, sizeZ);
         for (x = 0; x < sts.c; x++) {
             for (y = 0; y < sts.r; y++) {
                 for (z = 0; z < sts.f; z++) {
