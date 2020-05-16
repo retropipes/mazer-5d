@@ -30,7 +30,7 @@ public class EffectImageLoader {
     private static String[] allFilenames;
     private static Properties fileExtensions;
     private static boolean cached = false;
-    private static final int MAX_INDEX = 46;
+    private static final int MAX_INDEX = 21;
 
     public static BufferedImageIcon load(final EffectImageIndex image) {
         if (!EffectImageLoader.cached) {
@@ -40,7 +40,7 @@ public class EffectImageLoader {
         if (image != EffectImageIndex._NONE) {
             final String imageExt = EffectImageLoader.fileExtensions
                     .getProperty("images");
-            final String name = "/assets/image/effects/"
+            final String name = "/assets/image/effect/"
                     + EffectImageLoader.allFilenames[image.ordinal()]
                     + imageExt;
             return ImageLoader.load(name, EffectImageLoader.class.getResource(
@@ -119,7 +119,7 @@ public class EffectImageLoader {
         return EffectImageLoader.load(timeImage);
     }
 
-    public static void cacheAll() {
+    private static void cacheAll() {
         EffectImageLoader.allFilenames = DataLoader.loadEffectImageData();
         try (final InputStream stream = EffectImageLoader.class
                 .getResourceAsStream(
@@ -132,7 +132,7 @@ public class EffectImageLoader {
         final String imageExt = EffectImageLoader.fileExtensions.getProperty(
                 "images");
         for (int i = 0; i <= EffectImageLoader.MAX_INDEX; i++) {
-            final String name = "/assets/image/effects/"
+            final String name = "/assets/image/effect/"
                     + EffectImageLoader.allFilenames[i] + imageExt;
             try {
                 ImageLoader.load(name, EffectImageLoader.class.getResource(
