@@ -11,12 +11,12 @@ import java.awt.desktop.QuitHandler;
 import java.awt.desktop.QuitResponse;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.commondialogs.MainWindow;
+import com.puttysoftware.commondialogs.MainWindowContent;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
@@ -31,14 +31,14 @@ public class GUIManager implements QuitHandler {
     private static final int WIDTH = 700;
     private static final int HEIGHT = 700;
     private final MainWindow guiFrame;
-    private final JPanel guiPane;
+    private final MainWindowContent guiPane;
     private final JLabel logoLabel;
 
     // Constructors
     public GUIManager() {
         MainWindow.createMainWindow(GUIManager.WIDTH, GUIManager.HEIGHT);
         this.guiFrame = MainWindow.getMainWindow();
-        this.guiPane = new JPanel();
+        this.guiPane = this.guiFrame.createContent();
         this.guiPane.setLayout(new GridLayout(1, 1));
         final BufferedImageIcon logo = LogoImageLoader
                 .load(LogoImageIndex.LOGO);

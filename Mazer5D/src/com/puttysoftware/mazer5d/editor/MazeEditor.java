@@ -26,6 +26,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.commondialogs.MainWindow;
+import com.puttysoftware.commondialogs.MainWindowContent;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
@@ -48,8 +49,8 @@ import com.puttysoftware.picturepicker.PicturePicker;
 public class MazeEditor {
     // Declarations
     private MainWindow outputFrame;
-    private JPanel outputPane, secondaryPane, borderPane;
-    private final JPanel treasurePane;
+    private JPanel outputPane, secondaryPane;
+    private MainWindowContent borderPane, treasurePane;
     private JLabel messageLabel;
     private MazeObjectModel savedMazeObject;
     private GridBagLayout gridbag;
@@ -144,11 +145,6 @@ public class MazeEditor {
         this.pick.addActionListener(this.rhandler);
         final int maxSize = Prefs.getViewingWindowSize();
         this.treasurePicker.updatePickerLayout(maxSize);
-        this.treasurePane = new JPanel();
-        this.treasurePane.setLayout(new BorderLayout());
-        this.treasurePane.add(this.treasurePicker.getPicker(),
-                BorderLayout.CENTER);
-        this.treasurePane.add(this.pick, BorderLayout.SOUTH);
         this.mazeChanged = true;
         this.goToDestMode = false;
         this.instanceBeingEdited = null;
@@ -1846,7 +1842,7 @@ public class MazeEditor {
         this.outputFrame = MainWindow.getMainWindow();
         this.outputPane = new JPanel();
         this.secondaryPane = new JPanel();
-        this.borderPane = new JPanel();
+        this.borderPane = this.outputFrame.createContent();
         this.borderPane.setLayout(new BorderLayout());
         this.drawGrid = new JLabel[this.evMgr
                 .getViewingWindowSizeX()][this.evMgr.getViewingWindowSizeY()];
@@ -1899,6 +1895,11 @@ public class MazeEditor {
         this.secondaryPane.addMouseListener(this.mhandler);
         this.updatePicker();
         this.borderPane.add(this.picker.getPicker(), BorderLayout.EAST);
+        this.treasurePane = this.outputFrame.createContent();
+        this.treasurePane.setLayout(new BorderLayout());
+        this.treasurePane.add(this.treasurePicker.getPicker(),
+                BorderLayout.CENTER);
+        this.treasurePane.add(this.pick, BorderLayout.SOUTH);
     }
 
     public void undo() {

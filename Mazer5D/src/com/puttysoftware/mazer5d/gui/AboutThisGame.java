@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import com.puttysoftware.commondialogs.MainWindow;
+import com.puttysoftware.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
@@ -26,7 +27,8 @@ import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 public class AboutThisGame implements AboutHandler {
     // Fields
     private MainWindow aboutFrame;
-    private JPanel aboutPane, textPane, buttonPane, logoPane;
+    private MainWindowContent aboutPane;
+    private JPanel textPane, buttonPane, logoPane;
     private JButton aboutOK;
     private EventHandler handler;
     private JLabel miniLabel;
@@ -51,7 +53,7 @@ public class AboutThisGame implements AboutHandler {
     private void setUpGUI(final String ver) {
         this.handler = new EventHandler();
         this.aboutFrame = MainWindow.getMainWindow();
-        this.aboutPane = new JPanel();
+        this.aboutPane = this.aboutFrame.createContent();
         this.textPane = new JPanel();
         this.buttonPane = new JPanel();
         this.logoPane = new JPanel();

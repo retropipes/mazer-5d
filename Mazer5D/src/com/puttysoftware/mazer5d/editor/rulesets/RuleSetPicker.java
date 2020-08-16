@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.commondialogs.MainWindow;
+import com.puttysoftware.commondialogs.MainWindowContent;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
@@ -29,7 +30,8 @@ import com.puttysoftware.picturepicker.PicturePicker;
 public class RuleSetPicker {
     // Declarations
     private MainWindow outputFrame;
-    private JPanel outputPane, borderPane;
+    private MainWindowContent borderPane;
+    private JPanel outputPane;
     private final EventHandler handler;
     private PicturePicker picker;
     private final String[] names;
@@ -101,8 +103,8 @@ public class RuleSetPicker {
 
     private void setUpGUI() {
         this.outputFrame = MainWindow.getMainWindow();
+        this.borderPane = this.outputFrame.createContent();
         this.outputPane = new JPanel();
-        this.borderPane = new JPanel();
         this.create = new JButton("Create");
         this.destroy = new JButton("Destroy");
         this.edit = new JButton("Edit");

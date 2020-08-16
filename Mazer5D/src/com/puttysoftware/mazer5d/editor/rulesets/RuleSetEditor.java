@@ -18,13 +18,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.puttysoftware.commondialogs.MainWindow;
+import com.puttysoftware.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.Modes;
 
 class RuleSetEditor {
     // Fields
     private RuleSet generator;
     private MainWindow editFrame;
-    private JPanel mainEditPane, contentPane, buttonPane;
+    private MainWindowContent mainEditPane;
+    private JPanel contentPane, buttonPane;
     private JButton editOK, editCancel;
     private JCheckBox required;
     private JCheckBox percentage;
@@ -89,7 +91,7 @@ class RuleSetEditor {
     private void setUpGUI() {
         this.handler = new EventHandler();
         this.editFrame = MainWindow.getMainWindow();
-        this.mainEditPane = new JPanel();
+        this.mainEditPane = this.editFrame.createContent();
         this.contentPane = new JPanel();
         this.buttonPane = new JPanel();
         this.editOK = new JButton("OK");

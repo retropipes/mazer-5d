@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import com.puttysoftware.commondialogs.MainWindow;
+import com.puttysoftware.commondialogs.MainWindowContent;
 import com.puttysoftware.help.GraphicalHelpViewer;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Modes;
@@ -23,7 +24,7 @@ import com.puttysoftware.mazer5d.objects.GameObjects;
 public class ObjectHelpViewer {
     // Fields
     private MainWindow helpFrame;
-    private JPanel helpPane;
+    private MainWindowContent helpPane;
     private JPanel buttonPane;
     private JButton export, done;
     private String[] objectNames;
@@ -59,7 +60,7 @@ public class ObjectHelpViewer {
         this.done = new JButton("Done");
         this.done.addActionListener(this.buttonHandler);
         this.helpFrame = MainWindow.getMainWindow();
-        this.helpPane = new JPanel();
+        this.helpPane = this.helpFrame.createContent();
         this.helpPane.setLayout(new BorderLayout());
         this.buttonPane = new JPanel();
         this.buttonPane.setLayout(new FlowLayout());

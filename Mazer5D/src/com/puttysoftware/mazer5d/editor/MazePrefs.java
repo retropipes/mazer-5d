@@ -20,6 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.puttysoftware.commondialogs.MainWindow;
+import com.puttysoftware.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.maze.MazeModel;
@@ -27,7 +28,8 @@ import com.puttysoftware.mazer5d.maze.MazeModel;
 public class MazePrefs {
     // Fields
     private MainWindow prefFrame;
-    private JPanel mainPrefPane, contentPane, buttonPane;
+    private MainWindowContent mainPrefPane;
+    private JPanel contentPane, buttonPane;
     private JButton prefsOK, prefsCancel;
     private JComboBox<String> startLevelChoices;
     private String[] startLevelChoiceArray;
@@ -92,7 +94,7 @@ public class MazePrefs {
     private void setUpGUI() {
         this.handler = new EventHandler();
         this.prefFrame = MainWindow.getMainWindow();
-        this.mainPrefPane = new JPanel();
+        this.mainPrefPane = this.prefFrame.createContent();
         this.contentPane = new JPanel();
         this.buttonPane = new JPanel();
         this.prefsOK = new JButton("OK");

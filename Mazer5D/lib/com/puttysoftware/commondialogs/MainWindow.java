@@ -11,14 +11,14 @@ import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 public final class MainWindow {
     private static MainWindow window;
     private final JFrame frame;
-    private JPanel content;
-    private LinkedList<JPanel> savedContentStack;
+    private MainWindowContent content;
+    private Dimension contentSize;
+    private LinkedList<MainWindowContent> savedContentStack;
 
     private MainWindow(final int width, final int height) {
         super();
@@ -26,10 +26,10 @@ public final class MainWindow {
         this.frame
                 .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         this.frame.setResizable(false);
-        this.content = new JPanel();
-        this.content.setPreferredSize(new Dimension(width, height));
+        this.contentSize = new Dimension(width, height);
+        this.content = this.createContent();
         this.savedContentStack = new LinkedList<>();
-        this.frame.setContentPane(this.content);
+        this.frame.setContentPane(this.content.owner());
         this.frame.setVisible(true);
         this.frame.pack();
     }
@@ -44,21 +44,24 @@ public final class MainWindow {
         }
     }
 
+    public final MainWindowContent createContent() {
+        return new MainWindowContent(this.contentSize);
+    }
+
     public static MainWindow getMainWindow() {
         return MainWindow.window;
     }
 
-    public void attachAndSave(final JPanel customContent) {
+    public void attachAndSave(final MainWindowContent customContent) {
         this.savedContentStack.push(this.content);
-        customContent.setSize(this.content.getSize());
         this.content = customContent;
-        this.frame.setContentPane(this.content);
+        this.frame.setContentPane(this.content.owner());
     }
 
     public void restoreSaved() {
         this.setDefaultButton(null);
         this.content = this.savedContentStack.pop();
-        this.frame.setContentPane(this.content);
+        this.frame.setContentPane(this.content.owner());
     }
 
     public void setTitle(final String title) {

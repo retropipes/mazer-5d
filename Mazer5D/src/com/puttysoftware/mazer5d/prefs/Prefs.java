@@ -43,6 +43,7 @@ import javax.swing.JTabbedPane;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.commondialogs.MainWindow;
+import com.puttysoftware.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
@@ -62,7 +63,8 @@ public class Prefs {
     // Fields
     private static MainWindow prefFrame;
     private static JTabbedPane prefTabPane;
-    private static JPanel mainPrefPane, twisterPane;
+    private static MainWindowContent mainPrefPane;
+    private static JPanel twisterPane;
     private static JButton prefsOK, prefsCancel;
     private static JButton prefsExport, prefsImport;
     private static JCheckBox[] sounds = new JCheckBox[Prefs.SOUNDS_LENGTH];
@@ -290,7 +292,6 @@ public class Prefs {
             Prefs.setUpGUI();
             Prefs.guiSetUp = true;
         }
-        Prefs.prefFrame = MainWindow.getMainWindow();
         Prefs.prefFrame.setTitle("Preferences");
         Prefs.prefFrame.setDefaultButton(Prefs.prefsOK);
         Prefs.prefFrame.attachAndSave(Prefs.mainPrefPane);
@@ -425,9 +426,10 @@ public class Prefs {
     }
 
     private static void setUpGUI() {
+        Prefs.prefFrame = MainWindow.getMainWindow();
         Prefs.handler = new EventHandler();
         Prefs.prefTabPane = new JTabbedPane();
-        Prefs.mainPrefPane = new JPanel();
+        Prefs.mainPrefPane = Prefs.prefFrame.createContent();
         final JPanel editorPane = new JPanel();
         Prefs.twisterPane = new JPanel();
         final JPanel soundPane = new JPanel();

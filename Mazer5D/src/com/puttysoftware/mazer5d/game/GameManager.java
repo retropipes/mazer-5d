@@ -22,6 +22,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.commondialogs.MainWindow;
+import com.puttysoftware.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.GenericBow;
@@ -53,7 +54,8 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public class GameManager implements MazeEffectConstants {
     // Fields
     private MainWindow outputFrame;
-    private JPanel outputPane, borderPane, progressPane;
+    private MainWindowContent borderPane;
+    private JPanel outputPane, progressPane;
     private JLabel messageLabel;
     private JProgressBar autoFinishProgress, alternateAutoFinishProgress;
     private MazeObjectModel savedMazeObject, objectBeingUsed;
@@ -1916,7 +1918,7 @@ public class GameManager implements MazeEffectConstants {
     private void setUpGUI() {
         this.objectInv = new ObjectInventory();
         this.handler = new EventHandler();
-        this.borderPane = new JPanel();
+        this.borderPane = this.outputFrame.createContent();
         this.borderPane.setLayout(new BorderLayout());
         this.progressPane = new JPanel();
         this.progressPane
