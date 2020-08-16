@@ -42,11 +42,11 @@ import javax.swing.JSlider;
 import javax.swing.JTabbedPane;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
-import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.files.CommonPaths;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;

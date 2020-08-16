@@ -3,7 +3,7 @@ Copyleft (C) 2019 Eric Ahnell
 
 Any questions should be directed to the author via email at: support@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.dialog;
+package com.puttysoftware.commondialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -29,7 +29,6 @@ import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 
-import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
 
 public class ImageListWithDescDialog extends JDialog implements ActionListener {

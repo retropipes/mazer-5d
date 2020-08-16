@@ -18,9 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import com.puttysoftware.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
-import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 
 public class AboutThisGame implements AboutHandler {

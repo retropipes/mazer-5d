@@ -15,11 +15,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.commondialogs.MainWindow;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.files.RuleSetManager;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objects.GameObjects;

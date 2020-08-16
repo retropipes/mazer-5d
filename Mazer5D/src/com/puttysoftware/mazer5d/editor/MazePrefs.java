@@ -19,9 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.puttysoftware.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
-import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.maze.MazeModel;
 
 public class MazePrefs {

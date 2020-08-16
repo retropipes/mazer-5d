@@ -14,10 +14,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import com.puttysoftware.commondialogs.MainWindow;
 import com.puttysoftware.help.GraphicalHelpViewer;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Modes;
-import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 
 public class ObjectHelpViewer {

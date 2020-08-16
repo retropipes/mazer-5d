@@ -3,7 +3,7 @@ Copyleft (C) 2019 Eric Ahnell
 
 Any questions should be directed to the author via email at: support@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.dialog;
+package com.puttysoftware.commondialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -28,8 +28,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
-
-import com.puttysoftware.commondialogs.CommonDialogs;
 
 public class ListWithDescDialog extends JDialog implements ActionListener {
     private static final long serialVersionUID = 1L;

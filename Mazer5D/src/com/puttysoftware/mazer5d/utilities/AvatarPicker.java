@@ -5,9 +5,9 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.utilities;
 
+import com.puttysoftware.commondialogs.ImageListWithDescDialog;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.assets.AvatarImageModel;
-import com.puttysoftware.mazer5d.dialog.ImageListWithDescDialog;
 import com.puttysoftware.mazer5d.loaders.AvatarImageLoader;
 import com.puttysoftware.randomrange.RandomRange;
 

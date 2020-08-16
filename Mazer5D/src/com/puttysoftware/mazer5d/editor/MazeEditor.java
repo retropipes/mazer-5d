@@ -25,6 +25,7 @@ import javax.swing.JScrollBar;
 import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.commondialogs.MainWindow;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
@@ -32,7 +33,6 @@ import com.puttysoftware.mazer5d.abc.GenericConditionalTeleport;
 import com.puttysoftware.mazer5d.abc.GenericContainer;
 import com.puttysoftware.mazer5d.abc.GenericTeleport;
 import com.puttysoftware.mazer5d.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.files.MazeManager;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.gui.BagOStuff;

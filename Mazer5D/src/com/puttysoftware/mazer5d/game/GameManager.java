@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.GenericBow;
@@ -31,7 +32,6 @@ import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.files.MazeManager;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
