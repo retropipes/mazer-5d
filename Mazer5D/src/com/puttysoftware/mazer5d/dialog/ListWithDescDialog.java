@@ -23,12 +23,13 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+
+import com.puttysoftware.commondialogs.CommonDialogs;
 
 public class ListWithDescDialog extends JDialog implements ActionListener {
     private static final long serialVersionUID = 1L;
@@ -50,7 +51,7 @@ public class ListWithDescDialog extends JDialog implements ActionListener {
             final String[] possibleValues, final String initialValue,
             final String descValue, final String... possibleDescriptions) {
         ListWithDescDialog.value = null;
-        final Frame frame = JOptionPane.getFrameForComponent(MainWindow
+        final Frame frame = CommonDialogs.getFrameForComponent(MainWindow
                 .owner());
         ListWithDescDialog.dialog = new ListWithDescDialog(frame, locationComp,
                 labelText, title, possibleValues, initialValue, descValue,

@@ -11,11 +11,11 @@ import java.awt.desktop.QuitHandler;
 import java.awt.desktop.QuitResponse;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
@@ -37,8 +37,8 @@ public class GUIManager implements QuitHandler {
         this.guiFrame = MainWindow.getMainWindow();
         this.guiPane = new JPanel();
         this.guiPane.setLayout(new GridLayout(1, 1));
-        final BufferedImageIcon logo = LogoImageLoader.load(
-                LogoImageIndex.LOGO);
+        final BufferedImageIcon logo = LogoImageLoader
+                .load(LogoImageIndex.LOGO);
         this.logoLabel = new JLabel("", logo, SwingConstants.CENTER);
         this.logoLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
         this.guiPane.add(this.logoLabel);
@@ -59,15 +59,44 @@ public class GUIManager implements QuitHandler {
         this.guiFrame.restoreSaved();
     }
 
-    public boolean quitHandler() {
+    public void closeHandler() {
+        // Close the window
+        final BagOStuff app = Mazer5D.getBagOStuff();
+        if (Modes.inEditor()) {
+            app.getEditor().doneEditing();
+        } else if (Modes.inGame()) {
+            boolean saved = true;
+            int status = 0;
+            if (app.getMazeManager().getDirty()) {
+                status = app.getMazeManager().showSaveDialog();
+                if (status == CommonDialogs.YES_OPTION) {
+                    app.getMazeManager().saveMaze();
+                    saved = app.getMazeManager().getDirty();
+                } else if (status == CommonDialogs.CANCEL_OPTION) {
+                    saved = false;
+                } else {
+                    app.getMazeManager().setDirty(false);
+                }
+            }
+            if (saved) {
+                app.getGameManager().endGame();
+            }
+        }
+        app.getMenuManager().checkFlags();
+    }
+
+    @Override
+    public void handleQuitRequestWith(final QuitEvent inE,
+            final QuitResponse inResponse) {
         final MazeManager mm = Mazer5D.getBagOStuff().getMazeManager();
         boolean saved = true;
-        int status = JOptionPane.DEFAULT_OPTION;
+        int status = CommonDialogs.DEFAULT_OPTION;
         if (mm.getDirty()) {
             status = mm.showSaveDialog();
-            if (status == JOptionPane.YES_OPTION) {
-                saved = mm.saveMaze();
-            } else if (status == JOptionPane.CANCEL_OPTION) {
+            if (status == CommonDialogs.YES_OPTION) {
+                mm.saveMaze();
+                saved = !mm.getDirty();
+            } else if (status == CommonDialogs.CANCEL_OPTION) {
                 saved = false;
             } else {
                 mm.setDirty(false);
@@ -77,15 +106,6 @@ public class GUIManager implements QuitHandler {
             Prefs.writePrefs();
             // Run cleanup task
             new TempDirCleanup().start();
-        }
-        return saved;
-    }
-
-    @Override
-    public void handleQuitRequestWith(final QuitEvent inE,
-            final QuitResponse inResponse) {
-        final boolean ok = this.quitHandler();
-        if (ok) {
             inResponse.performQuit();
         } else {
             inResponse.cancelQuit();

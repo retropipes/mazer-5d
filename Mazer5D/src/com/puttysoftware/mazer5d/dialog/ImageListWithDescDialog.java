@@ -23,13 +23,13 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 
+import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
 
 public class ImageListWithDescDialog extends JDialog implements ActionListener {
@@ -53,7 +53,7 @@ public class ImageListWithDescDialog extends JDialog implements ActionListener {
             final BufferedImageIcon[] possibleValues, final int initialValue,
             final String descValue, final String... possibleDescriptions) {
         ImageListWithDescDialog.value = ImageListWithDescDialog.CANCEL;
-        final Frame frame = JOptionPane.getFrameForComponent(MainWindow
+        final Frame frame = CommonDialogs.getFrameForComponent(MainWindow
                 .owner());
         ImageListWithDescDialog.dialog = new ImageListWithDescDialog(frame,
                 locationComp, labelText, title, possibleValues, initialValue,

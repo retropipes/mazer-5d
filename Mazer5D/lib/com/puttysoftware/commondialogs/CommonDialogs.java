@@ -1,5 +1,7 @@
 package com.puttysoftware.commondialogs;
 
+import java.awt.Component;
+import java.awt.Frame;
 import java.io.File;
 import java.io.FilenameFilter;
 
@@ -17,6 +19,7 @@ public class CommonDialogs {
     public static final int YES_OPTION = JOptionPane.YES_OPTION;
     public static final int NO_OPTION = JOptionPane.NO_OPTION;
     public static final int CANCEL_OPTION = JOptionPane.CANCEL_OPTION;
+    public static final int DEFAULT_OPTION = JOptionPane.DEFAULT_OPTION;
 
     // Constructor
     private CommonDialogs() {
@@ -202,8 +205,8 @@ public class CommonDialogs {
             final String value = CommonDialogs.showInputDialog(prompt, "Open",
                     choices, choices[0]);
             if (value != null) {
-                return new File(dir.getAbsolutePath() + File.separator + value
-                        + ext);
+                return new File(
+                        dir.getAbsolutePath() + File.separator + value + ext);
             }
         }
         return null;
@@ -256,5 +259,9 @@ public class CommonDialogs {
             ext = s.substring(i).toLowerCase();
         }
         return ext;
+    }
+
+    public static Frame getFrameForComponent(Component comp) {
+        return JOptionPane.getFrameForComponent(comp);
     }
 }
