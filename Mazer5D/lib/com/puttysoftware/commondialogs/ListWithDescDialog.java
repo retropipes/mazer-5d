@@ -29,7 +29,7 @@ import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 
-public class ListWithDescDialog extends JDialog implements ActionListener {
+class ListWithDescDialog extends JDialog implements ActionListener {
     private static final long serialVersionUID = 1L;
     static String[] descs;
     private static ListWithDescDialog dialog;
@@ -44,14 +44,12 @@ public class ListWithDescDialog extends JDialog implements ActionListener {
      * screen; otherwise, it should be the component on top of which the dialog
      * should appear.
      */
-    public static String showDialog(final Component locationComp,
-            final String labelText, final String title,
+    public static String showDialog(final String labelText, final String title,
             final String[] possibleValues, final String initialValue,
             final String descValue, final String... possibleDescriptions) {
         ListWithDescDialog.value = null;
-        final Frame frame = CommonDialogs.getFrameForComponent(MainWindow
-                .owner());
-        ListWithDescDialog.dialog = new ListWithDescDialog(frame, locationComp,
+        final Frame frame = MainWindow.owner();
+        ListWithDescDialog.dialog = new ListWithDescDialog(frame, frame,
                 labelText, title, possibleValues, initialValue, descValue,
                 possibleDescriptions);
         ListWithDescDialog.dialog.setVisible(true);
@@ -88,8 +86,8 @@ public class ListWithDescDialog extends JDialog implements ActionListener {
         descPane.add(descArea);
         // main part of the dialog
         ListWithDescDialog.list = new SubJList<>(data);
-        ListWithDescDialog.list.setSelectionMode(
-                ListSelectionModel.SINGLE_SELECTION);
+        ListWithDescDialog.list
+                .setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         ListWithDescDialog.list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         ListWithDescDialog.list.setVisibleRowCount(-1);
         ListWithDescDialog.list.addMouseListener(new MouseAdapter() {
@@ -100,8 +98,8 @@ public class ListWithDescDialog extends JDialog implements ActionListener {
                 }
             }
         });
-        ListWithDescDialog.list.addListSelectionListener(e -> descArea.setText(
-                ListWithDescDialog.descs[ListWithDescDialog.list
+        ListWithDescDialog.list.addListSelectionListener(e -> descArea
+                .setText(ListWithDescDialog.descs[ListWithDescDialog.list
                         .getSelectedIndex()]));
         final JScrollPane listScroller = new JScrollPane(
                 ListWithDescDialog.list);
@@ -143,8 +141,8 @@ public class ListWithDescDialog extends JDialog implements ActionListener {
     @Override
     public void actionPerformed(final ActionEvent e) {
         if ("OK".equals(e.getActionCommand())) {
-            ListWithDescDialog.setValue(ListWithDescDialog.list
-                    .getSelectedValue());
+            ListWithDescDialog
+                    .setValue(ListWithDescDialog.list.getSelectedValue());
         } else if ("Cancel".equals(e.getActionCommand())) {
             ListWithDescDialog.setValue(null);
         }

@@ -1,4 +1,9 @@
-package com.puttysoftware.ack.internal;
+/*  Diane Game Engine
+Copyleft (C) 2019 Eric Ahnell
+
+Any questions should be directed to the author via email at: support@puttysoftware.com
+ */
+package com.puttysoftware.commondialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -25,13 +30,11 @@ import javax.swing.SwingConstants;
 
 import com.puttysoftware.images.BufferedImageIcon;
 
-public class ImageListDialog extends JDialog implements ActionListener {
+class ListDialog extends JDialog implements ActionListener {
     private static final long serialVersionUID = 1L;
-    public static final int CANCEL = -1;
-    static String[] descs;
-    private static ImageListDialog dialog;
-    private static int value = ImageListDialog.CANCEL;
-    static JList<BufferedImageIcon> list;
+    private static ListDialog dialog;
+    private static String value = null;
+    static JList<String> list;
 
     /**
      * Set up and show the dialog. The first Component argument determines which
@@ -41,25 +44,26 @@ public class ImageListDialog extends JDialog implements ActionListener {
      * screen; otherwise, it should be the component on top of which the dialog
      * should appear.
      */
-    public static int showDialog(final Component locationComp,
-            final String labelText, final String title,
-            final BufferedImageIcon[] possibleValues, final int initialValue) {
-        ImageListDialog.value = ImageListDialog.CANCEL;
-        final Frame frame = null;
-        ImageListDialog.dialog = new ImageListDialog(frame, locationComp,
-                labelText, title, possibleValues, initialValue);
-        ImageListDialog.dialog.setVisible(true);
-        return ImageListDialog.value;
+    public static String showDialog(final String labelText, final String title,
+            final BufferedImageIcon icon, final String[] possibleValues,
+            final String initialValue) {
+        ListDialog.value = null;
+        final Frame frame = MainWindow.owner();
+        ListDialog.dialog = new ListDialog(frame, frame, labelText, title, icon,
+                possibleValues, initialValue);
+        ListDialog.dialog.setVisible(true);
+        return ListDialog.value;
     }
 
-    private static void setValue(final int newValue) {
-        ImageListDialog.value = newValue;
-        ImageListDialog.list.setSelectedValue(ImageListDialog.value, true);
+    private static void setValue(final String newValue) {
+        ListDialog.value = newValue;
+        ListDialog.list.setSelectedValue(ListDialog.value, true);
     }
 
-    private ImageListDialog(final Frame frame, final Component locationComp,
+    private ListDialog(final Frame frame, final Component locationComp,
             final String labelText, final String title,
-            final BufferedImageIcon[] data, final int initialValue) {
+            final BufferedImageIcon icon, final String[] data,
+            final String initialValue) {
         super(frame, title, true);
         // Create and initialize the buttons.
         final JButton cancelButton = new JButton("Cancel");
@@ -70,12 +74,11 @@ public class ImageListDialog extends JDialog implements ActionListener {
         setButton.addActionListener(this);
         this.getRootPane().setDefaultButton(setButton);
         // main part of the dialog
-        ImageListDialog.list = new SubJList<>(data);
-        ImageListDialog.list
-                .setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        ImageListDialog.list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-        ImageListDialog.list.setVisibleRowCount(-1);
-        ImageListDialog.list.addMouseListener(new MouseAdapter() {
+        ListDialog.list = new SubJList<>(data);
+        ListDialog.list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ListDialog.list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+        ListDialog.list.setVisibleRowCount(-1);
+        ListDialog.list.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(final MouseEvent e) {
                 if (e.getClickCount() == 2) {
@@ -83,7 +86,7 @@ public class ImageListDialog extends JDialog implements ActionListener {
                 }
             }
         });
-        final JScrollPane listScroller = new JScrollPane(ImageListDialog.list);
+        final JScrollPane listScroller = new JScrollPane(ListDialog.list);
         listScroller.setPreferredSize(new Dimension(250, 80));
         listScroller.setAlignmentX(Component.LEFT_ALIGNMENT);
         // Create a container so that we can add a title around
@@ -93,7 +96,8 @@ public class ImageListDialog extends JDialog implements ActionListener {
         final JPanel listPane = new JPanel();
         listPane.setLayout(new BoxLayout(listPane, BoxLayout.PAGE_AXIS));
         final JLabel label = new JLabel(labelText);
-        label.setLabelFor(ImageListDialog.list);
+        label.setIcon(icon);
+        label.setLabelFor(ListDialog.list);
         listPane.add(label);
         listPane.add(Box.createRigidArea(new Dimension(0, 5)));
         listPane.add(listScroller);
@@ -111,7 +115,7 @@ public class ImageListDialog extends JDialog implements ActionListener {
         contentPane.add(listPane, BorderLayout.NORTH);
         contentPane.add(buttonPane, BorderLayout.PAGE_END);
         // Initialize values.
-        ImageListDialog.setValue(initialValue);
+        ListDialog.setValue(initialValue);
         this.setContentPane(contentPane);
         this.pack();
         this.setLocationRelativeTo(locationComp);
@@ -121,11 +125,11 @@ public class ImageListDialog extends JDialog implements ActionListener {
     @Override
     public void actionPerformed(final ActionEvent e) {
         if ("OK".equals(e.getActionCommand())) {
-            ImageListDialog.setValue(ImageListDialog.list.getSelectedIndex());
+            ListDialog.setValue(ListDialog.list.getSelectedValue());
         } else if ("Cancel".equals(e.getActionCommand())) {
-            ImageListDialog.setValue(ImageListDialog.CANCEL);
+            ListDialog.setValue(null);
         }
-        ImageListDialog.dialog.setVisible(false);
+        ListDialog.dialog.setVisible(false);
     }
 
     private static class SubJList<T> extends JList<T> {

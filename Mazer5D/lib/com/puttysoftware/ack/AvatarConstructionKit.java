@@ -7,8 +7,7 @@ import javax.swing.JColorChooser;
 
 import com.puttysoftware.ack.internal.AvatarColors;
 import com.puttysoftware.ack.internal.AvatarImageLoader;
-import com.puttysoftware.ack.internal.ImageListDialog;
-import com.puttysoftware.ack.internal.ImageListWithDescDialog;
+import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.randomrange.RandomRange;
 
@@ -85,7 +84,7 @@ public class AvatarConstructionKit {
         accessoryRules.add(AvatarColors.accessory2Base, currentAccessoryColor2);
         // Construct avatar
         currentFamilyID = AvatarConstructionKit.pickAvatarFamily();
-        if (currentFamilyID == ImageListWithDescDialog.CANCEL) {
+        if (currentFamilyID == CommonDialogs.CANCEL) {
             return null;
         }
         currentSkinColor = AvatarConstructionKit.pickAvatarSkinColor();
@@ -113,7 +112,7 @@ public class AvatarConstructionKit {
             return null;
         }
         currentWeaponID = AvatarConstructionKit.pickAvatarWeapon();
-        if (currentWeaponID == ImageListWithDescDialog.CANCEL) {
+        if (currentWeaponID == CommonDialogs.CANCEL) {
             return null;
         }
         currentWeaponColor1 = AvatarConstructionKit.pickAvatarWeaponColor1();
@@ -125,7 +124,7 @@ public class AvatarConstructionKit {
             return null;
         }
         currentAccessoryID = AvatarConstructionKit.pickAvatarAccessory();
-        if (currentAccessoryID == ImageListWithDescDialog.CANCEL) {
+        if (currentAccessoryID == CommonDialogs.CANCEL) {
             return null;
         }
         currentAccessoryColor1 = AvatarConstructionKit
@@ -166,7 +165,7 @@ public class AvatarConstructionKit {
                 AvatarImageLoader.load(13, rules),
                 AvatarImageLoader.load(14, rules),
                 AvatarImageLoader.load(15, rules) };
-        return ImageListDialog.showDialog(null, labelText, title, input,
+        return CommonDialogs.showImageListDialog(labelText, title, input,
                 currentFamilyID);
     }
 
@@ -180,7 +179,7 @@ public class AvatarConstructionKit {
                 AvatarImageLoader.loadWeapon(3, weaponRules) };
         final String[] descriptions = new String[] { "Bow", "Stone", "Sword",
                 "Wand" };
-        return ImageListWithDescDialog.showDialog(null, labelText, title, input,
+        return CommonDialogs.showImageListWithDescDialog(labelText, title, input,
                 0, descriptions[0], descriptions);
     }
 
@@ -194,7 +193,7 @@ public class AvatarConstructionKit {
                 AvatarImageLoader.loadAccessory(3, accessoryRules) };
         final String[] descriptions = new String[] { "Amulet", "Arrow", "Shard",
                 "Shield" };
-        return ImageListWithDescDialog.showDialog(null, labelText, title, input,
+        return CommonDialogs.showImageListWithDescDialog(labelText, title, input,
                 0, descriptions[0], descriptions);
     }
 
