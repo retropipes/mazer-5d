@@ -1,57 +1,52 @@
-/*  Mazer5D: A Maze-Solving Game
-Copyright (C) 2008-2020 Eric Ahnell
-
-Any questions should be directed to the author via email at: products@puttysoftware.com
- */
 package com.puttysoftware.mazer5d.loaders;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 
 import com.puttysoftware.images.BufferedImageIcon;
-import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assets.ColorReplaceRules;
+import com.puttysoftware.mazer5d.avatar.AvatarImageModel;
+import com.puttysoftware.mazer5d.avatar.ColorReplaceRules;
 
 public class AvatarImageLoader {
-    private static Properties fileExtensions;
-    private static final int MAX_FAMILY_INDEX = 7;
-
     public static BufferedImageIcon load(final int familyID,
-            final ColorReplaceRules rules) {
-        if (AvatarImageLoader.fileExtensions == null) {
-            AvatarImageLoader.fileExtensions = new Properties();
-            try (final InputStream stream = AvatarImageLoader.class
-                    .getResourceAsStream(
-                            "/assets/data/extension/extension.properties")) {
-                AvatarImageLoader.fileExtensions.load(stream);
-            } catch (final IOException e) {
-                Mazer5D.logError(e);
-            }
-        }
-        final String imageExt = AvatarImageLoader.fileExtensions.getProperty(
-                "images");
-        final String name = "/assets/image/avatars/" + Integer.toString(
-                familyID) + imageExt;
-        return rules.applyAll(ImageLoader.load(name, AvatarImageLoader.class
-                .getResource(name)));
+            final ColorReplaceRules rules) throws IOException {
+        final String imageExt = ".png";
+        final String name = "/assets/image/avatar/"
+                + Integer.toHexString(familyID).toUpperCase() + imageExt;
+        return rules.applyAll(ImageLoader.load(name,
+                AvatarImageLoader.class.getResource(name)));
     }
 
-    public static void cacheAll() {
-        AvatarImageLoader.fileExtensions = new Properties();
-        try (final InputStream stream = AvatarImageLoader.class
-                .getResourceAsStream(
-                        "/assets/data/extension/extension.properties")) {
-            AvatarImageLoader.fileExtensions.load(stream);
-        } catch (final IOException e) {
-            Mazer5D.logError(e);
-        }
-        final String imageExt = AvatarImageLoader.fileExtensions.getProperty(
-                "images");
-        for (int familyID = 0; familyID <= AvatarImageLoader.MAX_FAMILY_INDEX; familyID++) {
-            final String name = "/assets/image/avatar/" + Integer.toString(
-                    familyID) + imageExt;
-            ImageLoader.load(name, AvatarImageLoader.class.getResource(name));
-        }
+    public static BufferedImageIcon loadFromModel(final AvatarImageModel model)
+            throws IOException {
+        final String imageExt = ".png";
+        final String name = "/assets/image/avatar/"
+                + Integer.toHexString(model.getAvatarFamilyID()).toUpperCase()
+                + imageExt;
+        BufferedImageIcon image = ImageLoader.load(name,
+                AvatarImageLoader.class.getResource(name));
+        image = model.getRules().applyAll(image);
+        BufferedImageIcon weaponImage = AvatarImageLoader
+                .loadWeapon(model.getAvatarWeaponID(), model.getWeaponRules());
+        BufferedImageIcon accessoryImage = AvatarImageLoader.loadAccessory(
+                model.getAvatarAccessoryID(), model.getAccessoryRules());
+        return ImageCompositor.composite(image, accessoryImage, weaponImage);
+    }
+
+    public static BufferedImageIcon loadWeapon(final int weaponID,
+            final ColorReplaceRules rules) throws IOException {
+        final String imageExt = ".png";
+        final String name = "/assets/image/avatar/weapon/"
+                + Integer.toHexString(weaponID).toUpperCase() + imageExt;
+        return rules.applyAll(ImageLoader.load(name,
+                AvatarImageLoader.class.getResource(name)));
+    }
+
+    public static BufferedImageIcon loadAccessory(final int accessoryID,
+            final ColorReplaceRules rules) throws IOException {
+        final String imageExt = ".png";
+        final String name = "/assets/image/avatar/accessory/"
+                + Integer.toHexString(accessoryID).toUpperCase() + imageExt;
+        return rules.applyAll(ImageLoader.load(name,
+                AvatarImageLoader.class.getResource(name)));
     }
 }

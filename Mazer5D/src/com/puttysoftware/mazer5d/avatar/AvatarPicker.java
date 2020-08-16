@@ -1,17 +1,16 @@
-package com.puttysoftware.ack;
+package com.puttysoftware.mazer5d.avatar;
 
 import java.awt.Color;
 import java.io.IOException;
 
 import javax.swing.JColorChooser;
 
-import com.puttysoftware.ack.internal.AvatarColors;
-import com.puttysoftware.ack.internal.AvatarImageLoader;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.loaders.AvatarImageLoader;
 import com.puttysoftware.randomrange.RandomRange;
 
-public class AvatarConstructionKit {
+public class AvatarPicker {
     // Fields
     private static final int randomFamilyID = RandomRange.generate(0, 15);
     private static final Color randomSkinColor = new Color(
@@ -65,7 +64,7 @@ public class AvatarConstructionKit {
     private static final ColorReplaceRules accessoryRules = new ColorReplaceRules();
 
     // Constructors
-    private AvatarConstructionKit() {
+    private AvatarPicker() {
         // Do nothing
     }
 
@@ -83,56 +82,56 @@ public class AvatarConstructionKit {
         accessoryRules.add(AvatarColors.accessory1Base, currentAccessoryColor1);
         accessoryRules.add(AvatarColors.accessory2Base, currentAccessoryColor2);
         // Construct avatar
-        currentFamilyID = AvatarConstructionKit.pickAvatarFamily();
+        currentFamilyID = AvatarPicker.pickAvatarFamily();
         if (currentFamilyID == CommonDialogs.CANCEL) {
             return null;
         }
-        currentSkinColor = AvatarConstructionKit.pickAvatarSkinColor();
+        currentSkinColor = AvatarPicker.pickAvatarSkinColor();
         if (currentSkinColor == null) {
             return null;
         }
-        currentHairColor = AvatarConstructionKit.pickAvatarHairColor();
+        currentHairColor = AvatarPicker.pickAvatarHairColor();
         if (currentHairColor == null) {
             return null;
         }
-        currentEyesColor = AvatarConstructionKit.pickAvatarEyesColor();
+        currentEyesColor = AvatarPicker.pickAvatarEyesColor();
         if (currentEyesColor == null) {
             return null;
         }
-        currentTorsoColor = AvatarConstructionKit.pickAvatarTorsoColor();
+        currentTorsoColor = AvatarPicker.pickAvatarTorsoColor();
         if (currentTorsoColor == null) {
             return null;
         }
-        currentLegsColor = AvatarConstructionKit.pickAvatarLegsColor();
+        currentLegsColor = AvatarPicker.pickAvatarLegsColor();
         if (currentLegsColor == null) {
             return null;
         }
-        currentFeetColor = AvatarConstructionKit.pickAvatarFeetColor();
+        currentFeetColor = AvatarPicker.pickAvatarFeetColor();
         if (currentFeetColor == null) {
             return null;
         }
-        currentWeaponID = AvatarConstructionKit.pickAvatarWeapon();
+        currentWeaponID = AvatarPicker.pickAvatarWeapon();
         if (currentWeaponID == CommonDialogs.CANCEL) {
             return null;
         }
-        currentWeaponColor1 = AvatarConstructionKit.pickAvatarWeaponColor1();
+        currentWeaponColor1 = AvatarPicker.pickAvatarWeaponColor1();
         if (currentWeaponColor1 == null) {
             return null;
         }
-        currentWeaponColor2 = AvatarConstructionKit.pickAvatarWeaponColor2();
+        currentWeaponColor2 = AvatarPicker.pickAvatarWeaponColor2();
         if (currentWeaponColor2 == null) {
             return null;
         }
-        currentAccessoryID = AvatarConstructionKit.pickAvatarAccessory();
+        currentAccessoryID = AvatarPicker.pickAvatarAccessory();
         if (currentAccessoryID == CommonDialogs.CANCEL) {
             return null;
         }
-        currentAccessoryColor1 = AvatarConstructionKit
+        currentAccessoryColor1 = AvatarPicker
                 .pickAvatarAccessoryColor1();
         if (currentAccessoryColor1 == null) {
             return null;
         }
-        currentAccessoryColor2 = AvatarConstructionKit
+        currentAccessoryColor2 = AvatarPicker
                 .pickAvatarAccessoryColor2();
         if (currentAccessoryColor2 == null) {
             return null;

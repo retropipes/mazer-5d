@@ -1,11 +1,10 @@
-package com.puttysoftware.ack;
+package com.puttysoftware.mazer5d.avatar;
 
 import java.awt.Color;
 import java.io.IOException;
 
-import com.puttysoftware.ack.internal.AvatarColors;
-import com.puttysoftware.ack.internal.AvatarImageLoader;
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.loaders.AvatarImageLoader;
 
 public final class AvatarImageModel {
     // Fields

@@ -1,4 +1,4 @@
-package com.puttysoftware.ack.internal;
+package com.puttysoftware.mazer5d.avatar;
 
 import java.awt.Color;
 

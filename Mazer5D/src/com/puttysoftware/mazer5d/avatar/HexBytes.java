@@ -1,4 +1,4 @@
-package com.puttysoftware.ack.internal;
+package com.puttysoftware.mazer5d.avatar;
 
 public class HexBytes {
     // Code obtained from http://www.devx.com/tips/Tip/13540 and modified
