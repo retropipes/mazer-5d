@@ -7,12 +7,12 @@ package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.GenericWand;
 import com.puttysoftware.mazer5d.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objects.abc.GenericWand;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class RotationWand extends GenericWand {

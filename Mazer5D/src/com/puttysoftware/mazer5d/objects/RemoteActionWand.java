@@ -6,9 +6,9 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.GenericWand;
 import com.puttysoftware.mazer5d.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
+import com.puttysoftware.mazer5d.objects.abc.GenericWand;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class RemoteActionWand extends GenericWand {

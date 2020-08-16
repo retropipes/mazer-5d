@@ -5,8 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.abc.GenericPassThroughObject;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.objects.abc.GenericPassThroughObject;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class Door extends GenericPassThroughObject {

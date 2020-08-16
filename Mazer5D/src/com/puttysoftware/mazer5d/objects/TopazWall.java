@@ -5,7 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.abc.GenericMultipleLock;
+import com.puttysoftware.mazer5d.objects.abc.GenericMultipleLock;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class TopazWall extends GenericMultipleLock {

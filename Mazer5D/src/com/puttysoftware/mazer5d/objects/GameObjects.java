@@ -14,12 +14,12 @@ import java.util.stream.Collectors;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.GenericSingleKey;
 import com.puttysoftware.mazer5d.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.files.format.XMLFormatConstants;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.loaders.ObjectImageLoader;
+import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
 import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;

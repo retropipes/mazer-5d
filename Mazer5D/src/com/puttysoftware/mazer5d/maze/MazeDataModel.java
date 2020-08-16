@@ -10,14 +10,14 @@ import java.util.Arrays;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.GenericLightModifier;
-import com.puttysoftware.mazer5d.abc.GenericMovingObject;
-import com.puttysoftware.mazer5d.abc.GenericTeleport;
 import com.puttysoftware.mazer5d.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objects.GameObjects;
+import com.puttysoftware.mazer5d.objects.abc.GenericLightModifier;
+import com.puttysoftware.mazer5d.objects.abc.GenericMovingObject;
+import com.puttysoftware.mazer5d.objects.abc.GenericTeleport;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.mazer5d.utilities.DirectionResolver;
 import com.puttysoftware.mazer5d.utilities.Layers;

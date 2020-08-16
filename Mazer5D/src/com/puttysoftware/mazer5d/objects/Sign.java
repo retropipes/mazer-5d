@@ -5,7 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.abc.GenericTextHolder;
+import com.puttysoftware.mazer5d.objects.abc.GenericTextHolder;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class Sign extends GenericTextHolder {

@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.GenericPotion;
+import com.puttysoftware.mazer5d.objects.abc.GenericPotion;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class SuperHealPotion extends GenericPotion {

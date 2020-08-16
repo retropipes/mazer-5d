@@ -10,8 +10,6 @@ import java.io.IOException;
 
 import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.GenericCharacter;
-import com.puttysoftware.mazer5d.abc.GenericMovingObject;
 import com.puttysoftware.mazer5d.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.files.TempDirCleanup;
 import com.puttysoftware.mazer5d.files.format.XMLFormatConstants;
@@ -20,6 +18,8 @@ import com.puttysoftware.mazer5d.files.format.XMLSuffixIO;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.objects.GameObjects;
+import com.puttysoftware.mazer5d.objects.abc.GenericCharacter;
+import com.puttysoftware.mazer5d.objects.abc.GenericMovingObject;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.randomrange.RandomLongRange;
 

@@ -5,7 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.abc.GenericBoots;
+import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class PasswallBoots extends GenericBoots {
