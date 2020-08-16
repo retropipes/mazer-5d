@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.objects.abc;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
@@ -32,7 +32,7 @@ public abstract class GenericContainer extends GenericLock {
     }
 
     protected GenericContainer(final GenericSingleKey mgk,
-            final MazeObjectModel insideObject) {
+            final MazeObject insideObject) {
         super(mgk);
         this.setSavedObject(insideObject);
         this.setType(TypeConstants.TYPE_CONTAINER);
@@ -84,10 +84,10 @@ public abstract class GenericContainer extends GenericLock {
     }
 
     @Override
-    public abstract MazeObjectModel editorPropertiesHook();
+    public abstract MazeObject editorPropertiesHook();
 
     @Override
-    protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
+    protected MazeObject readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         this.setSavedObject(GameObjects.readObject(reader, formatVersion));
         return this;

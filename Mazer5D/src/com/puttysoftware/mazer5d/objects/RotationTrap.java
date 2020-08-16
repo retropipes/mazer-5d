@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
@@ -54,7 +54,7 @@ class RotationTrap extends GenericTrap implements Cloneable {
     }
 
     @Override
-    public MazeObjectModel editorPropertiesHook() {
+    public MazeObject editorPropertiesHook() {
         int r = this.getRotationRadius();
         final String[] rChoices = new String[] { "1", "2", "3" };
         final String rres = CommonDialogs.showInputDialog("Rotation Radius:",
@@ -94,7 +94,7 @@ class RotationTrap extends GenericTrap implements Cloneable {
     }
 
     @Override
-    protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
+    protected MazeObject readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         this.setRotationRadius(reader.readInt());
         this.setRotationDirection(reader.readBoolean());

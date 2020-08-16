@@ -5,7 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects.abc;
 
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
@@ -19,7 +19,7 @@ public abstract class GenericUsableObject extends GenericInventoryableObject {
     }
 
     @Override
-    public abstract void useAction(MazeObjectModel mo, int x, int y, int z);
+    public abstract void useAction(MazeObject mo, int x, int y, int z);
 
     @Override
     public abstract String getName();

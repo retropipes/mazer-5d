@@ -1,16 +1,16 @@
 package com.puttysoftware.mazer5d.utilities;
 
-import com.puttysoftware.mazer5d.maze.MazeModel;
+import com.puttysoftware.mazer5d.maze.Maze;
 
 public interface RandomGenerationRule {
     int NO_LIMIT = 0;
 
-    boolean shouldGenerateObject(MazeModel maze, int row, int col, int floor,
+    boolean shouldGenerateObject(Maze maze, int row, int col, int floor,
             int level, int layer);
 
-    int getMinimumRequiredQuantity(MazeModel maze);
+    int getMinimumRequiredQuantity(Maze maze);
 
-    int getMaximumRequiredQuantity(MazeModel maze);
+    int getMaximumRequiredQuantity(Maze maze);
 
     boolean isRequired();
 }

@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.objects.abc;
 import java.util.Random;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
@@ -18,7 +18,7 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
-public abstract class GenericRandomTeleport extends MazeObjectModel {
+public abstract class GenericRandomTeleport extends MazeObject {
     // Fields
     private final Random generator;
 
@@ -90,9 +90,9 @@ public abstract class GenericRandomTeleport extends MazeObjectModel {
     }
 
     @Override
-    public MazeObjectModel editorPropertiesHook() {
+    public MazeObject editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        final MazeObjectModel mo = me.editTeleportDestination(
+        final MazeObject mo = me.editTeleportDestination(
                 MazeEditor.TELEPORT_TYPE_RANDOM);
         return mo;
     }

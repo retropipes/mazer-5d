@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
@@ -33,7 +33,7 @@ class PushableBlockThrice extends GenericMovableObject {
     }
 
     @Override
-    public void pushAction(final ObjectInventory inv, final MazeObjectModel mo,
+    public void pushAction(final ObjectInventory inv, final MazeObject mo,
             final int x, final int y, final int pushX, final int pushY) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);

@@ -5,7 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects.abc;
 
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericBow extends GenericUsableObject {
@@ -28,7 +28,7 @@ public abstract class GenericBow extends GenericUsableObject {
     }
 
     @Override
-    public void useAction(final MazeObjectModel mo, final int x, final int y,
+    public void useAction(final MazeObject mo, final int x, final int y,
             final int z) {
         // Do nothing
     }

@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.maze;
 
 import java.io.IOException;
 
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.objects.GameObjects;
@@ -16,22 +16,22 @@ import com.puttysoftware.mazer5d.utilities.Layers;
 class SavedState {
     // Properties
     private final int r, c, f;
-    private final MazeObjectModel[][][][] saveData;
+    private final MazeObject[][][][] saveData;
 
     // Constructors
     public SavedState(final int rows, final int cols, final int floors) {
-        this.saveData = new MazeObjectModel[cols][rows][floors][Layers.COUNT];
+        this.saveData = new MazeObject[cols][rows][floors][Layers.COUNT];
         this.c = cols;
         this.r = rows;
         this.f = floors;
     }
 
-    public MazeObjectModel getDataCell(final int x, final int y, final int z,
+    public MazeObject getDataCell(final int x, final int y, final int z,
             final int e) {
         return this.saveData[x][y][z][e];
     }
 
-    public void setDataCell(final MazeObjectModel newData, final int x,
+    public void setDataCell(final MazeObject newData, final int x,
             final int y, final int z, final int e) {
         this.saveData[x][y][z][e] = newData;
     }

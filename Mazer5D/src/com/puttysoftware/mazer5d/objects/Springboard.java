@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.game.InfiniteRecursionException;
@@ -50,7 +50,7 @@ class Springboard extends StairsUp {
             throw new InfiniteRecursionException();
         }
         if (app.getGameManager().doesFloorExist(floor)) {
-            final MazeObjectModel obj = app.getMazeManager().getMaze().getCell(
+            final MazeObject obj = app.getMazeManager().getMaze().getCell(
                     dirX, dirY, floor, Layers.OBJECT);
             if (obj.isConditionallySolid(inv)) {
                 return false;
@@ -81,7 +81,7 @@ class Springboard extends StairsUp {
 
     @Override
     public void pushIntoAction(final ObjectInventory inv,
-            final MazeObjectModel pushed, final int x, final int y,
+            final MazeObject pushed, final int x, final int y,
             final int z) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         try {
@@ -120,7 +120,7 @@ class Springboard extends StairsUp {
     }
 
     @Override
-    public MazeObjectModel editorPropertiesHook() {
+    public MazeObject editorPropertiesHook() {
         return null;
     }
 

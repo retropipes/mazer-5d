@@ -6,12 +6,12 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.game;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
-import com.puttysoftware.mazer5d.maze.MazeModel;
+import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.objects.abc.GenericTransientObject;
 import com.puttysoftware.mazer5d.utilities.ArrowTypes;
@@ -49,9 +49,9 @@ public class ArrowTask extends Thread {
         int cumY = this.y;
         final int incX = this.x;
         final int incY = this.y;
-        final MazeModel m = app.getMazeManager().getMaze();
+        final Maze m = app.getMazeManager().getMaze();
         m.tickTimers(pz);
-        MazeObjectModel o = null;
+        MazeObject o = null;
         try {
             o = m.getCell(px + cumX, py + cumY, pz, Layers.OBJECT);
         } catch (final ArrayIndexOutOfBoundsException ae) {

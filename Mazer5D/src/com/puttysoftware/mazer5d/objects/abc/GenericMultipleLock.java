@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.objects.abc;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
@@ -59,7 +59,7 @@ public abstract class GenericMultipleLock extends GenericLock {
     }
 
     @Override
-    public MazeObjectModel editorPropertiesHook() {
+    public MazeObject editorPropertiesHook() {
         try {
             this.setKeyCount(Integer.parseInt(CommonDialogs
                     .showTextInputDialogWithDefault("Set Key Count for " + this

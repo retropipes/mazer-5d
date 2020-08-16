@@ -13,11 +13,11 @@ import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.files.InvalidMazeException;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
-import com.puttysoftware.mazer5d.maze.MazeModel;
+import com.puttysoftware.mazer5d.maze.Maze;
 
 public class XMLLoadTask extends Thread {
     // Fields
-    private MazeModel gameMaze;
+    private Maze gameMaze;
     private final String filename;
     private final boolean isSavedGame;
 
@@ -43,7 +43,7 @@ public class XMLLoadTask extends Thread {
         }
         try {
             final File mazeFile = new File(this.filename);
-            this.gameMaze = new MazeModel();
+            this.gameMaze = new Maze();
             ZipUtilities.unzipDirectory(mazeFile, new File(this.gameMaze
                     .getBasePath()));
             // Set prefix handler

@@ -19,7 +19,7 @@
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
@@ -63,9 +63,9 @@ class OneShotChainTeleport extends GenericTeleport {
     }
 
     @Override
-    public MazeObjectModel editorPropertiesHook() {
+    public MazeObject editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        final MazeObjectModel mo = me.editTeleportDestination(
+        final MazeObject mo = me.editTeleportDestination(
                 MazeEditor.TELEPORT_TYPE_ONESHOT);
         return mo;
     }

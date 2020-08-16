@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
-import com.puttysoftware.mazer5d.maze.MazeModel;
+import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.objects.abc.GenericCharacter;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
@@ -51,12 +51,12 @@ class Player extends GenericCharacter {
     }
 
     @Override
-    public int getMinimumRequiredQuantity(final MazeModel maze) {
+    public int getMinimumRequiredQuantity(final Maze maze) {
         return 1;
     }
 
     @Override
-    public int getMaximumRequiredQuantity(final MazeModel maze) {
+    public int getMaximumRequiredQuantity(final Maze maze) {
         return 1;
     }
 

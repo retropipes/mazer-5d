@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.loaders;
 
 import com.puttysoftware.images.BufferedImageIcon;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 
 public class ObjectImageCache {
     // Fields
@@ -16,7 +16,7 @@ public class ObjectImageCache {
     private static int CACHE_SIZE = 0;
 
     // Methods
-    static BufferedImageIcon getCachedObjectImage(final MazeObjectModel obj,
+    static BufferedImageIcon getCachedObjectImage(final MazeObject obj,
             final boolean game) {
         final String name = obj.getName();
         if (!ObjectImageCache.isInCache(name)) {

@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.objects.abc;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
@@ -20,7 +20,7 @@ import com.puttysoftware.mazer5d.utilities.ArrowTypes;
 import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
-public abstract class GenericCharacter extends MazeObjectModel {
+public abstract class GenericCharacter extends MazeObject {
     // Fields
     public static final int FULL_HEAL_PERCENTAGE = 100;
     private static final int SHOT_SELF_NORMAL_DAMAGE = 5;
@@ -77,7 +77,7 @@ public abstract class GenericCharacter extends MazeObjectModel {
     }
 
     @Override
-    protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
+    protected MazeObject readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         this.setSavedObject(GameObjects.readObject(reader, formatVersion));
         return this;

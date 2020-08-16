@@ -5,7 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.editor;
 
-import com.puttysoftware.mazer5d.maze.MazeModel;
+import com.puttysoftware.mazer5d.maze.Maze;
 
 public class EditorViewingWindowManager {
     // Fields
@@ -99,7 +99,7 @@ public class EditorViewingWindowManager {
     }
 
     public void halfOffsetMaximumViewingWindowLocationsFromMaze(
-            final MazeModel m) {
+            final Maze m) {
         this.MAX_VIEWING_WINDOW_X = m.getColumns() + this.getOffsetFactorX();
         this.MAX_VIEWING_WINDOW_Y = m.getRows() + this.getOffsetFactorY();
     }

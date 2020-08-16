@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
@@ -28,7 +28,7 @@ import com.puttysoftware.mazer5d.utilities.VisionModes;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.storage.FlagStorage;
 
-class MazeDataModel {
+class MazeData {
     // Properties
     private MazeStorage data;
     private SavedState savedState;
@@ -74,7 +74,7 @@ class MazeDataModel {
     private static final int MIN_ROWS = 2;
 
     // Constructors
-    public MazeDataModel(final int rows, final int cols, final int floors) {
+    public MazeData(final int rows, final int cols, final int floors) {
         this.data = new MazeStorage(cols, rows, floors, Layers.COUNT);
         this.savedState = new SavedState(rows, cols, floors);
         this.visionData = new FlagStorage(cols, rows, floors);
@@ -107,27 +107,27 @@ class MazeDataModel {
 
     // Static methods
     public static int getMaxFloors() {
-        return MazeDataModel.MAX_FLOORS;
+        return MazeData.MAX_FLOORS;
     }
 
     public static int getMaxColumns() {
-        return MazeDataModel.MAX_COLUMNS;
+        return MazeData.MAX_COLUMNS;
     }
 
     public static int getMaxRows() {
-        return MazeDataModel.MAX_ROWS;
+        return MazeData.MAX_ROWS;
     }
 
     public static int getMinFloors() {
-        return MazeDataModel.MIN_FLOORS;
+        return MazeData.MIN_FLOORS;
     }
 
     public static int getMinColumns() {
-        return MazeDataModel.MIN_COLUMNS;
+        return MazeData.MIN_COLUMNS;
     }
 
     public static int getMinRows() {
-        return MazeDataModel.MIN_ROWS;
+        return MazeData.MIN_ROWS;
     }
 
     // Methods
@@ -235,7 +235,7 @@ class MazeDataModel {
     }
 
     public static int getMaxPoisonPower() {
-        return MazeDataModel.MAX_POISON_POWER;
+        return MazeData.MAX_POISON_POWER;
     }
 
     public String getLevelTitle() {
@@ -343,7 +343,7 @@ class MazeDataModel {
         this.alternateNextLevelOffset = anlo;
     }
 
-    public MazeObjectModel getCell(final int row, final int col,
+    public MazeObject getCell(final int row, final int col,
             final int floor, final int extra) {
         int fR = row;
         int fC = col;
@@ -413,7 +413,7 @@ class MazeDataModel {
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
-                    final MazeObjectModel mo = this.getCell(y, x, z,
+                    final MazeObject mo = this.getCell(y, x, z,
                             Layers.OBJECT);
                     if (mo != null) {
                         if (mo.getName().equals("Player")) {
@@ -432,7 +432,7 @@ class MazeDataModel {
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
-                    final MazeObjectModel mo = this.getCell(y, x, z,
+                    final MazeObject mo = this.getCell(y, x, z,
                             Layers.OBJECT);
                     if (mo != null) {
                         if (mo.getName().equals("Player")) {
@@ -448,13 +448,13 @@ class MazeDataModel {
         return false;
     }
 
-    public void findAllObjectPairsAndSwap(final MazeObjectModel o1,
-            final MazeObjectModel o2) {
+    public void findAllObjectPairsAndSwap(final MazeObject o1,
+            final MazeObject o2) {
         int y, x, z;
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
-                    final MazeObjectModel mo = this.getCell(y, x, z,
+                    final MazeObject mo = this.getCell(y, x, z,
                             Layers.OBJECT);
                     if (mo != null) {
                         if (mo.getName().equals(o1.getName())) {
@@ -468,13 +468,13 @@ class MazeDataModel {
         }
     }
 
-    public void findAllMatchingObjectsAndDecay(final MazeObjectModel o) {
+    public void findAllMatchingObjectsAndDecay(final MazeObject o) {
         int y, x, z;
-        final MazeObjectModel decayTo = GameObjects.getEmptySpace();
+        final MazeObject decayTo = GameObjects.getEmptySpace();
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
-                    final MazeObjectModel mo = this.getCell(y, x, z,
+                    final MazeObject mo = this.getCell(y, x, z,
                             Layers.OBJECT);
                     if (mo != null) {
                         if (mo.getName().equals(o.getName())) {
@@ -488,11 +488,11 @@ class MazeDataModel {
 
     public void masterTrapTrigger() {
         int y, x, z;
-        final MazeObjectModel decayTo = GameObjects.getEmptySpace();
+        final MazeObject decayTo = GameObjects.getEmptySpace();
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
-                    final MazeObjectModel mo = this.getCell(y, x, z,
+                    final MazeObject mo = this.getCell(y, x, z,
                             Layers.OBJECT);
                     if (mo != null) {
                         if (mo.isOfType(TypeConstants.TYPE_WALL_TRAP) || mo
@@ -510,7 +510,7 @@ class MazeDataModel {
         // Tick all MazeObject timers
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
-                final MazeObjectModel mo = this.getCell(y, x, floor,
+                final MazeObject mo = this.getCell(y, x, floor,
                         Layers.OBJECT);
                 if (mo != null) {
                     mo.tickTimer(y, x);
@@ -537,7 +537,7 @@ class MazeDataModel {
         uFix = vFix = uRot = vRot = uAdj = vAdj = 0;
         final int cosineTheta = 0;
         final int sineTheta = 1;
-        final MazeObjectModel[][][] tempStorage = new MazeObjectModel[2 * r
+        final MazeObject[][][] tempStorage = new MazeObject[2 * r
                 + 1][2 * r + 1][Layers.COUNT];
         try {
             for (u = x - r; u <= x + r; u++) {
@@ -576,7 +576,7 @@ class MazeDataModel {
         uFix = vFix = uRot = vRot = uAdj = vAdj = 0;
         final int cosineTheta = 0;
         final int sineTheta = 1;
-        final MazeObjectModel[][][] tempStorage = new MazeObjectModel[2 * r
+        final MazeObject[][][] tempStorage = new MazeObject[2 * r
                 + 1][2 * r + 1][Layers.COUNT];
         try {
             for (u = x - r; u <= x + r; u++) {
@@ -667,7 +667,7 @@ class MazeDataModel {
                             Layers.OBJECT).isOfType(
                                     TypeConstants.TYPE_REACTS_TO_ICE);
                     if (reactsToIce) {
-                        final MazeObjectModel there = this.getCell(u, v, z,
+                        final MazeObject there = this.getCell(u, v, z,
                                 Layers.OBJECT);
                         if (there.getUniqueID().equals(
                                 MazeObjects.BARRIER_GENERATOR)) {
@@ -718,7 +718,7 @@ class MazeDataModel {
                             Layers.OBJECT).isOfType(
                                     TypeConstants.TYPE_REACTS_TO_FIRE);
                     if (reactsToFire) {
-                        final MazeObjectModel there = this.getCell(u, v, z,
+                        final MazeObject there = this.getCell(u, v, z,
                                 Layers.OBJECT);
                         if (there.getUniqueID().equals(
                                 MazeObjects.BARRIER_GENERATOR)) {
@@ -769,7 +769,7 @@ class MazeDataModel {
                             Layers.OBJECT).isOfType(
                                     TypeConstants.TYPE_REACTS_TO_POISON);
                     if (reactsToPoison) {
-                        final MazeObjectModel there = this.getCell(u, v, z,
+                        final MazeObject there = this.getCell(u, v, z,
                                 Layers.OBJECT);
                         if (there.getUniqueID().equals(
                                 MazeObjects.BARRIER_GENERATOR)) {
@@ -821,7 +821,7 @@ class MazeDataModel {
                             Layers.OBJECT).isOfType(
                                     TypeConstants.TYPE_REACTS_TO_SHOCK);
                     if (reactsToShock) {
-                        final MazeObjectModel there = this.getCell(u, v, z,
+                        final MazeObject there = this.getCell(u, v, z,
                                 Layers.OBJECT);
                         if (there.getUniqueID().equals(
                                 MazeObjects.BARRIER_GENERATOR)) {
@@ -883,7 +883,7 @@ class MazeDataModel {
     public void radialScanShuffleObjects(final int x, final int y, final int z,
             final int r) {
         int u, v, l, uFix, vFix;
-        final MazeObjectModel[][][] preShuffle = new MazeObjectModel[2 * r
+        final MazeObject[][][] preShuffle = new MazeObject[2 * r
                 + 1][2 * r + 1][Layers.COUNT];
         // Load the preShuffle array
         for (u = x - r; u <= x + r; u++) {
@@ -900,7 +900,7 @@ class MazeDataModel {
             }
         }
         // Do the shuffle
-        final MazeObjectModel[][][] postShuffle = MazeDataModel.shuffleObjects(
+        final MazeObject[][][] postShuffle = MazeData.shuffleObjects(
                 preShuffle, r);
         // Load the maze with the postShuffle array
         for (u = x - r; u <= x + r; u++) {
@@ -957,7 +957,7 @@ class MazeDataModel {
                                     TypeConstants.TYPE_CHARACTER);
                     if (isCharacter) {
                         final BagOStuff app = Mazer5D.getBagOStuff();
-                        final MazeModel m = app.getMazeManager().getMaze();
+                        final Maze m = app.getMazeManager().getMaze();
                         app.getGameManager().keepNextMessage();
                         app.showMessage(
                                 "You find yourself caught in the quake, and fall over, hurting yourself a bit.");
@@ -999,7 +999,7 @@ class MazeDataModel {
     public boolean isSquareVisible(final int x1, final int y1, final int x2,
             final int y2) {
         if (this.visionMode == VisionModes.NONE) {
-            return MazeDataModel.isSquareVisibleNone();
+            return MazeData.isSquareVisibleNone();
         } else {
             boolean result = true;
             if ((this.visionMode | VisionModes.RADIUS) == this.visionMode) {
@@ -1082,7 +1082,7 @@ class MazeDataModel {
         }
     }
 
-    public void setCell(final MazeObjectModel mo, final int row, final int col,
+    public void setCell(final MazeObject mo, final int row, final int col,
             final int floor, final int extra) {
         int fR = row;
         int fC = col;
@@ -1117,32 +1117,32 @@ class MazeDataModel {
 
     public void setVisionRadius(final int newVR) {
         int fVR = newVR;
-        if (fVR > MazeDataModel.MAX_VISION_RADIUS) {
-            fVR = MazeDataModel.MAX_VISION_RADIUS;
+        if (fVR > MazeData.MAX_VISION_RADIUS) {
+            fVR = MazeData.MAX_VISION_RADIUS;
         }
-        if (fVR < MazeDataModel.MIN_VISION_RADIUS) {
-            fVR = MazeDataModel.MIN_VISION_RADIUS;
+        if (fVR < MazeData.MIN_VISION_RADIUS) {
+            fVR = MazeData.MIN_VISION_RADIUS;
         }
         this.visionRadius = fVR;
         this.initialVisionRadius = fVR;
     }
 
     public void setVisionRadiusToMaximum() {
-        this.visionRadius = MazeDataModel.MAX_VISION_RADIUS;
+        this.visionRadius = MazeData.MAX_VISION_RADIUS;
     }
 
     public void setVisionRadiusToMinimum() {
-        this.visionRadius = MazeDataModel.MIN_VISION_RADIUS;
+        this.visionRadius = MazeData.MIN_VISION_RADIUS;
     }
 
     public void incrementVisionRadius() {
-        if (this.visionRadius < MazeDataModel.MAX_VISION_RADIUS) {
+        if (this.visionRadius < MazeData.MAX_VISION_RADIUS) {
             this.visionRadius++;
         }
     }
 
     public void decrementVisionRadius() {
-        if (this.visionRadius > MazeDataModel.MIN_VISION_RADIUS) {
+        if (this.visionRadius > MazeData.MIN_VISION_RADIUS) {
             this.visionRadius--;
         }
     }
@@ -1153,7 +1153,7 @@ class MazeDataModel {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
                     for (e = 0; e < Layers.COUNT; e++) {
-                        final MazeObjectModel obj = this.getCell(y, x, z, e);
+                        final MazeObject obj = this.getCell(y, x, z, e);
                         if (obj.getUniqueID().equals(
                                 MazeObjects.MOVING_FINISH)) {
                             final GenericTeleport gt = (GenericTeleport) obj;
@@ -1166,7 +1166,7 @@ class MazeDataModel {
     }
 
     public void activateFirstMovingFinish() {
-        final MazeObjectModel obj = this.getCell(this.getFirstMovingFinishX(),
+        final MazeObject obj = this.getCell(this.getFirstMovingFinishX(),
                 this.getFirstMovingFinishY(), this.getFirstMovingFinishZ(),
                 Layers.OBJECT);
         if (obj.getUniqueID().equals(MazeObjects.MOVING_FINISH)) {
@@ -1175,7 +1175,7 @@ class MazeDataModel {
         }
     }
 
-    public void fill(final MazeObjectModel bottom, final MazeObjectModel top) {
+    public void fill(final MazeObject bottom, final MazeObject top) {
         int y, x, z, e;
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
@@ -1192,8 +1192,8 @@ class MazeDataModel {
         }
     }
 
-    public void fillFloor(final MazeObjectModel bottom,
-            final MazeObjectModel top, final int z) {
+    public void fillFloor(final MazeObject bottom,
+            final MazeObject top, final int z) {
         int x, y, e;
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
@@ -1208,24 +1208,24 @@ class MazeDataModel {
         }
     }
 
-    public void fillRandomly(final MazeModel maze, final int w) {
+    public void fillRandomly(final Maze maze, final int w) {
         for (int z = 0; z < this.getFloors(); z++) {
             this.fillFloorRandomly(maze, z, w);
         }
     }
 
-    public void fillRandomlyCustom(final MazeModel maze, final int w) {
+    public void fillRandomlyCustom(final Maze maze, final int w) {
         for (int z = 0; z < this.getFloors(); z++) {
             this.fillFloorRandomlyCustom(maze, z, w);
         }
     }
 
-    public void fillFloorRandomly(final MazeModel maze, final int z,
+    public void fillFloorRandomly(final Maze maze, final int z,
             final int w) {
         // Pre-Pass
-        final MazeObjectModel pass1FillBottom = GameObjects.createObject(Prefs
+        final MazeObject pass1FillBottom = GameObjects.createObject(Prefs
                 .getEditorDefaultFill());
-        final MazeObjectModel pass1FillTop = GameObjects.getEmptySpace();
+        final MazeObject pass1FillTop = GameObjects.getEmptySpace();
         RandomRange r = null;
         int x, y, e;
         // Pass 1
@@ -1234,13 +1234,13 @@ class MazeDataModel {
         final int columns = this.getColumns();
         final int rows = this.getRows();
         for (e = 0; e < Layers.COUNT; e++) {
-            final MazeObjectModel[] objectsWithoutPrerequisites = GameObjects
+            final MazeObject[] objectsWithoutPrerequisites = GameObjects
                     .getAllWithoutPrerequisiteAndNotRequired(e);
             if (objectsWithoutPrerequisites != null) {
                 r = new RandomRange(0, objectsWithoutPrerequisites.length - 1);
                 for (x = 0; x < columns; x++) {
                     for (y = 0; y < rows; y++) {
-                        final MazeObjectModel placeObj = objectsWithoutPrerequisites[r
+                        final MazeObject placeObj = objectsWithoutPrerequisites[r
                                 .generate()];
                         final boolean okay = placeObj.shouldGenerateObject(maze,
                                 x, y, z, w, e);
@@ -1255,7 +1255,7 @@ class MazeDataModel {
         }
         // Pass 3
         for (int layer = 0; layer < Layers.COUNT; layer++) {
-            final MazeObjectModel[] requiredObjects = GameObjects
+            final MazeObject[] requiredObjects = GameObjects
                     .getAllRequired(layer);
             if (requiredObjects != null) {
                 final RandomRange row = new RandomRange(0, this.getRows() - 1);
@@ -1265,7 +1265,7 @@ class MazeDataModel {
                 for (x = 0; x < requiredObjects.length; x++) {
                     randomRow = row.generate();
                     randomColumn = column.generate();
-                    final MazeObjectModel currObj = requiredObjects[x];
+                    final MazeObject currObj = requiredObjects[x];
                     final int min = currObj.getMinimumRequiredQuantity(maze);
                     int max = currObj.getMaximumRequiredQuantity(maze);
                     if (max == RandomGenerationRule.NO_LIMIT) {
@@ -1304,15 +1304,15 @@ class MazeDataModel {
         }
     }
 
-    public void fillFloorRandomlyCustom(final MazeModel maze, final int z,
+    public void fillFloorRandomlyCustom(final Maze maze, final int z,
             final int w) {
         // Pre-Pass
-        final MazeObjectModel pass1FillBottom = GameObjects.createObject(Prefs
+        final MazeObject pass1FillBottom = GameObjects.createObject(Prefs
                 .getEditorDefaultFill());
-        final MazeObjectModel pass1FillTop = GameObjects.getEmptySpace();
-        final MazeObjectModel[] withoutRuleSets = GameObjects
+        final MazeObject pass1FillTop = GameObjects.getEmptySpace();
+        final MazeObject[] withoutRuleSets = GameObjects
                 .getAllObjectsWithoutRuleSets();
-        final MazeObjectModel[] withRuleSets = GameObjects
+        final MazeObject[] withRuleSets = GameObjects
                 .getAllObjectsWithRuleSets();
         RandomRange r = null;
         int x, y, e;
@@ -1323,7 +1323,7 @@ class MazeDataModel {
         final int rows = this.getRows();
         if (withoutRuleSets != null) {
             for (e = 0; e < Layers.COUNT; e++) {
-                final MazeObjectModel[] objectsWithoutPrerequisites = GameObjects
+                final MazeObject[] objectsWithoutPrerequisites = GameObjects
                         .getAllWithoutPrerequisiteAndNotRequiredSubset(
                                 withoutRuleSets, e);
                 if (objectsWithoutPrerequisites != null
@@ -1332,7 +1332,7 @@ class MazeDataModel {
                             - 1);
                     for (x = 0; x < columns; x++) {
                         for (y = 0; y < rows; y++) {
-                            final MazeObjectModel placeObj = objectsWithoutPrerequisites[r
+                            final MazeObject placeObj = objectsWithoutPrerequisites[r
                                     .generate()];
                             final boolean okay = placeObj.shouldGenerateObject(
                                     maze, y, x, z, w, e);
@@ -1347,7 +1347,7 @@ class MazeDataModel {
             }
             // Pass 3
             for (int layer = 0; layer < Layers.COUNT; layer++) {
-                final MazeObjectModel[] requiredObjects = GameObjects
+                final MazeObject[] requiredObjects = GameObjects
                         .getAllRequiredSubset(withoutRuleSets, layer);
                 if (requiredObjects != null) {
                     final RandomRange row = new RandomRange(0, this.getRows()
@@ -1358,7 +1358,7 @@ class MazeDataModel {
                     for (x = 0; x < requiredObjects.length; x++) {
                         randomRow = row.generate();
                         randomColumn = column.generate();
-                        final MazeObjectModel currObj = requiredObjects[x];
+                        final MazeObject currObj = requiredObjects[x];
                         final int min = currObj.getMinimumRequiredQuantity(
                                 maze);
                         int max = currObj.getMaximumRequiredQuantity(maze);
@@ -1401,7 +1401,7 @@ class MazeDataModel {
         if (withRuleSets != null) {
             // Pass N + 2
             for (e = 0; e < Layers.COUNT; e++) {
-                final MazeObjectModel[] objectsWithoutPrerequisites = GameObjects
+                final MazeObject[] objectsWithoutPrerequisites = GameObjects
                         .getAllWithoutPrerequisiteAndNotRequiredSubset(
                                 withRuleSets, e);
                 if (objectsWithoutPrerequisites != null) {
@@ -1409,7 +1409,7 @@ class MazeDataModel {
                             - 1);
                     for (x = 0; x < columns; x++) {
                         for (y = 0; y < rows; y++) {
-                            final MazeObjectModel placeObj = objectsWithoutPrerequisites[r
+                            final MazeObject placeObj = objectsWithoutPrerequisites[r
                                     .generate()];
                             final boolean okay = placeObj.getRuleSet()
                                     .shouldGenerateObject(maze, y, x, z, w, e);
@@ -1424,7 +1424,7 @@ class MazeDataModel {
             }
             // Pass N + 3
             for (int layer = 0; layer < Layers.COUNT; layer++) {
-                final MazeObjectModel[] requiredObjects = GameObjects
+                final MazeObject[] requiredObjects = GameObjects
                         .getAllRequiredSubset(withRuleSets, layer);
                 if (requiredObjects != null) {
                     final RandomRange row = new RandomRange(0, this.getRows()
@@ -1435,7 +1435,7 @@ class MazeDataModel {
                     for (x = 0; x < requiredObjects.length; x++) {
                         randomRow = row.generate();
                         randomColumn = column.generate();
-                        final MazeObjectModel currObj = requiredObjects[x];
+                        final MazeObject currObj = requiredObjects[x];
                         final int min = currObj.getRuleSet()
                                 .getMinimumRequiredQuantity(maze);
                         int max = currObj.getRuleSet()
@@ -1480,9 +1480,9 @@ class MazeDataModel {
     }
 
     private void fillNulls() {
-        final MazeObjectModel bottom = GameObjects.createObject(Prefs
+        final MazeObject bottom = GameObjects.createObject(Prefs
                 .getEditorDefaultFill());
-        final MazeObjectModel top = GameObjects.getEmptySpace();
+        final MazeObject top = GameObjects.getEmptySpace();
         int y, x, z, e;
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
@@ -1535,9 +1535,9 @@ class MazeDataModel {
         final int zLoc = Mazer5D.getBagOStuff().getGameManager()
                 .getPlayerManager().getPlayerLocationZ();
         try {
-            final MazeObjectModel there = this.getCell(xLoc + dirMove[0], yLoc
+            final MazeObject there = this.getCell(xLoc + dirMove[0], yLoc
                     + dirMove[1], zLoc, Layers.OBJECT);
-            final MazeObjectModel ground = this.getCell(xLoc + dirMove[0], yLoc
+            final MazeObject ground = this.getCell(xLoc + dirMove[0], yLoc
                     + dirMove[1], zLoc, Layers.GROUND);
             if (!there.isSolid() && !there.getName().equals("Player")) {
                 this.setCell(block.getSavedObject(), xLoc, yLoc, zLoc,
@@ -1558,14 +1558,14 @@ class MazeDataModel {
         }
     }
 
-    public void warpObject(final MazeObjectModel mo, final int x, final int y,
+    public void warpObject(final MazeObject mo, final int x, final int y,
             final int z, final int l) {
         final RandomRange row = new RandomRange(0, this.getRows() - 1);
         final RandomRange column = new RandomRange(0, this.getColumns() - 1);
         int randomColumn, randomRow;
         randomRow = row.generate();
         randomColumn = column.generate();
-        final MazeObjectModel currObj = this.getCell(randomRow, randomColumn, z,
+        final MazeObject currObj = this.getCell(randomRow, randomColumn, z,
                 Layers.OBJECT);
         if (!currObj.isSolid()) {
             this.setCell(GameObjects.getEmptySpace(), x, y, z, l);
@@ -1651,9 +1651,9 @@ class MazeDataModel {
         }
     }
 
-    private static MazeObjectModel[][][] shuffleObjects(
-            final MazeObjectModel[][][] preShuffle, final int r) {
-        final MazeObjectModel[][][] postShuffle = new MazeObjectModel[2 * r
+    private static MazeObject[][][] shuffleObjects(
+            final MazeObject[][][] preShuffle, final int r) {
+        final MazeObject[][][] postShuffle = new MazeObject[2 * r
                 + 1][2 * r + 1][Layers.COUNT];
         int[][] randomLocations = new int[(2 * r + 1) * (2 * r + 1)][2];
         // Populate randomLocations array
@@ -1671,7 +1671,7 @@ class MazeDataModel {
             }
         }
         // Shuffle locations array
-        randomLocations = MazeDataModel.shuffleArray(randomLocations);
+        randomLocations = MazeData.shuffleArray(randomLocations);
         // Populate postShuffle array
         counter = 0;
         for (int x = 0; x < preShuffle.length; x++) {
@@ -1841,13 +1841,13 @@ class MazeDataModel {
         writer.writeInt(this.alternateNextLevelOffset);
     }
 
-    public static MazeDataModel readXMLMazeDataModelV1(final XDataReader reader,
+    public static MazeData readXMLMazeDataModelV1(final XDataReader reader,
             final int ver) throws IOException {
         int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
         mazeSizeX = reader.readInt();
         mazeSizeY = reader.readInt();
         mazeSizeZ = reader.readInt();
-        final MazeDataModel lt = new MazeDataModel(mazeSizeX, mazeSizeY,
+        final MazeData lt = new MazeData(mazeSizeX, mazeSizeY,
                 mazeSizeZ);
         for (x = 0; x < lt.getColumns(); x++) {
             for (y = 0; y < lt.getRows(); y++) {
@@ -1876,61 +1876,17 @@ class MazeDataModel {
         lt.timerValue = reader.readInt();
         lt.initialTimerValue = lt.timerValue;
         lt.timerActive = reader.readBoolean();
-        lt.initialVisionRadius = MazeDataModel.MAX_VISION_RADIUS;
+        lt.initialVisionRadius = MazeData.MAX_VISION_RADIUS;
         return lt;
     }
 
-    public static MazeDataModel readXMLMazeDataModelV2(final XDataReader reader,
+    public static MazeData readXMLMazeDataModelV2(final XDataReader reader,
             final int ver) throws IOException {
         int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
         mazeSizeX = reader.readInt();
         mazeSizeY = reader.readInt();
         mazeSizeZ = reader.readInt();
-        final MazeDataModel lt = new MazeDataModel(mazeSizeX, mazeSizeY,
-                mazeSizeZ);
-        for (x = 0; x < lt.getColumns(); x++) {
-            for (y = 0; y < lt.getRows(); y++) {
-                for (z = 0; z < lt.getFloors(); z++) {
-                    for (e = 0; e < Layers.COUNT; e++) {
-                        lt.setCell(GameObjects.readObject(reader, ver), y, x, z,
-                                e);
-                        if (lt.getCell(y, x, z, e) == null) {
-                            return null;
-                        }
-                    }
-                }
-            }
-        }
-        for (y = 0; y < 3; y++) {
-            lt.playerData[y] = reader.readInt();
-        }
-        lt.horizontalWraparoundEnabled = reader.readBoolean();
-        lt.verticalWraparoundEnabled = reader.readBoolean();
-        lt.thirdDimensionWraparoundEnabled = reader.readBoolean();
-        lt.levelTitle = reader.readString();
-        lt.levelStartMessage = reader.readString();
-        lt.levelEndMessage = reader.readString();
-        lt.poisonPower = reader.readInt();
-        lt.oldPoisonPower = lt.poisonPower;
-        lt.timerValue = reader.readInt();
-        lt.initialTimerValue = lt.timerValue;
-        lt.timerActive = reader.readBoolean();
-        lt.autoFinishThresholdEnabled = reader.readBoolean();
-        lt.autoFinishThreshold = reader.readInt();
-        lt.useOffset = reader.readBoolean();
-        lt.nextLevel = reader.readInt();
-        lt.nextLevelOffset = reader.readInt();
-        lt.initialVisionRadius = MazeDataModel.MAX_VISION_RADIUS;
-        return lt;
-    }
-
-    public static MazeDataModel readXMLMazeDataModelV3(final XDataReader reader,
-            final int ver) throws IOException {
-        int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
-        mazeSizeX = reader.readInt();
-        mazeSizeY = reader.readInt();
-        mazeSizeZ = reader.readInt();
-        final MazeDataModel lt = new MazeDataModel(mazeSizeX, mazeSizeY,
+        final MazeData lt = new MazeData(mazeSizeX, mazeSizeY,
                 mazeSizeZ);
         for (x = 0; x < lt.getColumns(); x++) {
             for (y = 0; y < lt.getRows(); y++) {
@@ -1964,17 +1920,61 @@ class MazeDataModel {
         lt.useOffset = reader.readBoolean();
         lt.nextLevel = reader.readInt();
         lt.nextLevelOffset = reader.readInt();
-        lt.initialVisionRadius = MazeDataModel.MAX_VISION_RADIUS;
+        lt.initialVisionRadius = MazeData.MAX_VISION_RADIUS;
         return lt;
     }
 
-    public static MazeDataModel readXMLMazeDataModelV4(final XDataReader reader,
+    public static MazeData readXMLMazeDataModelV3(final XDataReader reader,
             final int ver) throws IOException {
         int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
         mazeSizeX = reader.readInt();
         mazeSizeY = reader.readInt();
         mazeSizeZ = reader.readInt();
-        final MazeDataModel lt = new MazeDataModel(mazeSizeX, mazeSizeY,
+        final MazeData lt = new MazeData(mazeSizeX, mazeSizeY,
+                mazeSizeZ);
+        for (x = 0; x < lt.getColumns(); x++) {
+            for (y = 0; y < lt.getRows(); y++) {
+                for (z = 0; z < lt.getFloors(); z++) {
+                    for (e = 0; e < Layers.COUNT; e++) {
+                        lt.setCell(GameObjects.readObject(reader, ver), y, x, z,
+                                e);
+                        if (lt.getCell(y, x, z, e) == null) {
+                            return null;
+                        }
+                    }
+                }
+            }
+        }
+        for (y = 0; y < 3; y++) {
+            lt.playerData[y] = reader.readInt();
+        }
+        lt.horizontalWraparoundEnabled = reader.readBoolean();
+        lt.verticalWraparoundEnabled = reader.readBoolean();
+        lt.thirdDimensionWraparoundEnabled = reader.readBoolean();
+        lt.levelTitle = reader.readString();
+        lt.levelStartMessage = reader.readString();
+        lt.levelEndMessage = reader.readString();
+        lt.poisonPower = reader.readInt();
+        lt.oldPoisonPower = lt.poisonPower;
+        lt.timerValue = reader.readInt();
+        lt.initialTimerValue = lt.timerValue;
+        lt.timerActive = reader.readBoolean();
+        lt.autoFinishThresholdEnabled = reader.readBoolean();
+        lt.autoFinishThreshold = reader.readInt();
+        lt.useOffset = reader.readBoolean();
+        lt.nextLevel = reader.readInt();
+        lt.nextLevelOffset = reader.readInt();
+        lt.initialVisionRadius = MazeData.MAX_VISION_RADIUS;
+        return lt;
+    }
+
+    public static MazeData readXMLMazeDataModelV4(final XDataReader reader,
+            final int ver) throws IOException {
+        int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
+        mazeSizeX = reader.readInt();
+        mazeSizeY = reader.readInt();
+        mazeSizeZ = reader.readInt();
+        final MazeData lt = new MazeData(mazeSizeX, mazeSizeY,
                 mazeSizeZ);
         for (x = 0; x < lt.getColumns(); x++) {
             for (y = 0; y < lt.getRows(); y++) {
@@ -2017,13 +2017,13 @@ class MazeDataModel {
         return lt;
     }
 
-    public static MazeDataModel readXMLMazeDataModelV5(final XDataReader reader,
+    public static MazeData readXMLMazeDataModelV5(final XDataReader reader,
             final int ver) throws IOException {
         int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
         mazeSizeX = reader.readInt();
         mazeSizeY = reader.readInt();
         mazeSizeZ = reader.readInt();
-        final MazeDataModel lt = new MazeDataModel(mazeSizeX, mazeSizeY,
+        final MazeData lt = new MazeData(mazeSizeX, mazeSizeY,
                 mazeSizeZ);
         for (x = 0; x < lt.getColumns(); x++) {
             for (y = 0; y < lt.getRows(); y++) {

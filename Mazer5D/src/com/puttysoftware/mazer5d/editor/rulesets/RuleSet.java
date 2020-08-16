@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
-import com.puttysoftware.mazer5d.maze.MazeModel;
+import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.utilities.RandomGenerationRule;
 import com.puttysoftware.randomrange.RandomRange;
 
@@ -140,7 +140,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
      * Methods implementing RandomGenerationRule
      */
     @Override
-    public int getMaximumRequiredQuantity(final MazeModel maze) {
+    public int getMaximumRequiredQuantity(final Maze maze) {
         if (this.percentageFlag) {
             final int base = maze.getRows() * maze.getColumns();
             final double factor = this.maxQuantity / 100.0;
@@ -151,7 +151,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
     }
 
     @Override
-    public int getMinimumRequiredQuantity(final MazeModel maze) {
+    public int getMinimumRequiredQuantity(final Maze maze) {
         if (this.percentageFlag) {
             final int base = maze.getRows() * maze.getColumns();
             final double factor = this.minQuantity / 100.0;
@@ -167,7 +167,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
     }
 
     @Override
-    public boolean shouldGenerateObject(final MazeModel maze, final int row,
+    public boolean shouldGenerateObject(final Maze maze, final int row,
             final int col, final int floor, final int level, final int layer) {
         final int genval = this.rng.generate();
         return genval <= this.generateQuantity;

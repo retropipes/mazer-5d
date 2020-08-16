@@ -17,7 +17,7 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.files.format.XMLExtension;
 import com.puttysoftware.mazer5d.files.format.XMLGameFilter;
 import com.puttysoftware.mazer5d.files.format.XMLLoadTask;
@@ -27,12 +27,12 @@ import com.puttysoftware.mazer5d.files.locking.LockedFilter;
 import com.puttysoftware.mazer5d.files.locking.LockedLoadTask;
 import com.puttysoftware.mazer5d.files.locking.LockedSaveTask;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
-import com.puttysoftware.mazer5d.maze.MazeModel;
+import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class MazeManager implements OpenFilesHandler {
     // Fields
-    private MazeModel gameMaze;
+    private Maze gameMaze;
     private boolean loaded, isDirty;
     private String scoresFileName;
     private String lastUsedMazeFile;
@@ -54,11 +54,11 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     // Methods
-    public MazeModel getMaze() {
+    public Maze getMaze() {
         return this.gameMaze;
     }
 
-    public void setMaze(final MazeModel newMaze) {
+    public void setMaze(final Maze newMaze) {
         this.gameMaze = newMaze;
     }
 
@@ -96,7 +96,7 @@ public class MazeManager implements OpenFilesHandler {
         Mazer5D.getBagOStuff().getMenuManager().checkFlags();
     }
 
-    public MazeObjectModel getMazeObject(final int x, final int y, final int z,
+    public MazeObject getMazeObject(final int x, final int y, final int z,
             final int e) {
         try {
             return this.gameMaze.getCell(x, y, z, e);

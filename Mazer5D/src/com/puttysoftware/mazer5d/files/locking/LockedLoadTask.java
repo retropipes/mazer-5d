@@ -15,11 +15,11 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.files.InvalidMazeException;
 import com.puttysoftware.mazer5d.files.format.XMLPrefixHandler;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
-import com.puttysoftware.mazer5d.maze.MazeModel;
+import com.puttysoftware.mazer5d.maze.Maze;
 
 public class LockedLoadTask extends Thread {
     // Fields
-    private MazeModel gameMaze;
+    private Maze gameMaze;
     private final String filename;
 
     // Constructors
@@ -38,10 +38,10 @@ public class LockedLoadTask extends Thread {
         sg = "Maze";
         try {
             final File mazeFile = new File(this.filename);
-            final File tempLock = new File(MazeModel.getMazeTempFolder()
+            final File tempLock = new File(Maze.getMazeTempFolder()
                     + "lock.tmp");
             try {
-                this.gameMaze = new MazeModel();
+                this.gameMaze = new Maze();
                 // Unlock the file
                 LockedWrapper.unlock(mazeFile, tempLock);
                 ZipUtilities.unzipDirectory(tempLock, new File(this.gameMaze

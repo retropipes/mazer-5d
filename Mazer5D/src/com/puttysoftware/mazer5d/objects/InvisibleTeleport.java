@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.objects.abc.GenericInvisibleTeleport;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
@@ -39,9 +39,9 @@ class InvisibleTeleport extends GenericInvisibleTeleport {
     }
 
     @Override
-    public MazeObjectModel editorPropertiesHook() {
+    public MazeObject editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        final MazeObjectModel mo = me.editTeleportDestination(
+        final MazeObject mo = me.editTeleportDestination(
                 MazeEditor.TELEPORT_TYPE_INVISIBLE_GENERIC);
         return mo;
     }

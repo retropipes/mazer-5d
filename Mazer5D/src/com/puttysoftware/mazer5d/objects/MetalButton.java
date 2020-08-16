@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
@@ -100,7 +100,7 @@ class MetalButton extends GenericField {
             final ObjectInventory inv) {
         if (inv.isItemThere(this.getKey().getUniqueID())) {
             final BagOStuff app = Mazer5D.getBagOStuff();
-            final MazeObjectModel there = app.getMazeManager().getMazeObject(
+            final MazeObject there = app.getMazeManager().getMazeObject(
                     this.getTargetRow(), this.getTargetColumn(), this
                             .getTargetFloor(), this.getLayer());
             if (there != null) {
@@ -160,7 +160,7 @@ class MetalButton extends GenericField {
     }
 
     @Override
-    public MazeObjectModel editorPropertiesHook() {
+    public MazeObject editorPropertiesHook() {
         return Mazer5D.getBagOStuff().getEditor().editMetalButtonTarget();
     }
 

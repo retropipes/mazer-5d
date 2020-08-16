@@ -15,7 +15,7 @@ import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
-import com.puttysoftware.mazer5d.maze.MazeModel;
+import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.utilities.ArrowTypes;
 import com.puttysoftware.mazer5d.utilities.Directions;
 import com.puttysoftware.mazer5d.utilities.Layers;
@@ -24,7 +24,7 @@ import com.puttysoftware.mazer5d.utilities.RandomGenerationRule;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 import com.puttysoftware.randomrange.RandomRange;
 
-public abstract class MazeObjectModel implements RandomGenerationRule {
+public abstract class MazeObject implements RandomGenerationRule {
     // Properties
     private SolidProperties sp;
     private MoveProperties mp;
@@ -36,11 +36,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     private CustomTexts ct;
     private TypeProperties tp;
     private RuleSet ruleSet;
-    private MazeObjectModel savedObject;
+    private MazeObject savedObject;
     private static final int NO_CUSTOM_COUNTERS = 0;
 
     // Constructors
-    public MazeObjectModel(final boolean isSolid) {
+    public MazeObject(final boolean isSolid) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
         this.mp = new MoveProperties();
@@ -53,7 +53,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         this.tp = new TypeProperties();
     }
 
-    public MazeObjectModel(final boolean isSolidXN, final boolean isSolidXS,
+    public MazeObject(final boolean isSolidXN, final boolean isSolidXS,
             final boolean isSolidXE, final boolean isSolidXW,
             final boolean isSolidIN, final boolean isSolidIS,
             final boolean isSolidIE, final boolean isSolidIW) {
@@ -110,7 +110,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         this.tp = new TypeProperties();
     }
 
-    public MazeObjectModel(final boolean isSolid, final boolean isPushable,
+    public MazeObject(final boolean isSolid, final boolean isPushable,
             final boolean doesAcceptPushInto, final boolean doesAcceptPushOut,
             final boolean isPullable, final boolean doesAcceptPullInto,
             final boolean doesAcceptPullOut, final boolean hasFriction,
@@ -137,7 +137,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         this.tp = new TypeProperties();
     }
 
-    public MazeObjectModel(final boolean isSolid, final boolean isPushable,
+    public MazeObject(final boolean isSolid, final boolean isPushable,
             final boolean doesAcceptPushInto, final boolean doesAcceptPushOut,
             final boolean isPullable, final boolean doesAcceptPullInto,
             final boolean doesAcceptPullOut, final boolean hasFriction,
@@ -166,7 +166,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         this.tp = new TypeProperties();
     }
 
-    public MazeObjectModel(final boolean isSolid, final boolean isUsable,
+    public MazeObject(final boolean isSolid, final boolean isUsable,
             final int newUses, final boolean canBeInventoried) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
@@ -183,7 +183,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         this.tp = new TypeProperties();
     }
 
-    public MazeObjectModel() {
+    public MazeObject() {
         this.sp = new SolidProperties();
         this.mp = new MoveProperties();
         this.op = new OtherProperties();
@@ -196,7 +196,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     }
 
     // Copy constructor
-    public MazeObjectModel(final MazeObjectModel source) {
+    public MazeObject(final MazeObject source) {
         this.sp = new SolidProperties(source.sp);
         this.mp = new MoveProperties(source.mp);
         this.op = new OtherProperties(source.op);
@@ -233,10 +233,10 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof MazeObjectModel)) {
+        if (!(obj instanceof MazeObject)) {
             return false;
         }
-        final MazeObjectModel other = (MazeObjectModel) obj;
+        final MazeObject other = (MazeObject) obj;
         if (this.mp == null) {
             if (other.mp != null) {
                 return false;
@@ -304,7 +304,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     }
 
     // Object state methods
-    public final MazeObjectModel getSavedObject() {
+    public final MazeObject getSavedObject() {
         return this.savedObject;
     }
 
@@ -312,7 +312,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         return this.savedObject != null;
     }
 
-    public final void setSavedObject(final MazeObjectModel newSaved) {
+    public final void setSavedObject(final MazeObject newSaved) {
         this.savedObject = newSaved;
     }
 
@@ -779,7 +779,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         Mazer5D.getBagOStuff().showMessage(this.getName());
     }
 
-    public MazeObjectModel editorPropertiesHook() {
+    public MazeObject editorPropertiesHook() {
         return null;
     }
 
@@ -792,7 +792,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
      * @param pushX
      * @param pushY
      */
-    public void pushAction(final ObjectInventory inv, final MazeObjectModel mo,
+    public void pushAction(final ObjectInventory inv, final MazeObject mo,
             final int x, final int y, final int pushX, final int pushY) {
         // Do nothing
     }
@@ -806,7 +806,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
      * @param z
      */
     public void pushIntoAction(final ObjectInventory inv,
-            final MazeObjectModel pushed, final int x, final int y,
+            final MazeObject pushed, final int x, final int y,
             final int z) {
         // Do nothing
     }
@@ -820,7 +820,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
      * @param z
      */
     public void pushOutAction(final ObjectInventory inv,
-            final MazeObjectModel pushed, final int x, final int y,
+            final MazeObject pushed, final int x, final int y,
             final int z) {
         // Do nothing
     }
@@ -850,7 +850,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
      * @param pullX
      * @param pullY
      */
-    public void pullAction(final ObjectInventory inv, final MazeObjectModel mo,
+    public void pullAction(final ObjectInventory inv, final MazeObject mo,
             final int x, final int y, final int pullX, final int pullY) {
         // Do nothing
     }
@@ -864,7 +864,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
      * @param z
      */
     public void pullIntoAction(final ObjectInventory inv,
-            final MazeObjectModel pulled, final int x, final int y,
+            final MazeObject pulled, final int x, final int y,
             final int z) {
         // Do nothing
     }
@@ -878,7 +878,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
      * @param z
      */
     public void pullOutAction(final ObjectInventory inv,
-            final MazeObjectModel pulled, final int x, final int y,
+            final MazeObject pulled, final int x, final int y,
             final int z) {
         // Do nothing
     }
@@ -905,7 +905,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
      * @param y
      * @param z
      */
-    public void useAction(final MazeObjectModel mo, final int x, final int y,
+    public void useAction(final MazeObject mo, final int x, final int y,
             final int z) {
         // Do nothing
     }
@@ -955,7 +955,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         }
     }
 
-    public MazeObjectModel gameRenderHook() {
+    public MazeObject gameRenderHook() {
         return this;
     }
 
@@ -1009,7 +1009,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     }
 
     @Override
-    public boolean shouldGenerateObject(final MazeModel maze, final int row,
+    public boolean shouldGenerateObject(final Maze maze, final int row,
             final int col, final int floor, final int level, final int layer) {
         if (layer == Layers.OBJECT) {
             // Handle object layer
@@ -1047,12 +1047,12 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
     }
 
     @Override
-    public int getMinimumRequiredQuantity(final MazeModel maze) {
+    public int getMinimumRequiredQuantity(final Maze maze) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
     @Override
-    public int getMaximumRequiredQuantity(final MazeModel maze) {
+    public int getMaximumRequiredQuantity(final Maze maze) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
@@ -1072,7 +1072,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
             throws IOException {
         writer.writeString(this.getXMLIdentifier());
         final int ccf = this.customCounterCount();
-        if (ccf != MazeObjectModel.NO_CUSTOM_COUNTERS) {
+        if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
             for (int x = 0; x < ccf; x++) {
                 writer.writeInt(this.getCustomCounter(x + 1));
             }
@@ -1080,11 +1080,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         this.writeMazeObjectHookXML(writer);
     }
 
-    public final MazeObjectModel readMazeObjectXML(final XDataReader reader,
+    public final MazeObject readMazeObjectXML(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int ccf = this.customCounterCount();
-            if (ccf != MazeObjectModel.NO_CUSTOM_COUNTERS) {
+            if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);
@@ -1096,11 +1096,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         }
     }
 
-    public final MazeObjectModel readMazeObjectXML2(final XDataReader reader,
+    public final MazeObject readMazeObjectXML2(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int ccf = this.customCounterCount();
-            if (ccf != MazeObjectModel.NO_CUSTOM_COUNTERS) {
+            if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);
@@ -1112,11 +1112,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         }
     }
 
-    public final MazeObjectModel readMazeObjectXML3(final XDataReader reader,
+    public final MazeObject readMazeObjectXML3(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int ccf = this.customCounterCount();
-            if (ccf != MazeObjectModel.NO_CUSTOM_COUNTERS) {
+            if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);
@@ -1128,11 +1128,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         }
     }
 
-    public final MazeObjectModel readMazeObjectXML4(final XDataReader reader,
+    public final MazeObject readMazeObjectXML4(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int ccf = this.customCounterCount();
-            if (ccf != MazeObjectModel.NO_CUSTOM_COUNTERS) {
+            if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);
@@ -1144,11 +1144,11 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
         }
     }
 
-    public final MazeObjectModel readMazeObjectXML5(final XDataReader reader,
+    public final MazeObject readMazeObjectXML5(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int ccf = this.customCounterCount();
-            if (ccf != MazeObjectModel.NO_CUSTOM_COUNTERS) {
+            if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
                 for (int x = 0; x < ccf; x++) {
                     final int cx = reader.readInt();
                     this.setCustomCounter(x + 1, cx);
@@ -1177,7 +1177,7 @@ public abstract class MazeObjectModel implements RandomGenerationRule {
      * @return
      * @throws IOException
      */
-    protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
+    protected MazeObject readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         // Dummy implementation, subclasses can override
         return this;

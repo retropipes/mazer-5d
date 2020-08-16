@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
@@ -65,7 +65,7 @@ class MovingFinish extends Finish {
     @Override
     public void timerExpiredAction(final int dirX, final int dirY) {
         this.active = false;
-        final MazeObjectModel obj = Mazer5D.getBagOStuff().getMazeManager()
+        final MazeObject obj = Mazer5D.getBagOStuff().getMazeManager()
                 .getMazeObject(this.getDestinationRow(), this
                         .getDestinationColumn(), this.getDestinationFloor(),
                         Layers.OBJECT);
@@ -75,7 +75,7 @@ class MovingFinish extends Finish {
             mf.activate();
         } else {
             final BagOStuff app = Mazer5D.getBagOStuff();
-            final MazeObjectModel saved = app.getGameManager()
+            final MazeObject saved = app.getGameManager()
                     .getSavedMazeObject();
             final int px = app.getGameManager().getPlayerManager()
                     .getPlayerLocationX();
@@ -104,7 +104,7 @@ class MovingFinish extends Finish {
     }
 
     @Override
-    public MazeObjectModel gameRenderHook() {
+    public MazeObject gameRenderHook() {
         if (this.active) {
             return this;
         } else {
@@ -133,9 +133,9 @@ class MovingFinish extends Finish {
     }
 
     @Override
-    public MazeObjectModel editorPropertiesHook() {
+    public MazeObject editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        final MazeObjectModel mo = me.editTeleportDestination(
+        final MazeObject mo = me.editTeleportDestination(
                 MazeEditor.TELEPORT_TYPE_MOVING_FINISH);
         return mo;
     }

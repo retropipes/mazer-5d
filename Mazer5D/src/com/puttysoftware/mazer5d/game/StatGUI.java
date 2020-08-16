@@ -15,7 +15,7 @@ import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.EffectImageIndex;
 import com.puttysoftware.mazer5d.loaders.EffectImageLoader;
-import com.puttysoftware.mazer5d.maze.MazeModel;
+import com.puttysoftware.mazer5d.maze.Maze;
 
 class StatGUI {
     // Fields
@@ -35,7 +35,7 @@ class StatGUI {
     }
 
     public void updateStats() {
-        final MazeModel m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
+        final Maze m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
         this.hpLabel.setText(m.getHPString());
         this.poisonLabel.setText(m.getPoisonString());
         this.timeLabel.setText(m.getTimeString());
@@ -65,7 +65,7 @@ class StatGUI {
         final BufferedImageIcon poisonImage = EffectImageLoader.load(
                 EffectImageIndex.POISON);
         this.poisonLabel.setIcon(poisonImage);
-        final MazeModel m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
+        final Maze m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
         final BufferedImageIcon timeImage = EffectImageLoader.loadTime(m
                 .getTimerValue(), m.getInitialTimerValue());
         this.timeLabel.setIcon(timeImage);

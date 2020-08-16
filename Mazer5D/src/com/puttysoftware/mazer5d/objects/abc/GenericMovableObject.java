@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.objects.abc;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
@@ -20,7 +20,7 @@ import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
-public abstract class GenericMovableObject extends MazeObjectModel {
+public abstract class GenericMovableObject extends MazeObject {
     // Constructors
     protected GenericMovableObject(final boolean pushable,
             final boolean pullable) {
@@ -37,7 +37,7 @@ public abstract class GenericMovableObject extends MazeObjectModel {
     }
 
     @Override
-    public void pushAction(final ObjectInventory inv, final MazeObjectModel mo,
+    public void pushAction(final ObjectInventory inv, final MazeObject mo,
             final int x, final int y, final int pushX, final int pushY) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
@@ -46,7 +46,7 @@ public abstract class GenericMovableObject extends MazeObjectModel {
     }
 
     @Override
-    public void pullAction(final ObjectInventory inv, final MazeObjectModel mo,
+    public void pullAction(final ObjectInventory inv, final MazeObject mo,
             final int x, final int y, final int pullX, final int pullY) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().updatePulledPosition(x, y, pullX, pullY, this);
@@ -63,7 +63,7 @@ public abstract class GenericMovableObject extends MazeObjectModel {
     }
 
     @Override
-    protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
+    protected MazeObject readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         this.setSavedObject(GameObjects.readObject(reader, formatVersion));
         return this;

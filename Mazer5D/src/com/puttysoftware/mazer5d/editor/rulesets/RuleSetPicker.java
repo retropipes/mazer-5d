@@ -20,7 +20,7 @@ import com.puttysoftware.commondialogs.MainWindowContent;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.files.RuleSetManager;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objects.GameObjects;
@@ -35,7 +35,7 @@ public class RuleSetPicker {
     private final EventHandler handler;
     private PicturePicker picker;
     private final String[] names;
-    private final MazeObjectModel[] objects;
+    private final MazeObject[] objects;
     private final BufferedImageIcon[] editorAppearances;
     private int index;
     private JButton create, destroy, edit, importXML, exportXML, done;
@@ -52,14 +52,14 @@ public class RuleSetPicker {
 
     void createObjectRuleSet() {
         this.index = this.picker.getPicked();
-        final MazeObjectModel object = this.objects[this.index];
+        final MazeObject object = this.objects[this.index];
         object.giveRuleSet();
         CommonDialogs.showTitledDialog("Rule Set Created.", "Rule Set Picker");
     }
 
     void destroyObjectRuleSet() {
         this.index = this.picker.getPicked();
-        final MazeObjectModel object = this.objects[this.index];
+        final MazeObject object = this.objects[this.index];
         object.takeRuleSet();
         CommonDialogs.showTitledDialog("Rule Set Destroyed.",
                 "Rule Set Picker");
@@ -67,7 +67,7 @@ public class RuleSetPicker {
 
     void editObjectRuleSet() {
         this.index = this.picker.getPicked();
-        final MazeObjectModel object = this.objects[this.index];
+        final MazeObject object = this.objects[this.index];
         if (object.hasRuleSet()) {
             this.rsEditor.setRuleSet(object.getRuleSet());
             this.rsEditor.showRuleSetEditor();

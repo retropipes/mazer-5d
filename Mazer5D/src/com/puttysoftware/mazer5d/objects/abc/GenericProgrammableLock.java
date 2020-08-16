@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
@@ -98,11 +98,11 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     }
 
     @Override
-    public MazeObjectModel editorPropertiesHook() {
+    public MazeObject editorPropertiesHook() {
         final String[] tempKeyNames = GameObjects.getAllProgrammableKeyNames();
-        final MazeObjectModel[] tempKeys = GameObjects.getAllProgrammableKeys();
+        final MazeObject[] tempKeys = GameObjects.getAllProgrammableKeys();
         final String[] keyNames = new String[tempKeyNames.length + 1];
-        final MazeObjectModel[] keys = new MazeObjectModel[tempKeys.length + 1];
+        final MazeObject[] keys = new MazeObject[tempKeys.length + 1];
         System.arraycopy(tempKeyNames, 0, keyNames, 0, tempKeyNames.length);
         System.arraycopy(tempKeys, 0, keys, 0, tempKeys.length);
         keyNames[tempKeyNames.length] = "Any Crystal";
@@ -134,9 +134,9 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     }
 
     @Override
-    protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
+    protected MazeObject readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        final MazeObjectModel o = GameObjects.readObject(reader, formatVersion);
+        final MazeObject o = GameObjects.readObject(reader, formatVersion);
         if (o == null) {
             this.setKey(GenericProgrammableLock.SIGNAL);
         } else {

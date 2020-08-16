@@ -1,11 +1,11 @@
 package com.puttysoftware.mazer5d.objects.abc;
 
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
-public abstract class GenericMovingObject extends MazeObjectModel {
+public abstract class GenericMovingObject extends MazeObject {
     // Constructors
     public GenericMovingObject(final boolean solid) {
         super(solid);

@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.files.format.XMLFormatConstants;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
@@ -26,8 +26,8 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public class GameObjects {
     // Fields
-    private static final TreeMap<MazeObjects, MazeObjectModel> allObjectsLookup = new TreeMap<>();
-    private static MazeObjectModel[] allObjects;
+    private static final TreeMap<MazeObjects, MazeObject> allObjectsLookup = new TreeMap<>();
+    private static MazeObject[] allObjects;
     private static MazeObjects[] allObjectUIDs;
     static {
         GameObjects.allObjectUIDs = new MazeObjects[] { MazeObjects.AMETHYST,
@@ -939,19 +939,19 @@ public class GameObjects {
         GameObjects.allObjectsLookup.put(MazeObjects.Y_PORT, new YPort());
         GameObjects.allObjectsLookup.put(MazeObjects.Z_PLUG, new ZPlug());
         GameObjects.allObjectsLookup.put(MazeObjects.Z_PORT, new ZPort());
-        final Collection<MazeObjectModel> values = GameObjects.removeNullValues(
+        final Collection<MazeObject> values = GameObjects.removeNullValues(
                 GameObjects.allObjectsLookup.values());
-        GameObjects.allObjects = values.toArray(new MazeObjectModel[values
+        GameObjects.allObjects = values.toArray(new MazeObject[values
                 .size()]);
     }
 
-    private static Collection<MazeObjectModel> removeNullValues(
-            final Collection<MazeObjectModel> values) {
+    private static Collection<MazeObject> removeNullValues(
+            final Collection<MazeObject> values) {
         return values.stream().filter(GameObjects.itemNotNull()).collect(
-                Collectors.<MazeObjectModel> toList());
+                Collectors.<MazeObject> toList());
     }
 
-    private static Predicate<? super MazeObjectModel> itemNotNull() {
+    private static Predicate<? super MazeObject> itemNotNull() {
         return p -> p != null;
     }
 
@@ -959,11 +959,11 @@ public class GameObjects {
         super();
     }
 
-    public static MazeObjectModel getEmptySpace() {
+    public static MazeObject getEmptySpace() {
         return GameObjects.createObject(MazeObjects.EMPTY);
     }
 
-    public static MazeObjectModel[] getAllObjects() {
+    public static MazeObject[] getAllObjects() {
         return GameObjects.allObjects;
     }
 
@@ -983,22 +983,22 @@ public class GameObjects {
         return allDescriptions;
     }
 
-    public static MazeObjectModel[] getAllObjectsWithRuleSets() {
-        final MazeObjectModel[] tempAllObjectsWithRuleSets = new MazeObjectModel[GameObjects.allObjects.length];
+    public static MazeObject[] getAllObjectsWithRuleSets() {
+        final MazeObject[] tempAllObjectsWithRuleSets = new MazeObject[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x].hasRuleSet()) {
                 tempAllObjectsWithRuleSets[x] = GameObjects.allObjects[x];
             }
         }
-        for (final MazeObjectModel tempAllObjectsWithRuleSet : tempAllObjectsWithRuleSets) {
+        for (final MazeObject tempAllObjectsWithRuleSet : tempAllObjectsWithRuleSets) {
             if (tempAllObjectsWithRuleSet != null) {
                 objectCount++;
             }
         }
-        final MazeObjectModel[] allObjectsWithRuleSets = new MazeObjectModel[objectCount];
+        final MazeObject[] allObjectsWithRuleSets = new MazeObject[objectCount];
         objectCount = 0;
-        for (final MazeObjectModel tempAllObjectsWithRuleSet : tempAllObjectsWithRuleSets) {
+        for (final MazeObject tempAllObjectsWithRuleSet : tempAllObjectsWithRuleSets) {
             if (tempAllObjectsWithRuleSet != null) {
                 allObjectsWithRuleSets[objectCount] = tempAllObjectsWithRuleSet;
                 objectCount++;
@@ -1007,22 +1007,22 @@ public class GameObjects {
         return allObjectsWithRuleSets;
     }
 
-    public static MazeObjectModel[] getAllObjectsWithoutRuleSets() {
-        final MazeObjectModel[] tempAllObjectsWithoutRuleSets = new MazeObjectModel[GameObjects.allObjects.length];
+    public static MazeObject[] getAllObjectsWithoutRuleSets() {
+        final MazeObject[] tempAllObjectsWithoutRuleSets = new MazeObject[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (!GameObjects.allObjects[x].hasRuleSet()) {
                 tempAllObjectsWithoutRuleSets[x] = GameObjects.allObjects[x];
             }
         }
-        for (final MazeObjectModel tempAllObjectsWithoutRuleSet : tempAllObjectsWithoutRuleSets) {
+        for (final MazeObject tempAllObjectsWithoutRuleSet : tempAllObjectsWithoutRuleSets) {
             if (tempAllObjectsWithoutRuleSet != null) {
                 objectCount++;
             }
         }
-        final MazeObjectModel[] allObjectsWithoutRuleSets = new MazeObjectModel[objectCount];
+        final MazeObject[] allObjectsWithoutRuleSets = new MazeObject[objectCount];
         objectCount = 0;
-        for (final MazeObjectModel tempAllObjectsWithoutRuleSet : tempAllObjectsWithoutRuleSets) {
+        for (final MazeObject tempAllObjectsWithoutRuleSet : tempAllObjectsWithoutRuleSets) {
             if (tempAllObjectsWithoutRuleSet != null) {
                 allObjectsWithoutRuleSets[objectCount] = tempAllObjectsWithoutRuleSet;
                 objectCount++;
@@ -1031,22 +1031,22 @@ public class GameObjects {
         return allObjectsWithoutRuleSets;
     }
 
-    public static MazeObjectModel[] getAllGroundLayerObjects() {
-        final MazeObjectModel[] tempAllGroundLayerObjects = new MazeObjectModel[GameObjects.allObjects.length];
+    public static MazeObject[] getAllGroundLayerObjects() {
+        final MazeObject[] tempAllGroundLayerObjects = new MazeObject[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x].getLayer() == Layers.GROUND) {
                 tempAllGroundLayerObjects[x] = GameObjects.allObjects[x];
             }
         }
-        for (final MazeObjectModel tempAllGroundLayerObject : tempAllGroundLayerObjects) {
+        for (final MazeObject tempAllGroundLayerObject : tempAllGroundLayerObjects) {
             if (tempAllGroundLayerObject != null) {
                 objectCount++;
             }
         }
-        final MazeObjectModel[] allGroundLayerObjects = new MazeObjectModel[objectCount];
+        final MazeObject[] allGroundLayerObjects = new MazeObject[objectCount];
         objectCount = 0;
-        for (final MazeObjectModel tempAllGroundLayerObject : tempAllGroundLayerObjects) {
+        for (final MazeObject tempAllGroundLayerObject : tempAllGroundLayerObjects) {
             if (tempAllGroundLayerObject != null) {
                 allGroundLayerObjects[objectCount] = tempAllGroundLayerObject;
                 objectCount++;
@@ -1055,22 +1055,22 @@ public class GameObjects {
         return allGroundLayerObjects;
     }
 
-    public static MazeObjectModel[] getAllObjectLayerObjects() {
-        final MazeObjectModel[] tempAllObjectLayerObjects = new MazeObjectModel[GameObjects.allObjects.length];
+    public static MazeObject[] getAllObjectLayerObjects() {
+        final MazeObject[] tempAllObjectLayerObjects = new MazeObject[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x].getLayer() == Layers.OBJECT) {
                 tempAllObjectLayerObjects[x] = GameObjects.allObjects[x];
             }
         }
-        for (final MazeObjectModel tempAllObjectLayerObject : tempAllObjectLayerObjects) {
+        for (final MazeObject tempAllObjectLayerObject : tempAllObjectLayerObjects) {
             if (tempAllObjectLayerObject != null) {
                 objectCount++;
             }
         }
-        final MazeObjectModel[] allObjectLayerObjects = new MazeObjectModel[objectCount];
+        final MazeObject[] allObjectLayerObjects = new MazeObject[objectCount];
         objectCount = 0;
-        for (final MazeObjectModel tempAllObjectLayerObject : tempAllObjectLayerObjects) {
+        for (final MazeObject tempAllObjectLayerObject : tempAllObjectLayerObjects) {
             if (tempAllObjectLayerObject != null) {
                 allObjectLayerObjects[objectCount] = tempAllObjectLayerObject;
                 objectCount++;
@@ -1214,8 +1214,8 @@ public class GameObjects {
         return allContainableObjectEditorAppearances;
     }
 
-    public static MazeObjectModel[] getAllContainableObjects() {
-        final MazeObjectModel[] tempAllContainableObjects = new MazeObjectModel[GameObjects.allObjects.length];
+    public static MazeObject[] getAllContainableObjects() {
+        final MazeObject[] tempAllContainableObjects = new MazeObject[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x].isOfType(
@@ -1223,14 +1223,14 @@ public class GameObjects {
                 tempAllContainableObjects[x] = GameObjects.allObjects[x];
             }
         }
-        for (final MazeObjectModel tempAllContainableObject : tempAllContainableObjects) {
+        for (final MazeObject tempAllContainableObject : tempAllContainableObjects) {
             if (tempAllContainableObject != null) {
                 objectCount++;
             }
         }
-        final MazeObjectModel[] allContainableObjects = new MazeObjectModel[objectCount];
+        final MazeObject[] allContainableObjects = new MazeObject[objectCount];
         objectCount = 0;
-        for (final MazeObjectModel tempAllContainableObject : tempAllContainableObjects) {
+        for (final MazeObject tempAllContainableObject : tempAllContainableObjects) {
             if (tempAllContainableObject != null) {
                 allContainableObjects[objectCount] = tempAllContainableObject;
                 objectCount++;
@@ -1265,8 +1265,8 @@ public class GameObjects {
         return allContainableNames;
     }
 
-    public static MazeObjectModel[] getAllInventoryableObjectsMinusSpecial() {
-        final MazeObjectModel[] tempAllInventoryableObjects = new MazeObjectModel[GameObjects.allObjects.length];
+    public static MazeObject[] getAllInventoryableObjectsMinusSpecial() {
+        final MazeObject[] tempAllInventoryableObjects = new MazeObject[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x].isInventoryable()
@@ -1279,14 +1279,14 @@ public class GameObjects {
                 tempAllInventoryableObjects[x] = GameObjects.allObjects[x];
             }
         }
-        for (final MazeObjectModel tempAllInventoryableObject : tempAllInventoryableObjects) {
+        for (final MazeObject tempAllInventoryableObject : tempAllInventoryableObjects) {
             if (tempAllInventoryableObject != null) {
                 objectCount++;
             }
         }
-        final MazeObjectModel[] allInventoryableObjects = new MazeObjectModel[objectCount];
+        final MazeObject[] allInventoryableObjects = new MazeObject[objectCount];
         objectCount = 0;
-        for (final MazeObjectModel tempAllInventoryableObject : tempAllInventoryableObjects) {
+        for (final MazeObject tempAllInventoryableObject : tempAllInventoryableObjects) {
             if (tempAllInventoryableObject != null) {
                 allInventoryableObjects[objectCount] = tempAllInventoryableObject;
                 objectCount++;
@@ -1326,8 +1326,8 @@ public class GameObjects {
         return allInventoryableNames;
     }
 
-    public static MazeObjectModel[] getAllProgrammableKeys() {
-        final MazeObjectModel[] tempAllProgrammableKeys = new MazeObjectModel[GameObjects.allObjects.length];
+    public static MazeObject[] getAllProgrammableKeys() {
+        final MazeObject[] tempAllProgrammableKeys = new MazeObject[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x].isOfType(
@@ -1335,14 +1335,14 @@ public class GameObjects {
                 tempAllProgrammableKeys[x] = GameObjects.allObjects[x];
             }
         }
-        for (final MazeObjectModel tempAllProgrammableKey : tempAllProgrammableKeys) {
+        for (final MazeObject tempAllProgrammableKey : tempAllProgrammableKeys) {
             if (tempAllProgrammableKey != null) {
                 objectCount++;
             }
         }
-        final MazeObjectModel[] allProgrammableKeys = new MazeObjectModel[objectCount];
+        final MazeObject[] allProgrammableKeys = new MazeObject[objectCount];
         objectCount = 0;
-        for (final MazeObjectModel tempAllProgrammableKey : tempAllProgrammableKeys) {
+        for (final MazeObject tempAllProgrammableKey : tempAllProgrammableKeys) {
             if (tempAllProgrammableKey != null) {
                 allProgrammableKeys[objectCount] = tempAllProgrammableKey;
                 objectCount++;
@@ -1377,22 +1377,22 @@ public class GameObjects {
         return allProgrammableKeyNames;
     }
 
-    public static MazeObjectModel[] getAllUsableObjects() {
-        final MazeObjectModel[] tempAllUsableObjects = new MazeObjectModel[GameObjects.allObjects.length];
+    public static MazeObject[] getAllUsableObjects() {
+        final MazeObject[] tempAllUsableObjects = new MazeObject[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x].isUsable()) {
                 tempAllUsableObjects[x] = GameObjects.allObjects[x];
             }
         }
-        for (final MazeObjectModel tempAllUsableObject : tempAllUsableObjects) {
+        for (final MazeObject tempAllUsableObject : tempAllUsableObjects) {
             if (tempAllUsableObject != null) {
                 objectCount++;
             }
         }
-        final MazeObjectModel[] allUsableObjects = new MazeObjectModel[objectCount];
+        final MazeObject[] allUsableObjects = new MazeObject[objectCount];
         objectCount = 0;
-        for (final MazeObjectModel tempAllUsableObject : tempAllUsableObjects) {
+        for (final MazeObject tempAllUsableObject : tempAllUsableObjects) {
             if (tempAllUsableObject != null) {
                 allUsableObjects[objectCount] = tempAllUsableObject;
                 objectCount++;
@@ -1427,20 +1427,20 @@ public class GameObjects {
         return allUsableNames;
     }
 
-    public static MazeObjectModel[] getAllBows() {
-        final MazeObjectModel[] tempAllUsableObjects = new MazeObjectModel[GameObjects.allObjects.length];
+    public static MazeObject[] getAllBows() {
+        final MazeObject[] tempAllUsableObjects = new MazeObject[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x].isOfType(TypeConstants.TYPE_BOW)) {
                 tempAllUsableObjects[x] = GameObjects.allObjects[x];
             }
         }
-        for (final MazeObjectModel tempAllUsableObject : tempAllUsableObjects) {
+        for (final MazeObject tempAllUsableObject : tempAllUsableObjects) {
             if (tempAllUsableObject != null) {
                 objectCount++;
             }
         }
-        final MazeObjectModel[] allUsableObjects = new MazeObjectModel[objectCount
+        final MazeObject[] allUsableObjects = new MazeObject[objectCount
                 + 1];
         objectCount = 0;
         for (int x = 0; x < tempAllUsableObjects.length - 1; x++) {
@@ -1478,8 +1478,8 @@ public class GameObjects {
         return allUsableNames;
     }
 
-    public static MazeObjectModel[] getAllRequired(final int layer) {
-        final MazeObjectModel[] tempAllRequired = new MazeObjectModel[GameObjects.allObjects.length];
+    public static MazeObject[] getAllRequired(final int layer) {
+        final MazeObject[] tempAllRequired = new MazeObject[GameObjects.allObjects.length];
         int x;
         int count = 0;
         for (x = 0; x < GameObjects.allObjects.length; x++) {
@@ -1492,7 +1492,7 @@ public class GameObjects {
         if (count == 0) {
             return null;
         } else {
-            final MazeObjectModel[] allRequired = new MazeObjectModel[count];
+            final MazeObject[] allRequired = new MazeObject[count];
             for (x = 0; x < count; x++) {
                 allRequired[x] = tempAllRequired[x];
             }
@@ -1500,9 +1500,9 @@ public class GameObjects {
         }
     }
 
-    public static MazeObjectModel[] getAllWithoutPrerequisiteAndNotRequired(
+    public static MazeObject[] getAllWithoutPrerequisiteAndNotRequired(
             final int layer) {
-        final MazeObjectModel[] tempAllWithoutPrereq = new MazeObjectModel[GameObjects.allObjects.length];
+        final MazeObject[] tempAllWithoutPrereq = new MazeObject[GameObjects.allObjects.length];
         int x;
         int count = 0;
         for (x = 0; x < GameObjects.allObjects.length; x++) {
@@ -1515,7 +1515,7 @@ public class GameObjects {
         if (count == 0) {
             return null;
         } else {
-            final MazeObjectModel[] allWithoutPrereq = new MazeObjectModel[count];
+            final MazeObject[] allWithoutPrereq = new MazeObject[count];
             for (x = 0; x < count; x++) {
                 allWithoutPrereq[x] = tempAllWithoutPrereq[x];
             }
@@ -1523,12 +1523,12 @@ public class GameObjects {
         }
     }
 
-    public static MazeObjectModel[] getAllRequiredSubset(
-            final MazeObjectModel[] objs, final int layer) {
+    public static MazeObject[] getAllRequiredSubset(
+            final MazeObject[] objs, final int layer) {
         if (objs == null) {
             return null;
         }
-        final MazeObjectModel[] tempAllRequired = new MazeObjectModel[objs.length];
+        final MazeObject[] tempAllRequired = new MazeObject[objs.length];
         int x;
         int count = 0;
         for (x = 0; x < objs.length; x++) {
@@ -1548,7 +1548,7 @@ public class GameObjects {
         if (count == 0) {
             return null;
         } else {
-            final MazeObjectModel[] allRequired = new MazeObjectModel[count];
+            final MazeObject[] allRequired = new MazeObject[count];
             for (x = 0; x < count; x++) {
                 allRequired[x] = tempAllRequired[x];
             }
@@ -1556,12 +1556,12 @@ public class GameObjects {
         }
     }
 
-    public static MazeObjectModel[] getAllWithoutPrerequisiteAndNotRequiredSubset(
-            final MazeObjectModel[] objs, final int layer) {
+    public static MazeObject[] getAllWithoutPrerequisiteAndNotRequiredSubset(
+            final MazeObject[] objs, final int layer) {
         if (objs == null) {
             return null;
         }
-        final MazeObjectModel[] tempAllWithoutPrereq = new MazeObjectModel[objs.length];
+        final MazeObject[] tempAllWithoutPrereq = new MazeObject[objs.length];
         int x;
         int count = 0;
         for (x = 0; x < objs.length; x++) {
@@ -1581,7 +1581,7 @@ public class GameObjects {
         if (count == 0) {
             return null;
         } else {
-            final MazeObjectModel[] allWithoutPrereq = new MazeObjectModel[count];
+            final MazeObject[] allWithoutPrereq = new MazeObject[count];
             for (x = 0; x < count; x++) {
                 allWithoutPrereq[x] = tempAllWithoutPrereq[x];
             }
@@ -1597,8 +1597,8 @@ public class GameObjects {
         return GameObjects.allObjectUIDs[index];
     }
 
-    public static MazeObjectModel createObject(final MazeObjects uid) {
-        final MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
+    public static MazeObject createObject(final MazeObjects uid) {
+        final MazeObject instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
@@ -1612,10 +1612,10 @@ public class GameObjects {
         }
     }
 
-    public static MazeObjectModel createContainerObject(final MazeObjects uid,
+    public static MazeObject createContainerObject(final MazeObjects uid,
             final MazeObjects contentsUID) {
-        final MazeObjectModel contents = GameObjects.createObject(contentsUID);
-        final MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
+        final MazeObject contents = GameObjects.createObject(contentsUID);
+        final MazeObject instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
@@ -1630,9 +1630,9 @@ public class GameObjects {
         }
     }
 
-    public static MazeObjectModel createTeleportObject(final MazeObjects uid,
+    public static MazeObject createTeleportObject(final MazeObjects uid,
             final int dr, final int dc) {
-        final MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
+        final MazeObject instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
@@ -1647,9 +1647,9 @@ public class GameObjects {
         }
     }
 
-    public static MazeObjectModel createTeleportObject(final MazeObjects uid,
+    public static MazeObject createTeleportObject(final MazeObjects uid,
             final int dr, final int dc, final int df) {
-        final MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
+        final MazeObject instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
@@ -1664,9 +1664,9 @@ public class GameObjects {
         }
     }
 
-    public static MazeObjectModel createTeleportObject(final MazeObjects uid,
+    public static MazeObject createTeleportObject(final MazeObjects uid,
             final int dr, final int dc, final int df, final int dl) {
-        final MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
+        final MazeObject instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
@@ -1681,9 +1681,9 @@ public class GameObjects {
         }
     }
 
-    public static MazeObjectModel readObject(final XDataReader reader,
+    public static MazeObject readObject(final XDataReader reader,
             final int formatVersion) throws IOException {
-        MazeObjectModel o = null;
+        MazeObject o = null;
         String UID = "";
         if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_1) {
             UID = reader.readString();
@@ -1696,9 +1696,9 @@ public class GameObjects {
         } else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_5) {
             UID = reader.readString();
         }
-        for (final MazeObjectModel allObject : GameObjects.allObjects) {
+        for (final MazeObject allObject : GameObjects.allObjects) {
             try {
-                final MazeObjectModel instance = allObject.getClass()
+                final MazeObject instance = allObject.getClass()
                         .getConstructor().newInstance();
                 if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_1) {
                     o = instance.readMazeObjectXML(reader, UID, formatVersion);
