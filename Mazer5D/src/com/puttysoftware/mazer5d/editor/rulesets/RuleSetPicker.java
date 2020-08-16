@@ -86,7 +86,6 @@ public class RuleSetPicker {
         Modes.setInRulePicker();
         this.outputFrame.attachAndSave(this.borderPane);
         this.outputFrame.setTitle("Rule Set Picker");
-        this.outputFrame.pack();
     }
 
     public void hideOutput() {

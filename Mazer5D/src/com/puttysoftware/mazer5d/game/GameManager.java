@@ -537,7 +537,6 @@ public class GameManager implements MazeEffectConstants {
                             this.savedMazeObject.postMoveAction(false, px, py,
                                     this.objectInv);
                         }
-                        this.outputFrame.pack();
                     } else {
                         acted = m.getCell(px + fX, py + fY, pz, Layers.OBJECT);
                         if (acted.isPushable()) {
@@ -587,7 +586,6 @@ public class GameManager implements MazeEffectConstants {
                                     this.savedMazeObject.postMoveAction(false,
                                             px, py, this.objectInv);
                                 }
-                                this.outputFrame.pack();
                             } else {
                                 // Push failed - object can't move that way
                                 acted.pushFailedAction(this.objectInv, fX, fY,
@@ -1167,7 +1165,6 @@ public class GameManager implements MazeEffectConstants {
         } else {
             this.setStatusMessage(" ");
         }
-        this.outputFrame.pack();
     }
 
     void redrawOneSquare(final int x, final int y, final boolean useDelay,
@@ -1207,7 +1204,6 @@ public class GameManager implements MazeEffectConstants {
         } catch (final NullPointerException np) {
             // Do nothing
         }
-        this.outputFrame.pack();
         if (useDelay) {
             // Delay, for animation purposes
             try {
@@ -1908,7 +1904,6 @@ public class GameManager implements MazeEffectConstants {
         this.outputFrame.setTitle("Mazer5D");
         this.outputFrame.addKeyListener(this.handler);
         this.outputPane.addMouseListener(this.handler);
-        this.outputFrame.pack();
     }
 
     public void hideOutput() {

@@ -294,7 +294,6 @@ public class Prefs {
         Prefs.prefFrame.setTitle("Preferences");
         Prefs.prefFrame.setDefaultButton(Prefs.prefsOK);
         Prefs.prefFrame.attachAndSave(Prefs.mainPrefPane);
-        Prefs.prefFrame.pack();
         final BagOStuff app = Mazer5D.getBagOStuff();
         Modes.setInPrefs();
         app.getMenuManager().setPrefMenus();
@@ -322,16 +321,16 @@ public class Prefs {
             Prefs.setUpGUI();
             Prefs.guiSetUp = true;
         }
-        Prefs.editorFillChoices.setSelectedIndex(Prefs.getIndexForUID(
-                Prefs.editorFill));
+        Prefs.editorFillChoices
+                .setSelectedIndex(Prefs.getIndexForUID(Prefs.editorFill));
         for (int x = 0; x < Prefs.SOUNDS_LENGTH; x++) {
             Prefs.sounds[x].setSelected(Prefs.isSoundGroupEnabledImpl(x));
         }
         for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
             Prefs.music[x].setSelected(Prefs.isMusicGroupEnabledImpl(x));
         }
-        Prefs.updateCheckInterval.setSelectedIndex(
-                Prefs.updateCheckIntervalIndex);
+        Prefs.updateCheckInterval
+                .setSelectedIndex(Prefs.updateCheckIntervalIndex);
         Prefs.checkUpdatesStartup.setSelected(Prefs.checkUpdatesStartupEnabled);
         Prefs.moveOneAtATime.setSelected(Prefs.moveOneAtATimeEnabled);
         Prefs.viewingWindowChoices.setSelectedIndex(Prefs.viewingWindowIndex);
@@ -351,8 +350,8 @@ public class Prefs {
             Prefs.setUpGUI();
             Prefs.guiSetUp = true;
         }
-        Prefs.editorFill = GameObjects.getUIDForIndex(Prefs.editorFillChoices
-                .getSelectedIndex());
+        Prefs.editorFill = GameObjects
+                .getUIDForIndex(Prefs.editorFillChoices.getSelectedIndex());
         for (int x = 0; x < Prefs.SOUNDS_LENGTH; x++) {
             Prefs.setSoundGroupEnabledImpl(x, Prefs.sounds[x].isSelected());
         }
@@ -398,8 +397,8 @@ public class Prefs {
         Prefs.viewingWindowIndex = Prefs.DEFAULT_VIEW_SIZE_INDEX;
         Prefs.viewingWindowChoices.setSelectedIndex(Prefs.viewingWindowIndex);
         Prefs.updateCheckIntervalIndex = Prefs.DEFAULT_UPDATE_CHECK_INTERVAL_INDEX;
-        Prefs.updateCheckInterval.setSelectedIndex(
-                Prefs.DEFAULT_UPDATE_CHECK_INTERVAL_INDEX);
+        Prefs.updateCheckInterval
+                .setSelectedIndex(Prefs.DEFAULT_UPDATE_CHECK_INTERVAL_INDEX);
         Prefs.worldGenerator = Prefs.GENERATOR_CONSTRAINED_RANDOM;
         Prefs.randomRoomSizeIndex = Prefs.DEFAULT_ROOM_SIZE;
         Prefs.randomHallSizeIndex = Prefs.DEFAULT_HALL_SIZE;
@@ -410,16 +409,16 @@ public class Prefs {
     }
 
     static void handleExport() {
-        final boolean result = Prefs.eiMgr.exportPreferencesFile(Prefs.eiMgr
-                .getExportDestination());
+        final boolean result = Prefs.eiMgr
+                .exportPreferencesFile(Prefs.eiMgr.getExportDestination());
         if (!result) {
             CommonDialogs.showErrorDialog("Export Failed!", "Preferences");
         }
     }
 
     static void handleImport() {
-        final boolean result = Prefs.eiMgr.importPreferencesFile(Prefs.eiMgr
-                .getImportSource());
+        final boolean result = Prefs.eiMgr
+                .importPreferencesFile(Prefs.eiMgr.getImportSource());
         if (!result) {
             CommonDialogs.showErrorDialog("Import Failed!", "Preferences");
         }
@@ -481,13 +480,13 @@ public class Prefs {
         generatorGroup.add(Prefs.generatorTwister);
         Prefs.randomRoomSize = new JSlider(Prefs.MIN_ROOM_SIZE,
                 Prefs.MAX_ROOM_SIZE);
-        Prefs.randomRoomSize.setLabelTable(Prefs.randomRoomSize
-                .createStandardLabels(1));
+        Prefs.randomRoomSize
+                .setLabelTable(Prefs.randomRoomSize.createStandardLabels(1));
         Prefs.randomRoomSize.setPaintLabels(true);
         Prefs.randomHallSize = new JSlider(Prefs.MIN_HALL_SIZE,
                 Prefs.MAX_HALL_SIZE);
-        Prefs.randomHallSize.setLabelTable(Prefs.randomHallSize
-                .createStandardLabels(1));
+        Prefs.randomHallSize
+                .setLabelTable(Prefs.randomHallSize.createStandardLabels(1));
         Prefs.randomHallSize.setPaintLabels(true);
         Prefs.mainPrefPane.setLayout(new BorderLayout());
         editorPane.setLayout(new GridLayout(Prefs.GRID_LENGTH, 1));
@@ -553,8 +552,9 @@ public class Prefs {
                 // Abort early if the file does not exist
                 return false;
             }
-            try (final XDataReader reader = new XDataReader(CommonPaths
-                    .getPrefsFile().getAbsolutePath(), Prefs.DOC_TAG)) {
+            try (final XDataReader reader = new XDataReader(
+                    CommonPaths.getPrefsFile().getAbsolutePath(),
+                    Prefs.DOC_TAG)) {
                 // Read the preferences from the file
                 // Read version
                 final int version = reader.readInt();
@@ -604,8 +604,8 @@ public class Prefs {
             if (!prefsFile.canWrite()) {
                 prefsParent.mkdirs();
             }
-            try (final XDataWriter writer = new XDataWriter(prefsFile
-                    .getAbsolutePath(), Prefs.DOC_TAG)) {
+            try (final XDataWriter writer = new XDataWriter(
+                    prefsFile.getAbsolutePath(), Prefs.DOC_TAG)) {
                 // Write the preferences to the file
                 writer.writeInt(PrefsVersions.LATEST);
                 writer.writeMazeObjectID(Prefs.editorFill);
@@ -642,8 +642,8 @@ public class Prefs {
 
         // Methods
         public boolean importPreferencesFile(final File importFile) {
-            try (final XDataReader reader = new XDataReader(importFile
-                    .getAbsolutePath(), Prefs.DOC_TAG)) {
+            try (final XDataReader reader = new XDataReader(
+                    importFile.getAbsolutePath(), Prefs.DOC_TAG)) {
                 // Read the preferences from the file
                 // Read version
                 final int version = reader.readInt();
@@ -698,8 +698,8 @@ public class Prefs {
         }
 
         public boolean exportPreferencesFile(final File exportFile) {
-            try (final XDataWriter writer = new XDataWriter(exportFile
-                    .getAbsolutePath(), Prefs.DOC_TAG)) {
+            try (final XDataWriter writer = new XDataWriter(
+                    exportFile.getAbsolutePath(), Prefs.DOC_TAG)) {
                 // Write the preferences to the file
                 writer.writeInt(PrefsVersions.LATEST);
                 writer.writeMazeObjectID(Prefs.editorFill);
@@ -769,8 +769,8 @@ public class Prefs {
         @Override
         public void itemStateChanged(final ItemEvent e) {
             final Object o = e.getItem();
-            if (o.getClass().equals(Prefs.sounds[Prefs.SOUNDS_ALL]
-                    .getClass())) {
+            if (o.getClass()
+                    .equals(Prefs.sounds[Prefs.SOUNDS_ALL].getClass())) {
                 final JCheckBox check = (JCheckBox) o;
                 if (check.equals(Prefs.sounds[Prefs.SOUNDS_ALL])) {
                     if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -783,8 +783,8 @@ public class Prefs {
                         }
                     }
                 }
-            } else if (o.getClass().equals(Prefs.music[Prefs.MUSIC_ALL]
-                    .getClass())) {
+            } else if (o.getClass()
+                    .equals(Prefs.music[Prefs.MUSIC_ALL].getClass())) {
                 final JCheckBox check = (JCheckBox) o;
                 if (check.equals(Prefs.music[Prefs.MUSIC_ALL])) {
                     if (e.getStateChange() == ItemEvent.SELECTED) {

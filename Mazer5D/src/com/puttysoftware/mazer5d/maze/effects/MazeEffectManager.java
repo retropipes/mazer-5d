@@ -11,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.dialog.MainWindow;
 import com.puttysoftware.mazer5d.utilities.DirectionResolver;
 
 public class MazeEffectManager {
@@ -50,8 +49,8 @@ public class MazeEffectManager {
         // Create GUI
         this.activeEffectMessagePanel = new JPanel();
         this.activeEffectMessages = new JLabel[MazeEffectManager.MAX_ACTIVE_EFFECTS];
-        this.activeEffectMessagePanel.setLayout(new GridLayout(
-                MazeEffectManager.MAX_ACTIVE_EFFECTS, 1));
+        this.activeEffectMessagePanel.setLayout(
+                new GridLayout(MazeEffectManager.MAX_ACTIVE_EFFECTS, 1));
         for (int z = 0; z < MazeEffectManager.MAX_ACTIVE_EFFECTS; z++) {
             this.activeEffectMessages[z] = new JLabel("");
             this.activeEffectMessagePanel.add(this.activeEffectMessages[z]);
@@ -80,12 +79,10 @@ public class MazeEffectManager {
                 // Update effect grid
                 this.updateGridEntry(x);
                 if (!this.activeEffects[x].isActive()) {
-                    Mazer5D.getBagOStuff().showMessage(
-                            "You feel normal again.");
+                    Mazer5D.getBagOStuff()
+                            .showMessage("You feel normal again.");
                     // Clear effect grid
                     this.clearGridEntry(x);
-                    // Pack
-                    MainWindow.getMainWindow().pack();
                 }
             }
         }
@@ -114,8 +111,6 @@ public class MazeEffectManager {
 
     public void deactivateAllEffects() {
         this.clearAllGridEntries();
-        // Pack
-        MainWindow.getMainWindow().pack();
         for (int x = 0; x < MazeEffectManager.NUM_EFFECTS; x++) {
             this.activeEffects[x].deactivateEffect();
         }
@@ -200,8 +195,8 @@ public class MazeEffectManager {
             this.activeEffectIndices[this.newEffectIndex] = effectID;
             final String effectString = this.activeEffects[effectID]
                     .getEffectString();
-            this.activeEffectMessages[this.newEffectIndex].setText(
-                    effectString);
+            this.activeEffectMessages[this.newEffectIndex]
+                    .setText(effectString);
         }
     }
 
@@ -220,8 +215,8 @@ public class MazeEffectManager {
             // Compact grid
             for (int z = index; z < MazeEffectManager.MAX_ACTIVE_EFFECTS
                     - 1; z++) {
-                this.activeEffectMessages[z].setText(this.activeEffectMessages[z
-                        + 1].getText());
+                this.activeEffectMessages[z]
+                        .setText(this.activeEffectMessages[z + 1].getText());
                 this.activeEffectIndices[z] = this.activeEffectIndices[z + 1];
             }
             // Clear last entry

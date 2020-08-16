@@ -343,7 +343,6 @@ public class MazeEditor {
                 }
             }
         }
-        this.outputFrame.pack();
         this.outputFrame.setTitle("Editor (Object Layer) - Floor "
                 + (this.elMgr.getEditorLocationZ() + 1) + " Level " + (w + 1));
         this.showOutput();
@@ -379,7 +378,6 @@ public class MazeEditor {
                 }
             }
         }
-        this.outputFrame.pack();
         this.outputFrame.setTitle("Editor (Object Layer) - Floor "
                 + (this.elMgr.getEditorLocationZ() + 1) + " Level " + (w + 1));
         this.showOutput();
@@ -406,7 +404,6 @@ public class MazeEditor {
         } catch (final NullPointerException np) {
             // Do nothing
         }
-        this.outputFrame.pack();
     }
 
     public void editObject(final int x, final int y) {
@@ -1815,7 +1812,6 @@ public class MazeEditor {
         app.getMenuManager().setEditorMenus();
         this.outputFrame.attachAndSave(this.borderPane);
         this.outputFrame.setTitle("Editor");
-        this.outputFrame.pack();
     }
 
     public void hideOutput() {

@@ -63,7 +63,6 @@ public class LevelPrefs {
         Modes.setInLevelPrefs();
         this.prefFrame.attachAndSave(this.mainPrefPane);
         this.prefFrame.setTitle("Level Preferences");
-        this.prefFrame.pack();
     }
 
     public void hidePrefs() {

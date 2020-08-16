@@ -49,7 +49,6 @@ public class MazePrefs {
         Modes.setInMazePrefs();
         this.prefFrame.attachAndSave(this.mainPrefPane);
         this.prefFrame.setTitle("Maze Preferences");
-        this.prefFrame.pack();
     }
 
     public void hidePrefs() {

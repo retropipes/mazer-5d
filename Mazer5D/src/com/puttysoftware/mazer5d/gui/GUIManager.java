@@ -28,12 +28,15 @@ import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class GUIManager implements QuitHandler {
     // Fields
+    private static final int WIDTH = 700;
+    private static final int HEIGHT = 700;
     private final MainWindow guiFrame;
     private final JPanel guiPane;
     private final JLabel logoLabel;
 
     // Constructors
     public GUIManager() {
+        MainWindow.createMainWindow(GUIManager.WIDTH, GUIManager.HEIGHT);
         this.guiFrame = MainWindow.getMainWindow();
         this.guiPane = new JPanel();
         this.guiPane.setLayout(new GridLayout(1, 1));
@@ -52,7 +55,6 @@ public class GUIManager implements QuitHandler {
         app.getMenuManager().checkFlags();
         this.guiFrame.attachAndSave(this.guiPane);
         this.guiFrame.setTitle("Mazer5D");
-        this.guiFrame.pack();
     }
 
     public void hideGUI() {

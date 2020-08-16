@@ -41,7 +41,6 @@ public class ObjectHelpViewer {
         Modes.setInHelp();
         this.helpFrame.attachAndSave(this.helpPane);
         this.helpFrame.setTitle("Mazer5D Object Help");
-        this.helpFrame.pack();
     }
 
     void hideHelp() {

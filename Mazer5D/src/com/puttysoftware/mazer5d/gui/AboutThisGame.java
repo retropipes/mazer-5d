@@ -41,7 +41,6 @@ public class AboutThisGame implements AboutHandler {
         Modes.setInAbout();
         this.aboutFrame.attachAndSave(this.aboutPane);
         this.aboutFrame.setTitle("About Mazer5D");
-        this.aboutFrame.pack();
     }
 
     void hideAboutDialog() {
@@ -57,8 +56,9 @@ public class AboutThisGame implements AboutHandler {
         this.buttonPane = new JPanel();
         this.logoPane = new JPanel();
         this.aboutOK = new JButton("OK");
-        this.miniLabel = new JLabel("", LogoImageLoader.load(
-                LogoImageIndex.MINI_LOGO), SwingConstants.LEFT);
+        this.miniLabel = new JLabel("",
+                LogoImageLoader.load(LogoImageIndex.MINI_LOGO),
+                SwingConstants.LEFT);
         this.aboutOK.setDefaultCapable(true);
         this.aboutFrame.setDefaultButton(this.aboutOK);
         this.aboutPane.setLayout(new BorderLayout());
@@ -67,8 +67,8 @@ public class AboutThisGame implements AboutHandler {
         this.textPane.setLayout(new GridLayout(4, 1));
         this.textPane.add(new JLabel("Mazer5D Version: " + ver));
         this.textPane.add(new JLabel("Author: Eric Ahnell"));
-        this.textPane.add(new JLabel(
-                "Web Site: http://www.puttysoftware.com/mazer5d/"));
+        this.textPane.add(
+                new JLabel("Web Site: http://www.puttysoftware.com/mazer5d/"));
         this.textPane.add(new JLabel(
                 "E-mail bug reports to: products@puttysoftware.com  "));
         this.buttonPane.setLayout(new FlowLayout());
