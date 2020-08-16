@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import com.puttysoftware.audio.mod.MicroMod;
+import com.puttysoftware.audio.ogg.OggFactory;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
@@ -17,7 +17,7 @@ public class MusicPlayer {
 
     private static String[] allFilenames;
     private static Properties fileExtensions;
-    private static MicroMod MUSIC;
+    private static OggFactory MUSIC;
 
     private static String getMusicFilename(final MusicIndex music) {
         if (MusicPlayer.allFilenames == null
@@ -41,17 +41,13 @@ public class MusicPlayer {
         if (Prefs.isMusicGroupEnabled(group)) {
             if (music != null && music != MusicIndex._NONE) {
                 final String filename = MusicPlayer.getMusicFilename(music);
-                if (MusicPlayer.MUSIC != null && MusicPlayer.MUSIC
-                        .isPlaying()) {
+                if (MusicPlayer.MUSIC != null
+                        && MusicPlayer.MUSIC.isPlaying()) {
                     MusicPlayer.MUSIC.stopLoop();
                 }
-                try {
-                    MusicPlayer.MUSIC = MicroMod.loadResource(MusicPlayer.class
-                            .getResource("/assets/music/" + filename));
-                    MusicPlayer.MUSIC.play();
-                } catch (final IOException e) {
-                    Mazer5D.logError(e);
-                }
+                MusicPlayer.MUSIC = OggFactory.loadResource(MusicPlayer.class
+                        .getResource("/assets/music/" + filename));
+                MusicPlayer.MUSIC.start();
             }
         }
     }
