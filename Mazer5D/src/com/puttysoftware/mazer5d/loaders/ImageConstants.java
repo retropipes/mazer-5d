@@ -19,7 +19,7 @@ Any questions should be directed to the author via email at: fantastle@worldwiza
 package com.puttysoftware.mazer5d.loaders;
 
 public class ImageConstants {
-    public static final int SIZE = 48;
+    public static final int SIZE = 64;
 
     private ImageConstants() {
         // Do nothing
