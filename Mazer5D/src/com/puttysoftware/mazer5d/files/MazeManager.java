@@ -51,6 +51,7 @@ public class MazeManager implements OpenFilesHandler {
         this.mazeXML1Compatible = false;
         this.mazeXML2Compatible = false;
         this.mazeXML4Compatible = false;
+        this.gameMaze = new Maze();
     }
 
     // Methods
@@ -132,7 +133,7 @@ public class MazeManager implements OpenFilesHandler {
         this.loaded = status;
         app.getMenuManager().checkFlags();
     }
-    
+
     public boolean isLocked() {
         return this.locked;
     }
@@ -140,7 +141,7 @@ public class MazeManager implements OpenFilesHandler {
     public void clearLockedFlag() {
         this.locked = false;
     }
-    
+
     public void setLockedFlag() {
         this.locked = true;
     }
