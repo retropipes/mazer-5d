@@ -22,14 +22,11 @@ import com.puttysoftware.mazer5d.prefs.Prefs;
 public class MenuManager {
     // Fields
     private final JMenuBar mainMenuBar;
-    private JMenu fileMenu, editMenu, playMenu, gameMenu, editorMenu, helpMenu;
+    private JMenu editMenu, gameMenu, editorMenu;
     private JMenu editorFillSubMenu;
-    private JMenuItem fileNew, fileOpen, fileOpenLocked, fileClose, fileSave,
-            fileSaveAs, fileSaveLocked, fileExit;
     private JMenuItem editUndo, editRedo, editCutLevel, editCopyLevel,
             editPasteLevel, editInsertLevelFromClipboard, editPreferences,
             editClearHistory;
-    private JMenuItem playPlay, playEdit;
     private JMenuItem gameObjectInventory, gameUse, gameSwitchBow, gameReset,
             gameShowScore, gameShowTable;
     private JMenuItem editorGoToLocation, editorGoToDestination,
@@ -41,26 +38,20 @@ public class MenuManager {
     private JMenuItem editorFillFloor, editorFillLevel, editorFillFloorRandomly,
             editorFillLevelRandomly, editorFillRuleSets;
     private JCheckBoxMenuItem editorFillUseRuleSets;
-    private JMenuItem helpAbout, helpObjectHelp;
-    private KeyStroke fileNewAccel, fileOpenAccel, fileCloseAccel,
-            fileSaveAccel, fileSaveAsAccel;
     private KeyStroke editUndoAccel, editRedoAccel, editCutLevelAccel,
             editCopyLevelAccel, editPasteLevelAccel,
             editInsertLevelFromClipboardAccel, editPreferencesAccel,
             editClearHistoryAccel;
-    private KeyStroke playPlayMazeAccel, playEditMazeAccel;
     private KeyStroke gameObjectInventoryAccel, gameUseAccel,
             gameSwitchBowAccel, gameResetAccel, gameShowScoreAccel,
             gameShowTableAccel;
     private KeyStroke editorGoToLocationAccel, editorUpOneFloorAccel,
             editorDownOneFloorAccel, editorUpOneLevelAccel,
             editorDownOneLevelAccel, editorToggleLayerAccel;
-    private boolean mazeLocked;
 
     // Constructors
     public MenuManager() {
         this.mainMenuBar = new JMenuBar();
-        this.mazeLocked = false;
         this.createAccelerators();
         this.createMenus();
         this.createMenuItems();
@@ -77,10 +68,6 @@ public class MenuManager {
     }
 
     public void setGameMenus() {
-        this.fileNew.setEnabled(false);
-        this.fileOpen.setEnabled(false);
-        this.fileOpenLocked.setEnabled(false);
-        this.fileExit.setEnabled(true);
         this.editUndo.setEnabled(false);
         this.editRedo.setEnabled(false);
         this.editCutLevel.setEnabled(false);
@@ -120,10 +107,6 @@ public class MenuManager {
     }
 
     public void setEditorMenus() {
-        this.fileNew.setEnabled(false);
-        this.fileOpen.setEnabled(false);
-        this.fileOpenLocked.setEnabled(false);
-        this.fileExit.setEnabled(true);
         this.editCutLevel.setEnabled(true);
         this.editCopyLevel.setEnabled(true);
         this.editPasteLevel.setEnabled(true);
@@ -153,13 +136,6 @@ public class MenuManager {
     }
 
     public void setPrefMenus() {
-        this.fileNew.setEnabled(false);
-        this.fileOpen.setEnabled(false);
-        this.fileOpenLocked.setEnabled(false);
-        this.fileClose.setEnabled(false);
-        this.fileSave.setEnabled(false);
-        this.fileSaveAs.setEnabled(false);
-        this.fileExit.setEnabled(true);
         this.editUndo.setEnabled(false);
         this.editRedo.setEnabled(false);
         this.editCutLevel.setEnabled(false);
@@ -197,13 +173,6 @@ public class MenuManager {
     }
 
     public void setHelpMenus() {
-        this.fileNew.setEnabled(false);
-        this.fileOpen.setEnabled(false);
-        this.fileOpenLocked.setEnabled(false);
-        this.fileClose.setEnabled(false);
-        this.fileSave.setEnabled(false);
-        this.fileSaveAs.setEnabled(false);
-        this.fileExit.setEnabled(true);
         this.editUndo.setEnabled(false);
         this.editRedo.setEnabled(false);
         this.editCutLevel.setEnabled(false);
@@ -240,10 +209,6 @@ public class MenuManager {
     }
 
     public void setMainMenus() {
-        this.fileNew.setEnabled(true);
-        this.fileOpen.setEnabled(true);
-        this.fileOpenLocked.setEnabled(true);
-        this.fileExit.setEnabled(true);
         this.editUndo.setEnabled(false);
         this.editRedo.setEnabled(false);
         this.editCutLevel.setEnabled(false);
@@ -279,14 +244,6 @@ public class MenuManager {
         this.gameShowScore.setEnabled(false);
         this.gameShowTable.setEnabled(false);
         this.checkFlags();
-    }
-
-    public void setLockedFlag() {
-        this.mazeLocked = true;
-    }
-
-    public void clearLockedFlag() {
-        this.mazeLocked = false;
     }
 
     public void enableUpOneFloor() {
@@ -394,26 +351,16 @@ public class MenuManager {
     }
 
     public void checkFlags() {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        if (app.getMazeManager().getDirty()) {
-            this.setMenusDirtyOn();
-        } else {
-            this.setMenusDirtyOff();
-        }
-        if (app.getMazeManager().getLoaded()) {
-            this.setMenusLoadedOn();
-        } else {
-            this.setMenusLoadedOff();
-        }
+        final BagOStuff bag = Mazer5D.getBagOStuff();
         if (Modes.inEditor()) {
-            if (app.getMazeManager().getMaze().isPasteBlocked()) {
+            if (bag.getMazeManager().getMaze().isPasteBlocked()) {
                 this.disablePasteLevel();
                 this.disableInsertLevelFromClipboard();
             } else {
                 this.enablePasteLevel();
                 this.enableInsertLevelFromClipboard();
             }
-            if (app.getMazeManager().getMaze().isCutBlocked()) {
+            if (bag.getMazeManager().getMaze().isCutBlocked()) {
                 this.disableCutLevel();
             } else {
                 this.enableCutLevel();
@@ -425,47 +372,6 @@ public class MenuManager {
         return this.editorFillUseRuleSets.getState();
     }
 
-    private void setMenusDirtyOn() {
-        this.fileSave.setEnabled(true);
-    }
-
-    private void setMenusDirtyOff() {
-        this.fileSave.setEnabled(false);
-    }
-
-    private void setMenusLoadedOn() {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        if (Modes.inGUI()) {
-            this.fileClose.setEnabled(false);
-            this.fileSaveAs.setEnabled(false);
-            this.fileSaveLocked.setEnabled(false);
-            if (app.getMazeManager().getMaze().doesPlayerExist()) {
-                this.playPlay.setEnabled(true);
-            } else {
-                this.playPlay.setEnabled(false);
-            }
-            if (this.mazeLocked) {
-                this.playEdit.setEnabled(false);
-            } else {
-                this.playEdit.setEnabled(true);
-            }
-        } else {
-            this.fileClose.setEnabled(true);
-            this.fileSaveAs.setEnabled(true);
-            this.fileSaveLocked.setEnabled(true);
-            this.playPlay.setEnabled(false);
-            this.playEdit.setEnabled(false);
-        }
-    }
-
-    private void setMenusLoadedOff() {
-        this.fileClose.setEnabled(false);
-        this.fileSaveAs.setEnabled(false);
-        this.fileSaveLocked.setEnabled(false);
-        this.playPlay.setEnabled(false);
-        this.playEdit.setEnabled(false);
-    }
-
     private final void createAccelerators() {
         int modKey;
         if (System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
@@ -473,12 +379,6 @@ public class MenuManager {
         } else {
             modKey = InputEvent.CTRL_DOWN_MASK;
         }
-        this.fileNewAccel = KeyStroke.getKeyStroke(KeyEvent.VK_N, modKey);
-        this.fileOpenAccel = KeyStroke.getKeyStroke(KeyEvent.VK_O, modKey);
-        this.fileCloseAccel = KeyStroke.getKeyStroke(KeyEvent.VK_W, modKey);
-        this.fileSaveAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S, modKey);
-        this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S,
-                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.editUndoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z, modKey);
         this.editRedoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z,
                 modKey | InputEvent.SHIFT_DOWN_MASK);
@@ -494,8 +394,6 @@ public class MenuManager {
                 modKey);
         this.editorGoToLocationAccel = KeyStroke.getKeyStroke(KeyEvent.VK_G,
                 modKey | InputEvent.SHIFT_DOWN_MASK);
-        this.playPlayMazeAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P, modKey);
-        this.playEditMazeAccel = KeyStroke.getKeyStroke(KeyEvent.VK_E, modKey);
         this.gameObjectInventoryAccel = KeyStroke.getKeyStroke(KeyEvent.VK_I,
                 modKey);
         this.gameUseAccel = KeyStroke.getKeyStroke(KeyEvent.VK_U, modKey);
@@ -516,24 +414,13 @@ public class MenuManager {
     }
 
     private final void createMenus() {
-        this.fileMenu = new JMenu("File");
         this.editMenu = new JMenu("Edit");
-        this.playMenu = new JMenu("Play");
         this.gameMenu = new JMenu("Game");
         this.editorMenu = new JMenu("Editor");
-        this.helpMenu = new JMenu("Help");
         this.editorFillSubMenu = new JMenu("Fill");
     }
 
     private final void createMenuItems() {
-        this.fileNew = new JMenuItem("New...");
-        this.fileOpen = new JMenuItem("Open...");
-        this.fileOpenLocked = new JMenuItem("Open Locked...");
-        this.fileClose = new JMenuItem("Close");
-        this.fileSave = new JMenuItem("Save");
-        this.fileSaveAs = new JMenuItem("Save As...");
-        this.fileSaveLocked = new JMenuItem("Save Locked...");
-        this.fileExit = new JMenuItem("Exit");
         this.editUndo = new JMenuItem("Undo");
         this.editRedo = new JMenuItem("Redo");
         this.editCutLevel = new JMenuItem("Cut Level");
@@ -543,8 +430,6 @@ public class MenuManager {
                 "Insert Level From Clipboard");
         this.editPreferences = new JMenuItem("Preferences...");
         this.editClearHistory = new JMenuItem("Clear History");
-        this.playPlay = new JMenuItem("Play");
-        this.playEdit = new JMenuItem("Edit");
         this.gameObjectInventory = new JMenuItem("Show Inventory...");
         this.gameUse = new JMenuItem("Use an Item...");
         this.gameSwitchBow = new JMenuItem("Switch Bow...");
@@ -576,16 +461,9 @@ public class MenuManager {
         this.editorSetStartPoint = new JMenuItem("Set Start Point...");
         this.editorSetFirstMovingFinish = new JMenuItem(
                 "Set First Moving Finish...");
-        this.helpAbout = new JMenuItem("About Mazer5D...");
-        this.helpObjectHelp = new JMenuItem("Mazer5D Object Help");
     }
 
     private final void attachAccelerators() {
-        this.fileNew.setAccelerator(this.fileNewAccel);
-        this.fileOpen.setAccelerator(this.fileOpenAccel);
-        this.fileClose.setAccelerator(this.fileCloseAccel);
-        this.fileSave.setAccelerator(this.fileSaveAccel);
-        this.fileSaveAs.setAccelerator(this.fileSaveAsAccel);
         this.editUndo.setAccelerator(this.editUndoAccel);
         this.editRedo.setAccelerator(this.editRedoAccel);
         this.editCutLevel.setAccelerator(this.editCutLevelAccel);
@@ -595,8 +473,6 @@ public class MenuManager {
                 .setAccelerator(this.editInsertLevelFromClipboardAccel);
         this.editPreferences.setAccelerator(this.editPreferencesAccel);
         this.editClearHistory.setAccelerator(this.editClearHistoryAccel);
-        this.playPlay.setAccelerator(this.playPlayMazeAccel);
-        this.playEdit.setAccelerator(this.playEditMazeAccel);
         this.gameObjectInventory.setAccelerator(this.gameObjectInventoryAccel);
         this.gameUse.setAccelerator(this.gameUseAccel);
         this.gameSwitchBow.setAccelerator(this.gameSwitchBowAccel);
@@ -612,18 +488,6 @@ public class MenuManager {
 
     private final void attachEventHandlers() {
         final BagOStuff bag = Mazer5D.getBagOStuff();
-        this.fileNew.addActionListener(h -> bag.getEditor().newMaze());
-        this.fileOpen.addActionListener(h -> bag.getMazeManager().loadMaze());
-        this.fileOpenLocked
-                .addActionListener(h -> bag.getMazeManager().loadLockedMaze());
-        this.fileClose
-                .addActionListener(h -> bag.getGUIManager().closeHandler());
-        this.fileSave.addActionListener(h -> bag.getMazeManager().saveMaze());
-        this.fileSaveAs
-                .addActionListener(h -> bag.getMazeManager().saveMazeAs());
-        this.fileSaveLocked
-                .addActionListener(h -> bag.getMazeManager().saveLockedMaze());
-        this.fileExit.addActionListener(h -> System.exit(0));
         this.editUndo.addActionListener(h -> bag.getEditor().undo());
         this.editRedo.addActionListener(h -> bag.getEditor().redo());
         this.editCutLevel.addActionListener(h -> bag.getEditor().cutLevel());
@@ -635,8 +499,6 @@ public class MenuManager {
         this.editPreferences.addActionListener(h -> Prefs.showPrefs());
         this.editClearHistory
                 .addActionListener(h -> bag.getEditor().clearHistory());
-        this.playPlay.addActionListener(h -> bag.getGameManager().playMaze());
-        this.playEdit.addActionListener(h -> bag.getEditor().editMaze());
         this.gameObjectInventory.addActionListener(h -> bag.getGameManager().showInventoryDialog());
         this.gameUse.addActionListener(h -> bag.getGameManager().showUseDialog());
         this.gameSwitchBow.addActionListener(h -> bag.getGameManager().showSwitchBowDialog());
@@ -683,10 +545,6 @@ public class MenuManager {
         this.editorSetFirstMovingFinish
                 .addActionListener(h -> bag.getEditor().editTeleportDestination(
                         MazeEditor.TELEPORT_TYPE_FIRST_MOVING_FINISH));
-        this.helpAbout.addActionListener(
-                h -> bag.getAboutThisGame().showAboutDialog());
-        this.helpObjectHelp
-                .addActionListener(h -> bag.getObjectHelpViewer().showHelp());
     }
 
     private final void assembleMenuItems() {
@@ -696,16 +554,6 @@ public class MenuManager {
         this.editorFillSubMenu.add(this.editorFillLevelRandomly);
         this.editorFillSubMenu.add(this.editorFillRuleSets);
         this.editorFillSubMenu.add(this.editorFillUseRuleSets);
-        this.fileMenu.add(this.fileNew);
-        this.fileMenu.add(this.fileOpen);
-        this.fileMenu.add(this.fileOpenLocked);
-        this.fileMenu.add(this.fileClose);
-        this.fileMenu.add(this.fileSave);
-        this.fileMenu.add(this.fileSaveAs);
-        this.fileMenu.add(this.fileSaveLocked);
-        if (!System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
-            this.fileMenu.add(this.fileExit);
-        }
         this.editMenu.add(this.editUndo);
         this.editMenu.add(this.editRedo);
         this.editMenu.add(this.editCutLevel);
@@ -716,8 +564,6 @@ public class MenuManager {
             this.editMenu.add(this.editPreferences);
         }
         this.editMenu.add(this.editClearHistory);
-        this.playMenu.add(this.playPlay);
-        this.playMenu.add(this.playEdit);
         this.gameMenu.add(this.gameObjectInventory);
         this.gameMenu.add(this.gameUse);
         this.gameMenu.add(this.gameSwitchBow);
@@ -739,30 +585,15 @@ public class MenuManager {
         this.editorMenu.add(this.editorMazePreferences);
         this.editorMenu.add(this.editorSetStartPoint);
         this.editorMenu.add(this.editorSetFirstMovingFinish);
-        if (!System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
-            this.helpMenu.add(this.helpAbout);
-        }
-        this.helpMenu.add(this.helpObjectHelp);
     }
 
     private final void assembleMenus() {
-        this.mainMenuBar.add(this.fileMenu);
         this.mainMenuBar.add(this.editMenu);
-        this.mainMenuBar.add(this.playMenu);
         this.mainMenuBar.add(this.gameMenu);
         this.mainMenuBar.add(this.editorMenu);
-        this.mainMenuBar.add(this.helpMenu);
     }
 
     private final void setInitialMenuState() {
-        this.fileNew.setEnabled(true);
-        this.fileOpen.setEnabled(true);
-        this.fileOpenLocked.setEnabled(true);
-        this.fileClose.setEnabled(false);
-        this.fileSave.setEnabled(false);
-        this.fileSaveAs.setEnabled(false);
-        this.fileSaveLocked.setEnabled(false);
-        this.fileExit.setEnabled(true);
         this.editUndo.setEnabled(false);
         this.editRedo.setEnabled(false);
         this.editCutLevel.setEnabled(false);
@@ -791,15 +622,11 @@ public class MenuManager {
         this.editorMazePreferences.setEnabled(false);
         this.editorSetStartPoint.setEnabled(false);
         this.editorSetFirstMovingFinish.setEnabled(false);
-        this.playPlay.setEnabled(false);
-        this.playEdit.setEnabled(false);
         this.gameObjectInventory.setEnabled(false);
         this.gameUse.setEnabled(false);
         this.gameSwitchBow.setEnabled(false);
         this.gameReset.setEnabled(false);
         this.gameShowScore.setEnabled(false);
         this.gameShowTable.setEnabled(false);
-        this.helpAbout.setEnabled(true);
-        this.helpObjectHelp.setEnabled(true);
     }
 }

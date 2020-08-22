@@ -33,7 +33,7 @@ import com.puttysoftware.mazer5d.prefs.Prefs;
 public class MazeManager implements OpenFilesHandler {
     // Fields
     private Maze gameMaze;
-    private boolean loaded, isDirty;
+    private boolean loaded, isDirty, locked;
     private String scoresFileName;
     private String lastUsedMazeFile;
     private String lastUsedGameFile;
@@ -131,6 +131,18 @@ public class MazeManager implements OpenFilesHandler {
         final BagOStuff app = Mazer5D.getBagOStuff();
         this.loaded = status;
         app.getMenuManager().checkFlags();
+    }
+    
+    public boolean isLocked() {
+        return this.locked;
+    }
+
+    public void clearLockedFlag() {
+        this.locked = false;
+    }
+    
+    public void setLockedFlag() {
+        this.locked = true;
     }
 
     public boolean getDirty() {

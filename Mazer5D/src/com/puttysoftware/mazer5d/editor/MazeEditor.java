@@ -1359,37 +1359,37 @@ public class MazeEditor {
     }
 
     public void newMaze() {
-        final BagOStuff app = Mazer5D.getBagOStuff();
+        final BagOStuff bag = Mazer5D.getBagOStuff();
         boolean success = true;
         boolean saved = true;
         int status = 0;
-        if (app.getMazeManager().getDirty()) {
-            status = app.getMazeManager().showSaveDialog();
+        if (bag.getMazeManager().getDirty()) {
+            status = bag.getMazeManager().showSaveDialog();
             if (status == CommonDialogs.YES_OPTION) {
-                app.getMazeManager().saveMaze();
-                saved = !app.getMazeManager().getDirty();
+                bag.getMazeManager().saveMaze();
+                saved = !bag.getMazeManager().getDirty();
             } else if (status == CommonDialogs.CANCEL_OPTION) {
                 saved = false;
             } else {
-                app.getMazeManager().setDirty(false);
+                bag.getMazeManager().setDirty(false);
             }
         }
         if (saved) {
-            app.getGameManager().getPlayerManager().resetPlayerLocation();
-            app.getMazeManager().setMaze(new Maze());
+            bag.getGameManager().getPlayerManager().resetPlayerLocation();
+            bag.getMazeManager().setMaze(new Maze());
             success = this.addLevelInternal(true);
             if (success) {
-                app.getMazeManager().clearLastUsedFilenames();
+                bag.getMazeManager().clearLastUsedFilenames();
                 this.clearHistory();
             }
         } else {
             success = false;
         }
-        app.getMazeManager().setLoaded(success);
+        bag.getMazeManager().setLoaded(success);
         if (success) {
             this.mazeChanged = true;
-            app.getGameManager().stateChanged();
-            app.getMenuManager().clearLockedFlag();
+            bag.getGameManager().stateChanged();
+            bag.getMazeManager().clearLockedFlag();
         }
     }
 

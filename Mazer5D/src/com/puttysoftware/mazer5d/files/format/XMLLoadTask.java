@@ -81,7 +81,7 @@ public class XMLLoadTask extends Thread {
             } else {
                 app.getMazeManager().setLastUsedMaze(lum);
             }
-            app.getMenuManager().clearLockedFlag();
+            app.getMazeManager().clearLockedFlag();
             app.getEditor().mazeChanged();
             app.getGameManager().stateChanged();
             CommonDialogs.showDialog(sg + " file loaded.");
