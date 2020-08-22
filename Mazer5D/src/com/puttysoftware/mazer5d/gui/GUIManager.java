@@ -52,7 +52,27 @@ public class GUIManager implements QuitHandler {
         Modes.setInGUI();
         this.guiFrame.attachAndSave(this.guiPane);
         this.guiFrame.setTitle("Mazer5D");
-        this.checkCommandState();
+        final BagOStuff bag = Mazer5D.getBagOStuff();
+        if (bag.getMazeManager().getMaze().doesPlayerExist()) {
+            this.play.setEnabled(true);
+        } else {
+            this.play.setEnabled(false);
+        }
+        if (bag.getMazeManager().isLocked()) {
+            this.edit.setEnabled(false);
+        } else {
+            this.edit.setEnabled(true);
+        }
+        if (bag.getMazeManager().getDirty()) {
+            this.setMenusDirtyOn();
+        } else {
+            this.setMenusDirtyOff();
+        }
+        if (bag.getMazeManager().getLoaded()) {
+            this.setMenusLoadedOn();
+        } else {
+            this.setMenusLoadedOff();
+        }
     }
 
     public void hideGUI() {
@@ -85,30 +105,6 @@ public class GUIManager implements QuitHandler {
             }
         }
         app.getMenuManager().checkFlags();
-    }
-
-    private void checkCommandState() {
-        final BagOStuff bag = Mazer5D.getBagOStuff();
-        if (bag.getMazeManager().getMaze().doesPlayerExist()) {
-            this.play.setEnabled(true);
-        } else {
-            this.play.setEnabled(false);
-        }
-        if (bag.getMazeManager().isLocked()) {
-            this.edit.setEnabled(false);
-        } else {
-            this.edit.setEnabled(true);
-        }
-        if (bag.getMazeManager().getDirty()) {
-            this.setMenusDirtyOn();
-        } else {
-            this.setMenusDirtyOff();
-        }
-        if (bag.getMazeManager().getLoaded()) {
-            this.setMenusLoadedOn();
-        } else {
-            this.setMenusLoadedOff();
-        }
     }
 
     private void setMenusDirtyOn() {
