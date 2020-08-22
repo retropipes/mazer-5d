@@ -6,7 +6,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.gui;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.integration.NativeIntegration;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
@@ -35,9 +34,8 @@ public class BagOStuff {
     private static final int VERSION_BETA = 1;
 
     // Constructors
-    public BagOStuff(final NativeIntegration ni) {
+    public BagOStuff() {
         this.menuMgr = new MenuManager();
-        this.menuMgr.configureMenus(ni);
         this.guiMgr = new GUIManager();
     }
 

@@ -9,6 +9,7 @@ import java.awt.desktop.PreferencesEvent;
 import java.awt.desktop.PreferencesHandler;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.commondialogs.MainWindow;
 import com.puttysoftware.integration.NativeIntegration;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
@@ -20,6 +21,8 @@ public class Mazer5D {
     private static BagOStuff bagOStuff;
     private static GameErrorHandler errhand;
     private static final String PROGRAM_NAME = "Mazer5D";
+    private static final int WIDTH = 700;
+    private static final int HEIGHT = 700;
 
     // Methods
     public static BagOStuff getBagOStuff() {
@@ -37,7 +40,8 @@ public class Mazer5D {
         // Integrate with host platform
         final NativeIntegration ni = new NativeIntegration();
         ni.configureLookAndFeel();
-        Mazer5D.bagOStuff = new BagOStuff(ni);
+        MainWindow.createMainWindow(Mazer5D.WIDTH, Mazer5D.HEIGHT);
+        Mazer5D.bagOStuff = new BagOStuff();
         ni.setAboutHandler(Mazer5D.bagOStuff.getAboutThisGame());
         ni.setOpenFileHandler(Mazer5D.bagOStuff.getMazeManager());
         ni.setPreferencesHandler(new PreferencesLauncher());
@@ -45,7 +49,7 @@ public class Mazer5D {
         // Set up Common Dialogs
         CommonDialogs.setDefaultTitle(Mazer5D.PROGRAM_NAME);
         CommonDialogs.setIcon(LogoImageLoader.load(LogoImageIndex.MICRO_LOGO));
-        // Set default prefs
+        // Set default settings
         Prefs.setDefaultPrefs();
         // Launch GUI
         Mazer5D.bagOStuff.playLogoSound();

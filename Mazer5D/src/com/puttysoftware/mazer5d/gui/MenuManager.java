@@ -14,7 +14,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
-import com.puttysoftware.integration.NativeIntegration;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
@@ -802,9 +801,5 @@ public class MenuManager {
         this.gameShowTable.setEnabled(false);
         this.helpAbout.setEnabled(true);
         this.helpObjectHelp.setEnabled(true);
-    }
-
-    void configureMenus(final NativeIntegration ni) {
-        ni.setDefaultMenuBar(this.mainMenuBar);
     }
 }
