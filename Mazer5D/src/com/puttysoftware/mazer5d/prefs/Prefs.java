@@ -301,7 +301,12 @@ public class Prefs {
     }
 
     private static int getIndexForUID(final MazeObjects UID) {
-        return Prefs.editorFillChoiceArray.indexOf(UID);
+        int index = Prefs.editorFillChoiceArray.indexOf(UID);
+        if (index == -1) {
+            return Prefs.editorFillChoiceArray.indexOf(Prefs.editorFill);
+        } else {
+            return index;
+        }
     }
 
     private static void loadPrefs() {
