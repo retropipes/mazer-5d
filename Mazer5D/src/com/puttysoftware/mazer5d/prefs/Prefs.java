@@ -570,7 +570,9 @@ public class Prefs {
                 }
                 Prefs.updateCheckIntervalIndex = reader.readInt();
                 int cachedBugfix = reader.readInt();
-                Prefs.viewingWindowIndex = reader.readInt();
+                // Don't honor the view size index setting
+                reader.readInt();
+                Prefs.viewingWindowIndex = Prefs.DEFAULT_VIEW_SIZE_INDEX;
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     Prefs.musicEnabled[x] = reader.readBoolean();
                 }
@@ -616,7 +618,8 @@ public class Prefs {
                 }
                 writer.writeInt(Prefs.updateCheckIntervalIndex);
                 writer.writeInt(Prefs.cachedBugfixVersion);
-                writer.writeInt(Prefs.viewingWindowIndex);
+                // Don't honor the view size index setting
+                writer.writeInt(Prefs.DEFAULT_VIEW_SIZE_INDEX);
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     writer.writeBoolean(Prefs.musicEnabled[x]);
                 }
@@ -666,7 +669,9 @@ public class Prefs {
                 } else {
                     cachedBugfix = reader.readInt();
                 }
-                Prefs.viewingWindowIndex = reader.readInt();
+                // Don't honor the view size index setting
+                reader.readInt();
+                Prefs.viewingWindowIndex = Prefs.DEFAULT_VIEW_SIZE_INDEX;
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     Prefs.musicEnabled[x] = reader.readBoolean();
                 }
@@ -710,7 +715,8 @@ public class Prefs {
                 }
                 writer.writeInt(Prefs.updateCheckIntervalIndex);
                 writer.writeInt(Prefs.cachedBugfixVersion);
-                writer.writeInt(Prefs.viewingWindowIndex);
+                // Don't honor the view size index setting
+                writer.writeInt(Prefs.DEFAULT_VIEW_SIZE_INDEX);
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     writer.writeBoolean(Prefs.musicEnabled[x]);
                 }
