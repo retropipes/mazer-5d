@@ -18,6 +18,7 @@ import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -50,7 +51,7 @@ import com.puttysoftware.picturepicker.PicturePicker;
 public class MazeEditor {
     // Declarations
     private MainWindow outputFrame;
-    private JPanel outputPane, secondaryPane;
+    private JPanel outputPane, secondaryPane, commandPane;
     private MainWindowContent borderPane, treasurePane;
     private JLabel messageLabel;
     private MazeObject savedMazeObject;
@@ -101,7 +102,7 @@ public class MazeEditor {
             editorMazePreferences, editorSetStartPoint,
             editorSetFirstMovingFinish, editorFillFloor, editorFillLevel,
             editorFillFloorRandomly, editorFillLevelRandomly,
-            editorFillRuleSets;
+            editorFillRuleSets, editorExit;
     private JToggleButton editorFillUseRuleSets;
     private static final int CEF_DEST1 = 1;
     private static final int CEF_DEST2 = 2;
@@ -1968,6 +1969,7 @@ public class MazeEditor {
         this.borderPane = this.outputFrame.createContent();
         this.outputPane = new JPanel();
         this.secondaryPane = new JPanel();
+        this.commandPane = new JPanel();
         this.treasurePane = this.outputFrame.createContent();
         // Configure content containers
         this.borderPane.setLayout(new BorderLayout());
@@ -1977,6 +1979,8 @@ public class MazeEditor {
         this.secondaryPane
                 .setLayout(new GridLayout(this.evMgr.getViewingWindowSizeX(),
                         this.evMgr.getViewingWindowSizeY()));
+        this.commandPane.setLayout(
+                new BoxLayout(this.commandPane, BoxLayout.PAGE_AXIS));
         this.treasurePane.setLayout(new BorderLayout());
         // Create components
         this.messageLabel = new JLabel(" ");
@@ -2026,6 +2030,7 @@ public class MazeEditor {
         this.editorSetStartPoint = new JButton("Set Start Point...");
         this.editorSetFirstMovingFinish = new JButton(
                 "Set First Moving Finish...");
+        this.editorExit = new JButton("Exit Editor");
         // Attach command event handlers
         this.editorUndo.addActionListener(h -> this.undo());
         this.editorRedo.addActionListener(h -> this.redo());
@@ -2067,6 +2072,7 @@ public class MazeEditor {
         this.editorSetFirstMovingFinish
                 .addActionListener(h -> this.editTeleportDestination(
                         MazeEditor.TELEPORT_TYPE_FIRST_MOVING_FINISH));
+        this.editorExit.addActionListener(h -> this.doneEditing());
         // Set initial command state
         this.editorUndo.setEnabled(false);
         this.editorRedo.setEnabled(false);
@@ -2095,7 +2101,36 @@ public class MazeEditor {
         this.editorMazePreferences.setEnabled(true);
         this.editorSetStartPoint.setEnabled(true);
         this.editorSetFirstMovingFinish.setEnabled(true);
+        this.editorExit.setEnabled(true);
         // Assemble everything together
+        this.commandPane.add(this.editorUndo);
+        this.commandPane.add(this.editorRedo);
+        this.commandPane.add(this.editorCutLevel);
+        this.commandPane.add(this.editorCopyLevel);
+        this.commandPane.add(this.editorPasteLevel);
+        this.commandPane.add(this.editorInsertLevelFromClipboard);
+        this.commandPane.add(this.editorClearHistory);
+        this.commandPane.add(this.editorGoToLocation);
+        this.commandPane.add(this.editorGoToDestination);
+        this.commandPane.add(this.editorUpOneFloor);
+        this.commandPane.add(this.editorDownOneFloor);
+        this.commandPane.add(this.editorUpOneLevel);
+        this.commandPane.add(this.editorDownOneLevel);
+        this.commandPane.add(this.editorAddLevel);
+        this.commandPane.add(this.editorRemoveLevel);
+        this.commandPane.add(this.editorResizeLevel);
+        this.commandPane.add(this.editorFillFloor);
+        this.commandPane.add(this.editorFillLevel);
+        this.commandPane.add(this.editorFillFloorRandomly);
+        this.commandPane.add(this.editorFillLevelRandomly);
+        this.commandPane.add(this.editorFillRuleSets);
+        this.commandPane.add(this.editorFillUseRuleSets);
+        this.commandPane.add(this.editorToggleLayer);
+        this.commandPane.add(this.editorLevelPreferences);
+        this.commandPane.add(this.editorMazePreferences);
+        this.commandPane.add(this.editorSetStartPoint);
+        this.commandPane.add(this.editorSetFirstMovingFinish);
+        this.commandPane.add(this.editorExit);
         this.drawGrid = new JLabel[this.evMgr
                 .getViewingWindowSizeX()][this.evMgr.getViewingWindowSizeY()];
         for (int x = 0; x < this.evMgr.getViewingWindowSizeX(); x++) {
@@ -2127,7 +2162,8 @@ public class MazeEditor {
         this.updatePicker();
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
-        this.borderPane.add(this.picker.getPicker(), BorderLayout.EAST);
+        this.borderPane.add(this.picker.getPicker(), BorderLayout.WEST);
+        this.borderPane.add(this.commandPane, BorderLayout.EAST);
         this.treasurePane.add(this.treasurePicker.getPicker(),
                 BorderLayout.CENTER);
         this.treasurePane.add(this.pick, BorderLayout.SOUTH);
