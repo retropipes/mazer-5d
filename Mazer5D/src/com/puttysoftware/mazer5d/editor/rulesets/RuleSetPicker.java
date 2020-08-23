@@ -142,21 +142,26 @@ public class RuleSetPicker {
         // handle buttons
         @Override
         public void actionPerformed(final ActionEvent e) {
-            final String cmd = e.getActionCommand();
-            final RuleSetPicker ge = RuleSetPicker.this;
-            if (cmd.equals("Create")) {
-                ge.createObjectRuleSet();
-            } else if (cmd.equals("Destroy")) {
-                ge.destroyObjectRuleSet();
-            } else if (cmd.equals("Edit")) {
-                ge.editObjectRuleSet();
-            } else if (cmd.equals("Load")) {
-                RuleSetManager.importRuleSet();
-            } else if (cmd.equals("Save")) {
-                RuleSetManager.exportRuleSet();
-            } else if (cmd.equals("Done")) {
-                ge.exitRuleSetEditor();
-            }
+            new Thread() {
+                @Override
+                public void run() {
+                    final String cmd = e.getActionCommand();
+                    final RuleSetPicker ge = RuleSetPicker.this;
+                    if (cmd.equals("Create")) {
+                        ge.createObjectRuleSet();
+                    } else if (cmd.equals("Destroy")) {
+                        ge.destroyObjectRuleSet();
+                    } else if (cmd.equals("Edit")) {
+                        ge.editObjectRuleSet();
+                    } else if (cmd.equals("Load")) {
+                        RuleSetManager.importRuleSet();
+                    } else if (cmd.equals("Save")) {
+                        RuleSetManager.exportRuleSet();
+                    } else if (cmd.equals("Done")) {
+                        ge.exitRuleSetEditor();
+                    }
+                }
+            }.start();
         }
     }
 }

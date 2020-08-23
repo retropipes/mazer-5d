@@ -733,52 +733,64 @@ public class Prefs {
         // Handle buttons
         @Override
         public void actionPerformed(final ActionEvent e) {
-            final String cmd = e.getActionCommand();
-            if (cmd.equals("OK")) {
-                Prefs.savePrefs();
-                Prefs.hidePrefs();
-            } else if (cmd.equals("Cancel")) {
-                Prefs.loadPrefs();
-                Prefs.hidePrefs();
-            } else if (cmd.equals("Export...")) {
-                Prefs.handleExport();
-            } else if (cmd.equals("Import...")) {
-                Prefs.handleImport();
-            }
+            new Thread() {
+                @Override
+                public void run() {
+                    final String cmd = e.getActionCommand();
+                    if (cmd.equals("OK")) {
+                        Prefs.savePrefs();
+                        Prefs.hidePrefs();
+                    } else if (cmd.equals("Cancel")) {
+                        Prefs.loadPrefs();
+                        Prefs.hidePrefs();
+                    } else if (cmd.equals("Export...")) {
+                        Prefs.handleExport();
+                    } else if (cmd.equals("Import...")) {
+                        Prefs.handleImport();
+                    }
+                }
+            }.start();
         }
 
         @Override
         public void itemStateChanged(final ItemEvent e) {
-            final Object o = e.getItem();
-            if (o.getClass()
-                    .equals(Prefs.sounds[Prefs.SOUNDS_ALL].getClass())) {
-                final JCheckBox check = (JCheckBox) o;
-                if (check.equals(Prefs.sounds[Prefs.SOUNDS_ALL])) {
-                    if (e.getStateChange() == ItemEvent.SELECTED) {
-                        for (int x = 1; x < Prefs.SOUNDS_LENGTH; x++) {
-                            Prefs.sounds[x].setEnabled(true);
+            new Thread() {
+                @Override
+                public void run() {
+                    final Object o = e.getItem();
+                    if (o.getClass().equals(
+                            Prefs.sounds[Prefs.SOUNDS_ALL].getClass())) {
+                        final JCheckBox check = (JCheckBox) o;
+                        if (check.equals(Prefs.sounds[Prefs.SOUNDS_ALL])) {
+                            if (e.getStateChange() == ItemEvent.SELECTED) {
+                                for (int x = 1; x < Prefs.SOUNDS_LENGTH; x++) {
+                                    Prefs.sounds[x].setEnabled(true);
+                                }
+                            } else if (e
+                                    .getStateChange() == ItemEvent.DESELECTED) {
+                                for (int x = 1; x < Prefs.SOUNDS_LENGTH; x++) {
+                                    Prefs.sounds[x].setEnabled(false);
+                                }
+                            }
                         }
-                    } else if (e.getStateChange() == ItemEvent.DESELECTED) {
-                        for (int x = 1; x < Prefs.SOUNDS_LENGTH; x++) {
-                            Prefs.sounds[x].setEnabled(false);
+                    } else if (o.getClass()
+                            .equals(Prefs.music[Prefs.MUSIC_ALL].getClass())) {
+                        final JCheckBox check = (JCheckBox) o;
+                        if (check.equals(Prefs.music[Prefs.MUSIC_ALL])) {
+                            if (e.getStateChange() == ItemEvent.SELECTED) {
+                                for (int x = 1; x < Prefs.MUSIC_LENGTH; x++) {
+                                    Prefs.music[x].setEnabled(true);
+                                }
+                            } else if (e
+                                    .getStateChange() == ItemEvent.DESELECTED) {
+                                for (int x = 1; x < Prefs.MUSIC_LENGTH; x++) {
+                                    Prefs.music[x].setEnabled(false);
+                                }
+                            }
                         }
                     }
                 }
-            } else if (o.getClass()
-                    .equals(Prefs.music[Prefs.MUSIC_ALL].getClass())) {
-                final JCheckBox check = (JCheckBox) o;
-                if (check.equals(Prefs.music[Prefs.MUSIC_ALL])) {
-                    if (e.getStateChange() == ItemEvent.SELECTED) {
-                        for (int x = 1; x < Prefs.MUSIC_LENGTH; x++) {
-                            Prefs.music[x].setEnabled(true);
-                        }
-                    } else if (e.getStateChange() == ItemEvent.DESELECTED) {
-                        for (int x = 1; x < Prefs.MUSIC_LENGTH; x++) {
-                            Prefs.music[x].setEnabled(false);
-                        }
-                    }
-                }
-            }
+            }.start();
         }
     }
 }

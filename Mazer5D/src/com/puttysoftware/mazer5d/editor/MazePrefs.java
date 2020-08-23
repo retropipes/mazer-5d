@@ -136,14 +136,19 @@ public class MazePrefs {
         // Handle buttons
         @Override
         public void actionPerformed(final ActionEvent e) {
-            final MazePrefs mpm = MazePrefs.this;
-            final String cmd = e.getActionCommand();
-            if (cmd.equals("OK")) {
-                mpm.setPrefs();
-                mpm.hidePrefs();
-            } else if (cmd.equals("Cancel")) {
-                mpm.hidePrefs();
-            }
+            new Thread() {
+                @Override
+                public void run() {
+                    final MazePrefs mpm = MazePrefs.this;
+                    final String cmd = e.getActionCommand();
+                    if (cmd.equals("OK")) {
+                        mpm.setPrefs();
+                        mpm.hidePrefs();
+                    } else if (cmd.equals("Cancel")) {
+                        mpm.hidePrefs();
+                    }
+                }
+            }.start();
         }
     }
 }

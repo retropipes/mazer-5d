@@ -211,8 +211,7 @@ public class LevelPrefs {
         this.levelTitle = new JTextField("");
         this.levelStartMessage = new JTextArea("");
         this.levelEndMessage = new JTextArea("");
-        this.poisonPowerChoiceArray = new String[Maze.getMaxPoisonPower()
-                + 1];
+        this.poisonPowerChoiceArray = new String[Maze.getMaxPoisonPower() + 1];
         for (int x = 0; x < this.poisonPowerChoiceArray.length; x++) {
             if (x == 0) {
                 this.poisonPowerChoiceArray[x] = "None";
@@ -291,14 +290,19 @@ public class LevelPrefs {
         // Handle buttons
         @Override
         public void actionPerformed(final ActionEvent e) {
-            final LevelPrefs lpm = LevelPrefs.this;
-            final String cmd = e.getActionCommand();
-            if (cmd.equals("OK")) {
-                lpm.setPrefs();
-                lpm.hidePrefs();
-            } else if (cmd.equals("Cancel")) {
-                lpm.hidePrefs();
-            }
+            new Thread() {
+                @Override
+                public void run() {
+                    final LevelPrefs lpm = LevelPrefs.this;
+                    final String cmd = e.getActionCommand();
+                    if (cmd.equals("OK")) {
+                        lpm.setPrefs();
+                        lpm.hidePrefs();
+                    } else if (cmd.equals("Cancel")) {
+                        lpm.hidePrefs();
+                    }
+                }
+            }.start();
         }
     }
 }

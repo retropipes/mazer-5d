@@ -131,14 +131,19 @@ class RuleSetEditor {
         // Handle buttons
         @Override
         public void actionPerformed(final ActionEvent e) {
-            final RuleSetEditor ge = RuleSetEditor.this;
-            final String cmd = e.getActionCommand();
-            if (cmd.equals("OK")) {
-                ge.saveRuleSetEditor();
-                ge.hideRuleSetEditor();
-            } else if (cmd.equals("Cancel")) {
-                ge.hideRuleSetEditor();
-            }
+            new Thread() {
+                @Override
+                public void run() {
+                    final RuleSetEditor ge = RuleSetEditor.this;
+                    final String cmd = e.getActionCommand();
+                    if (cmd.equals("OK")) {
+                        ge.saveRuleSetEditor();
+                        ge.hideRuleSetEditor();
+                    } else if (cmd.equals("Cancel")) {
+                        ge.hideRuleSetEditor();
+                    }
+                }
+            }.start();
         }
     }
 }

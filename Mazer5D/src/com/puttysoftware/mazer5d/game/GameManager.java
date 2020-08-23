@@ -2075,28 +2075,38 @@ public class GameManager implements MazeEffectConstants {
 
         @Override
         public void keyPressed(final KeyEvent e) {
-            if (!GameManager.this.arrowActive) {
-                if (!Prefs.oneMove()) {
-                    if (e.isAltDown()) {
-                        this.handleArrows(e);
-                    } else {
-                        this.handleMovement(e);
+            new Thread() {
+                @Override
+                public void run() {
+                    if (!GameManager.this.arrowActive) {
+                        if (!Prefs.oneMove()) {
+                            if (e.isAltDown()) {
+                                EventHandler.this.handleArrows(e);
+                            } else {
+                                EventHandler.this.handleMovement(e);
+                            }
+                        }
                     }
                 }
-            }
+            }.start();
         }
 
         @Override
         public void keyReleased(final KeyEvent e) {
-            if (!GameManager.this.arrowActive) {
-                if (Prefs.oneMove()) {
-                    if (e.isAltDown()) {
-                        this.handleArrows(e);
-                    } else {
-                        this.handleMovement(e);
+            new Thread() {
+                @Override
+                public void run() {
+                    if (!GameManager.this.arrowActive) {
+                        if (Prefs.oneMove()) {
+                            if (e.isAltDown()) {
+                                EventHandler.this.handleArrows(e);
+                            } else {
+                                EventHandler.this.handleMovement(e);
+                            }
+                        }
                     }
                 }
-            }
+            }.start();
         }
 
         @Override
@@ -2104,7 +2114,7 @@ public class GameManager implements MazeEffectConstants {
             // Do nothing
         }
 
-        public void handleMovement(final KeyEvent e) {
+        private void handleMovement(final KeyEvent e) {
             final GameManager gm = GameManager.this;
             final int keyCode = e.getKeyCode();
             if (e.isShiftDown()) {
@@ -2186,7 +2196,7 @@ public class GameManager implements MazeEffectConstants {
             }
         }
 
-        public void handleArrows(final KeyEvent e) {
+        private void handleArrows(final KeyEvent e) {
             final GameManager gm = GameManager.this;
             final int keyCode = e.getKeyCode();
             if (e.isShiftDown()) {
@@ -2275,21 +2285,26 @@ public class GameManager implements MazeEffectConstants {
 
         @Override
         public void mouseClicked(final MouseEvent e) {
-            final GameManager gm = GameManager.this;
-            if (gm.usingAnItem()) {
-                final int x = e.getX();
-                final int y = e.getY();
-                gm.useItemHandler(x, y);
-                gm.setUsingAnItem(false);
-            } else if (e.isShiftDown()) {
-                final int x = e.getX();
-                final int y = e.getY();
-                gm.identifyObject(x, y);
-            } else if (gm.isTeleporting()) {
-                final int x = e.getX();
-                final int y = e.getY();
-                gm.controllableTeleportHandler(x, y);
-            }
+            new Thread() {
+                @Override
+                public void run() {
+                    final GameManager gm = GameManager.this;
+                    if (gm.usingAnItem()) {
+                        final int x = e.getX();
+                        final int y = e.getY();
+                        gm.useItemHandler(x, y);
+                        gm.setUsingAnItem(false);
+                    } else if (e.isShiftDown()) {
+                        final int x = e.getX();
+                        final int y = e.getY();
+                        gm.identifyObject(x, y);
+                    } else if (gm.isTeleporting()) {
+                        final int x = e.getX();
+                        final int y = e.getY();
+                        gm.controllableTeleportHandler(x, y);
+                    }
+                }
+            }.start();
         }
 
         @Override
