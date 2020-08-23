@@ -2,6 +2,9 @@ package com.puttysoftware.commondialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -15,7 +18,7 @@ import com.puttysoftware.images.BufferedImageIcon;
 class InputDialog {
     private static MainWindow dialogFrame;
     private static MainWindowContent dialogPane;
-    private static int value = CommonDialogs.DEFAULT_OPTION;
+    private static CompletableFuture<Integer> completer;
 
     /**
      * Set up and show the dialog. The first Component argument determines which
@@ -25,34 +28,39 @@ class InputDialog {
      * screen; otherwise, it should be the component on top of which the dialog
      * should appear.
      */
-    public static int showConfirmDialog(final String labelText,
+    public static Future<Integer> showConfirmDialog(final String labelText,
             final String title, final BufferedImageIcon icon) {
-        InputDialog.value = CommonDialogs.CANCEL;
-        final String[] possibleValues = new String[] { "Yes", "No" };
-        initializeDialog(labelText, title,
-                icon, possibleValues);
-        return InputDialog.value;
+        completer = new CompletableFuture<>();
+        Executors.newSingleThreadExecutor().submit(() -> {
+            final String[] possibleValues = new String[] { "Yes", "No" };
+            initializeDialog(labelText, title, icon, possibleValues);
+        });
+        return completer;
     }
 
-    public static int showYNCConfirmDialog(final String labelText,
+    public static Future<Integer> showYNCConfirmDialog(final String labelText,
             final String title, final BufferedImageIcon icon) {
-        InputDialog.value = CommonDialogs.CANCEL;
-        final String[] possibleValues = new String[] { "Yes", "No", "Cancel" };
-        initializeDialog(labelText, title,
-                icon, possibleValues);
-        return InputDialog.value;
+        completer = new CompletableFuture<>();
+        Executors.newSingleThreadExecutor().submit(() -> {
+            final String[] possibleValues = new String[] { "Yes", "No",
+                    "Cancel" };
+            initializeDialog(labelText, title, icon, possibleValues);
+        });
+        return completer;
     }
 
-    public static int showDialog(final String labelText, final String title,
-            final BufferedImageIcon icon, final String[] possibleValues) {
-        InputDialog.value = CommonDialogs.CANCEL;
-        initializeDialog(labelText, title,
-                icon, possibleValues);
-        return InputDialog.value;
+    public static Future<Integer> showDialog(final String labelText,
+            final String title, final BufferedImageIcon icon,
+            final String[] possibleValues) {
+        completer = new CompletableFuture<>();
+        Executors.newSingleThreadExecutor().submit(() -> {
+            initializeDialog(labelText, title, icon, possibleValues);
+        });
+        return completer;
     }
 
     private static void setValue(final int newValue) {
-        InputDialog.value = newValue;
+        completer.complete(newValue);
     }
 
     private static void initializeDialog(final String labelText,
