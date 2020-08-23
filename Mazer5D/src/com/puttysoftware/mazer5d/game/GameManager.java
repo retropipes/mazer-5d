@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.game;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -14,6 +15,7 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -47,6 +49,7 @@ import com.puttysoftware.mazer5d.objects.abc.GenericCharacter;
 import com.puttysoftware.mazer5d.objects.abc.GenericMovableObject;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.mazer5d.utilities.ArrowTypes;
+import com.puttysoftware.mazer5d.utilities.GUIConstants;
 import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
@@ -55,13 +58,15 @@ public class GameManager implements MazeEffectConstants {
     // Fields
     private MainWindow outputFrame;
     private MainWindowContent borderPane;
-    private JPanel outputPane, progressPane;
+    private JPanel outputPane, progressPane, summaryPane, commandPane;
     private JLabel messageLabel;
     private JProgressBar autoFinishProgress, alternateAutoFinishProgress;
     private MazeObject savedMazeObject, objectBeingUsed;
     private GenericBow activeBow;
     private EventHandler handler;
     private ObjectInventory objectInv, savedObjectInv;
+    private JButton showObjectInventory, useObject, switchBow, reset, showScore,
+            showTable, endGame;
     private boolean pullInProgress;
     private boolean using;
     private int lastUsedObjectIndex;
@@ -674,9 +679,8 @@ public class GameManager implements MazeEffectConstants {
     }
 
     private boolean checkLoopCondition(final boolean proceed, final int x,
-            final int y, final MazeObject groundInto,
-            final MazeObject below, final MazeObject nextBelow,
-            final MazeObject nextAbove) {
+            final int y, final MazeObject groundInto, final MazeObject below,
+            final MazeObject nextBelow, final MazeObject nextAbove) {
         // Handle slippery boots and ice amulet
         if (this.objectInv.isItemThere(MazeObjects.SLIPPERY_BOOTS)
                 || this.objectInv.isItemThere(MazeObjects.ICE_AMULET)) {
@@ -778,10 +782,8 @@ public class GameManager implements MazeEffectConstants {
     }
 
     private boolean checkPush(final int x, final int y, final int pushX,
-            final int pushY, final MazeObject acted,
-            final MazeObject nextBelow,
-            final MazeObject nextNextBelow,
-            final MazeObject nextNextAbove) {
+            final int pushY, final MazeObject acted, final MazeObject nextBelow,
+            final MazeObject nextNextBelow, final MazeObject nextNextAbove) {
         final int px = this.plMgr.getPlayerLocationX();
         final int py = this.plMgr.getPlayerLocationY();
         final int pz = this.plMgr.getPlayerLocationZ();
@@ -893,8 +895,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void updatePushedIntoPositionAbsolute(final int x, final int y,
             final int z, final int x2, final int y2, final int z2,
-            final GenericMovableObject pushedInto,
-            final MazeObject source) {
+            final GenericMovableObject pushedInto, final MazeObject source) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         final Maze m = app.getMazeManager().getMaze();
         try {
@@ -918,8 +919,7 @@ public class GameManager implements MazeEffectConstants {
         try {
             final BagOStuff app = Mazer5D.getBagOStuff();
             final Maze m = app.getMazeManager().getMaze();
-            final MazeObject below = m.getCell(
-                    this.plMgr.getPlayerLocationX(),
+            final MazeObject below = m.getCell(this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(), Layers.GROUND);
             final MazeObject nextBelow = m.getCell(
@@ -942,8 +942,7 @@ public class GameManager implements MazeEffectConstants {
         try {
             final BagOStuff app = Mazer5D.getBagOStuff();
             final Maze m = app.getMazeManager().getMaze();
-            final MazeObject below = m.getCell(
-                    this.plMgr.getPlayerLocationX(),
+            final MazeObject below = m.getCell(this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(), Layers.GROUND);
             final MazeObject nextBelow = m.getCell(x, y, z, Layers.GROUND);
@@ -1569,8 +1568,8 @@ public class GameManager implements MazeEffectConstants {
         }
     }
 
-    public void morphOther(final MazeObject morphInto, final int x,
-            final int y, final int e) {
+    public void morphOther(final MazeObject morphInto, final int x, final int y,
+            final int e) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         final Maze m = app.getMazeManager().getMaze();
         try {
@@ -1802,8 +1801,7 @@ public class GameManager implements MazeEffectConstants {
             Mazer5D.getBagOStuff().showMessage(gameName2 + " on " + gameName1);
             SoundPlayer.playSound(SoundIndex.IDENTIFY, SoundGroup.GAME);
         } catch (final ArrayIndexOutOfBoundsException ae) {
-            final MazeObject ev = GameObjects
-                    .createObject(MazeObjects.BOUNDS);
+            final MazeObject ev = GameObjects.createObject(MazeObjects.BOUNDS);
             ev.determineCurrentAppearance(destX, destY, destZ);
             Mazer5D.getBagOStuff().showMessage(ev.getGameName());
             SoundPlayer.playSound(SoundIndex.IDENTIFY, SoundGroup.GAME);
@@ -1916,46 +1914,112 @@ public class GameManager implements MazeEffectConstants {
     }
 
     private void setUpGUI() {
+        // Create objects
         this.objectInv = new ObjectInventory();
         this.handler = new EventHandler();
+        // Create content containers
+        this.outputFrame = MainWindow.getMainWindow();
         this.borderPane = this.outputFrame.createContent();
         this.borderPane.setLayout(new BorderLayout());
+        this.summaryPane = new JPanel();
+        this.summaryPane.setLayout(new BorderLayout());
         this.progressPane = new JPanel();
         this.progressPane
                 .setLayout(new BoxLayout(this.progressPane, BoxLayout.Y_AXIS));
+        this.outputPane = new JPanel();
+        this.outputPane
+                .setLayout(new GridLayout(this.vwMgr.getViewingWindowSizeX(),
+                        this.vwMgr.getViewingWindowSizeY()));
+        this.commandPane = new JPanel();
+        this.commandPane.setLayout(
+                new BoxLayout(this.commandPane, BoxLayout.PAGE_AXIS));
+        this.drawGrid = new JLabel[this.vwMgr
+                .getViewingWindowSizeX()][this.vwMgr.getViewingWindowSizeY()];
+        // Create components
         this.autoFinishProgress = new JProgressBar(SwingConstants.VERTICAL);
         this.autoFinishProgress.setStringPainted(true);
         this.alternateAutoFinishProgress = new JProgressBar(
                 SwingConstants.VERTICAL);
         this.alternateAutoFinishProgress.setStringPainted(true);
-        this.progressPane.add(this.autoFinishProgress);
-        this.progressPane.add(this.alternateAutoFinishProgress);
         this.messageLabel = new JLabel(" ");
         this.messageLabel.setOpaque(true);
-        this.outputFrame = MainWindow.getMainWindow();
-        this.outputPane = new JPanel();
-        this.outputPane
-                .setLayout(new GridLayout(this.vwMgr.getViewingWindowSizeX(),
-                        this.vwMgr.getViewingWindowSizeY()));
-        this.drawGrid = new JLabel[this.vwMgr
-                .getViewingWindowSizeX()][this.vwMgr.getViewingWindowSizeY()];
+        // Create command buttons
+        this.showObjectInventory = new JButton("Show Inventory...");
+        this.useObject = new JButton("Use an Item...");
+        this.switchBow = new JButton("Switch Bow...");
+        this.reset = new JButton("Reset Current Level");
+        this.showScore = new JButton("Show Current Score");
+        this.showTable = new JButton("Show Score Table");
+        this.endGame = new JButton("End Game");
+        // Configure command button size
+        this.showObjectInventory.setSize(GUIConstants.COMMAND_BUTTON);
+        this.useObject.setSize(GUIConstants.COMMAND_BUTTON);
+        this.switchBow.setSize(GUIConstants.COMMAND_BUTTON);
+        this.reset.setSize(GUIConstants.COMMAND_BUTTON);
+        this.showScore.setSize(GUIConstants.COMMAND_BUTTON);
+        this.showTable.setSize(GUIConstants.COMMAND_BUTTON);
+        this.endGame.setSize(GUIConstants.COMMAND_BUTTON);
+        // Configure command button alignment
+        this.showObjectInventory.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.useObject.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.switchBow.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.reset.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.showScore.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.showTable.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.endGame.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.showObjectInventory.setAlignmentY(Component.CENTER_ALIGNMENT);
+        this.useObject.setAlignmentY(Component.CENTER_ALIGNMENT);
+        this.switchBow.setAlignmentY(Component.CENTER_ALIGNMENT);
+        this.reset.setAlignmentY(Component.CENTER_ALIGNMENT);
+        this.showScore.setAlignmentY(Component.CENTER_ALIGNMENT);
+        this.showTable.setAlignmentY(Component.CENTER_ALIGNMENT);
+        this.endGame.setAlignmentY(Component.CENTER_ALIGNMENT);
+        // Attach event handlers
+        this.showObjectInventory
+                .addActionListener(h -> this.showInventoryDialog());
+        this.useObject.addActionListener(h -> this.showUseDialog());
+        this.switchBow.addActionListener(h -> this.showSwitchBowDialog());
+        this.reset.addActionListener(h -> this.resetCurrentLevel());
+        this.showScore.addActionListener(h -> this.showCurrentScore());
+        this.showTable.addActionListener(h -> this.showScoreTable());
+        this.endGame.addActionListener(h -> this.endGame());
+        // Set initial command state
+        this.showObjectInventory.setEnabled(true);
+        this.useObject.setEnabled(true);
+        this.switchBow.setEnabled(true);
+        this.reset.setEnabled(true);
+        this.showScore.setEnabled(true);
+        this.showTable.setEnabled(true);
+        this.endGame.setEnabled(true);
+        // Assemble everything together
         for (int x = 0; x < this.vwMgr.getViewingWindowSizeX(); x++) {
             for (int y = 0; y < this.vwMgr.getViewingWindowSizeY(); y++) {
                 this.drawGrid[x][y] = new JLabel();
-                // Mac OS X-specific fix to make draw grid line up properly
+                // OS-specific fix to make draw grid line up properly
                 if (System.getProperty("os.name").startsWith("Mac OS X")) {
                     this.drawGrid[x][y].setBorder(new EmptyBorder(0, 0, 0, 0));
                 }
                 this.outputPane.add(this.drawGrid[x][y]);
             }
         }
+        this.progressPane.add(this.autoFinishProgress);
+        this.progressPane.add(this.alternateAutoFinishProgress);
+        this.commandPane.add(this.showObjectInventory);
+        this.commandPane.add(this.useObject);
+        this.commandPane.add(this.switchBow);
+        this.commandPane.add(this.reset);
+        this.commandPane.add(this.showScore);
+        this.commandPane.add(this.showTable);
+        this.commandPane.add(this.endGame);
+        this.summaryPane.add(this.getStatGUI().getStatsPane(),
+                BorderLayout.CENTER);
+        this.summaryPane.add(this.commandPane, BorderLayout.SOUTH);
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
         this.borderPane.add(this.progressPane, BorderLayout.WEST);
+        this.borderPane.add(this.summaryPane, BorderLayout.EAST);
         this.borderPane.add(this.em.getEffectMessagePanel(),
                 BorderLayout.SOUTH);
-        this.borderPane.add(this.getStatGUI().getStatsPane(),
-                BorderLayout.EAST);
     }
 
     private class EventHandler implements KeyListener, MouseListener {
