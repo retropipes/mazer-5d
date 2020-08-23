@@ -15,14 +15,13 @@ import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.prefs.Prefs;
+import com.puttysoftware.mazer5d.utilities.GUIConstants;
 
 public class Mazer5D {
     // Constants
     private static BagOStuff bagOStuff;
     private static GameErrorHandler errhand;
     private static final String PROGRAM_NAME = "Mazer5D";
-    private static final int WIDTH = 700;
-    private static final int HEIGHT = 700;
 
     // Methods
     public static BagOStuff getBagOStuff() {
@@ -40,7 +39,8 @@ public class Mazer5D {
         // Integrate with host platform
         final NativeIntegration ni = new NativeIntegration();
         ni.configureLookAndFeel();
-        MainWindow.createMainWindow(Mazer5D.WIDTH, Mazer5D.HEIGHT);
+        MainWindow.createMainWindow(GUIConstants.GUI_WIDTH,
+                GUIConstants.GUI_HEIGHT);
         Mazer5D.bagOStuff = new BagOStuff();
         ni.setAboutHandler(Mazer5D.bagOStuff.getAboutThisGame());
         ni.setOpenFileHandler(Mazer5D.bagOStuff.getMazeManager());
