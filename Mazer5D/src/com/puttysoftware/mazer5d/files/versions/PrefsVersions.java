@@ -1,7 +1,7 @@
 package com.puttysoftware.mazer5d.files.versions;
 
 public class PrefsVersions {
-    public static final int LATEST = 1;
+    public static final int LATEST = 2;
     private static final int MINIMUM = 1;
 
     private PrefsVersions() {
