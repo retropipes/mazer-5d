@@ -2032,47 +2032,217 @@ public class MazeEditor {
                 "Set First Moving Finish...");
         this.editorExit = new JButton("Exit Editor");
         // Attach command event handlers
-        this.editorUndo.addActionListener(h -> this.undo());
-        this.editorRedo.addActionListener(h -> this.redo());
-        this.editorCutLevel.addActionListener(h -> this.cutLevel());
-        this.editorCopyLevel.addActionListener(h -> this.copyLevel());
-        this.editorPasteLevel.addActionListener(h -> this.pasteLevel());
+        this.editorUndo.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.undo();
+                }
+            }.start();
+        });
+        this.editorRedo.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.redo();
+                }
+            }.start();
+        });
+        this.editorCutLevel.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.cutLevel();
+                }
+            }.start();
+        });
+        this.editorCopyLevel.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.copyLevel();
+                }
+            }.start();
+        });
+        this.editorPasteLevel.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.pasteLevel();
+                }
+            }.start();
+        });
         this.editorInsertLevelFromClipboard
                 .addActionListener(h -> this.insertLevelFromClipboard());
-        this.editorClearHistory.addActionListener(h -> this.clearHistory());
-        this.editorGoToLocation
-                .addActionListener(h -> this.goToLocationHandler());
-        this.editorGoToDestination
-                .addActionListener(h -> this.goToDestinationHandler());
-        this.editorUpOneFloor
-                .addActionListener(h -> this.updateEditorPosition(0, 0, 1, 0));
-        this.editorDownOneFloor
-                .addActionListener(h -> this.updateEditorPosition(0, 0, -1, 0));
-        this.editorUpOneLevel
-                .addActionListener(h -> this.updateEditorPosition(0, 0, 0, 1));
-        this.editorDownOneLevel
-                .addActionListener(h -> this.updateEditorPosition(0, 0, 0, -1));
-        this.editorAddLevel.addActionListener(h -> this.addLevel());
-        this.editorRemoveLevel.addActionListener(h -> this.removeLevel());
-        this.editorResizeLevel.addActionListener(h -> this.resizeLevel());
-        this.editorFillFloor.addActionListener(h -> this.fillFloor());
-        this.editorFillLevel.addActionListener(h -> this.fillLevel());
-        this.editorFillFloorRandomly
-                .addActionListener(h -> this.fillFloorRandomly());
-        this.editorFillLevelRandomly
-                .addActionListener(h -> this.fillLevelRandomly());
-        this.editorFillRuleSets.addActionListener(
-                h -> Mazer5D.getBagOStuff().getRuleSetPicker().editRuleSets());
-        this.editorToggleLayer.addActionListener(h -> this.toggleLayer());
-        this.editorLevelPreferences
-                .addActionListener(h -> this.setLevelPrefs());
-        this.editorMazePreferences.addActionListener(h -> this.setMazePrefs());
-        this.editorSetStartPoint
-                .addActionListener(h -> this.editPlayerLocation());
-        this.editorSetFirstMovingFinish
-                .addActionListener(h -> this.editTeleportDestination(
-                        MazeEditor.TELEPORT_TYPE_FIRST_MOVING_FINISH));
-        this.editorExit.addActionListener(h -> this.doneEditing());
+        this.editorClearHistory.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.clearHistory();
+                }
+            }.start();
+        });
+        this.editorGoToLocation.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.goToLocationHandler();
+                }
+            }.start();
+        });
+        this.editorGoToDestination.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.goToDestinationHandler();
+                }
+            }.start();
+        });
+        this.editorUpOneFloor.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.updateEditorPosition(0, 0, 1, 0);
+                }
+            }.start();
+        });
+        this.editorDownOneFloor.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.updateEditorPosition(0, 0, -1, 0);
+                }
+            }.start();
+        });
+        this.editorUpOneLevel.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.updateEditorPosition(0, 0, 0, 1);
+                }
+            }.start();
+        });
+        this.editorDownOneLevel.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.updateEditorPosition(0, 0, 0, -1);
+                }
+            }.start();
+        });
+        this.editorAddLevel.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.addLevel();
+                }
+            }.start();
+        });
+        this.editorRemoveLevel.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.removeLevel();
+                }
+            }.start();
+        });
+        this.editorResizeLevel.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.resizeLevel();
+                }
+            }.start();
+        });
+        this.editorFillFloor.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.fillFloor();
+                }
+            }.start();
+        });
+        this.editorFillLevel.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.fillLevel();
+                }
+            }.start();
+        });
+        this.editorFillFloorRandomly.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.fillFloorRandomly();
+                }
+            }.start();
+        });
+        this.editorFillLevelRandomly.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.fillLevelRandomly();
+                }
+            }.start();
+        });
+        this.editorFillRuleSets.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    Mazer5D.getBagOStuff().getRuleSetPicker().editRuleSets();
+                }
+            }.start();
+        });
+        this.editorToggleLayer.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.toggleLayer();
+                }
+            }.start();
+        });
+        this.editorLevelPreferences.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.setLevelPrefs();
+                }
+            }.start();
+        });
+        this.editorMazePreferences.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.setMazePrefs();
+                }
+            }.start();
+        });
+        this.editorSetStartPoint.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.editPlayerLocation();
+                }
+            }.start();
+        });
+        this.editorSetFirstMovingFinish.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.editTeleportDestination(
+                            MazeEditor.TELEPORT_TYPE_FIRST_MOVING_FINISH);
+                }
+            }.start();
+        });
+        this.editorExit.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    MazeEditor.this.doneEditing();
+                }
+            }.start();
+        });
         // Set initial command state
         this.editorUndo.setEnabled(false);
         this.editorRedo.setEnabled(false);

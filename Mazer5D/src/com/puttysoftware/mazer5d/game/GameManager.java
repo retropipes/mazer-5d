@@ -1973,14 +1973,62 @@ public class GameManager implements MazeEffectConstants {
         this.showTable.setAlignmentY(Component.CENTER_ALIGNMENT);
         this.endGame.setAlignmentY(Component.CENTER_ALIGNMENT);
         // Attach event handlers
-        this.showObjectInventory
-                .addActionListener(h -> this.showInventoryDialog());
-        this.useObject.addActionListener(h -> this.showUseDialog());
-        this.switchBow.addActionListener(h -> this.showSwitchBowDialog());
-        this.reset.addActionListener(h -> this.resetCurrentLevel());
-        this.showScore.addActionListener(h -> this.showCurrentScore());
-        this.showTable.addActionListener(h -> this.showScoreTable());
-        this.endGame.addActionListener(h -> this.endGame());
+        this.showObjectInventory.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    GameManager.this.showInventoryDialog();
+                }
+            }.start();
+        });
+        this.useObject.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    GameManager.this.showUseDialog();
+                }
+            }.start();
+        });
+        this.switchBow.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    GameManager.this.showSwitchBowDialog();
+                }
+            }.start();
+        });
+        this.reset.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    GameManager.this.resetCurrentLevel();
+                }
+            }.start();
+        });
+        this.showScore.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    GameManager.this.showCurrentScore();
+                }
+            }.start();
+        });
+        this.showTable.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    GameManager.this.showScoreTable();
+                }
+            }.start();
+        });
+        this.endGame.addActionListener(h -> {
+            new Thread() {
+                @Override
+                public void run() {
+                    GameManager.this.endGame();
+                }
+            }.start();
+        });
         // Set initial command state
         this.showObjectInventory.setEnabled(true);
         this.useObject.setEnabled(true);

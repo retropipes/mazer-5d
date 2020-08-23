@@ -207,41 +207,109 @@ public class GUIManager implements QuitHandler {
             this.helpObjectHelp.setAlignmentY(Component.CENTER_ALIGNMENT);
             // Attach event handlers
             this.fileNew.addActionListener(h -> {
-                bag.getEditor().newMaze();
-                this.checkFlags();
+                new Thread() {
+                    @Override
+                    public void run() {
+                        bag.getEditor().newMaze();
+                        GUIManager.this.checkFlags();
+                    }
+                }.start();
             });
             this.fileOpen.addActionListener(h -> {
-                bag.getMazeManager().loadMaze();
-                this.checkFlags();
+                new Thread() {
+                    @Override
+                    public void run() {
+                        bag.getMazeManager().loadMaze();
+                        GUIManager.this.checkFlags();
+                    }
+                }.start();
             });
             this.fileOpenLocked.addActionListener(h -> {
-                bag.getMazeManager().loadLockedMaze();
-                this.checkFlags();
+                new Thread() {
+                    @Override
+                    public void run() {
+                        bag.getMazeManager().loadLockedMaze();
+                        GUIManager.this.checkFlags();
+                    }
+                }.start();
             });
             this.fileClose.addActionListener(h -> {
-                this.closeHandler();
-                this.checkFlags();
+                new Thread() {
+                    @Override
+                    public void run() {
+                        GUIManager.this.closeHandler();
+                        GUIManager.this.checkFlags();
+                    }
+                }.start();
             });
             this.fileSave.addActionListener(h -> {
-                bag.getMazeManager().saveMaze();
-                this.checkFlags();
+                new Thread() {
+                    @Override
+                    public void run() {
+                        bag.getMazeManager().saveMaze();
+                        GUIManager.this.checkFlags();
+                    }
+                }.start();
             });
             this.fileSaveAs.addActionListener(h -> {
-                bag.getMazeManager().saveMazeAs();
-                this.checkFlags();
+                new Thread() {
+                    @Override
+                    public void run() {
+                        bag.getMazeManager().saveMazeAs();
+                        GUIManager.this.checkFlags();
+                    }
+                }.start();
             });
             this.fileSaveLocked.addActionListener(h -> {
-                bag.getMazeManager().saveLockedMaze();
-                this.checkFlags();
+                new Thread() {
+                    @Override
+                    public void run() {
+                        bag.getMazeManager().saveLockedMaze();
+                        GUIManager.this.checkFlags();
+                    }
+                }.start();
             });
-            this.showPreferences.addActionListener(h -> Prefs.showPrefs());
+            this.showPreferences.addActionListener(h -> {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        Prefs.showPrefs();
+                    }
+                }.start();
+            });
             this.quit.addActionListener(h -> System.exit(0));
-            this.play.addActionListener(h -> bag.getGameManager().playMaze());
-            this.edit.addActionListener(h -> bag.getEditor().editMaze());
-            this.helpAbout.addActionListener(
-                    h -> bag.getAboutThisGame().showAboutDialog());
-            this.helpObjectHelp.addActionListener(
-                    h -> bag.getObjectHelpViewer().showHelp());
+            this.play.addActionListener(h -> {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        bag.getGameManager().playMaze();
+                    }
+                }.start();
+            });
+            this.edit.addActionListener(h -> {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        bag.getEditor().editMaze();
+                    }
+                }.start();
+            });
+            this.helpAbout.addActionListener(h -> {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        bag.getAboutThisGame().showAboutDialog();
+                    }
+                }.start();
+            });
+            this.helpObjectHelp.addActionListener(h -> {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        bag.getObjectHelpViewer().showHelp();
+                    }
+                }.start();
+            });
             // Set initial command state
             this.fileNew.setEnabled(true);
             this.fileOpen.setEnabled(true);
