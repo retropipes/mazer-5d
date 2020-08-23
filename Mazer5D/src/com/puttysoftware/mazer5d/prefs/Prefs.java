@@ -53,7 +53,6 @@ import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.files.versions.PrefsVersionException;
 import com.puttysoftware.mazer5d.files.versions.PrefsVersions;
-import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 import com.puttysoftware.updater.ProductData;
@@ -295,9 +294,7 @@ public class Prefs {
         Prefs.prefFrame.setTitle("Preferences");
         Prefs.prefFrame.setDefaultButton(Prefs.prefsOK);
         Prefs.prefFrame.attachAndSave(Prefs.mainPrefPane);
-        final BagOStuff app = Mazer5D.getBagOStuff();
         Modes.setInPrefs();
-        app.getMenuManager().setPrefMenus();
     }
 
     private static void hidePrefs() {

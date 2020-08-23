@@ -98,7 +98,6 @@ public class Modes {
                 || Modes.current == Modes.TREASURE
                 || Modes.current == Modes.RULE_PICKER) {
             Modes.current = Modes.EDITOR;
-            bag.getMenuManager().setEditorMenus();
             bag.getEditor().showOutput();
         } else if (Modes.current == Modes.RULE_EDITOR) {
             Modes.current = Modes.RULE_PICKER;
@@ -107,15 +106,12 @@ public class Modes {
             Modes.current = Modes.former;
             switch (Modes.current) {
             case GUI:
-                bag.getMenuManager().setMainMenus();
                 bag.getGUIManager().showGUI();
                 break;
             case GAME:
-                bag.getMenuManager().setGameMenus();
                 bag.getGameManager().showOutput();
                 break;
             case EDITOR:
-                bag.getMenuManager().setEditorMenus();
                 bag.getEditor().showOutput();
                 break;
             case PREFS:

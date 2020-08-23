@@ -2,8 +2,10 @@ package com.puttysoftware.commondialogs;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.util.concurrent.ExecutionException;
 
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.Mazer5D;
 
 public class CommonDialogs {
     // Fields
@@ -28,8 +30,12 @@ public class CommonDialogs {
      *            The dialog message.
      */
     public static void showDialog(final String msg) {
-        GeneralDialog.showDialog(msg, CommonDialogs.DEFAULT_TITLE,
-                CommonDialogs.ICON);
+        try {
+            GeneralDialog.showDialog(msg, CommonDialogs.DEFAULT_TITLE,
+                    CommonDialogs.ICON).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Mazer5D.logError(e);
+        }
     }
 
     /**
@@ -41,7 +47,11 @@ public class CommonDialogs {
      *            The dialog title.
      */
     public static void showTitledDialog(final String msg, final String title) {
-        GeneralDialog.showDialog(msg, title, CommonDialogs.ICON);
+        try {
+            GeneralDialog.showDialog(msg, title, CommonDialogs.ICON).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Mazer5D.logError(e);
+        }
     }
 
     /**
@@ -51,8 +61,12 @@ public class CommonDialogs {
      *            The dialog message.
      */
     public static void showErrorDialog(final String msg) {
-        GeneralDialog.showDialog(msg, CommonDialogs.DEFAULT_TITLE,
-                CommonDialogs.ICON);
+        try {
+            GeneralDialog.showDialog(msg, CommonDialogs.DEFAULT_TITLE,
+                    CommonDialogs.ICON).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Mazer5D.logError(e);
+        }
     }
 
     /**
@@ -64,7 +78,11 @@ public class CommonDialogs {
      *            The dialog title.
      */
     public static void showErrorDialog(final String msg, final String title) {
-        GeneralDialog.showDialog(msg, title, CommonDialogs.ICON);
+        try {
+            GeneralDialog.showDialog(msg, title, CommonDialogs.ICON).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Mazer5D.logError(e);
+        }
     }
 
     /**
@@ -83,8 +101,13 @@ public class CommonDialogs {
     public static String showInputDialog(final String prompt,
             final String title, final String[] choices,
             final String defaultChoice) {
-        return ListDialog.showDialog(prompt, title, CommonDialogs.ICON, choices,
-                defaultChoice);
+        try {
+            return ListDialog.showDialog(prompt, title, CommonDialogs.ICON,
+                    choices, defaultChoice).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Mazer5D.logError(e);
+            return null;
+        }
     }
 
     /**
@@ -98,8 +121,13 @@ public class CommonDialogs {
      */
     public static String showTextInputDialog(final String prompt,
             final String title) {
-        return TextInputDialog.showDialog(prompt, title, CommonDialogs.ICON,
-                null);
+        try {
+            return TextInputDialog
+                    .showDialog(prompt, title, CommonDialogs.ICON, null).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Mazer5D.logError(e);
+            return null;
+        }
     }
 
     /**
@@ -113,8 +141,14 @@ public class CommonDialogs {
      */
     public static String showTextInputDialogWithDefault(final String prompt,
             final String title, final String defaultValue) {
-        return TextInputDialog.showDialog(prompt, title, CommonDialogs.ICON,
-                defaultValue);
+        try {
+            return TextInputDialog
+                    .showDialog(prompt, title, CommonDialogs.ICON, defaultValue)
+                    .get();
+        } catch (InterruptedException | ExecutionException e) {
+            Mazer5D.logError(e);
+            return null;
+        }
     }
 
     /**
@@ -128,7 +162,13 @@ public class CommonDialogs {
      */
     public static int showConfirmDialog(final String prompt,
             final String title) {
-        return InputDialog.showConfirmDialog(prompt, title, CommonDialogs.ICON);
+        try {
+            return InputDialog
+                    .showConfirmDialog(prompt, title, CommonDialogs.ICON).get();
+        } catch (InterruptedException | ExecutionException e) {
+            Mazer5D.logError(e);
+            return CommonDialogs.CANCEL;
+        }
     }
 
     /**
@@ -142,14 +182,26 @@ public class CommonDialogs {
      */
     public static int showYNCConfirmDialog(final String prompt,
             final String title) {
-        return InputDialog.showYNCConfirmDialog(prompt, title,
-                CommonDialogs.ICON);
+        try {
+            return InputDialog
+                    .showYNCConfirmDialog(prompt, title, CommonDialogs.ICON)
+                    .get();
+        } catch (InterruptedException | ExecutionException e) {
+            Mazer5D.logError(e);
+            return CommonDialogs.CANCEL;
+        }
     }
 
     public static int showCustomDialog(final String prompt, final String title,
             final String[] buttonNames) {
-        return InputDialog.showDialog(prompt, title, CommonDialogs.ICON,
-                buttonNames);
+        try {
+            return InputDialog
+                    .showDialog(prompt, title, CommonDialogs.ICON, buttonNames)
+                    .get();
+        } catch (InterruptedException | ExecutionException e) {
+            Mazer5D.logError(e);
+            return CommonDialogs.CANCEL;
+        }
     }
 
     public static File showFileOpenDialog(final File dir,
@@ -176,23 +228,43 @@ public class CommonDialogs {
             final String title, final String[] possibleValues,
             final String initialValue, final String descValue,
             final String... possibleDescriptions) {
-        return ListWithDescDialog.showDialog(labelText, title, possibleValues,
-                initialValue, descValue, possibleDescriptions);
+        try {
+            return ListWithDescDialog
+                    .showDialog(labelText, title, possibleValues, initialValue,
+                            descValue, possibleDescriptions)
+                    .get();
+        } catch (InterruptedException | ExecutionException e) {
+            Mazer5D.logError(e);
+            return null;
+        }
     }
 
     public static int showImageListDialog(final String labelText,
             final String title, final BufferedImageIcon[] possibleValues,
             final int initialValue) {
-        return ImageListDialog.showDialog(labelText, title, possibleValues,
-                initialValue);
+        try {
+            return ImageListDialog
+                    .showDialog(labelText, title, possibleValues, initialValue)
+                    .get();
+        } catch (InterruptedException | ExecutionException e) {
+            Mazer5D.logError(e);
+            return CommonDialogs.CANCEL;
+        }
     }
 
     public static int showImageListWithDescDialog(final String labelText,
             final String title, final BufferedImageIcon[] possibleValues,
             final int initialValue, final String descValue,
             final String... possibleDescriptions) {
-        return ImageListWithDescDialog.showDialog(labelText, title,
-                possibleValues, initialValue, descValue, possibleDescriptions);
+        try {
+            return ImageListWithDescDialog
+                    .showDialog(labelText, title, possibleValues, initialValue,
+                            descValue, possibleDescriptions)
+                    .get();
+        } catch (InterruptedException | ExecutionException e) {
+            Mazer5D.logError(e);
+            return CommonDialogs.CANCEL;
+        }
     }
 
     public static File showFileSaveDialog(final File dir, final String prompt) {

@@ -69,7 +69,7 @@ public class LockedLoadTask extends Thread {
                 }
                 this.gameMaze.save();
                 // Final cleanup
-                app.getMenuManager().setLockedFlag();
+                app.getMazeManager().setLockedFlag();
                 app.getEditor().mazeChanged();
                 app.getGameManager().stateChanged();
                 CommonDialogs.showDialog("Locked " + sg + " file loaded.");

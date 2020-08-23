@@ -6,7 +6,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.gui;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.integration.NativeIntegration;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
@@ -24,7 +23,6 @@ public class BagOStuff {
     private AboutThisGame about;
     private GameManager gameMgr;
     private MazeManager mazeMgr;
-    private final MenuManager menuMgr;
     private ObjectHelpViewer oHelpMgr;
     private MazeEditor editor;
     private RuleSetPicker rsPicker;
@@ -35,9 +33,7 @@ public class BagOStuff {
     private static final int VERSION_BETA = 1;
 
     // Constructors
-    public BagOStuff(final NativeIntegration ni) {
-        this.menuMgr = new MenuManager();
-        this.menuMgr.configureMenus(ni);
+    public BagOStuff() {
         this.guiMgr = new GUIManager();
     }
 
@@ -50,10 +46,6 @@ public class BagOStuff {
         } else {
             CommonDialogs.showDialog(msg);
         }
-    }
-
-    public MenuManager getMenuManager() {
-        return this.menuMgr;
     }
 
     public GUIManager getGUIManager() {

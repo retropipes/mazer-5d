@@ -33,7 +33,7 @@ import com.puttysoftware.mazer5d.prefs.Prefs;
 public class MazeManager implements OpenFilesHandler {
     // Fields
     private Maze gameMaze;
-    private boolean loaded, isDirty;
+    private boolean loaded, isDirty, locked;
     private String scoresFileName;
     private String lastUsedMazeFile;
     private String lastUsedGameFile;
@@ -51,6 +51,7 @@ public class MazeManager implements OpenFilesHandler {
         this.mazeXML1Compatible = false;
         this.mazeXML2Compatible = false;
         this.mazeXML4Compatible = false;
+        this.gameMaze = new Maze();
     }
 
     // Methods
@@ -93,7 +94,6 @@ public class MazeManager implements OpenFilesHandler {
         this.setDirty(false);
         Mazer5D.getBagOStuff().getGameManager().stateChanged();
         Mazer5D.getBagOStuff().getEditor().mazeChanged();
-        Mazer5D.getBagOStuff().getMenuManager().checkFlags();
     }
 
     public MazeObject getMazeObject(final int x, final int y, final int z,
@@ -128,9 +128,19 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     public void setLoaded(final boolean status) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
         this.loaded = status;
-        app.getMenuManager().checkFlags();
+    }
+
+    public boolean isLocked() {
+        return this.locked;
+    }
+
+    public void clearLockedFlag() {
+        this.locked = false;
+    }
+
+    public void setLockedFlag() {
+        this.locked = true;
     }
 
     public boolean getDirty() {
@@ -138,9 +148,7 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     public void setDirty(final boolean newDirty) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
         this.isDirty = newDirty;
-        app.getMenuManager().checkFlags();
     }
 
     public void clearLastUsedFilenames() {

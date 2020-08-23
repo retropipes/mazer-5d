@@ -447,8 +447,8 @@ public class Maze {
     }
 
     public boolean doesLevelExistOffset(final int level) {
-        return this.activeLevel + level < this.levelCount && this.activeLevel
-                + level >= 0;
+        return this.activeLevel + level < this.levelCount
+                && this.activeLevel + level >= 0;
     }
 
     public void cutLevel() {
@@ -535,8 +535,8 @@ public class Maze {
         }
     }
 
-    public MazeObject getCell(final int row, final int col,
-            final int floor, final int extra) {
+    public MazeObject getCell(final int row, final int col, final int floor,
+            final int extra) {
         return this.mazeData.getCell(row, col, floor, extra);
     }
 
@@ -589,7 +589,7 @@ public class Maze {
     }
 
     public boolean doesPlayerExist() {
-        return this.mazeData.doesPlayerExist();
+        return this.mazeData != null ? this.mazeData.doesPlayerExist() : false;
     }
 
     public void findStart() {
@@ -754,21 +754,20 @@ public class Maze {
     }
 
     public void fillLevelDefault() {
-        final MazeObject bottom = GameObjects.createObject(Prefs
-                .getEditorDefaultFill());
+        final MazeObject bottom = GameObjects
+                .createObject(Prefs.getEditorDefaultFill());
         final MazeObject top = GameObjects.getEmptySpace();
         this.mazeData.fill(bottom, top);
     }
 
     public void fillFloorDefault(final int floor) {
-        final MazeObject bottom = GameObjects.createObject(Prefs
-                .getEditorDefaultFill());
+        final MazeObject bottom = GameObjects
+                .createObject(Prefs.getEditorDefaultFill());
         final MazeObject top = GameObjects.getEmptySpace();
         this.mazeData.fillFloor(bottom, top, floor);
     }
 
-    public void fillLevel(final MazeObject bottom,
-            final MazeObject top) {
+    public void fillLevel(final MazeObject bottom, final MazeObject top) {
         this.mazeData.fill(bottom, top);
     }
 
@@ -908,40 +907,40 @@ public class Maze {
         // Make base paths the same
         m.basePath = this.basePath;
         // Create metafile reader
-        try (XDataReader metaReader = new XDataReader(m.basePath
-                + File.separator + "metafile.xml", "maze")) {
+        try (XDataReader metaReader = new XDataReader(
+                m.basePath + File.separator + "metafile.xml", "maze")) {
             // Read metafile
             final int version = m.readMazeMetafileXML(metaReader);
             // Set XML compatibility flags
             if (version == XMLFormatConstants.XML_MAZE_FORMAT_1) {
-                Mazer5D.getBagOStuff().getMazeManager().setMazeXML1Compatible(
-                        true);
-                Mazer5D.getBagOStuff().getMazeManager().setMazeXML2Compatible(
-                        true);
-                Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(
-                        true);
+                Mazer5D.getBagOStuff().getMazeManager()
+                        .setMazeXML1Compatible(true);
+                Mazer5D.getBagOStuff().getMazeManager()
+                        .setMazeXML2Compatible(true);
+                Mazer5D.getBagOStuff().getMazeManager()
+                        .setMazeXML4Compatible(true);
             } else if (version == XMLFormatConstants.XML_MAZE_FORMAT_2) {
-                Mazer5D.getBagOStuff().getMazeManager().setMazeXML1Compatible(
-                        false);
-                Mazer5D.getBagOStuff().getMazeManager().setMazeXML2Compatible(
-                        true);
-                Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(
-                        true);
+                Mazer5D.getBagOStuff().getMazeManager()
+                        .setMazeXML1Compatible(false);
+                Mazer5D.getBagOStuff().getMazeManager()
+                        .setMazeXML2Compatible(true);
+                Mazer5D.getBagOStuff().getMazeManager()
+                        .setMazeXML4Compatible(true);
             } else if (version == XMLFormatConstants.XML_MAZE_FORMAT_3
                     || version == XMLFormatConstants.XML_MAZE_FORMAT_4) {
-                Mazer5D.getBagOStuff().getMazeManager().setMazeXML1Compatible(
-                        false);
-                Mazer5D.getBagOStuff().getMazeManager().setMazeXML2Compatible(
-                        false);
-                Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(
-                        true);
+                Mazer5D.getBagOStuff().getMazeManager()
+                        .setMazeXML1Compatible(false);
+                Mazer5D.getBagOStuff().getMazeManager()
+                        .setMazeXML2Compatible(false);
+                Mazer5D.getBagOStuff().getMazeManager()
+                        .setMazeXML4Compatible(true);
             } else {
-                Mazer5D.getBagOStuff().getMazeManager().setMazeXML1Compatible(
-                        false);
-                Mazer5D.getBagOStuff().getMazeManager().setMazeXML2Compatible(
-                        false);
-                Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(
-                        false);
+                Mazer5D.getBagOStuff().getMazeManager()
+                        .setMazeXML1Compatible(false);
+                Mazer5D.getBagOStuff().getMazeManager()
+                        .setMazeXML2Compatible(false);
+                Mazer5D.getBagOStuff().getMazeManager()
+                        .setMazeXML4Compatible(false);
             }
             // Create data reader
             try (XDataReader dataReader = m.getLevelReaderXML()) {
@@ -1020,8 +1019,8 @@ public class Maze {
         // Clear XML 4 compatibility flag
         Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(false);
         // Create metafile writer
-        try (XDataWriter metaWriter = new XDataWriter(this.basePath
-                + File.separator + "metafile.xml", "maze")) {
+        try (XDataWriter metaWriter = new XDataWriter(
+                this.basePath + File.separator + "metafile.xml", "maze")) {
             // Write metafile
             this.writeMazeMetafileXML(metaWriter);
             // Create data writer

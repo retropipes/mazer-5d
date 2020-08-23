@@ -22,6 +22,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
+import javax.swing.JToggleButton;
 import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
@@ -82,15 +83,26 @@ public class MazeEditor {
     private int currentObjectIndex;
     private UndoRedoEngine engine;
     private EditorLocationManager elMgr;
-    EditorViewingWindowManager evMgr;
+    private EditorViewingWindowManager evMgr;
     private JLabel[][] drawGrid;
     private boolean mazeChanged;
-    boolean goToDestMode;
+    private boolean goToDestMode;
     private static final MazeObject VOID = GameObjects
             .createObject(MazeObjects.BOUNDS);
     private static final MazeObject DEST = GameObjects
             .createObject(MazeObjects.DESTINATION);
     private static final MazeObject EMPTY = GameObjects.getEmptySpace();
+    private JButton editorUndo, editorRedo, editorCutLevel, editorCopyLevel,
+            editorPasteLevel, editorInsertLevelFromClipboard,
+            editorClearHistory, editorGoToLocation, editorGoToDestination,
+            editorUpOneFloor, editorDownOneFloor, editorUpOneLevel,
+            editorDownOneLevel, editorAddLevel, editorRemoveLevel,
+            editorResizeLevel, editorToggleLayer, editorLevelPreferences,
+            editorMazePreferences, editorSetStartPoint,
+            editorSetFirstMovingFinish, editorFillFloor, editorFillLevel,
+            editorFillFloorRandomly, editorFillLevelRandomly,
+            editorFillRuleSets;
+    private JToggleButton editorFillUseRuleSets;
     private static final int CEF_DEST1 = 1;
     private static final int CEF_DEST2 = 2;
     private static final int CEF_CONDITION = 3;
@@ -171,7 +183,7 @@ public class MazeEditor {
             this.fixLimits();
             this.setUpGUI();
         }
-        this.checkMenus();
+        this.checkFlags();
         this.redrawEditor();
     }
 
@@ -189,7 +201,7 @@ public class MazeEditor {
             this.fixLimits();
             this.setUpGUI();
         }
-        this.checkMenus();
+        this.checkFlags();
         this.redrawEditor();
     }
 
@@ -199,90 +211,210 @@ public class MazeEditor {
         Mazer5D.getBagOStuff().getMazeManager().getMaze().switchLevel(w);
         this.fixLimits();
         this.setUpGUI();
-        this.checkMenus();
+        this.checkFlags();
         this.redrawEditor();
     }
 
-    private void checkMenus() {
+    private void checkFlags() {
         final BagOStuff app = Mazer5D.getBagOStuff();
         if (Modes.inEditor()) {
             final Maze m = app.getMazeManager().getMaze();
             if (m.getLevels() == Maze.getMinLevels()) {
-                app.getMenuManager().disableRemoveLevel();
+                this.disableRemoveLevel();
             } else {
-                app.getMenuManager().enableRemoveLevel();
+                this.enableRemoveLevel();
             }
             if (m.getLevels() == Maze.getMaxLevels()) {
-                app.getMenuManager().disableAddLevel();
+                this.disableAddLevel();
             } else {
-                app.getMenuManager().enableAddLevel();
+                this.enableAddLevel();
             }
             try {
                 if (app.getMazeManager().getMaze()
                         .is3rdDimensionWraparoundEnabled()) {
-                    app.getMenuManager().enableDownOneFloor();
+                    this.enableDownOneFloor();
                 } else {
                     if (this.elMgr.getEditorLocationZ() == this.elMgr
                             .getMinEditorLocationZ()) {
-                        app.getMenuManager().disableDownOneFloor();
+                        this.disableDownOneFloor();
                     } else {
-                        app.getMenuManager().enableDownOneFloor();
+                        this.enableDownOneFloor();
                     }
                 }
                 if (app.getMazeManager().getMaze()
                         .is3rdDimensionWraparoundEnabled()) {
-                    app.getMenuManager().enableUpOneFloor();
+                    this.enableUpOneFloor();
                 } else {
                     if (this.elMgr.getEditorLocationZ() == this.elMgr
                             .getMaxEditorLocationZ()) {
-                        app.getMenuManager().disableUpOneFloor();
+                        this.disableUpOneFloor();
                     } else {
-                        app.getMenuManager().enableUpOneFloor();
+                        this.enableUpOneFloor();
                     }
                 }
                 if (this.elMgr.getEditorLocationW() == this.elMgr
                         .getMinEditorLocationW()) {
-                    app.getMenuManager().disableDownOneLevel();
+                    this.disableDownOneLevel();
                 } else {
-                    app.getMenuManager().enableDownOneLevel();
+                    this.enableDownOneLevel();
                 }
                 if (this.elMgr.getEditorLocationW() == this.elMgr
                         .getMaxEditorLocationW()) {
-                    app.getMenuManager().disableUpOneLevel();
+                    this.disableUpOneLevel();
                 } else {
-                    app.getMenuManager().enableUpOneLevel();
+                    this.enableUpOneLevel();
                 }
             } catch (final NullPointerException npe) {
-                app.getMenuManager().disableDownOneFloor();
-                app.getMenuManager().disableUpOneFloor();
-                app.getMenuManager().disableDownOneLevel();
-                app.getMenuManager().disableUpOneLevel();
+                this.disableDownOneFloor();
+                this.disableUpOneFloor();
+                this.disableDownOneLevel();
+                this.disableUpOneLevel();
             }
             if (this.elMgr != null) {
                 if (this.elMgr.getEditorLocationE() != Layers.GROUND) {
-                    app.getMenuManager().enableSetStartPoint();
+                    this.enableSetStartPoint();
                 } else {
-                    app.getMenuManager().disableSetStartPoint();
+                    this.disableSetStartPoint();
                 }
             } else {
-                app.getMenuManager().disableSetStartPoint();
+                this.disableSetStartPoint();
             }
             if (!this.engine.tryUndo()) {
-                app.getMenuManager().disableUndo();
+                this.disableUndo();
             } else {
-                app.getMenuManager().enableUndo();
+                this.enableUndo();
             }
             if (!this.engine.tryRedo()) {
-                app.getMenuManager().disableRedo();
+                this.disableRedo();
             } else {
-                app.getMenuManager().enableRedo();
+                this.enableRedo();
             }
             if (this.engine.tryBoth()) {
-                app.getMenuManager().disableClearHistory();
+                this.disableClearHistory();
             } else {
-                app.getMenuManager().enableClearHistory();
+                this.enableClearHistory();
+            }
+            if (app.getMazeManager().getMaze().isPasteBlocked()) {
+                this.disablePasteLevel();
+                this.disableInsertLevelFromClipboard();
+            } else {
+                this.enablePasteLevel();
+                this.enableInsertLevelFromClipboard();
+            }
+            if (app.getMazeManager().getMaze().isCutBlocked()) {
+                this.disableCutLevel();
+            } else {
+                this.enableCutLevel();
             }
         }
+    }
+
+    private void enableUpOneFloor() {
+        this.editorUpOneFloor.setEnabled(true);
+    }
+
+    private void disableUpOneFloor() {
+        this.editorUpOneFloor.setEnabled(false);
+    }
+
+    private void enableDownOneFloor() {
+        this.editorDownOneFloor.setEnabled(true);
+    }
+
+    private void disableDownOneFloor() {
+        this.editorDownOneFloor.setEnabled(false);
+    }
+
+    private void enableUpOneLevel() {
+        this.editorUpOneLevel.setEnabled(true);
+    }
+
+    private void disableUpOneLevel() {
+        this.editorUpOneLevel.setEnabled(false);
+    }
+
+    private void enableDownOneLevel() {
+        this.editorDownOneLevel.setEnabled(true);
+    }
+
+    private void disableDownOneLevel() {
+        this.editorDownOneLevel.setEnabled(false);
+    }
+
+    private void enableAddLevel() {
+        this.editorAddLevel.setEnabled(true);
+    }
+
+    private void disableAddLevel() {
+        this.editorAddLevel.setEnabled(false);
+    }
+
+    private void enableRemoveLevel() {
+        this.editorRemoveLevel.setEnabled(true);
+    }
+
+    private void disableRemoveLevel() {
+        this.editorRemoveLevel.setEnabled(false);
+    }
+
+    private void enableUndo() {
+        this.editorUndo.setEnabled(true);
+    }
+
+    private void disableUndo() {
+        this.editorUndo.setEnabled(false);
+    }
+
+    private void enableRedo() {
+        this.editorRedo.setEnabled(true);
+    }
+
+    private void disableRedo() {
+        this.editorRedo.setEnabled(false);
+    }
+
+    private void enableClearHistory() {
+        this.editorClearHistory.setEnabled(true);
+    }
+
+    private void disableClearHistory() {
+        this.editorClearHistory.setEnabled(false);
+    }
+
+    private void enableCutLevel() {
+        this.editorCutLevel.setEnabled(true);
+    }
+
+    private void disableCutLevel() {
+        this.editorCutLevel.setEnabled(false);
+    }
+
+    private void enablePasteLevel() {
+        this.editorPasteLevel.setEnabled(true);
+    }
+
+    private void disablePasteLevel() {
+        this.editorPasteLevel.setEnabled(false);
+    }
+
+    private void enableInsertLevelFromClipboard() {
+        this.editorInsertLevelFromClipboard.setEnabled(true);
+    }
+
+    private void disableInsertLevelFromClipboard() {
+        this.editorInsertLevelFromClipboard.setEnabled(false);
+    }
+
+    private void enableSetStartPoint() {
+        this.editorSetStartPoint.setEnabled(true);
+    }
+
+    private void disableSetStartPoint() {
+        this.editorSetStartPoint.setEnabled(false);
+    }
+
+    private boolean useFillRuleSets() {
+        return this.editorFillUseRuleSets.isSelected();
     }
 
     public void toggleLayer() {
@@ -293,7 +425,7 @@ public class MazeEditor {
         }
         this.updatePicker();
         this.redrawEditor();
-        this.checkMenus();
+        this.checkFlags();
     }
 
     public void setMazePrefs() {
@@ -427,8 +559,7 @@ public class MazeEditor {
             choices = this.objectObjects;
         }
         final MazeObject mo = choices[this.currentObjectIndex];
-        final MazeObject instance = GameObjects
-                .createObject(mo.getUniqueID());
+        final MazeObject instance = GameObjects.createObject(mo.getUniqueID());
         this.elMgr.setEditorLocationX(gridX);
         this.elMgr.setEditorLocationY(gridY);
         mo.editorPlaceHook();
@@ -443,7 +574,7 @@ public class MazeEditor {
                     this.elMgr.getEditorLocationE());
             this.checkStairPair(this.elMgr.getEditorLocationZ());
             app.getMazeManager().setDirty(true);
-            this.checkMenus();
+            this.checkFlags();
             this.redrawEditor();
         } catch (final ArrayIndexOutOfBoundsException aioob) {
             app.getMazeManager().getMaze().setCell(this.savedMazeObject, gridX,
@@ -464,15 +595,14 @@ public class MazeEditor {
         final int gridY = y / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         try {
-            final MazeObject mo = app.getMazeManager().getMaze().getCell(
-                    gridX, gridY, this.elMgr.getEditorLocationZ(),
+            final MazeObject mo = app.getMazeManager().getMaze().getCell(gridX,
+                    gridY, this.elMgr.getEditorLocationZ(),
                     this.elMgr.getEditorLocationE());
             this.elMgr.setEditorLocationX(gridX);
             this.elMgr.setEditorLocationY(gridY);
             mo.editorProbeHook();
         } catch (final ArrayIndexOutOfBoundsException aioob) {
-            final MazeObject ev = GameObjects
-                    .createObject(MazeObjects.BOUNDS);
+            final MazeObject ev = GameObjects.createObject(MazeObjects.BOUNDS);
             ev.determineCurrentAppearance(gridX, gridY,
                     this.elMgr.getEditorLocationZ());
             ev.editorProbeHook();
@@ -490,8 +620,8 @@ public class MazeEditor {
         final int gridY = y / ImageConstants.SIZE
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         try {
-            final MazeObject mo = app.getMazeManager().getMaze().getCell(
-                    gridX, gridY, this.elMgr.getEditorLocationZ(),
+            final MazeObject mo = app.getMazeManager().getMaze().getCell(gridX,
+                    gridY, this.elMgr.getEditorLocationZ(),
                     this.elMgr.getEditorLocationE());
             this.elMgr.setEditorLocationX(gridX);
             this.elMgr.setEditorLocationY(gridY);
@@ -511,7 +641,7 @@ public class MazeEditor {
                             this.elMgr.getEditorLocationZ(),
                             this.elMgr.getEditorLocationE());
                     this.checkStairPair(this.elMgr.getEditorLocationZ());
-                    this.checkMenus();
+                    this.checkFlags();
                     app.getMazeManager().setDirty(true);
                 }
             } else {
@@ -691,8 +821,8 @@ public class MazeEditor {
             destX = twt.getDestinationRow();
             destY = twt.getDestinationColumn();
             destZ = twt.getDestinationFloor();
-            final MazeObject mo2 = app.getMazeManager().getMaze()
-                    .getCell(destX, destY, destZ, Layers.OBJECT);
+            final MazeObject mo2 = app.getMazeManager().getMaze().getCell(destX,
+                    destY, destZ, Layers.OBJECT);
             name2 = mo2.getName();
             if (name2.equals("Two-Way Teleport")) {
                 MazeEditor.unpairTwoWayTeleport(destX, destY, destZ);
@@ -713,8 +843,8 @@ public class MazeEditor {
             destX = twt.getDestinationRow();
             destY = twt.getDestinationColumn();
             destZ = twt.getDestinationFloor();
-            final MazeObject mo2 = app.getMazeManager().getMaze()
-                    .getCell(destX, destY, destZ, Layers.OBJECT);
+            final MazeObject mo2 = app.getMazeManager().getMaze().getCell(destX,
+                    destY, destZ, Layers.OBJECT);
             name2 = mo2.getName();
             if (!name2.equals("Two-Way Teleport")) {
                 this.pairTwoWayTeleport(destX, destY, destZ);
@@ -740,7 +870,6 @@ public class MazeEditor {
 
     public void editConditionalTeleportDestination(
             final GenericConditionalTeleport instance) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
         final String[] choices = new String[] { "Edit Destination 1",
                 "Edit Destination 2", "Edit Condition Trigger",
                 "Edit Trigger Type" };
@@ -803,8 +932,8 @@ public class MazeEditor {
                     this.vertScroll.addAdjustmentListener(this.cthandler);
                     this.secondaryPane.addMouseListener(this.cthandler);
                     this.elMgr.setCameFromZ(this.elMgr.getEditorLocationZ());
-                    app.getMenuManager().disableDownOneLevel();
-                    app.getMenuManager().disableUpOneLevel();
+                    this.disableDownOneLevel();
+                    this.disableUpOneLevel();
                 }
             } else {
                 this.instanceBeingEdited = null;
@@ -813,7 +942,6 @@ public class MazeEditor {
     }
 
     public MazeObject editTeleportDestination(final int type) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
         String input1 = null, input2 = null;
         this.TELEPORT_TYPE = type;
         int destX = 0, destY = 0;
@@ -907,8 +1035,8 @@ public class MazeEditor {
                 this.vertScroll.addAdjustmentListener(this.thandler);
                 this.secondaryPane.addMouseListener(this.thandler);
                 this.elMgr.setCameFromZ(this.elMgr.getEditorLocationZ());
-                app.getMenuManager().disableDownOneLevel();
-                app.getMenuManager().disableUpOneLevel();
+                this.disableDownOneLevel();
+                this.disableUpOneLevel();
                 break;
             default:
                 break;
@@ -919,7 +1047,6 @@ public class MazeEditor {
 
     public MazeObject editMetalButtonTarget() {
         Mazer5D.getBagOStuff().showMessage("Click to set metal button target");
-        final BagOStuff app = Mazer5D.getBagOStuff();
         this.horzScroll.removeAdjustmentListener(this.mhandler);
         this.vertScroll.removeAdjustmentListener(this.mhandler);
         this.secondaryPane.removeMouseListener(this.mhandler);
@@ -927,8 +1054,8 @@ public class MazeEditor {
         this.vertScroll.addAdjustmentListener(this.mbhandler);
         this.secondaryPane.addMouseListener(this.mbhandler);
         this.elMgr.setCameFromZ(this.elMgr.getEditorLocationZ());
-        app.getMenuManager().disableDownOneLevel();
-        app.getMenuManager().disableUpOneLevel();
+        this.disableDownOneLevel();
+        this.disableUpOneLevel();
         return null;
     }
 
@@ -1109,7 +1236,7 @@ public class MazeEditor {
         this.horzScroll.addAdjustmentListener(this.mhandler);
         this.vertScroll.addAdjustmentListener(this.mhandler);
         this.secondaryPane.addMouseListener(this.mhandler);
-        this.checkMenus();
+        this.checkFlags();
         if (this.TELEPORT_TYPE == MazeEditor.TELEPORT_TYPE_MOVING_FINISH) {
             Mazer5D.getBagOStuff().showMessage("Next moving finish set.");
         } else if (this.TELEPORT_TYPE == MazeEditor.TELEPORT_TYPE_FIRST_MOVING_FINISH) {
@@ -1150,7 +1277,7 @@ public class MazeEditor {
         this.horzScroll.addAdjustmentListener(this.mhandler);
         this.vertScroll.addAdjustmentListener(this.mhandler);
         this.secondaryPane.addMouseListener(this.mhandler);
-        this.checkMenus();
+        this.checkFlags();
         Mazer5D.getBagOStuff().showMessage("Destination set.");
         app.getMazeManager().setDirty(true);
         this.redrawEditor();
@@ -1191,7 +1318,7 @@ public class MazeEditor {
         this.horzScroll.addAdjustmentListener(this.mhandler);
         this.vertScroll.addAdjustmentListener(this.mhandler);
         this.secondaryPane.addMouseListener(this.mhandler);
-        this.checkMenus();
+        this.checkFlags();
         Mazer5D.getBagOStuff().showMessage("Target set.");
         app.getMazeManager().setDirty(true);
         this.redrawEditor();
@@ -1210,7 +1337,7 @@ public class MazeEditor {
                         this.elMgr.getEditorLocationX(),
                         this.elMgr.getEditorLocationY(),
                         this.elMgr.getCameFromZ(), Layers.OBJECT);
-        this.checkMenus();
+        this.checkFlags();
         Mazer5D.getBagOStuff().showMessage("Contents set.");
         app.getMazeManager().setDirty(true);
         this.redrawEditor();
@@ -1352,44 +1479,44 @@ public class MazeEditor {
             this.borderPane.add(this.outputPane, BorderLayout.CENTER);
             this.borderPane.add(this.picker.getPicker(), BorderLayout.EAST);
             this.redrawEditor();
-            this.checkMenus();
+            this.checkFlags();
         } else {
             CommonDialogs.showDialog("No Maze Opened");
         }
     }
 
     public void newMaze() {
-        final BagOStuff app = Mazer5D.getBagOStuff();
+        final BagOStuff bag = Mazer5D.getBagOStuff();
         boolean success = true;
         boolean saved = true;
         int status = 0;
-        if (app.getMazeManager().getDirty()) {
-            status = app.getMazeManager().showSaveDialog();
+        if (bag.getMazeManager().getDirty()) {
+            status = bag.getMazeManager().showSaveDialog();
             if (status == CommonDialogs.YES_OPTION) {
-                app.getMazeManager().saveMaze();
-                saved = !app.getMazeManager().getDirty();
+                bag.getMazeManager().saveMaze();
+                saved = !bag.getMazeManager().getDirty();
             } else if (status == CommonDialogs.CANCEL_OPTION) {
                 saved = false;
             } else {
-                app.getMazeManager().setDirty(false);
+                bag.getMazeManager().setDirty(false);
             }
         }
         if (saved) {
-            app.getGameManager().getPlayerManager().resetPlayerLocation();
-            app.getMazeManager().setMaze(new Maze());
+            bag.getGameManager().getPlayerManager().resetPlayerLocation();
+            bag.getMazeManager().setMaze(new Maze());
             success = this.addLevelInternal(true);
             if (success) {
-                app.getMazeManager().clearLastUsedFilenames();
+                bag.getMazeManager().clearLastUsedFilenames();
                 this.clearHistory();
             }
         } else {
             success = false;
         }
-        app.getMazeManager().setLoaded(success);
+        bag.getMazeManager().setLoaded(success);
         if (success) {
             this.mazeChanged = true;
-            app.getGameManager().stateChanged();
-            app.getMenuManager().clearLockedFlag();
+            bag.getGameManager().stateChanged();
+            bag.getMazeManager().clearLockedFlag();
         }
     }
 
@@ -1421,7 +1548,7 @@ public class MazeEditor {
         Mazer5D.getBagOStuff().getMazeManager().getMaze().cutLevel();
         this.fixLimits();
         this.updateEditorLevelAbsolute(level);
-        this.checkMenus();
+        this.checkFlags();
     }
 
     public void copyLevel() {
@@ -1429,7 +1556,7 @@ public class MazeEditor {
         Mazer5D.getBagOStuff().getMazeManager().getMaze().copyLevel();
         this.fixLimits();
         this.updateEditorLevelAbsolute(level);
-        this.checkMenus();
+        this.checkFlags();
     }
 
     public void pasteLevel() {
@@ -1437,7 +1564,7 @@ public class MazeEditor {
         Mazer5D.getBagOStuff().getMazeManager().getMaze().pasteLevel();
         this.fixLimits();
         this.updateEditorLevelAbsolute(level);
-        this.checkMenus();
+        this.checkFlags();
     }
 
     public void insertLevelFromClipboard() {
@@ -1446,7 +1573,7 @@ public class MazeEditor {
                 .insertLevelFromClipboard();
         this.fixLimits();
         this.updateEditorLevelAbsolute(level);
-        this.checkMenus();
+        this.checkFlags();
     }
 
     public void fillLevel() {
@@ -1474,7 +1601,7 @@ public class MazeEditor {
     public void fillLevelRandomly() {
         if (this.confirmNonUndoable(
                 "overwrite the active level with random data")) {
-            if (Mazer5D.getBagOStuff().getMenuManager().useFillRuleSets()) {
+            if (this.useFillRuleSets()) {
                 Mazer5D.getBagOStuff().getMazeManager().getMaze()
                         .fillLevelRandomlyCustom();
             } else {
@@ -1490,7 +1617,7 @@ public class MazeEditor {
     public void fillFloorRandomly() {
         if (this.confirmNonUndoable(
                 "overwrite the active floor within the active level with random data")) {
-            if (Mazer5D.getBagOStuff().getMenuManager().useFillRuleSets()) {
+            if (this.useFillRuleSets()) {
                 Mazer5D.getBagOStuff().getMazeManager().getMaze()
                         .fillFloorRandomlyCustom(
                                 this.elMgr.getEditorLocationZ());
@@ -1587,7 +1714,7 @@ public class MazeEditor {
                             app.getMazeManager().getMaze().save();
                             app.getMazeManager().getMaze()
                                     .switchLevel(saveLevel);
-                            this.checkMenus();
+                            this.checkFlags();
                         }
                     } catch (final NumberFormatException nf) {
                         CommonDialogs.showDialog(nf.getMessage());
@@ -1674,7 +1801,7 @@ public class MazeEditor {
                                 - (this.evMgr.getViewingWindowSizeY() - 1) / 2);
                         // Save the entire level
                         app.getMazeManager().getMaze().save();
-                        this.checkMenus();
+                        this.checkFlags();
                         // Redraw
                         this.redrawEditor();
                     } catch (final NumberFormatException nf) {
@@ -1721,7 +1848,7 @@ public class MazeEditor {
                         // Deleted current level - go to level 1
                         this.updateEditorLevelAbsolute(0);
                     }
-                    this.checkMenus();
+                    this.checkFlags();
                 }
             } catch (final NumberFormatException nf) {
                 CommonDialogs.showDialog(nf.getMessage());
@@ -1784,8 +1911,7 @@ public class MazeEditor {
                     + this.evMgr.getViewingWindowLocationY() + xOffset
                     - yOffset;
             final int locZ = this.elMgr.getEditorLocationZ();
-            final MazeObject there = Mazer5D.getBagOStuff()
-                    .getMazeManager()
+            final MazeObject there = Mazer5D.getBagOStuff().getMazeManager()
                     .getMazeObject(locX, locY, locZ, Layers.OBJECT);
             if (there instanceof GenericTeleport) {
                 final GenericTeleport gt = (GenericTeleport) there;
@@ -1804,8 +1930,7 @@ public class MazeEditor {
     }
 
     public void showOutput() {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getMenuManager().setEditorMenus();
+        this.checkFlags();
         this.outputFrame.attachAndSave(this.borderPane);
         this.outputFrame.setTitle("Editor");
     }
@@ -1820,7 +1945,7 @@ public class MazeEditor {
 
     void enableOutput() {
         this.outputPane.setEnabled(true);
-        this.checkMenus();
+        this.checkFlags();
     }
 
     public void exitEditor() {
@@ -1838,12 +1963,139 @@ public class MazeEditor {
     }
 
     private void setUpGUI() {
-        this.messageLabel = new JLabel(" ");
+        // Create content containers
         this.outputFrame = MainWindow.getMainWindow();
+        this.borderPane = this.outputFrame.createContent();
         this.outputPane = new JPanel();
         this.secondaryPane = new JPanel();
-        this.borderPane = this.outputFrame.createContent();
+        this.treasurePane = this.outputFrame.createContent();
+        // Configure content containers
         this.borderPane.setLayout(new BorderLayout());
+        this.gridbag = new GridBagLayout();
+        this.c = new GridBagConstraints();
+        this.outputPane.setLayout(this.gridbag);
+        this.secondaryPane
+                .setLayout(new GridLayout(this.evMgr.getViewingWindowSizeX(),
+                        this.evMgr.getViewingWindowSizeY()));
+        this.treasurePane.setLayout(new BorderLayout());
+        // Create components
+        this.messageLabel = new JLabel(" ");
+        this.horzScroll = new JScrollBar(Adjustable.HORIZONTAL,
+                this.evMgr.getMinimumViewingWindowLocationY(),
+                this.evMgr.getViewingWindowSizeY(),
+                this.evMgr.getMinimumViewingWindowLocationY(),
+                this.evMgr.getMaximumViewingWindowLocationY());
+        this.vertScroll = new JScrollBar(Adjustable.VERTICAL,
+                this.evMgr.getMinimumViewingWindowLocationX(),
+                this.evMgr.getViewingWindowSizeX(),
+                this.evMgr.getMinimumViewingWindowLocationX(),
+                this.evMgr.getMaximumViewingWindowLocationX());
+        // Attach component event handlers
+        this.horzScroll.addAdjustmentListener(this.mhandler);
+        this.vertScroll.addAdjustmentListener(this.mhandler);
+        this.secondaryPane.addMouseListener(this.mhandler);
+        // Create command buttons
+        this.editorUndo = new JButton("Undo");
+        this.editorRedo = new JButton("Redo");
+        this.editorCutLevel = new JButton("Cut Level");
+        this.editorCopyLevel = new JButton("Copy Level");
+        this.editorPasteLevel = new JButton("Paste Level");
+        this.editorInsertLevelFromClipboard = new JButton(
+                "Insert Level From Clipboard");
+        this.editorClearHistory = new JButton("Clear History");
+        this.editorGoToLocation = new JButton("Go To Location...");
+        this.editorGoToDestination = new JButton("Go To Destination...");
+        this.editorUpOneFloor = new JButton("Up One Floor");
+        this.editorDownOneFloor = new JButton("Down One Floor");
+        this.editorUpOneLevel = new JButton("Up One Level");
+        this.editorDownOneLevel = new JButton("Down One Level");
+        this.editorAddLevel = new JButton("Add a Level...");
+        this.editorRemoveLevel = new JButton("Remove a Level...");
+        this.editorResizeLevel = new JButton("Resize Current Level...");
+        this.editorFillFloor = new JButton("Fill Current Floor");
+        this.editorFillLevel = new JButton("Fill Current Level");
+        this.editorFillFloorRandomly = new JButton(
+                "Fill Current Floor Randomly");
+        this.editorFillLevelRandomly = new JButton(
+                "Fill Current Level Randomly");
+        this.editorFillRuleSets = new JButton("Fill Rule Sets...");
+        this.editorFillUseRuleSets = new JToggleButton("Use Fill Rule Sets");
+        this.editorToggleLayer = new JButton("Toggle Layer");
+        this.editorLevelPreferences = new JButton("Level Preferences...");
+        this.editorMazePreferences = new JButton("Maze Preferences...");
+        this.editorSetStartPoint = new JButton("Set Start Point...");
+        this.editorSetFirstMovingFinish = new JButton(
+                "Set First Moving Finish...");
+        // Attach command event handlers
+        this.editorUndo.addActionListener(h -> this.undo());
+        this.editorRedo.addActionListener(h -> this.redo());
+        this.editorCutLevel.addActionListener(h -> this.cutLevel());
+        this.editorCopyLevel.addActionListener(h -> this.copyLevel());
+        this.editorPasteLevel.addActionListener(h -> this.pasteLevel());
+        this.editorInsertLevelFromClipboard
+                .addActionListener(h -> this.insertLevelFromClipboard());
+        this.editorClearHistory.addActionListener(h -> this.clearHistory());
+        this.editorGoToLocation
+                .addActionListener(h -> this.goToLocationHandler());
+        this.editorGoToDestination
+                .addActionListener(h -> this.goToDestinationHandler());
+        this.editorUpOneFloor
+                .addActionListener(h -> this.updateEditorPosition(0, 0, 1, 0));
+        this.editorDownOneFloor
+                .addActionListener(h -> this.updateEditorPosition(0, 0, -1, 0));
+        this.editorUpOneLevel
+                .addActionListener(h -> this.updateEditorPosition(0, 0, 0, 1));
+        this.editorDownOneLevel
+                .addActionListener(h -> this.updateEditorPosition(0, 0, 0, -1));
+        this.editorAddLevel.addActionListener(h -> this.addLevel());
+        this.editorRemoveLevel.addActionListener(h -> this.removeLevel());
+        this.editorResizeLevel.addActionListener(h -> this.resizeLevel());
+        this.editorFillFloor.addActionListener(h -> this.fillFloor());
+        this.editorFillLevel.addActionListener(h -> this.fillLevel());
+        this.editorFillFloorRandomly
+                .addActionListener(h -> this.fillFloorRandomly());
+        this.editorFillLevelRandomly
+                .addActionListener(h -> this.fillLevelRandomly());
+        this.editorFillRuleSets.addActionListener(
+                h -> Mazer5D.getBagOStuff().getRuleSetPicker().editRuleSets());
+        this.editorToggleLayer.addActionListener(h -> this.toggleLayer());
+        this.editorLevelPreferences
+                .addActionListener(h -> this.setLevelPrefs());
+        this.editorMazePreferences.addActionListener(h -> this.setMazePrefs());
+        this.editorSetStartPoint
+                .addActionListener(h -> this.editPlayerLocation());
+        this.editorSetFirstMovingFinish
+                .addActionListener(h -> this.editTeleportDestination(
+                        MazeEditor.TELEPORT_TYPE_FIRST_MOVING_FINISH));
+        // Set initial command state
+        this.editorUndo.setEnabled(false);
+        this.editorRedo.setEnabled(false);
+        this.editorCutLevel.setEnabled(true);
+        this.editorCopyLevel.setEnabled(true);
+        this.editorPasteLevel.setEnabled(true);
+        this.editorInsertLevelFromClipboard.setEnabled(true);
+        this.editorClearHistory.setEnabled(false);
+        this.editorGoToLocation.setEnabled(true);
+        this.editorGoToDestination.setEnabled(true);
+        this.editorUpOneFloor.setEnabled(false);
+        this.editorDownOneFloor.setEnabled(false);
+        this.editorUpOneLevel.setEnabled(false);
+        this.editorDownOneLevel.setEnabled(false);
+        this.editorAddLevel.setEnabled(false);
+        this.editorRemoveLevel.setEnabled(false);
+        this.editorResizeLevel.setEnabled(true);
+        this.editorFillFloor.setEnabled(true);
+        this.editorFillLevel.setEnabled(true);
+        this.editorFillFloorRandomly.setEnabled(true);
+        this.editorFillLevelRandomly.setEnabled(true);
+        this.editorFillRuleSets.setEnabled(true);
+        this.editorFillUseRuleSets.setEnabled(true);
+        this.editorToggleLayer.setEnabled(true);
+        this.editorLevelPreferences.setEnabled(true);
+        this.editorMazePreferences.setEnabled(true);
+        this.editorSetStartPoint.setEnabled(true);
+        this.editorSetFirstMovingFinish.setEnabled(true);
+        // Assemble everything together
         this.drawGrid = new JLabel[this.evMgr
                 .getViewingWindowSizeX()][this.evMgr.getViewingWindowSizeY()];
         for (int x = 0; x < this.evMgr.getViewingWindowSizeX(); x++) {
@@ -1856,25 +2108,7 @@ public class MazeEditor {
                 this.secondaryPane.add(this.drawGrid[x][y]);
             }
         }
-        this.borderPane.add(this.outputPane, BorderLayout.CENTER);
-        this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
-        this.gridbag = new GridBagLayout();
-        this.c = new GridBagConstraints();
-        this.outputPane.setLayout(this.gridbag);
         this.c.fill = GridBagConstraints.BOTH;
-        this.secondaryPane
-                .setLayout(new GridLayout(this.evMgr.getViewingWindowSizeX(),
-                        this.evMgr.getViewingWindowSizeY()));
-        this.horzScroll = new JScrollBar(Adjustable.HORIZONTAL,
-                this.evMgr.getMinimumViewingWindowLocationY(),
-                this.evMgr.getViewingWindowSizeY(),
-                this.evMgr.getMinimumViewingWindowLocationY(),
-                this.evMgr.getMaximumViewingWindowLocationY());
-        this.vertScroll = new JScrollBar(Adjustable.VERTICAL,
-                this.evMgr.getMinimumViewingWindowLocationX(),
-                this.evMgr.getViewingWindowSizeX(),
-                this.evMgr.getMinimumViewingWindowLocationX(),
-                this.evMgr.getMaximumViewingWindowLocationX());
         this.c.gridx = 0;
         this.c.gridy = 0;
         this.gridbag.setConstraints(this.secondaryPane, this.c);
@@ -1890,13 +2124,10 @@ public class MazeEditor {
         this.c.gridheight = GridBagConstraints.REMAINDER;
         this.gridbag.setConstraints(this.horzScroll, this.c);
         this.outputPane.add(this.horzScroll);
-        this.horzScroll.addAdjustmentListener(this.mhandler);
-        this.vertScroll.addAdjustmentListener(this.mhandler);
-        this.secondaryPane.addMouseListener(this.mhandler);
         this.updatePicker();
+        this.borderPane.add(this.outputPane, BorderLayout.CENTER);
+        this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
         this.borderPane.add(this.picker.getPicker(), BorderLayout.EAST);
-        this.treasurePane = this.outputFrame.createContent();
-        this.treasurePane.setLayout(new BorderLayout());
         this.treasurePane.add(this.treasurePicker.getPicker(),
                 BorderLayout.CENTER);
         this.treasurePane.add(this.pick, BorderLayout.SOUTH);
@@ -1915,8 +2146,8 @@ public class MazeEditor {
         this.elMgr.setEditorLocationY(y);
         this.elMgr.setCameFromZ(z);
         if (x != -1 && y != -1 && z != -1 && w != -1) {
-            final MazeObject oldObj = app.getMazeManager().getMazeObject(x,
-                    y, z, e);
+            final MazeObject oldObj = app.getMazeManager().getMazeObject(x, y,
+                    z, e);
             if (!obj.getName().equals(
                     GameObjects.createObject(MazeObjects.STAIRS_UP).getName())
                     && !obj.getName().equals(GameObjects
@@ -1938,7 +2169,7 @@ public class MazeEditor {
                 this.reverseCheckStairPair(z);
             }
             this.updateRedoHistory(oldObj, x, y, z, w, e);
-            this.checkMenus();
+            this.checkFlags();
             this.redrawEditor();
         } else {
             Mazer5D.getBagOStuff().showMessage("Nothing to undo");
@@ -1958,8 +2189,8 @@ public class MazeEditor {
         this.elMgr.setEditorLocationY(y);
         this.elMgr.setCameFromZ(z);
         if (x != -1 && y != -1 && z != -1 && w != -1) {
-            final MazeObject oldObj = app.getMazeManager().getMazeObject(x,
-                    y, z, e);
+            final MazeObject oldObj = app.getMazeManager().getMazeObject(x, y,
+                    z, e);
             if (!obj.getName().equals(
                     GameObjects.createObject(MazeObjects.STAIRS_UP).getName())
                     && !obj.getName().equals(GameObjects
@@ -1981,7 +2212,7 @@ public class MazeEditor {
                 this.reverseCheckStairPair(z);
             }
             this.updateUndoHistory(oldObj, x, y, z, w, e);
-            this.checkMenus();
+            this.checkFlags();
             this.redrawEditor();
         } else {
             Mazer5D.getBagOStuff().showMessage("Nothing to redo");
@@ -1993,7 +2224,7 @@ public class MazeEditor {
                 "Are you sure you want to clear the history?", "Editor");
         if (res == CommonDialogs.YES_OPTION) {
             this.engine = new UndoRedoEngine();
-            this.checkMenus();
+            this.checkFlags();
         }
     }
 
