@@ -54,6 +54,15 @@ public class GUIManager implements QuitHandler {
         Modes.setInGUI();
         this.guiFrame.attachAndSave(this.guiPane);
         this.guiFrame.setTitle("Mazer5D");
+        this.checkFlags();
+    }
+
+    public void hideGUI() {
+        this.setUpGUI();
+        this.guiFrame.restoreSaved();
+    }
+
+    private void checkFlags() {
         final BagOStuff bag = Mazer5D.getBagOStuff();
         if (bag.getMazeManager().getMaze().doesPlayerExist()) {
             this.play.setEnabled(true);
@@ -75,11 +84,6 @@ public class GUIManager implements QuitHandler {
         } else {
             this.setMenusLoadedOff();
         }
-    }
-
-    public void hideGUI() {
-        this.setUpGUI();
-        this.guiFrame.restoreSaved();
     }
 
     public void closeHandler() {
@@ -204,19 +208,34 @@ public class GUIManager implements QuitHandler {
             this.helpAbout.setAlignmentY(Component.CENTER_ALIGNMENT);
             this.helpObjectHelp.setAlignmentY(Component.CENTER_ALIGNMENT);
             // Attach event handlers
-            this.fileNew.addActionListener(h -> bag.getEditor().newMaze());
-            this.fileOpen
-                    .addActionListener(h -> bag.getMazeManager().loadMaze());
-            this.fileOpenLocked.addActionListener(
-                    h -> bag.getMazeManager().loadLockedMaze());
-            this.fileClose
-                    .addActionListener(h -> bag.getGUIManager().closeHandler());
-            this.fileSave
-                    .addActionListener(h -> bag.getMazeManager().saveMaze());
-            this.fileSaveAs
-                    .addActionListener(h -> bag.getMazeManager().saveMazeAs());
-            this.fileSaveLocked.addActionListener(
-                    h -> bag.getMazeManager().saveLockedMaze());
+            this.fileNew.addActionListener(h -> {
+                bag.getEditor().newMaze();
+                this.checkFlags();
+            });
+            this.fileOpen.addActionListener(h -> {
+                bag.getMazeManager().loadMaze();
+                this.checkFlags();
+            });
+            this.fileOpenLocked.addActionListener(h -> {
+                bag.getMazeManager().loadLockedMaze();
+                this.checkFlags();
+            });
+            this.fileClose.addActionListener(h -> {
+                this.closeHandler();
+                this.checkFlags();
+            });
+            this.fileSave.addActionListener(h -> {
+                bag.getMazeManager().saveMaze();
+                this.checkFlags();
+            });
+            this.fileSaveAs.addActionListener(h -> {
+                bag.getMazeManager().saveMazeAs();
+                this.checkFlags();
+            });
+            this.fileSaveLocked.addActionListener(h -> {
+                bag.getMazeManager().saveLockedMaze();
+                this.checkFlags();
+            });
             this.quit.addActionListener(h -> System.exit(0));
             this.play.addActionListener(h -> bag.getGameManager().playMaze());
             this.edit.addActionListener(h -> bag.getEditor().editMaze());
