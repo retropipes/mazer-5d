@@ -264,6 +264,7 @@ public class GUIManager implements QuitHandler {
             this.commandPane.add(this.fileSave);
             this.commandPane.add(this.fileSaveAs);
             this.commandPane.add(this.fileSaveLocked);
+            this.commandPane.add(this.showPreferences);
             this.commandPane.add(this.quit);
             this.commandPane.add(this.play);
             this.commandPane.add(this.edit);
