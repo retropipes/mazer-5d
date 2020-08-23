@@ -17,7 +17,6 @@ import javax.swing.KeyStroke;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
-import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class MenuManager {
     // Fields
@@ -25,8 +24,7 @@ public class MenuManager {
     private JMenu editMenu, gameMenu, editorMenu;
     private JMenu editorFillSubMenu;
     private JMenuItem editUndo, editRedo, editCutLevel, editCopyLevel,
-            editPasteLevel, editInsertLevelFromClipboard, editPreferences,
-            editClearHistory;
+            editPasteLevel, editInsertLevelFromClipboard, editClearHistory;
     private JMenuItem gameObjectInventory, gameUse, gameSwitchBow, gameReset,
             gameShowScore, gameShowTable;
     private JMenuItem editorGoToLocation, editorGoToDestination,
@@ -40,8 +38,7 @@ public class MenuManager {
     private JCheckBoxMenuItem editorFillUseRuleSets;
     private KeyStroke editUndoAccel, editRedoAccel, editCutLevelAccel,
             editCopyLevelAccel, editPasteLevelAccel,
-            editInsertLevelFromClipboardAccel, editPreferencesAccel,
-            editClearHistoryAccel;
+            editInsertLevelFromClipboardAccel, editClearHistoryAccel;
     private KeyStroke gameObjectInventoryAccel, gameUseAccel,
             gameSwitchBowAccel, gameResetAccel, gameShowScoreAccel,
             gameShowTableAccel;
@@ -74,7 +71,6 @@ public class MenuManager {
         this.editCopyLevel.setEnabled(false);
         this.editPasteLevel.setEnabled(false);
         this.editInsertLevelFromClipboard.setEnabled(false);
-        this.editPreferences.setEnabled(true);
         this.editClearHistory.setEnabled(false);
         this.editorGoToLocation.setEnabled(false);
         this.editorGoToDestination.setEnabled(false);
@@ -111,7 +107,6 @@ public class MenuManager {
         this.editCopyLevel.setEnabled(true);
         this.editPasteLevel.setEnabled(true);
         this.editInsertLevelFromClipboard.setEnabled(true);
-        this.editPreferences.setEnabled(true);
         this.editorGoToLocation.setEnabled(true);
         this.editorGoToDestination.setEnabled(true);
         this.editorResizeLevel.setEnabled(true);
@@ -142,7 +137,6 @@ public class MenuManager {
         this.editCopyLevel.setEnabled(false);
         this.editPasteLevel.setEnabled(false);
         this.editInsertLevelFromClipboard.setEnabled(false);
-        this.editPreferences.setEnabled(false);
         this.editClearHistory.setEnabled(false);
         this.editorGoToLocation.setEnabled(false);
         this.editorGoToDestination.setEnabled(false);
@@ -179,7 +173,6 @@ public class MenuManager {
         this.editCopyLevel.setEnabled(false);
         this.editPasteLevel.setEnabled(false);
         this.editInsertLevelFromClipboard.setEnabled(false);
-        this.editPreferences.setEnabled(false);
         this.editClearHistory.setEnabled(false);
         this.editorGoToLocation.setEnabled(false);
         this.editorGoToDestination.setEnabled(false);
@@ -215,7 +208,6 @@ public class MenuManager {
         this.editCopyLevel.setEnabled(false);
         this.editPasteLevel.setEnabled(false);
         this.editInsertLevelFromClipboard.setEnabled(false);
-        this.editPreferences.setEnabled(true);
         this.editClearHistory.setEnabled(false);
         this.editorGoToLocation.setEnabled(false);
         this.editorGoToDestination.setEnabled(false);
@@ -388,8 +380,6 @@ public class MenuManager {
                 modKey);
         this.editInsertLevelFromClipboardAccel = KeyStroke
                 .getKeyStroke(KeyEvent.VK_F, modKey);
-        this.editPreferencesAccel = KeyStroke.getKeyStroke(KeyEvent.VK_COMMA,
-                modKey);
         this.editClearHistoryAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Y,
                 modKey);
         this.editorGoToLocationAccel = KeyStroke.getKeyStroke(KeyEvent.VK_G,
@@ -428,7 +418,6 @@ public class MenuManager {
         this.editPasteLevel = new JMenuItem("Paste Level");
         this.editInsertLevelFromClipboard = new JMenuItem(
                 "Insert Level From Clipboard");
-        this.editPreferences = new JMenuItem("Preferences...");
         this.editClearHistory = new JMenuItem("Clear History");
         this.gameObjectInventory = new JMenuItem("Show Inventory...");
         this.gameUse = new JMenuItem("Use an Item...");
@@ -471,7 +460,6 @@ public class MenuManager {
         this.editPasteLevel.setAccelerator(this.editPasteLevelAccel);
         this.editInsertLevelFromClipboard
                 .setAccelerator(this.editInsertLevelFromClipboardAccel);
-        this.editPreferences.setAccelerator(this.editPreferencesAccel);
         this.editClearHistory.setAccelerator(this.editClearHistoryAccel);
         this.gameObjectInventory.setAccelerator(this.gameObjectInventoryAccel);
         this.gameUse.setAccelerator(this.gameUseAccel);
@@ -496,13 +484,16 @@ public class MenuManager {
                 .addActionListener(h -> bag.getEditor().pasteLevel());
         this.editInsertLevelFromClipboard.addActionListener(
                 h -> bag.getEditor().insertLevelFromClipboard());
-        this.editPreferences.addActionListener(h -> Prefs.showPrefs());
         this.editClearHistory
                 .addActionListener(h -> bag.getEditor().clearHistory());
-        this.gameObjectInventory.addActionListener(h -> bag.getGameManager().showInventoryDialog());
-        this.gameUse.addActionListener(h -> bag.getGameManager().showUseDialog());
-        this.gameSwitchBow.addActionListener(h -> bag.getGameManager().showSwitchBowDialog());
-        this.gameReset.addActionListener(h -> bag.getGameManager().resetCurrentLevel());
+        this.gameObjectInventory.addActionListener(
+                h -> bag.getGameManager().showInventoryDialog());
+        this.gameUse
+                .addActionListener(h -> bag.getGameManager().showUseDialog());
+        this.gameSwitchBow.addActionListener(
+                h -> bag.getGameManager().showSwitchBowDialog());
+        this.gameReset.addActionListener(
+                h -> bag.getGameManager().resetCurrentLevel());
         this.gameShowScore.addActionListener(
                 h -> bag.getGameManager().showCurrentScore());
         this.gameShowTable
@@ -560,9 +551,6 @@ public class MenuManager {
         this.editMenu.add(this.editCopyLevel);
         this.editMenu.add(this.editPasteLevel);
         this.editMenu.add(this.editInsertLevelFromClipboard);
-        if (!System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
-            this.editMenu.add(this.editPreferences);
-        }
         this.editMenu.add(this.editClearHistory);
         this.gameMenu.add(this.gameObjectInventory);
         this.gameMenu.add(this.gameUse);
@@ -600,7 +588,6 @@ public class MenuManager {
         this.editCopyLevel.setEnabled(false);
         this.editPasteLevel.setEnabled(false);
         this.editInsertLevelFromClipboard.setEnabled(false);
-        this.editPreferences.setEnabled(true);
         this.editClearHistory.setEnabled(false);
         this.editorGoToLocation.setEnabled(false);
         this.editorGoToDestination.setEnabled(false);

@@ -40,7 +40,7 @@ public class GUIManager implements QuitHandler {
     private JLabel logoLabel;
     private JButton fileNew, fileOpen, fileOpenLocked, fileClose, fileSave,
             fileSaveAs, fileSaveLocked, quit, play, edit, helpAbout,
-            helpObjectHelp;
+            helpObjectHelp, showPreferences;
     private boolean setUp;
 
     // Constructors
@@ -164,6 +164,7 @@ public class GUIManager implements QuitHandler {
             this.fileSave = new JButton("Save");
             this.fileSaveAs = new JButton("Save As...");
             this.fileSaveLocked = new JButton("Save Locked...");
+            this.showPreferences = new JButton("Preferences...");
             this.quit = new JButton("Quit");
             this.play = new JButton("Play");
             this.edit = new JButton("Edit");
@@ -177,6 +178,7 @@ public class GUIManager implements QuitHandler {
             this.fileSave.setSize(GUIConstants.COMMAND_BUTTON);
             this.fileSaveAs.setSize(GUIConstants.COMMAND_BUTTON);
             this.fileSaveLocked.setSize(GUIConstants.COMMAND_BUTTON);
+            this.showPreferences.setSize(GUIConstants.COMMAND_BUTTON);
             this.quit.setSize(GUIConstants.COMMAND_BUTTON);
             this.play.setSize(GUIConstants.COMMAND_BUTTON);
             this.edit.setSize(GUIConstants.COMMAND_BUTTON);
@@ -190,6 +192,7 @@ public class GUIManager implements QuitHandler {
             this.fileSave.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.fileSaveAs.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.fileSaveLocked.setAlignmentX(Component.CENTER_ALIGNMENT);
+            this.showPreferences.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.quit.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.play.setAlignmentX(Component.CENTER_ALIGNMENT);
             this.edit.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -202,6 +205,7 @@ public class GUIManager implements QuitHandler {
             this.fileSave.setAlignmentY(Component.CENTER_ALIGNMENT);
             this.fileSaveAs.setAlignmentY(Component.CENTER_ALIGNMENT);
             this.fileSaveLocked.setAlignmentY(Component.CENTER_ALIGNMENT);
+            this.showPreferences.setAlignmentY(Component.CENTER_ALIGNMENT);
             this.quit.setAlignmentY(Component.CENTER_ALIGNMENT);
             this.play.setAlignmentY(Component.CENTER_ALIGNMENT);
             this.edit.setAlignmentY(Component.CENTER_ALIGNMENT);
@@ -236,6 +240,7 @@ public class GUIManager implements QuitHandler {
                 bag.getMazeManager().saveLockedMaze();
                 this.checkFlags();
             });
+            this.showPreferences.addActionListener(h -> Prefs.showPrefs());
             this.quit.addActionListener(h -> System.exit(0));
             this.play.addActionListener(h -> bag.getGameManager().playMaze());
             this.edit.addActionListener(h -> bag.getEditor().editMaze());
@@ -251,6 +256,7 @@ public class GUIManager implements QuitHandler {
             this.fileSave.setEnabled(false);
             this.fileSaveAs.setEnabled(false);
             this.fileSaveLocked.setEnabled(false);
+            this.showPreferences.setEnabled(true);
             this.quit.setEnabled(true);
             this.helpAbout.setEnabled(true);
             this.helpObjectHelp.setEnabled(true);
