@@ -1897,8 +1897,6 @@ public class GameManager implements MazeEffectConstants {
     }
 
     public void showOutput() {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getMenuManager().setGameMenus();
         MusicPlayer.playMusic(MusicIndex.EXPLORING, MusicGroup.GAME);
         this.outputFrame.attachAndSave(this.borderPane);
         this.outputFrame.setTitle("Mazer5D");

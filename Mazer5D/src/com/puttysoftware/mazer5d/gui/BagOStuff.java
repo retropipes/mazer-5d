@@ -23,7 +23,6 @@ public class BagOStuff {
     private AboutThisGame about;
     private GameManager gameMgr;
     private MazeManager mazeMgr;
-    private final MenuManager menuMgr;
     private ObjectHelpViewer oHelpMgr;
     private MazeEditor editor;
     private RuleSetPicker rsPicker;
@@ -35,7 +34,6 @@ public class BagOStuff {
 
     // Constructors
     public BagOStuff() {
-        this.menuMgr = new MenuManager();
         this.guiMgr = new GUIManager();
     }
 
@@ -48,10 +46,6 @@ public class BagOStuff {
         } else {
             CommonDialogs.showDialog(msg);
         }
-    }
-
-    public MenuManager getMenuManager() {
-        return this.menuMgr;
     }
 
     public GUIManager getGUIManager() {

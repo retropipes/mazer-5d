@@ -110,7 +110,7 @@ public class GUIManager implements QuitHandler {
                 app.getGameManager().endGame();
             }
         }
-        app.getMenuManager().checkFlags();
+        this.checkFlags();
     }
 
     private void setMenusDirtyOn() {

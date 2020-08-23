@@ -94,7 +94,6 @@ public class MazeManager implements OpenFilesHandler {
         this.setDirty(false);
         Mazer5D.getBagOStuff().getGameManager().stateChanged();
         Mazer5D.getBagOStuff().getEditor().mazeChanged();
-        Mazer5D.getBagOStuff().getMenuManager().checkFlags();
     }
 
     public MazeObject getMazeObject(final int x, final int y, final int z,
@@ -129,9 +128,7 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     public void setLoaded(final boolean status) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
         this.loaded = status;
-        app.getMenuManager().checkFlags();
     }
 
     public boolean isLocked() {
@@ -151,9 +148,7 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     public void setDirty(final boolean newDirty) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
         this.isDirty = newDirty;
-        app.getMenuManager().checkFlags();
     }
 
     public void clearLastUsedFilenames() {
