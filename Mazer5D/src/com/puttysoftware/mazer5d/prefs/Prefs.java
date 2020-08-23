@@ -75,7 +75,6 @@ public class Prefs {
     private static String[] editorFillNameArray;
     private static JComboBox<String> updateCheckInterval;
     private static String[] updateCheckIntervalValues;
-    private static JComboBox<String> viewingWindowChoices;
     private static JRadioButton generatorConstrainedRandom;
     private static JRadioButton generatorTwister;
     private static JSlider randomRoomSize;
@@ -86,7 +85,6 @@ public class Prefs {
     private static MazeObjects editorFill = MazeObjects.TILE;
     private static boolean checkUpdatesStartupEnabled;
     private static boolean moveOneAtATimeEnabled;
-    private static int viewingWindowIndex;
     private static int updateCheckIntervalIndex;
     private static int randomRoomSizeIndex;
     private static int randomHallSizeIndex;
@@ -323,7 +321,6 @@ public class Prefs {
                 .setSelectedIndex(Prefs.updateCheckIntervalIndex);
         Prefs.checkUpdatesStartup.setSelected(Prefs.checkUpdatesStartupEnabled);
         Prefs.moveOneAtATime.setSelected(Prefs.moveOneAtATimeEnabled);
-        Prefs.viewingWindowChoices.setSelectedIndex(Prefs.viewingWindowIndex);
         if (Prefs.worldGenerator == Prefs.GENERATOR_CONSTRAINED_RANDOM) {
             Prefs.generatorConstrainedRandom.setSelected(true);
         } else if (Prefs.worldGenerator == Prefs.GENERATOR_TWISTER) {
@@ -353,8 +350,6 @@ public class Prefs {
         Prefs.checkUpdatesStartupEnabled = Prefs.checkUpdatesStartup
                 .isSelected();
         Prefs.moveOneAtATimeEnabled = Prefs.moveOneAtATime.isSelected();
-        Prefs.viewingWindowIndex = Prefs.viewingWindowChoices
-                .getSelectedIndex();
         if (Prefs.generatorConstrainedRandom.isSelected()) {
             Prefs.worldGenerator = Prefs.GENERATOR_CONSTRAINED_RANDOM;
         } else if (Prefs.generatorTwister.isSelected()) {
@@ -384,8 +379,6 @@ public class Prefs {
         Prefs.checkUpdatesStartupEnabled = false;
         Prefs.moveOneAtATime.setSelected(true);
         Prefs.moveOneAtATimeEnabled = true;
-        Prefs.viewingWindowIndex = Prefs.DEFAULT_VIEW_SIZE_INDEX;
-        Prefs.viewingWindowChoices.setSelectedIndex(Prefs.viewingWindowIndex);
         Prefs.updateCheckIntervalIndex = Prefs.DEFAULT_UPDATE_CHECK_INTERVAL_INDEX;
         Prefs.updateCheckInterval
                 .setSelectedIndex(Prefs.DEFAULT_UPDATE_CHECK_INTERVAL_INDEX);
@@ -556,7 +549,6 @@ public class Prefs {
                 int cachedBugfix = reader.readInt();
                 // Don't honor the view size index setting
                 reader.readInt();
-                Prefs.viewingWindowIndex = Prefs.DEFAULT_VIEW_SIZE_INDEX;
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     Prefs.musicEnabled[x] = reader.readBoolean();
                 }
@@ -655,7 +647,6 @@ public class Prefs {
                 }
                 // Don't honor the view size index setting
                 reader.readInt();
-                Prefs.viewingWindowIndex = Prefs.DEFAULT_VIEW_SIZE_INDEX;
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     Prefs.musicEnabled[x] = reader.readBoolean();
                 }
