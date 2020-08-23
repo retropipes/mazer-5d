@@ -82,6 +82,7 @@ public class Prefs {
     private static EventHandler handler;
     private static final PrefsFileManager fileMgr = new PrefsFileManager();
     private static final ExportImportManager eiMgr = new ExportImportManager();
+    private static final MazeObjects editorDefaultFill = MazeObjects.TILE;
     private static MazeObjects editorFill = MazeObjects.TILE;
     private static boolean checkUpdatesStartupEnabled;
     private static boolean moveOneAtATimeEnabled;
@@ -251,7 +252,7 @@ public class Prefs {
     }
 
     public static MazeObjects getEditorDefaultFill() {
-        return Prefs.editorFill;
+        return Prefs.editorDefaultFill;
     }
 
     private static void defaultEnableSoundGroups() {
@@ -303,7 +304,7 @@ public class Prefs {
     private static int getIndexForUID(final MazeObjects UID) {
         int index = Prefs.editorFillChoiceArray.indexOf(UID);
         if (index == -1) {
-            return Prefs.editorFillChoiceArray.indexOf(Prefs.editorFill);
+            return Prefs.editorFillChoiceArray.indexOf(Prefs.editorDefaultFill);
         } else {
             return index;
         }
