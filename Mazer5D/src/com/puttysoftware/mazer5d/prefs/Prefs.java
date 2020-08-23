@@ -103,8 +103,6 @@ public class Prefs {
     private static boolean[] soundsEnabled = new boolean[Prefs.SOUNDS_LENGTH];
     private static boolean[] musicEnabled = new boolean[Prefs.MUSIC_LENGTH];
     private static boolean guiSetUp = false;
-    private static final int[] VIEWING_WINDOW_SIZES = new int[] { 7, 9, 11, 13,
-            15, 17, 19, 21, 23, 25 };
     private static final int MIN_ROOM_SIZE = 3;
     private static final int DEFAULT_ROOM_SIZE = 8;
     private static final int MAX_ROOM_SIZE = 15;
@@ -114,10 +112,8 @@ public class Prefs {
     private static final int DEFAULT_UPDATE_CHECK_INTERVAL_INDEX = 2;
     private static final long[] UPDATE_CHECK_INTERVAL_VALUES = new long[] {
             86400L, 172800L, 604800L, 1209600L, 2592000L };
+    private static final int DEFAULT_VIEW_SIZE = 11;
     private static final int DEFAULT_VIEW_SIZE_INDEX = 2;
-    private static final String[] VIEWING_WINDOW_SIZE_NAMES = new String[] {
-            "Tiny", "Small", "Medium", "Large", "Huge", "Tiny HD", "Small HD",
-            "Medium HD", "Large HD", "Huge HD" };
     private static final int SOUNDS_ALL = 0;
     private static final int SOUNDS_UI = 1;
     private static final int SOUNDS_GAME = 2;
@@ -229,11 +225,7 @@ public class Prefs {
     }
 
     public static int getViewingWindowSize() {
-        return Prefs.VIEWING_WINDOW_SIZES[Prefs.getViewingWindowSizeIndex()];
-    }
-
-    private static int getViewingWindowSizeIndex() {
-        return Prefs.viewingWindowIndex;
+        return Prefs.DEFAULT_VIEW_SIZE;
     }
 
     public static boolean isSoundGroupEnabled(final SoundGroup group) {
@@ -507,12 +499,6 @@ public class Prefs {
         miscPane.add(Prefs.moveOneAtATime);
         miscPane.add(new JLabel("Check How Often For Updates"));
         miscPane.add(Prefs.updateCheckInterval);
-        final JPanel viewPane = new JPanel();
-        viewPane.setLayout(new GridLayout(Prefs.GRID_LENGTH, 1));
-        viewPane.add(new JLabel("Viewing Window Size"));
-        Prefs.viewingWindowChoices = new JComboBox<>(
-                Prefs.VIEWING_WINDOW_SIZE_NAMES);
-        viewPane.add(Prefs.viewingWindowChoices);
         Prefs.twisterPane.setLayout(new GridLayout(Prefs.GRID_LENGTH, 1));
         Prefs.twisterPane.add(new JLabel("Room Size"));
         Prefs.twisterPane.add(Prefs.randomRoomSize);
@@ -528,8 +514,6 @@ public class Prefs {
         Prefs.prefTabPane.addTab("Sounds", null, soundPane);
         Prefs.prefTabPane.addTab("Music", null, musicPane);
         Prefs.prefTabPane.addTab("Misc.", null, miscPane);
-        // Disable the view pane
-        // Prefs.prefTabPane.addTab("View", null, viewPane);
         Prefs.mainPrefPane.add(Prefs.prefTabPane, BorderLayout.CENTER);
         Prefs.mainPrefPane.add(buttonPane, BorderLayout.SOUTH);
         Prefs.sounds[Prefs.SOUNDS_ALL].addItemListener(Prefs.handler);
