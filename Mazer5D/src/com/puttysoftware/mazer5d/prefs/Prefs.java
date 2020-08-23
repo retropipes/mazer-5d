@@ -232,7 +232,7 @@ public class Prefs {
         return Prefs.VIEWING_WINDOW_SIZES[Prefs.getViewingWindowSizeIndex()];
     }
 
-    public static int getViewingWindowSizeIndex() {
+    private static int getViewingWindowSizeIndex() {
         return Prefs.viewingWindowIndex;
     }
 
@@ -528,7 +528,8 @@ public class Prefs {
         Prefs.prefTabPane.addTab("Sounds", null, soundPane);
         Prefs.prefTabPane.addTab("Music", null, musicPane);
         Prefs.prefTabPane.addTab("Misc.", null, miscPane);
-        Prefs.prefTabPane.addTab("View", null, viewPane);
+        // Disable the view pane
+        // Prefs.prefTabPane.addTab("View", null, viewPane);
         Prefs.mainPrefPane.add(Prefs.prefTabPane, BorderLayout.CENTER);
         Prefs.mainPrefPane.add(buttonPane, BorderLayout.SOUTH);
         Prefs.sounds[Prefs.SOUNDS_ALL].addItemListener(Prefs.handler);
