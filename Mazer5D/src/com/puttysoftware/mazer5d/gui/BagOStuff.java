@@ -30,7 +30,7 @@ public class BagOStuff {
     private static final int VERSION_MAJOR = 12;
     private static final int VERSION_MINOR = 0;
     private static final int VERSION_BUGFIX = 0;
-    private static final int VERSION_BETA = 1;
+    private static final int VERSION_BETA = 2;
 
     // Constructors
     public BagOStuff() {
