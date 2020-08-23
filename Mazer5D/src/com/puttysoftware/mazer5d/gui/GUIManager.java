@@ -6,7 +6,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.desktop.QuitEvent;
 import java.awt.desktop.QuitHandler;
@@ -30,7 +29,6 @@ import com.puttysoftware.mazer5d.files.MazeManager;
 import com.puttysoftware.mazer5d.files.TempDirCleanup;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.prefs.Prefs;
-import com.puttysoftware.mazer5d.utilities.GUIConstants;
 
 public class GUIManager implements QuitHandler {
     // Fields
@@ -164,47 +162,6 @@ public class GUIManager implements QuitHandler {
             this.edit = new JButton("Edit");
             this.helpAbout = new JButton("About This Game");
             this.helpObjectHelp = new JButton("Object Help");
-            // Configure command button size
-            this.fileNew.setSize(GUIConstants.COMMAND_BUTTON);
-            this.fileOpen.setSize(GUIConstants.COMMAND_BUTTON);
-            this.fileOpenLocked.setSize(GUIConstants.COMMAND_BUTTON);
-            this.fileClose.setSize(GUIConstants.COMMAND_BUTTON);
-            this.fileSave.setSize(GUIConstants.COMMAND_BUTTON);
-            this.fileSaveAs.setSize(GUIConstants.COMMAND_BUTTON);
-            this.fileSaveLocked.setSize(GUIConstants.COMMAND_BUTTON);
-            this.showPreferences.setSize(GUIConstants.COMMAND_BUTTON);
-            this.quit.setSize(GUIConstants.COMMAND_BUTTON);
-            this.play.setSize(GUIConstants.COMMAND_BUTTON);
-            this.edit.setSize(GUIConstants.COMMAND_BUTTON);
-            this.helpAbout.setSize(GUIConstants.COMMAND_BUTTON);
-            this.helpObjectHelp.setSize(GUIConstants.COMMAND_BUTTON);
-            // Configure command button alignment
-            this.fileNew.setAlignmentX(Component.CENTER_ALIGNMENT);
-            this.fileOpen.setAlignmentX(Component.CENTER_ALIGNMENT);
-            this.fileOpenLocked.setAlignmentX(Component.CENTER_ALIGNMENT);
-            this.fileClose.setAlignmentX(Component.CENTER_ALIGNMENT);
-            this.fileSave.setAlignmentX(Component.CENTER_ALIGNMENT);
-            this.fileSaveAs.setAlignmentX(Component.CENTER_ALIGNMENT);
-            this.fileSaveLocked.setAlignmentX(Component.CENTER_ALIGNMENT);
-            this.showPreferences.setAlignmentX(Component.CENTER_ALIGNMENT);
-            this.quit.setAlignmentX(Component.CENTER_ALIGNMENT);
-            this.play.setAlignmentX(Component.CENTER_ALIGNMENT);
-            this.edit.setAlignmentX(Component.CENTER_ALIGNMENT);
-            this.helpAbout.setAlignmentX(Component.CENTER_ALIGNMENT);
-            this.helpObjectHelp.setAlignmentX(Component.CENTER_ALIGNMENT);
-            this.fileNew.setAlignmentY(Component.CENTER_ALIGNMENT);
-            this.fileOpen.setAlignmentY(Component.CENTER_ALIGNMENT);
-            this.fileOpenLocked.setAlignmentY(Component.CENTER_ALIGNMENT);
-            this.fileClose.setAlignmentY(Component.CENTER_ALIGNMENT);
-            this.fileSave.setAlignmentY(Component.CENTER_ALIGNMENT);
-            this.fileSaveAs.setAlignmentY(Component.CENTER_ALIGNMENT);
-            this.fileSaveLocked.setAlignmentY(Component.CENTER_ALIGNMENT);
-            this.showPreferences.setAlignmentY(Component.CENTER_ALIGNMENT);
-            this.quit.setAlignmentY(Component.CENTER_ALIGNMENT);
-            this.play.setAlignmentY(Component.CENTER_ALIGNMENT);
-            this.edit.setAlignmentY(Component.CENTER_ALIGNMENT);
-            this.helpAbout.setAlignmentY(Component.CENTER_ALIGNMENT);
-            this.helpObjectHelp.setAlignmentY(Component.CENTER_ALIGNMENT);
             // Attach event handlers
             this.fileNew.addActionListener(h -> {
                 new Thread() {

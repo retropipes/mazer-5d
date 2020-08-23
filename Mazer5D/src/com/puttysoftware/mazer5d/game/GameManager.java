@@ -6,7 +6,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.game;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -49,7 +48,6 @@ import com.puttysoftware.mazer5d.objects.abc.GenericCharacter;
 import com.puttysoftware.mazer5d.objects.abc.GenericMovableObject;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.mazer5d.utilities.ArrowTypes;
-import com.puttysoftware.mazer5d.utilities.GUIConstants;
 import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
@@ -1949,29 +1947,6 @@ public class GameManager implements MazeEffectConstants {
         this.showScore = new JButton("Show Current Score");
         this.showTable = new JButton("Show Score Table");
         this.endGame = new JButton("End Game");
-        // Configure command button size
-        this.showObjectInventory.setSize(GUIConstants.COMMAND_BUTTON);
-        this.useObject.setSize(GUIConstants.COMMAND_BUTTON);
-        this.switchBow.setSize(GUIConstants.COMMAND_BUTTON);
-        this.reset.setSize(GUIConstants.COMMAND_BUTTON);
-        this.showScore.setSize(GUIConstants.COMMAND_BUTTON);
-        this.showTable.setSize(GUIConstants.COMMAND_BUTTON);
-        this.endGame.setSize(GUIConstants.COMMAND_BUTTON);
-        // Configure command button alignment
-        this.showObjectInventory.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.useObject.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.switchBow.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.reset.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.showScore.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.showTable.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.endGame.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.showObjectInventory.setAlignmentY(Component.CENTER_ALIGNMENT);
-        this.useObject.setAlignmentY(Component.CENTER_ALIGNMENT);
-        this.switchBow.setAlignmentY(Component.CENTER_ALIGNMENT);
-        this.reset.setAlignmentY(Component.CENTER_ALIGNMENT);
-        this.showScore.setAlignmentY(Component.CENTER_ALIGNMENT);
-        this.showTable.setAlignmentY(Component.CENTER_ALIGNMENT);
-        this.endGame.setAlignmentY(Component.CENTER_ALIGNMENT);
         // Attach event handlers
         this.showObjectInventory.addActionListener(h -> {
             new Thread() {
