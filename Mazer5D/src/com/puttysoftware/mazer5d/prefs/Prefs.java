@@ -494,10 +494,10 @@ public class Prefs {
             musicPane.add(Prefs.music[x]);
         }
         miscPane.setLayout(new GridLayout(Prefs.GRID_LENGTH, 1));
-        miscPane.add(Prefs.checkUpdatesStartup);
         miscPane.add(Prefs.moveOneAtATime);
-        miscPane.add(new JLabel("Check How Often For Updates"));
-        miscPane.add(Prefs.updateCheckInterval);
+        // miscPane.add(Prefs.checkUpdatesStartup);
+        // miscPane.add(new JLabel("Check How Often For Updates"));
+        // miscPane.add(Prefs.updateCheckInterval);
         Prefs.twisterPane.setLayout(new GridLayout(Prefs.GRID_LENGTH, 1));
         Prefs.twisterPane.add(new JLabel("Room Size"));
         Prefs.twisterPane.add(Prefs.randomRoomSize);
