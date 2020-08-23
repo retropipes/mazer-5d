@@ -64,16 +64,6 @@ public class GUIManager implements QuitHandler {
 
     private void checkFlags() {
         final BagOStuff bag = Mazer5D.getBagOStuff();
-        if (bag.getMazeManager().getMaze().doesPlayerExist()) {
-            this.play.setEnabled(true);
-        } else {
-            this.play.setEnabled(false);
-        }
-        if (bag.getMazeManager().isLocked()) {
-            this.edit.setEnabled(false);
-        } else {
-            this.edit.setEnabled(true);
-        }
         if (bag.getMazeManager().getDirty()) {
             this.setMenusDirtyOn();
         } else {
@@ -83,6 +73,12 @@ public class GUIManager implements QuitHandler {
             this.setMenusLoadedOn();
         } else {
             this.setMenusLoadedOff();
+        }
+        if (!bag.getMazeManager().getMaze().doesPlayerExist()) {
+            this.play.setEnabled(false);
+        }
+        if (bag.getMazeManager().isLocked()) {
+            this.edit.setEnabled(false);
         }
     }
 
@@ -122,21 +118,19 @@ public class GUIManager implements QuitHandler {
     }
 
     private void setMenusLoadedOn() {
-        if (Modes.inGUI()) {
-            this.fileClose.setEnabled(false);
-            this.fileSaveAs.setEnabled(false);
-            this.fileSaveLocked.setEnabled(false);
-        } else {
-            this.fileClose.setEnabled(true);
-            this.fileSaveAs.setEnabled(true);
-            this.fileSaveLocked.setEnabled(true);
-        }
+        this.fileClose.setEnabled(true);
+        this.fileSaveAs.setEnabled(true);
+        this.fileSaveLocked.setEnabled(true);
+        this.play.setEnabled(true);
+        this.edit.setEnabled(true);
     }
 
     private void setMenusLoadedOff() {
         this.fileClose.setEnabled(false);
         this.fileSaveAs.setEnabled(false);
         this.fileSaveLocked.setEnabled(false);
+        this.play.setEnabled(false);
+        this.edit.setEnabled(false);
     }
 
     private void setUpGUI() {
@@ -257,6 +251,8 @@ public class GUIManager implements QuitHandler {
             this.fileSaveAs.setEnabled(false);
             this.fileSaveLocked.setEnabled(false);
             this.showPreferences.setEnabled(true);
+            this.play.setEnabled(false);
+            this.edit.setEnabled(false);
             this.quit.setEnabled(true);
             this.helpAbout.setEnabled(true);
             this.helpObjectHelp.setEnabled(true);
