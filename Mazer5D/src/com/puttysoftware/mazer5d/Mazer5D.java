@@ -10,7 +10,7 @@ import java.awt.desktop.PreferencesHandler;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.commondialogs.MainWindow;
-import com.puttysoftware.integration.NativeIntegration;
+import com.puttysoftware.integration.Integration;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
@@ -37,7 +37,7 @@ public class Mazer5D {
         Mazer5D.errhand = new GameErrorHandler();
         Thread.setDefaultUncaughtExceptionHandler(Mazer5D.errhand);
         // Integrate with host platform
-        final NativeIntegration ni = new NativeIntegration();
+        final Integration ni = new Integration();
         ni.configureLookAndFeel();
         MainWindow.createMainWindow(GUIConstants.GUI_WIDTH,
                 GUIConstants.GUI_HEIGHT);
