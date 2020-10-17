@@ -1,0 +1,21 @@
+[submodule "lib-java-audio-wav"]
+	path = lib-java-audio-wav
+	url = https://github.com/wrldwzrd89/lib-java-audio-wav
+[submodule "lib-java-audio-ogg"]
+	path = lib-java-audio-ogg
+	url = https://github.com/wrldwzrd89/lib-java-audio-ogg
+[submodule "lib-java-file-utilities"]
+	path = lib-java-file-utilities
+	url = https://github.com/wrldwzrd89/lib-java-file-utilities
+[submodule "lib-java-images"]
+	path = lib-java-images
+	url = https://github.com/wrldwzrd89/lib-java-images
+[submodule "lib-java-random-range"]
+	path = lib-java-random-range
+	url = https://github.com/wrldwzrd89/lib-java-random-range
+[submodule "lib-java-native-integration"]
+	path = lib-java-native-integration
+	url = https://github.com/wrldwzrd89/lib-java-native-integration
+[submodule "lib-java-storage"]
+	path = lib-java-storage
+	url = https://github.com/wrldwzrd89/lib-java-storage
