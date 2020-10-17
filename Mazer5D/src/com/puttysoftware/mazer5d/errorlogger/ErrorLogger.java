@@ -1,4 +1,4 @@
-package com.puttysoftware.errorlogger;
+package com.puttysoftware.mazer5d.errorlogger;
 
 public final class ErrorLogger {
     // Fields

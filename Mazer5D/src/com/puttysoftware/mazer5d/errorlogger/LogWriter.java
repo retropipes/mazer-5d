@@ -1,4 +1,4 @@
-package com.puttysoftware.errorlogger;
+package com.puttysoftware.mazer5d.errorlogger;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

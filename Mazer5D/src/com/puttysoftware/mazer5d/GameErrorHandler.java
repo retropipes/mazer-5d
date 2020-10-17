@@ -5,8 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d;
 
-import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.errorlogger.ErrorLogger;
+import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
+import com.puttysoftware.mazer5d.errorlogger.ErrorLogger;
 
 final class GameErrorHandler implements Thread.UncaughtExceptionHandler {
     private static final String LOG_NAME = "Mazer5D";

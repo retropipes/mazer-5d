@@ -8,10 +8,10 @@ package com.puttysoftware.mazer5d;
 import java.awt.desktop.PreferencesEvent;
 import java.awt.desktop.PreferencesHandler;
 
-import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.commondialogs.MainWindow;
 import com.puttysoftware.integration.Integration;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
+import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
+import com.puttysoftware.mazer5d.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.prefs.Prefs;

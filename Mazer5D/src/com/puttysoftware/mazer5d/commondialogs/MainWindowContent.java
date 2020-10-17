@@ -3,7 +3,7 @@ Copyleft (C) 2019 Eric Ahnell
 
 Any questions should be directed to the author via email at: support@puttysoftware.com
  */
-package com.puttysoftware.commondialogs;
+package com.puttysoftware.mazer5d.commondialogs;
 
 import java.awt.Component;
 import java.awt.Dimension;

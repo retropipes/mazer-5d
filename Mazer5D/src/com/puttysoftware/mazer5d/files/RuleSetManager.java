@@ -10,9 +10,9 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 
-import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.files.format.XMLExtension;
 import com.puttysoftware.mazer5d.files.format.XMLRuleSetFilter;
 import com.puttysoftware.mazer5d.files.format.XMLRuleSetLoadTask;

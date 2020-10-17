@@ -1,4 +1,4 @@
-package com.puttysoftware.help;
+package com.puttysoftware.mazer5d.help;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -17,9 +17,9 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
-import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 
 public final class GraphicalHelpViewer {
     // Fields

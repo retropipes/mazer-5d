@@ -1,4 +1,4 @@
-package com.puttysoftware.commondialogs;
+package com.puttysoftware.mazer5d.commondialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Component;

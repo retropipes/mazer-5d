@@ -3,7 +3,7 @@ Licensed under Apache 2.0. See the LICENSE file for details.
 
 All support is handled via the GitHub repository: https://github.com/wrldwzrd89/lib-java-audio-Ogg
  */
-package com.puttysoftware.audio.ogg;
+package com.puttysoftware.mazer5d.loaders.music;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,12 +12,12 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-class OggResource extends OggFactory {
+class MusicResource extends MusicLoader {
     private final URL soundURL;
     private int number;
-    private OggPlayer player;
+    private MusicPlayer player;
 
-    public OggResource(final ThreadGroup group, final URL resURL,
+    public MusicResource(final ThreadGroup group, final URL resURL,
             final int taskNum) {
         super(group);
         this.soundURL = resURL;
@@ -28,13 +28,13 @@ class OggResource extends OggFactory {
     public void run() {
         try (AudioInputStream ais = AudioSystem
                 .getAudioInputStream(this.soundURL)) {
-            this.player = new OggPlayer(ais);
+            this.player = new MusicPlayer(ais);
             this.player.playLoop();
-            OggFactory.taskCompleted(this.number);
+            MusicLoader.taskCompleted(this.number);
         } catch (final UnsupportedAudioFileException e1) {
-            OggFactory.taskCompleted(this.number);
+            MusicLoader.taskCompleted(this.number);
         } catch (final IOException e1) {
-            OggFactory.taskCompleted(this.number);
+            MusicLoader.taskCompleted(this.number);
         }
     }
     

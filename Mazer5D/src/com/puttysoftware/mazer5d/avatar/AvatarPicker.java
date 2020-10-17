@@ -5,8 +5,8 @@ import java.io.IOException;
 
 import javax.swing.JColorChooser;
 
-import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.loaders.AvatarImageLoader;
 import com.puttysoftware.randomrange.RandomRange;
 

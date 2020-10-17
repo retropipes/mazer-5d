@@ -17,9 +17,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.puttysoftware.commondialogs.MainWindow;
-import com.puttysoftware.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.Modes;
+import com.puttysoftware.mazer5d.commondialogs.MainWindow;
+import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
 
 class RuleSetEditor {
     // Fields

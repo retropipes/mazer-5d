@@ -3,7 +3,7 @@ Licensed under Apache 2.0. See the LICENSE file for details.
 
 All support is handled via the GitHub repository: https://github.com/wrldwzrd89/lib-java-audio-Ogg
  */
-package com.puttysoftware.audio.ogg;
+package com.puttysoftware.mazer5d.loaders.music;
 
 import java.io.IOException;
 
@@ -15,14 +15,14 @@ import javax.sound.sampled.Line;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-class OggPlayer {
+class MusicPlayer {
     private AudioInputStream stream;
     private AudioInputStream decodedStream;
     private AudioFormat format;
     private AudioFormat decodedFormat;
     private boolean stop;
 
-    public OggPlayer(final AudioInputStream ais) {
+    public MusicPlayer(final AudioInputStream ais) {
         this.stream = ais;
         this.stop = false;
     }
@@ -48,7 +48,7 @@ class OggPlayer {
             } catch (Exception e) {
                 // Do nothing
             }
-            try (SourceDataLine line = OggPlayer.getLine(this.decodedFormat)) {
+            try (SourceDataLine line = MusicPlayer.getLine(this.decodedFormat)) {
                 if (line != null) {
                     try {
                         byte[] data = new byte[4096];

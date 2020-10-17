@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import com.puttysoftware.audio.ogg.OggFactory;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
+import com.puttysoftware.mazer5d.loaders.music.MusicLoader;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class MusicPlayer {
@@ -17,7 +17,7 @@ public class MusicPlayer {
 
     private static String[] allFilenames;
     private static Properties fileExtensions;
-    private static OggFactory MUSIC;
+    private static MusicLoader MUSIC;
 
     private static String getMusicFilename(final MusicIndex music) {
         if (MusicPlayer.allFilenames == null
@@ -45,7 +45,7 @@ public class MusicPlayer {
                         && MusicPlayer.MUSIC.isPlaying()) {
                     MusicPlayer.MUSIC.stopLoop();
                 }
-                MusicPlayer.MUSIC = OggFactory.loadResource(MusicPlayer.class
+                MusicPlayer.MUSIC = MusicLoader.loadResource(MusicPlayer.class
                         .getResource("/assets/music/" + filename));
                 MusicPlayer.MUSIC.start();
             }

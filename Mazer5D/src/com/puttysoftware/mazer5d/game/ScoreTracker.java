@@ -7,10 +7,10 @@ package com.puttysoftware.mazer5d.game;
 
 import java.io.File;
 
-import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.files.format.XMLExtension;
-import com.puttysoftware.scoremanager.SavedScoreManager;
-import com.puttysoftware.scoremanager.ScoreManager;
+import com.puttysoftware.mazer5d.scoremanager.SavedScoreManager;
+import com.puttysoftware.mazer5d.scoremanager.ScoreManager;
 
 public class ScoreTracker {
     // Fields

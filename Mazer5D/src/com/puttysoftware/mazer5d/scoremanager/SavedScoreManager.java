@@ -3,7 +3,7 @@
 
  Any questions should be directed to the author via email at: lasertank@worldwizard.net
  */
-package com.puttysoftware.scoremanager;
+package com.puttysoftware.mazer5d.scoremanager;
 
 import java.io.IOException;
 
