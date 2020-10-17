@@ -126,8 +126,7 @@ public class RuleSetPicker {
         this.importXML.addActionListener(this.handler);
         this.exportXML.addActionListener(this.handler);
         this.done.addActionListener(this.handler);
-        this.picker = new PicturePicker(this.editorAppearances, this.names,
-                new Color(223, 223, 223));
+        this.picker = new PicturePicker(this.editorAppearances, this.names);
         this.picker.changePickerColor(new Color(223, 223, 223));
         final int maxSize = Prefs.getViewingWindowSize();
         this.picker.updatePickerLayout(maxSize);

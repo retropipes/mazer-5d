@@ -151,8 +151,7 @@ public class MazeEditor {
         this.containableEditorAppearances = GameObjects
                 .getAllContainableObjectEditorAppearances();
         this.treasurePicker = new PicturePicker(
-                this.containableEditorAppearances, this.containableNames,
-                new Color(223, 223, 223));
+                this.containableEditorAppearances, this.containableNames);
         this.treasurePicker.changePickerColor(new Color(223, 223, 223));
         this.pick = new JButton("Pick!");
         this.pick.addActionListener(this.rhandler);
@@ -2458,8 +2457,7 @@ public class MazeEditor {
             if (this.picker != null) {
                 this.picker.updatePicker(newImages, newNames);
             } else {
-                this.picker = new PicturePicker(newImages, newNames,
-                        new Color(223, 223, 223));
+                this.picker = new PicturePicker(newImages, newNames);
                 this.picker.changePickerColor(new Color(223, 223, 223));
             }
             this.picker.updatePickerLayout(this.outputPane.getHeight());

@@ -1,9 +1,3 @@
-[submodule "lib-java-audio-wav"]
-	path = lib-java-audio-wav
-	url = https://github.com/wrldwzrd89/lib-java-audio-wav
-[submodule "lib-java-audio-ogg"]
-	path = lib-java-audio-ogg
-	url = https://github.com/wrldwzrd89/lib-java-audio-ogg
 [submodule "lib-java-file-utilities"]
 	path = lib-java-file-utilities
 	url = https://github.com/wrldwzrd89/lib-java-file-utilities
@@ -19,3 +13,9 @@
 [submodule "lib-java-storage"]
 	path = lib-java-storage
 	url = https://github.com/wrldwzrd89/lib-java-storage
+[submodule "lib-java-updater"]
+	path = lib-java-updater
+	url = https://github.com/wrldwzrd89/lib-java-updater
+[submodule "lib-java-picture-picker"]
+	path = lib-java-picture-picker
+	url = https://github.com/wrldwzrd89/lib-java-picture-picker
