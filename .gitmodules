@@ -19,3 +19,6 @@
 [submodule "lib-java-picture-picker"]
 	path = lib-java-picture-picker
 	url = https://github.com/wrldwzrd89/lib-java-picture-picker
+[submodule "java-vorbis-support"]
+	path = java-vorbis-support
+	url = https://github.com/retropipes/java-vorbis-support.git
