@@ -32,8 +32,8 @@ import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.files.MazeManager;
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.ImageConstants;
 import com.puttysoftware.mazer5d.loaders.MusicPlayer;
@@ -1577,7 +1577,7 @@ public class GameManager implements MazeEffectConstants {
 	}
     }
 
-    public void loadGameHookXML(final XDataReader mazeFile, final int formatVersion) throws IOException {
+    public void loadGameHookXML(final MazeDataReader mazeFile, final int formatVersion) throws IOException {
 	final BagOStuff app = Mazer5D.getBagOStuff();
 	this.objectInv = ObjectInventory.readInventoryXML(mazeFile, formatVersion);
 	this.savedObjectInv = ObjectInventory.readInventoryXML(mazeFile, formatVersion);
@@ -1585,7 +1585,7 @@ public class GameManager implements MazeEffectConstants {
 	this.st.setScore(mazeFile.readLong());
     }
 
-    public void saveGameHookXML(final XDataWriter mazeFile) throws IOException {
+    public void saveGameHookXML(final MazeDataWriter mazeFile) throws IOException {
 	final BagOStuff app = Mazer5D.getBagOStuff();
 	this.objectInv.writeInventoryXML(mazeFile);
 	this.savedObjectInv.writeInventoryXML(mazeFile);

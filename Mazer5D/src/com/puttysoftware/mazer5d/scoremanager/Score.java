@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Comparator;
 
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 
 public final class Score {
     // Fields
@@ -71,7 +71,7 @@ public final class Score {
 	this.name = newName;
     }
 
-    public static Score readScore(final XDataReader xdr) throws IOException {
+    public static Score readScore(final MazeDataReader xdr) throws IOException {
 	final String sname = xdr.readString();
 	final int len = xdr.readInt();
 	final Score s = new Score(len);
@@ -82,7 +82,7 @@ public final class Score {
 	return s;
     }
 
-    public void writeScore(final XDataWriter xdw) throws IOException {
+    public void writeScore(final MazeDataWriter xdw) throws IOException {
 	xdw.writeString(this.name);
 	xdw.writeInt(this.scores.length);
 	for (final long score : this.scores) {

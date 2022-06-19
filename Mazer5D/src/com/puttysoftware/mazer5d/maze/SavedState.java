@@ -8,8 +8,8 @@ package com.puttysoftware.mazer5d.maze;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.abc.MazeObject;
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.utilities.Layers;
 
@@ -34,7 +34,7 @@ class SavedState {
 	this.saveData[x][y][z][e] = newData;
     }
 
-    public void writeSavedTowerStateXML(final XDataWriter writer) throws IOException {
+    public void writeSavedTowerStateXML(final MazeDataWriter writer) throws IOException {
 	int x, y, z, e;
 	writer.writeInt(this.c);
 	writer.writeInt(this.r);
@@ -50,7 +50,7 @@ class SavedState {
 	}
     }
 
-    public static SavedState readSavedStateXML(final XDataReader reader, final int formatVersion) throws IOException {
+    public static SavedState readSavedStateXML(final MazeDataReader reader, final int formatVersion) throws IOException {
 	int x, y, z, e, sizeX, sizeY, sizeZ;
 	sizeX = reader.readInt();
 	sizeY = reader.readInt();

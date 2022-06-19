@@ -2,8 +2,8 @@ package com.puttysoftware.mazer5d.files;
 
 import java.io.IOException;
 
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.files.versions.MazeVersion;
 import com.puttysoftware.mazer5d.files.versions.MazeVersionException;
 import com.puttysoftware.mazer5d.files.versions.MazeVersions;
@@ -12,7 +12,7 @@ public class PrefixIO {
     private static final byte FORMAT_VERSION_MAJOR = (byte) MazeVersions.LATEST.ordinal();
     private static final byte FORMAT_VERSION_MINOR = (byte) 0;
 
-    public MazeVersion readPrefix(final XDataReader reader) throws IOException {
+    public MazeVersion readPrefix(final MazeDataReader reader) throws IOException {
 	final byte[] formatVer = PrefixIO.readFormatVersion(reader);
 	final boolean res = PrefixIO.checkFormatVersion(formatVer);
 	if (!res) {
@@ -21,11 +21,11 @@ public class PrefixIO {
 	return PrefixIO.decodeFormatByte(formatVer[0]);
     }
 
-    public void writePrefix(final XDataWriter writer) throws IOException {
+    public void writePrefix(final MazeDataWriter writer) throws IOException {
 	PrefixIO.writeFormatVersion(writer);
     }
 
-    private static byte[] readFormatVersion(final XDataReader reader) throws IOException {
+    private static byte[] readFormatVersion(final MazeDataReader reader) throws IOException {
 	final byte major = reader.readByte();
 	final byte minor = reader.readByte();
 	return new byte[] { major, minor };
@@ -45,7 +45,7 @@ public class PrefixIO {
 	}
     }
 
-    private static void writeFormatVersion(final XDataWriter writer) throws IOException {
+    private static void writeFormatVersion(final MazeDataWriter writer) throws IOException {
 	writer.writeByte(PrefixIO.FORMAT_VERSION_MAJOR);
 	writer.writeByte(PrefixIO.FORMAT_VERSION_MINOR);
     }

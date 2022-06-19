@@ -2,8 +2,8 @@ package com.puttysoftware.mazer5d.editor.rulesets;
 
 import java.io.IOException;
 
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.utilities.RandomGenerationRule;
 import com.puttysoftware.randomrange.RandomRange;
@@ -101,7 +101,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
 	return this.generateQuantity;
     }
 
-    public void readRuleSetXML(final XDataReader reader, final int rsFormat) throws IOException {
+    public void readRuleSetXML(final MazeDataReader reader, final int rsFormat) throws IOException {
 	this.maxQuantity = reader.readInt();
 	this.minQuantity = reader.readInt();
 	this.percentageFlag = reader.readBoolean();
@@ -114,7 +114,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
 	}
     }
 
-    public void writeRuleSetXML(final XDataWriter writer) throws IOException {
+    public void writeRuleSetXML(final MazeDataWriter writer) throws IOException {
 	writer.writeInt(this.maxQuantity);
 	writer.writeInt(this.minQuantity);
 	writer.writeBoolean(this.percentageFlag);

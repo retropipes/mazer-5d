@@ -16,8 +16,8 @@ import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.files.format.XMLFormatConstants;
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.loaders.ObjectImageLoader;
 import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
 import com.puttysoftware.mazer5d.utilities.Layers;
@@ -1266,7 +1266,7 @@ public class GameObjects {
 	}
     }
 
-    public static MazeObject readObject(final XDataReader reader, final int formatVersion) throws IOException {
+    public static MazeObject readObject(final MazeDataReader reader, final int formatVersion) throws IOException {
 	MazeObject o = null;
 	String UID = "";
 	if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_1) {
@@ -1305,7 +1305,7 @@ public class GameObjects {
 	return null;
     }
 
-    public static void readRuleSet(final XDataReader reader, final int rsFormat) throws IOException {
+    public static void readRuleSet(final MazeDataReader reader, final int rsFormat) throws IOException {
 	// Read map length
 	final int mapLen = reader.readInt();
 	final boolean[] map = new boolean[mapLen];
@@ -1322,7 +1322,7 @@ public class GameObjects {
 	}
     }
 
-    public static void writeRuleSet(final XDataWriter writer) throws IOException {
+    public static void writeRuleSet(final MazeDataWriter writer) throws IOException {
 	final boolean[] map = GameObjects.generateMap();
 	// Write map length
 	writer.writeInt(map.length);

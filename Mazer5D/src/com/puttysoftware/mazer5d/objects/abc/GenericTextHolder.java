@@ -9,8 +9,8 @@ import java.io.IOException;
 
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
@@ -50,13 +50,13 @@ public abstract class GenericTextHolder extends MazeObject {
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final XDataReader reader, final int formatVersion) throws IOException {
+    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion) throws IOException {
 	this.setSignText(reader.readString());
 	return this;
     }
 
     @Override
-    protected void writeMazeObjectHookXML(final XDataWriter writer) throws IOException {
+    protected void writeMazeObjectHookXML(final MazeDataWriter writer) throws IOException {
 	writer.writeString(this.getSignText());
     }
 }

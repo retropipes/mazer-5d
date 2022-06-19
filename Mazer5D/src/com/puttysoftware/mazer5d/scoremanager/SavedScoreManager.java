@@ -7,8 +7,8 @@ package com.puttysoftware.mazer5d.scoremanager;
 
 import java.io.IOException;
 
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 
 public class SavedScoreManager extends ScoreManager {
     // Fields
@@ -61,7 +61,7 @@ public class SavedScoreManager extends ScoreManager {
     }
 
     private void readScoresFile() throws IOException {
-	try (XDataReader xdr = new XDataReader(this.scoresFilename, "scores")) { //$NON-NLS-1$
+	try (MazeDataReader xdr = new MazeDataReader(this.scoresFilename, "scores")) { //$NON-NLS-1$
 	    this.table = SortedScoreTable.readSortedScoreTable(xdr);
 	    xdr.close();
 	} catch (final IOException ioe) {
@@ -70,7 +70,7 @@ public class SavedScoreManager extends ScoreManager {
     }
 
     private void writeScoresFile() throws IOException {
-	try (XDataWriter xdw = new XDataWriter(this.scoresFilename, "scores")) { //$NON-NLS-1$
+	try (MazeDataWriter xdw = new MazeDataWriter(this.scoresFilename, "scores")) { //$NON-NLS-1$
 	    this.table.writeSortedScoreTable(xdw);
 	    xdw.close();
 	} catch (final IOException ioe) {

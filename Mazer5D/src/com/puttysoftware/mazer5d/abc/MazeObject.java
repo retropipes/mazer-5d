@@ -11,8 +11,8 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSet;
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.maze.Maze;
@@ -1032,7 +1032,7 @@ public abstract class MazeObject implements RandomGenerationRule {
 
     public abstract MazeObjects getUniqueID();
 
-    public final void writeMazeObjectXML(final XDataWriter writer) throws IOException {
+    public final void writeMazeObjectXML(final MazeDataWriter writer) throws IOException {
 	writer.writeString(this.getXMLIdentifier());
 	final int ccf = this.customCounterCount();
 	if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
@@ -1043,7 +1043,7 @@ public abstract class MazeObject implements RandomGenerationRule {
 	this.writeMazeObjectHookXML(writer);
     }
 
-    public final MazeObject readMazeObjectXML(final XDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObjectXML(final MazeDataReader reader, final String ident, final int ver)
 	    throws IOException {
 	if (ident.equals(this.getXMLIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1059,7 +1059,7 @@ public abstract class MazeObject implements RandomGenerationRule {
 	}
     }
 
-    public final MazeObject readMazeObjectXML2(final XDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObjectXML2(final MazeDataReader reader, final String ident, final int ver)
 	    throws IOException {
 	if (ident.equals(this.getXMLIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1075,7 +1075,7 @@ public abstract class MazeObject implements RandomGenerationRule {
 	}
     }
 
-    public final MazeObject readMazeObjectXML3(final XDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObjectXML3(final MazeDataReader reader, final String ident, final int ver)
 	    throws IOException {
 	if (ident.equals(this.getXMLIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1091,7 +1091,7 @@ public abstract class MazeObject implements RandomGenerationRule {
 	}
     }
 
-    public final MazeObject readMazeObjectXML4(final XDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObjectXML4(final MazeDataReader reader, final String ident, final int ver)
 	    throws IOException {
 	if (ident.equals(this.getXMLIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1107,7 +1107,7 @@ public abstract class MazeObject implements RandomGenerationRule {
 	}
     }
 
-    public final MazeObject readMazeObjectXML5(final XDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObjectXML5(final MazeDataReader reader, final String ident, final int ver)
 	    throws IOException {
 	if (ident.equals(this.getXMLIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1128,7 +1128,7 @@ public abstract class MazeObject implements RandomGenerationRule {
      * @param writer
      * @throws IOException
      */
-    protected void writeMazeObjectHookXML(final XDataWriter writer) throws IOException {
+    protected void writeMazeObjectHookXML(final MazeDataWriter writer) throws IOException {
 	// Do nothing - but let subclasses override
     }
 
@@ -1139,7 +1139,7 @@ public abstract class MazeObject implements RandomGenerationRule {
      * @return
      * @throws IOException
      */
-    protected MazeObject readMazeObjectHookXML(final XDataReader reader, final int formatVersion) throws IOException {
+    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion) throws IOException {
 	// Dummy implementation, subclasses can override
 	return this;
     }

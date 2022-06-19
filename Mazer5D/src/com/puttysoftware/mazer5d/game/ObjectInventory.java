@@ -8,8 +8,8 @@ package com.puttysoftware.mazer5d.game;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.abc.MazeObject;
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.objects.abc.GenericAmulet;
 import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
@@ -462,7 +462,7 @@ public final class ObjectInventory implements Cloneable {
 	return clone;
     }
 
-    public static ObjectInventory readInventoryXML(final XDataReader reader, final int formatVersion)
+    public static ObjectInventory readInventoryXML(final MazeDataReader reader, final int formatVersion)
 	    throws IOException {
 	final ObjectInventory i = new ObjectInventory();
 	i.boots = (GenericBoots) GameObjects.readObject(reader, formatVersion);
@@ -488,7 +488,7 @@ public final class ObjectInventory implements Cloneable {
 	return i;
     }
 
-    public void writeInventoryXML(final XDataWriter writer) throws IOException {
+    public void writeInventoryXML(final MazeDataWriter writer) throws IOException {
 	this.boots.writeMazeObjectXML(writer);
 	this.amulet.writeMazeObjectXML(writer);
 	for (final int content : this.contents) {

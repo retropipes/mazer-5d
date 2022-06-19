@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 
 public class SortedScoreTable extends ScoreTable {
     // Fields
@@ -110,7 +110,7 @@ public class SortedScoreTable extends ScoreTable {
 	return !Collections.max(temp, new Score.ScoreComparatorAsc()).equals(newEntry);
     }
 
-    public static SortedScoreTable readSortedScoreTable(final XDataReader xdr) throws IOException {
+    public static SortedScoreTable readSortedScoreTable(final MazeDataReader xdr) throws IOException {
 	final boolean order = xdr.readBoolean();
 	final int len = xdr.readInt();
 	final int unitLen = xdr.readInt();
@@ -125,7 +125,7 @@ public class SortedScoreTable extends ScoreTable {
 	return sst;
     }
 
-    public void writeSortedScoreTable(final XDataWriter xdw) throws IOException {
+    public void writeSortedScoreTable(final MazeDataWriter xdw) throws IOException {
 	xdw.writeBoolean(this.sortOrder);
 	xdw.writeInt(this.table.size());
 	xdw.writeInt(this.unit.length);

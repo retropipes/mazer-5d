@@ -10,7 +10,7 @@ import java.io.IOException;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetConstants;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 
 public class XMLRuleSetSaveTask extends Thread {
@@ -31,7 +31,7 @@ public class XMLRuleSetSaveTask extends Thread {
 	if (!hasExtension) {
 	    this.filename += XMLExtension.getXMLRuleSetExtensionWithPeriod();
 	}
-	try (XDataWriter ruleSetFile = new XDataWriter(this.filename, "ruleset")) {
+	try (MazeDataWriter ruleSetFile = new MazeDataWriter(this.filename, "ruleset")) {
 	    ruleSetFile.writeInt(RuleSetConstants.MAGIC_NUMBER_2);
 	    GameObjects.writeRuleSet(ruleSetFile);
 	    CommonDialogs.showTitledDialog(sg + " file saved.", "Rule Set Picker");

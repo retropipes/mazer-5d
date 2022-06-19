@@ -12,8 +12,8 @@ import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objects.abc.GenericTrap;
@@ -91,14 +91,14 @@ class RotationTrap extends GenericTrap implements Cloneable {
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final XDataReader reader, final int formatVersion) throws IOException {
+    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion) throws IOException {
 	this.setRotationRadius(reader.readInt());
 	this.setRotationDirection(reader.readBoolean());
 	return this;
     }
 
     @Override
-    protected void writeMazeObjectHookXML(final XDataWriter writer) throws IOException {
+    protected void writeMazeObjectHookXML(final MazeDataWriter writer) throws IOException {
 	writer.writeInt(this.getRotationRadius());
 	writer.writeBoolean(this.getRotationDirection());
     }

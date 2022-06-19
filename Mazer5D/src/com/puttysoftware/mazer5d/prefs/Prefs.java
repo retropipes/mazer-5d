@@ -49,8 +49,8 @@ import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.files.CommonPaths;
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.files.versions.PrefsVersionException;
 import com.puttysoftware.mazer5d.files.versions.PrefsVersions;
 import com.puttysoftware.mazer5d.objects.GameObjects;
@@ -509,7 +509,7 @@ public class Prefs {
 		// Abort early if the file does not exist
 		return false;
 	    }
-	    try (final XDataReader reader = new XDataReader(CommonPaths.getPrefsFile().getAbsolutePath(),
+	    try (final MazeDataReader reader = new MazeDataReader(CommonPaths.getPrefsFile().getAbsolutePath(),
 		    Prefs.DOC_TAG)) {
 		// Read the preferences from the file
 		// Read version
@@ -560,7 +560,7 @@ public class Prefs {
 	    if (!prefsFile.canWrite()) {
 		prefsParent.mkdirs();
 	    }
-	    try (final XDataWriter writer = new XDataWriter(prefsFile.getAbsolutePath(), Prefs.DOC_TAG)) {
+	    try (final MazeDataWriter writer = new MazeDataWriter(prefsFile.getAbsolutePath(), Prefs.DOC_TAG)) {
 		// Write the preferences to the file
 		writer.writeInt(PrefsVersions.LATEST);
 		writer.writeMazeObjectID(Prefs.editorFill);
@@ -598,7 +598,7 @@ public class Prefs {
 
 	// Methods
 	public boolean importPreferencesFile(final File importFile) {
-	    try (final XDataReader reader = new XDataReader(importFile.getAbsolutePath(), Prefs.DOC_TAG)) {
+	    try (final MazeDataReader reader = new MazeDataReader(importFile.getAbsolutePath(), Prefs.DOC_TAG)) {
 		// Read the preferences from the file
 		// Read version
 		final int version = reader.readInt();
@@ -653,7 +653,7 @@ public class Prefs {
 	}
 
 	public boolean exportPreferencesFile(final File exportFile) {
-	    try (final XDataWriter writer = new XDataWriter(exportFile.getAbsolutePath(), Prefs.DOC_TAG)) {
+	    try (final MazeDataWriter writer = new MazeDataWriter(exportFile.getAbsolutePath(), Prefs.DOC_TAG)) {
 		// Write the preferences to the file
 		writer.writeInt(PrefsVersions.LATEST);
 		writer.writeMazeObjectID(Prefs.editorFill);

@@ -2,11 +2,11 @@ package com.puttysoftware.mazer5d.files.format;
 
 import java.io.IOException;
 
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 
 public interface XMLPrefixIO {
-    void writePrefix(XDataWriter writer) throws IOException;
+    void writePrefix(MazeDataWriter writer) throws IOException;
 
-    int readPrefix(XDataReader reader) throws IOException;
+    int readPrefix(MazeDataReader reader) throws IOException;
 }

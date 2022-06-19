@@ -11,8 +11,8 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
@@ -79,13 +79,13 @@ public abstract class GenericContainer extends GenericLock {
     public abstract MazeObject editorPropertiesHook();
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final XDataReader reader, final int formatVersion) throws IOException {
+    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion) throws IOException {
 	this.setSavedObject(GameObjects.readObject(reader, formatVersion));
 	return this;
     }
 
     @Override
-    protected void writeMazeObjectHookXML(final XDataWriter writer) throws IOException {
+    protected void writeMazeObjectHookXML(final MazeDataWriter writer) throws IOException {
 	if (this.getSavedObject() == null) {
 	    GameObjects.getEmptySpace().writeMazeObjectXML(writer);
 	} else {

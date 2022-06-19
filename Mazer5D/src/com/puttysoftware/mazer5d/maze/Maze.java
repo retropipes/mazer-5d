@@ -15,8 +15,8 @@ import com.puttysoftware.mazer5d.files.TempDirCleanup;
 import com.puttysoftware.mazer5d.files.format.XMLFormatConstants;
 import com.puttysoftware.mazer5d.files.format.XMLPrefixIO;
 import com.puttysoftware.mazer5d.files.format.XMLSuffixIO;
-import com.puttysoftware.mazer5d.files.io.XDataReader;
-import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.MazeDataReader;
+import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.objects.abc.GenericCharacter;
 import com.puttysoftware.mazer5d.objects.abc.GenericMovingObject;
@@ -420,7 +420,7 @@ public class Maze {
     private void switchLevelInternal(final int level) {
 	if (this.activeLevel != level) {
 	    if (this.mazeData != null) {
-		try (XDataWriter writer = this.getLevelWriterXML()) {
+		try (MazeDataWriter writer = this.getLevelWriterXML()) {
 		    // Save old level
 		    this.writeMazeLevelXML(writer);
 		    writer.close();
@@ -429,7 +429,7 @@ public class Maze {
 		}
 	    }
 	    this.activeLevel = level;
-	    try (XDataReader reader = this.getLevelReaderXML()) {
+	    try (MazeDataReader reader = this.getLevelReaderXML()) {
 		// Load new level
 		this.readMazeLevelXML(reader);
 		reader.close();
@@ -486,7 +486,7 @@ public class Maze {
     public boolean addLevel(final int rows, final int cols, final int floors) {
 	if (this.levelCount < Maze.MAX_LEVELS) {
 	    if (this.mazeData != null) {
-		try (XDataWriter writer = this.getLevelWriterXML()) {
+		try (MazeDataWriter writer = this.getLevelWriterXML()) {
 		    // Save old level
 		    this.writeMazeLevelXML(writer);
 		    writer.close();
@@ -883,7 +883,7 @@ public class Maze {
 	// Make base paths the same
 	m.basePath = this.basePath;
 	// Create metafile reader
-	try (XDataReader metaReader = new XDataReader(m.basePath + File.separator + "metafile.xml", "maze")) {
+	try (MazeDataReader metaReader = new MazeDataReader(m.basePath + File.separator + "metafile.xml", "maze")) {
 	    // Read metafile
 	    final int version = m.readMazeMetafileXML(metaReader);
 	    // Set XML compatibility flags
@@ -906,7 +906,7 @@ public class Maze {
 		Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(false);
 	    }
 	    // Create data reader
-	    try (XDataReader dataReader = m.getLevelReaderXML()) {
+	    try (MazeDataReader dataReader = m.getLevelReaderXML()) {
 		// Read data
 		m.readMazeLevelXML(dataReader, version);
 	    }
@@ -914,11 +914,11 @@ public class Maze {
 	return m;
     }
 
-    private XDataReader getLevelReaderXML() throws IOException {
-	return new XDataReader(this.basePath + File.separator + "level" + this.activeLevel + ".xml", "level");
+    private MazeDataReader getLevelReaderXML() throws IOException {
+	return new MazeDataReader(this.basePath + File.separator + "level" + this.activeLevel + ".xml", "level");
     }
 
-    private int readMazeMetafileXML(final XDataReader reader) throws IOException {
+    private int readMazeMetafileXML(final MazeDataReader reader) throws IOException {
 	int ver = XMLFormatConstants.XML_MAZE_FORMAT_1;
 	if (this.xmlPrefixHandler != null) {
 	    ver = this.xmlPrefixHandler.readPrefix(reader);
@@ -937,11 +937,11 @@ public class Maze {
 	return ver;
     }
 
-    private void readMazeLevelXML(final XDataReader reader) throws IOException {
+    private void readMazeLevelXML(final MazeDataReader reader) throws IOException {
 	this.readMazeLevelXML(reader, XMLFormatConstants.XML_MAZE_FORMAT_5);
     }
 
-    private void readMazeLevelXML(final XDataReader reader, final int formatVersion) throws IOException {
+    private void readMazeLevelXML(final MazeDataReader reader, final int formatVersion) throws IOException {
 	if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_1) {
 	    this.mazeData = MazeData.readXMLMazeDataModelV1(reader, formatVersion);
 	    this.mazeData.readSavedTowerStateXML(reader, formatVersion);
@@ -974,22 +974,22 @@ public class Maze {
 	// Clear XML 4 compatibility flag
 	Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(false);
 	// Create metafile writer
-	try (XDataWriter metaWriter = new XDataWriter(this.basePath + File.separator + "metafile.xml", "maze")) {
+	try (MazeDataWriter metaWriter = new MazeDataWriter(this.basePath + File.separator + "metafile.xml", "maze")) {
 	    // Write metafile
 	    this.writeMazeMetafileXML(metaWriter);
 	    // Create data writer
-	    try (XDataWriter dataWriter = this.getLevelWriterXML()) {
+	    try (MazeDataWriter dataWriter = this.getLevelWriterXML()) {
 		// Write data
 		this.writeMazeLevelXML(dataWriter);
 	    }
 	}
     }
 
-    private XDataWriter getLevelWriterXML() throws IOException {
-	return new XDataWriter(this.basePath + File.separator + "level" + this.activeLevel + ".xml", "level");
+    private MazeDataWriter getLevelWriterXML() throws IOException {
+	return new MazeDataWriter(this.basePath + File.separator + "level" + this.activeLevel + ".xml", "level");
     }
 
-    private void writeMazeMetafileXML(final XDataWriter writer) throws IOException {
+    private void writeMazeMetafileXML(final MazeDataWriter writer) throws IOException {
 	if (this.xmlPrefixHandler != null) {
 	    this.xmlPrefixHandler.writePrefix(writer);
 	}
@@ -1005,7 +1005,7 @@ public class Maze {
 	}
     }
 
-    private void writeMazeLevelXML(final XDataWriter writer) throws IOException {
+    private void writeMazeLevelXML(final MazeDataWriter writer) throws IOException {
 	// Clear XML compatibility flag
 	Mazer5D.getBagOStuff().getMazeManager().setMazeXML1Compatible(false);
 	// Clear XML 2 compatibility flag
