@@ -22,3 +22,9 @@
 [submodule "java-vorbis-support"]
 	path = java-vorbis-support
 	url = https://github.com/retropipes/java-vorbis-support.git
+[submodule "lib-java-audio-wav"]
+	path = lib-java-audio-wav
+	url = https://github.com/retropipes/audio-wav.git
+[submodule "lib-java-audio-ogg"]
+	path = lib-java-audio-ogg
+	url = https://github.com/retropipes/audio-ogg.git
