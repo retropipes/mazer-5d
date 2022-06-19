@@ -28,3 +28,6 @@
 [submodule "lib-java-audio-ogg"]
 	path = lib-java-audio-ogg
 	url = https://github.com/retropipes/audio-ogg.git
+[submodule "lib-java-file-io"]
+	path = lib-java-file-io
+	url = https://github.com/retropipes/file-io.git
