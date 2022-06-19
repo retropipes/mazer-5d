@@ -11,28 +11,28 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 class OneWayWestWall extends GenericWall {
     public OneWayWestWall() {
-        super(true, true, true, false, true, true, true, false);
-        this.setType(TypeConstants.TYPE_PLAIN_WALL);
-        this.setType(TypeConstants.TYPE_WALL);
+	super(true, true, true, false, true, true, true, false);
+	this.setType(TypeConstants.TYPE_PLAIN_WALL);
+	this.setType(TypeConstants.TYPE_WALL);
     }
 
     @Override
     public String getName() {
-        return "One-Way West Wall";
+	return "One-Way West Wall";
     }
 
     @Override
     public String getPluralName() {
-        return "One-Way West Walls";
+	return "One-Way West Walls";
     }
 
     @Override
     public String getDescription() {
-        return "One-Way West Walls allow movement through them only West.";
+	return "One-Way West Walls allow movement through them only West.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ONE_WAY_WEST_WALL;
+	return MazeObjects.ONE_WAY_WEST_WALL;
     }
 }

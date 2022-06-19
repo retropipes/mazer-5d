@@ -19,36 +19,35 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class PullableBlockTwice extends GenericMovableObject {
     // Constructors
     public PullableBlockTwice() {
-        super(false, true);
+	super(false, true);
     }
 
     @Override
     public String getName() {
-        return "Pullable Block Twice";
+	return "Pullable Block Twice";
     }
 
     @Override
     public String getPluralName() {
-        return "Pullable Blocks Twice";
+	return "Pullable Blocks Twice";
     }
 
     @Override
-    public void pullAction(final ObjectInventory inv, final MazeObject mo,
-            final int x, final int y, final int pushX, final int pushY) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().updatePulledPosition(x, y, pushX, pushY, this);
-        SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
-        app.getGameManager().morphOther(new PullableBlockOnce(), pushX, pushY,
-                Layers.OBJECT);
+    public void pullAction(final ObjectInventory inv, final MazeObject mo, final int x, final int y, final int pushX,
+	    final int pushY) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getGameManager().updatePulledPosition(x, y, pushX, pushY, this);
+	SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
+	app.getGameManager().morphOther(new PullableBlockOnce(), pushX, pushY, Layers.OBJECT);
     }
 
     @Override
     public String getDescription() {
-        return "Pullable Blocks Twice can only be pulled twice, before turning into a wall.";
+	return "Pullable Blocks Twice can only be pulled twice, before turning into a wall.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.PULLABLE_BLOCK_TWICE;
+	return MazeObjects.PULLABLE_BLOCK_TWICE;
     }
 }

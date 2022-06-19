@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class SealedFinish extends GenericPassThroughObject {
     // Constructors
     public SealedFinish() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Sealed Finish";
+	return "Sealed Finish";
     }
 
     @Override
     public String getPluralName() {
-        return null;
+	return null;
     }
 
     @Override
     public String getDescription() {
-        return null;
+	return null;
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.SEALED_FINISH;
+	return MazeObjects.SEALED_FINISH;
     }
 }

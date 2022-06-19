@@ -13,28 +13,27 @@ public abstract class GenericProgrammableKey extends GenericSingleKey {
 
     // Constructors
     protected GenericProgrammableKey(final String newColor) {
-        super();
-        this.color = newColor;
-        this.setType(TypeConstants.TYPE_PROGRAMMABLE_USE);
-        this.setType(TypeConstants.TYPE_SINGLE_USE);
-        this.setType(TypeConstants.TYPE_KEY);
-        this.setType(TypeConstants.TYPE_INVENTORYABLE);
-        this.setType(TypeConstants.TYPE_CONTAINABLE);
+	super();
+	this.color = newColor;
+	this.setType(TypeConstants.TYPE_PROGRAMMABLE_USE);
+	this.setType(TypeConstants.TYPE_SINGLE_USE);
+	this.setType(TypeConstants.TYPE_KEY);
+	this.setType(TypeConstants.TYPE_INVENTORYABLE);
+	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
     public String getName() {
-        return this.color + " Crystal";
+	return this.color + " Crystal";
     }
 
     @Override
     public String getPluralName() {
-        return this.color + " Crystals";
+	return this.color + " Crystals";
     }
 
     @Override
     public String getDescription() {
-        return this.color
-                + " Crystals may open Crystal Walls, and can be used only once.";
+	return this.color + " Crystals may open Crystal Walls, and can be used only once.";
     }
 }

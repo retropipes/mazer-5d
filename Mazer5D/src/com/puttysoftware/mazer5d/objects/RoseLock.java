@@ -16,36 +16,35 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class RoseLock extends GenericSingleLock {
     // Constructors
     public RoseLock() {
-        super(new RoseKey());
+	super(new RoseKey());
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need a rose key");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need a rose key");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Rose Lock";
+	return "Rose Lock";
     }
 
     @Override
     public String getPluralName() {
-        return "Rose Locks";
+	return "Rose Locks";
     }
 
     @Override
     public String getDescription() {
-        return "Rose Locks require Rose Keys to open.";
+	return "Rose Locks require Rose Keys to open.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ROSE_LOCK;
+	return MazeObjects.ROSE_LOCK;
     }
 }

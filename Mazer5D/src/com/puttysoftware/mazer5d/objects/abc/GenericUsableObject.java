@@ -12,10 +12,10 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public abstract class GenericUsableObject extends GenericInventoryableObject {
     // Constructors
     protected GenericUsableObject(final int newUses) {
-        super(true, newUses);
-        this.setType(TypeConstants.TYPE_USABLE);
-        this.setType(TypeConstants.TYPE_INVENTORYABLE);
-        this.setType(TypeConstants.TYPE_CONTAINABLE);
+	super(true, newUses);
+	this.setType(TypeConstants.TYPE_USABLE);
+	this.setType(TypeConstants.TYPE_INVENTORYABLE);
+	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
@@ -26,7 +26,7 @@ public abstract class GenericUsableObject extends GenericInventoryableObject {
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
 
     @Override

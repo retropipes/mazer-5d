@@ -10,26 +10,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class SeaweedButton extends GenericButton {
     public SeaweedButton() {
-        super(new SeaweedWallOff(), new SeaweedWallOn());
+	super(new SeaweedWallOff(), new SeaweedWallOn());
     }
 
     @Override
     public String getName() {
-        return "Seaweed Button";
+	return "Seaweed Button";
     }
 
     @Override
     public String getPluralName() {
-        return "Seaweed Buttons";
+	return "Seaweed Buttons";
     }
 
     @Override
     public String getDescription() {
-        return "Seaweed Buttons will cause all Seaweed Walls Off to become On, and all Seaweed Walls On to become Off.";
+	return "Seaweed Buttons will cause all Seaweed Walls Off to become On, and all Seaweed Walls On to become Off.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.SEAWEED_BUTTON;
+	return MazeObjects.SEAWEED_BUTTON;
     }
 }

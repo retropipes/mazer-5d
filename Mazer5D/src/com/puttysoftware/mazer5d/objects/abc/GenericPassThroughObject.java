@@ -16,22 +16,19 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public abstract class GenericPassThroughObject extends MazeObject {
     // Constructors
     protected GenericPassThroughObject() {
-        super(false);
-        this.setType(TypeConstants.TYPE_PASS_THROUGH);
+	super(false);
+	this.setType(TypeConstants.TYPE_PASS_THROUGH);
     }
 
-    protected GenericPassThroughObject(final boolean acceptPushInto,
-            final boolean acceptPushOut, final boolean acceptPullInto,
-            final boolean acceptPullOut) {
-        super(false, false, acceptPushInto, acceptPushOut, false,
-                acceptPullInto, acceptPullOut, true, false, 0);
-        this.setType(TypeConstants.TYPE_PASS_THROUGH);
+    protected GenericPassThroughObject(final boolean acceptPushInto, final boolean acceptPushOut,
+	    final boolean acceptPullInto, final boolean acceptPullOut) {
+	super(false, false, acceptPushInto, acceptPushOut, false, acceptPullInto, acceptPullOut, true, false, 0);
+	this.setType(TypeConstants.TYPE_PASS_THROUGH);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
     }
 
     @Override
@@ -39,7 +36,6 @@ public abstract class GenericPassThroughObject extends MazeObject {
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
-
 }

@@ -15,26 +15,26 @@ class IceBow extends GenericBow {
 
     // Constructors
     public IceBow() {
-        super(IceBow.BOW_USES, ArrowTypes.ICE);
+	super(IceBow.BOW_USES, ArrowTypes.ICE);
     }
 
     @Override
     public String getName() {
-        return "Ice Bow";
+	return "Ice Bow";
     }
 
     @Override
     public String getPluralName() {
-        return "Ice Bows";
+	return "Ice Bows";
     }
 
     @Override
     public String getDescription() {
-        return "Ice Bows allow shooting of Ice Arrows, which freeze Barrier Generators upon contact, and do everything normal arrows do.";
+	return "Ice Bows allow shooting of Ice Arrows, which freeze Barrier Generators upon contact, and do everything normal arrows do.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ICE_BOW;
+	return MazeObjects.ICE_BOW;
     }
 }

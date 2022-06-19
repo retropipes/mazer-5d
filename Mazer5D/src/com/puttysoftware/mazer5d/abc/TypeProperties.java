@@ -16,41 +16,41 @@ class TypeProperties {
 
     // Constructors
     public TypeProperties() {
-        this.typeData = new FlagStorage(TypeProperties.TYPE_PROPERTY_INDICES);
+	this.typeData = new FlagStorage(TypeProperties.TYPE_PROPERTY_INDICES);
     }
 
     public TypeProperties(final TypeProperties source) {
-        this.typeData = new FlagStorage(source.typeData);
+	this.typeData = new FlagStorage(source.typeData);
     }
 
     // Methods
     @Override
     public boolean equals(final Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() != obj.getClass()) {
-            return false;
-        }
-        final TypeProperties other = (TypeProperties) obj;
-        if (!Objects.equals(this.typeData, other.typeData)) {
-            return false;
-        }
-        return true;
+	if (obj == null) {
+	    return false;
+	}
+	if (this.getClass() != obj.getClass()) {
+	    return false;
+	}
+	final TypeProperties other = (TypeProperties) obj;
+	if (!Objects.equals(this.typeData, other.typeData)) {
+	    return false;
+	}
+	return true;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + Objects.hashCode(this.typeData);
-        return hash;
+	int hash = 3;
+	hash = 89 * hash + Objects.hashCode(this.typeData);
+	return hash;
     }
 
     public boolean isOfType(final int testType) {
-        return this.typeData.getCell(testType);
+	return this.typeData.getCell(testType);
     }
 
     public void setType(final int newType, final boolean value) {
-        this.typeData.setCell(value, newType);
+	this.typeData.setCell(value, newType);
     }
 }

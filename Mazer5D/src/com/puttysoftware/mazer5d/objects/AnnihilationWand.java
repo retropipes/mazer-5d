@@ -14,32 +14,32 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class AnnihilationWand extends GenericWand {
     // Constructors
     public AnnihilationWand() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Annihilation Wand";
+	return "Annihilation Wand";
     }
 
     @Override
     public String getPluralName() {
-        return "Annihilation Wands";
+	return "Annihilation Wands";
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-        this.useAction(GameObjects.getEmptySpace(), x, y, z);
-        SoundPlayer.playSound(SoundIndex.DESTROY, SoundGroup.GAME);
+	this.useAction(GameObjects.getEmptySpace(), x, y, z);
+	SoundPlayer.playSound(SoundIndex.DESTROY, SoundGroup.GAME);
     }
 
     @Override
     public String getDescription() {
-        return "Annihilation Wands will destroy any object (not ground) when used, except the Void or a Sealing Wall.";
+	return "Annihilation Wands will destroy any object (not ground) when used, except the Void or a Sealing Wall.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ANNIHILATION_WAND;
+	return MazeObjects.ANNIHILATION_WAND;
     }
 }

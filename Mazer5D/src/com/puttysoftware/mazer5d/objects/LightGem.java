@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class LightGem extends GenericLightModifier {
     // Constructors
     public LightGem() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Light Gem";
+	return "Light Gem";
     }
 
     @Override
     public String getPluralName() {
-        return "Light Gems";
+	return "Light Gems";
     }
 
     @Override
     public String getDescription() {
-        return "Light Gems bathe the immediately adjacent area in permanent light.";
+	return "Light Gems bathe the immediately adjacent area in permanent light.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.LIGHT_GEM;
+	return MazeObjects.LIGHT_GEM;
     }
 }

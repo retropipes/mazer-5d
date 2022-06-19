@@ -10,13 +10,13 @@ import java.lang.Thread.UncaughtExceptionHandler;
 public class MusicExceptionHandler implements UncaughtExceptionHandler {
     @Override
     public void uncaughtException(final Thread thr, final Throwable exc) {
-        try {
-            if (thr instanceof MusicLoader) {
-                final MusicLoader media = (MusicLoader) thr;
-                MusicLoader.taskCompleted(media.getNumber());
-            }
-        } catch (Throwable t) {
-            // Ignore
-        }
+	try {
+	    if (thr instanceof MusicLoader) {
+		final MusicLoader media = (MusicLoader) thr;
+		MusicLoader.taskCompleted(media.getNumber());
+	    }
+	} catch (Throwable t) {
+	    // Ignore
+	}
     }
 }

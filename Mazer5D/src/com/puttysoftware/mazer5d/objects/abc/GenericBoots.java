@@ -10,13 +10,13 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public abstract class GenericBoots extends GenericPass {
     // Constructors
     protected GenericBoots() {
-        super();
-        this.setType(TypeConstants.TYPE_BOOTS);
-        this.setType(TypeConstants.TYPE_PASS);
-        this.setType(TypeConstants.TYPE_INFINITE_USE);
-        this.setType(TypeConstants.TYPE_KEY);
-        this.setType(TypeConstants.TYPE_INVENTORYABLE);
-        this.setType(TypeConstants.TYPE_CONTAINABLE);
+	super();
+	this.setType(TypeConstants.TYPE_BOOTS);
+	this.setType(TypeConstants.TYPE_PASS);
+	this.setType(TypeConstants.TYPE_INFINITE_USE);
+	this.setType(TypeConstants.TYPE_KEY);
+	this.setType(TypeConstants.TYPE_INVENTORYABLE);
+	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override

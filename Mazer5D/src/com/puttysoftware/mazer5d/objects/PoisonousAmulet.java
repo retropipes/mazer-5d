@@ -16,33 +16,32 @@ class PoisonousAmulet extends GenericAmulet {
 
     // Constructors
     public PoisonousAmulet() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Poisonous Amulet";
+	return "Poisonous Amulet";
     }
 
     @Override
     public String getPluralName() {
-        return "Poisonous Amulets";
+	return "Poisonous Amulets";
     }
 
     @Override
     public String getDescription() {
-        return "Poisonous Amulets grant the power to make the air more poisonous for 30 steps. Note that you can only wear one amulet at once.";
+	return "Poisonous Amulets grant the power to make the air more poisonous for 30 steps. Note that you can only wear one amulet at once.";
     }
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getBagOStuff().getGameManager().activateEffect(
-                MazeEffectConstants.EFFECT_POISONOUS,
-                PoisonousAmulet.EFFECT_DURATION);
+	Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_POISONOUS,
+		PoisonousAmulet.EFFECT_DURATION);
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.POISONOUS_AMULET;
+	return MazeObjects.POISONOUS_AMULET;
     }
 }

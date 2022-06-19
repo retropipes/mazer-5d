@@ -12,28 +12,28 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 class Wall extends GenericWall {
     // Constructors
     public Wall() {
-        super();
-        this.setType(TypeConstants.TYPE_PLAIN_WALL);
-        this.setType(TypeConstants.TYPE_WALL);
+	super();
+	this.setType(TypeConstants.TYPE_PLAIN_WALL);
+	this.setType(TypeConstants.TYPE_WALL);
     }
 
     @Override
     public String getName() {
-        return "Wall";
+	return "Wall";
     }
 
     @Override
     public String getPluralName() {
-        return "Walls";
+	return "Walls";
     }
 
     @Override
     public String getDescription() {
-        return "Walls are impassable - you'll need to go around them.";
+	return "Walls are impassable - you'll need to go around them.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.WALL;
+	return MazeObjects.WALL;
     }
 }

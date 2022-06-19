@@ -15,33 +15,32 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class LightnessGem extends GenericGem {
     // Constructors
     public LightnessGem() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Lightness Gem";
+	return "Lightness Gem";
     }
 
     @Override
     public String getPluralName() {
-        return "Lightness Gems";
+	return "Lightness Gems";
     }
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .incrementVisionRadius();
-        SoundPlayer.playSound(SoundIndex.LIGHT, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().incrementVisionRadius();
+	SoundPlayer.playSound(SoundIndex.LIGHT, SoundGroup.GAME);
     }
 
     @Override
     public String getDescription() {
-        return "Lightness Gems increase the visible area by 1.";
+	return "Lightness Gems increase the visible area by 1.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.LIGHTNESS_GEM;
+	return MazeObjects.LIGHTNESS_GEM;
     }
 }

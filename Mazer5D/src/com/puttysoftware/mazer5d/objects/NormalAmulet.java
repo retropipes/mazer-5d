@@ -14,37 +14,37 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class NormalAmulet extends GenericAmulet {
     // Constructors
     public NormalAmulet() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Normal Amulet";
+	return "Normal Amulet";
     }
 
     @Override
     public String getPluralName() {
-        return "Normal Amulets";
+	return "Normal Amulets";
     }
 
     @Override
     public String getDescription() {
-        return "Normal Amulets have no special effect. Note that you can only wear one amulet at once.";
+	return "Normal Amulets have no special effect. Note that you can only wear one amulet at once.";
     }
 
     @Override
     public void postMoveActionHook() {
-        // Deactivate other amulet effects
-        final GameManager gm = Mazer5D.getBagOStuff().getGameManager();
-        gm.deactivateEffect(MazeEffectConstants.EFFECT_COUNTER_POISONED);
-        gm.deactivateEffect(MazeEffectConstants.EFFECT_FIERY);
-        gm.deactivateEffect(MazeEffectConstants.EFFECT_GHOSTLY);
-        gm.deactivateEffect(MazeEffectConstants.EFFECT_ICY);
-        gm.deactivateEffect(MazeEffectConstants.EFFECT_POISONOUS);
+	// Deactivate other amulet effects
+	final GameManager gm = Mazer5D.getBagOStuff().getGameManager();
+	gm.deactivateEffect(MazeEffectConstants.EFFECT_COUNTER_POISONED);
+	gm.deactivateEffect(MazeEffectConstants.EFFECT_FIERY);
+	gm.deactivateEffect(MazeEffectConstants.EFFECT_GHOSTLY);
+	gm.deactivateEffect(MazeEffectConstants.EFFECT_ICY);
+	gm.deactivateEffect(MazeEffectConstants.EFFECT_POISONOUS);
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.NORMAL_AMULET;
+	return MazeObjects.NORMAL_AMULET;
     }
 }

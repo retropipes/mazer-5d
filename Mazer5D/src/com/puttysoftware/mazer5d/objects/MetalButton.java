@@ -25,157 +25,150 @@ class MetalButton extends GenericField {
 
     // Constructors
     public MetalButton() {
-        super(false, new MetalBoots());
-        this.targetRow = 0;
-        this.targetCol = 0;
-        this.targetFloor = 0;
-        this.setType(TypeConstants.TYPE_BUTTON);
-        this.setType(TypeConstants.TYPE_FIELD);
-        this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
-        this.setType(TypeConstants.TYPE_LOCK);
+	super(false, new MetalBoots());
+	this.targetRow = 0;
+	this.targetCol = 0;
+	this.targetFloor = 0;
+	this.setType(TypeConstants.TYPE_BUTTON);
+	this.setType(TypeConstants.TYPE_FIELD);
+	this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
+	this.setType(TypeConstants.TYPE_LOCK);
     }
 
     public MetalButton(final int tRow, final int tCol, final int tFloor) {
-        super(false, new MetalBoots());
-        this.targetRow = tRow;
-        this.targetCol = tCol;
-        this.targetFloor = tFloor;
-        this.setType(TypeConstants.TYPE_BUTTON);
-        this.setType(TypeConstants.TYPE_FIELD);
-        this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
-        this.setType(TypeConstants.TYPE_LOCK);
+	super(false, new MetalBoots());
+	this.targetRow = tRow;
+	this.targetCol = tCol;
+	this.targetFloor = tFloor;
+	this.setType(TypeConstants.TYPE_BUTTON);
+	this.setType(TypeConstants.TYPE_FIELD);
+	this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
+	this.setType(TypeConstants.TYPE_LOCK);
     }
 
     @Override
     public boolean equals(final Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() != obj.getClass()) {
-            return false;
-        }
-        final MetalButton other = (MetalButton) obj;
-        if (this.targetRow != other.targetRow) {
-            return false;
-        }
-        if (this.targetCol != other.targetCol) {
-            return false;
-        }
-        if (this.targetFloor != other.targetFloor) {
-            return false;
-        }
-        return true;
+	if (obj == null) {
+	    return false;
+	}
+	if (this.getClass() != obj.getClass()) {
+	    return false;
+	}
+	final MetalButton other = (MetalButton) obj;
+	if (this.targetRow != other.targetRow) {
+	    return false;
+	}
+	if (this.targetCol != other.targetCol) {
+	    return false;
+	}
+	if (this.targetFloor != other.targetFloor) {
+	    return false;
+	}
+	return true;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + this.targetRow;
-        hash = 79 * hash + this.targetCol;
-        hash = 79 * hash + this.targetFloor;
-        return hash;
+	int hash = 5;
+	hash = 79 * hash + this.targetRow;
+	hash = 79 * hash + this.targetCol;
+	hash = 79 * hash + this.targetFloor;
+	return hash;
     }
 
     public int getTargetRow() {
-        return this.targetRow;
+	return this.targetRow;
     }
 
     public int getTargetColumn() {
-        return this.targetCol;
+	return this.targetCol;
     }
 
     public int getTargetFloor() {
-        return this.targetFloor;
+	return this.targetFloor;
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        // Do nothing
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	// Do nothing
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        if (inv.isItemThere(this.getKey().getUniqueID())) {
-            final BagOStuff app = Mazer5D.getBagOStuff();
-            final MazeObject there = app.getMazeManager().getMazeObject(
-                    this.getTargetRow(), this.getTargetColumn(), this
-                            .getTargetFloor(), this.getLayer());
-            if (there != null) {
-                if (there.getName().equals(new MetalDoor().getName())) {
-                    app.getGameManager().morph(GameObjects.getEmptySpace(), this
-                            .getTargetRow(), this.getTargetColumn(), this
-                                    .getTargetFloor());
-                } else {
-                    app.getGameManager().morph(new MetalDoor(), this
-                            .getTargetRow(), this.getTargetColumn(), this
-                                    .getTargetFloor());
-                }
-            }
-            SoundPlayer.playSound(SoundIndex.BUTTON, SoundGroup.GAME);
-        } else {
-            SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
-        }
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (inv.isItemThere(this.getKey().getUniqueID())) {
+	    final BagOStuff app = Mazer5D.getBagOStuff();
+	    final MazeObject there = app.getMazeManager().getMazeObject(this.getTargetRow(), this.getTargetColumn(),
+		    this.getTargetFloor(), this.getLayer());
+	    if (there != null) {
+		if (there.getName().equals(new MetalDoor().getName())) {
+		    app.getGameManager().morph(GameObjects.getEmptySpace(), this.getTargetRow(), this.getTargetColumn(),
+			    this.getTargetFloor());
+		} else {
+		    app.getGameManager().morph(new MetalDoor(), this.getTargetRow(), this.getTargetColumn(),
+			    this.getTargetFloor());
+		}
+	    }
+	    SoundPlayer.playSound(SoundIndex.BUTTON, SoundGroup.GAME);
+	} else {
+	    SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
+	}
     }
 
     @Override
     public String getName() {
-        return "Metal Button";
+	return "Metal Button";
     }
 
     @Override
     public String getPluralName() {
-        return "Metal Buttons";
+	return "Metal Buttons";
     }
 
     @Override
     public boolean isConditionallySolid(final ObjectInventory inv) {
-        return this.isSolid();
+	return this.isSolid();
     }
 
     @Override
-    public boolean isConditionallyDirectionallySolid(final boolean ie,
-            final int dirX, final int dirY, final ObjectInventory inv) {
-        // Handle passwall boots and ghost amulet
-        if (inv.isItemThere(MazeObjects.PASSWALL_BOOTS) || inv.isItemThere(
-                MazeObjects.GHOST_AMULET)) {
-            return false;
-        } else {
-            return this.isDirectionallySolid(ie, dirX, dirY);
-        }
+    public boolean isConditionallyDirectionallySolid(final boolean ie, final int dirX, final int dirY,
+	    final ObjectInventory inv) {
+	// Handle passwall boots and ghost amulet
+	if (inv.isItemThere(MazeObjects.PASSWALL_BOOTS) || inv.isItemThere(MazeObjects.GHOST_AMULET)) {
+	    return false;
+	} else {
+	    return this.isDirectionallySolid(ie, dirX, dirY);
+	}
     }
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getBagOStuff().showMessage(this.getName() + ": Target ("
-                + (this.targetCol + 1) + "," + (this.targetRow + 1) + ","
-                + (this.targetFloor + 1) + ")");
+	Mazer5D.getBagOStuff().showMessage(this.getName() + ": Target (" + (this.targetCol + 1) + ","
+		+ (this.targetRow + 1) + "," + (this.targetFloor + 1) + ")");
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-        return Mazer5D.getBagOStuff().getEditor().editMetalButtonTarget();
+	return Mazer5D.getBagOStuff().getEditor().editMetalButtonTarget();
     }
 
     @Override
     public String getDescription() {
-        return "Metal Buttons will not trigger without Metal Boots.";
+	return "Metal Buttons will not trigger without Metal Boots.";
     }
 
     @Override
     public boolean defersSetProperties() {
-        return true;
+	return true;
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.METAL_BUTTON;
+	return MazeObjects.METAL_BUTTON;
     }
 }

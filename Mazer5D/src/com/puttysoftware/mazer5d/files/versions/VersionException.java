@@ -12,17 +12,16 @@ public abstract class VersionException extends RuntimeException {
     private static final long serialVersionUID = 6414696022962587634L;
 
     VersionException(final String message) {
-        super(message);
+	super(message);
     }
 
     @SuppressWarnings("static-method")
     private void writeObject(final ObjectOutputStream out) throws IOException {
-        throw new NotSerializableException();
+	throw new NotSerializableException();
     }
 
     @SuppressWarnings("static-method")
-    private void readObject(final ObjectInputStream in) throws IOException,
-            ClassNotFoundException {
-        throw new NotSerializableException();
+    private void readObject(final ObjectInputStream in) throws IOException, ClassNotFoundException {
+	throw new NotSerializableException();
     }
 }

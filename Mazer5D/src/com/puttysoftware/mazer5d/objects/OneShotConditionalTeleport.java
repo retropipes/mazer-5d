@@ -12,31 +12,31 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class OneShotConditionalTeleport extends GenericConditionalTeleport {
     // Constructors
     public OneShotConditionalTeleport() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "One-Shot Conditional Teleport";
+	return "One-Shot Conditional Teleport";
     }
 
     @Override
     public String getPluralName() {
-        return "One-Shot Conditional Teleports";
+	return "One-Shot Conditional Teleports";
     }
 
     @Override
     public String getDescription() {
-        return "One-Shot Conditional Teleports send you to one of two predetermined destinations when stepped on, depending on how many Sun or Moon Stones are in your inventory, then disappear.";
+	return "One-Shot Conditional Teleports send you to one of two predetermined destinations when stepped on, depending on how many Sun or Moon Stones are in your inventory, then disappear.";
     }
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getBagOStuff().getGameManager().decay();
+	Mazer5D.getBagOStuff().getGameManager().decay();
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ONE_SHOT_CONDITIONAL_TELEPORT;
+	return MazeObjects.ONE_SHOT_CONDITIONAL_TELEPORT;
     }
 }

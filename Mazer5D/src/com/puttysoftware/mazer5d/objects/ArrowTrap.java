@@ -16,40 +16,38 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class ArrowTrap extends GenericTrap {
     // Constructors
     public ArrowTrap() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Arrow Trap";
+	return "Arrow Trap";
     }
 
     @Override
     public String getPluralName() {
-        return "Arrow Traps";
+	return "Arrow Traps";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY, final int arrowType,
-            final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().showMessage("The arrow is stopped!");
-        return false;
+    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
+	    final int arrowType, final ObjectInventory inv) {
+	Mazer5D.getBagOStuff().showMessage("The arrow is stopped!");
+	return false;
     }
 
     @Override
     public String getDescription() {
-        return "Arrow Traps stop arrows.";
+	return "Arrow Traps stop arrows.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ARROW_TRAP;
+	return MazeObjects.ARROW_TRAP;
     }
 }

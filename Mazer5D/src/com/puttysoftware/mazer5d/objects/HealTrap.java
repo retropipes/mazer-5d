@@ -19,38 +19,36 @@ class HealTrap extends GenericTrap {
 
     // Constructors
     public HealTrap() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Heal Trap";
+	return "Heal Trap";
     }
 
     @Override
     public String getPluralName() {
-        return "Heal Traps";
+	return "Heal Traps";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        this.healing = Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .getMaximumHP() / 50;
-        if (this.healing < 1) {
-            this.healing = 1;
-        }
-        Mazer5D.getBagOStuff().getMazeManager().getMaze().heal(this.healing);
-        SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	this.healing = Mazer5D.getBagOStuff().getMazeManager().getMaze().getMaximumHP() / 50;
+	if (this.healing < 1) {
+	    this.healing = 1;
+	}
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().heal(this.healing);
+	SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
     }
 
     @Override
     public String getDescription() {
-        return "Heal Traps heal you when stepped on.";
+	return "Heal Traps heal you when stepped on.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.HEAL_TRAP;
+	return MazeObjects.HEAL_TRAP;
     }
 }

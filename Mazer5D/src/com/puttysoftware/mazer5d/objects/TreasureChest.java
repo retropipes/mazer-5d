@@ -17,45 +17,44 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class TreasureChest extends GenericContainer {
     // Constructors
     public TreasureChest() {
-        super(new Key());
+	super(new Key());
     }
 
     public TreasureChest(final MazeObject inside) {
-        super(new Key(), inside);
+	super(new Key(), inside);
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need a key");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need a key");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Treasure Chest";
+	return "Treasure Chest";
     }
 
     @Override
     public String getPluralName() {
-        return "Treasure Chests";
+	return "Treasure Chests";
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-        return Mazer5D.getBagOStuff().getEditor().editTreasureChestContents();
+	return Mazer5D.getBagOStuff().getEditor().editTreasureChestContents();
     }
 
     @Override
     public String getDescription() {
-        return "Treasure Chests require Keys to open, and contain 1 other item.";
+	return "Treasure Chests require Keys to open, and contain 1 other item.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.TREASURE_CHEST;
+	return MazeObjects.TREASURE_CHEST;
     }
 }

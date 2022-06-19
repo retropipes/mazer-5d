@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class GarnetSquare extends GenericMultipleKey {
     // Constructors
     public GarnetSquare() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Garnet Square";
+	return "Garnet Square";
     }
 
     @Override
     public String getPluralName() {
-        return "Garnet Squares";
+	return "Garnet Squares";
     }
 
     @Override
     public String getDescription() {
-        return "Garnet Squares are the keys to Garnet Walls.";
+	return "Garnet Squares are the keys to Garnet Walls.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.GARNET_SQUARE;
+	return MazeObjects.GARNET_SQUARE;
     }
 }

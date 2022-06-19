@@ -14,51 +14,49 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class Ice extends GenericGround {
     public Ice() {
-        super(true, true, false, false, false);
+	super(true, true, false, false, false);
     }
 
     @Override
     public String getName() {
-        return "Ice";
+	return "Ice";
     }
 
     @Override
     public String getPluralName() {
-        return "Squares of Ice";
+	return "Squares of Ice";
     }
 
     @Override
     public boolean overridesDefaultPostMove() {
-        return true;
+	return true;
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK_ON_ICE, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	SoundPlayer.playSound(SoundIndex.WALK_ON_ICE, SoundGroup.GAME);
     }
 
     @Override
     public String getDescription() {
-        return "Ice is one of the many types of ground - it is frictionless. Anything that crosses it will slide.";
+	return "Ice is one of the many types of ground - it is frictionless. Anything that crosses it will slide.";
     }
 
     @Override
-    public boolean hasFrictionConditionally(final ObjectInventory inv,
-            final boolean moving) {
-        if (inv.isItemThere(MazeObjects.GLUE_BOOTS)) {
-            if (moving) {
-                return false;
-            } else {
-                return true;
-            }
-        } else {
-            return false;
-        }
+    public boolean hasFrictionConditionally(final ObjectInventory inv, final boolean moving) {
+	if (inv.isItemThere(MazeObjects.GLUE_BOOTS)) {
+	    if (moving) {
+		return false;
+	    } else {
+		return true;
+	    }
+	} else {
+	    return false;
+	}
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ICE;
+	return MazeObjects.ICE;
     }
 }

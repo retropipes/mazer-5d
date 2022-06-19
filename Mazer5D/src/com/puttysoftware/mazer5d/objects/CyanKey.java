@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class CyanKey extends GenericSingleKey {
     // Constructors
     public CyanKey() {
-        super();
+	super();
     }
 
     // Scriptability
     @Override
     public String getName() {
-        return "Cyan Key";
+	return "Cyan Key";
     }
 
     @Override
     public String getPluralName() {
-        return "Cyan Keys";
+	return "Cyan Keys";
     }
 
     @Override
     public String getDescription() {
-        return "Cyan Keys will unlock Cyan Locks, and can only be used once.";
+	return "Cyan Keys will unlock Cyan Locks, and can only be used once.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.CYAN_KEY;
+	return MazeObjects.CYAN_KEY;
     }
 }

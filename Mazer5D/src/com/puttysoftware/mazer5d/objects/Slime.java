@@ -16,44 +16,42 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class Slime extends GenericField {
     // Constructors
     public Slime() {
-        super(new BioHazardBoots());
+	super(new BioHazardBoots());
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK_ON_SLIME, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	SoundPlayer.playSound(SoundIndex.WALK_ON_SLIME, SoundGroup.GAME);
     }
 
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().showMessage("You'll corrode");
-        SoundPlayer.playSound(SoundIndex.SLIME, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	Mazer5D.getBagOStuff().showMessage("You'll corrode");
+	SoundPlayer.playSound(SoundIndex.SLIME, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Slime";
+	return "Slime";
     }
 
     @Override
     public String getPluralName() {
-        return "Squares of Slime";
+	return "Squares of Slime";
     }
 
     @Override
     public boolean overridesDefaultPostMove() {
-        return true;
+	return true;
     }
 
     @Override
     public String getDescription() {
-        return "Slime is too corrosive to walk on without Bio-Hazard Boots.";
+	return "Slime is too corrosive to walk on without Bio-Hazard Boots.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.SLIME;
+	return MazeObjects.SLIME;
     }
 }

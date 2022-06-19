@@ -17,53 +17,51 @@ class MusicFile extends MusicLoader {
     private int number;
     private MusicPlayer player;
 
-    public MusicFile(final ThreadGroup group, final String Oggfile,
-            final int taskNum) {
-        super(group);
-        this.filename = Oggfile;
-        this.number = taskNum;
+    public MusicFile(final ThreadGroup group, final String Oggfile, final int taskNum) {
+	super(group);
+	this.filename = Oggfile;
+	this.number = taskNum;
     }
 
     @Override
     public void run() {
-        if (this.filename != null) {
-            final File soundFile = new File(this.filename);
-            if (!soundFile.exists()) {
-                MusicLoader.taskCompleted(this.number);
-                return;
-            }
-            try (AudioInputStream ais = AudioSystem
-                    .getAudioInputStream(soundFile)) {
-                this.player = new MusicPlayer(ais);
-                this.player.playLoop();
-                MusicLoader.taskCompleted(this.number);
-            } catch (final UnsupportedAudioFileException e1) {
-                MusicLoader.taskCompleted(this.number);
-            } catch (final IOException e1) {
-                MusicLoader.taskCompleted(this.number);
-            }
-        }
+	if (this.filename != null) {
+	    final File soundFile = new File(this.filename);
+	    if (!soundFile.exists()) {
+		MusicLoader.taskCompleted(this.number);
+		return;
+	    }
+	    try (AudioInputStream ais = AudioSystem.getAudioInputStream(soundFile)) {
+		this.player = new MusicPlayer(ais);
+		this.player.playLoop();
+		MusicLoader.taskCompleted(this.number);
+	    } catch (final UnsupportedAudioFileException e1) {
+		MusicLoader.taskCompleted(this.number);
+	    } catch (final IOException e1) {
+		MusicLoader.taskCompleted(this.number);
+	    }
+	}
     }
-    
+
     @Override
     public boolean isPlaying() {
-    	return this.player != null && this.isAlive();
+	return this.player != null && this.isAlive();
     }
 
     @Override
     public void stopLoop() {
-        if (this.player != null) {
-            this.player.stopLoop();
-        }
+	if (this.player != null) {
+	    this.player.stopLoop();
+	}
     }
 
     @Override
     int getNumber() {
-        return this.number;
+	return this.number;
     }
 
     @Override
     protected void updateNumber(final int newNumber) {
-        this.number = newNumber;
+	this.number = newNumber;
     }
 }

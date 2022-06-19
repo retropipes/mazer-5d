@@ -17,47 +17,45 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class Tree extends GenericInfiniteLock {
     // Constructors
     public Tree() {
-        super(new Axe());
+	super(new Axe());
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need an axe");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need an axe");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        if (!this.getKey().isInfinite()) {
-            inv.removeItem(this.getKey().getUniqueID());
-        }
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().decayTo(new CutTree());
-        SoundPlayer.playSound(SoundIndex.UNLOCK, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (!this.getKey().isInfinite()) {
+	    inv.removeItem(this.getKey().getUniqueID());
+	}
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getGameManager().decayTo(new CutTree());
+	SoundPlayer.playSound(SoundIndex.UNLOCK, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Tree";
+	return "Tree";
     }
 
     @Override
     public String getPluralName() {
-        return "Trees";
+	return "Trees";
     }
 
     @Override
     public String getDescription() {
-        return "Trees transform into Cut Trees when hit with an Axe.";
+	return "Trees transform into Cut Trees when hit with an Axe.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.TREE;
+	return MazeObjects.TREE;
     }
 }

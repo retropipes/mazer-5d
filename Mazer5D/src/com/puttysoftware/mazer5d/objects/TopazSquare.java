@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class TopazSquare extends GenericMultipleKey {
     // Constructors
     public TopazSquare() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Topaz Square";
+	return "Topaz Square";
     }
 
     @Override
     public String getPluralName() {
-        return "Topaz Squares";
+	return "Topaz Squares";
     }
 
     @Override
     public String getDescription() {
-        return "Topaz Squares are the keys to Topaz Walls.";
+	return "Topaz Squares are the keys to Topaz Walls.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.TOPAZ_SQUARE;
+	return MazeObjects.TOPAZ_SQUARE;
     }
 }

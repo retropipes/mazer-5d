@@ -10,26 +10,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class BlueButton extends GenericButton {
     public BlueButton() {
-        super(new BlueWallOff(), new BlueWallOn());
+	super(new BlueWallOff(), new BlueWallOn());
     }
 
     @Override
     public String getName() {
-        return "Blue Button";
+	return "Blue Button";
     }
 
     @Override
     public String getPluralName() {
-        return "Blue Buttons";
+	return "Blue Buttons";
     }
 
     @Override
     public String getDescription() {
-        return "Blue Buttons will cause all Blue Walls Off to become On, and all Blue Walls On to become Off.";
+	return "Blue Buttons will cause all Blue Walls Off to become On, and all Blue Walls On to become Off.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.BLUE_BUTTON;
+	return MazeObjects.BLUE_BUTTON;
     }
 }

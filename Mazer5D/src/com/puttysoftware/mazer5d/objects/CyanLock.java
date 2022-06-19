@@ -16,36 +16,35 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class CyanLock extends GenericSingleLock {
     // Constructors
     public CyanLock() {
-        super(new CyanKey());
+	super(new CyanKey());
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need a cyan key");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need a cyan key");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Cyan Lock";
+	return "Cyan Lock";
     }
 
     @Override
     public String getPluralName() {
-        return "Cyan Locks";
+	return "Cyan Locks";
     }
 
     @Override
     public String getDescription() {
-        return "Cyan Locks require Cyan Keys to open.";
+	return "Cyan Locks require Cyan Keys to open.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.CYAN_LOCK;
+	return MazeObjects.CYAN_LOCK;
     }
 }

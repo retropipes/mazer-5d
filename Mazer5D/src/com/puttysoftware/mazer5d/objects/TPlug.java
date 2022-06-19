@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class TPlug extends GenericPlug {
     // Constructors
     public TPlug() {
-        super('T');
+	super('T');
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.T_PLUG;
+	return MazeObjects.T_PLUG;
     }
 }

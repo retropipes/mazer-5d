@@ -16,26 +16,26 @@ public final class HTMLHelpViewer {
 
     // Constructor
     public HTMLHelpViewer(final URL helpPage) {
-        this.helpPanel = new JPanel();
-        this.helpPanel.setLayout(new FlowLayout());
-        try {
-            this.helpContents = new JEditorPane(helpPage);
-        } catch (final Exception e) {
-            this.helpContents = new JEditorPane("text/plain", //$NON-NLS-1$
-                    "An error occurred while fetching the help contents."); //$NON-NLS-1$
-        }
-        this.helpContents.setEditable(false);
-        this.scrollPane = new JScrollPane(this.helpContents);
-        this.helpPanel.add(this.scrollPane);
+	this.helpPanel = new JPanel();
+	this.helpPanel.setLayout(new FlowLayout());
+	try {
+	    this.helpContents = new JEditorPane(helpPage);
+	} catch (final Exception e) {
+	    this.helpContents = new JEditorPane("text/plain", //$NON-NLS-1$
+		    "An error occurred while fetching the help contents."); //$NON-NLS-1$
+	}
+	this.helpContents.setEditable(false);
+	this.scrollPane = new JScrollPane(this.helpContents);
+	this.helpPanel.add(this.scrollPane);
     }
 
     // Methods
     public JPanel getHelp() {
-        return this.helpPanel;
+	return this.helpPanel;
     }
 
     public void setHelpSize(final int horz, final int vert) {
-        this.helpContents.setPreferredSize(new Dimension(horz, vert));
-        this.scrollPane.setPreferredSize(new Dimension(horz, vert));
+	this.helpContents.setPreferredSize(new Dimension(horz, vert));
+	this.scrollPane.setPreferredSize(new Dimension(horz, vert));
     }
 }

@@ -20,53 +20,49 @@ class QuakeBomb extends GenericUsableObject {
 
     // Constructors
     public QuakeBomb() {
-        super(1);
+	super(1);
     }
 
     @Override
     public String getName() {
-        return "Quake Bomb";
+	return "Quake Bomb";
     }
 
     @Override
     public String getPluralName() {
-        return "Quake Bombs";
+	return "Quake Bombs";
     }
 
     @Override
     public String getDescription() {
-        return "Quake Bombs crack plain and one-way walls and may also cause crevasses to form when used; they act on an area of radius 3.";
+	return "Quake Bombs crack plain and one-way walls and may also cause crevasses to form when used; they act on an area of radius 3.";
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY, final int arrowType,
-            final ObjectInventory inv) {
-        // Act as if bomb was used
-        this.useAction(null, locX, locY, locZ);
-        // Destroy bomb
-        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects
-                .getEmptySpace(), locX, locY, locZ);
-        // Stop arrow
-        return false;
+    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
+	    final int arrowType, final ObjectInventory inv) {
+	// Act as if bomb was used
+	this.useAction(null, locX, locY, locZ);
+	// Destroy bomb
+	Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY, locZ);
+	// Stop arrow
+	return false;
     }
 
     @Override
-    public void useAction(final MazeObject mo, final int x, final int y,
-            final int z) {
-        SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
-        // Earthquake
-        Mazer5D.getBagOStuff().getMazeManager().getMaze().radialScanQuakeBomb(x,
-                y, z, QuakeBomb.EFFECT_RADIUS);
+    public void useAction(final MazeObject mo, final int x, final int y, final int z) {
+	SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
+	// Earthquake
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().radialScanQuakeBomb(x, y, z, QuakeBomb.EFFECT_RADIUS);
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-        this.useAction(null, x, y, z);
+	this.useAction(null, x, y, z);
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.QUAKE_BOMB;
+	return MazeObjects.QUAKE_BOMB;
     }
 }

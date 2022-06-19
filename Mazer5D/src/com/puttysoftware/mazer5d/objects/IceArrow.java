@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class IceArrow extends GenericTransientObject {
     // Constructors
     public IceArrow() {
-        super("Ice Arrow");
+	super("Ice Arrow");
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ICE_ARROW;
+	return MazeObjects.ICE_ARROW;
     }
 }

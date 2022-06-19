@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class Sign extends GenericTextHolder {
     // Constructors
     public Sign() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Sign";
+	return "Sign";
     }
 
     @Override
     public String getPluralName() {
-        return "Signs";
+	return "Signs";
     }
 
     @Override
     public String getDescription() {
-        return "Signs display their message when walked into.";
+	return "Signs display their message when walked into.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.SIGN;
+	return MazeObjects.SIGN;
     }
 }

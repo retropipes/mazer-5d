@@ -16,38 +16,37 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class FakeFinish extends GenericPassThroughObject {
     // Constructors
     public FakeFinish() {
-        super();
+	super();
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().showMessage("Fake exit!");
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().showMessage("Fake exit!");
     }
 
     @Override
     public String getName() {
-        return "Fake Finish";
+	return "Fake Finish";
     }
 
     @Override
     public String getGameName() {
-        return "Finish";
+	return "Finish";
     }
 
     @Override
     public String getPluralName() {
-        return "Fake Finishes";
+	return "Fake Finishes";
     }
 
     @Override
     public String getDescription() {
-        return "Fake Finishes look like regular finishes but don't lead anywhere.";
+	return "Fake Finishes look like regular finishes but don't lead anywhere.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.FAKE_FINISH;
+	return MazeObjects.FAKE_FINISH;
     }
 }

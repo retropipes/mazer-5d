@@ -14,32 +14,32 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class WallBreakingWand extends GenericWand {
     // Constructors
     public WallBreakingWand() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Wall-Breaking Wand";
+	return "Wall-Breaking Wand";
     }
 
     @Override
     public String getPluralName() {
-        return "Wall-Breaking Wands";
+	return "Wall-Breaking Wands";
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-        this.useAction(GameObjects.getEmptySpace(), x, y, z);
-        SoundPlayer.playSound(SoundIndex.DESTROY, SoundGroup.GAME);
+	this.useAction(GameObjects.getEmptySpace(), x, y, z);
+	SoundPlayer.playSound(SoundIndex.DESTROY, SoundGroup.GAME);
     }
 
     @Override
     public String getDescription() {
-        return "Wall-Breaking Wands will destroy one wall when used, if aimed at a wall.";
+	return "Wall-Breaking Wands will destroy one wall when used, if aimed at a wall.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.WALL_BREAKING_WAND;
+	return MazeObjects.WALL_BREAKING_WAND;
     }
 }

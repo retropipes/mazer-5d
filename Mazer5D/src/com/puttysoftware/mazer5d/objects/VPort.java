@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class VPort extends GenericPort {
     // Constructors
     public VPort() {
-        super(new VPlug(), 'V');
+	super(new VPlug(), 'V');
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.V_PORT;
+	return MazeObjects.V_PORT;
     }
 }

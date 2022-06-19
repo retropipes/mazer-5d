@@ -18,51 +18,50 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class OneShotControllableTeleport extends GenericTeleport {
     // Constructors
     public OneShotControllableTeleport() {
-        super(0, 0, 0);
+	super(0, 0, 0);
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
-        app.getGameManager().controllableTeleport();
-        app.getGameManager().decay();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
+	app.getGameManager().controllableTeleport();
+	app.getGameManager().decay();
     }
 
     @Override
     public String getName() {
-        return "One-Shot Controllable Teleport";
+	return "One-Shot Controllable Teleport";
     }
 
     @Override
     public String getPluralName() {
-        return "One-Shot Controllable Teleports";
+	return "One-Shot Controllable Teleports";
     }
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getBagOStuff().showMessage(this.getName());
+	Mazer5D.getBagOStuff().showMessage(this.getName());
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-        return null;
+	return null;
     }
 
     @Override
     public String getDescription() {
-        return "One-Shot Controllable Teleports let you choose the place you teleport to, then disappear.";
+	return "One-Shot Controllable Teleports let you choose the place you teleport to, then disappear.";
     }
 
     @Override
     public int getCustomFormat() {
-        return 0;
+	return 0;
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ONE_SHOT_CONTROLLABLE_TELEPORT;
+	return MazeObjects.ONE_SHOT_CONTROLLABLE_TELEPORT;
     }
 }

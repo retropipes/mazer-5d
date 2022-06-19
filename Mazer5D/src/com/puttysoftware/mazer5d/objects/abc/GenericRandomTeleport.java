@@ -23,82 +23,77 @@ public abstract class GenericRandomTeleport extends MazeObject {
     private final Random generator;
 
     // Constructors
-    public GenericRandomTeleport(final int newRandomRangeY,
-            final int newRandomRangeX) {
-        super(false);
-        this.addCustomCounters(this.getCustomFormat());
-        this.setRandomRangeX(newRandomRangeX);
-        this.setRandomRangeY(newRandomRangeY);
-        this.generator = new Random();
-        this.setType(TypeConstants.TYPE_RANDOM);
+    public GenericRandomTeleport(final int newRandomRangeY, final int newRandomRangeX) {
+	super(false);
+	this.addCustomCounters(this.getCustomFormat());
+	this.setRandomRangeX(newRandomRangeX);
+	this.setRandomRangeY(newRandomRangeY);
+	this.generator = new Random();
+	this.setType(TypeConstants.TYPE_RANDOM);
     }
 
     // Methods
     @Override
     public int getDestinationRow() {
-        if (this.getRandomRangeY() == 0) {
-            return 0;
-        } else {
-            int sign = this.generator.nextInt(2);
-            final int value = this.generator.nextInt(this.getRandomRangeY()
-                    + 1);
-            if (sign == 0) {
-                sign = -1;
-            }
-            return sign * value;
-        }
+	if (this.getRandomRangeY() == 0) {
+	    return 0;
+	} else {
+	    int sign = this.generator.nextInt(2);
+	    final int value = this.generator.nextInt(this.getRandomRangeY() + 1);
+	    if (sign == 0) {
+		sign = -1;
+	    }
+	    return sign * value;
+	}
     }
 
     @Override
     public int getDestinationColumn() {
-        if (this.getRandomRangeX() == 0) {
-            return 0;
-        } else {
-            int sign = this.generator.nextInt(2);
-            final int value = this.generator.nextInt(this.getRandomRangeX()
-                    + 1);
-            if (sign == 0) {
-                sign = -1;
-            }
-            return sign * value;
-        }
+	if (this.getRandomRangeX() == 0) {
+	    return 0;
+	} else {
+	    int sign = this.generator.nextInt(2);
+	    final int value = this.generator.nextInt(this.getRandomRangeX() + 1);
+	    if (sign == 0) {
+		sign = -1;
+	    }
+	    return sign * value;
+	}
     }
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        int dr, dc;
-        do {
-            dr = this.getDestinationRow();
-            dc = this.getDestinationColumn();
-        } while (!app.getGameManager().tryUpdatePositionRelative(dr, dc));
-        app.getGameManager().updatePositionRelative(dr, dc);
-        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	int dr, dc;
+	do {
+	    dr = this.getDestinationRow();
+	    dc = this.getDestinationColumn();
+	} while (!app.getGameManager().tryUpdatePositionRelative(dr, dc));
+	app.getGameManager().updatePositionRelative(dr, dc);
+	SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getBagOStuff().showMessage(this.getName() + ": Row Radius "
-                + getRandomRangeY() + ", Column Radius " + getRandomRangeX());
+	Mazer5D.getBagOStuff().showMessage(
+		this.getName() + ": Row Radius " + getRandomRangeY() + ", Column Radius " + getRandomRangeX());
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        final MazeObject mo = me.editTeleportDestination(
-                MazeEditor.TELEPORT_TYPE_RANDOM);
-        return mo;
+	final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
+	final MazeObject mo = me.editTeleportDestination(MazeEditor.TELEPORT_TYPE_RANDOM);
+	return mo;
     }
 
     @Override
     public int getCustomFormat() {
-        return 2;
+	return 2;
     }
 }

@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class KPort extends GenericPort {
     // Constructors
     public KPort() {
-        super(new KPlug(), 'K');
+	super(new KPlug(), 'K');
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.K_PORT;
+	return MazeObjects.K_PORT;
     }
 }

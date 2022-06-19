@@ -17,40 +17,39 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class WarpWand extends GenericWand {
     public WarpWand() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Warp Wand";
+	return "Warp Wand";
     }
 
     @Override
     public String getPluralName() {
-        return "Warp Wands";
+	return "Warp Wands";
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-        this.useAction(null, x, y, z);
-        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
+	this.useAction(null, x, y, z);
+	SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override
-    public void useAction(final MazeObject mo, final int x, final int y,
-            final int z) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getMazeManager().getMaze().warpObject(app.getMazeManager().getMaze()
-                .getCell(x, y, z, Layers.OBJECT), x, y, z, Layers.OBJECT);
+    public void useAction(final MazeObject mo, final int x, final int y, final int z) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getMazeManager().getMaze().warpObject(app.getMazeManager().getMaze().getCell(x, y, z, Layers.OBJECT), x, y,
+		z, Layers.OBJECT);
     }
 
     @Override
     public String getDescription() {
-        return "Warp Wands will teleport the object at the target square to a random location when used.";
+	return "Warp Wands will teleport the object at the target square to a random location when used.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.WARP_WAND;
+	return MazeObjects.WARP_WAND;
     }
 }

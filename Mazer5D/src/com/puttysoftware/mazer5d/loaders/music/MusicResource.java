@@ -17,46 +17,44 @@ class MusicResource extends MusicLoader {
     private int number;
     private MusicPlayer player;
 
-    public MusicResource(final ThreadGroup group, final URL resURL,
-            final int taskNum) {
-        super(group);
-        this.soundURL = resURL;
-        this.number = taskNum;
+    public MusicResource(final ThreadGroup group, final URL resURL, final int taskNum) {
+	super(group);
+	this.soundURL = resURL;
+	this.number = taskNum;
     }
 
     @Override
     public void run() {
-        try (AudioInputStream ais = AudioSystem
-                .getAudioInputStream(this.soundURL)) {
-            this.player = new MusicPlayer(ais);
-            this.player.playLoop();
-            MusicLoader.taskCompleted(this.number);
-        } catch (final UnsupportedAudioFileException e1) {
-            MusicLoader.taskCompleted(this.number);
-        } catch (final IOException e1) {
-            MusicLoader.taskCompleted(this.number);
-        }
+	try (AudioInputStream ais = AudioSystem.getAudioInputStream(this.soundURL)) {
+	    this.player = new MusicPlayer(ais);
+	    this.player.playLoop();
+	    MusicLoader.taskCompleted(this.number);
+	} catch (final UnsupportedAudioFileException e1) {
+	    MusicLoader.taskCompleted(this.number);
+	} catch (final IOException e1) {
+	    MusicLoader.taskCompleted(this.number);
+	}
     }
-    
+
     @Override
     public boolean isPlaying() {
-    	return this.player != null && this.isAlive();
+	return this.player != null && this.isAlive();
     }
 
     @Override
     public void stopLoop() {
-        if (this.player != null) {
-            this.player.stopLoop();
-        }
+	if (this.player != null) {
+	    this.player.stopLoop();
+	}
     }
 
     @Override
     int getNumber() {
-        return this.number;
+	return this.number;
     }
 
     @Override
     protected void updateNumber(final int newNumber) {
-        this.number = newNumber;
+	this.number = newNumber;
     }
 }

@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class SkyKey extends GenericSingleKey {
     // Constructors
     public SkyKey() {
-        super();
+	super();
     }
 
     // Scriptability
     @Override
     public String getName() {
-        return "Sky Key";
+	return "Sky Key";
     }
 
     @Override
     public String getPluralName() {
-        return "Sky Keys";
+	return "Sky Keys";
     }
 
     @Override
     public String getDescription() {
-        return "Sky Keys will unlock Sky Locks, and can only be used once.";
+	return "Sky Keys will unlock Sky Locks, and can only be used once.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.SKY_KEY;
+	return MazeObjects.SKY_KEY;
     }
 }

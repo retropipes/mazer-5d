@@ -19,38 +19,36 @@ class HurtTrap extends GenericTrap {
 
     // Constructors
     public HurtTrap() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Hurt Trap";
+	return "Hurt Trap";
     }
 
     @Override
     public String getPluralName() {
-        return "Hurt Traps";
+	return "Hurt Traps";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        this.damage = Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .getMaximumHP() / 50;
-        if (this.damage < 1) {
-            this.damage = 1;
-        }
-        Mazer5D.getBagOStuff().getMazeManager().getMaze().doDamage(this.damage);
-        SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	this.damage = Mazer5D.getBagOStuff().getMazeManager().getMaze().getMaximumHP() / 50;
+	if (this.damage < 1) {
+	    this.damage = 1;
+	}
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().doDamage(this.damage);
+	SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
     }
 
     @Override
     public String getDescription() {
-        return "Hurt Traps hurt you when stepped on.";
+	return "Hurt Traps hurt you when stepped on.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.HURT_TRAP;
+	return MazeObjects.HURT_TRAP;
     }
 }

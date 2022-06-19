@@ -16,36 +16,35 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class Lock extends GenericSingleLock {
     // Constructors
     public Lock() {
-        super(new Key());
+	super(new Key());
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need a key");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need a key");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Lock";
+	return "Lock";
     }
 
     @Override
     public String getPluralName() {
-        return "Locks";
+	return "Locks";
     }
 
     @Override
     public String getDescription() {
-        return "Locks require Keys to open.";
+	return "Locks require Keys to open.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.LOCK;
+	return MazeObjects.LOCK;
     }
 }

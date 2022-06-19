@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class VerticalBarrier extends GenericBarrier {
     // Constructors
     public VerticalBarrier() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Vertical Barrier";
+	return "Vertical Barrier";
     }
 
     @Override
     public String getPluralName() {
-        return "Vertical Barriers";
+	return "Vertical Barriers";
     }
 
     @Override
     public String getDescription() {
-        return "Vertical Barriers are impassable - you'll need to go around them.";
+	return "Vertical Barriers are impassable - you'll need to go around them.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.VERTICAL_BARRIER;
+	return MazeObjects.VERTICAL_BARRIER;
     }
 }

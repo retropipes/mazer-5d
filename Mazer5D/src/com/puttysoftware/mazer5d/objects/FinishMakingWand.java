@@ -13,32 +13,32 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class FinishMakingWand extends GenericWand {
     public FinishMakingWand() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Finish-Making Wand";
+	return "Finish-Making Wand";
     }
 
     @Override
     public String getPluralName() {
-        return "Finish-Making Wands";
+	return "Finish-Making Wands";
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-        this.useAction(new Finish(), x, y, z);
-        SoundPlayer.playSound(SoundIndex.CREATE, SoundGroup.GAME);
+	this.useAction(new Finish(), x, y, z);
+	SoundPlayer.playSound(SoundIndex.CREATE, SoundGroup.GAME);
     }
 
     @Override
     public String getDescription() {
-        return "Finish-Making Wands will create a finish when used.";
+	return "Finish-Making Wands will create a finish when used.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.FINISH_MAKING_WAND;
+	return MazeObjects.FINISH_MAKING_WAND;
     }
 }

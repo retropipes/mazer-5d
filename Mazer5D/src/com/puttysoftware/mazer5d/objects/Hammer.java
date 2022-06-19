@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class Hammer extends GenericSingleKey {
     // Constructors
     public Hammer() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Hammer";
+	return "Hammer";
     }
 
     @Override
     public String getPluralName() {
-        return "Hammers";
+	return "Hammers";
     }
 
     @Override
     public String getDescription() {
-        return "Hammers are used to destroy Brick Walls, and can only be used once.";
+	return "Hammers are used to destroy Brick Walls, and can only be used once.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.HAMMER;
+	return MazeObjects.HAMMER;
     }
 }

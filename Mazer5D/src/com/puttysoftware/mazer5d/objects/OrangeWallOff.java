@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class OrangeWallOff extends GenericToggleWall {
     // Constructors
     public OrangeWallOff() {
-        super(false);
+	super(false);
     }
 
     // Scriptability
     @Override
     public String getName() {
-        return "Orange Wall Off";
+	return "Orange Wall Off";
     }
 
     @Override
     public String getPluralName() {
-        return "Orange Walls Off";
+	return "Orange Walls Off";
     }
 
     @Override
     public String getDescription() {
-        return "Orange Walls Off can be walked through, and will change to Orange Walls On when a Orange Button is pressed.";
+	return "Orange Walls Off can be walked through, and will change to Orange Walls On when a Orange Button is pressed.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ORANGE_WALL_OFF;
+	return MazeObjects.ORANGE_WALL_OFF;
     }
 }

@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class YellowWallOff extends GenericToggleWall {
     // Constructors
     public YellowWallOff() {
-        super(false);
+	super(false);
     }
 
     // Scriptability
     @Override
     public String getName() {
-        return "Yellow Wall Off";
+	return "Yellow Wall Off";
     }
 
     @Override
     public String getPluralName() {
-        return "Yellow Walls Off";
+	return "Yellow Walls Off";
     }
 
     @Override
     public String getDescription() {
-        return "Yellow Walls Off can be walked through, and will change to Yellow Walls On when a Yellow Button is pressed.";
+	return "Yellow Walls Off can be walked through, and will change to Yellow Walls On when a Yellow Button is pressed.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.YELLOW_WALL_OFF;
+	return MazeObjects.YELLOW_WALL_OFF;
     }
 }

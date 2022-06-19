@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.utilities;
 
 public class ArrowTypes {
     private ArrowTypes() {
-        // Do nothing
+	// Do nothing
     }
 
     public static final int PLAIN = 0;

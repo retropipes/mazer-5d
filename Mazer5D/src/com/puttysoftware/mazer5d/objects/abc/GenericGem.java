@@ -22,38 +22,32 @@ public abstract class GenericGem extends MazeObject {
 
     // Constructors
     protected GenericGem() {
-        super(false);
-        this.setType(TypeConstants.TYPE_GEM);
-        this.setType(TypeConstants.TYPE_CONTAINABLE);
+	super(false);
+	this.setType(TypeConstants.TYPE_GEM);
+	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().getGameManager().decay();
-        Mazer5D.getBagOStuff().getGameManager().addToScore(
-                GenericGem.SCORE_GRAB);
-        this.postMoveActionHook();
-        Mazer5D.getBagOStuff().getGameManager().redrawMaze();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	Mazer5D.getBagOStuff().getGameManager().decay();
+	Mazer5D.getBagOStuff().getGameManager().addToScore(GenericGem.SCORE_GRAB);
+	this.postMoveActionHook();
+	Mazer5D.getBagOStuff().getGameManager().redrawMaze();
     }
 
     public abstract void postMoveActionHook();
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY, final int arrowType,
-            final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects
-                .getEmptySpace(), locX, locY, locZ);
-        SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager().addToScore(
-                GenericGem.SCORE_SMASH);
-        return false;
+    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
+	    final int arrowType, final ObjectInventory inv) {
+	Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY, locZ);
+	SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().getGameManager().addToScore(GenericGem.SCORE_SMASH);
+	return false;
     }
-
 }

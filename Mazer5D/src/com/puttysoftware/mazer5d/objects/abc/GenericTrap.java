@@ -13,21 +13,19 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public abstract class GenericTrap extends MazeObject {
     // Constructors
     protected GenericTrap() {
-        super(false);
-        this.setType(TypeConstants.TYPE_TRAP);
+	super(false);
+	this.setType(TypeConstants.TYPE_TRAP);
     }
 
     // Scriptability
     @Override
-    public abstract void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv);
+    public abstract void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv);
 
     @Override
     public abstract String getName();
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
-
 }

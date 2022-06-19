@@ -15,32 +15,31 @@ class Amethyst extends GenericScoreIncreaser {
 
     // Constructors
     public Amethyst() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Amethyst";
+	return "Amethyst";
     }
 
     @Override
     public String getPluralName() {
-        return "Amethysts";
+	return "Amethysts";
     }
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getBagOStuff().getGameManager().addToScore(
-                Amethyst.SCORE_INCREASE);
+	Mazer5D.getBagOStuff().getGameManager().addToScore(Amethyst.SCORE_INCREASE);
     }
 
     @Override
     public String getDescription() {
-        return "Amethysts increase your score when picked up.";
+	return "Amethysts increase your score when picked up.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.AMETHYST;
+	return MazeObjects.AMETHYST;
     }
 }

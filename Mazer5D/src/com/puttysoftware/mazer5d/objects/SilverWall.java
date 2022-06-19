@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class SilverWall extends GenericMultipleLock {
     // Constructors
     public SilverWall() {
-        super(new SilverSquare());
+	super(new SilverSquare());
     }
 
     @Override
     public String getName() {
-        return "Silver Wall";
+	return "Silver Wall";
     }
 
     @Override
     public String getPluralName() {
-        return "Silver Walls";
+	return "Silver Walls";
     }
 
     @Override
     public String getDescription() {
-        return "Silver Walls are impassable without enough Silver Squares.";
+	return "Silver Walls are impassable without enough Silver Squares.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.SILVER_WALL;
+	return MazeObjects.SILVER_WALL;
     }
 }

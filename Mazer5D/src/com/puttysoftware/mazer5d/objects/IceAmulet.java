@@ -16,32 +16,32 @@ class IceAmulet extends GenericAmulet {
 
     // Constructors
     public IceAmulet() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Ice Amulet";
+	return "Ice Amulet";
     }
 
     @Override
     public String getPluralName() {
-        return "Ice Amulets";
+	return "Ice Amulets";
     }
 
     @Override
     public String getDescription() {
-        return "Ice Amulets grant the power to make ground frictionless for 30 steps. Note that you can only wear one amulet at once.";
+	return "Ice Amulets grant the power to make ground frictionless for 30 steps. Note that you can only wear one amulet at once.";
     }
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getBagOStuff().getGameManager().activateEffect(
-                MazeEffectConstants.EFFECT_ICY, IceAmulet.EFFECT_DURATION);
+	Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_ICY,
+		IceAmulet.EFFECT_DURATION);
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ICE_AMULET;
+	return MazeObjects.ICE_AMULET;
     }
 }

@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class DarkGem extends GenericLightModifier {
     // Constructors
     public DarkGem() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Dark Gem";
+	return "Dark Gem";
     }
 
     @Override
     public String getPluralName() {
-        return "Dark Gems";
+	return "Dark Gems";
     }
 
     @Override
     public String getDescription() {
-        return "Dark Gems shroud the immediately adjacent area in permanent darkness.";
+	return "Dark Gems shroud the immediately adjacent area in permanent darkness.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.DARK_GEM;
+	return MazeObjects.DARK_GEM;
     }
 }

@@ -16,44 +16,42 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class Lava extends GenericField {
     // Constructors
     public Lava() {
-        super(new FireBoots());
+	super(new FireBoots());
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK_ON_LAVA, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	SoundPlayer.playSound(SoundIndex.WALK_ON_LAVA, SoundGroup.GAME);
     }
 
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().showMessage("You'll burn");
-        SoundPlayer.playSound(SoundIndex.LAVA, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	Mazer5D.getBagOStuff().showMessage("You'll burn");
+	SoundPlayer.playSound(SoundIndex.LAVA, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Lava";
+	return "Lava";
     }
 
     @Override
     public String getPluralName() {
-        return "Squares of Lava";
+	return "Squares of Lava";
     }
 
     @Override
     public boolean overridesDefaultPostMove() {
-        return true;
+	return true;
     }
 
     @Override
     public String getDescription() {
-        return "Lava is too hot to walk on without Fire Boots.";
+	return "Lava is too hot to walk on without Fire Boots.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.LAVA;
+	return MazeObjects.LAVA;
     }
 }

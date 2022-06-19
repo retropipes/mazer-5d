@@ -18,35 +18,31 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public abstract class GenericScoreIncreaser extends MazeObject {
     // Constructors
     protected GenericScoreIncreaser() {
-        super(false);
-        this.setType(TypeConstants.TYPE_SCORE_INCREASER);
-        this.setType(TypeConstants.TYPE_CONTAINABLE);
+	super(false);
+	this.setType(TypeConstants.TYPE_SCORE_INCREASER);
+	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().getGameManager().decay();
-        SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
-        this.postMoveActionHook();
-        Mazer5D.getBagOStuff().getGameManager().redrawMaze();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	Mazer5D.getBagOStuff().getGameManager().decay();
+	SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
+	this.postMoveActionHook();
+	Mazer5D.getBagOStuff().getGameManager().redrawMaze();
     }
 
     public abstract void postMoveActionHook();
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY, final int arrowType,
-            final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects
-                .getEmptySpace(), locX, locY, locZ);
-        SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
-        return false;
+    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
+	    final int arrowType, final ObjectInventory inv) {
+	Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY, locZ);
+	SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
+	return false;
     }
-
 }

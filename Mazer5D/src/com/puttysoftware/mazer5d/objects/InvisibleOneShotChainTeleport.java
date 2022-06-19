@@ -19,57 +19,54 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class InvisibleOneShotChainTeleport extends GenericInvisibleTeleport {
     // Constructors
     public InvisibleOneShotChainTeleport() {
-        super(0, 0, 0);
+	super(0, 0, 0);
     }
 
-    public InvisibleOneShotChainTeleport(final int destinationRow,
-            final int destinationColumn, final int destinationFloor) {
-        super(destinationRow, destinationColumn, destinationFloor);
+    public InvisibleOneShotChainTeleport(final int destinationRow, final int destinationColumn,
+	    final int destinationFloor) {
+	super(destinationRow, destinationColumn, destinationFloor);
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().decay();
-        app.getGameManager().updatePositionAbsoluteNoEvents(this
-                .getDestinationRow(), this.getDestinationColumn(), this
-                        .getDestinationFloor(), this.getDestinationLevel());
-        Mazer5D.getBagOStuff().showMessage("Invisible Teleport!");
-        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getGameManager().decay();
+	app.getGameManager().updatePositionAbsoluteNoEvents(this.getDestinationRow(), this.getDestinationColumn(),
+		this.getDestinationFloor(), this.getDestinationLevel());
+	Mazer5D.getBagOStuff().showMessage("Invisible Teleport!");
+	SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Invisible One-Shot Chain Teleport";
+	return "Invisible One-Shot Chain Teleport";
     }
 
     @Override
     public String getGameName() {
-        return "Empty";
+	return "Empty";
     }
 
     @Override
     public String getPluralName() {
-        return "Invisible One-Shot Chain Teleports";
+	return "Invisible One-Shot Chain Teleports";
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        final MazeObject mo = me.editTeleportDestination(
-                MazeEditor.TELEPORT_TYPE_INVISIBLE_ONESHOT);
-        return mo;
+	final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
+	final MazeObject mo = me.editTeleportDestination(MazeEditor.TELEPORT_TYPE_INVISIBLE_ONESHOT);
+	return mo;
     }
 
     @Override
     public String getDescription() {
-        return "Invisible One-Shot Chain Teleports are a combination of invisible, one-shot, and chain teleport behaviors.";
+	return "Invisible One-Shot Chain Teleports are a combination of invisible, one-shot, and chain teleport behaviors.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.INVISIBLE_ONE_SHOT_CHAIN_TELEPORT;
+	return MazeObjects.INVISIBLE_ONE_SHOT_CHAIN_TELEPORT;
     }
 }

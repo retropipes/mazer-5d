@@ -16,36 +16,35 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class BlueLock extends GenericSingleLock {
     // Constructors
     public BlueLock() {
-        super(new BlueKey());
+	super(new BlueKey());
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need a blue key");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need a blue key");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Blue Lock";
+	return "Blue Lock";
     }
 
     @Override
     public String getPluralName() {
-        return "Blue Locks";
+	return "Blue Locks";
     }
 
     @Override
     public String getDescription() {
-        return "Blue Locks require Blue Keys to open.";
+	return "Blue Locks require Blue Keys to open.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.BLUE_LOCK;
+	return MazeObjects.BLUE_LOCK;
     }
 }

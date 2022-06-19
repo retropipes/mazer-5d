@@ -10,31 +10,31 @@ import com.puttysoftware.mazer5d.utilities.Directions;
 public class UTurned extends MazeEffect {
     // Constructor
     public UTurned(final int newRounds) {
-        super("U-Turned", newRounds);
+	super("U-Turned", newRounds);
     }
 
     @Override
     public int modifyMove1(final int arg) {
-        switch (arg) {
-        case Directions.NORTH:
-            return Directions.SOUTH;
-        case Directions.SOUTH:
-            return Directions.NORTH;
-        case Directions.WEST:
-            return Directions.EAST;
-        case Directions.EAST:
-            return Directions.WEST;
-        case Directions.NORTHWEST:
-            return Directions.SOUTHEAST;
-        case Directions.NORTHEAST:
-            return Directions.SOUTHWEST;
-        case Directions.SOUTHWEST:
-            return Directions.NORTHEAST;
-        case Directions.SOUTHEAST:
-            return Directions.NORTHWEST;
-        default:
-            break;
-        }
-        return 0;
+	switch (arg) {
+	case Directions.NORTH:
+	    return Directions.SOUTH;
+	case Directions.SOUTH:
+	    return Directions.NORTH;
+	case Directions.WEST:
+	    return Directions.EAST;
+	case Directions.EAST:
+	    return Directions.WEST;
+	case Directions.NORTHWEST:
+	    return Directions.SOUTHEAST;
+	case Directions.NORTHEAST:
+	    return Directions.SOUTHWEST;
+	case Directions.SOUTHWEST:
+	    return Directions.NORTHEAST;
+	case Directions.SOUTHEAST:
+	    return Directions.NORTHWEST;
+	default:
+	    break;
+	}
+	return 0;
     }
 }

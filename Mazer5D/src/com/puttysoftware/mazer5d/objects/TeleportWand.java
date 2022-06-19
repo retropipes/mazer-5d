@@ -16,39 +16,38 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class TeleportWand extends GenericWand {
     public TeleportWand() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Teleport Wand";
+	return "Teleport Wand";
     }
 
     @Override
     public String getPluralName() {
-        return "Teleport Wands";
+	return "Teleport Wands";
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-        this.useAction(null, x, y, z);
-        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
+	this.useAction(null, x, y, z);
+	SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override
-    public void useAction(final MazeObject mo, final int x, final int y,
-            final int z) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().updatePositionAbsolute(x, y, z);
+    public void useAction(final MazeObject mo, final int x, final int y, final int z) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getGameManager().updatePositionAbsolute(x, y, z);
     }
 
     @Override
     public String getDescription() {
-        return "Teleport Wands will teleport you to the target square when used. You cannot teleport to areas you cannot see.";
+	return "Teleport Wands will teleport you to the target square when used. You cannot teleport to areas you cannot see.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.TELEPORT_WAND;
+	return MazeObjects.TELEPORT_WAND;
     }
 }

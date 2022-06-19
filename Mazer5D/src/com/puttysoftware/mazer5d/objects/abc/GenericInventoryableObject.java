@@ -20,27 +20,23 @@ public abstract class GenericInventoryableObject extends MazeObject {
     protected static final long SCORE_GRAB = 10L;
 
     // Constructors
-    protected GenericInventoryableObject(final boolean isUsable,
-            final int newUses) {
-        super(false, isUsable, newUses, true);
-        this.setType(TypeConstants.TYPE_INVENTORYABLE);
-        this.setType(TypeConstants.TYPE_CONTAINABLE);
+    protected GenericInventoryableObject(final boolean isUsable, final int newUses) {
+	super(false, isUsable, newUses, true);
+	this.setType(TypeConstants.TYPE_INVENTORYABLE);
+	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        inv.addItem(this);
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().decay();
-        SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager().addToScore(
-                GenericInventoryableObject.SCORE_GRAB);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	inv.addItem(this);
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getGameManager().decay();
+	SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().getGameManager().addToScore(GenericInventoryableObject.SCORE_GRAB);
     }
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
-
 }

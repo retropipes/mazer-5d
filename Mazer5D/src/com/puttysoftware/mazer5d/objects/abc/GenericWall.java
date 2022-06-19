@@ -17,38 +17,32 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public abstract class GenericWall extends MazeObject {
     // Constructors
     protected GenericWall() {
-        super(true);
-        this.setType(TypeConstants.TYPE_WALL);
+	super(true);
+	this.setType(TypeConstants.TYPE_WALL);
     }
 
-    protected GenericWall(final boolean isSolidXN, final boolean isSolidXS,
-            final boolean isSolidXE, final boolean isSolidXW,
-            final boolean isSolidIN, final boolean isSolidIS,
-            final boolean isSolidIE, final boolean isSolidIW) {
-        super(isSolidXN, isSolidXS, isSolidXE, isSolidXW, isSolidIN, isSolidIS,
-                isSolidIE, isSolidIW);
-        this.setType(TypeConstants.TYPE_WALL);
+    protected GenericWall(final boolean isSolidXN, final boolean isSolidXS, final boolean isSolidXE,
+	    final boolean isSolidXW, final boolean isSolidIN, final boolean isSolidIS, final boolean isSolidIE,
+	    final boolean isSolidIW) {
+	super(isSolidXN, isSolidXS, isSolidXE, isSolidXW, isSolidIN, isSolidIS, isSolidIE, isSolidIW);
+	this.setType(TypeConstants.TYPE_WALL);
     }
 
-    protected GenericWall(final boolean isDestroyable,
-            final boolean doesChainReact) {
-        super(true, false, false, false, false, false, false, true, false, 0,
-                isDestroyable, doesChainReact);
-        this.setType(TypeConstants.TYPE_WALL);
+    protected GenericWall(final boolean isDestroyable, final boolean doesChainReact) {
+	super(true, false, false, false, false, false, false, true, false, 0, isDestroyable, doesChainReact);
+	this.setType(TypeConstants.TYPE_WALL);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        // Do nothing
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	// Do nothing
     }
 
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().showMessage("Can't go that way");
-        // Play move failed sound, if it's enabled
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	Mazer5D.getBagOStuff().showMessage("Can't go that way");
+	// Play move failed sound, if it's enabled
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
@@ -56,7 +50,6 @@ public abstract class GenericWall extends MazeObject {
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
-
 }

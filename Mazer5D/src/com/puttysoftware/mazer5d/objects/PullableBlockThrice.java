@@ -19,36 +19,35 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class PullableBlockThrice extends GenericMovableObject {
     // Constructors
     public PullableBlockThrice() {
-        super(false, true);
+	super(false, true);
     }
 
     @Override
     public String getName() {
-        return "Pullable Block Thrice";
+	return "Pullable Block Thrice";
     }
 
     @Override
     public String getPluralName() {
-        return "Pullable Blocks Thrice";
+	return "Pullable Blocks Thrice";
     }
 
     @Override
-    public void pullAction(final ObjectInventory inv, final MazeObject mo,
-            final int x, final int y, final int pushX, final int pushY) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().updatePulledPosition(x, y, pushX, pushY, this);
-        SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
-        app.getGameManager().morphOther(new PullableBlockTwice(), pushX, pushY,
-                Layers.OBJECT);
+    public void pullAction(final ObjectInventory inv, final MazeObject mo, final int x, final int y, final int pushX,
+	    final int pushY) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getGameManager().updatePulledPosition(x, y, pushX, pushY, this);
+	SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
+	app.getGameManager().morphOther(new PullableBlockTwice(), pushX, pushY, Layers.OBJECT);
     }
 
     @Override
     public String getDescription() {
-        return "Pullable Blocks Thrice can only be pulled three times, before turning into a wall.";
+	return "Pullable Blocks Thrice can only be pulled three times, before turning into a wall.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.PULLABLE_BLOCK_THRICE;
+	return MazeObjects.PULLABLE_BLOCK_THRICE;
     }
 }

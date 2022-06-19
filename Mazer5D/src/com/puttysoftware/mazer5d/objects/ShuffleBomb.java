@@ -20,55 +20,51 @@ class ShuffleBomb extends GenericUsableObject {
 
     // Constructors
     public ShuffleBomb() {
-        super(1);
+	super(1);
     }
 
     @Override
     public String getName() {
-        return "Shuffle Bomb";
+	return "Shuffle Bomb";
     }
 
     @Override
     public String getPluralName() {
-        return "Shuffle Bombs";
+	return "Shuffle Bombs";
     }
 
     @Override
     public String getDescription() {
-        return "Shuffle Bombs randomly rearrange anything in an area of radius 3 centered on the target point.";
+	return "Shuffle Bombs randomly rearrange anything in an area of radius 3 centered on the target point.";
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY, final int arrowType,
-            final ObjectInventory inv) {
-        // Destroy bomb
-        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects
-                .getEmptySpace(), locX, locY, locZ);
-        // Act as if bomb was used
-        this.useAction(null, locX, locY, locZ);
-        // Stop arrow
-        return false;
+    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
+	    final int arrowType, final ObjectInventory inv) {
+	// Destroy bomb
+	Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY, locZ);
+	// Act as if bomb was used
+	this.useAction(null, locX, locY, locZ);
+	// Stop arrow
+	return false;
     }
 
     @Override
-    public void useAction(final MazeObject mo, final int x, final int y,
-            final int z) {
-        // Shuffle objects
-        SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .radialScanShuffleObjects(x, y, z, ShuffleBomb.EFFECT_RADIUS);
-        // Player might have moved
-        Mazer5D.getBagOStuff().getGameManager().findPlayerAndAdjust();
+    public void useAction(final MazeObject mo, final int x, final int y, final int z) {
+	// Shuffle objects
+	SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().radialScanShuffleObjects(x, y, z, ShuffleBomb.EFFECT_RADIUS);
+	// Player might have moved
+	Mazer5D.getBagOStuff().getGameManager().findPlayerAndAdjust();
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-        this.useAction(null, x, y, z);
+	this.useAction(null, x, y, z);
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.SHUFFLE_BOMB;
+	return MazeObjects.SHUFFLE_BOMB;
     }
 }

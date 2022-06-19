@@ -5,11 +5,10 @@ public class PrefsVersions {
     private static final int MINIMUM = 1;
 
     private PrefsVersions() {
-        // Do nothing
+	// Do nothing
     }
 
     public static boolean isCompatible(final int version) {
-        return version >= PrefsVersions.MINIMUM
-                && version <= PrefsVersions.LATEST;
+	return version >= PrefsVersions.MINIMUM && version <= PrefsVersions.LATEST;
     }
 }

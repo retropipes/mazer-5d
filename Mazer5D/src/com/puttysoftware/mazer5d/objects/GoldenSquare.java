@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class GoldenSquare extends GenericMultipleKey {
     // Constructors
     public GoldenSquare() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Golden Square";
+	return "Golden Square";
     }
 
     @Override
     public String getPluralName() {
-        return "Golden Squares";
+	return "Golden Squares";
     }
 
     @Override
     public String getDescription() {
-        return "Golden Squares are the keys to Golden Walls.";
+	return "Golden Squares are the keys to Golden Walls.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.GOLDEN_SQUARE;
+	return MazeObjects.GOLDEN_SQUARE;
     }
 }

@@ -12,37 +12,34 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class HotBoots extends GenericBoots {
     // Constructors
     public HotBoots() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Hot Boots";
+	return "Hot Boots";
     }
 
     @Override
     public String getPluralName() {
-        return "Pairs of Hot Boots";
+	return "Pairs of Hot Boots";
     }
 
     @Override
     public String getDescription() {
-        return "Hot Boots transform any ground into Hot Rock as you walk. Note that you can only wear one pair of boots at once.";
+	return "Hot Boots transform any ground into Hot Rock as you walk. Note that you can only wear one pair of boots at once.";
     }
 
     @Override
     public void stepAction() {
-        final int x = Mazer5D.getBagOStuff().getGameManager().getPlayerManager()
-                .getPlayerLocationX();
-        final int y = Mazer5D.getBagOStuff().getGameManager().getPlayerManager()
-                .getPlayerLocationY();
-        final int z = Mazer5D.getBagOStuff().getGameManager().getPlayerManager()
-                .getPlayerLocationZ();
-        Mazer5D.getBagOStuff().getMazeManager().getMaze().hotGround(x, y, z);
+	final int x = Mazer5D.getBagOStuff().getGameManager().getPlayerManager().getPlayerLocationX();
+	final int y = Mazer5D.getBagOStuff().getGameManager().getPlayerManager().getPlayerLocationY();
+	final int z = Mazer5D.getBagOStuff().getGameManager().getPlayerManager().getPlayerLocationZ();
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().hotGround(x, y, z);
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.HOT_BOOTS;
+	return MazeObjects.HOT_BOOTS;
     }
 }

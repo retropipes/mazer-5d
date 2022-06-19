@@ -22,42 +22,38 @@ class VariableHurtTrap extends GenericTrap {
 
     // Constructors
     public VariableHurtTrap() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Variable Hurt Trap";
+	return "Variable Hurt Trap";
     }
 
     @Override
     public String getPluralName() {
-        return "Variable Hurt Traps";
+	return "Variable Hurt Traps";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        this.maxDamage = Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .getMaximumHP() / 10;
-        if (this.maxDamage < VariableHurtTrap.MIN_DAMAGE) {
-            this.maxDamage = VariableHurtTrap.MIN_DAMAGE;
-        }
-        this.damageDealt = new RandomRange(VariableHurtTrap.MIN_DAMAGE,
-                this.maxDamage);
-        Mazer5D.getBagOStuff().getMazeManager().getMaze().doDamage(
-                this.damageDealt.generate());
-        SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager().decay();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	this.maxDamage = Mazer5D.getBagOStuff().getMazeManager().getMaze().getMaximumHP() / 10;
+	if (this.maxDamage < VariableHurtTrap.MIN_DAMAGE) {
+	    this.maxDamage = VariableHurtTrap.MIN_DAMAGE;
+	}
+	this.damageDealt = new RandomRange(VariableHurtTrap.MIN_DAMAGE, this.maxDamage);
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().doDamage(this.damageDealt.generate());
+	SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().getGameManager().decay();
     }
 
     @Override
     public String getDescription() {
-        return "Variable Hurt Traps hurt you when stepped on, then disappear.";
+	return "Variable Hurt Traps hurt you when stepped on, then disappear.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.VARIABLE_HURT_TRAP;
+	return MazeObjects.VARIABLE_HURT_TRAP;
     }
 }

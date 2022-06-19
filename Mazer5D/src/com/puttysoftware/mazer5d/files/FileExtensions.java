@@ -17,42 +17,42 @@ public class FileExtensions {
 
     // Methods
     public static String getMazeExtension() {
-        return FileExtensions.MAZE_EXTENSION;
+	return FileExtensions.MAZE_EXTENSION;
     }
 
     public static String getMazeExtensionWithPeriod() {
-        return "." + FileExtensions.MAZE_EXTENSION;
+	return "." + FileExtensions.MAZE_EXTENSION;
     }
 
     public static String getMazeTempExtensionWithPeriod() {
-        return "." + FileExtensions.MAZE_TEMP_EXTENSION;
+	return "." + FileExtensions.MAZE_TEMP_EXTENSION;
     }
 
     public static String getGameExtension() {
-        return FileExtensions.GAME_EXTENSION;
+	return FileExtensions.GAME_EXTENSION;
     }
 
     public static String getGameExtensionWithPeriod() {
-        return "." + FileExtensions.GAME_EXTENSION;
+	return "." + FileExtensions.GAME_EXTENSION;
     }
 
     public static String getCharacterExtension() {
-        return FileExtensions.CHARACTER_EXTENSION;
+	return FileExtensions.CHARACTER_EXTENSION;
     }
 
     public static String getPrefsExtensionWithPeriod() {
-        return "." + FileExtensions.PREFS_EXTENSION;
+	return "." + FileExtensions.PREFS_EXTENSION;
     }
 
     public static String getCharacterExtensionWithPeriod() {
-        return "." + FileExtensions.CHARACTER_EXTENSION;
+	return "." + FileExtensions.CHARACTER_EXTENSION;
     }
 
     public static String getRegistryExtensionWithPeriod() {
-        return "." + FileExtensions.REGISTRY_EXTENSION;
+	return "." + FileExtensions.REGISTRY_EXTENSION;
     }
 
     public static String getInternalDataExtensionWithPeriod() {
-        return "." + FileExtensions.INTERNAL_DATA_EXTENSION;
+	return "." + FileExtensions.INTERNAL_DATA_EXTENSION;
     }
 }

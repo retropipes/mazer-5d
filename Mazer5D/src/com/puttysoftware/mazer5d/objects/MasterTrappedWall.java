@@ -10,16 +10,16 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class MasterTrappedWall extends GenericTrappedWall {
     public MasterTrappedWall() {
-        super(GenericTrappedWall.NUMBER_MASTER);
+	super(GenericTrappedWall.NUMBER_MASTER);
     }
 
     @Override
     public String getDescription() {
-        return "Master Trapped Walls disappear when any Wall Trap is triggered.";
+	return "Master Trapped Walls disappear when any Wall Trap is triggered.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.MASTER_TRAPPED_WALL;
+	return MazeObjects.MASTER_TRAPPED_WALL;
     }
 }

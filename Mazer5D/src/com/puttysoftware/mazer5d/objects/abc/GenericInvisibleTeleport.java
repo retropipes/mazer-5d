@@ -16,22 +16,21 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericInvisibleTeleport extends GenericTeleport {
     // Constructors
-    protected GenericInvisibleTeleport(final int destinationRow,
-            final int destinationColumn, final int destinationFloor) {
-        super(destinationRow, destinationColumn, destinationFloor);
-        this.setType(TypeConstants.TYPE_INVISIBLE_TELEPORT);
-        this.setType(TypeConstants.TYPE_TELEPORT);
+    protected GenericInvisibleTeleport(final int destinationRow, final int destinationColumn,
+	    final int destinationFloor) {
+	super(destinationRow, destinationColumn, destinationFloor);
+	this.setType(TypeConstants.TYPE_INVISIBLE_TELEPORT);
+	this.setType(TypeConstants.TYPE_TELEPORT);
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
-                this.getDestinationColumn(), this.getDestinationFloor());
-        Mazer5D.getBagOStuff().showMessage("Invisible Teleport!");
-        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getGameManager().updatePositionAbsolute(this.getDestinationRow(), this.getDestinationColumn(),
+		this.getDestinationFloor());
+	Mazer5D.getBagOStuff().showMessage("Invisible Teleport!");
+	SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override

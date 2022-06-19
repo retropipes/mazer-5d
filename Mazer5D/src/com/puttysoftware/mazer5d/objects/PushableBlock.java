@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class PushableBlock extends GenericMovableObject {
     // Constructors
     public PushableBlock() {
-        super(true, false);
+	super(true, false);
     }
 
     @Override
     public String getName() {
-        return "Pushable Block";
+	return "Pushable Block";
     }
 
     @Override
     public String getPluralName() {
-        return "Pushable Blocks";
+	return "Pushable Blocks";
     }
 
     @Override
     public String getDescription() {
-        return "Pushable Blocks can only be pushed, not pulled.";
+	return "Pushable Blocks can only be pushed, not pulled.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.PUSHABLE_BLOCK;
+	return MazeObjects.PUSHABLE_BLOCK;
     }
 }

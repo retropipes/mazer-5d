@@ -14,45 +14,43 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class InvisibleTeleport extends GenericInvisibleTeleport {
     // Constructors
     public InvisibleTeleport() {
-        super(0, 0, 0);
+	super(0, 0, 0);
     }
 
-    public InvisibleTeleport(final int destinationRow,
-            final int destinationColumn, final int destinationFloor) {
-        super(destinationRow, destinationColumn, destinationFloor);
+    public InvisibleTeleport(final int destinationRow, final int destinationColumn, final int destinationFloor) {
+	super(destinationRow, destinationColumn, destinationFloor);
     }
 
     // Scriptability
     @Override
     public String getName() {
-        return "Invisible Teleport";
+	return "Invisible Teleport";
     }
 
     @Override
     public String getGameName() {
-        return "Empty";
+	return "Empty";
     }
 
     @Override
     public String getPluralName() {
-        return "Invisible Teleports";
+	return "Invisible Teleports";
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        final MazeObject mo = me.editTeleportDestination(
-                MazeEditor.TELEPORT_TYPE_INVISIBLE_GENERIC);
-        return mo;
+	final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
+	final MazeObject mo = me.editTeleportDestination(MazeEditor.TELEPORT_TYPE_INVISIBLE_GENERIC);
+	return mo;
     }
 
     @Override
     public String getDescription() {
-        return "Invisible Teleports behave like regular teleports, except for the fact that they can't be seen.";
+	return "Invisible Teleports behave like regular teleports, except for the fact that they can't be seen.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.INVISIBLE_TELEPORT;
+	return MazeObjects.INVISIBLE_TELEPORT;
     }
 }

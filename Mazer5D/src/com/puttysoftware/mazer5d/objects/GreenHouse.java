@@ -16,35 +16,34 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class GreenHouse extends FinishTo {
     // Constructors
     public GreenHouse() {
-        super();
+	super();
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        SoundPlayer.playSound(SoundIndex.UP, SoundGroup.GAME);
-        app.getGameManager().goToLevel(this.getDestinationLevel());
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	SoundPlayer.playSound(SoundIndex.UP, SoundGroup.GAME);
+	app.getGameManager().goToLevel(this.getDestinationLevel());
     }
 
     @Override
     public String getName() {
-        return "Green House";
+	return "Green House";
     }
 
     @Override
     public String getPluralName() {
-        return "Green Houses";
+	return "Green Houses";
     }
 
     @Override
     public String getDescription() {
-        return "Green Houses send you inside when walked on.";
+	return "Green Houses send you inside when walked on.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.GREEN_HOUSE;
+	return MazeObjects.GREEN_HOUSE;
     }
 }

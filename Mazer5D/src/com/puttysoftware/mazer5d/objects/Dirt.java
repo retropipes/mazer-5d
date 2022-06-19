@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class Dirt extends GenericGround {
     // Constructors
     public Dirt() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Dirt";
+	return "Dirt";
     }
 
     @Override
     public String getPluralName() {
-        return "Squares of Dirt";
+	return "Squares of Dirt";
     }
 
     @Override
     public String getDescription() {
-        return "Dirt is one of the many types of ground.";
+	return "Dirt is one of the many types of ground.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.DIRT;
+	return MazeObjects.DIRT;
     }
 }

@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class PurpleKey extends GenericSingleKey {
     // Constructors
     public PurpleKey() {
-        super();
+	super();
     }
 
     // Scriptability
     @Override
     public String getName() {
-        return "Purple Key";
+	return "Purple Key";
     }
 
     @Override
     public String getPluralName() {
-        return "Purple Keys";
+	return "Purple Keys";
     }
 
     @Override
     public String getDescription() {
-        return "Purple Keys will unlock Purple Locks, and can only be used once.";
+	return "Purple Keys will unlock Purple Locks, and can only be used once.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.PURPLE_KEY;
+	return MazeObjects.PURPLE_KEY;
     }
 }

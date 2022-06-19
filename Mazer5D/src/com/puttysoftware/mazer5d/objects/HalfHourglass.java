@@ -19,37 +19,34 @@ class HalfHourglass extends GenericTimeModifier {
 
     // Constructors
     public HalfHourglass() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Half Hourglass";
+	return "Half Hourglass";
     }
 
     @Override
     public String getPluralName() {
-        return "Half Hourglasses";
+	return "Half Hourglasses";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().getGameManager().decay();
-        Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .extendTimerByInitialValueHalved();
-        SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager().addToScore(
-                HalfHourglass.SCORE_GRAB);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	Mazer5D.getBagOStuff().getGameManager().decay();
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().extendTimerByInitialValueHalved();
+	SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().getGameManager().addToScore(HalfHourglass.SCORE_GRAB);
     }
 
     @Override
     public String getDescription() {
-        return "Half Hourglasses extend the time to solve the current level by half the initial value.";
+	return "Half Hourglasses extend the time to solve the current level by half the initial value.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.HALF_HOURGLASS;
+	return MazeObjects.HALF_HOURGLASS;
     }
 }

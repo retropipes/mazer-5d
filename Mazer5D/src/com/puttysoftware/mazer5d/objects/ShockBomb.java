@@ -20,56 +20,51 @@ class ShockBomb extends GenericUsableObject {
 
     // Constructors
     public ShockBomb() {
-        super(1);
+	super(1);
     }
 
     @Override
     public String getName() {
-        return "Shock Bomb";
+	return "Shock Bomb";
     }
 
     @Override
     public String getPluralName() {
-        return "Shock Bombs";
+	return "Shock Bombs";
     }
 
     @Override
     public String getDescription() {
-        return "Shock Bombs shock anything in an area of radius 2 centered on the target point.";
+	return "Shock Bombs shock anything in an area of radius 2 centered on the target point.";
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY, final int arrowType,
-            final ObjectInventory inv) {
-        // Act as if bomb was used
-        this.useAction(null, locX, locY, locZ);
-        // Destroy bomb
-        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects
-                .getEmptySpace(), locX, locY, locZ);
-        // Stop arrow
-        return false;
+    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
+	    final int arrowType, final ObjectInventory inv) {
+	// Act as if bomb was used
+	this.useAction(null, locX, locY, locZ);
+	// Destroy bomb
+	Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY, locZ);
+	// Stop arrow
+	return false;
     }
 
     @Override
-    public void useAction(final MazeObject mo, final int x, final int y,
-            final int z) {
-        SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
-        // Shock objects that react to shock
-        Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .radialScanShockObjects(x, y, z, ShockBomb.EFFECT_RADIUS);
-        // Shock the ground, too
-        Mazer5D.getBagOStuff().getMazeManager().getMaze().radialScanShockGround(
-                x, y, z, ShockBomb.EFFECT_RADIUS);
+    public void useAction(final MazeObject mo, final int x, final int y, final int z) {
+	SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
+	// Shock objects that react to shock
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().radialScanShockObjects(x, y, z, ShockBomb.EFFECT_RADIUS);
+	// Shock the ground, too
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().radialScanShockGround(x, y, z, ShockBomb.EFFECT_RADIUS);
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-        this.useAction(null, x, y, z);
+	this.useAction(null, x, y, z);
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.SHOCK_BOMB;
+	return MazeObjects.SHOCK_BOMB;
     }
 }

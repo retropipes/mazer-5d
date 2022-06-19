@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class CutTree extends GenericPassThroughObject {
     // Constructors
     public CutTree() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Cut Tree";
+	return "Cut Tree";
     }
 
     @Override
     public String getPluralName() {
-        return "Cut Trees";
+	return "Cut Trees";
     }
 
     @Override
     public String getDescription() {
-        return "Cut Trees are the leftover stubs of Trees that have been cut by an Axe.";
+	return "Cut Trees are the leftover stubs of Trees that have been cut by an Axe.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.CUT_TREE;
+	return MazeObjects.CUT_TREE;
     }
 }

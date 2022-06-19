@@ -10,16 +10,16 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class WallTrap15 extends GenericWallTrap {
     public WallTrap15() {
-        super(15, new TrappedWall15());
+	super(15, new TrappedWall15());
     }
 
     @Override
     public String getDescription() {
-        return "Wall Traps 15 disappear when stepped on, causing all Trapped Walls 15 to also disappear.";
+	return "Wall Traps 15 disappear when stepped on, causing all Trapped Walls 15 to also disappear.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.WALL_TRAP_15;
+	return MazeObjects.WALL_TRAP_15;
     }
 }

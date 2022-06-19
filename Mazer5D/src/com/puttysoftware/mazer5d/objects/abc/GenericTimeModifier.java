@@ -13,17 +13,15 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public abstract class GenericTimeModifier extends MazeObject {
     // Constructors
     protected GenericTimeModifier() {
-        super(false);
-        this.setType(TypeConstants.TYPE_TIME_MODIFIER);
+	super(false);
+	this.setType(TypeConstants.TYPE_TIME_MODIFIER);
     }
 
     @Override
-    public abstract void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv);
+    public abstract void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv);
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
-
 }

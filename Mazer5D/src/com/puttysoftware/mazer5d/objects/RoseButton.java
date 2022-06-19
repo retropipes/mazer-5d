@@ -10,26 +10,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 class RoseButton extends GenericButton {
     public RoseButton() {
-        super(new RoseWallOff(), new RoseWallOn());
+	super(new RoseWallOff(), new RoseWallOn());
     }
 
     @Override
     public String getName() {
-        return "Rose Button";
+	return "Rose Button";
     }
 
     @Override
     public String getPluralName() {
-        return "Rose Buttons";
+	return "Rose Buttons";
     }
 
     @Override
     public String getDescription() {
-        return "Rose Buttons will cause all Rose Walls Off to become On, and all Rose Walls On to become Off.";
+	return "Rose Buttons will cause all Rose Walls Off to become On, and all Rose Walls On to become Off.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ROSE_BUTTON;
+	return MazeObjects.ROSE_BUTTON;
     }
 }

@@ -10,13 +10,12 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public abstract class GenericKey extends GenericInventoryableObject {
     // Constructors
     protected GenericKey(final boolean infiniteUse) {
-        super(false, 0);
-        this.setType(TypeConstants.TYPE_KEY);
-        this.setType(TypeConstants.TYPE_INVENTORYABLE);
-        this.setType(TypeConstants.TYPE_CONTAINABLE);
+	super(false, 0);
+	this.setType(TypeConstants.TYPE_KEY);
+	this.setType(TypeConstants.TYPE_INVENTORYABLE);
+	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
     public abstract String getName();
-
 }

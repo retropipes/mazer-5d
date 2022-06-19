@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class SignalCrystal extends GenericProgrammableKey {
     // Constructors
     public SignalCrystal() {
-        super("Signal");
+	super("Signal");
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.SIGNAL_CRYSTAL;
+	return MazeObjects.SIGNAL_CRYSTAL;
     }
 }

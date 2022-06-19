@@ -16,36 +16,35 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class GreenLock extends GenericSingleLock {
     // Constructors
     public GreenLock() {
-        super(new GreenKey());
+	super(new GreenKey());
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need a green key");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need a green key");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Green Lock";
+	return "Green Lock";
     }
 
     @Override
     public String getPluralName() {
-        return "Green Locks";
+	return "Green Locks";
     }
 
     @Override
     public String getDescription() {
-        return "Green Locks require Green Keys to open.";
+	return "Green Locks require Green Keys to open.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.GREEN_LOCK;
+	return MazeObjects.GREEN_LOCK;
     }
 }

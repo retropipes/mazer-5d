@@ -32,33 +32,27 @@ public class LogoImageLoader {
     private static final int MAX_INDEX = 2;
 
     private static void preInit() {
-        if (LogoImageLoader.allFilenames == null) {
-            LogoImageLoader.allFilenames = DataLoader.loadLogoImageData();
-            try (final InputStream stream = LogoImageLoader.class
-                    .getResourceAsStream(
-                            "/assets/data/extension/extension.properties")) {
-                LogoImageLoader.fileExtensions = new Properties();
-                LogoImageLoader.fileExtensions.load(stream);
-                final String imageExt = LogoImageLoader.fileExtensions
-                        .getProperty("images");
-                for (int i = 1; i <= LogoImageLoader.MAX_INDEX; i++) {
-                    final String name = "/assets/image/logo/"
-                            + LogoImageLoader.allFilenames[i] + imageExt;
-                    ImageLoader.load(name, LogoImageLoader.class.getResource(
-                            name));
-                }
-            } catch (final IOException e) {
-                Mazer5D.logError(e);
-            }
-        }
+	if (LogoImageLoader.allFilenames == null) {
+	    LogoImageLoader.allFilenames = DataLoader.loadLogoImageData();
+	    try (final InputStream stream = LogoImageLoader.class
+		    .getResourceAsStream("/assets/data/extension/extension.properties")) {
+		LogoImageLoader.fileExtensions = new Properties();
+		LogoImageLoader.fileExtensions.load(stream);
+		final String imageExt = LogoImageLoader.fileExtensions.getProperty("images");
+		for (int i = 1; i <= LogoImageLoader.MAX_INDEX; i++) {
+		    final String name = "/assets/image/logo/" + LogoImageLoader.allFilenames[i] + imageExt;
+		    ImageLoader.load(name, LogoImageLoader.class.getResource(name));
+		}
+	    } catch (final IOException e) {
+		Mazer5D.logError(e);
+	    }
+	}
     }
 
     public static BufferedImageIcon load(final LogoImageIndex image) {
-        LogoImageLoader.preInit();
-        final String imageExt = LogoImageLoader.fileExtensions.getProperty(
-                "images");
-        final String name = "/assets/image/logo/"
-                + LogoImageLoader.allFilenames[image.ordinal()] + imageExt;
-        return ImageLoader.load(name, LogoImageLoader.class.getResource(name));
+	LogoImageLoader.preInit();
+	final String imageExt = LogoImageLoader.fileExtensions.getProperty("images");
+	final String name = "/assets/image/logo/" + LogoImageLoader.allFilenames[image.ordinal()] + imageExt;
+	return ImageLoader.load(name, LogoImageLoader.class.getResource(name));
     }
 }

@@ -17,21 +17,19 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public abstract class GenericToggleWall extends MazeObject {
     // Constructors
     protected GenericToggleWall(final boolean solidState) {
-        super(solidState);
-        this.setType(TypeConstants.TYPE_TOGGLE_WALL);
+	super(solidState);
+	this.setType(TypeConstants.TYPE_TOGGLE_WALL);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
     }
 
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().showMessage("Can't go that way");
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	Mazer5D.getBagOStuff().showMessage("Can't go that way");
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
@@ -39,7 +37,6 @@ public abstract class GenericToggleWall extends MazeObject {
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
-
 }

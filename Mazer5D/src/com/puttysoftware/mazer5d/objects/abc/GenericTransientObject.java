@@ -16,40 +16,38 @@ public abstract class GenericTransientObject extends MazeObject {
 
     // Constructors
     protected GenericTransientObject(final String newBaseName) {
-        super(true);
-        this.baseName = newBaseName;
-        this.name = newBaseName;
+	super(true);
+	this.baseName = newBaseName;
+	this.name = newBaseName;
     }
 
     // Methods
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        // Do nothing
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	// Do nothing
     }
 
     @Override
     public final String getName() {
-        return this.name;
+	return this.name;
     }
 
     @Override
     public String getPluralName() {
-        return this.name + "s";
+	return this.name + "s";
     }
 
     @Override
     public String getDescription() {
-        return null;
+	return null;
     }
 
     public final void setNameSuffix(final String suffix) {
-        this.name = this.baseName + " " + suffix;
+	this.name = this.baseName + " " + suffix;
     }
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
-
 }

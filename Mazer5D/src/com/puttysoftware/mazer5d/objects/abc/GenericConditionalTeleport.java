@@ -24,41 +24,37 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
 
     // Constructors
     protected GenericConditionalTeleport() {
-        super();
-        this.addCustomCounters(this.getCustomFormat());
-        this.setSunMoon(GenericConditionalTeleport.TRIGGER_SUN);
-        this.setType(TypeConstants.TYPE_TELEPORT);
+	super();
+	this.addCustomCounters(this.getCustomFormat());
+	this.setSunMoon(GenericConditionalTeleport.TRIGGER_SUN);
+	this.setType(TypeConstants.TYPE_TELEPORT);
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        int testVal;
-        if (this.getSunMoon() == GenericConditionalTeleport.TRIGGER_SUN) {
-            testVal = inv.getItemCount(MazeObjects.SUN_STONE);
-        } else if (this
-                .getSunMoon() == GenericConditionalTeleport.TRIGGER_MOON) {
-            testVal = inv.getItemCount(MazeObjects.MOON_STONE);
-        } else {
-            testVal = 0;
-        }
-        if (testVal >= this.getTriggerValue()) {
-            app.getGameManager().updatePositionAbsolute(this
-                    .getDestinationRow2(), this.getDestinationColumn2(), this
-                            .getDestinationFloor2());
-        } else {
-            app.getGameManager().updatePositionAbsolute(this
-                    .getDestinationRow(), this.getDestinationColumn(), this
-                            .getDestinationFloor());
-        }
-        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
-        this.postMoveActionHook();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	int testVal;
+	if (this.getSunMoon() == GenericConditionalTeleport.TRIGGER_SUN) {
+	    testVal = inv.getItemCount(MazeObjects.SUN_STONE);
+	} else if (this.getSunMoon() == GenericConditionalTeleport.TRIGGER_MOON) {
+	    testVal = inv.getItemCount(MazeObjects.MOON_STONE);
+	} else {
+	    testVal = 0;
+	}
+	if (testVal >= this.getTriggerValue()) {
+	    app.getGameManager().updatePositionAbsolute(this.getDestinationRow2(), this.getDestinationColumn2(),
+		    this.getDestinationFloor2());
+	} else {
+	    app.getGameManager().updatePositionAbsolute(this.getDestinationRow(), this.getDestinationColumn(),
+		    this.getDestinationFloor());
+	}
+	SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
+	this.postMoveActionHook();
     }
 
     public void postMoveActionHook() {
-        // Do nothing
+	// Do nothing
     }
 
     @Override
@@ -66,33 +62,32 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getBagOStuff().showMessage(this.getName() + ": Trigger Value "
-                + this.getTriggerValue());
+	Mazer5D.getBagOStuff().showMessage(this.getName() + ": Trigger Value " + this.getTriggerValue());
     }
 
     @Override
     public final MazeObject editorPropertiesHook() {
-        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        me.editConditionalTeleportDestination(this);
-        return this;
+	final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
+	me.editConditionalTeleportDestination(this);
+	return this;
     }
 
     @Override
     public boolean defersSetProperties() {
-        return true;
+	return true;
     }
 
     @Override
     public int getCustomFormat() {
-        if (Mazer5D.getBagOStuff().getMazeManager().isMazeXML4Compatible()) {
-            return 7;
-        } else {
-            return 8;
-        }
+	if (Mazer5D.getBagOStuff().getMazeManager().isMazeXML4Compatible()) {
+	    return 7;
+	} else {
+	    return 8;
+	}
     }
 }

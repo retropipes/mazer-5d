@@ -22,42 +22,38 @@ class VariableHealTrap extends GenericTrap {
 
     // Constructors
     public VariableHealTrap() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Variable Heal Trap";
+	return "Variable Heal Trap";
     }
 
     @Override
     public String getPluralName() {
-        return "Variable Heal Traps";
+	return "Variable Heal Traps";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        this.maxHealing = Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .getMaximumHP() / 10;
-        if (this.maxHealing < VariableHealTrap.MIN_HEALING) {
-            this.maxHealing = VariableHealTrap.MIN_HEALING;
-        }
-        this.healingGiven = new RandomRange(VariableHealTrap.MIN_HEALING,
-                this.maxHealing);
-        Mazer5D.getBagOStuff().getMazeManager().getMaze().heal(this.healingGiven
-                .generate());
-        SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager().decay();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	this.maxHealing = Mazer5D.getBagOStuff().getMazeManager().getMaze().getMaximumHP() / 10;
+	if (this.maxHealing < VariableHealTrap.MIN_HEALING) {
+	    this.maxHealing = VariableHealTrap.MIN_HEALING;
+	}
+	this.healingGiven = new RandomRange(VariableHealTrap.MIN_HEALING, this.maxHealing);
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().heal(this.healingGiven.generate());
+	SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().getGameManager().decay();
     }
 
     @Override
     public String getDescription() {
-        return "Variable Heal Traps heal you when stepped on, then disappear.";
+	return "Variable Heal Traps heal you when stepped on, then disappear.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.VARIABLE_HEAL_TRAP;
+	return MazeObjects.VARIABLE_HEAL_TRAP;
     }
 }

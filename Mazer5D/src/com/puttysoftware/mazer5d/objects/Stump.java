@@ -12,33 +12,32 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class Stump extends GenericWall {
     // Constructors
     public Stump() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Stump";
+	return "Stump";
     }
 
     @Override
     public String getPluralName() {
-        return "Stumps";
+	return "Stumps";
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY, final int arrowType,
-            final ObjectInventory inv) {
-        return true;
+    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
+	    final int arrowType, final ObjectInventory inv) {
+	return true;
     }
 
     @Override
     public String getDescription() {
-        return "Stumps stop movement, but not arrows.";
+	return "Stumps stop movement, but not arrows.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.STUMP;
+	return MazeObjects.STUMP;
     }
 }

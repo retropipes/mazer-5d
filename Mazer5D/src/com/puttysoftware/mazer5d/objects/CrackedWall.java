@@ -17,47 +17,43 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 class CrackedWall extends GenericWall {
     // Constructors
     public CrackedWall() {
-        super();
-        this.setType(TypeConstants.TYPE_BREAKABLE_WALL);
-        this.setType(TypeConstants.TYPE_WALL);
+	super();
+	this.setType(TypeConstants.TYPE_BREAKABLE_WALL);
+	this.setType(TypeConstants.TYPE_WALL);
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY, final int arrowType,
-            final ObjectInventory inv) {
-        this.moveFailedAction(true, locX, locY, inv);
-        return false;
+    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
+	    final int arrowType, final ObjectInventory inv) {
+	this.moveFailedAction(true, locX, locY, inv);
+	return false;
     }
 
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        // Crack the wall
-        final int pz = Mazer5D.getBagOStuff().getGameManager()
-                .getPlayerManager().getPlayerLocationZ();
-        Mazer5D.getBagOStuff().getGameManager().morph(new DamagedWall(), dirX,
-                dirY, pz);
-        SoundPlayer.playSound(SoundIndex.CRACK, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	// Crack the wall
+	final int pz = Mazer5D.getBagOStuff().getGameManager().getPlayerManager().getPlayerLocationZ();
+	Mazer5D.getBagOStuff().getGameManager().morph(new DamagedWall(), dirX, dirY, pz);
+	SoundPlayer.playSound(SoundIndex.CRACK, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Cracked Wall";
+	return "Cracked Wall";
     }
 
     @Override
     public String getPluralName() {
-        return "Cracked Walls";
+	return "Cracked Walls";
     }
 
     @Override
     public String getDescription() {
-        return "Cracked Walls turn into Damaged Walls when hit.";
+	return "Cracked Walls turn into Damaged Walls when hit.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.CRACKED_WALL;
+	return MazeObjects.CRACKED_WALL;
     }
 }

@@ -18,22 +18,20 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public abstract class GenericTextHolder extends MazeObject {
     // Constructors
     protected GenericTextHolder() {
-        super(true);
-        this.addOneCustomText();
-        this.setSignText("Empty");
-        this.setType(TypeConstants.TYPE_TEXT_HOLDER);
+	super(true);
+	this.addOneCustomText();
+	this.setSignText("Empty");
+	this.setType(TypeConstants.TYPE_TEXT_HOLDER);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        // Do nothing
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	// Do nothing
     }
 
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        CommonDialogs.showDialog(this.getSignText());
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	CommonDialogs.showDialog(this.getSignText());
     }
 
     @Override
@@ -41,27 +39,24 @@ public abstract class GenericTextHolder extends MazeObject {
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-        this.setSignText(CommonDialogs.showTextInputDialogWithDefault(
-                "Set Text for " + this.getName(), "Editor", this
-                        .getSignText()));
-        return this;
+	this.setSignText(CommonDialogs.showTextInputDialogWithDefault("Set Text for " + this.getName(), "Editor",
+		this.getSignText()));
+	return this;
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final XDataReader reader,
-            final int formatVersion) throws IOException {
-        this.setSignText(reader.readString());
-        return this;
+    protected MazeObject readMazeObjectHookXML(final XDataReader reader, final int formatVersion) throws IOException {
+	this.setSignText(reader.readString());
+	return this;
     }
 
     @Override
-    protected void writeMazeObjectHookXML(final XDataWriter writer)
-            throws IOException {
-        writer.writeString(this.getSignText());
+    protected void writeMazeObjectHookXML(final XDataWriter writer) throws IOException {
+	writer.writeString(this.getSignText());
     }
 }

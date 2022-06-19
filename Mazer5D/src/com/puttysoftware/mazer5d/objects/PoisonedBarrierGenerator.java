@@ -19,59 +19,55 @@ class PoisonedBarrierGenerator extends GenericGenerator {
 
     // Constructors
     public PoisonedBarrierGenerator() {
-        super();
-        this.TIMER_DELAY = 18;
-        this.POISON_CYCLES = 0;
+	super();
+	this.TIMER_DELAY = 18;
+	this.POISON_CYCLES = 0;
     }
 
     @Override
     public String getName() {
-        return "Poisoned Barrier Generator";
+	return "Poisoned Barrier Generator";
     }
 
     @Override
     public String getPluralName() {
-        return "Poisoned Barrier Generators";
+	return "Poisoned Barrier Generators";
     }
 
     @Override
     public String getDescription() {
-        return "Poisoned Barrier Generators create Barriers. When hit or shot, they stop generating for a while, then resume generating slower than normal.";
+	return "Poisoned Barrier Generators create Barriers. When hit or shot, they stop generating for a while, then resume generating slower than normal.";
     }
 
     @Override
-    protected boolean preMoveActionHook(final int dirX, final int dirY,
-            final int dirZ, final int dirW) {
-        this.POISON_CYCLES++;
-        if (this.POISON_CYCLES == PoisonedBarrierGenerator.POISON_LIMIT) {
-            final BagOStuff app = Mazer5D.getBagOStuff();
-            final BarrierGenerator bg = new BarrierGenerator();
-            app.getGameManager().morph(bg, dirX, dirY, dirZ);
-            bg.timerExpiredAction(dirX, dirY);
-        }
-        return true;
+    protected boolean preMoveActionHook(final int dirX, final int dirY, final int dirZ, final int dirW) {
+	this.POISON_CYCLES++;
+	if (this.POISON_CYCLES == PoisonedBarrierGenerator.POISON_LIMIT) {
+	    final BagOStuff app = Mazer5D.getBagOStuff();
+	    final BarrierGenerator bg = new BarrierGenerator();
+	    app.getGameManager().morph(bg, dirX, dirY, dirZ);
+	    bg.timerExpiredAction(dirX, dirY);
+	}
+	return true;
     }
 
     @Override
-    protected void arrowHitActionHook(final int locX, final int locY,
-            final int locZ, final int arrowType, final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        if (arrowType == ArrowTypes.ICE) {
-            app.getGameManager().morph(new IcedBarrierGenerator(), locX, locY,
-                    locZ);
-        } else if (arrowType == ArrowTypes.FIRE) {
-            app.getGameManager().morph(new EnragedBarrierGenerator(), locX,
-                    locY, locZ);
-        } else if (arrowType == ArrowTypes.SHOCK) {
-            app.getGameManager().morph(new ShockedBarrierGenerator(), locX,
-                    locY, locZ);
-        } else {
-            this.preMoveAction(false, locX, locY, inv);
-        }
+    protected void arrowHitActionHook(final int locX, final int locY, final int locZ, final int arrowType,
+	    final ObjectInventory inv) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	if (arrowType == ArrowTypes.ICE) {
+	    app.getGameManager().morph(new IcedBarrierGenerator(), locX, locY, locZ);
+	} else if (arrowType == ArrowTypes.FIRE) {
+	    app.getGameManager().morph(new EnragedBarrierGenerator(), locX, locY, locZ);
+	} else if (arrowType == ArrowTypes.SHOCK) {
+	    app.getGameManager().morph(new ShockedBarrierGenerator(), locX, locY, locZ);
+	} else {
+	    this.preMoveAction(false, locX, locY, inv);
+	}
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.POISONED_BARRIER_GENERATOR;
+	return MazeObjects.POISONED_BARRIER_GENERATOR;
     }
 }

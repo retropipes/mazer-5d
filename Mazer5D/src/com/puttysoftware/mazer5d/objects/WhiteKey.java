@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class WhiteKey extends GenericSingleKey {
     // Constructors
     public WhiteKey() {
-        super();
+	super();
     }
 
     // Scriptability
     @Override
     public String getName() {
-        return "White Key";
+	return "White Key";
     }
 
     @Override
     public String getPluralName() {
-        return "White Keys";
+	return "White Keys";
     }
 
     @Override
     public String getDescription() {
-        return "White Keys will unlock White Locks, and can only be used once.";
+	return "White Keys will unlock White Locks, and can only be used once.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.WHITE_KEY;
+	return MazeObjects.WHITE_KEY;
     }
 }

@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class BlueCarpet extends GenericCarpet {
     // Constructors
     public BlueCarpet() {
-        super("Blue");
+	super("Blue");
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.BLUE_CARPET;
+	return MazeObjects.BLUE_CARPET;
     }
 }

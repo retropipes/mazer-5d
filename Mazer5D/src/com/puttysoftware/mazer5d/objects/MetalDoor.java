@@ -16,36 +16,35 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class MetalDoor extends GenericSingleLock {
     // Constructors
     public MetalDoor() {
-        super(new MetalKey());
+	super(new MetalKey());
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need a metal key");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need a metal key");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Metal Door";
+	return "Metal Door";
     }
 
     @Override
     public String getPluralName() {
-        return "Metal Doors";
+	return "Metal Doors";
     }
 
     @Override
     public String getDescription() {
-        return "Metal Doors require Metal Keys to open, or Metal Boots and a Metal Button.";
+	return "Metal Doors require Metal Keys to open, or Metal Boots and a Metal Button.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.METAL_DOOR;
+	return MazeObjects.METAL_DOOR;
     }
 }

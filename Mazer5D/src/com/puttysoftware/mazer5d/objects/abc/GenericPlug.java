@@ -12,28 +12,27 @@ public abstract class GenericPlug extends GenericInfiniteKey {
     private char letter;
 
     protected GenericPlug(final char newLetter) {
-        super();
-        this.letter = Character.toUpperCase(newLetter);
-        this.setType(TypeConstants.TYPE_PLUG);
-        this.setType(TypeConstants.TYPE_INFINITE_USE);
-        this.setType(TypeConstants.TYPE_KEY);
-        this.setType(TypeConstants.TYPE_INVENTORYABLE);
-        this.setType(TypeConstants.TYPE_CONTAINABLE);
+	super();
+	this.letter = Character.toUpperCase(newLetter);
+	this.setType(TypeConstants.TYPE_PLUG);
+	this.setType(TypeConstants.TYPE_INFINITE_USE);
+	this.setType(TypeConstants.TYPE_KEY);
+	this.setType(TypeConstants.TYPE_INVENTORYABLE);
+	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
     public String getName() {
-        return this.letter + " Plug";
+	return this.letter + " Plug";
     }
 
     @Override
     public String getPluralName() {
-        return this.letter + " Plugs";
+	return this.letter + " Plugs";
     }
 
     @Override
     public String getDescription() {
-        return this.letter + " Plugs open " + this.letter
-                + " Ports, and can be used infinitely many times.";
+	return this.letter + " Plugs open " + this.letter + " Ports, and can be used infinitely many times.";
     }
 }

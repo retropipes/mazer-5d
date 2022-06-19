@@ -16,36 +16,35 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class PurpleLock extends GenericSingleLock {
     // Constructors
     public PurpleLock() {
-        super(new PurpleKey());
+	super(new PurpleKey());
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need a purple key");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need a purple key");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Purple Lock";
+	return "Purple Lock";
     }
 
     @Override
     public String getPluralName() {
-        return "Purple Locks";
+	return "Purple Locks";
     }
 
     @Override
     public String getDescription() {
-        return "Purple Locks require Purple Keys to open.";
+	return "Purple Locks require Purple Keys to open.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.PURPLE_LOCK;
+	return MazeObjects.PURPLE_LOCK;
     }
 }

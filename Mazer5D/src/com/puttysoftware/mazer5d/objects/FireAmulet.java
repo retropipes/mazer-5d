@@ -16,43 +16,40 @@ class FireAmulet extends GenericAmulet {
 
     // Constructors
     public FireAmulet() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Fire Amulet";
+	return "Fire Amulet";
     }
 
     @Override
     public String getPluralName() {
-        return "Fire Amulets";
+	return "Fire Amulets";
     }
 
     @Override
     public String getDescription() {
-        return "Fire Amulets grant the power to transform ground into Hot Rock for 30 steps. Note that you can only wear one amulet at once.";
+	return "Fire Amulets grant the power to transform ground into Hot Rock for 30 steps. Note that you can only wear one amulet at once.";
     }
 
     @Override
     public void stepAction() {
-        final int x = Mazer5D.getBagOStuff().getGameManager().getPlayerManager()
-                .getPlayerLocationX();
-        final int y = Mazer5D.getBagOStuff().getGameManager().getPlayerManager()
-                .getPlayerLocationY();
-        final int z = Mazer5D.getBagOStuff().getGameManager().getPlayerManager()
-                .getPlayerLocationZ();
-        Mazer5D.getBagOStuff().getMazeManager().getMaze().hotGround(x, y, z);
+	final int x = Mazer5D.getBagOStuff().getGameManager().getPlayerManager().getPlayerLocationX();
+	final int y = Mazer5D.getBagOStuff().getGameManager().getPlayerManager().getPlayerLocationY();
+	final int z = Mazer5D.getBagOStuff().getGameManager().getPlayerManager().getPlayerLocationZ();
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().hotGround(x, y, z);
     }
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getBagOStuff().getGameManager().activateEffect(
-                MazeEffectConstants.EFFECT_FIERY, FireAmulet.EFFECT_DURATION);
+	Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_FIERY,
+		FireAmulet.EFFECT_DURATION);
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.FIRE_AMULET;
+	return MazeObjects.FIRE_AMULET;
     }
 }

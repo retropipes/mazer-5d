@@ -18,12 +18,12 @@ public abstract class MusicLoader extends Thread {
 
     // Constructor
     protected MusicLoader(final ThreadGroup group) {
-        super(group, "Ogg Media Player " + MusicLoader.ACTIVE_MEDIA_COUNT);
+	super(group, "Ogg Media Player " + MusicLoader.ACTIVE_MEDIA_COUNT);
     }
 
     // Methods
     public abstract void stopLoop();
-    
+
     public abstract boolean isPlaying();
 
     protected abstract void updateNumber(int newNumber);
@@ -32,45 +32,44 @@ public abstract class MusicLoader extends Thread {
 
     // Factories
     public static MusicLoader loadFile(final String file) {
-        return MusicLoader.provisionMedia(new MusicFile(MusicLoader.MEDIA_GROUP,
-                file, MusicLoader.ACTIVE_MEDIA_COUNT));
+	return MusicLoader.provisionMedia(new MusicFile(MusicLoader.MEDIA_GROUP, file, MusicLoader.ACTIVE_MEDIA_COUNT));
     }
 
     public static MusicLoader loadResource(final URL resource) {
-        return MusicLoader.provisionMedia(new MusicResource(MusicLoader.MEDIA_GROUP,
-                resource, MusicLoader.ACTIVE_MEDIA_COUNT));
+	return MusicLoader
+		.provisionMedia(new MusicResource(MusicLoader.MEDIA_GROUP, resource, MusicLoader.ACTIVE_MEDIA_COUNT));
     }
 
     private static MusicLoader provisionMedia(final MusicLoader src) {
-        if (MusicLoader.ACTIVE_MEDIA_COUNT >= MusicLoader.MAX_MEDIA_ACTIVE) {
-            MusicLoader.killAllMediaPlayers();
-        }
-        try {
-            if (src != null) {
-                src.setUncaughtExceptionHandler(MusicLoader.meh);
-                MusicLoader.ACTIVE_MEDIA[MusicLoader.ACTIVE_MEDIA_COUNT] = src;
-                MusicLoader.ACTIVE_MEDIA_COUNT++;
-            }
-        } catch (final ArrayIndexOutOfBoundsException aioob) {
-            // Do nothing
-        }
-        return src;
+	if (MusicLoader.ACTIVE_MEDIA_COUNT >= MusicLoader.MAX_MEDIA_ACTIVE) {
+	    MusicLoader.killAllMediaPlayers();
+	}
+	try {
+	    if (src != null) {
+		src.setUncaughtExceptionHandler(MusicLoader.meh);
+		MusicLoader.ACTIVE_MEDIA[MusicLoader.ACTIVE_MEDIA_COUNT] = src;
+		MusicLoader.ACTIVE_MEDIA_COUNT++;
+	    }
+	} catch (final ArrayIndexOutOfBoundsException aioob) {
+	    // Do nothing
+	}
+	return src;
     }
 
     private static void killAllMediaPlayers() {
-        MusicLoader.MEDIA_GROUP.interrupt();
+	MusicLoader.MEDIA_GROUP.interrupt();
     }
 
     static synchronized void taskCompleted(final int taskNum) {
-        MusicLoader.ACTIVE_MEDIA[taskNum] = null;
-        for (int z = taskNum + 1; z < MusicLoader.ACTIVE_MEDIA.length; z++) {
-            if (MusicLoader.ACTIVE_MEDIA[z] != null) {
-                MusicLoader.ACTIVE_MEDIA[z - 1] = MusicLoader.ACTIVE_MEDIA[z];
-                if (MusicLoader.ACTIVE_MEDIA[z - 1].isAlive()) {
-                    MusicLoader.ACTIVE_MEDIA[z - 1].updateNumber(z - 1);
-                }
-            }
-        }
-        MusicLoader.ACTIVE_MEDIA_COUNT--;
+	MusicLoader.ACTIVE_MEDIA[taskNum] = null;
+	for (int z = taskNum + 1; z < MusicLoader.ACTIVE_MEDIA.length; z++) {
+	    if (MusicLoader.ACTIVE_MEDIA[z] != null) {
+		MusicLoader.ACTIVE_MEDIA[z - 1] = MusicLoader.ACTIVE_MEDIA[z];
+		if (MusicLoader.ACTIVE_MEDIA[z - 1].isAlive()) {
+		    MusicLoader.ACTIVE_MEDIA[z - 1].updateNumber(z - 1);
+		}
+	    }
+	}
+	MusicLoader.ACTIVE_MEDIA_COUNT--;
     }
 }

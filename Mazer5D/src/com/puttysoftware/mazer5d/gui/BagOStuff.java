@@ -34,87 +34,85 @@ public class BagOStuff {
 
     // Constructors
     public BagOStuff() {
-        this.guiMgr = new GUIManager();
+	this.guiMgr = new GUIManager();
     }
 
     // Methods
     public void showMessage(final String msg) {
-        if (Modes.inGame()) {
-            this.getGameManager().setStatusMessage(msg);
-        } else if (Modes.inEditor()) {
-            this.getEditor().setStatusMessage(msg);
-        } else {
-            CommonDialogs.showDialog(msg);
-        }
+	if (Modes.inGame()) {
+	    this.getGameManager().setStatusMessage(msg);
+	} else if (Modes.inEditor()) {
+	    this.getEditor().setStatusMessage(msg);
+	} else {
+	    CommonDialogs.showDialog(msg);
+	}
     }
 
     public GUIManager getGUIManager() {
-        return this.guiMgr;
+	return this.guiMgr;
     }
 
     public GameManager getGameManager() {
-        if (this.gameMgr == null) {
-            this.gameMgr = new GameManager();
-        }
-        return this.gameMgr;
+	if (this.gameMgr == null) {
+	    this.gameMgr = new GameManager();
+	}
+	return this.gameMgr;
     }
 
     public MazeManager getMazeManager() {
-        if (this.mazeMgr == null) {
-            this.mazeMgr = new MazeManager();
-        }
-        return this.mazeMgr;
+	if (this.mazeMgr == null) {
+	    this.mazeMgr = new MazeManager();
+	}
+	return this.mazeMgr;
     }
 
     public ObjectHelpViewer getObjectHelpViewer() {
-        if (this.oHelpMgr == null) {
-            this.oHelpMgr = new ObjectHelpViewer();
-        }
-        return this.oHelpMgr;
+	if (this.oHelpMgr == null) {
+	    this.oHelpMgr = new ObjectHelpViewer();
+	}
+	return this.oHelpMgr;
     }
 
     public MazeEditor getEditor() {
-        if (this.editor == null) {
-            this.editor = new MazeEditor();
-        }
-        return this.editor;
+	if (this.editor == null) {
+	    this.editor = new MazeEditor();
+	}
+	return this.editor;
     }
 
     public RuleSetPicker getRuleSetPicker() {
-        if (this.rsPicker == null) {
-            this.rsPicker = new RuleSetPicker();
-        }
-        return this.rsPicker;
+	if (this.rsPicker == null) {
+	    this.rsPicker = new RuleSetPicker();
+	}
+	return this.rsPicker;
     }
 
     public AboutThisGame getAboutThisGame() {
-        if (this.about == null) {
-            this.about = new AboutThisGame(this.getVersionString());
-        }
-        return this.about;
+	if (this.about == null) {
+	    this.about = new AboutThisGame(this.getVersionString());
+	}
+	return this.about;
     }
 
     public void playHighScoreSound() {
-        SoundPlayer.playSound(SoundIndex.HIGH_SCORE, SoundGroup.USER_INTERFACE);
+	SoundPlayer.playSound(SoundIndex.HIGH_SCORE, SoundGroup.USER_INTERFACE);
     }
 
     public void playLogoSound() {
-        MusicPlayer.playMusic(MusicIndex.TITLE, MusicGroup.USER_INTERFACE);
-        SoundPlayer.playSound(SoundIndex.LOGO, SoundGroup.USER_INTERFACE);
+	MusicPlayer.playMusic(MusicIndex.TITLE, MusicGroup.USER_INTERFACE);
+	SoundPlayer.playSound(SoundIndex.LOGO, SoundGroup.USER_INTERFACE);
     }
 
     private String getVersionString() {
-        if (this.isBetaModeEnabled()) {
-            return "" + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR
-                    + "." + BagOStuff.VERSION_BUGFIX + "b"
-                    + BagOStuff.VERSION_BETA;
-        } else {
-            return "" + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR
-                    + "." + BagOStuff.VERSION_BUGFIX;
-        }
+	if (this.isBetaModeEnabled()) {
+	    return "" + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR + "." + BagOStuff.VERSION_BUGFIX + "b"
+		    + BagOStuff.VERSION_BETA;
+	} else {
+	    return "" + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR + "." + BagOStuff.VERSION_BUGFIX;
+	}
     }
 
     public boolean isBetaModeEnabled() {
-        return BagOStuff.VERSION_BETA > 0;
+	return BagOStuff.VERSION_BETA > 0;
     }
 }

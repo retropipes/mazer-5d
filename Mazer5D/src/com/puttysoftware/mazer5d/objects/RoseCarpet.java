@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class RoseCarpet extends GenericCarpet {
     // Constructors
     public RoseCarpet() {
-        super("Rose");
+	super("Rose");
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ROSE_CARPET;
+	return MazeObjects.ROSE_CARPET;
     }
 }

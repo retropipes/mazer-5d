@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.utilities;
 
 public class TypeConstants {
     private TypeConstants() {
-        // Do nothing
+	// Do nothing
     }
 
     public static final int TYPE_GROUND = 0;

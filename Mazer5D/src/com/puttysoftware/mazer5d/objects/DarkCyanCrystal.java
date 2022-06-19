@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class DarkCyanCrystal extends GenericProgrammableKey {
     // Constructors
     public DarkCyanCrystal() {
-        super("Dark Cyan");
+	super("Dark Cyan");
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.DARK_CYAN_CRYSTAL;
+	return MazeObjects.DARK_CYAN_CRYSTAL;
     }
 }

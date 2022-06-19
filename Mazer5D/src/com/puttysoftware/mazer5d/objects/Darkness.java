@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class Darkness extends GenericPassThroughObject {
     // Constructors
     public Darkness() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Darkness";
+	return "Darkness";
     }
 
     @Override
     public String getPluralName() {
-        return null;
+	return null;
     }
 
     @Override
     public String getDescription() {
-        return null;
+	return null;
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.DARKNESS;
+	return MazeObjects.DARKNESS;
     }
 }

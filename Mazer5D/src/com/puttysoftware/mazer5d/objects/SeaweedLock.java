@@ -16,36 +16,35 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class SeaweedLock extends GenericSingleLock {
     // Constructors
     public SeaweedLock() {
-        super(new SeaweedKey());
+	super(new SeaweedKey());
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need a seaweed key");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need a seaweed key");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Seaweed Lock";
+	return "Seaweed Lock";
     }
 
     @Override
     public String getPluralName() {
-        return "Seaweed Locks";
+	return "Seaweed Locks";
     }
 
     @Override
     public String getDescription() {
-        return "Seaweed Locks require Seaweed Keys to open.";
+	return "Seaweed Locks require Seaweed Keys to open.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.SEAWEED_LOCK;
+	return MazeObjects.SEAWEED_LOCK;
     }
 }

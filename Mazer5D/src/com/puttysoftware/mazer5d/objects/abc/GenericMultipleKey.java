@@ -10,10 +10,10 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public abstract class GenericMultipleKey extends GenericKey {
     // Constructors
     protected GenericMultipleKey() {
-        super(true);
-        this.setType(TypeConstants.TYPE_MULTIPLE_USE);
-        this.setType(TypeConstants.TYPE_KEY);
-        this.setType(TypeConstants.TYPE_INVENTORYABLE);
-        this.setType(TypeConstants.TYPE_CONTAINABLE);
+	super(true);
+	this.setType(TypeConstants.TYPE_MULTIPLE_USE);
+	this.setType(TypeConstants.TYPE_KEY);
+	this.setType(TypeConstants.TYPE_INVENTORYABLE);
+	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 }

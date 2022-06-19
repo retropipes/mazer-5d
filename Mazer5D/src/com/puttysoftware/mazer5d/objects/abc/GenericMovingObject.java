@@ -8,19 +8,18 @@ import com.puttysoftware.mazer5d.utilities.TypeConstants;
 public abstract class GenericMovingObject extends MazeObject {
     // Constructors
     public GenericMovingObject(final boolean solid) {
-        super(solid);
-        this.setType(TypeConstants.TYPE_MOVING);
+	super(solid);
+	this.setType(TypeConstants.TYPE_MOVING);
     }
 
     // Methods
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        this.postMoveActionHook();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	this.postMoveActionHook();
     }
 
     public void postMoveActionHook() {
-        // Do nothing
+	// Do nothing
     }
 
     @Override
@@ -28,7 +27,6 @@ public abstract class GenericMovingObject extends MazeObject {
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
-
 }

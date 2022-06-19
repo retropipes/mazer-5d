@@ -16,35 +16,34 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class BrickWall extends GenericSingleLock {
     // Constructors
     public BrickWall() {
-        super(new Hammer());
+	super(new Hammer());
     }
 
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need a hammer");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need a hammer");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Brick Wall";
+	return "Brick Wall";
     }
 
     @Override
     public String getPluralName() {
-        return "Brick Walls";
+	return "Brick Walls";
     }
 
     @Override
     public String getDescription() {
-        return "Brick Walls require Hammers to destroy.";
+	return "Brick Walls require Hammers to destroy.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.BRICK_WALL;
+	return MazeObjects.BRICK_WALL;
     }
 }

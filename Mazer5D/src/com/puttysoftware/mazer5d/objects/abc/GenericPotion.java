@@ -27,19 +27,18 @@ public abstract class GenericPotion extends MazeObject {
 
     // Constructors
     protected GenericPotion(final boolean usePercent) {
-        super(false);
-        this.effectValueIsPercentage = usePercent;
-        this.setType(TypeConstants.TYPE_POTION);
-        this.setType(TypeConstants.TYPE_CONTAINABLE);
+	super(false);
+	this.effectValueIsPercentage = usePercent;
+	this.setType(TypeConstants.TYPE_POTION);
+	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
-    protected GenericPotion(final boolean usePercent, final int min,
-            final int max) {
-        super(false);
-        this.effectValueIsPercentage = usePercent;
-        this.effect = new RandomRange(min, max);
-        this.setType(TypeConstants.TYPE_POTION);
-        this.setType(TypeConstants.TYPE_CONTAINABLE);
+    protected GenericPotion(final boolean usePercent, final int min, final int max) {
+	super(false);
+	this.effectValueIsPercentage = usePercent;
+	this.effect = new RandomRange(min, max);
+	this.setType(TypeConstants.TYPE_POTION);
+	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
@@ -47,58 +46,53 @@ public abstract class GenericPotion extends MazeObject {
 
     @Override
     public int getLayer() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
 
     @Override
-    public final void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        final Maze m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
-        if (this.effect != null) {
-            this.effectValue = this.effect.generate();
-        } else {
-            this.effectValue = this.getEffectValue();
-        }
-        if (this.effectValueIsPercentage) {
-            if (this.effectValue >= 0) {
-                m.healPercentage(this.effectValue);
-            } else {
-                m.doDamagePercentage(-this.effectValue);
-            }
-        } else {
-            if (this.effectValue >= 0) {
-                m.heal(this.effectValue);
-            } else {
-                m.doDamage(-this.effectValue);
-            }
-        }
-        Mazer5D.getBagOStuff().getGameManager().decay();
-        if (this.effectValue >= 0) {
-            SoundPlayer.playSound(SoundIndex.HEAL, SoundGroup.GAME);
-        } else {
-            SoundPlayer.playSound(SoundIndex.HURT, SoundGroup.GAME);
-        }
-        Mazer5D.getBagOStuff().getGameManager().addToScore(
-                GenericPotion.SCORE_CONSUME);
+    public final void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final Maze m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
+	if (this.effect != null) {
+	    this.effectValue = this.effect.generate();
+	} else {
+	    this.effectValue = this.getEffectValue();
+	}
+	if (this.effectValueIsPercentage) {
+	    if (this.effectValue >= 0) {
+		m.healPercentage(this.effectValue);
+	    } else {
+		m.doDamagePercentage(-this.effectValue);
+	    }
+	} else {
+	    if (this.effectValue >= 0) {
+		m.heal(this.effectValue);
+	    } else {
+		m.doDamage(-this.effectValue);
+	    }
+	}
+	Mazer5D.getBagOStuff().getGameManager().decay();
+	if (this.effectValue >= 0) {
+	    SoundPlayer.playSound(SoundIndex.HEAL, SoundGroup.GAME);
+	} else {
+	    SoundPlayer.playSound(SoundIndex.HURT, SoundGroup.GAME);
+	}
+	Mazer5D.getBagOStuff().getGameManager().addToScore(GenericPotion.SCORE_CONSUME);
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY, final int arrowType,
-            final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects
-                .getEmptySpace(), locX, locY, locZ);
-        SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager().addToScore(
-                GenericPotion.SCORE_SMASH);
-        return false;
+    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
+	    final int arrowType, final ObjectInventory inv) {
+	Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY, locZ);
+	SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().getGameManager().addToScore(GenericPotion.SCORE_SMASH);
+	return false;
     }
 
     public int getEffectValue() {
-        if (this.effect != null) {
-            return this.effect.generate();
-        } else {
-            return 0;
-        }
+	if (this.effect != null) {
+	    return this.effect.generate();
+	} else {
+	    return 0;
+	}
     }
 }

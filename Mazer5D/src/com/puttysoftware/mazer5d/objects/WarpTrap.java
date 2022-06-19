@@ -21,47 +21,45 @@ class WarpTrap extends GenericTrap {
 
     // Constructors
     public WarpTrap() {
-        super();
+	super();
     }
 
     @Override
     public String getName() {
-        return "Warp Trap";
+	return "Warp Trap";
     }
 
     @Override
     public String getPluralName() {
-        return "Warp Traps";
+	return "Warp Traps";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        int maxRow, maxCol, maxFloor, rRow, rCol, rFloor;
-        maxRow = app.getMazeManager().getMaze().getRows() - 1;
-        this.rr = new RandomRange(0, maxRow);
-        maxCol = app.getMazeManager().getMaze().getColumns() - 1;
-        this.rc = new RandomRange(0, maxCol);
-        maxFloor = app.getMazeManager().getMaze().getFloors() - 1;
-        this.rf = new RandomRange(0, maxFloor);
-        do {
-            rRow = this.rr.generate();
-            rCol = this.rc.generate();
-            rFloor = this.rf.generate();
-        } while (!app.getGameManager().tryUpdatePositionAbsolute(rRow, rCol,
-                rFloor));
-        app.getGameManager().updatePositionAbsolute(rRow, rCol, rFloor);
-        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	int maxRow, maxCol, maxFloor, rRow, rCol, rFloor;
+	maxRow = app.getMazeManager().getMaze().getRows() - 1;
+	this.rr = new RandomRange(0, maxRow);
+	maxCol = app.getMazeManager().getMaze().getColumns() - 1;
+	this.rc = new RandomRange(0, maxCol);
+	maxFloor = app.getMazeManager().getMaze().getFloors() - 1;
+	this.rf = new RandomRange(0, maxFloor);
+	do {
+	    rRow = this.rr.generate();
+	    rCol = this.rc.generate();
+	    rFloor = this.rf.generate();
+	} while (!app.getGameManager().tryUpdatePositionAbsolute(rRow, rCol, rFloor));
+	app.getGameManager().updatePositionAbsolute(rRow, rCol, rFloor);
+	SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override
     public String getDescription() {
-        return "Warp Traps send anything that steps on one to a random location.";
+	return "Warp Traps send anything that steps on one to a random location.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.WARP_TRAP;
+	return MazeObjects.WARP_TRAP;
     }
 }

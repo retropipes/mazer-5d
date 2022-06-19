@@ -12,31 +12,31 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class SuperHealPotion extends GenericPotion {
     // Constructors
     public SuperHealPotion() {
-        super(false);
+	super(false);
     }
 
     @Override
     public String getName() {
-        return "Super Heal Potion";
+	return "Super Heal Potion";
     }
 
     @Override
     public String getPluralName() {
-        return "Super Heal Potions";
+	return "Super Heal Potions";
     }
 
     @Override
     public int getEffectValue() {
-        return Mazer5D.getBagOStuff().getMazeManager().getMaze().getMaximumHP();
+	return Mazer5D.getBagOStuff().getMazeManager().getMaze().getMaximumHP();
     }
 
     @Override
     public String getDescription() {
-        return "Super Heal Potions heal you completely when picked up.";
+	return "Super Heal Potions heal you completely when picked up.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.SUPER_HEAL_POTION;
+	return MazeObjects.SUPER_HEAL_POTION;
     }
 }

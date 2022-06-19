@@ -20,71 +20,70 @@ import com.puttysoftware.mazer5d.utilities.RandomGenerationRule;
 class Finish extends GenericTeleport {
     // Constructors
     public Finish() {
-        super(0, 0, 0);
+	super(0, 0, 0);
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        SoundPlayer.playSound(SoundIndex.FINISH, SoundGroup.GAME);
-        app.getGameManager().solvedLevel();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	SoundPlayer.playSound(SoundIndex.FINISH, SoundGroup.GAME);
+	app.getGameManager().solvedLevel();
     }
 
     @Override
     public String getName() {
-        return "Finish";
+	return "Finish";
     }
 
     @Override
     public String getPluralName() {
-        return "Finishes";
+	return "Finishes";
     }
 
     @Override
     public boolean defersSetProperties() {
-        return false;
+	return false;
     }
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getBagOStuff().showMessage(this.getName());
+	Mazer5D.getBagOStuff().showMessage(this.getName());
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-        return null;
+	return null;
     }
 
     @Override
     public String getDescription() {
-        return "Finishes lead to the next level, if one exists. Otherwise, entering one solves the maze.";
+	return "Finishes lead to the next level, if one exists. Otherwise, entering one solves the maze.";
     }
 
     @Override
     public int getCustomFormat() {
-        return 0;
+	return 0;
     }
 
     // Random Generation Rules
     @Override
     public boolean isRequired() {
-        return true;
+	return true;
     }
 
     @Override
     public int getMinimumRequiredQuantity(final Maze maze) {
-        return 1;
+	return 1;
     }
 
     @Override
     public int getMaximumRequiredQuantity(final Maze maze) {
-        return RandomGenerationRule.NO_LIMIT;
+	return RandomGenerationRule.NO_LIMIT;
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.FINISH;
+	return MazeObjects.FINISH;
     }
 }

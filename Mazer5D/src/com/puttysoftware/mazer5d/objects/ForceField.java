@@ -16,34 +16,33 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class ForceField extends GenericField {
     // Constructors
     public ForceField() {
-        super(new EnergySphere());
+	super(new EnergySphere());
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().showMessage("You'll get zapped");
-        SoundPlayer.playSound(SoundIndex.FORCE_FIELD, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	Mazer5D.getBagOStuff().showMessage("You'll get zapped");
+	SoundPlayer.playSound(SoundIndex.FORCE_FIELD, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Force Field";
+	return "Force Field";
     }
 
     @Override
     public String getPluralName() {
-        return "Force Fields";
+	return "Force Fields";
     }
 
     @Override
     public String getDescription() {
-        return "Force Fields block movement without an Energy Sphere.";
+	return "Force Fields block movement without an Energy Sphere.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.FORCE_FIELD;
+	return MazeObjects.FORCE_FIELD;
     }
 }

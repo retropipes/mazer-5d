@@ -15,26 +15,26 @@ class FireBow extends GenericBow {
 
     // Constructors
     public FireBow() {
-        super(FireBow.BOW_USES, ArrowTypes.FIRE);
+	super(FireBow.BOW_USES, ArrowTypes.FIRE);
     }
 
     @Override
     public String getName() {
-        return "Fire Bow";
+	return "Fire Bow";
     }
 
     @Override
     public String getPluralName() {
-        return "Fire Bows";
+	return "Fire Bows";
     }
 
     @Override
     public String getDescription() {
-        return "Fire Bows allow shooting of Fire Arrows, which burn Barrier Generators upon contact, and do everything normal arrows do.";
+	return "Fire Bows allow shooting of Fire Arrows, which burn Barrier Generators upon contact, and do everything normal arrows do.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.FIRE_BOW;
+	return MazeObjects.FIRE_BOW;
     }
 }

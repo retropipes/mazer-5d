@@ -17,45 +17,43 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class RandomTeleport extends GenericRandomTeleport {
     // Constructors
     public RandomTeleport() {
-        super(0, 0);
+	super(0, 0);
     }
 
-    public RandomTeleport(final int newRandomRangeY,
-            final int newRandomRangeX) {
-        super(newRandomRangeY, newRandomRangeX);
+    public RandomTeleport(final int newRandomRangeY, final int newRandomRangeX) {
+	super(newRandomRangeY, newRandomRangeX);
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        int dr, dc;
-        do {
-            dr = this.getDestinationRow();
-            dc = this.getDestinationColumn();
-        } while (!app.getGameManager().tryUpdatePositionRelative(dr, dc));
-        app.getGameManager().updatePositionRelative(dr, dc);
-        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	int dr, dc;
+	do {
+	    dr = this.getDestinationRow();
+	    dc = this.getDestinationColumn();
+	} while (!app.getGameManager().tryUpdatePositionRelative(dr, dc));
+	app.getGameManager().updatePositionRelative(dr, dc);
+	SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Random Teleport";
+	return "Random Teleport";
     }
 
     @Override
     public String getPluralName() {
-        return "Random Teleports";
+	return "Random Teleports";
     }
 
     @Override
     public String getDescription() {
-        return "Random Teleports, unlike regular Teleports, send you to a randomly chosen destination.";
+	return "Random Teleports, unlike regular Teleports, send you to a randomly chosen destination.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.RANDOM_TELEPORT;
+	return MazeObjects.RANDOM_TELEPORT;
     }
 }

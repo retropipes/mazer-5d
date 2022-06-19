@@ -35,70 +35,66 @@ public class AboutThisGame implements AboutHandler {
 
     // Constructors
     public AboutThisGame(final String ver) {
-        this.setUpGUI(ver);
+	this.setUpGUI(ver);
     }
 
     // Methods
     public void showAboutDialog() {
-        Modes.setInAbout();
-        this.aboutFrame.attachAndSave(this.aboutPane);
-        this.aboutFrame.setTitle("About Mazer5D");
+	Modes.setInAbout();
+	this.aboutFrame.attachAndSave(this.aboutPane);
+	this.aboutFrame.setTitle("About Mazer5D");
     }
 
     void hideAboutDialog() {
-        this.aboutFrame.restoreSaved();
-        Modes.restore();
+	this.aboutFrame.restoreSaved();
+	Modes.restore();
     }
 
     private void setUpGUI(final String ver) {
-        this.handler = new EventHandler();
-        this.aboutFrame = MainWindow.getMainWindow();
-        this.aboutPane = this.aboutFrame.createContent();
-        this.textPane = new JPanel();
-        this.buttonPane = new JPanel();
-        this.logoPane = new JPanel();
-        this.aboutOK = new JButton("OK");
-        this.miniLabel = new JLabel("",
-                LogoImageLoader.load(LogoImageIndex.MINI_LOGO),
-                SwingConstants.LEFT);
-        this.aboutOK.setDefaultCapable(true);
-        this.aboutFrame.setDefaultButton(this.aboutOK);
-        this.aboutPane.setLayout(new BorderLayout());
-        this.logoPane.setLayout(new FlowLayout());
-        this.logoPane.add(this.miniLabel);
-        this.textPane.setLayout(new GridLayout(4, 1));
-        this.textPane.add(new JLabel("Mazer5D Version: " + ver));
-        this.textPane.add(new JLabel("Author: Eric Ahnell"));
-        this.textPane.add(
-                new JLabel("Web Site: http://www.puttysoftware.com/mazer5d/"));
-        this.textPane.add(new JLabel(
-                "E-mail bug reports to: products@puttysoftware.com  "));
-        this.buttonPane.setLayout(new FlowLayout());
-        this.buttonPane.add(this.aboutOK);
-        this.aboutPane.add(this.logoPane, BorderLayout.WEST);
-        this.aboutPane.add(this.textPane, BorderLayout.CENTER);
-        this.aboutPane.add(this.buttonPane, BorderLayout.SOUTH);
-        this.aboutOK.addActionListener(this.handler);
+	this.handler = new EventHandler();
+	this.aboutFrame = MainWindow.getMainWindow();
+	this.aboutPane = this.aboutFrame.createContent();
+	this.textPane = new JPanel();
+	this.buttonPane = new JPanel();
+	this.logoPane = new JPanel();
+	this.aboutOK = new JButton("OK");
+	this.miniLabel = new JLabel("", LogoImageLoader.load(LogoImageIndex.MINI_LOGO), SwingConstants.LEFT);
+	this.aboutOK.setDefaultCapable(true);
+	this.aboutFrame.setDefaultButton(this.aboutOK);
+	this.aboutPane.setLayout(new BorderLayout());
+	this.logoPane.setLayout(new FlowLayout());
+	this.logoPane.add(this.miniLabel);
+	this.textPane.setLayout(new GridLayout(4, 1));
+	this.textPane.add(new JLabel("Mazer5D Version: " + ver));
+	this.textPane.add(new JLabel("Author: Eric Ahnell"));
+	this.textPane.add(new JLabel("Web Site: http://www.puttysoftware.com/mazer5d/"));
+	this.textPane.add(new JLabel("E-mail bug reports to: products@puttysoftware.com  "));
+	this.buttonPane.setLayout(new FlowLayout());
+	this.buttonPane.add(this.aboutOK);
+	this.aboutPane.add(this.logoPane, BorderLayout.WEST);
+	this.aboutPane.add(this.textPane, BorderLayout.CENTER);
+	this.aboutPane.add(this.buttonPane, BorderLayout.SOUTH);
+	this.aboutOK.addActionListener(this.handler);
     }
 
     private class EventHandler implements ActionListener {
-        public EventHandler() {
-            // Do nothing
-        }
+	public EventHandler() {
+	    // Do nothing
+	}
 
-        // Handle buttons
-        @Override
-        public void actionPerformed(final ActionEvent e) {
-            final AboutThisGame ad = AboutThisGame.this;
-            final String cmd = e.getActionCommand();
-            if (cmd.equals("OK")) {
-                ad.hideAboutDialog();
-            }
-        }
+	// Handle buttons
+	@Override
+	public void actionPerformed(final ActionEvent e) {
+	    final AboutThisGame ad = AboutThisGame.this;
+	    final String cmd = e.getActionCommand();
+	    if (cmd.equals("OK")) {
+		ad.hideAboutDialog();
+	    }
+	}
     }
 
     @Override
     public void handleAbout(final AboutEvent inE) {
-        this.showAboutDialog();
+	this.showAboutDialog();
     }
 }

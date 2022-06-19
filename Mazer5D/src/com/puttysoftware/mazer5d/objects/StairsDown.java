@@ -19,81 +19,79 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class StairsDown extends GenericTeleport {
     // Constructors
     public StairsDown() {
-        super(0, 0, 0);
+	super(0, 0, 0);
     }
 
     // For derived classes only
     protected StairsDown(final boolean doesAcceptPushInto) {
-        super(doesAcceptPushInto);
+	super(doesAcceptPushInto);
     }
 
     @Override
     public String getName() {
-        return "Stairs Down";
+	return "Stairs Down";
     }
 
     @Override
     public String getPluralName() {
-        return "Sets of Stairs Down";
+	return "Sets of Stairs Down";
     }
 
     @Override
     public int getDestinationRow() {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        return app.getGameManager().getPlayerManager().getPlayerLocationX();
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	return app.getGameManager().getPlayerManager().getPlayerLocationX();
     }
 
     @Override
     public int getDestinationColumn() {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        return app.getGameManager().getPlayerManager().getPlayerLocationY();
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	return app.getGameManager().getPlayerManager().getPlayerLocationY();
     }
 
     @Override
     public int getDestinationFloor() {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        return app.getGameManager().getPlayerManager().getPlayerLocationZ() - 1;
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	return app.getGameManager().getPlayerManager().getPlayerLocationZ() - 1;
     }
 
     @Override
     public int getDestinationLevel() {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        return app.getGameManager().getPlayerManager().getPlayerLocationW();
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	return app.getGameManager().getPlayerManager().getPlayerLocationW();
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().updatePositionAbsoluteNoEvents(this
-                .getDestinationRow(), this.getDestinationColumn(), this
-                        .getDestinationFloor(), this.getDestinationLevel());
-        SoundPlayer.playSound(SoundIndex.DOWN, SoundGroup.GAME);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getGameManager().updatePositionAbsoluteNoEvents(this.getDestinationRow(), this.getDestinationColumn(),
+		this.getDestinationFloor(), this.getDestinationLevel());
+	SoundPlayer.playSound(SoundIndex.DOWN, SoundGroup.GAME);
     }
 
     @Override
     public void editorPlaceHook() {
-        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        me.pairStairs(MazeEditor.STAIRS_DOWN);
+	final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
+	me.pairStairs(MazeEditor.STAIRS_DOWN);
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-        return null;
+	return null;
     }
 
     @Override
     public String getDescription() {
-        return "Stairs Down lead to the floor below.";
+	return "Stairs Down lead to the floor below.";
     }
 
     @Override
     public int getCustomFormat() {
-        return 0;
+	return 0;
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.STAIRS_DOWN;
+	return MazeObjects.STAIRS_DOWN;
     }
 }

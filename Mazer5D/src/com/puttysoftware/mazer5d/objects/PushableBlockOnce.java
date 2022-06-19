@@ -19,36 +19,35 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class PushableBlockOnce extends GenericMovableObject {
     // Constructors
     public PushableBlockOnce() {
-        super(true, false);
+	super(true, false);
     }
 
     @Override
     public String getName() {
-        return "Pushable Block Once";
+	return "Pushable Block Once";
     }
 
     @Override
     public String getPluralName() {
-        return "Pushable Blocks Once";
+	return "Pushable Blocks Once";
     }
 
     @Override
-    public void pushAction(final ObjectInventory inv, final MazeObject mo,
-            final int x, final int y, final int pushX, final int pushY) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
-        SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
-        app.getGameManager().morphOther(new Wall(), pushX, pushY,
-                Layers.OBJECT);
+    public void pushAction(final ObjectInventory inv, final MazeObject mo, final int x, final int y, final int pushX,
+	    final int pushY) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
+	SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
+	app.getGameManager().morphOther(new Wall(), pushX, pushY, Layers.OBJECT);
     }
 
     @Override
     public String getDescription() {
-        return "Pushable Blocks Once can only be pushed once, before turning into a wall.";
+	return "Pushable Blocks Once can only be pushed once, before turning into a wall.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.PUSHABLE_BLOCK_ONCE;
+	return MazeObjects.PUSHABLE_BLOCK_ONCE;
     }
 }

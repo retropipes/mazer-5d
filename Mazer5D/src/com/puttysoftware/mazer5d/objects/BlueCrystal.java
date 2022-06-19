@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class BlueCrystal extends GenericProgrammableKey {
     // Constructors
     public BlueCrystal() {
-        super("Blue");
+	super("Blue");
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.BLUE_CRYSTAL;
+	return MazeObjects.BLUE_CRYSTAL;
     }
 }

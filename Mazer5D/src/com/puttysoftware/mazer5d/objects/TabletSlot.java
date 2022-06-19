@@ -16,36 +16,35 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class TabletSlot extends GenericInfiniteLock {
     // Constructors
     public TabletSlot() {
-        super(new Tablet());
+	super(new Tablet());
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need a tablet");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need a tablet");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Tablet Slot";
+	return "Tablet Slot";
     }
 
     @Override
     public String getPluralName() {
-        return "Tablet Slots";
+	return "Tablet Slots";
     }
 
     @Override
     public String getDescription() {
-        return "Tablet Slots disappear when filled with a Tablet.";
+	return "Tablet Slots disappear when filled with a Tablet.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.TABLET_SLOT;
+	return MazeObjects.TABLET_SLOT;
     }
 }

@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class Arrow extends GenericTransientObject {
     // Constructors
     public Arrow() {
-        super("Arrow");
+	super("Arrow");
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ARROW;
+	return MazeObjects.ARROW;
     }
 }

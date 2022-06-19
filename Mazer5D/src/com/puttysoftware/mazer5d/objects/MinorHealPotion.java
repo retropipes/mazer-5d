@@ -15,26 +15,26 @@ class MinorHealPotion extends GenericPotion {
 
     // Constructors
     public MinorHealPotion() {
-        super(true, MinorHealPotion.MIN_HEAL, MinorHealPotion.MAX_HEAL);
+	super(true, MinorHealPotion.MIN_HEAL, MinorHealPotion.MAX_HEAL);
     }
 
     @Override
     public String getName() {
-        return "Minor Heal Potion";
+	return "Minor Heal Potion";
     }
 
     @Override
     public String getPluralName() {
-        return "Minor Heal Potions";
+	return "Minor Heal Potions";
     }
 
     @Override
     public String getDescription() {
-        return "Minor Heal Potions heal you slightly when picked up.";
+	return "Minor Heal Potions heal you slightly when picked up.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.MINOR_HEAL_POTION;
+	return MazeObjects.MINOR_HEAL_POTION;
     }
 }

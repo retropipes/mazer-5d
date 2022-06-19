@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class RoseWallOn extends GenericToggleWall {
     // Constructors
     public RoseWallOn() {
-        super(true);
+	super(true);
     }
 
     // Scriptability
     @Override
     public String getName() {
-        return "Rose Wall On";
+	return "Rose Wall On";
     }
 
     @Override
     public String getPluralName() {
-        return "Rose Walls On";
+	return "Rose Walls On";
     }
 
     @Override
     public String getDescription() {
-        return "Rose Walls On can NOT be walked through, and will change to Rose Walls Off when a Rose Button is pressed.";
+	return "Rose Walls On can NOT be walked through, and will change to Rose Walls Off when a Rose Button is pressed.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.ROSE_WALL_ON;
+	return MazeObjects.ROSE_WALL_ON;
     }
 }

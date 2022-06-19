@@ -16,36 +16,35 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class MagentaLock extends GenericSingleLock {
     // Constructors
     public MagentaLock() {
-        super(new MagentaKey());
+	super(new MagentaKey());
     }
 
     // Scriptability
     @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need a magenta key");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need a magenta key");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     public String getName() {
-        return "Magenta Lock";
+	return "Magenta Lock";
     }
 
     @Override
     public String getPluralName() {
-        return "Magenta Locks";
+	return "Magenta Locks";
     }
 
     @Override
     public String getDescription() {
-        return "Magenta Locks require Magenta Keys to open.";
+	return "Magenta Locks require Magenta Keys to open.";
     }
 
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.MAGENTA_LOCK;
+	return MazeObjects.MAGENTA_LOCK;
     }
 }
