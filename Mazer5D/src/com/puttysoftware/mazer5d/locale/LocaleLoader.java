@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 public class LocaleLoader {
@@ -14,13 +13,16 @@ public class LocaleLoader {
     private static ArrayList<Properties> CACHE;
 
     private static void cacheFile(final LocaleFile file) {
-	final int fileID = file.ordinal();
 	final String filename = LocaleFileNames.getFileName(file);
 	try (final InputStream is = LocaleLoader.LOAD_CLASS
 		.getResourceAsStream(LocaleLoader.LOAD_PATH + filename + ".properties")) {
-	    LocaleLoader.CACHE.get(fileID).load(is);
+	    Properties loaded = new Properties();
+	    loaded.load(is);
+	    LocaleLoader.CACHE.add(loaded);
 	} catch (final IOException ioe) {
-	    Mazer5D.logError(ioe);
+	    System.err.println("Something has gone horribly wrong trying to load locale file " + filename + "!");
+	    ioe.printStackTrace();
+	    System.exit(2);
 	}
     }
 
@@ -30,6 +32,7 @@ public class LocaleLoader {
     }
 
     public static void init() {
+	LocaleLoader.CACHE = new ArrayList<>();
 	LocaleLoader.cacheFile(LocaleFile.OBJECT_NAME);
 	LocaleLoader.cacheFile(LocaleFile.OBJECT_PLURAL);
 	LocaleLoader.cacheFile(LocaleFile.OBJECT_DESCRIPTION);
