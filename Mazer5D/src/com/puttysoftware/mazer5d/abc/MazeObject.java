@@ -956,20 +956,20 @@ public class MazeObject implements RandomGenerationRule {
      */
     public final boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
 	    final int arrowType, final ObjectInventory inv) {
-	// Stop non-ghost arrows passing through solid objects
+	int uid = this.getUniqueIDHook().ordinal();
+	MazeObjectActions actions = DataLoader.loadObjectActionData(uid);
+	if (actions.has(MazeObjectActions.DISAPPEAR_ARROW)) {
+	    Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY, locZ);
+	}
+	if (actions.has(MazeObjectActions.SOUND_ARROW)) {
+	    SoundIndex arrowSound = SoundIndex.values()[DataLoader.loadObjectActionAddonData(uid,
+		    MazeObjectActions.SOUND_ARROW)];
+	    SoundPlayer.playSound(arrowSound, SoundGroup.GAME);
+	}
 	if (arrowType == ArrowTypes.GHOST) {
+	    // Ghost arrows pass through solid objects
 	    return true;
 	} else {
-	    int uid = this.getUniqueIDHook().ordinal();
-	    MazeObjectActions actions = DataLoader.loadObjectActionData(uid);
-	    if (actions.has(MazeObjectActions.DISAPPEAR_ARROW)) {
-		Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY, locZ);
-	    }
-	    if (actions.has(MazeObjectActions.SOUND_ARROW)) {
-		SoundIndex arrowSound = SoundIndex.values()[DataLoader.loadObjectActionAddonData(uid,
-			MazeObjectActions.SOUND_ARROW)];
-		SoundPlayer.playSound(arrowSound, SoundGroup.GAME);
-	    }
 	    if (actions.any()) {
 		return false;
 	    }
@@ -1071,9 +1071,9 @@ public class MazeObject implements RandomGenerationRule {
 
     public final int getLayer() {
 	int uid = this.getUniqueIDHook().ordinal();
-	MazeObjectActions actions = DataLoader.loadObjectActionData(uid);
-	if (actions.has(MazeObjectActions.ALTER_SCORE)) {
-	    return Layers.OBJECT;
+	int loadLayer = DataLoader.loadObjectLayerData(uid);
+	if (loadLayer != Layers._UNDEFINED) {
+	    return loadLayer;
 	}
 	return getLayerHook();
     }

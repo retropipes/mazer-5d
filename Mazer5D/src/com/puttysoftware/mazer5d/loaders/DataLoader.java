@@ -11,7 +11,8 @@ import com.puttysoftware.mazer5d.utilities.MazeObjectActions;
 public class DataLoader {
     private static MazeObjectActions[] ACTION_CACHE;
     private static int[][] ACTION_ADDON_CACHE;
-    private static final int ACTION_ADDON_LENGTH = 32;
+    private static int[] LAYER_CACHE;
+    private static final int ACTION_ADDON_LENGTH = 33;
 
     private DataLoader() {
 	// Do nothing
@@ -107,6 +108,34 @@ public class DataLoader {
 	    }
 	}
 	return DataLoader.ACTION_ADDON_CACHE[actionID][objectID];
+    }
+
+    public static int loadObjectLayerData(final int objectID) {
+	if (DataLoader.LAYER_CACHE == null) {
+	    try (final ResourceStreamReader rsr = new ResourceStreamReader(DataLoader.class.getResourceAsStream(
+		    "/assets/data/object/layer" + FileExtensions.getInternalDataExtensionWithPeriod()))) {
+		// Fetch data
+		final ArrayList<Integer> rawData = new ArrayList<>();
+		String raw = "0";
+		while (raw != null) {
+		    raw = rsr.readString();
+		    if (raw != null) {
+			rawData.add(Integer.parseInt(raw));
+		    }
+		}
+		int index = 0;
+		final int[] data = new int[rawData.size()];
+		for (final Integer rawItem : rawData) {
+		    data[index] = rawItem;
+		    index++;
+		}
+		DataLoader.LAYER_CACHE = data;
+	    } catch (final IOException e) {
+		Mazer5D.logError(e);
+		return 0;
+	    }
+	}
+	return DataLoader.LAYER_CACHE[objectID];
     }
 
     public static String[] loadEffectImageData() {
