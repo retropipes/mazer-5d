@@ -106,17 +106,35 @@ public class ObjectImageLoader {
 	// Get it from the cache
 	return ObjectImageCache.getCachedObjectImage(obj, game);
     }
+    
+    public static BufferedImageIcon loadHelp(final String name) {
+	// Get it from the cache
+	return ObjectImageCache.getCachedHelpImage(name);
+    }
 
-    static BufferedImageIcon getUncachedObjectImage(final MazeObject obj, final boolean game) {
+    static BufferedImageIcon getUncachedHelpImage(final String name) {
 	try {
-	    String name;
-	    if (game) {
-		name = obj.gameRenderHook().getGameName();
-	    } else {
-		name = obj.getName();
-	    }
 	    final String normalName = ObjectImageLoader.normalizeName(name);
-	    final URL url = ObjectImageLoader.LOAD_CLASS.getResource(ObjectImageLoader.LOAD_PATH + normalName + FileExtensions.getImageExtensionWithPeriod());
+	    final URL url = ObjectImageLoader.LOAD_CLASS.getResource(
+		    ObjectImageLoader.LOAD_PATH + normalName + FileExtensions.getImageExtensionWithPeriod());
+	    final BufferedImage image = ImageIO.read(url);
+	    final BufferedImageIcon icon = new BufferedImageIcon(image);
+	    return icon;
+	} catch (final IOException ie) {
+	    return null;
+	} catch (final NullPointerException np) {
+	    return null;
+	} catch (final IllegalArgumentException ia) {
+	    return null;
+	}
+    }
+    
+    static BufferedImageIcon getUncachedObjectImage(final MazeObject obj) {
+	try {
+	    String name = obj.getImageName();
+	    final String normalName = ObjectImageLoader.normalizeName(name);
+	    final URL url = ObjectImageLoader.LOAD_CLASS.getResource(
+		    ObjectImageLoader.LOAD_PATH + normalName + FileExtensions.getImageExtensionWithPeriod());
 	    final BufferedImage image = ImageIO.read(url);
 	    final BufferedImageIcon icon = new BufferedImageIcon(image);
 	    return icon;

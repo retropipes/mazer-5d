@@ -18,6 +18,7 @@ import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.files.format.FormatConstants;
 import com.puttysoftware.mazer5d.files.io.MazeDataReader;
 import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.loaders.DataLoader;
 import com.puttysoftware.mazer5d.loaders.ObjectImageLoader;
 import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
 import com.puttysoftware.mazer5d.utilities.Layers;
@@ -748,6 +749,15 @@ public class GameObjects {
 	    }
 	}
 	return allObjectLayerNames;
+    }
+
+    public static BufferedImageIcon[] getAllObjectHelpAppearances() {
+	final String[] imageNames = DataLoader.loadAllObjectImageData();
+	final BufferedImageIcon[] allObjectHelpAppearances = new BufferedImageIcon[imageNames.length];
+	for (int x = 0; x < allObjectHelpAppearances.length; x++) {
+	    allObjectHelpAppearances[x] = ObjectImageLoader.loadHelp(imageNames[x]);
+	}
+	return allObjectHelpAppearances;
     }
 
     public static BufferedImageIcon[] getAllEditorAppearances() {

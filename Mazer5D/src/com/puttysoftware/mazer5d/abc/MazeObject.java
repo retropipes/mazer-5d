@@ -1014,8 +1014,9 @@ public class MazeObject implements RandomGenerationRule {
 	return false;
     }
 
+    // FIXME: Hack
     public String getGameName() {
-	return this.getNameHook();
+	return "";
     }
 
     /**
@@ -1030,6 +1031,10 @@ public class MazeObject implements RandomGenerationRule {
 
     public void stepAction() {
 	// Do nothing
+    }
+
+    public final String getImageName() {
+	return DataLoader.loadObjectImageData(this.getUniqueID().ordinal());
     }
 
     public final String getName() {

@@ -1565,14 +1565,14 @@ public class GameManager implements MazeEffectConstants {
 	    final MazeObject target2 = m.getCell(destX, destY, destZ, Layers.OBJECT);
 	    target1.determineCurrentAppearance(destX, destY, destZ);
 	    target2.determineCurrentAppearance(destX, destY, destZ);
-	    final String gameName1 = target1.getGameName();
-	    final String gameName2 = target2.getGameName();
+	    final String gameName1 = target1.gameRenderHook().getName();
+	    final String gameName2 = target2.gameRenderHook().getName();
 	    Mazer5D.getBagOStuff().showMessage(gameName2 + " on " + gameName1);
 	    SoundPlayer.playSound(SoundIndex.IDENTIFY, SoundGroup.GAME);
 	} catch (final ArrayIndexOutOfBoundsException ae) {
 	    final MazeObject ev = GameObjects.createObject(MazeObjects.BOUNDS);
 	    ev.determineCurrentAppearance(destX, destY, destZ);
-	    Mazer5D.getBagOStuff().showMessage(ev.getGameName());
+	    Mazer5D.getBagOStuff().showMessage(ev.gameRenderHook().getName());
 	    SoundPlayer.playSound(SoundIndex.IDENTIFY, SoundGroup.GAME);
 	}
     }

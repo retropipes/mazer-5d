@@ -38,6 +38,7 @@ public class LocaleLoader {
 	LocaleLoader.cacheFile(LocaleFile.OBJECT_DESCRIPTION);
 	LocaleLoader.cacheFile(LocaleFile.EXTENSION);
 	LocaleLoader.cacheFile(LocaleFile.EXTENSION_PERIOD);
+	LocaleLoader.cacheFile(LocaleFile.OBJECT_HELP_DESCRIPTION);
     }
 
     public static String loadObjectName(final MazeObjects uid) {
@@ -51,11 +52,16 @@ public class LocaleLoader {
     public static String loadObjectDescription(final MazeObjects uid) {
 	return LocaleLoader.getFromCache(LocaleFile.OBJECT_DESCRIPTION).getProperty(Integer.toString(uid.ordinal()));
     }
-    
+
+    public static String[] loadAllObjectHelpDescriptions() {
+	var values = LocaleLoader.getFromCache(LocaleFile.OBJECT_HELP_DESCRIPTION).values();
+	return values.toArray(new String[values.size()]);
+    }
+
     public static String loadFileExtension(final int extID) {
 	return LocaleLoader.getFromCache(LocaleFile.EXTENSION).getProperty(Integer.toString(extID));
     }
-    
+
     public static String loadFileExtensionWithPeriod(final int extID) {
 	return LocaleLoader.getFromCache(LocaleFile.EXTENSION_PERIOD).getProperty(Integer.toString(extID));
     }

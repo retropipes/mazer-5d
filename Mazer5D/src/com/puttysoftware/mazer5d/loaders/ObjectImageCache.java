@@ -16,10 +16,29 @@ public class ObjectImageCache {
     private static int CACHE_SIZE = 0;
 
     // Methods
-    static BufferedImageIcon getCachedObjectImage(final MazeObject obj, final boolean game) {
-	final String name = obj.getName();
+    static BufferedImageIcon getCachedHelpImage(final String name) {
 	if (!ObjectImageCache.isInCache(name)) {
-	    final BufferedImageIcon bii = ObjectImageLoader.getUncachedObjectImage(obj, game);
+	    final BufferedImageIcon bii = ObjectImageLoader.getUncachedHelpImage(name);
+	    ObjectImageCache.addToCache(name, bii);
+	}
+	for (int x = 0; x < ObjectImageCache.nameCache.length; x++) {
+	    if (name.equals(ObjectImageCache.nameCache[x])) {
+		return ObjectImageCache.cache[x];
+	    }
+	}
+	return null;
+    }
+    
+    static BufferedImageIcon getCachedObjectImage(final MazeObject obj, final boolean game) {
+	MazeObject realObj;
+	if (game) {
+	    realObj = obj.gameRenderHook();
+	} else {
+	    realObj = obj;
+	}
+	String name = realObj.getImageName();
+	if (!ObjectImageCache.isInCache(name)) {
+	    final BufferedImageIcon bii = ObjectImageLoader.getUncachedObjectImage(realObj);
 	    ObjectImageCache.addToCache(name, bii);
 	}
 	for (int x = 0; x < ObjectImageCache.nameCache.length; x++) {
