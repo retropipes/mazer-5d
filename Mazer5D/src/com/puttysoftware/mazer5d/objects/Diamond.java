@@ -5,17 +5,13 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.objects.abc.GenericScoreIncreaser;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
-class Diamond extends GenericScoreIncreaser {
-    // Fields
-    private static final long SCORE_INCREASE = 500L;
-
+class Diamond extends MazeObject {
     // Constructors
     public Diamond() {
-	super();
+	super(false);
     }
 
     @Override
@@ -26,11 +22,6 @@ class Diamond extends GenericScoreIncreaser {
     @Override
     public String getPluralName() {
 	return "Diamonds";
-    }
-
-    @Override
-    public void postMoveActionHook() {
-	Mazer5D.getBagOStuff().getGameManager().addToScore(Diamond.SCORE_INCREASE);
     }
 
     @Override

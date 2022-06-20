@@ -14,11 +14,14 @@ import com.puttysoftware.mazer5d.editor.rulesets.RuleSet;
 import com.puttysoftware.mazer5d.files.io.MazeDataReader;
 import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.loaders.DataLoader;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.maze.Maze;
+import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.utilities.ArrowTypes;
 import com.puttysoftware.mazer5d.utilities.Directions;
 import com.puttysoftware.mazer5d.utilities.Layers;
+import com.puttysoftware.mazer5d.utilities.MazeObjectActions;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 import com.puttysoftware.mazer5d.utilities.RandomGenerationRule;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
@@ -334,6 +337,12 @@ public abstract class MazeObject implements RandomGenerationRule {
     }
 
     public final boolean isOfType(final int testType) {
+	int uid = this.getUniqueID().ordinal();
+	MazeObjectActions actions = DataLoader.loadObjectActionData(uid);
+	if (actions.has(MazeObjectActions.ALTER_SCORE)
+		&& (testType == TypeConstants.TYPE_SCORE_INCREASER || testType == TypeConstants.TYPE_CONTAINABLE)) {
+	    return true;
+	}
 	return this.tp.isOfType(testType);
     }
 
@@ -705,10 +714,22 @@ public abstract class MazeObject implements RandomGenerationRule {
     }
 
     public final void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	this.customPostMoveAction(ie, dirX, dirY, inv);
+	int uid = this.getUniqueID().ordinal();
+	MazeObjectActions actions = DataLoader.loadObjectActionData(uid);
+	if (actions.has(MazeObjectActions.ALTER_SCORE)) {
+	    int alterScoreAmount = DataLoader.loadObjectActionAddonData(uid, MazeObjectActions.ALTER_SCORE);
+	    Mazer5D.getBagOStuff().getGameManager().decay();
+	    SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
+	    Mazer5D.getBagOStuff().getGameManager().addToScore(alterScoreAmount);
+	    Mazer5D.getBagOStuff().getGameManager().redrawMaze();
+	} else {
+	    this.customPostMoveAction(ie, dirX, dirY, inv);
+	}
     }
-    
-    protected abstract void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv);
+
+    protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	// Do nothing
+    }
 
     /**
      *
@@ -910,18 +931,38 @@ public abstract class MazeObject implements RandomGenerationRule {
      * @param inv
      * @return
      */
-    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
+    public final boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
 	    final int arrowType, final ObjectInventory inv) {
 	// Stop non-ghost arrows passing through solid objects
 	if (arrowType == ArrowTypes.GHOST) {
 	    return true;
 	} else {
-	    if (this.isConditionallySolid(inv)) {
+	    int uid = this.getUniqueID().ordinal();
+	    MazeObjectActions actions = DataLoader.loadObjectActionData(uid);
+	    if (actions.has(MazeObjectActions.ALTER_SCORE)) {
+		// Score changers shatter when struck by arrows
+		Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY, locZ);
+		SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
 		return false;
-	    } else {
-		return true;
 	    }
+	    return customArrowHitAction(locX, locY, locZ, dirX, dirY, arrowType, inv);
 	}
+    }
+
+    /**
+     *
+     * @param locX
+     * @param locY
+     * @param locZ
+     * @param dirX
+     * @param dirY
+     * @param arrowType
+     * @param inv
+     * @return
+     */
+    protected boolean customArrowHitAction(final int locX, final int locY, final int locZ, final int dirX,
+	    final int dirY, final int arrowType, final ObjectInventory inv) {
+	return !this.isConditionallySolid(inv);
     }
 
     public MazeObject gameRenderHook() {
@@ -970,7 +1011,18 @@ public abstract class MazeObject implements RandomGenerationRule {
 
     abstract public String getDescription();
 
-    abstract public int getLayer();
+    public final int getLayer() {
+	int uid = this.getUniqueID().ordinal();
+	MazeObjectActions actions = DataLoader.loadObjectActionData(uid);
+	if (actions.has(MazeObjectActions.ALTER_SCORE)) {
+	    return Layers.OBJECT;
+	}
+	return getLayerHook();
+    }
+
+    protected int getLayerHook() {
+	return Layers._UNDEFINED;
+    }
 
     public int getCustomFormat() {
 	return 0;
@@ -1143,7 +1195,8 @@ public abstract class MazeObject implements RandomGenerationRule {
      * @return
      * @throws IOException
      */
-    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion) throws IOException {
+    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion)
+	    throws IOException {
 	// Dummy implementation, subclasses can override
 	return this;
     }

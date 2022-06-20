@@ -62,8 +62,8 @@ public abstract class GenericButton extends MazeObject {
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int arrowType, final ObjectInventory inv) {
+    protected boolean customArrowHitAction(final int locX, final int locY, final int locZ, final int dirX,
+	    final int dirY, final int arrowType, final ObjectInventory inv) {
 	// Behave as if the button was stepped on
 	this.customPostMoveAction(false, dirX, dirY, inv);
 	return false;
@@ -73,7 +73,7 @@ public abstract class GenericButton extends MazeObject {
     public abstract String getName();
 
     @Override
-    public int getLayer() {
+    protected int getLayerHook() {
 	return Layers.OBJECT;
     }
 }

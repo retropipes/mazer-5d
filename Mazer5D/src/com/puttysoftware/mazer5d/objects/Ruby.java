@@ -5,17 +5,13 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.objects.abc.GenericScoreIncreaser;
+import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
-class Ruby extends GenericScoreIncreaser {
-    // Fields
-    private static final long SCORE_INCREASE = 100L;
-
+class Ruby extends MazeObject {
     // Constructors
     public Ruby() {
-	super();
+	super(false);
     }
 
     @Override
@@ -26,11 +22,6 @@ class Ruby extends GenericScoreIncreaser {
     @Override
     public String getPluralName() {
 	return "Rubys";
-    }
-
-    @Override
-    public void postMoveActionHook() {
-	Mazer5D.getBagOStuff().getGameManager().addToScore(Ruby.SCORE_INCREASE);
     }
 
     @Override

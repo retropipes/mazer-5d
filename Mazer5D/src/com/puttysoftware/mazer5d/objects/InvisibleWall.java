@@ -35,8 +35,8 @@ class InvisibleWall extends GenericWall {
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int arrowType, final ObjectInventory inv) {
+    protected boolean customArrowHitAction(final int locX, final int locY, final int locZ, final int dirX,
+	    final int dirY, final int arrowType, final ObjectInventory inv) {
 	// Behave as if the wall was walked into
 	Mazer5D.getBagOStuff().showMessage("Invisible Wall!");
 	return false;

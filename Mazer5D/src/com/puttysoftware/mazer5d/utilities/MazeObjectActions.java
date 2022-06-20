@@ -4,7 +4,7 @@ import java.nio.LongBuffer;
 import java.util.BitSet;
 
 public class MazeObjectActions {
-    public static final int DISAPPEAR = 0;
+    public static final int DISAPPEAR_MOVE = 0;
     public static final int ADD_INVENTORY = 1;
     public static final int REMOVE_INVENTORY = 2;
     public static final int SOUND = 3;
@@ -36,6 +36,7 @@ public class MazeObjectActions {
     public static final int TELEPORT_RANDOM = 29;
     public static final int PASS_IF_HAVE_INVENTORY = 30;
     public static final int ALTER_SCORE = 31;
+    public static final int DISAPPEAR_ARROW = 32;
     private final BitSet bits;
 
     public MazeObjectActions(final long... val) {

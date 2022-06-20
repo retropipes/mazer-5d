@@ -38,13 +38,13 @@ public abstract class GenericGem extends MazeObject {
     public abstract void postMoveActionHook();
 
     @Override
-    public int getLayer() {
+    protected int getLayerHook() {
 	return Layers.OBJECT;
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int arrowType, final ObjectInventory inv) {
+    protected boolean customArrowHitAction(final int locX, final int locY, final int locZ, final int dirX,
+	    final int dirY, final int arrowType, final ObjectInventory inv) {
 	Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY, locZ);
 	SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
 	Mazer5D.getBagOStuff().getGameManager().addToScore(GenericGem.SCORE_SMASH);

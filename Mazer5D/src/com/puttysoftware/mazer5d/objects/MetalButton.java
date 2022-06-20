@@ -99,7 +99,7 @@ class MetalButton extends GenericField {
 	if (inv.isItemThere(this.getKey().getUniqueID())) {
 	    final BagOStuff app = Mazer5D.getBagOStuff();
 	    final MazeObject there = app.getMazeManager().getMazeObject(this.getTargetRow(), this.getTargetColumn(),
-		    this.getTargetFloor(), this.getLayer());
+		    this.getTargetFloor(), this.getLayerHook());
 	    if (there != null) {
 		if (there.getName().equals(new MetalDoor().getName())) {
 		    app.getGameManager().morph(GameObjects.getEmptySpace(), this.getTargetRow(), this.getTargetColumn(),
@@ -142,7 +142,7 @@ class MetalButton extends GenericField {
     }
 
     @Override
-    public int getLayer() {
+    protected int getLayerHook() {
 	return Layers.OBJECT;
     }
 

@@ -18,11 +18,11 @@ public abstract class GenericInventoryModifier extends MazeObject {
     }
 
     @Override
-    protected
-    abstract void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv);
+    protected abstract void customPostMoveAction(final boolean ie, final int dirX, final int dirY,
+	    final ObjectInventory inv);
 
     @Override
-    public int getLayer() {
+    protected int getLayerHook() {
 	return Layers.OBJECT;
     }
 }

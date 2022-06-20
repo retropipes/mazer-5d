@@ -35,8 +35,8 @@ class ArrowTrap extends GenericTrap {
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int arrowType, final ObjectInventory inv) {
+    protected boolean customArrowHitAction(final int locX, final int locY, final int locZ, final int dirX,
+	    final int dirY, final int arrowType, final ObjectInventory inv) {
 	Mazer5D.getBagOStuff().showMessage("The arrow is stopped!");
 	return false;
     }

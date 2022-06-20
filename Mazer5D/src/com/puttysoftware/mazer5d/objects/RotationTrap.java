@@ -91,7 +91,8 @@ class RotationTrap extends GenericTrap implements Cloneable {
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion) throws IOException {
+    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion)
+	    throws IOException {
 	this.setRotationRadius(reader.readInt());
 	this.setRotationDirection(reader.readBoolean());
 	return this;

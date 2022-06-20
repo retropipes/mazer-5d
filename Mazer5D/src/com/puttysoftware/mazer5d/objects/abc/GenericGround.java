@@ -34,7 +34,7 @@ public abstract class GenericGround extends MazeObject {
     public abstract String getName();
 
     @Override
-    public int getLayer() {
+    protected int getLayerHook() {
 	return Layers.GROUND;
     }
 

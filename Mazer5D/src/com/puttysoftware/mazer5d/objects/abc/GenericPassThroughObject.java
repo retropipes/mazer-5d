@@ -35,7 +35,7 @@ public abstract class GenericPassThroughObject extends MazeObject {
     public abstract String getName();
 
     @Override
-    public int getLayer() {
+    protected int getLayerHook() {
 	return Layers.OBJECT;
     }
 }

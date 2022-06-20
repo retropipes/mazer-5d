@@ -62,7 +62,7 @@ public abstract class GenericRandomTeleport extends MazeObject {
     }
 
     @Override
-    public int getLayer() {
+    protected int getLayerHook() {
 	return Layers.OBJECT;
     }
 

@@ -71,7 +71,7 @@ public abstract class GenericWallTrap extends MazeObject {
     }
 
     @Override
-    public int getLayer() {
+    protected int getLayerHook() {
 	return Layers.OBJECT;
     }
 }

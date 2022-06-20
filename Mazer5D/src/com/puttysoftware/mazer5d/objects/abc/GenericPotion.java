@@ -45,13 +45,13 @@ public abstract class GenericPotion extends MazeObject {
     public abstract String getName();
 
     @Override
-    public int getLayer() {
+    protected int getLayerHook() {
 	return Layers.OBJECT;
     }
 
     @Override
-    protected
-    final void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected final void customPostMoveAction(final boolean ie, final int dirX, final int dirY,
+	    final ObjectInventory inv) {
 	final Maze m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
 	if (this.effect != null) {
 	    this.effectValue = this.effect.generate();
@@ -81,8 +81,8 @@ public abstract class GenericPotion extends MazeObject {
     }
 
     @Override
-    public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int arrowType, final ObjectInventory inv) {
+    protected boolean customArrowHitAction(final int locX, final int locY, final int locZ, final int dirX,
+	    final int dirY, final int arrowType, final ObjectInventory inv) {
 	Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY, locZ);
 	SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
 	Mazer5D.getBagOStuff().getGameManager().addToScore(GenericPotion.SCORE_SMASH);

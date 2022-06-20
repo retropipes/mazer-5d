@@ -55,12 +55,13 @@ public abstract class GenericMovableObject extends MazeObject {
     public abstract String getName();
 
     @Override
-    public int getLayer() {
+    protected int getLayerHook() {
 	return Layers.OBJECT;
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion) throws IOException {
+    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion)
+	    throws IOException {
 	this.setSavedObject(GameObjects.readObject(reader, formatVersion));
 	return this;
     }

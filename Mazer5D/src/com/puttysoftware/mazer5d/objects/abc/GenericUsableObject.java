@@ -25,7 +25,7 @@ public abstract class GenericUsableObject extends GenericInventoryableObject {
     public abstract String getName();
 
     @Override
-    public int getLayer() {
+    protected int getLayerHook() {
 	return Layers.OBJECT;
     }
 
