@@ -12,7 +12,7 @@ import java.io.IOException;
 import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
-import com.puttysoftware.mazer5d.files.Extension;
+import com.puttysoftware.mazer5d.files.FileExtensions;
 import com.puttysoftware.mazer5d.files.format.XMLPrefixHandler;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.maze.Maze;
@@ -35,7 +35,7 @@ public class LockedSaveTask extends Thread {
 	// filename check
 	final boolean hasExtension = LockedSaveTask.hasExtension(this.filename);
 	if (!hasExtension) {
-	    this.filename += Extension.getLockedMazeExtensionWithPeriod();
+	    this.filename += FileExtensions.getLockedMazeExtensionWithPeriod();
 	}
 	final File mazeFile = new File(this.filename);
 	final File tempLock = new File(Maze.getMazeTempFolder() + "lock.tmp");

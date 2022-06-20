@@ -9,7 +9,7 @@ import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
 
-import com.puttysoftware.mazer5d.files.Extension;
+import com.puttysoftware.mazer5d.files.FileExtensions;
 
 public class LockedFilter extends FileFilter {
     @Override
@@ -19,7 +19,7 @@ public class LockedFilter extends FileFilter {
 	}
 	final String extension = LockedFilter.getExtension(f);
 	if (extension != null) {
-	    if (extension.equals(Extension.getLockedMazeExtension())) {
+	    if (extension.equals(FileExtensions.getLockedMazeExtension())) {
 		return true;
 	    } else {
 		return false;
@@ -30,7 +30,7 @@ public class LockedFilter extends FileFilter {
 
     @Override
     public String getDescription() {
-	return "Mazer5D Locked Mazes (" + Extension.getLockedMazeExtensionWithPeriod() + ")";
+	return "Mazer5D Locked Mazes (" + FileExtensions.getLockedMazeExtensionWithPeriod() + ")";
     }
 
     private static String getExtension(final File f) {

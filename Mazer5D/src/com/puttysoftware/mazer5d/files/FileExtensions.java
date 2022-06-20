@@ -7,12 +7,13 @@ package com.puttysoftware.mazer5d.files;
 
 public class FileExtensions {
     // Constants
-    private static final String MAZE_EXTENSION = "maze.zip";
-    private static final String GAME_EXTENSION = "game.zip";
-    private static final String MAZE_TEMP_EXTENSION = "maze";
-    private static final String CHARACTER_EXTENSION = "partymember.xml";
-    private static final String REGISTRY_EXTENSION = "registry.xml";
-    private static final String PREFS_EXTENSION = "prefs.xml";
+    private static final String MAZE_EXTENSION = "jsonmaze.zip";
+    private static final String GAME_EXTENSION = "jsongame.zip";
+    private static final String LOCKED_MAZE_EXTENSION = "jsonmaze.locked.zip";
+    private static final String MAZE_TEMP_EXTENSION = "json";
+    private static final String CHARACTER_EXTENSION = "partymember.json";
+    private static final String REGISTRY_EXTENSION = "registry.json";
+    private static final String PREFS_EXTENSION = "prefs.properties";
     private static final String INTERNAL_DATA_EXTENSION = "txt";
 
     // Methods
@@ -22,6 +23,14 @@ public class FileExtensions {
 
     public static String getMazeExtensionWithPeriod() {
 	return "." + FileExtensions.MAZE_EXTENSION;
+    }
+    
+    public static String getLockedMazeExtension() {
+	return FileExtensions.LOCKED_MAZE_EXTENSION;
+    }
+
+    public static String getLockedMazeExtensionWithPeriod() {
+	return "." + FileExtensions.LOCKED_MAZE_EXTENSION;
     }
 
     public static String getMazeTempExtensionWithPeriod() {
@@ -40,6 +49,10 @@ public class FileExtensions {
 	return FileExtensions.CHARACTER_EXTENSION;
     }
 
+    public static String getPrefsExtension() {
+	return FileExtensions.PREFS_EXTENSION;
+    }
+    
     public static String getPrefsExtensionWithPeriod() {
 	return "." + FileExtensions.PREFS_EXTENSION;
     }

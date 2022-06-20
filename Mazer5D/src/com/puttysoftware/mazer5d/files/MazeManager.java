@@ -192,7 +192,7 @@ public class MazeManager implements OpenFilesHandler {
 		    this.lastUsedMazeFile = loadFile;
 		    this.scoresFileName = MazeManager.getNameWithoutExtension(file.getName());
 		    MazeManager.loadFile(loadFile, false, false);
-		} else if (extension.equals(Extension.getLockedMazeExtension())) {
+		} else if (extension.equals(FileExtensions.getLockedMazeExtension())) {
 		    this.lastUsedMazeFile = loadFile;
 		    this.scoresFileName = MazeManager.getNameWithoutExtension(file.getName());
 		    MazeManager.loadFile(loadFile, false, true);
@@ -202,7 +202,7 @@ public class MazeManager implements OpenFilesHandler {
 		} else if (extension.equals(XMLExtension.getXMLScoresExtension())) {
 		    CommonDialogs.showDialog(
 			    "You double-clicked a scores file. These are automatically loaded when their associated maze is loaded, and need not be double-clicked.");
-		} else if (extension.equals(Extension.getPreferencesExtension())) {
+		} else if (extension.equals(FileExtensions.getPrefsExtension())) {
 		    CommonDialogs.showDialog(
 			    "You double-clicked a preferences file. These are automatically loaded when the program is loaded, and need not be double-clicked.");
 		} else if (extension.equals(XMLExtension.getXMLRuleSetExtension())) {
@@ -312,7 +312,7 @@ public class MazeManager implements OpenFilesHandler {
 		filename = file.getAbsolutePath();
 		extension = MazeManager.getExtension(file);
 		app.getGameManager().resetObjectInventory();
-		if (extension.equals(Extension.getLockedMazeExtension())) {
+		if (extension.equals(FileExtensions.getLockedMazeExtension())) {
 		    this.lastUsedMazeFile = filename;
 		    this.scoresFileName = MazeManager.getNameWithoutExtension(file.getName());
 		    MazeManager.loadFile(filename, false, true);
@@ -491,12 +491,12 @@ public class MazeManager implements OpenFilesHandler {
 		    } else {
 			Prefs.setLastDirSave(fc.getCurrentDirectory().getAbsolutePath());
 			if (extension != null) {
-			    if (!extension.equals(Extension.getLockedMazeExtension())) {
+			    if (!extension.equals(FileExtensions.getLockedMazeExtension())) {
 				filename = MazeManager.getNameWithoutExtension(file)
-					+ Extension.getLockedMazeExtensionWithPeriod();
+					+ FileExtensions.getLockedMazeExtensionWithPeriod();
 			    }
 			} else {
-			    filename += Extension.getLockedMazeExtensionWithPeriod();
+			    filename += FileExtensions.getLockedMazeExtensionWithPeriod();
 			}
 			this.lastUsedMazeFile = filename;
 			this.scoresFileName = MazeManager.getNameWithoutExtension(file.getName());
