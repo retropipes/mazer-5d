@@ -33,7 +33,7 @@ class HealTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	this.healing = Mazer5D.getBagOStuff().getMazeManager().getMaze().getMaximumHP() / 50;
 	if (this.healing < 1) {
 	    this.healing = 1;

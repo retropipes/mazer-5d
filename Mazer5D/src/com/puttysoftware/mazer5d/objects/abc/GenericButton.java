@@ -55,7 +55,7 @@ public abstract class GenericButton extends MazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	Mazer5D.getBagOStuff().getMazeManager().getMaze().findAllObjectPairsAndSwap(this.offState, this.onState);
 	Mazer5D.getBagOStuff().getGameManager().redrawMazeNoRebuild();
 	SoundPlayer.playSound(SoundIndex.BUTTON, SoundGroup.GAME);
@@ -65,7 +65,7 @@ public abstract class GenericButton extends MazeObject {
     public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
 	    final int arrowType, final ObjectInventory inv) {
 	// Behave as if the button was stepped on
-	this.postMoveAction(false, dirX, dirY, inv);
+	this.customPostMoveAction(false, dirX, dirY, inv);
 	return false;
     }
 

@@ -29,7 +29,7 @@ class WallMakingTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
 	Mazer5D.getBagOStuff().getGameManager().delayedDecayTo(new Wall());
     }

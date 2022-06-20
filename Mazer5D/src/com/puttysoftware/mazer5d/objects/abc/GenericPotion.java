@@ -50,7 +50,8 @@ public abstract class GenericPotion extends MazeObject {
     }
 
     @Override
-    public final void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected
+    final void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	final Maze m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
 	if (this.effect != null) {
 	    this.effectValue = this.effect.generate();

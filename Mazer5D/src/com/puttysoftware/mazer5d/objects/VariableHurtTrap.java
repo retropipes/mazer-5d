@@ -36,7 +36,7 @@ class VariableHurtTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	this.maxDamage = Mazer5D.getBagOStuff().getMazeManager().getMaze().getMaximumHP() / 10;
 	if (this.maxDamage < VariableHurtTrap.MIN_DAMAGE) {
 	    this.maxDamage = VariableHurtTrap.MIN_DAMAGE;

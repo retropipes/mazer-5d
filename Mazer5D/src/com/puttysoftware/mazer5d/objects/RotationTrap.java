@@ -104,7 +104,7 @@ class RotationTrap extends GenericTrap implements Cloneable {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	if (this.getRotationDirection()) {
 	    Mazer5D.getBagOStuff().getGameManager().doClockwiseRotate(this.getRotationRadius());
 	} else {

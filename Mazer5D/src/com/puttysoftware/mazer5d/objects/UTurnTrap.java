@@ -34,7 +34,7 @@ class UTurnTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	Mazer5D.getBagOStuff().showMessage("Your controls are turned around!");
 	Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_U_TURNED,
 		UTurnTrap.EFFECT_DURATION);

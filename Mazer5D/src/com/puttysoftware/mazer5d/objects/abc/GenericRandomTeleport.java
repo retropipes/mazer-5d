@@ -68,7 +68,7 @@ public abstract class GenericRandomTeleport extends MazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	final BagOStuff app = Mazer5D.getBagOStuff();
 	int dr, dc;
 	do {

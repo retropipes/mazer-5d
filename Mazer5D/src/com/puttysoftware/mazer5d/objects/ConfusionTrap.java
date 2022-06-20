@@ -34,7 +34,7 @@ class ConfusionTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	Mazer5D.getBagOStuff().showMessage("You are confused!");
 	Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_CONFUSED,
 		ConfusionTrap.EFFECT_DURATION);

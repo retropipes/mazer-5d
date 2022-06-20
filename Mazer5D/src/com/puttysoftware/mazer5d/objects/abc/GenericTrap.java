@@ -19,7 +19,8 @@ public abstract class GenericTrap extends MazeObject {
 
     // Scriptability
     @Override
-    public abstract void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv);
+    protected
+    abstract void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv);
 
     @Override
     public abstract String getName();

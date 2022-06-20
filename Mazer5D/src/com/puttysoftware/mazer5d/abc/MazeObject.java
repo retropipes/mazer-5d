@@ -704,7 +704,11 @@ public abstract class MazeObject implements RandomGenerationRule {
 	return true;
     }
 
-    public abstract void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv);
+    public final void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	this.customPostMoveAction(ie, dirX, dirY, inv);
+    }
+    
+    protected abstract void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv);
 
     /**
      *

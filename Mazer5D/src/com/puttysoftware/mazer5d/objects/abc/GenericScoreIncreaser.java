@@ -24,7 +24,7 @@ public abstract class GenericScoreIncreaser extends MazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	Mazer5D.getBagOStuff().getGameManager().decay();
 	SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
 	this.postMoveActionHook();

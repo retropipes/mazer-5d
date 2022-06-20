@@ -21,7 +21,8 @@ class InvisibleConditionalChainTeleport extends GenericConditionalTeleport {
     }
 
     @Override
-    public final void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected
+    final void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	final BagOStuff app = Mazer5D.getBagOStuff();
 	int testVal;
 	if (this.getSunMoon() == GenericConditionalTeleport.TRIGGER_SUN) {

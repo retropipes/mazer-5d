@@ -95,7 +95,7 @@ class MetalButton extends GenericField {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	if (inv.isItemThere(this.getKey().getUniqueID())) {
 	    final BagOStuff app = Mazer5D.getBagOStuff();
 	    final MazeObject there = app.getMazeManager().getMazeObject(this.getTargetRow(), this.getTargetColumn(),

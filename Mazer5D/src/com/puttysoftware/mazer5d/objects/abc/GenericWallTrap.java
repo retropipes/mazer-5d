@@ -34,7 +34,7 @@ public abstract class GenericWallTrap extends MazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	Mazer5D.getBagOStuff().getGameManager().decay();
 	Mazer5D.getBagOStuff().getMazeManager().getMaze().findAllMatchingObjectsAndDecay(this.masterTrigger);
 	if (this.number == GenericWallTrap.NUMBER_MASTER) {

@@ -33,7 +33,7 @@ class HurtTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+    protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	this.damage = Mazer5D.getBagOStuff().getMazeManager().getMaze().getMaximumHP() / 50;
 	if (this.damage < 1) {
 	    this.damage = 1;
