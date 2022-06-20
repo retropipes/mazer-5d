@@ -53,7 +53,7 @@ class DamagedWall extends GenericWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.DAMAGED_WALL;
     }
 }

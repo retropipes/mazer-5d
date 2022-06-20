@@ -15,7 +15,7 @@ class CyanCarpet extends GenericCarpet {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.CYAN_CARPET;
     }
 }

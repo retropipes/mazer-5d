@@ -44,7 +44,7 @@ class NormalAmulet extends GenericAmulet {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.NORMAL_AMULET;
     }
 }

@@ -62,7 +62,7 @@ class RandomOneShotTeleport extends RandomTeleport {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.RANDOM_ONE_SHOT_TELEPORT;
     }
 }

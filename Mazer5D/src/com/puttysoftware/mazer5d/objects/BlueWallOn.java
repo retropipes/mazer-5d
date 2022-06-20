@@ -31,7 +31,7 @@ class BlueWallOn extends GenericToggleWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.BLUE_WALL_ON;
     }
 }

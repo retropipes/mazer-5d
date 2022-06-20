@@ -40,7 +40,7 @@ class BrightnessGem extends GenericGem {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.BRIGHTNESS_GEM;
     }
 }

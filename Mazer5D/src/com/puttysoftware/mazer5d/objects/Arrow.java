@@ -15,7 +15,7 @@ class Arrow extends GenericTransientObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ARROW;
     }
 }

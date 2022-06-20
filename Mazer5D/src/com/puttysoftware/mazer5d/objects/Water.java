@@ -66,7 +66,7 @@ class Water extends GenericField {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.WATER;
     }
 }

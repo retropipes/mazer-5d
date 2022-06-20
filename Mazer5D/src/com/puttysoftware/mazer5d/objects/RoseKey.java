@@ -31,7 +31,7 @@ class RoseKey extends GenericSingleKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ROSE_KEY;
     }
 }

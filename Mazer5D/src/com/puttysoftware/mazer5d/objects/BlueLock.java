@@ -44,7 +44,7 @@ class BlueLock extends GenericSingleLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.BLUE_LOCK;
     }
 }

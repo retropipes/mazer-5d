@@ -47,7 +47,7 @@ class ArrowTrap extends GenericTrap {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ARROW_TRAP;
     }
 }

@@ -15,7 +15,7 @@ class SkyCarpet extends GenericCarpet {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SKY_CARPET;
     }
 }

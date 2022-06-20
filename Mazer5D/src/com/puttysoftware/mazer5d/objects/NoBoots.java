@@ -42,7 +42,7 @@ class NoBoots extends GenericInventoryModifier {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.NO_BOOTS;
     }
 }

@@ -52,7 +52,7 @@ class DarkWand extends GenericWand {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.DARK_WAND;
     }
 }

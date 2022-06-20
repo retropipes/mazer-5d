@@ -64,7 +64,7 @@ class FireBomb extends GenericUsableObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.FIRE_BOMB;
     }
 }

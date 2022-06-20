@@ -36,7 +36,7 @@ class OneShotConditionalTeleport extends GenericConditionalTeleport {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ONE_SHOT_CONDITIONAL_TELEPORT;
     }
 }

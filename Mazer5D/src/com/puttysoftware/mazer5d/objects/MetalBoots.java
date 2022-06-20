@@ -30,7 +30,7 @@ class MetalBoots extends GenericBoots {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.METAL_BOOTS;
     }
 }

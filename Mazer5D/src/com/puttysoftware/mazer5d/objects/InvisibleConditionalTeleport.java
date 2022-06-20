@@ -35,7 +35,7 @@ class InvisibleConditionalTeleport extends GenericConditionalTeleport {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.INVISIBLE_CONDITIONAL_TELEPORT;
     }
 }

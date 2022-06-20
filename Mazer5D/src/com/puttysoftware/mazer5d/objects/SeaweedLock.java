@@ -44,7 +44,7 @@ class SeaweedLock extends GenericSingleLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SEAWEED_LOCK;
     }
 }

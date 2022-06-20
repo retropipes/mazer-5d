@@ -44,7 +44,7 @@ class CyanLock extends GenericSingleLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.CYAN_LOCK;
     }
 }

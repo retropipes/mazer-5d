@@ -31,7 +31,7 @@ class MagentaWallOff extends GenericToggleWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.MAGENTA_WALL_OFF;
     }
 }

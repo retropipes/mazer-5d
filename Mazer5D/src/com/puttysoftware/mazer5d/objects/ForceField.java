@@ -42,7 +42,7 @@ class ForceField extends GenericField {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.FORCE_FIELD;
     }
 }

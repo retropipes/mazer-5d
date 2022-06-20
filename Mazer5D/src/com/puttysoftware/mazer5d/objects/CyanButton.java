@@ -29,7 +29,7 @@ class CyanButton extends GenericButton {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.CYAN_BUTTON;
     }
 }

@@ -30,7 +30,7 @@ class SlipperyBoots extends GenericBoots {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SLIPPERY_BOOTS;
     }
 }

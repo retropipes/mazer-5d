@@ -30,7 +30,7 @@ class Diamond extends MazeObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.DIAMOND;
     }
 }

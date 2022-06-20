@@ -53,7 +53,7 @@ class CrackedWall extends GenericWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.CRACKED_WALL;
     }
 }

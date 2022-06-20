@@ -31,7 +31,7 @@ class WhiteWallOff extends GenericToggleWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.WHITE_WALL_OFF;
     }
 }

@@ -38,7 +38,7 @@ class FinishMakingWand extends GenericWand {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.FINISH_MAKING_WAND;
     }
 }

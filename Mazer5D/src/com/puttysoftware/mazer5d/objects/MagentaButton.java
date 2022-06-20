@@ -29,7 +29,7 @@ class MagentaButton extends GenericButton {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.MAGENTA_BUTTON;
     }
 }

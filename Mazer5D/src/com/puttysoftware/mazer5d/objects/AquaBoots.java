@@ -30,7 +30,7 @@ class AquaBoots extends GenericBoots {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.AQUA_BOOTS;
     }
 }

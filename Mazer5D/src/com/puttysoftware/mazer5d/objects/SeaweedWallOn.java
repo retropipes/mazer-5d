@@ -31,7 +31,7 @@ class SeaweedWallOn extends GenericToggleWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SEAWEED_WALL_ON;
     }
 }

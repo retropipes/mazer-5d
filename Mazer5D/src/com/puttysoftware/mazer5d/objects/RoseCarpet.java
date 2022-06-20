@@ -15,7 +15,7 @@ class RoseCarpet extends GenericCarpet {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ROSE_CARPET;
     }
 }

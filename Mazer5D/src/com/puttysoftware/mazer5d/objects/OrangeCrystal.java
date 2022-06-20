@@ -15,7 +15,7 @@ class OrangeCrystal extends GenericProgrammableKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ORANGE_CRYSTAL;
     }
 }

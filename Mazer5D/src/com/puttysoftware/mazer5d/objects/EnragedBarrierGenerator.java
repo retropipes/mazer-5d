@@ -67,7 +67,7 @@ class EnragedBarrierGenerator extends GenericGenerator {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ENRAGED_BARRIER_GENERATOR;
     }
 }

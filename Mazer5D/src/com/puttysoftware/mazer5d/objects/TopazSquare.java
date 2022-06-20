@@ -30,7 +30,7 @@ class TopazSquare extends GenericMultipleKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.TOPAZ_SQUARE;
     }
 }

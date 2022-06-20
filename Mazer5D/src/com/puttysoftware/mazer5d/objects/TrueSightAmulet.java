@@ -41,7 +41,7 @@ class TrueSightAmulet extends GenericAmulet {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.TRUE_SIGHT_AMULET;
     }
 }

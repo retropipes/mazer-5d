@@ -40,7 +40,7 @@ class WallMakingTrap extends GenericTrap {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.WALL_MAKING_TRAP;
     }
 }

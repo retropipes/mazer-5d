@@ -30,7 +30,7 @@ class SunkenBlock extends GenericGround {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SUNKEN_BLOCK;
     }
 }

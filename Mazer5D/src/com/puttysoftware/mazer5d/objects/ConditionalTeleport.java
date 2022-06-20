@@ -30,7 +30,7 @@ class ConditionalTeleport extends GenericConditionalTeleport {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.CONDITIONAL_TELEPORT;
     }
 }

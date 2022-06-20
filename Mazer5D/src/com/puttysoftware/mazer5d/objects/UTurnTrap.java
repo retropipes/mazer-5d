@@ -47,7 +47,7 @@ class UTurnTrap extends GenericTrap {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.U_TURN_TRAP;
     }
 }

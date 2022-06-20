@@ -43,7 +43,7 @@ class WhiteHouse extends FinishTo {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.WHITE_HOUSE;
     }
 }

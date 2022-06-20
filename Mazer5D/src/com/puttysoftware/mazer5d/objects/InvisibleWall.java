@@ -63,7 +63,7 @@ class InvisibleWall extends GenericWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.INVISIBLE_WALL;
     }
 }

@@ -30,7 +30,7 @@ class GarnetWall extends GenericMultipleLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.GARNET_WALL;
     }
 }

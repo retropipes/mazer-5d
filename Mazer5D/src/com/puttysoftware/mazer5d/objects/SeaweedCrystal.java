@@ -15,7 +15,7 @@ class SeaweedCrystal extends GenericProgrammableKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SEAWEED_CRYSTAL;
     }
 }

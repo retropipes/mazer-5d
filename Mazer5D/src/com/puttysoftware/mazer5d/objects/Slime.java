@@ -51,7 +51,7 @@ class Slime extends GenericField {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SLIME;
     }
 }

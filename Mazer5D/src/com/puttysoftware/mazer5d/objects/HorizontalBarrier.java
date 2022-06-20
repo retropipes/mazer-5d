@@ -30,7 +30,7 @@ class HorizontalBarrier extends GenericBarrier {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.HORIZONTAL_BARRIER;
     }
 }

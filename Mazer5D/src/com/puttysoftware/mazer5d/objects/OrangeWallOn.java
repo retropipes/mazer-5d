@@ -31,7 +31,7 @@ class OrangeWallOn extends GenericToggleWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ORANGE_WALL_ON;
     }
 }

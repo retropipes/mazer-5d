@@ -43,7 +43,7 @@ class NoExploreTrap extends GenericTrap {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.NO_EXPLORE_TRAP;
     }
 }

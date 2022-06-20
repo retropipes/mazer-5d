@@ -48,7 +48,7 @@ class SunStone extends GenericInventoryableObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SUN_STONE;
     }
 }

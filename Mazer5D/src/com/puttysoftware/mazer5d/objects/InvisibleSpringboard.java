@@ -54,7 +54,7 @@ class InvisibleSpringboard extends Springboard {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.INVISIBLE_SPRINGBOARD;
     }
 }

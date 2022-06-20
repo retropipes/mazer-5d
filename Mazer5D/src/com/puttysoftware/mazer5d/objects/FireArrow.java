@@ -15,7 +15,7 @@ class FireArrow extends GenericTransientObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.FIRE_ARROW;
     }
 }

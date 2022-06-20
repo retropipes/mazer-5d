@@ -15,7 +15,7 @@ class LightYellowCrystal extends GenericProgrammableKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.LIGHT_YELLOW_CRYSTAL;
     }
 }

@@ -43,7 +43,7 @@ class MagentaHouse extends FinishTo {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.MAGENTA_HOUSE;
     }
 }

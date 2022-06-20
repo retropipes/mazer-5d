@@ -54,7 +54,7 @@ class TreasureChest extends GenericContainer {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.TREASURE_CHEST;
     }
 }

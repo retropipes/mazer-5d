@@ -30,7 +30,7 @@ class Axe extends GenericInfiniteKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.AXE;
     }
 }

@@ -29,7 +29,7 @@ class YellowButton extends GenericButton {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.YELLOW_BUTTON;
     }
 }

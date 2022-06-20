@@ -39,7 +39,7 @@ class HealBoots extends GenericBoots {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.HEAL_BOOTS;
     }
 }

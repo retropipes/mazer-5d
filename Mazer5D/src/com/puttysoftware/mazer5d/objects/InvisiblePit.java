@@ -54,7 +54,7 @@ class InvisiblePit extends Pit {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.INVISIBLE_PIT;
     }
 }

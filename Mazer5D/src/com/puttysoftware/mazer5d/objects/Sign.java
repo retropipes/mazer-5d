@@ -30,7 +30,7 @@ class Sign extends GenericTextHolder {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SIGN;
     }
 }

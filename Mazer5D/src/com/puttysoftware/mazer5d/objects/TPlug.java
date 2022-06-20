@@ -15,7 +15,7 @@ class TPlug extends GenericPlug {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.T_PLUG;
     }
 }

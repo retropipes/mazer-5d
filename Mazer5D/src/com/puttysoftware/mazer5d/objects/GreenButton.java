@@ -29,7 +29,7 @@ class GreenButton extends GenericButton {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.GREEN_BUTTON;
     }
 }

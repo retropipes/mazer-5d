@@ -44,7 +44,7 @@ class PurpleLock extends GenericSingleLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.PURPLE_LOCK;
     }
 }

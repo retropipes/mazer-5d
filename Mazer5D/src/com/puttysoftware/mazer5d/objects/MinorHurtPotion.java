@@ -34,7 +34,7 @@ class MinorHurtPotion extends GenericPotion {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.MINOR_HURT_POTION;
     }
 }

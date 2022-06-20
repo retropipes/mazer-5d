@@ -69,7 +69,7 @@ class IcedBarrierGenerator extends GenericWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ICED_BARRIER_GENERATOR;
     }
 }

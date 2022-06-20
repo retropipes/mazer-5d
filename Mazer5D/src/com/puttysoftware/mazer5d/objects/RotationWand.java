@@ -80,7 +80,7 @@ class RotationWand extends GenericWand {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ROTATION_WAND;
     }
 }

@@ -30,7 +30,7 @@ class Amethyst extends MazeObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.AMETHYST;
     }
 }

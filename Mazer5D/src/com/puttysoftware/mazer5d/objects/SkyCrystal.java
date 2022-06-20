@@ -15,7 +15,7 @@ class SkyCrystal extends GenericProgrammableKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SKY_CRYSTAL;
     }
 }

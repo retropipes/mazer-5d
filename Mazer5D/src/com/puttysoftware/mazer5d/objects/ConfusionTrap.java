@@ -47,7 +47,7 @@ class ConfusionTrap extends GenericTrap {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.CONFUSION_TRAP;
     }
 }

@@ -44,7 +44,7 @@ class MetalDoor extends GenericSingleLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.METAL_DOOR;
     }
 }

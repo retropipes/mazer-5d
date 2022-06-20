@@ -34,7 +34,7 @@ class Bow extends GenericBow {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.BOW;
     }
 }

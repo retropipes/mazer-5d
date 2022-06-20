@@ -30,7 +30,7 @@ class CrystalWall extends GenericProgrammableLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.CRYSTAL_WALL;
     }
 }

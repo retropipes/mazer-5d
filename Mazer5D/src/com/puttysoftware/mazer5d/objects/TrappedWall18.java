@@ -19,7 +19,7 @@ class TrappedWall18 extends GenericTrappedWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.TRAPPED_WALL_18;
     }
 }

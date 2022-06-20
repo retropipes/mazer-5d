@@ -29,7 +29,7 @@ class SkyButton extends GenericButton {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SKY_BUTTON;
     }
 }

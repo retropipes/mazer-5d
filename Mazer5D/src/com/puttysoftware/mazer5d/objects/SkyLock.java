@@ -44,7 +44,7 @@ class SkyLock extends GenericSingleLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SKY_LOCK;
     }
 }

@@ -57,7 +57,7 @@ class FadingWall extends GenericWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.FADING_WALL;
     }
 }

@@ -15,7 +15,7 @@ class SignalCrystal extends GenericProgrammableKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SIGNAL_CRYSTAL;
     }
 }

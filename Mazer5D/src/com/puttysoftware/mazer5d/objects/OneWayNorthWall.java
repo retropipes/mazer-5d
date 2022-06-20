@@ -32,7 +32,7 @@ class OneWayNorthWall extends GenericWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ONE_WAY_NORTH_WALL;
     }
 }

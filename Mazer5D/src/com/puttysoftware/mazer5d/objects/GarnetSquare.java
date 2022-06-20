@@ -30,7 +30,7 @@ class GarnetSquare extends GenericMultipleKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.GARNET_SQUARE;
     }
 }

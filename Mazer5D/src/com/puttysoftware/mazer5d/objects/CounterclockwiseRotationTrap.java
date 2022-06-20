@@ -47,7 +47,7 @@ class CounterclockwiseRotationTrap extends GenericTrap {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.COUNTERCLOCKWISE_ROTATION_TRAP;
     }
 }

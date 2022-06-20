@@ -31,7 +31,7 @@ class PurpleKey extends GenericSingleKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.PURPLE_KEY;
     }
 }

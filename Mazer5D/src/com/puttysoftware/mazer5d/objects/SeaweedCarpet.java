@@ -15,7 +15,7 @@ class SeaweedCarpet extends GenericCarpet {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SEAWEED_CARPET;
     }
 }

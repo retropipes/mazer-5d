@@ -47,7 +47,7 @@ class DizzinessTrap extends GenericTrap {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.DIZZINESS_TRAP;
     }
 }

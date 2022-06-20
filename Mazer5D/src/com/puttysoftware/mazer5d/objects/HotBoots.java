@@ -39,7 +39,7 @@ class HotBoots extends GenericBoots {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.HOT_BOOTS;
     }
 }

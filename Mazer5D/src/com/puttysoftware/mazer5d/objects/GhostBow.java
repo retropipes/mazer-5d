@@ -34,7 +34,7 @@ class GhostBow extends GenericBow {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.GHOST_BOW;
     }
 }

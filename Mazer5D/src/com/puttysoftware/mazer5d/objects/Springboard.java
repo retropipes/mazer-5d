@@ -121,7 +121,7 @@ class Springboard extends StairsUp {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SPRINGBOARD;
     }
 }

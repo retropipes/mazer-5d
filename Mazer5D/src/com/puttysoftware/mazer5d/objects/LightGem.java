@@ -30,7 +30,7 @@ class LightGem extends GenericLightModifier {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.LIGHT_GEM;
     }
 }

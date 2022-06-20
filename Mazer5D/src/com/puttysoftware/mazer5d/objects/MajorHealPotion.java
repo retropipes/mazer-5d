@@ -34,7 +34,7 @@ class MajorHealPotion extends GenericPotion {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.MAJOR_HEAL_POTION;
     }
 }

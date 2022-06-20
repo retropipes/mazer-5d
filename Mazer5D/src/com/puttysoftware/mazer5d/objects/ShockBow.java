@@ -34,7 +34,7 @@ class ShockBow extends GenericBow {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SHOCK_BOW;
     }
 }

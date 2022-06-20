@@ -30,7 +30,7 @@ class Ruby extends MazeObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.RUBY;
     }
 }

@@ -30,7 +30,7 @@ class VerticalBarrier extends GenericBarrier {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.VERTICAL_BARRIER;
     }
 }

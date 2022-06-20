@@ -64,7 +64,7 @@ class ShockBomb extends GenericUsableObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SHOCK_BOMB;
     }
 }

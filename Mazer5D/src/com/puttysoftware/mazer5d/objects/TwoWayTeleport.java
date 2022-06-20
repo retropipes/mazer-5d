@@ -56,7 +56,7 @@ class TwoWayTeleport extends GenericTeleport {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.TWO_WAY_TELEPORT;
     }
 }

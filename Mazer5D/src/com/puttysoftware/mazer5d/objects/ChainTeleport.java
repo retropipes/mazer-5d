@@ -57,7 +57,7 @@ class ChainTeleport extends GenericTeleport {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.CHAIN_TELEPORT;
     }
 }

@@ -30,7 +30,7 @@ class Dirt extends GenericGround {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.DIRT;
     }
 }

@@ -34,7 +34,7 @@ class SuperUnknownPotion extends GenericPotion {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SUPER_UNKNOWN_POTION;
     }
 }

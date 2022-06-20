@@ -53,7 +53,7 @@ class VariableHurtTrap extends GenericTrap {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.VARIABLE_HURT_TRAP;
     }
 }

@@ -40,10 +40,24 @@ public abstract class MazeObject implements RandomGenerationRule {
     private TypeProperties tp;
     private RuleSet ruleSet;
     private MazeObject savedObject;
+    private MazeObjects uniqueID;
     private static final int NO_CUSTOM_COUNTERS = 0;
 
     // Constructors
-    public MazeObject(final boolean isSolid) {
+    public MazeObject(final MazeObjects uid) {
+	this.uniqueID = uid;
+	this.sp = new SolidProperties();
+	this.mp = new MoveProperties();
+	this.op = new OtherProperties();
+	this.oc = new OtherCounters();
+	this.vp = new VisionProperties();
+	this.cc = new CustomCounters();
+	this.cf = new CustomFlags();
+	this.ct = new CustomTexts();
+	this.tp = new TypeProperties();
+    }
+    
+    protected MazeObject(final boolean isSolid) {
 	this.sp = new SolidProperties();
 	this.sp.setSolid(isSolid);
 	this.mp = new MoveProperties();
@@ -56,7 +70,7 @@ public abstract class MazeObject implements RandomGenerationRule {
 	this.tp = new TypeProperties();
     }
 
-    public MazeObject(final boolean isSolidXN, final boolean isSolidXS, final boolean isSolidXE,
+    protected MazeObject(final boolean isSolidXN, final boolean isSolidXS, final boolean isSolidXE,
 	    final boolean isSolidXW, final boolean isSolidIN, final boolean isSolidIS, final boolean isSolidIE,
 	    final boolean isSolidIW) {
 	this.sp = new SolidProperties();
@@ -102,7 +116,7 @@ public abstract class MazeObject implements RandomGenerationRule {
 	this.tp = new TypeProperties();
     }
 
-    public MazeObject(final boolean isSolid, final boolean isPushable, final boolean doesAcceptPushInto,
+    protected MazeObject(final boolean isSolid, final boolean isPushable, final boolean doesAcceptPushInto,
 	    final boolean doesAcceptPushOut, final boolean isPullable, final boolean doesAcceptPullInto,
 	    final boolean doesAcceptPullOut, final boolean hasFriction, final boolean isUsable, final int newUses) {
 	this.sp = new SolidProperties();
@@ -127,7 +141,7 @@ public abstract class MazeObject implements RandomGenerationRule {
 	this.tp = new TypeProperties();
     }
 
-    public MazeObject(final boolean isSolid, final boolean isPushable, final boolean doesAcceptPushInto,
+    protected MazeObject(final boolean isSolid, final boolean isPushable, final boolean doesAcceptPushInto,
 	    final boolean doesAcceptPushOut, final boolean isPullable, final boolean doesAcceptPullInto,
 	    final boolean doesAcceptPullOut, final boolean hasFriction, final boolean isUsable, final int newUses,
 	    final boolean isDestroyable, final boolean doesChainReact) {
@@ -154,7 +168,7 @@ public abstract class MazeObject implements RandomGenerationRule {
 	this.tp = new TypeProperties();
     }
 
-    public MazeObject(final boolean isSolid, final boolean isUsable, final int newUses,
+    protected MazeObject(final boolean isSolid, final boolean isUsable, final int newUses,
 	    final boolean canBeInventoried) {
 	this.sp = new SolidProperties();
 	this.sp.setSolid(isSolid);
@@ -171,7 +185,7 @@ public abstract class MazeObject implements RandomGenerationRule {
 	this.tp = new TypeProperties();
     }
 
-    public MazeObject() {
+    protected MazeObject() {
 	this.sp = new SolidProperties();
 	this.mp = new MoveProperties();
 	this.op = new OtherProperties();
@@ -337,7 +351,7 @@ public abstract class MazeObject implements RandomGenerationRule {
     }
 
     public final boolean isOfType(final int testType) {
-	int uid = this.getUniqueID().ordinal();
+	int uid = this.getUniqueIDHook().ordinal();
 	MazeObjectActions actions = DataLoader.loadObjectActionData(uid);
 	if (actions.has(MazeObjectActions.ALTER_SCORE)
 		&& (testType == TypeConstants.TYPE_SCORE_INCREASER || testType == TypeConstants.TYPE_CONTAINABLE)) {
@@ -714,7 +728,7 @@ public abstract class MazeObject implements RandomGenerationRule {
     }
 
     public final void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	int uid = this.getUniqueID().ordinal();
+	int uid = this.getUniqueIDHook().ordinal();
 	MazeObjectActions actions = DataLoader.loadObjectActionData(uid);
 	if (actions.has(MazeObjectActions.ALTER_SCORE)) {
 	    int alterScoreAmount = DataLoader.loadObjectActionAddonData(uid, MazeObjectActions.ALTER_SCORE);
@@ -937,7 +951,7 @@ public abstract class MazeObject implements RandomGenerationRule {
 	if (arrowType == ArrowTypes.GHOST) {
 	    return true;
 	} else {
-	    int uid = this.getUniqueID().ordinal();
+	    int uid = this.getUniqueIDHook().ordinal();
 	    MazeObjectActions actions = DataLoader.loadObjectActionData(uid);
 	    if (actions.has(MazeObjectActions.ALTER_SCORE)) {
 		// Score changers shatter when struck by arrows
@@ -1012,7 +1026,7 @@ public abstract class MazeObject implements RandomGenerationRule {
     abstract public String getDescription();
 
     public final int getLayer() {
-	int uid = this.getUniqueID().ordinal();
+	int uid = this.getUniqueIDHook().ordinal();
 	MazeObjectActions actions = DataLoader.loadObjectActionData(uid);
 	if (actions.has(MazeObjectActions.ALTER_SCORE)) {
 	    return Layers.OBJECT;
@@ -1085,8 +1099,18 @@ public abstract class MazeObject implements RandomGenerationRule {
     public final String getXMLIdentifier() {
 	return this.getName();
     }
+    
+    public final MazeObjects getUniqueID() {
+	if (this.uniqueID != null) {
+	    return this.uniqueID;
+	} else {
+	    return this.getUniqueIDHook();
+	}
+    }
 
-    public abstract MazeObjects getUniqueID();
+    protected MazeObjects getUniqueIDHook() {
+	return MazeObjects._NONE;
+    }
 
     public final void writeMazeObjectXML(final MazeDataWriter writer) throws IOException {
 	writer.writeString(this.getXMLIdentifier());

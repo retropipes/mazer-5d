@@ -46,7 +46,7 @@ class Hourglass extends GenericTimeModifier {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.HOURGLASS;
     }
 }

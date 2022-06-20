@@ -44,7 +44,7 @@ class YellowLock extends GenericSingleLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.YELLOW_LOCK;
     }
 }

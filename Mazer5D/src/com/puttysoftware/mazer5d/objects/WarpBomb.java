@@ -66,7 +66,7 @@ class WarpBomb extends GenericUsableObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.WARP_BOMB;
     }
 }

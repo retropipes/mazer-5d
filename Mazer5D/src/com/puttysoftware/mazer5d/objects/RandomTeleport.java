@@ -53,7 +53,7 @@ class RandomTeleport extends GenericRandomTeleport {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.RANDOM_TELEPORT;
     }
 }

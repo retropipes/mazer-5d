@@ -41,7 +41,7 @@ class CounterpoisonAmulet extends GenericAmulet {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.COUNTERPOISON_AMULET;
     }
 }

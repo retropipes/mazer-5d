@@ -15,7 +15,7 @@ class GrayCrystal extends GenericProgrammableKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.GRAY_CRYSTAL;
     }
 }

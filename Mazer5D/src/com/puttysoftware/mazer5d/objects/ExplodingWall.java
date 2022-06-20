@@ -103,7 +103,7 @@ class ExplodingWall extends GenericWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.EXPLODING_WALL;
     }
 }

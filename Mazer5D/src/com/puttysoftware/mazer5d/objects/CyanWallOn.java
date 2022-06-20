@@ -31,7 +31,7 @@ class CyanWallOn extends GenericToggleWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.CYAN_WALL_ON;
     }
 }

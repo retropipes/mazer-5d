@@ -30,7 +30,7 @@ class RegularBoots extends GenericBoots {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.REGULAR_BOOTS;
     }
 }

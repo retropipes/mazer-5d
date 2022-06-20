@@ -120,7 +120,7 @@ class RotationTrap extends GenericTrap implements Cloneable {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ROTATION_TRAP;
     }
 }

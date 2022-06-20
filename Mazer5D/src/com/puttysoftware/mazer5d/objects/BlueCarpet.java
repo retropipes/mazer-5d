@@ -15,7 +15,7 @@ class BlueCarpet extends GenericCarpet {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.BLUE_CARPET;
     }
 }

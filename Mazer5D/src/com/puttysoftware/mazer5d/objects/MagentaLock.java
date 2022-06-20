@@ -44,7 +44,7 @@ class MagentaLock extends GenericSingleLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.MAGENTA_LOCK;
     }
 }

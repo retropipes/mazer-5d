@@ -64,7 +64,7 @@ class InvisibleChainTeleport extends GenericInvisibleTeleport {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.INVISIBLE_CHAIN_TELEPORT;
     }
 }

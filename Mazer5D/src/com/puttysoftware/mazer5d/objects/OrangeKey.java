@@ -31,7 +31,7 @@ class OrangeKey extends GenericSingleKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ORANGE_KEY;
     }
 }

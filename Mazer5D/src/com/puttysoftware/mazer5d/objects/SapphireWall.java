@@ -30,7 +30,7 @@ class SapphireWall extends GenericMultipleLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SAPPHIRE_WALL;
     }
 }

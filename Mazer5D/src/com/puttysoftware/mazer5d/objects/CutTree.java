@@ -30,7 +30,7 @@ class CutTree extends GenericPassThroughObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.CUT_TREE;
     }
 }

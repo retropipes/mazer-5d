@@ -34,7 +34,7 @@ class FireBow extends GenericBow {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.FIRE_BOW;
     }
 }

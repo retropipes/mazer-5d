@@ -30,7 +30,7 @@ class EnergySphere extends GenericPass {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ENERGY_SPHERE;
     }
 }

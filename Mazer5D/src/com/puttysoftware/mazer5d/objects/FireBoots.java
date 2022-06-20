@@ -30,7 +30,7 @@ class FireBoots extends GenericBoots {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.FIRE_BOOTS;
     }
 }

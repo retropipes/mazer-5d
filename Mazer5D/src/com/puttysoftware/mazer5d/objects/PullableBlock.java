@@ -30,7 +30,7 @@ class PullableBlock extends GenericMovableObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.PULLABLE_BLOCK;
     }
 }

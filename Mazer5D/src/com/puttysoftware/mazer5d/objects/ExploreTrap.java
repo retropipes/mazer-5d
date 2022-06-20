@@ -43,7 +43,7 @@ class ExploreTrap extends GenericTrap {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.EXPLORE_TRAP;
     }
 }

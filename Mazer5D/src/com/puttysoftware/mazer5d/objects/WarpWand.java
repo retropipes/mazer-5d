@@ -49,7 +49,7 @@ class WarpWand extends GenericWand {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.WARP_WAND;
     }
 }

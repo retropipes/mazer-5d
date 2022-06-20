@@ -15,7 +15,7 @@ class RoseCrystal extends GenericProgrammableKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ROSE_CRYSTAL;
     }
 }

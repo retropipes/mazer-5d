@@ -44,7 +44,7 @@ class GreenLock extends GenericSingleLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.GREEN_LOCK;
     }
 }

@@ -68,7 +68,7 @@ class FinishTo extends Finish {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.FINISH_TO;
     }
 }

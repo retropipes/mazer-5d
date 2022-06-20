@@ -15,7 +15,7 @@ class APort extends GenericPort {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.A_PORT;
     }
 }

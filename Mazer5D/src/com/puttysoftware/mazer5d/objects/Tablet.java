@@ -30,7 +30,7 @@ class Tablet extends GenericInfiniteKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.TABLET;
     }
 }

@@ -15,7 +15,7 @@ class VPort extends GenericPort {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.V_PORT;
     }
 }

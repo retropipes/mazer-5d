@@ -15,7 +15,7 @@ class IceArrow extends GenericTransientObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ICE_ARROW;
     }
 }

@@ -47,7 +47,7 @@ class PushableBlockThrice extends GenericMovableObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.PUSHABLE_BLOCK_THRICE;
     }
 }

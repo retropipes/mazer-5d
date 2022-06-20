@@ -30,7 +30,7 @@ class SealingWall extends GenericWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SEALING_WALL;
     }
 }

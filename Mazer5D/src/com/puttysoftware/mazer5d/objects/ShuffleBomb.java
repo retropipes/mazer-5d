@@ -64,7 +64,7 @@ class ShuffleBomb extends GenericUsableObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SHUFFLE_BOMB;
     }
 }

@@ -43,7 +43,7 @@ class BlueHouse extends FinishTo {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.BLUE_HOUSE;
     }
 }

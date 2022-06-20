@@ -31,7 +31,7 @@ class RoseWallOff extends GenericToggleWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ROSE_WALL_OFF;
     }
 }

@@ -30,7 +30,7 @@ class BioHazardBoots extends GenericBoots {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.BIO_HAZARD_BOOTS;
     }
 }

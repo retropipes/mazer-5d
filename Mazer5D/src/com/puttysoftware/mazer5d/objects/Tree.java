@@ -55,7 +55,7 @@ class Tree extends GenericInfiniteLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.TREE;
     }
 }

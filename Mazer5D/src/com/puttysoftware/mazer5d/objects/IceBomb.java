@@ -64,7 +64,7 @@ class IceBomb extends GenericUsableObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ICE_BOMB;
     }
 }

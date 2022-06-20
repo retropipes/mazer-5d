@@ -30,7 +30,7 @@ class TopazWall extends GenericMultipleLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.TOPAZ_WALL;
     }
 }

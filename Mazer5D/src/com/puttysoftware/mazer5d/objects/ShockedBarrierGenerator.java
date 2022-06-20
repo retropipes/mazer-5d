@@ -67,7 +67,7 @@ class ShockedBarrierGenerator extends GenericGenerator {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SHOCKED_BARRIER_GENERATOR;
     }
 }

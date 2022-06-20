@@ -40,7 +40,7 @@ class RandomInvisibleTeleport extends GenericRandomInvisibleTeleport {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.RANDOM_INVISIBLE_TELEPORT;
     }
 }

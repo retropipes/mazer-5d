@@ -30,7 +30,7 @@ class GlueBoots extends GenericBoots {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.GLUE_BOOTS;
     }
 }

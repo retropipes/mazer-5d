@@ -31,7 +31,7 @@ class PurpleWallOff extends GenericToggleWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.PURPLE_WALL_OFF;
     }
 }

@@ -30,7 +30,7 @@ class HotRock extends GenericGround {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.HOT_ROCK;
     }
 }

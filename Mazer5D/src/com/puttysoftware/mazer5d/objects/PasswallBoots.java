@@ -30,7 +30,7 @@ class PasswallBoots extends GenericBoots {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.PASSWALL_BOOTS;
     }
 }

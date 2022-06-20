@@ -121,7 +121,7 @@ class Pit extends StairsDown {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.PIT;
     }
 }

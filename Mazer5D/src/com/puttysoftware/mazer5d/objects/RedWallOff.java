@@ -31,7 +31,7 @@ class RedWallOff extends GenericToggleWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.RED_WALL_OFF;
     }
 }

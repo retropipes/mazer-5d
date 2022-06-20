@@ -46,7 +46,7 @@ class FakeFinish extends GenericPassThroughObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.FAKE_FINISH;
     }
 }

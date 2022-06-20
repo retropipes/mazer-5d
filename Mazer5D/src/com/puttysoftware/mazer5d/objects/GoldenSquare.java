@@ -30,7 +30,7 @@ class GoldenSquare extends GenericMultipleKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.GOLDEN_SQUARE;
     }
 }

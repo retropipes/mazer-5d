@@ -15,7 +15,7 @@ class HPort extends GenericPort {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.H_PORT;
     }
 }

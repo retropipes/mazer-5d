@@ -61,7 +61,7 @@ class OneShotControllableTeleport extends GenericTeleport {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.ONE_SHOT_CONTROLLABLE_TELEPORT;
     }
 }

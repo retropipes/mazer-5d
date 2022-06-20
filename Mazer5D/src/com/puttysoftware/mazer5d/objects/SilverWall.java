@@ -30,7 +30,7 @@ class SilverWall extends GenericMultipleLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SILVER_WALL;
     }
 }

@@ -30,7 +30,7 @@ class SapphireSquare extends GenericMultipleKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.SAPPHIRE_SQUARE;
     }
 }

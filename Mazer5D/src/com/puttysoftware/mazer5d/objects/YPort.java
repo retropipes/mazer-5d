@@ -15,7 +15,7 @@ class YPort extends GenericPort {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.Y_PORT;
     }
 }

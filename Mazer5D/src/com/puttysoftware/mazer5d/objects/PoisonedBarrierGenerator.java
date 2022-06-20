@@ -67,7 +67,7 @@ class PoisonedBarrierGenerator extends GenericGenerator {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.POISONED_BARRIER_GENERATOR;
     }
 }

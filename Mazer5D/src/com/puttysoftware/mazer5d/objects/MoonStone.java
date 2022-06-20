@@ -48,7 +48,7 @@ class MoonStone extends GenericInventoryableObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.MOON_STONE;
     }
 }

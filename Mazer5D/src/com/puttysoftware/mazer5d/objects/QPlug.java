@@ -15,7 +15,7 @@ class QPlug extends GenericPlug {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.Q_PLUG;
     }
 }

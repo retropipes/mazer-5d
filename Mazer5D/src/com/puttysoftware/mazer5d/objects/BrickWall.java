@@ -43,7 +43,7 @@ class BrickWall extends GenericSingleLock {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.BRICK_WALL;
     }
 }

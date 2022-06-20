@@ -44,7 +44,7 @@ class RemoteActionWand extends GenericWand {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.REMOTE_ACTION_WAND;
     }
 }

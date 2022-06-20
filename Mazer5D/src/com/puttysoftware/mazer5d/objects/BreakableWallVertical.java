@@ -81,7 +81,7 @@ class BreakableWallVertical extends GenericWall {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.BREAKABLE_WALL_VERTICAL;
     }
 }

@@ -30,7 +30,7 @@ class RubySquare extends GenericMultipleKey {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.RUBY_SQUARE;
     }
 }

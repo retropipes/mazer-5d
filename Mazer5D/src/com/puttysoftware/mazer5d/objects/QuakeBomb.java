@@ -62,7 +62,7 @@ class QuakeBomb extends GenericUsableObject {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.QUAKE_BOMB;
     }
 }

@@ -91,7 +91,7 @@ class StairsUp extends GenericTeleport {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.STAIRS_UP;
     }
 }

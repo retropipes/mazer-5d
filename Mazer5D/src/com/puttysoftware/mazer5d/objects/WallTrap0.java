@@ -19,7 +19,7 @@ class WallTrap0 extends GenericWallTrap {
     }
 
     @Override
-    public MazeObjects getUniqueID() {
+    protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.WALL_TRAP_0;
     }
 }
