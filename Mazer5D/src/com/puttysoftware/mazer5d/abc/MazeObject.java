@@ -955,10 +955,14 @@ public class MazeObject implements RandomGenerationRule {
 	} else {
 	    int uid = this.getUniqueIDHook().ordinal();
 	    MazeObjectActions actions = DataLoader.loadObjectActionData(uid);
-	    if (actions.has(MazeObjectActions.ALTER_SCORE)) {
-		// Score changers shatter when struck by arrows
+	    if (actions.has(MazeObjectActions.DISAPPEAR_ARROW)) {
 		Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY, locZ);
-		SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
+	    }
+	    if (actions.has(MazeObjectActions.SOUND_ARROW)) {
+		SoundIndex arrowSound = SoundIndex.values()[DataLoader.loadObjectActionAddonData(uid, MazeObjectActions.SOUND_ARROW)];
+		SoundPlayer.playSound(arrowSound, SoundGroup.GAME);
+	    }
+	    if (actions.any()) {
 		return false;
 	    }
 	    return customArrowHitAction(locX, locY, locZ, dirX, dirY, arrowType, inv);

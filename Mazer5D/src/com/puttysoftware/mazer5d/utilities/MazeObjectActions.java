@@ -37,6 +37,7 @@ public class MazeObjectActions {
     public static final int PASS_IF_HAVE_INVENTORY = 30;
     public static final int ALTER_SCORE = 31;
     public static final int DISAPPEAR_ARROW = 32;
+    public static final int SOUND_ARROW = 33;
     private final BitSet bits;
 
     public MazeObjectActions(final long... val) {
@@ -46,5 +47,9 @@ public class MazeObjectActions {
 
     public boolean has(final int val) {
 	return this.bits.get(val);
+    }
+    
+    public boolean any() {
+	return !this.bits.isEmpty();
     }
 }
