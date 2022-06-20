@@ -149,7 +149,7 @@ public class GameObjects {
 		MazeObjects.YELLOW_WALL_ON, MazeObjects.Y_PLUG, MazeObjects.Y_PORT, MazeObjects.Z_PLUG,
 		MazeObjects.Z_PORT, MazeObjects._NONE };
 	GameObjects.allObjectsLookup.put(MazeObjects._NONE, null);
-	GameObjects.allObjectsLookup.put(MazeObjects.AMETHYST, new Amethyst());
+	GameObjects.allObjectsLookup.put(MazeObjects.AMETHYST, new MazeObject(MazeObjects.AMETHYST));
 	GameObjects.allObjectsLookup.put(MazeObjects.ANNIHILATION_WAND, new AnnihilationWand());
 	GameObjects.allObjectsLookup.put(MazeObjects.A_PLUG, new APlug());
 	GameObjects.allObjectsLookup.put(MazeObjects.A_PORT, new APort());
@@ -213,7 +213,7 @@ public class GameObjects {
 	GameObjects.allObjectsLookup.put(MazeObjects.DARK_WAND, new DarkWand());
 	GameObjects.allObjectsLookup.put(MazeObjects.DARK_YELLOW_CRYSTAL, new DarkYellowCrystal());
 	GameObjects.allObjectsLookup.put(MazeObjects.DESTINATION, null);
-	GameObjects.allObjectsLookup.put(MazeObjects.DIAMOND, new Diamond());
+	GameObjects.allObjectsLookup.put(MazeObjects.DIAMOND, new MazeObject(MazeObjects.DIAMOND));
 	GameObjects.allObjectsLookup.put(MazeObjects.DIMNESS_GEM, new DimnessGem());
 	GameObjects.allObjectsLookup.put(MazeObjects.DIRT, new Dirt());
 	GameObjects.allObjectsLookup.put(MazeObjects.DISARM_TRAP_WAND, new DisarmTrapWand());
@@ -424,11 +424,11 @@ public class GameObjects {
 	GameObjects.allObjectsLookup.put(MazeObjects.ROTATION_WAND, new RotationWand());
 	GameObjects.allObjectsLookup.put(MazeObjects.R_PLUG, new RPlug());
 	GameObjects.allObjectsLookup.put(MazeObjects.R_PORT, new RPort());
-	GameObjects.allObjectsLookup.put(MazeObjects.RUBY, new Ruby());
+	GameObjects.allObjectsLookup.put(MazeObjects.RUBY, new MazeObject(MazeObjects.RUBY));
 	GameObjects.allObjectsLookup.put(MazeObjects.RUBY_SQUARE, new RubySquare());
 	GameObjects.allObjectsLookup.put(MazeObjects.RUBY_WALL, new RubyWall());
 	GameObjects.allObjectsLookup.put(MazeObjects.SAND, new Sand());
-	GameObjects.allObjectsLookup.put(MazeObjects.SAPPHIRE, new Sapphire());
+	GameObjects.allObjectsLookup.put(MazeObjects.SAPPHIRE, new MazeObject(MazeObjects.SAPPHIRE));
 	GameObjects.allObjectsLookup.put(MazeObjects.SAPPHIRE_SQUARE, new SapphireSquare());
 	GameObjects.allObjectsLookup.put(MazeObjects.SAPPHIRE_WALL, new SapphireWall());
 	GameObjects.allObjectsLookup.put(MazeObjects.SEALED_FINISH, null);
