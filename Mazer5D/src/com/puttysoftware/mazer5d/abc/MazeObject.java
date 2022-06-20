@@ -732,13 +732,20 @@ public class MazeObject implements RandomGenerationRule {
     public final void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	int uid = this.getUniqueIDHook().ordinal();
 	MazeObjectActions actions = DataLoader.loadObjectActionData(uid);
+	if (actions.has(MazeObjectActions.DISAPPEAR_MOVE)) {
+	    Mazer5D.getBagOStuff().getGameManager().decay();
+	    Mazer5D.getBagOStuff().getGameManager().redrawMaze();
+	}
+	if (actions.has(MazeObjectActions.SOUND_MOVE)) {
+	    SoundIndex moveSound = SoundIndex.values()[DataLoader.loadObjectActionAddonData(uid,
+		    MazeObjectActions.SOUND_MOVE)];
+	    SoundPlayer.playSound(moveSound, SoundGroup.GAME);
+	}
 	if (actions.has(MazeObjectActions.ALTER_SCORE)) {
 	    int alterScoreAmount = DataLoader.loadObjectActionAddonData(uid, MazeObjectActions.ALTER_SCORE);
-	    Mazer5D.getBagOStuff().getGameManager().decay();
-	    SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
 	    Mazer5D.getBagOStuff().getGameManager().addToScore(alterScoreAmount);
-	    Mazer5D.getBagOStuff().getGameManager().redrawMaze();
-	} else {
+	}
+	if (!actions.any()) {
 	    this.customPostMoveAction(ie, dirX, dirY, inv);
 	}
     }
@@ -959,7 +966,8 @@ public class MazeObject implements RandomGenerationRule {
 		Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY, locZ);
 	    }
 	    if (actions.has(MazeObjectActions.SOUND_ARROW)) {
-		SoundIndex arrowSound = SoundIndex.values()[DataLoader.loadObjectActionAddonData(uid, MazeObjectActions.SOUND_ARROW)];
+		SoundIndex arrowSound = SoundIndex.values()[DataLoader.loadObjectActionAddonData(uid,
+			MazeObjectActions.SOUND_ARROW)];
 		SoundPlayer.playSound(arrowSound, SoundGroup.GAME);
 	    }
 	    if (actions.any()) {

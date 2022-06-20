@@ -7,7 +7,7 @@ public class MazeObjectActions {
     public static final int DISAPPEAR_MOVE = 0;
     public static final int ADD_INVENTORY = 1;
     public static final int REMOVE_INVENTORY = 2;
-    public static final int SOUND = 3;
+    public static final int SOUND_MOVE = 3;
     public static final int EFFECT = 4;
     public static final int BATTLE = 5;
     public static final int CHANGE_FORM_ID_1 = 6;
