@@ -43,7 +43,6 @@ public class MazeObject implements RandomGenerationRule {
     private MazeObject savedObject;
     private MazeObjects uniqueID;
     private static final int NO_CUSTOM_COUNTERS = 0;
-    private static final String NAME_PLACEHOLDER = "INSERT NAME HERE";
 
     // Constructors
     public MazeObject(final MazeObjects uid) {
@@ -1034,37 +1033,28 @@ public class MazeObject implements RandomGenerationRule {
     }
 
     public final String getName() {
-	String loaded = LocaleLoader.loadObjectName(this.getUniqueID());
-	if (loaded != MazeObject.NAME_PLACEHOLDER) {
-	    return loaded;
-	}
-	return this.getNameHook();
+	return LocaleLoader.loadObjectName(this.getUniqueID());
     }
 
+    // FIXME: Hack
     protected String getNameHook() {
 	return "";
     }
 
     public final String getPluralName() {
-	String loaded = LocaleLoader.loadObjectPluralName(this.getUniqueID());
-	if (loaded != MazeObject.NAME_PLACEHOLDER) {
-	    return loaded;
-	}
-	return this.getPluralNameHook();
+	return LocaleLoader.loadObjectPluralName(this.getUniqueID());
     }
 
+    // FIXME: Hack
     protected String getPluralNameHook() {
 	return "";
     }
 
     public final String getDescription() {
-	String loaded = LocaleLoader.loadObjectDescription(this.getUniqueID());
-	if (loaded != MazeObject.NAME_PLACEHOLDER) {
-	    return loaded;
-	}
-	return this.getDescriptionHook();
+	return LocaleLoader.loadObjectDescription(this.getUniqueID());
     }
 
+    // FIXME: Hack
     protected String getDescriptionHook() {
 	return "";
     }

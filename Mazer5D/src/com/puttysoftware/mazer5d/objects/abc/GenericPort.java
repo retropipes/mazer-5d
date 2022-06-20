@@ -37,14 +37,16 @@ public abstract class GenericPort extends GenericInfiniteLock {
 	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
+    // FIXME: Hack
     @Override
     protected String getNameHook() {
-	return this.letter + " Port";
+	return this.getName();
     }
 
+    // FIXME: Hack
     @Override
     protected String getPluralNameHook() {
-	return this.letter + " Ports";
+	return this.getPluralName();
     }
 
     private boolean isLetterVowel() {
@@ -56,14 +58,9 @@ public abstract class GenericPort extends GenericInfiniteLock {
 	}
     }
 
+    // FIXME: Hack
     @Override
     protected String getDescriptionHook() {
-	String fill;
-	if (this.isLetterVowel()) {
-	    fill = "an";
-	} else {
-	    fill = "a";
-	}
-	return this.letter + " Ports require " + fill + " " + this.letter + " Plug to open.";
+	return this.getDescription();
     }
 }

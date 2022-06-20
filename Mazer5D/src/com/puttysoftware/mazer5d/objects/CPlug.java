@@ -11,7 +11,7 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class CPlug extends GenericPlug {
     // Constructors
     public CPlug() {
-	super('C');
+	super();
     }
 
     @Override

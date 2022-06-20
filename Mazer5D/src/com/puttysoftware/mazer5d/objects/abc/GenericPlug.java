@@ -8,12 +8,8 @@ package com.puttysoftware.mazer5d.objects.abc;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericPlug extends GenericInfiniteKey {
-    // Fields
-    private char letter;
-
-    protected GenericPlug(final char newLetter) {
+    protected GenericPlug() {
 	super();
-	this.letter = Character.toUpperCase(newLetter);
 	this.setType(TypeConstants.TYPE_PLUG);
 	this.setType(TypeConstants.TYPE_INFINITE_USE);
 	this.setType(TypeConstants.TYPE_KEY);
@@ -21,18 +17,21 @@ public abstract class GenericPlug extends GenericInfiniteKey {
 	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
+    // FIXME: Hack
     @Override
     protected String getNameHook() {
-	return this.letter + " Plug";
+	return this.getName();
     }
 
+    // FIXME: Hack
     @Override
     protected String getPluralNameHook() {
-	return this.letter + " Plugs";
+	return this.getPluralName();
     }
 
+    // FIXME: Hack
     @Override
     protected String getDescriptionHook() {
-	return this.letter + " Plugs open " + this.letter + " Ports, and can be used infinitely many times.";
+	return this.getDescription();
     }
 }
