@@ -83,7 +83,7 @@ class ExplodingWall extends GenericWall {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Exploding Wall";
     }
 
@@ -93,12 +93,12 @@ class ExplodingWall extends GenericWall {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Exploding Walls";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Exploding Walls explode when touched, causing other Exploding Walls nearby to also explode.";
     }
 

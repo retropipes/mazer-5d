@@ -29,17 +29,17 @@ class RedLock extends GenericSingleLock {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Red Lock";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Red Locks";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Red Locks require Red Keys to open.";
     }
 

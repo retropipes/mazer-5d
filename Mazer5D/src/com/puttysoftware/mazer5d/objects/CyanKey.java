@@ -16,17 +16,17 @@ class CyanKey extends GenericSingleKey {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Cyan Key";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Cyan Keys";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Cyan Keys will unlock Cyan Locks, and can only be used once.";
     }
 

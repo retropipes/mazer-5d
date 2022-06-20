@@ -20,17 +20,17 @@ class GhostAmulet extends GenericAmulet {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Ghost Amulet";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Ghost Amulets";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Ghost Amulets grant the power to walk through walls for 30 steps. Note that you can only wear one amulet at once.";
     }
 

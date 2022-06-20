@@ -23,12 +23,12 @@ class HealTrap extends GenericTrap {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Heal Trap";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Heal Traps";
     }
 
@@ -43,7 +43,7 @@ class HealTrap extends GenericTrap {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Heal Traps heal you when stepped on.";
     }
 

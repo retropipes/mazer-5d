@@ -15,17 +15,17 @@ class Snow extends GenericGround {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Snow";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Squares of Snow";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Snow is one of the many types of ground.";
     }
 

@@ -38,12 +38,12 @@ class DamageableWall extends GenericWall {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Damageable Wall";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Damageable Walls";
     }
 
@@ -53,7 +53,7 @@ class DamageableWall extends GenericWall {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Damageable Walls turn into Cracked Walls when hit.";
     }
 

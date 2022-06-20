@@ -24,12 +24,12 @@ class ConfusionTrap extends GenericTrap {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Confusion Trap";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Confusion Traps";
     }
 
@@ -42,7 +42,7 @@ class ConfusionTrap extends GenericTrap {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Confusion Traps randomly alter your controls for 10 steps when stepped on.";
     }
 

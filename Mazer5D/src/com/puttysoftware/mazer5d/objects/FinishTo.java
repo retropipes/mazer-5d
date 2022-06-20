@@ -31,12 +31,12 @@ class FinishTo extends Finish {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Finish To";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Finishes To";
     }
 
@@ -58,7 +58,7 @@ class FinishTo extends Finish {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Finishes To behave like regular Finishes, except that the level they send you to might not be the next one.";
     }
 

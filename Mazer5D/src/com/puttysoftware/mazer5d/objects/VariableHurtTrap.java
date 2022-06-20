@@ -26,12 +26,12 @@ class VariableHurtTrap extends GenericTrap {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Variable Hurt Trap";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Variable Hurt Traps";
     }
 
@@ -48,7 +48,7 @@ class VariableHurtTrap extends GenericTrap {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Variable Hurt Traps hurt you when stepped on, then disappear.";
     }
 

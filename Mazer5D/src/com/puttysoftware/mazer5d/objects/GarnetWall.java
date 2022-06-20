@@ -15,17 +15,17 @@ class GarnetWall extends GenericMultipleLock {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Garnet Wall";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Garnet Walls";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Garnet Walls are impassable without enough Garnet Squares.";
     }
 

@@ -20,17 +20,17 @@ class CounterpoisonAmulet extends GenericAmulet {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Counterpoison Amulet";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Counterpoison Amulets";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Counterpoison Amulets grant the power to make the air less poisonous for 30 steps. Note that you can only wear one amulet at once.";
     }
 

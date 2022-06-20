@@ -24,12 +24,12 @@ class DizzinessTrap extends GenericTrap {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Dizziness Trap";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Dizziness Traps";
     }
 
@@ -42,7 +42,7 @@ class DizzinessTrap extends GenericTrap {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Dizziness Traps randomly alter your controls each step for 10 steps when stepped on.";
     }
 

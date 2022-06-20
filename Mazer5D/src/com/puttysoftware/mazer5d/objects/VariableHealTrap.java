@@ -26,12 +26,12 @@ class VariableHealTrap extends GenericTrap {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Variable Heal Trap";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Variable Heal Traps";
     }
 
@@ -48,7 +48,7 @@ class VariableHealTrap extends GenericTrap {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Variable Heal Traps heal you when stepped on, then disappear.";
     }
 

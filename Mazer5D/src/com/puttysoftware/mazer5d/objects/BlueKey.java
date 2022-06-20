@@ -16,17 +16,17 @@ class BlueKey extends GenericSingleKey {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Blue Key";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Blue Keys";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Blue Keys will unlock Blue Locks, and can only be used once.";
     }
 

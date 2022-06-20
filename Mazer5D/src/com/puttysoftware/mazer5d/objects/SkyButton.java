@@ -14,17 +14,17 @@ class SkyButton extends GenericButton {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Sky Button";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Sky Buttons";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Sky Buttons will cause all Sky Walls Off to become On, and all Sky Walls On to become Off.";
     }
 

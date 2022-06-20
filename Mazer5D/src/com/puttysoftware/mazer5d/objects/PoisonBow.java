@@ -19,17 +19,17 @@ class PoisonBow extends GenericBow {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Poison Bow";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Poison Bows";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Poison Bows allow shooting of Poison Arrows, which weaken Barrier Generators upon contact, and do everything normal arrows do.";
     }
 

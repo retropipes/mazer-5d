@@ -28,17 +28,17 @@ class MagentaHouse extends FinishTo {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Magenta House";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Magenta Houses";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Magenta Houses send you inside when walked on.";
     }
 

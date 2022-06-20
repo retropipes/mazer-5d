@@ -16,17 +16,17 @@ class MagentaWallOn extends GenericToggleWall {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Magenta Wall On";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Magenta Walls On";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Magenta Walls On can NOT be walked through, and will change to Magenta Walls Off when a Magenta Button is pressed.";
     }
 

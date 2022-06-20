@@ -15,17 +15,17 @@ class SapphireSquare extends GenericMultipleKey {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Sapphire Square";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Sapphire Squares";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Sapphire Squares are the keys to Sapphire Walls.";
     }
 

@@ -109,7 +109,8 @@ public abstract class GenericLock extends MazeObject {
     }
 
     @Override
-    public abstract String getName();
+    protected
+    abstract String getNameHook();
 
     @Override
     protected int getLayerHook() {

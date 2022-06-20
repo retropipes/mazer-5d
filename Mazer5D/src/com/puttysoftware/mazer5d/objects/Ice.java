@@ -18,12 +18,12 @@ class Ice extends GenericGround {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Ice";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Squares of Ice";
     }
 
@@ -38,7 +38,7 @@ class Ice extends GenericGround {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Ice is one of the many types of ground - it is frictionless. Anything that crosses it will slide.";
     }
 

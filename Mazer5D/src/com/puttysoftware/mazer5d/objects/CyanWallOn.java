@@ -16,17 +16,17 @@ class CyanWallOn extends GenericToggleWall {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Cyan Wall On";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Cyan Walls On";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Cyan Walls On can NOT be walked through, and will change to Cyan Walls Off when a Cyan Button is pressed.";
     }
 

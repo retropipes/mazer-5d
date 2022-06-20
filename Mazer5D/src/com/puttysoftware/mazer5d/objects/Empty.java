@@ -18,17 +18,17 @@ class Empty extends GenericPassThroughObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Empty";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Squares of Emptiness";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Squares of Emptiness are what fills areas that aren't occupied by other objects.";
     }
 

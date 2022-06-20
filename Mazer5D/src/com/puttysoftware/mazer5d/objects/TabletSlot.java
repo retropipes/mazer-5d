@@ -29,17 +29,17 @@ class TabletSlot extends GenericInfiniteLock {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Tablet Slot";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Tablet Slots";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Tablet Slots disappear when filled with a Tablet.";
     }
 

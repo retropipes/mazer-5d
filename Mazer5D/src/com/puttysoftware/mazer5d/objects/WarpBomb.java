@@ -25,17 +25,17 @@ class WarpBomb extends GenericUsableObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Warp Bomb";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Warp Bombs";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Warp Bombs randomly teleport anything in an area of radius 3 centered on the target point.";
     }
 

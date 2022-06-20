@@ -18,17 +18,17 @@ class Wall extends GenericWall {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Wall";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Walls";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Walls are impassable - you'll need to go around them.";
     }
 

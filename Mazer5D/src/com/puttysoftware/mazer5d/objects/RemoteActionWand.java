@@ -18,12 +18,12 @@ class RemoteActionWand extends GenericWand {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Remote Action Wand";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Remote Action Wands";
     }
 
@@ -39,7 +39,7 @@ class RemoteActionWand extends GenericWand {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Remote Action Wands will act on the target object as if you were there, on top of it.";
     }
 

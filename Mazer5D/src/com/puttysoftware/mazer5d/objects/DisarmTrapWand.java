@@ -18,12 +18,12 @@ class DisarmTrapWand extends GenericWand {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Disarm Trap Wand";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Disarm Trap Wands";
     }
 
@@ -34,7 +34,7 @@ class DisarmTrapWand extends GenericWand {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Disarm Trap Wands will make one trap disappear when used, if aimed at a trap.";
     }
 

@@ -93,7 +93,7 @@ class Bounds extends GenericWall {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Void";
     }
 
@@ -103,12 +103,12 @@ class Bounds extends GenericWall {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Voids";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "The Void surrounds the maze, and cannot be altered in any way.";
     }
 

@@ -23,12 +23,12 @@ class PullableBlockOnce extends GenericMovableObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Pullable Block Once";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Pullable Blocks Once";
     }
 
@@ -42,7 +42,7 @@ class PullableBlockOnce extends GenericMovableObject {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Pullable Blocks Once can only be pulled once, before turning into a wall.";
     }
 

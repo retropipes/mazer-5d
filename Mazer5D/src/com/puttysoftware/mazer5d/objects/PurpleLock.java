@@ -29,17 +29,17 @@ class PurpleLock extends GenericSingleLock {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Purple Lock";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Purple Locks";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Purple Locks require Purple Keys to open.";
     }
 

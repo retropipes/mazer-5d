@@ -29,17 +29,17 @@ class MetalDoor extends GenericSingleLock {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Metal Door";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Metal Doors";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Metal Doors require Metal Keys to open, or Metal Boots and a Metal Button.";
     }
 

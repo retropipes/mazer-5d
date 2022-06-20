@@ -28,17 +28,17 @@ class Exit extends FinishTo {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Exit";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Exits";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Exits send you outside when walked on.";
     }
 

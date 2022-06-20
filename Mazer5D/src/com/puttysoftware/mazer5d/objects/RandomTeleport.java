@@ -38,17 +38,17 @@ class RandomTeleport extends GenericRandomTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Random Teleport";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Random Teleports";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Random Teleports, unlike regular Teleports, send you to a randomly chosen destination.";
     }
 

@@ -15,17 +15,17 @@ class Dirt extends GenericGround {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Dirt";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Squares of Dirt";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Dirt is one of the many types of ground.";
     }
 

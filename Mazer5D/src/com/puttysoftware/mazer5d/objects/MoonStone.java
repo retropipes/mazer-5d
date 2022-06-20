@@ -24,17 +24,17 @@ class MoonStone extends GenericInventoryableObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Moon Stone";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Moon Stones";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Moon Stones act as a trigger for other actions when collected.";
     }
 

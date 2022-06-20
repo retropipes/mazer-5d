@@ -38,12 +38,12 @@ public abstract class GenericPort extends GenericInfiniteLock {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return this.letter + " Port";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return this.letter + " Ports";
     }
 
@@ -57,7 +57,7 @@ public abstract class GenericPort extends GenericInfiniteLock {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	String fill;
 	if (this.isLetterVowel()) {
 	    fill = "an";

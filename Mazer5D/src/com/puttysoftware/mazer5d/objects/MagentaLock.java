@@ -29,17 +29,17 @@ class MagentaLock extends GenericSingleLock {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Magenta Lock";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Magenta Locks";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Magenta Locks require Magenta Keys to open.";
     }
 

@@ -21,7 +21,7 @@ public abstract class GenericTrappedWall extends GenericWall {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	if (this.number == GenericTrappedWall.NUMBER_MASTER) {
 	    return "Master Trapped Wall";
 	} else {
@@ -35,7 +35,7 @@ public abstract class GenericTrappedWall extends GenericWall {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	if (this.number == GenericTrappedWall.NUMBER_MASTER) {
 	    return "Master Trapped Walls";
 	} else {

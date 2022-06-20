@@ -20,12 +20,12 @@ class NoBoots extends GenericInventoryModifier {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "No Boots";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Pairs of No Boots";
     }
 
@@ -37,7 +37,7 @@ class NoBoots extends GenericInventoryModifier {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "No Boots remove any boots worn when picked up.";
     }
 

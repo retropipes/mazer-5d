@@ -24,12 +24,12 @@ class ClockwiseRotationTrap extends GenericTrap {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Clockwise Rotation Trap";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Clockwise Rotation Traps";
     }
 
@@ -42,7 +42,7 @@ class ClockwiseRotationTrap extends GenericTrap {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Clockwise Rotation Traps rotate your controls clockwise for 10 steps when stepped on.";
     }
 

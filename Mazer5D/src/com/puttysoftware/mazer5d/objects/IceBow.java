@@ -19,17 +19,17 @@ class IceBow extends GenericBow {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Ice Bow";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Ice Bows";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Ice Bows allow shooting of Ice Arrows, which freeze Barrier Generators upon contact, and do everything normal arrows do.";
     }
 

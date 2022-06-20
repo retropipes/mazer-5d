@@ -19,17 +19,17 @@ class MajorUnknownPotion extends GenericPotion {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Major Unknown Potion";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Major Unknown Potions";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Major Unknown Potions might heal you or hurt you significantly when picked up.";
     }
 

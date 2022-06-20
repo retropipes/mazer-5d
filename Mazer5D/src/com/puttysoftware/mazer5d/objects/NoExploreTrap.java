@@ -21,12 +21,12 @@ class NoExploreTrap extends GenericTrap {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "No Explore Trap";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "No Explore Traps";
     }
 
@@ -38,7 +38,7 @@ class NoExploreTrap extends GenericTrap {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "No Explore Traps turn exploring mode off, then disappear.";
     }
 

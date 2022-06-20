@@ -15,17 +15,17 @@ class Tile extends GenericGround {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Tile";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Tiles";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Tile is one of the many types of ground - unlike other types of ground, objects can be pushed and pulled over Tiles.";
     }
 

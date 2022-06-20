@@ -15,17 +15,17 @@ class LightGem extends GenericLightModifier {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Light Gem";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Light Gems";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Light Gems bathe the immediately adjacent area in permanent light.";
     }
 

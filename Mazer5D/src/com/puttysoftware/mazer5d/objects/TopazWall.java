@@ -15,17 +15,17 @@ class TopazWall extends GenericMultipleLock {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Topaz Wall";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Topaz Walls";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Topaz Walls are impassable without enough Topaz Squares.";
     }
 

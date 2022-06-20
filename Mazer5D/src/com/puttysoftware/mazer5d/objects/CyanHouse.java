@@ -28,17 +28,17 @@ class CyanHouse extends FinishTo {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Cyan House";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Cyan Houses";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Cyan Houses send you inside when walked on.";
     }
 

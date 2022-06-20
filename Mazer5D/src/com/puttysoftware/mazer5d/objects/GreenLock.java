@@ -29,17 +29,17 @@ class GreenLock extends GenericSingleLock {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Green Lock";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Green Locks";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Green Locks require Green Keys to open.";
     }
 

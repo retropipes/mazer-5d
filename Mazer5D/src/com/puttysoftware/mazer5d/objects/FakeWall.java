@@ -15,7 +15,7 @@ class FakeWall extends GenericPassThroughObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Fake Wall";
     }
 
@@ -25,12 +25,12 @@ class FakeWall extends GenericPassThroughObject {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Fake Walls";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Fake Walls look like walls, but can be walked through.";
     }
 

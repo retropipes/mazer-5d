@@ -23,7 +23,8 @@ public abstract class GenericTrap extends MazeObject {
 	    final ObjectInventory inv);
 
     @Override
-    public abstract String getName();
+    protected
+    abstract String getNameHook();
 
     @Override
     protected int getLayerHook() {

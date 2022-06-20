@@ -38,7 +38,7 @@ class InvisibleOneShotTeleport extends GenericInvisibleTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Invisible One-Shot Teleport";
     }
 
@@ -48,7 +48,7 @@ class InvisibleOneShotTeleport extends GenericInvisibleTeleport {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Invisible One-Shot Teleports";
     }
 
@@ -60,7 +60,7 @@ class InvisibleOneShotTeleport extends GenericInvisibleTeleport {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Invisible One-Shot Teleports are a combination of invisible and one-shot teleport behaviors.";
     }
 

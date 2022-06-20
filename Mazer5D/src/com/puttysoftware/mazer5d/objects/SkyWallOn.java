@@ -16,17 +16,17 @@ class SkyWallOn extends GenericToggleWall {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Sky Wall On";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Sky Walls On";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Sky Walls On can NOT be walked through, and will change to Sky Walls Off when a Sky Button is pressed.";
     }
 

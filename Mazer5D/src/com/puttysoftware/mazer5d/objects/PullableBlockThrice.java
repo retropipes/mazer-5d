@@ -23,12 +23,12 @@ class PullableBlockThrice extends GenericMovableObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Pullable Block Thrice";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Pullable Blocks Thrice";
     }
 
@@ -42,7 +42,7 @@ class PullableBlockThrice extends GenericMovableObject {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Pullable Blocks Thrice can only be pulled three times, before turning into a wall.";
     }
 

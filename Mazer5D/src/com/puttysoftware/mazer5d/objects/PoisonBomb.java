@@ -24,17 +24,17 @@ class PoisonBomb extends GenericUsableObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Poison Bomb";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Poison Bombs";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Poison Bombs poison anything in an area of radius 2 centered on the target point.";
     }
 

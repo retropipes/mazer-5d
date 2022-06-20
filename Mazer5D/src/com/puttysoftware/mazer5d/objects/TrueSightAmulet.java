@@ -20,17 +20,17 @@ class TrueSightAmulet extends GenericAmulet {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "True Sight Amulet";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "True Sight Amulets";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "True Sight Amulets grant the power to see what things really are for 30 steps. Note that you can only wear one amulet at once.";
     }
 

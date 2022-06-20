@@ -48,7 +48,7 @@ public abstract class GenericWallTrap extends MazeObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	if (this.number != GenericWallTrap.NUMBER_MASTER) {
 	    return "Wall Trap " + this.number;
 	} else {
@@ -62,7 +62,7 @@ public abstract class GenericWallTrap extends MazeObject {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	if (this.number != GenericWallTrap.NUMBER_MASTER) {
 	    return "Wall Traps " + this.number;
 	} else {

@@ -29,17 +29,17 @@ class SeaweedLock extends GenericSingleLock {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Seaweed Lock";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Seaweed Locks";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Seaweed Locks require Seaweed Keys to open.";
     }
 

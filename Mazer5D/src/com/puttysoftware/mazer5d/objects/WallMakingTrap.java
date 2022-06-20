@@ -19,12 +19,12 @@ class WallMakingTrap extends GenericTrap {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Wall-Making Trap";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Wall-Making Traps";
     }
 
@@ -35,7 +35,7 @@ class WallMakingTrap extends GenericTrap {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Wall-Making Traps create a Wall when you step OFF them.";
     }
 

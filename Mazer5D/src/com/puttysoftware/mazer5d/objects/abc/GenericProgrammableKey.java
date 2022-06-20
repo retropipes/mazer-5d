@@ -23,17 +23,17 @@ public abstract class GenericProgrammableKey extends GenericSingleKey {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return this.color + " Crystal";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return this.color + " Crystals";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return this.color + " Crystals may open Crystal Walls, and can be used only once.";
     }
 }

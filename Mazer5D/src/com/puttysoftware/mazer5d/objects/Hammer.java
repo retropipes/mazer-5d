@@ -15,17 +15,17 @@ class Hammer extends GenericSingleKey {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Hammer";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Hammers";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Hammers are used to destroy Brick Walls, and can only be used once.";
     }
 

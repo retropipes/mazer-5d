@@ -25,17 +25,17 @@ class PoisonedBarrierGenerator extends GenericGenerator {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Poisoned Barrier Generator";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Poisoned Barrier Generators";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Poisoned Barrier Generators create Barriers. When hit or shot, they stop generating for a while, then resume generating slower than normal.";
     }
 

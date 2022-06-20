@@ -14,17 +14,17 @@ class WhiteButton extends GenericButton {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "White Button";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "White Buttons";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "White Buttons will cause all White Walls Off to become On, and all White Walls On to become Off.";
     }
 

@@ -28,17 +28,17 @@ class GreenHouse extends FinishTo {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Green House";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Green Houses";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Green Houses send you inside when walked on.";
     }
 

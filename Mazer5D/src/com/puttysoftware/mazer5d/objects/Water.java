@@ -46,12 +46,12 @@ class Water extends GenericField {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Water";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Squares of Water";
     }
 
@@ -61,7 +61,7 @@ class Water extends GenericField {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Water is too unstable to walk on without Aqua Boots.";
     }
 

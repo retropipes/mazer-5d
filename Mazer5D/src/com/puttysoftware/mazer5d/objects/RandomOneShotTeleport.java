@@ -40,12 +40,12 @@ class RandomOneShotTeleport extends RandomTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Random One-Shot Teleport";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Random One-Shot Teleports";
     }
 
@@ -57,7 +57,7 @@ class RandomOneShotTeleport extends RandomTeleport {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Random One-Shot Teleports are random, and only work once.";
     }
 

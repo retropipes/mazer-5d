@@ -25,12 +25,12 @@ class WarpTrap extends GenericTrap {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Warp Trap";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Warp Traps";
     }
 
@@ -54,7 +54,7 @@ class WarpTrap extends GenericTrap {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Warp Traps send anything that steps on one to a random location.";
     }
 

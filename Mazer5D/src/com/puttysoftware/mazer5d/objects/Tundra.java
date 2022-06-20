@@ -15,17 +15,17 @@ class Tundra extends GenericGround {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Tundra";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Squares of Tundra";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Tundra is one of the many types of ground.";
     }
 

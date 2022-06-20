@@ -31,12 +31,12 @@ class Lava extends GenericField {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Lava";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Squares of Lava";
     }
 
@@ -46,7 +46,7 @@ class Lava extends GenericField {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Lava is too hot to walk on without Fire Boots.";
     }
 

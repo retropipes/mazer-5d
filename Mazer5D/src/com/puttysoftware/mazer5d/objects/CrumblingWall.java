@@ -38,17 +38,17 @@ class CrumblingWall extends GenericWall {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Crumbling Wall";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Crumbling Walls";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Crumbling Walls crumble to nothing when hit.";
     }
 

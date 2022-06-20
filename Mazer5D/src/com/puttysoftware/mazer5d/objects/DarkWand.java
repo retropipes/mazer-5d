@@ -22,12 +22,12 @@ class DarkWand extends GenericWand {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Dark Wand";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Dark Wands";
     }
 
@@ -47,7 +47,7 @@ class DarkWand extends GenericWand {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Dark Wands have 2 uses. When aimed at an empty space, they create a Dark Gem. When aimed at a Light Gem, it is destroyed.";
     }
 

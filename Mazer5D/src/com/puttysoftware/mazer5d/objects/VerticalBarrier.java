@@ -15,17 +15,17 @@ class VerticalBarrier extends GenericBarrier {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Vertical Barrier";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Vertical Barriers";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Vertical Barriers are impassable - you'll need to go around them.";
     }
 

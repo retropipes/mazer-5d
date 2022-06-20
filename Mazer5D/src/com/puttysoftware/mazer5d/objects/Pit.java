@@ -24,12 +24,12 @@ class Pit extends StairsDown {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Pit";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Pits";
     }
 
@@ -116,7 +116,7 @@ class Pit extends StairsDown {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Pits dump anything that wanders in to the floor below. If one of these is placed on the bottom-most floor, it is impassable.";
     }
 

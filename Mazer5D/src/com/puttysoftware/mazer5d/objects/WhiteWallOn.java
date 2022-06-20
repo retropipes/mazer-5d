@@ -16,17 +16,17 @@ class WhiteWallOn extends GenericToggleWall {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "White Wall On";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "White Walls On";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "White Walls On can NOT be walked through, and will change to White Walls Off when a White Button is pressed.";
     }
 

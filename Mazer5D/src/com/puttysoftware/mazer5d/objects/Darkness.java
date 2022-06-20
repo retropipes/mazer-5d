@@ -15,17 +15,17 @@ class Darkness extends GenericPassThroughObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Darkness";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return null;
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return null;
     }
 

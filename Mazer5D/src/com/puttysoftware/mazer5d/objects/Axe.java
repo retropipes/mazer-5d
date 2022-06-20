@@ -15,17 +15,17 @@ class Axe extends GenericInfiniteKey {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Axe";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Axe";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "With an Axe, Trees can be cut down. Axes never lose their ability to cut trees.";
     }
 

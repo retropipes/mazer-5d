@@ -41,7 +41,7 @@ class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Random Invisible One-Shot Teleport";
     }
 
@@ -51,7 +51,7 @@ class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Random Invisible One-Shot Teleports";
     }
 
@@ -63,7 +63,7 @@ class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Random Invisible One-Shot Teleports are random, invisible, and only work once.";
     }
 

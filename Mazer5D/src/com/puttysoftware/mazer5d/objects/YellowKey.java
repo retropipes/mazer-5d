@@ -16,17 +16,17 @@ class YellowKey extends GenericSingleKey {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Yellow Key";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Yellow Keys";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Yellow Keys will unlock Yellow Locks, and can only be used once.";
     }
 

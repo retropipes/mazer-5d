@@ -14,17 +14,17 @@ class PurpleButton extends GenericButton {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Purple Button";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Purple Buttons";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Purple Buttons will cause all Purple Walls Off to become On, and all Purple Walls On to become Off.";
     }
 

@@ -15,17 +15,17 @@ class EnergySphere extends GenericPass {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Energy Sphere";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Energy Spheres";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Energy Spheres permit walking on Force Fields.";
     }
 

@@ -23,12 +23,12 @@ class HurtTrap extends GenericTrap {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Hurt Trap";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Hurt Traps";
     }
 
@@ -43,7 +43,7 @@ class HurtTrap extends GenericTrap {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Hurt Traps hurt you when stepped on.";
     }
 

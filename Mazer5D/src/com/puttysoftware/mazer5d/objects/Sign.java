@@ -15,17 +15,17 @@ class Sign extends GenericTextHolder {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Sign";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Signs";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Signs display their message when walked into.";
     }
 

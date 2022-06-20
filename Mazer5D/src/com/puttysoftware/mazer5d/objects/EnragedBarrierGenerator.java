@@ -25,17 +25,17 @@ class EnragedBarrierGenerator extends GenericGenerator {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Enraged Barrier Generator";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Enraged Barrier Generators";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Enraged Barrier Generators create Barriers. When hit or shot, they stop generating for a while, then resume generating faster than normal.";
     }
 

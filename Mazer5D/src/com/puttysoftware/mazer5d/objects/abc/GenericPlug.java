@@ -22,17 +22,17 @@ public abstract class GenericPlug extends GenericInfiniteKey {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return this.letter + " Plug";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return this.letter + " Plugs";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return this.letter + " Plugs open " + this.letter + " Ports, and can be used infinitely many times.";
     }
 }

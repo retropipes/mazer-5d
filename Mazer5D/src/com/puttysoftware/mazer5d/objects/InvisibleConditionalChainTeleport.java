@@ -45,17 +45,17 @@ class InvisibleConditionalChainTeleport extends GenericConditionalTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Invisible Conditional Chain Teleport";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Invisible Conditional Chain Teleports";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Invisible Conditional Chain Teleports send you to one of two predetermined destinations when stepped on, depending on how many Sun or Moon Stones are in your inventory, and cannot be seen.";
     }
 

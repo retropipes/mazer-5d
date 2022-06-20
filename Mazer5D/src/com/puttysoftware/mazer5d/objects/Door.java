@@ -17,17 +17,17 @@ class Door extends GenericPassThroughObject {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Door";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Doors";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Doors are purely decorative, but they do stop arrows from passing through.";
     }
 

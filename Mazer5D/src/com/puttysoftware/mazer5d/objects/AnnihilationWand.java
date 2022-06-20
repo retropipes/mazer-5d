@@ -18,12 +18,12 @@ class AnnihilationWand extends GenericWand {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Annihilation Wand";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Annihilation Wands";
     }
 
@@ -34,7 +34,7 @@ class AnnihilationWand extends GenericWand {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Annihilation Wands will destroy any object (not ground) when used, except the Void or a Sealing Wall.";
     }
 

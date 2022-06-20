@@ -15,17 +15,17 @@ class SunkenBlock extends GenericGround {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Sunken Block";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Sunken Blocks";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Sunken Blocks are created when Pushable Blocks are pushed into Water, and behave just like Tiles.";
     }
 

@@ -24,17 +24,17 @@ class FireBomb extends GenericUsableObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Fire Bomb";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Fire Bombs";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Fire Bombs burn anything in an area of radius 2 centered on the target point.";
     }
 

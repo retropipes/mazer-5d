@@ -14,17 +14,17 @@ class GreenButton extends GenericButton {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Green Button";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Green Buttons";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Green Buttons will cause all Green Walls Off to become On, and all Green Walls On to become Off.";
     }
 

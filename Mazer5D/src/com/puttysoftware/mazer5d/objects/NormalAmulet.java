@@ -18,17 +18,17 @@ class NormalAmulet extends GenericAmulet {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Normal Amulet";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Normal Amulets";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Normal Amulets have no special effect. Note that you can only wear one amulet at once.";
     }
 

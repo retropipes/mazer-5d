@@ -34,7 +34,7 @@ class InvisiblePit extends Pit {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Invisible Pit";
     }
 
@@ -44,12 +44,12 @@ class InvisiblePit extends Pit {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Invislble Pits";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Invisible Pits dump anything that wanders in to the floor below. If one of these is placed on the bottom-most floor, it is impassable.";
     }
 

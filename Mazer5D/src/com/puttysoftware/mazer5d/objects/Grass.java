@@ -15,17 +15,17 @@ class Grass extends GenericGround {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Grass";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Squares of Grass";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Grass is one of the many types of ground.";
     }
 

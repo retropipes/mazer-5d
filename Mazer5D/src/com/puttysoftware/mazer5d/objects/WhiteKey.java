@@ -16,17 +16,17 @@ class WhiteKey extends GenericSingleKey {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "White Key";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "White Keys";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "White Keys will unlock White Locks, and can only be used once.";
     }
 

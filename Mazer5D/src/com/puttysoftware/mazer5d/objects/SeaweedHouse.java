@@ -28,17 +28,17 @@ class SeaweedHouse extends FinishTo {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Seaweed House";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Seaweed Houses";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Seaweed Houses send you inside when walked on.";
     }
 

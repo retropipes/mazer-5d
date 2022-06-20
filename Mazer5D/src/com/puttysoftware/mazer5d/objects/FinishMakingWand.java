@@ -17,12 +17,12 @@ class FinishMakingWand extends GenericWand {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Finish-Making Wand";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Finish-Making Wands";
     }
 
@@ -33,7 +33,7 @@ class FinishMakingWand extends GenericWand {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Finish-Making Wands will create a finish when used.";
     }
 

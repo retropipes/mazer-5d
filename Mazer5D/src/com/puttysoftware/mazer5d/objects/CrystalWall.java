@@ -15,17 +15,17 @@ class CrystalWall extends GenericProgrammableLock {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Crystal Wall";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Crystal Walls";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Crystal Walls require one Crystal to open. The crystal type required may be different from wall to wall.";
     }
 

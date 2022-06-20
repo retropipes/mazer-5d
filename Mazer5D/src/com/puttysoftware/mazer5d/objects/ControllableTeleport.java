@@ -30,12 +30,12 @@ class ControllableTeleport extends GenericTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Controllable Teleport";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Controllable Teleports";
     }
 
@@ -50,7 +50,7 @@ class ControllableTeleport extends GenericTeleport {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Controllable Teleports let you choose the place you teleport to.";
     }
 

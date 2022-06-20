@@ -28,17 +28,18 @@ public abstract class GenericTransientObject extends MazeObject {
     }
 
     @Override
-    public final String getName() {
+    protected
+    final String getNameHook() {
 	return this.name;
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return this.name + "s";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return null;
     }
 

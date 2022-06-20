@@ -11,26 +11,21 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class Sapphire extends MazeObject {
     // Constructors
     public Sapphire() {
-	super(false);
+	super(MazeObjects.SAPPHIRE);
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Sapphire";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Sapphires";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Sapphires increase your score when picked up.";
-    }
-
-    @Override
-    protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.SAPPHIRE;
     }
 }

@@ -50,12 +50,12 @@ class OneShotTeleport extends GenericTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "One-Shot Teleport";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "One-Shot Teleports";
     }
 
@@ -67,7 +67,7 @@ class OneShotTeleport extends GenericTeleport {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "One-Shot Teleports behave like regular Teleports, except they only work once.";
     }
 

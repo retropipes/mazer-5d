@@ -26,7 +26,8 @@ public abstract class GenericAmulet extends GenericInventoryableObject {
     }
 
     @Override
-    public abstract String getName();
+    protected
+    abstract String getNameHook();
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {

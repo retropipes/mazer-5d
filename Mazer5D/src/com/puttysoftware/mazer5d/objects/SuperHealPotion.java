@@ -16,12 +16,12 @@ class SuperHealPotion extends GenericPotion {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Super Heal Potion";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Super Heal Potions";
     }
 
@@ -31,7 +31,7 @@ class SuperHealPotion extends GenericPotion {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Super Heal Potions heal you completely when picked up.";
     }
 

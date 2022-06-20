@@ -19,17 +19,17 @@ class Bow extends GenericBow {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Bow";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Bows";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Bows shoot an unlimited supply of normal arrows.";
     }
 

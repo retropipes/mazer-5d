@@ -23,7 +23,7 @@ class InvisibleTeleport extends GenericInvisibleTeleport {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Invisible Teleport";
     }
 
@@ -33,7 +33,7 @@ class InvisibleTeleport extends GenericInvisibleTeleport {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Invisible Teleports";
     }
 
@@ -45,7 +45,7 @@ class InvisibleTeleport extends GenericInvisibleTeleport {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Invisible Teleports behave like regular teleports, except for the fact that they can't be seen.";
     }
 

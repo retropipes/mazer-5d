@@ -20,17 +20,17 @@ class FireAmulet extends GenericAmulet {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Fire Amulet";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Fire Amulets";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Fire Amulets grant the power to transform ground into Hot Rock for 30 steps. Note that you can only wear one amulet at once.";
     }
 

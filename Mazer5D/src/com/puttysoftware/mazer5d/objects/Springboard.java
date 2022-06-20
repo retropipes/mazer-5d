@@ -24,12 +24,12 @@ class Springboard extends StairsUp {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Springboard";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Springboards";
     }
 
@@ -116,7 +116,7 @@ class Springboard extends StairsUp {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Springboards bounce anything that wanders into them to the floor above. If one of these is placed on the top-most floor, it is impassable.";
     }
 

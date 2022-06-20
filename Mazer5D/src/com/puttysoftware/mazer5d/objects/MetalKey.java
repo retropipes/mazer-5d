@@ -16,17 +16,17 @@ class MetalKey extends GenericSingleKey {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Metal Key";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Metal Keys";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Metal Keys will open Metal Doors, and can only be used once.";
     }
 

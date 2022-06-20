@@ -43,7 +43,7 @@ class InvisibleWall extends GenericWall {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Invisible Wall";
     }
 
@@ -53,12 +53,12 @@ class InvisibleWall extends GenericWall {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Invisible Walls";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Invisible Walls look like any other open space, but block any attempt at moving into them.";
     }
 

@@ -20,7 +20,7 @@ class RandomInvisibleTeleport extends GenericRandomInvisibleTeleport {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Random Invisible Teleport";
     }
 
@@ -30,12 +30,12 @@ class RandomInvisibleTeleport extends GenericRandomInvisibleTeleport {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Random Invisible Teleports";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Random Invisible Teleports are both random and invisible.";
     }
 

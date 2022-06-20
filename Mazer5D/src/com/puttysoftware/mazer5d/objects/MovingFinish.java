@@ -101,7 +101,7 @@ class MovingFinish extends Finish {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Moving Finish";
     }
 
@@ -111,7 +111,7 @@ class MovingFinish extends Finish {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Moving Finishes";
     }
 
@@ -128,7 +128,7 @@ class MovingFinish extends Finish {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Moving Finishes lead to the next level, if one exists. Otherwise, entering one solves the maze.";
     }
 

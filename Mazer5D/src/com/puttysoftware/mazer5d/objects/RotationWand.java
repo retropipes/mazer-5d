@@ -26,12 +26,12 @@ class RotationWand extends GenericWand {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Rotation Wand";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Rotation Wands";
     }
 
@@ -75,7 +75,7 @@ class RotationWand extends GenericWand {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Rotation Wands will rotate part of the maze. You can choose the area of effect and the direction.";
     }
 

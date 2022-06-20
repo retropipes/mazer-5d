@@ -27,17 +27,17 @@ class ForceField extends GenericField {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Force Field";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Force Fields";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Force Fields block movement without an Energy Sphere.";
     }
 

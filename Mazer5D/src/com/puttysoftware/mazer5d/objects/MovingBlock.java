@@ -30,17 +30,17 @@ class MovingBlock extends GenericMovingObject implements Cloneable {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Moving Block";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Moving Blocks";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Moving Blocks move on their own. They cannot be pushed or pulled.";
     }
 

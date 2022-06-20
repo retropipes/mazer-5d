@@ -15,17 +15,17 @@ class HotRock extends GenericGround {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Hot Rock";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Squares of Hot Rock";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Hot Rock is one of the many types of ground. It is created by Fire Amulets and Hot Boots, but can also exist on its own.";
     }
 

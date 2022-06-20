@@ -24,12 +24,12 @@ class UTurnTrap extends GenericTrap {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "U Turn Trap";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "U Turn Traps";
     }
 
@@ -42,7 +42,7 @@ class UTurnTrap extends GenericTrap {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "U Turn Traps invert your controls for 10 steps when stepped on.";
     }
 

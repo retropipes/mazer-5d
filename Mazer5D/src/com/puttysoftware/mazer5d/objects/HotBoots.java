@@ -16,17 +16,17 @@ class HotBoots extends GenericBoots {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Hot Boots";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Pairs of Hot Boots";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Hot Boots transform any ground into Hot Rock as you walk. Note that you can only wear one pair of boots at once.";
     }
 

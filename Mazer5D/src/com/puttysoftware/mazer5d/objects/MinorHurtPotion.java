@@ -19,17 +19,17 @@ class MinorHurtPotion extends GenericPotion {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Minor Hurt Potion";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Minor Hurt Potions";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Minor Hurt Potions hurt you slightly when picked up.";
     }
 

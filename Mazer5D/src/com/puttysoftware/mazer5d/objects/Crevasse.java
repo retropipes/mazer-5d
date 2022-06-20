@@ -16,12 +16,12 @@ class Crevasse extends GenericWall {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Crevasse";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Crevasses";
     }
 
@@ -32,7 +32,7 @@ class Crevasse extends GenericWall {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Crevasses stop movement, but not arrows, which pass over them unimpeded.";
     }
 

@@ -15,17 +15,17 @@ class GoldenSquare extends GenericMultipleKey {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Golden Square";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Golden Squares";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Golden Squares are the keys to Golden Walls.";
     }
 

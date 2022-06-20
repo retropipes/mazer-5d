@@ -16,17 +16,17 @@ class SeaweedKey extends GenericSingleKey {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Seaweed Key";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Seaweed Keys";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Seaweed Keys will unlock Seaweed Locks, and can only be used once.";
     }
 

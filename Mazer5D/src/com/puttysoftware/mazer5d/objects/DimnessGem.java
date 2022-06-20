@@ -19,12 +19,12 @@ class DimnessGem extends GenericGem {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Dimness Gem";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Dimness Gems";
     }
 
@@ -35,7 +35,7 @@ class DimnessGem extends GenericGem {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Dimness Gems decrease the visible area by 1.";
     }
 

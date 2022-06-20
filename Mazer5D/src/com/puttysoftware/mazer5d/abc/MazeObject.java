@@ -16,6 +16,7 @@ import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.DataLoader;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.locale.LocaleLoader;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.utilities.ArrowTypes;
@@ -27,7 +28,7 @@ import com.puttysoftware.mazer5d.utilities.RandomGenerationRule;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 import com.puttysoftware.randomrange.RandomRange;
 
-public abstract class MazeObject implements RandomGenerationRule {
+public class MazeObject implements RandomGenerationRule {
     // Properties
     private SolidProperties sp;
     private MoveProperties mp;
@@ -42,6 +43,7 @@ public abstract class MazeObject implements RandomGenerationRule {
     private MazeObject savedObject;
     private MazeObjects uniqueID;
     private static final int NO_CUSTOM_COUNTERS = 0;
+    private static final String NAME_PLACEHOLDER = "INSERT NAME HERE";
 
     // Constructors
     public MazeObject(final MazeObjects uid) {
@@ -56,7 +58,7 @@ public abstract class MazeObject implements RandomGenerationRule {
 	this.ct = new CustomTexts();
 	this.tp = new TypeProperties();
     }
-    
+
     protected MazeObject(final boolean isSolid) {
 	this.sp = new SolidProperties();
 	this.sp.setSolid(isSolid);
@@ -768,7 +770,7 @@ public abstract class MazeObject implements RandomGenerationRule {
     }
 
     public void gameProbeHook() {
-	Mazer5D.getBagOStuff().showMessage(this.getName());
+	Mazer5D.getBagOStuff().showMessage(this.getNameHook());
     }
 
     public void editorPlaceHook() {
@@ -786,7 +788,7 @@ public abstract class MazeObject implements RandomGenerationRule {
     }
 
     public void editorProbeHook() {
-	Mazer5D.getBagOStuff().showMessage(this.getName());
+	Mazer5D.getBagOStuff().showMessage(this.getNameHook());
     }
 
     public MazeObject editorPropertiesHook() {
@@ -1002,7 +1004,7 @@ public abstract class MazeObject implements RandomGenerationRule {
     }
 
     public String getGameName() {
-	return this.getName();
+	return this.getNameHook();
     }
 
     /**
@@ -1019,11 +1021,41 @@ public abstract class MazeObject implements RandomGenerationRule {
 	// Do nothing
     }
 
-    abstract public String getName();
+    public final String getName() {
+	String loaded = LocaleLoader.loadObjectName(this.getUniqueID());
+	if (loaded != MazeObject.NAME_PLACEHOLDER) {
+	    return loaded;
+	}
+	return this.getNameHook();
+    }
 
-    abstract public String getPluralName();
+    protected String getNameHook() {
+	return "";
+    }
 
-    abstract public String getDescription();
+    public final String getPluralName() {
+	String loaded = LocaleLoader.loadObjectPluralName(this.getUniqueID());
+	if (loaded != MazeObject.NAME_PLACEHOLDER) {
+	    return loaded;
+	}
+	return this.getPluralNameHook();
+    }
+
+    protected String getPluralNameHook() {
+	return "";
+    }
+
+    public final String getDescription() {
+	String loaded = LocaleLoader.loadObjectDescription(this.getUniqueID());
+	if (loaded != MazeObject.NAME_PLACEHOLDER) {
+	    return loaded;
+	}
+	return this.getDescriptionHook();
+    }
+
+    protected String getDescriptionHook() {
+	return "";
+    }
 
     public final int getLayer() {
 	int uid = this.getUniqueIDHook().ordinal();
@@ -1097,9 +1129,9 @@ public abstract class MazeObject implements RandomGenerationRule {
 
     // File I/O-related methods
     public final String getXMLIdentifier() {
-	return this.getName();
+	return this.getNameHook();
     }
-    
+
     public final MazeObjects getUniqueID() {
 	if (this.uniqueID != null) {
 	    return this.uniqueID;

@@ -64,7 +64,7 @@ class BreakableWallHorizontal extends GenericWall {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Breakable Wall Horizontal";
     }
 
@@ -74,12 +74,12 @@ class BreakableWallHorizontal extends GenericWall {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Breakable Walls Horizontal";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Breakable Walls Horizontal disintegrate when touched, causing other Breakable Walls Horizontal nearby to also disintegrate.";
     }
 

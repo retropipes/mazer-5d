@@ -14,17 +14,17 @@ class BlueButton extends GenericButton {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Blue Button";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Blue Buttons";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Blue Buttons will cause all Blue Walls Off to become On, and all Blue Walls On to become Off.";
     }
 

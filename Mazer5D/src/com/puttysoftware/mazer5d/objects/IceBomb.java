@@ -24,17 +24,17 @@ class IceBomb extends GenericUsableObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Ice Bomb";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Ice Bombs";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Ice Bombs freeze anything in an area of radius 2 centered on the target point.";
     }
 

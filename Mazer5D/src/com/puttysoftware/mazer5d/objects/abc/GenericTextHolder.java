@@ -35,7 +35,8 @@ public abstract class GenericTextHolder extends MazeObject {
     }
 
     @Override
-    public abstract String getName();
+    protected
+    abstract String getNameHook();
 
     @Override
     protected int getLayerHook() {

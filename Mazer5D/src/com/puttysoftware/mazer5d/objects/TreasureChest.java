@@ -34,12 +34,12 @@ class TreasureChest extends GenericContainer {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Treasure Chest";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Treasure Chests";
     }
 
@@ -49,7 +49,7 @@ class TreasureChest extends GenericContainer {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Treasure Chests require Keys to open, and contain 1 other item.";
     }
 

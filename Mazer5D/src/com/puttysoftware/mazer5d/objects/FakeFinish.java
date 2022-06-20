@@ -26,7 +26,7 @@ class FakeFinish extends GenericPassThroughObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Fake Finish";
     }
 
@@ -36,12 +36,12 @@ class FakeFinish extends GenericPassThroughObject {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Fake Finishes";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Fake Finishes look like regular finishes but don't lead anywhere.";
     }
 

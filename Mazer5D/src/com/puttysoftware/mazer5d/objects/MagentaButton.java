@@ -14,17 +14,17 @@ class MagentaButton extends GenericButton {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Magenta Button";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Magenta Buttons";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Magenta Buttons will cause all Magenta Walls Off to become On, and all Magenta Walls On to become Off.";
     }
 

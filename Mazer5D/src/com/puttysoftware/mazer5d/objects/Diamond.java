@@ -11,26 +11,21 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class Diamond extends MazeObject {
     // Constructors
     public Diamond() {
-	super(false);
+	super(MazeObjects.DIAMOND);
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Diamond";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Diamonds";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Diamonds increase your score when picked up.";
-    }
-
-    @Override
-    protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.DIAMOND;
     }
 }

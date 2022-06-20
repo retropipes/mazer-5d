@@ -15,17 +15,17 @@ class TopazSquare extends GenericMultipleKey {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Topaz Square";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Topaz Squares";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Topaz Squares are the keys to Topaz Walls.";
     }
 

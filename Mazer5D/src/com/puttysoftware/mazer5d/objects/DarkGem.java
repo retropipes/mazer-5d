@@ -15,17 +15,17 @@ class DarkGem extends GenericLightModifier {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Dark Gem";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Dark Gems";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Dark Gems shroud the immediately adjacent area in permanent darkness.";
     }
 

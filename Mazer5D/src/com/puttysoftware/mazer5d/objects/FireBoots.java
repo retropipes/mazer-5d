@@ -15,17 +15,17 @@ class FireBoots extends GenericBoots {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Fire Boots";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Pairs of Fire Boots";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Fire Boots allow walking on lava. Note that you can only wear one pair of boots at once.";
     }
 

@@ -24,17 +24,17 @@ class ShockBomb extends GenericUsableObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Shock Bomb";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Shock Bombs";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Shock Bombs shock anything in an area of radius 2 centered on the target point.";
     }
 

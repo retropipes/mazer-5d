@@ -50,12 +50,12 @@ class OneShotChainTeleport extends GenericTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "One-Shot Chain Teleport";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "One-Shot Chain Teleports";
     }
 
@@ -67,7 +67,7 @@ class OneShotChainTeleport extends GenericTeleport {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "One-Shot Chain Teleports behave like regular Teleports, except they only work once.";
     }
 

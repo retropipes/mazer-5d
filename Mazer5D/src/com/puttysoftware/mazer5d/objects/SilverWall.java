@@ -15,17 +15,17 @@ class SilverWall extends GenericMultipleLock {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Silver Wall";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Silver Walls";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Silver Walls are impassable without enough Silver Squares.";
     }
 

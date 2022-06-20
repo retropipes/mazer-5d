@@ -39,7 +39,7 @@ class InvisibleOneShotChainTeleport extends GenericInvisibleTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Invisible One-Shot Chain Teleport";
     }
 
@@ -49,7 +49,7 @@ class InvisibleOneShotChainTeleport extends GenericInvisibleTeleport {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Invisible One-Shot Chain Teleports";
     }
 
@@ -61,7 +61,7 @@ class InvisibleOneShotChainTeleport extends GenericInvisibleTeleport {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Invisible One-Shot Chain Teleports are a combination of invisible, one-shot, and chain teleport behaviors.";
     }
 

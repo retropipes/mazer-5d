@@ -24,12 +24,12 @@ class DrunkTrap extends GenericTrap {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Drunk Trap";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Drunk Traps";
     }
 
@@ -42,7 +42,7 @@ class DrunkTrap extends GenericTrap {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Drunk Traps alter your movement in a way that resembles being intoxicated for 10 steps when stepped on.";
     }
 

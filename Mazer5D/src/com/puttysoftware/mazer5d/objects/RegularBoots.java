@@ -15,17 +15,17 @@ class RegularBoots extends GenericBoots {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Regular Boots";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Pairs of Regular Boots";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "";
     }
 

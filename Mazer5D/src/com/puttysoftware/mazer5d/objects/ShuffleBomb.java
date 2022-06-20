@@ -24,17 +24,17 @@ class ShuffleBomb extends GenericUsableObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Shuffle Bomb";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Shuffle Bombs";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Shuffle Bombs randomly rearrange anything in an area of radius 3 centered on the target point.";
     }
 

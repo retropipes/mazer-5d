@@ -20,12 +20,12 @@ class ArrowTrap extends GenericTrap {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Arrow Trap";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Arrow Traps";
     }
 
@@ -42,7 +42,7 @@ class ArrowTrap extends GenericTrap {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Arrow Traps stop arrows.";
     }
 

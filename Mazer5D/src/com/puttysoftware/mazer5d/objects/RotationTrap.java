@@ -81,12 +81,12 @@ class RotationTrap extends GenericTrap implements Cloneable {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Rotation Trap";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Rotation Traps";
     }
 
@@ -115,7 +115,7 @@ class RotationTrap extends GenericTrap implements Cloneable {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Rotation Traps rotate part of the maze when stepped on.";
     }
 

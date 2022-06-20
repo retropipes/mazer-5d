@@ -18,12 +18,12 @@ class WallBreakingWand extends GenericWand {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Wall-Breaking Wand";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Wall-Breaking Wands";
     }
 
@@ -34,7 +34,7 @@ class WallBreakingWand extends GenericWand {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Wall-Breaking Wands will destroy one wall when used, if aimed at a wall.";
     }
 

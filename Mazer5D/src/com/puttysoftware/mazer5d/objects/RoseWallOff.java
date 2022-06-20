@@ -16,17 +16,17 @@ class RoseWallOff extends GenericToggleWall {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Rose Wall Off";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Rose Walls Off";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Rose Walls Off can be walked through, and will change to Rose Walls On when a Rose Button is pressed.";
     }
 

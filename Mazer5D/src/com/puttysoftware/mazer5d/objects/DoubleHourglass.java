@@ -23,12 +23,12 @@ class DoubleHourglass extends GenericTimeModifier {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Double Hourglass";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Double Hourglasses";
     }
 
@@ -41,7 +41,7 @@ class DoubleHourglass extends GenericTimeModifier {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Double Hourglasses extend the time to solve the current level by double the initial value.";
     }
 

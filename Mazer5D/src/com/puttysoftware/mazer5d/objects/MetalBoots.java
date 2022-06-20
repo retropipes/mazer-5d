@@ -15,17 +15,17 @@ class MetalBoots extends GenericBoots {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Metal Boots";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Pairs of Metal Boots";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Metal Boots allow Metal Buttons to be triggered. Note that you can only wear one pair of boots at once.";
     }
 

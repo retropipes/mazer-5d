@@ -14,6 +14,7 @@ import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
+import com.puttysoftware.mazer5d.locale.LocaleLoader;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.mazer5d.utilities.GUIConstants;
 
@@ -39,6 +40,7 @@ public class Mazer5D {
 	// Integrate with host platform
 	final Integration ni = new Integration();
 	ni.configureLookAndFeel();
+	LocaleLoader.init();
 	MainWindow.createMainWindow(GUIConstants.GUI_WIDTH, GUIConstants.GUI_HEIGHT);
 	Mazer5D.bagOStuff = new BagOStuff();
 	ni.setAboutHandler(Mazer5D.bagOStuff.getAboutThisGame());

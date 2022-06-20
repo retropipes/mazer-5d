@@ -11,26 +11,21 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class Ruby extends MazeObject {
     // Constructors
     public Ruby() {
-	super(false);
+	super(MazeObjects.RUBY);
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Ruby";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Rubys";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Rubys increase your score when picked up.";
-    }
-
-    @Override
-    protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.RUBY;
     }
 }

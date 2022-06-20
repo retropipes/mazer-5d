@@ -15,17 +15,17 @@ class SapphireWall extends GenericMultipleLock {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Sapphire Wall";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Sapphire Walls";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Sapphire Walls are impassable without enough Sapphire Squares.";
     }
 

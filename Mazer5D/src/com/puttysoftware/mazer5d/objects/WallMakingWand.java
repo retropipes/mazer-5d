@@ -17,12 +17,12 @@ class WallMakingWand extends GenericWand {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Wall-Making Wand";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Wall-Making Wands";
     }
 
@@ -33,7 +33,7 @@ class WallMakingWand extends GenericWand {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Wall-Making Wands will create an ordinary wall in the target square when used.";
     }
 

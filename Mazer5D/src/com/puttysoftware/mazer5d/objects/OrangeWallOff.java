@@ -16,17 +16,17 @@ class OrangeWallOff extends GenericToggleWall {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Orange Wall Off";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Orange Walls Off";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Orange Walls Off can be walked through, and will change to Orange Walls On when a Orange Button is pressed.";
     }
 

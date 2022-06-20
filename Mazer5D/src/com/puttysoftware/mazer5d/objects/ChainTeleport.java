@@ -35,12 +35,12 @@ class ChainTeleport extends GenericTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Chain Teleport";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Chain Teleports";
     }
 
@@ -52,7 +52,7 @@ class ChainTeleport extends GenericTeleport {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Chain Teleports send you to a predetermined destination when stepped on.";
     }
 

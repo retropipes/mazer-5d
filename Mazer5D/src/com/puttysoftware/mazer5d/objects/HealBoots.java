@@ -19,17 +19,17 @@ class HealBoots extends GenericBoots {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Heal Boots";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Pairs of Heal Boots";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Heal Boots restore your health as you walk. Note that you can only wear one pair of boots at once.";
     }
 

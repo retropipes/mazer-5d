@@ -31,12 +31,12 @@ class Slime extends GenericField {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Slime";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Squares of Slime";
     }
 
@@ -46,7 +46,7 @@ class Slime extends GenericField {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Slime is too corrosive to walk on without Bio-Hazard Boots.";
     }
 

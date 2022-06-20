@@ -11,26 +11,21 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 class Amethyst extends MazeObject {
     // Constructors
     public Amethyst() {
-	super(false);
+	super(MazeObjects.AMETHYST);
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Amethyst";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Amethysts";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Amethysts increase your score when picked up.";
-    }
-
-    @Override
-    protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.AMETHYST;
     }
 }

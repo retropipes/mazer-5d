@@ -15,17 +15,17 @@ class GarnetSquare extends GenericMultipleKey {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Garnet Square";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Garnet Squares";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Garnet Squares are the keys to Garnet Walls.";
     }
 

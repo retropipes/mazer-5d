@@ -28,12 +28,12 @@ class StairsDown extends GenericTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Stairs Down";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Sets of Stairs Down";
     }
 
@@ -81,7 +81,7 @@ class StairsDown extends GenericTeleport {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Stairs Down lead to the floor below.";
     }
 

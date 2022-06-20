@@ -15,17 +15,17 @@ class PushablePullableBlock extends GenericMovableObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Pushable/Pullable Block";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Pushable/Pullable Blocks";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Pushable/Pullable Blocks can be both pushed and pulled.";
     }
 

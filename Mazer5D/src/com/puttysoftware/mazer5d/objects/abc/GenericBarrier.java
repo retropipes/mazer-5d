@@ -36,7 +36,8 @@ public abstract class GenericBarrier extends GenericWall {
     }
 
     @Override
-    public abstract String getName();
+    protected
+    abstract String getNameHook();
 
     @Override
     protected int getLayerHook() {

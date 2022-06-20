@@ -18,12 +18,12 @@ class Player extends GenericCharacter {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Player";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Players";
     }
 
@@ -40,7 +40,7 @@ class Player extends GenericCharacter {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "This is you - the Player.";
     }
 

@@ -15,17 +15,17 @@ class CutTree extends GenericPassThroughObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Cut Tree";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Cut Trees";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Cut Trees are the leftover stubs of Trees that have been cut by an Axe.";
     }
 

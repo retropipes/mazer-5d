@@ -14,17 +14,17 @@ class YellowButton extends GenericButton {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Yellow Button";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Yellow Buttons";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Yellow Buttons will cause all Yellow Walls Off to become On, and all Yellow Walls On to become Off.";
     }
 

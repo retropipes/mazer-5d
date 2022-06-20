@@ -16,17 +16,17 @@ class BlueWallOn extends GenericToggleWall {
 
     // Scriptability
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Blue Wall On";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Blue Walls On";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Blue Walls On can NOT be walked through, and will change to Blue Walls Off when a Blue Button is pressed.";
     }
 

@@ -32,12 +32,12 @@ class Finish extends GenericTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Finish";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Finishes";
     }
 
@@ -57,7 +57,7 @@ class Finish extends GenericTeleport {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Finishes lead to the next level, if one exists. Otherwise, entering one solves the maze.";
     }
 

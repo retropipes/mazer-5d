@@ -15,17 +15,17 @@ class Tablet extends GenericInfiniteKey {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Tablet";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Tablets";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Tablets are used to fill Tablet Slots, and make them disappear. Tablets can be used infinitely many times.";
     }
 

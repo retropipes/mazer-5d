@@ -14,7 +14,7 @@ class TrappedWall6 extends GenericTrappedWall {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Trapped Walls 6 disappear when any Wall Trap 6 is triggered.";
     }
 

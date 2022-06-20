@@ -16,17 +16,17 @@ class InvisibleOneShotConditionalTeleport extends GenericConditionalTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Invisible One-Shot Conditional Teleport";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Invisible One-Shot Conditional Teleports";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Invisible One-Shot Conditional Teleports send you to one of two predetermined destinations when stepped on, depending on how many Sun or Moon Stones are in your inventory, then disappear, and cannot be seen.";
     }
 

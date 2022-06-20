@@ -19,17 +19,17 @@ class ShockBow extends GenericBow {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Shock Bow";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Shock Bows";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Shock Bows allow shooting of Shock Arrows, which energize Barrier Generators upon contact, and do everything normal arrows do.";
     }
 

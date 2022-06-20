@@ -21,12 +21,12 @@ class WarpWand extends GenericWand {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Warp Wand";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Warp Wands";
     }
 
@@ -44,7 +44,7 @@ class WarpWand extends GenericWand {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Warp Wands will teleport the object at the target square to a random location when used.";
     }
 

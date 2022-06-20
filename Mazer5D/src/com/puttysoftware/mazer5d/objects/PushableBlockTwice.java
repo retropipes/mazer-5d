@@ -23,12 +23,12 @@ class PushableBlockTwice extends GenericMovableObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Pushable Block Twice";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Pushable Blocks Twice";
     }
 
@@ -42,7 +42,7 @@ class PushableBlockTwice extends GenericMovableObject {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Pushable Blocks Twice can only be pushed twice, before turning into a wall.";
     }
 

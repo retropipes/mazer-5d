@@ -25,17 +25,17 @@ class ShockedBarrierGenerator extends GenericGenerator {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Shocked Barrier Generator";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Shocked Barrier Generators";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Shocked Barrier Generators create Barriers. When hit or shot, they stop generating for a while, then resume generating MUCH faster than normal.";
     }
 

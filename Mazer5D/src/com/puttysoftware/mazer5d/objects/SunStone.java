@@ -24,17 +24,17 @@ class SunStone extends GenericInventoryableObject {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Sun Stone";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Sun Stones";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Sun Stones act as a trigger for other actions when collected.";
     }
 

@@ -15,17 +15,17 @@ class RubySquare extends GenericMultipleKey {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Ruby Square";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Ruby Squares";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Ruby Squares are the keys to Ruby Walls.";
     }
 

@@ -37,7 +37,7 @@ class FadingWall extends GenericWall {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Fading Wall";
     }
 
@@ -47,12 +47,12 @@ class FadingWall extends GenericWall {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Fading Walls";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Fading Walls disappear when you get close to them.";
     }
 

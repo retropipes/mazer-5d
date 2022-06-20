@@ -19,5 +19,6 @@ public abstract class GenericInfiniteKey extends GenericKey {
 
     // Scriptability
     @Override
-    public abstract String getName();
+    protected
+    abstract String getNameHook();
 }

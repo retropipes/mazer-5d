@@ -19,17 +19,17 @@ class GhostBow extends GenericBow {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Ghost Bow";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Ghost Bows";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Ghost Bows allow shooting of Ghost Arrows, which pass through objects that do not react to arrows, even if they are solid, and do everything normal arrows do.";
     }
 

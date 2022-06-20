@@ -41,17 +41,17 @@ class TwoWayTeleport extends GenericTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Two-Way Teleport";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Two-Way Teleports";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Two-Way Teleports send you to their companion at their destination, and are linked such that stepping on the companion sends you back to the original.";
     }
 

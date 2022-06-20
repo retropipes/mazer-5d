@@ -16,17 +16,17 @@ class OneShotConditionalTeleport extends GenericConditionalTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "One-Shot Conditional Teleport";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "One-Shot Conditional Teleports";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "One-Shot Conditional Teleports send you to one of two predetermined destinations when stepped on, depending on how many Sun or Moon Stones are in your inventory, then disappear.";
     }
 

@@ -16,17 +16,20 @@ public abstract class GenericCarpet extends GenericGround {
     }
 
     @Override
-    public final String getName() {
+    protected
+    final String getNameHook() {
 	return this.color + " Carpet";
     }
 
     @Override
-    public final String getPluralName() {
+    protected
+    final String getPluralNameHook() {
 	return "Squares of " + this.color + " Carpet";
     }
 
     @Override
-    public final String getDescription() {
+    protected
+    final String getDescriptionHook() {
 	return "Squares of " + this.color + " Carpet are one of the many types of ground.";
     }
 }

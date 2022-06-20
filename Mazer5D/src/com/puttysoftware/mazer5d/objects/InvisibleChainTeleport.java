@@ -37,7 +37,7 @@ class InvisibleChainTeleport extends GenericInvisibleTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Invisible Chain Teleport";
     }
 
@@ -47,7 +47,7 @@ class InvisibleChainTeleport extends GenericInvisibleTeleport {
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Invisible Chain Teleports";
     }
 
@@ -59,7 +59,7 @@ class InvisibleChainTeleport extends GenericInvisibleTeleport {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Invisible Chain Teleports behave like regular teleports, except for the fact that they can't be seen.";
     }
 

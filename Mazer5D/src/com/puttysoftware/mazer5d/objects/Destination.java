@@ -16,12 +16,12 @@ class Destination extends GenericTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Destination";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Destinations";
     }
 
@@ -31,7 +31,7 @@ class Destination extends GenericTeleport {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Destinations are where Teleports take you to.";
     }
 

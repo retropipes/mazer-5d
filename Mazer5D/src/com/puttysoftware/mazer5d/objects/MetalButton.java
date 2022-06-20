@@ -116,12 +116,12 @@ class MetalButton extends GenericField {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Metal Button";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Metal Buttons";
     }
 
@@ -158,7 +158,7 @@ class MetalButton extends GenericField {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Metal Buttons will not trigger without Metal Boots.";
     }
 

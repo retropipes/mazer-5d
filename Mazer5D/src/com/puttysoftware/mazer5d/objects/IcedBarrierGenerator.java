@@ -54,17 +54,17 @@ class IcedBarrierGenerator extends GenericWall {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Iced Barrier Generator";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Iced Barrier Generators";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Iced Barrier Generators are Barrier Generators that have been hit by an Ice Arrow or Ice Bomb.";
     }
 

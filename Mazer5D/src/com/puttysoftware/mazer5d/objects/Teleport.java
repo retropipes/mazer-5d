@@ -22,12 +22,12 @@ class Teleport extends GenericTeleport {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Teleport";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Teleports";
     }
 
@@ -39,7 +39,7 @@ class Teleport extends GenericTeleport {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Teleports send you to a predetermined destination when stepped on.";
     }
 

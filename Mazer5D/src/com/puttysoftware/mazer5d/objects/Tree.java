@@ -40,17 +40,17 @@ class Tree extends GenericInfiniteLock {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Tree";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Trees";
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Trees transform into Cut Trees when hit with an Axe.";
     }
 

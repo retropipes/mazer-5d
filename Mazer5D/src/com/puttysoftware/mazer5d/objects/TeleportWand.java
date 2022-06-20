@@ -20,12 +20,12 @@ class TeleportWand extends GenericWand {
     }
 
     @Override
-    public String getName() {
+    protected String getNameHook() {
 	return "Teleport Wand";
     }
 
     @Override
-    public String getPluralName() {
+    protected String getPluralNameHook() {
 	return "Teleport Wands";
     }
 
@@ -42,7 +42,7 @@ class TeleportWand extends GenericWand {
     }
 
     @Override
-    public String getDescription() {
+    protected String getDescriptionHook() {
 	return "Teleport Wands will teleport you to the target square when used. You cannot teleport to areas you cannot see.";
     }
 
