@@ -11,6 +11,7 @@ import java.io.IOException;
 import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.MazeObject;
+import com.puttysoftware.mazer5d.files.FileExtensions;
 import com.puttysoftware.mazer5d.files.TempDirCleanup;
 import com.puttysoftware.mazer5d.files.format.FormatConstants;
 import com.puttysoftware.mazer5d.files.format.PrefixIO;
@@ -963,7 +964,7 @@ public class Maze {
     }
 
     private File getLevelFile(final int level) {
-	return new File(this.basePath + File.separator + level + ".level");
+	return new File(this.basePath + File.separator + level + FileExtensions.getMazeLevelExtensionWithPeriod());
     }
 
     public void writeMaze() throws IOException {

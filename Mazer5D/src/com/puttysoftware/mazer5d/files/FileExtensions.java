@@ -10,11 +10,12 @@ public class FileExtensions {
     private static final String MAZE_EXTENSION = "jsonmaze.zip";
     private static final String GAME_EXTENSION = "jsongame.zip";
     private static final String LOCKED_MAZE_EXTENSION = "jsonmaze.locked.zip";
-    private static final String MAZE_TEMP_EXTENSION = "json";
+    private static final String MAZE_LEVEL_EXTENSION = "level.json";
     private static final String CHARACTER_EXTENSION = "partymember.json";
     private static final String REGISTRY_EXTENSION = "registry.json";
     private static final String PREFS_EXTENSION = "prefs.properties";
-    private static final String INTERNAL_DATA_EXTENSION = "txt";
+    private static final String DATA_FILE_EXTENSION = "txt";
+    private static final String RAW_FILE_EXTENSION = "json";
 
     // Methods
     public static String getMazeExtension() {
@@ -33,8 +34,8 @@ public class FileExtensions {
 	return "." + FileExtensions.LOCKED_MAZE_EXTENSION;
     }
 
-    public static String getMazeTempExtensionWithPeriod() {
-	return "." + FileExtensions.MAZE_TEMP_EXTENSION;
+    public static String getMazeLevelExtensionWithPeriod() {
+	return "." + FileExtensions.MAZE_LEVEL_EXTENSION;
     }
 
     public static String getGameExtension() {
@@ -65,7 +66,11 @@ public class FileExtensions {
 	return "." + FileExtensions.REGISTRY_EXTENSION;
     }
 
-    public static String getInternalDataExtensionWithPeriod() {
-	return "." + FileExtensions.INTERNAL_DATA_EXTENSION;
+    public static String getDataFileExtensionWithPeriod() {
+	return "." + FileExtensions.DATA_FILE_EXTENSION;
+    }
+    
+    public static String getRawFileExtensionWithPeriod() {
+	return "." + FileExtensions.RAW_FILE_EXTENSION;
     }
 }
