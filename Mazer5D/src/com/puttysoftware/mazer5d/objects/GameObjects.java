@@ -154,8 +154,8 @@ public class GameObjects {
 	GameObjects.allObjectsLookup.put(MazeObjects.A_PLUG, new APlug());
 	GameObjects.allObjectsLookup.put(MazeObjects.A_PORT, new APort());
 	GameObjects.allObjectsLookup.put(MazeObjects.AQUA_BOOTS, new AquaBoots());
-	GameObjects.allObjectsLookup.put(MazeObjects.ARROW, new ArrowTrap());
-	GameObjects.allObjectsLookup.put(MazeObjects.ARROW_TRAP, null);
+	GameObjects.allObjectsLookup.put(MazeObjects.ARROW, null);
+	GameObjects.allObjectsLookup.put(MazeObjects.ARROW_TRAP, new ArrowTrap());
 	GameObjects.allObjectsLookup.put(MazeObjects.AXE, new Axe());
 	GameObjects.allObjectsLookup.put(MazeObjects.BARRIER_GENERATOR, new BarrierGenerator());
 	GameObjects.allObjectsLookup.put(MazeObjects.BIO_HAZARD_BOOTS, new BioHazardBoots());
