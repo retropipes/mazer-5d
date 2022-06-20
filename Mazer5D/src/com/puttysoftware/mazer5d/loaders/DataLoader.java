@@ -168,6 +168,25 @@ public class DataLoader {
 	return DataLoader.OBJECT_IMAGE_NAME_CACHE;
     }
 
+    public static String[] loadAllObjectHelpDescriptions() {
+	try (final ResourceStreamReader rsr = new ResourceStreamReader(DataLoader.class.getResourceAsStream(
+		"/assets/data/image/objecthelpdesc" + FileExtensions.getDataFileExtensionWithPeriod()))) {
+	    // Fetch data
+	    final ArrayList<String> data = new ArrayList<>();
+	    String raw = "0";
+	    while (raw != null) {
+		raw = rsr.readString();
+		if (raw != null) {
+		    data.add(raw);
+		}
+	    }
+	    return data.toArray(new String[data.size()]);
+	} catch (final IOException e) {
+	    Mazer5D.logError(e);
+	    return null;
+	}
+    }
+
     public static String[] loadLogoImageData() {
 	try (final ResourceStreamReader rsr = new ResourceStreamReader(DataLoader.class
 		.getResourceAsStream("/assets/data/image/logo" + FileExtensions.getDataFileExtensionWithPeriod()))) {

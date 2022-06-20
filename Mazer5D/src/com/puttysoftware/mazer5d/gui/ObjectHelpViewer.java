@@ -19,7 +19,7 @@ import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.help.GraphicalHelpViewer;
-import com.puttysoftware.mazer5d.locale.LocaleLoader;
+import com.puttysoftware.mazer5d.loaders.DataLoader;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 
 public class ObjectHelpViewer {
@@ -52,7 +52,7 @@ public class ObjectHelpViewer {
 
     private void initHelp() {
 	this.buttonHandler = new ButtonHandler();
-	this.objectNames = LocaleLoader.loadAllObjectHelpDescriptions();
+	this.objectNames = DataLoader.loadAllObjectHelpDescriptions();
 	this.objectAppearances = GameObjects.getAllObjectHelpAppearances();
 	this.hv = new GraphicalHelpViewer(this.objectAppearances, this.objectNames, new Color(223, 223, 223));
 	this.export = new JButton("Export");
