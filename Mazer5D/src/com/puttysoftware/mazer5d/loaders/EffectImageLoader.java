@@ -18,17 +18,12 @@ Any questions should be directed to the author via email at: fantastle@worldwiza
  */
 package com.puttysoftware.mazer5d.loaders;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-
 import com.puttysoftware.images.BufferedImageIcon;
-import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.EffectImageIndex;
+import com.puttysoftware.mazer5d.files.FileExtensions;
 
 public class EffectImageLoader {
     private static String[] allFilenames;
-    private static Properties fileExtensions;
     private static boolean cached = false;
     private static final int MAX_INDEX = 21;
 
@@ -38,7 +33,7 @@ public class EffectImageLoader {
 	    EffectImageLoader.cached = true;
 	}
 	if (image != EffectImageIndex._NONE) {
-	    final String imageExt = EffectImageLoader.fileExtensions.getProperty("images");
+	    final String imageExt = FileExtensions.getImageExtensionWithPeriod();
 	    final String name = "/assets/image/effect/" + EffectImageLoader.allFilenames[image.ordinal()] + imageExt;
 	    return ImageLoader.load(name, EffectImageLoader.class.getResource(name));
 	}
@@ -116,14 +111,7 @@ public class EffectImageLoader {
 
     private static void cacheAll() {
 	EffectImageLoader.allFilenames = DataLoader.loadEffectImageData();
-	try (final InputStream stream = EffectImageLoader.class
-		.getResourceAsStream("/assets/data/extension/extension.properties")) {
-	    EffectImageLoader.fileExtensions = new Properties();
-	    EffectImageLoader.fileExtensions.load(stream);
-	} catch (final IOException e) {
-	    Mazer5D.logError(e);
-	}
-	final String imageExt = EffectImageLoader.fileExtensions.getProperty("images");
+	final String imageExt = FileExtensions.getImageExtensionWithPeriod();
 	for (int i = 0; i <= EffectImageLoader.MAX_INDEX; i++) {
 	    final String name = "/assets/image/effect/" + EffectImageLoader.allFilenames[i] + imageExt;
 	    try {

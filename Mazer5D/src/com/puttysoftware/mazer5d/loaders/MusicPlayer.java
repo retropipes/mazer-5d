@@ -1,13 +1,11 @@
 package com.puttysoftware.mazer5d.loaders;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 import com.puttysoftware.audio.ogg.OggPlayer;
-import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
+import com.puttysoftware.mazer5d.files.FileExtensions;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class MusicPlayer {
@@ -22,15 +20,8 @@ public class MusicPlayer {
     private static String getMusicFilename(final MusicIndex music) {
 	if (MusicPlayer.allFilenames == null && MusicPlayer.fileExtensions == null) {
 	    MusicPlayer.allFilenames = DataLoader.loadMusicData();
-	    try (final InputStream stream = MusicPlayer.class
-		    .getResourceAsStream("/assets/data/extension/extension.properties")) {
-		MusicPlayer.fileExtensions = new Properties();
-		MusicPlayer.fileExtensions.load(stream);
-	    } catch (final IOException e) {
-		Mazer5D.logError(e);
-	    }
 	}
-	final String musicExt = MusicPlayer.fileExtensions.getProperty("music");
+	final String musicExt = FileExtensions.getMusicExtensionWithPeriod();
 	return MusicPlayer.allFilenames[music.ordinal()] + musicExt;
     }
 

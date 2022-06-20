@@ -37,8 +37,8 @@ public class Maze {
     private String mazeStartMessage;
     private String mazeEndMessage;
     private String basePath;
-    private PrefixIO xmlPrefixHandler;
-    private SuffixIO xmlSuffixHandler;
+    private PrefixIO prefixHandler;
+    private SuffixIO suffixHandler;
     private final int[] savedStart;
     private static final int MIN_LEVELS = 1;
     private static final int MAX_LEVELS = Integer.MAX_VALUE;
@@ -52,8 +52,8 @@ public class Maze {
 	this.activeLevel = 0;
 	this.currHP = 1000;
 	this.maxHP = 1000;
-	this.xmlPrefixHandler = null;
-	this.xmlSuffixHandler = null;
+	this.prefixHandler = null;
+	this.suffixHandler = null;
 	this.mazeTitle = "Untitled Maze";
 	this.mazeStartMessage = "Let's Solve The Maze!";
 	this.mazeEndMessage = "Maze Solved!";
@@ -61,7 +61,7 @@ public class Maze {
 	final long random = new RandomLongRange(0, Long.MAX_VALUE).generate();
 	final String randomID = Long.toHexString(random);
 	this.basePath = System.getProperty("java.io.tmpdir") + File.separator + "Mazer5D" + File.separator + randomID
-		+ ".maze";
+		+ FileExtensions.getMazeTempExtensionWithPeriod();
 	final File base = new File(this.basePath);
 	base.mkdirs();
     }
@@ -209,12 +209,12 @@ public class Maze {
 	return this.basePath;
     }
 
-    public void setPrefixHandler(final PrefixIO xph) {
-	this.xmlPrefixHandler = xph;
+    public void setPrefixHandler(final PrefixIO ph) {
+	this.prefixHandler = ph;
     }
 
-    public void setSuffixHandler(final SuffixIO xsh) {
-	this.xmlSuffixHandler = xsh;
+    public void setSuffixHandler(final SuffixIO sh) {
+	this.suffixHandler = sh;
     }
 
     public String getMazeTitle() {
@@ -223,9 +223,10 @@ public class Maze {
 
     public void setMazeTitle(final String title) {
 	if (title == null) {
-	    throw new NullPointerException("Title cannot be null!");
+	    this.mazeTitle = "";
+	} else {
+	    this.mazeTitle = title;
 	}
-	this.mazeTitle = title;
     }
 
     public String getMazeStartMessage() {
@@ -234,9 +235,10 @@ public class Maze {
 
     public void setMazeStartMessage(final String msg) {
 	if (msg == null) {
-	    throw new NullPointerException("Message cannot be null!");
+	    this.mazeStartMessage = "";
+	} else {
+	    this.mazeStartMessage = msg;
 	}
-	this.mazeStartMessage = msg;
     }
 
     public String getMazeEndMessage() {
@@ -245,9 +247,10 @@ public class Maze {
 
     public void setMazeEndMessage(final String msg) {
 	if (msg == null) {
-	    throw new NullPointerException("Message cannot be null!");
+	    this.mazeEndMessage = "";
+	} else {
+	    this.mazeEndMessage = msg;
 	}
-	this.mazeEndMessage = msg;
     }
 
     public String getLevelTitle() {
@@ -879,8 +882,8 @@ public class Maze {
     public Maze readMaze() throws IOException {
 	final Maze m = new Maze();
 	// Attach handlers
-	m.setPrefixHandler(this.xmlPrefixHandler);
-	m.setSuffixHandler(this.xmlSuffixHandler);
+	m.setPrefixHandler(this.prefixHandler);
+	m.setSuffixHandler(this.suffixHandler);
 	// Make base paths the same
 	m.basePath = this.basePath;
 	// Create metafile reader
@@ -921,8 +924,8 @@ public class Maze {
 
     private int readMazeMetafile(final MazeDataReader reader) throws IOException {
 	int ver = FormatConstants._MAZE_FORMAT_1;
-	if (this.xmlPrefixHandler != null) {
-	    ver = this.xmlPrefixHandler.readPrefix(reader);
+	if (this.prefixHandler != null) {
+	    ver = this.prefixHandler.readPrefix(reader);
 	}
 	final int levels = reader.readInt();
 	this.levelCount = levels;
@@ -932,8 +935,8 @@ public class Maze {
 	this.mazeTitle = reader.readString();
 	this.mazeStartMessage = reader.readString();
 	this.mazeEndMessage = reader.readString();
-	if (this.xmlSuffixHandler != null) {
-	    this.xmlSuffixHandler.readSuffix(reader, ver);
+	if (this.suffixHandler != null) {
+	    this.suffixHandler.readSuffix(reader, ver);
 	}
 	return ver;
     }
@@ -991,8 +994,8 @@ public class Maze {
     }
 
     private void writeMazeMetafile(final MazeDataWriter writer) throws IOException {
-	if (this.xmlPrefixHandler != null) {
-	    this.xmlPrefixHandler.writePrefix(writer);
+	if (this.prefixHandler != null) {
+	    this.prefixHandler.writePrefix(writer);
 	}
 	writer.writeInt(this.levelCount);
 	writer.writeInt(this.startW);
@@ -1001,8 +1004,8 @@ public class Maze {
 	writer.writeString(this.mazeTitle);
 	writer.writeString(this.mazeStartMessage);
 	writer.writeString(this.mazeEndMessage);
-	if (this.xmlSuffixHandler != null) {
-	    this.xmlSuffixHandler.writeSuffix(writer);
+	if (this.suffixHandler != null) {
+	    this.suffixHandler.writeSuffix(writer);
 	}
     }
 

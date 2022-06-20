@@ -3,7 +3,7 @@ package com.puttysoftware.mazer5d.locale;
 class LocaleFileNames {
     // Static fields
     private static String[] LIST = new String[] { "objectname", "objectplural",
-            "objectdesc" };
+            "objectdesc", "extension", "extensionperiod" };
 
     // Private constructor
     private LocaleFileNames() {

@@ -1,14 +1,12 @@
 package com.puttysoftware.mazer5d.loaders;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
 
 import com.puttysoftware.audio.wav.WAVPlayer;
-import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
+import com.puttysoftware.mazer5d.files.FileExtensions;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class SoundPlayer {
@@ -23,15 +21,8 @@ public class SoundPlayer {
     private static String getSoundFilename(final SoundIndex sound) {
 	if (SoundPlayer.allFilenames == null && SoundPlayer.fileExtensions == null) {
 	    SoundPlayer.allFilenames = DataLoader.loadSoundData();
-	    try (final InputStream stream = SoundPlayer.class
-		    .getResourceAsStream("/assets/data/extension/extension.properties")) {
-		SoundPlayer.fileExtensions = new Properties();
-		SoundPlayer.fileExtensions.load(stream);
-	    } catch (final IOException e) {
-		Mazer5D.logError(e);
-	    }
 	}
-	final String soundExt = SoundPlayer.fileExtensions.getProperty("sounds");
+	final String soundExt = FileExtensions.getSoundExtensionWithPeriod();
 	return SoundPlayer.allFilenames[sound.ordinal()] + soundExt;
     }
 

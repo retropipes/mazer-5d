@@ -20,6 +20,7 @@ import javax.swing.SwingConstants;
 import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
+import com.puttysoftware.mazer5d.files.FileExtensions;
 
 public final class GraphicalHelpViewer {
     // Fields
@@ -101,10 +102,10 @@ public final class GraphicalHelpViewer {
 		} else {
 		    if (extension != null) {
 			if (!extension.equals("png")) { //$NON-NLS-1$
-			    filename = GraphicalHelpViewer.getNameWithoutExtension(file) + ".png"; //$NON-NLS-1$
+			    filename = GraphicalHelpViewer.getNameWithoutExtension(file) + FileExtensions.getImageExtensionWithPeriod(); //$NON-NLS-1$
 			}
 		    } else {
-			filename += ".png"; //$NON-NLS-1$
+			filename += FileExtensions.getImageExtensionWithPeriod(); //$NON-NLS-1$
 		    }
 		    final JPanel c = this.choicePanel;
 		    final Dimension d = c.getPreferredSize();

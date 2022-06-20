@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.abc.MazeObject;
+import com.puttysoftware.mazer5d.files.FileExtensions;
 
 public class ObjectImageLoader {
     private static final String DEFAULT_LOAD_PATH = "/assets/image/object/";
@@ -115,7 +116,7 @@ public class ObjectImageLoader {
 		name = obj.getName();
 	    }
 	    final String normalName = ObjectImageLoader.normalizeName(name);
-	    final URL url = ObjectImageLoader.LOAD_CLASS.getResource(ObjectImageLoader.LOAD_PATH + normalName + ".png");
+	    final URL url = ObjectImageLoader.LOAD_CLASS.getResource(ObjectImageLoader.LOAD_PATH + normalName + FileExtensions.getImageExtensionWithPeriod());
 	    final BufferedImage image = ImageIO.read(url);
 	    final BufferedImageIcon icon = new BufferedImageIcon(image);
 	    return icon;
