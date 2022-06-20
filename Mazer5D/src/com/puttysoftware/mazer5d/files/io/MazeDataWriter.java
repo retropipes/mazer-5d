@@ -3,13 +3,13 @@ package com.puttysoftware.mazer5d.files.io;
 import java.io.IOException;
 
 import com.puttysoftware.fileio.DataIOException;
-import com.puttysoftware.fileio.JDataWriter;
+import com.puttysoftware.fileio.XDataWriter;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
-public class MazeDataWriter extends JDataWriter {
+public class MazeDataWriter extends XDataWriter {
     // Constructors
-    public MazeDataWriter(final String filename, final String newDocTag) throws IOException {
-	super(filename);
+    public MazeDataWriter(final String filename) throws IOException {
+	super(filename, "customxml");
     }
 
     // Methods

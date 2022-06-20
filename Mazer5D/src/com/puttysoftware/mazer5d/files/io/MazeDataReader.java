@@ -4,17 +4,17 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import com.puttysoftware.fileio.DataIOException;
-import com.puttysoftware.fileio.JDataReader;
+import com.puttysoftware.fileio.XDataReader;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
-public class MazeDataReader extends JDataReader {
+public class MazeDataReader extends XDataReader {
     // Constructors
-    public MazeDataReader(final String filename, final String newDocTag) throws IOException {
-	super(filename);
+    public MazeDataReader(final String filename) throws IOException {
+	super(filename, "customxml");
     }
 
-    public MazeDataReader(final InputStream stream, final String newDocTag) throws IOException {
-	super(stream);
+    public MazeDataReader(final InputStream stream) throws IOException {
+	super(stream, "customxml");
     }
 
     // Methods
