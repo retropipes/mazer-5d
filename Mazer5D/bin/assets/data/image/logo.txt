@@ -1,3 +1,0 @@
-logo
-micrologo
-minilogo

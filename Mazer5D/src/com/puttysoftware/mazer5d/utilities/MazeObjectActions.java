@@ -35,6 +35,7 @@ public class MazeObjectActions {
     // public static final int TELEPORT_PUSHED = 28;
     // public static final int TELEPORT_RANDOM = 29;
     // public static final int PASS_IF_HAVE_INVENTORY = 30;
+    // public static final int ALTER_SCORE = 31;
     private final BitSet bits;
 
     public MazeObjectActions(final long... val) {
