@@ -548,7 +548,7 @@ public class Prefs {
 		CommonDialogs.showErrorDialog("Incompatible preferences version found; using defaults.");
 		return false;
 	    } catch (final IOException ie) {
-		Mazer5D.logError(ie);
+		CommonDialogs.showErrorDialog("Unexpected preferences format found; using defaults.");
 		return false;
 	    }
 	}
