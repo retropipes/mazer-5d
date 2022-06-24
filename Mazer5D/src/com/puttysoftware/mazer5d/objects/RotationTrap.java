@@ -91,7 +91,7 @@ class RotationTrap extends GenericTrap implements Cloneable {
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion)
+    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final int formatVersion)
 	    throws IOException {
 	this.setRotationRadius(reader.readInt());
 	this.setRotationDirection(reader.readBoolean());
@@ -99,7 +99,7 @@ class RotationTrap extends GenericTrap implements Cloneable {
     }
 
     @Override
-    protected void writeMazeObjectHookXML(final MazeDataWriter writer) throws IOException {
+    protected void writeMazeObjectHook(final MazeDataWriter writer) throws IOException {
 	writer.writeInt(this.getRotationRadius());
 	writer.writeBoolean(this.getRotationDirection());
     }

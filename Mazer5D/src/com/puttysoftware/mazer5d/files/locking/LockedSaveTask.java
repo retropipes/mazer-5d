@@ -13,7 +13,7 @@ import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.files.FileExtensions;
-import com.puttysoftware.mazer5d.files.format.XMLPrefixHandler;
+import com.puttysoftware.mazer5d.files.format.PrefixHandler;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.maze.Maze;
 
@@ -41,10 +41,10 @@ public class LockedSaveTask extends Thread {
 	final File tempLock = new File(Maze.getMazeTempFolder() + "lock.tmp");
 	try {
 	    // Set prefix handler
-	    app.getMazeManager().getMaze().setXMLPrefixHandler(new XMLPrefixHandler());
+	    app.getMazeManager().getMaze().setPrefixHandler(new PrefixHandler());
 	    // Set suffix handler
-	    app.getMazeManager().getMaze().setXMLSuffixHandler(null);
-	    app.getMazeManager().getMaze().writeMazeXML();
+	    app.getMazeManager().getMaze().setSuffixHandler(null);
+	    app.getMazeManager().getMaze().writeMaze();
 	    ZipUtilities.zipDirectory(new File(app.getMazeManager().getMaze().getBasePath()), tempLock);
 	    // Lock the file
 	    LockedWrapper.lock(tempLock, mazeFile);

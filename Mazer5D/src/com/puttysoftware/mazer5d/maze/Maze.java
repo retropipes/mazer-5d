@@ -12,9 +12,9 @@ import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.files.TempDirCleanup;
-import com.puttysoftware.mazer5d.files.format.XMLFormatConstants;
-import com.puttysoftware.mazer5d.files.format.XMLPrefixIO;
-import com.puttysoftware.mazer5d.files.format.XMLSuffixIO;
+import com.puttysoftware.mazer5d.files.format.FormatConstants;
+import com.puttysoftware.mazer5d.files.format.PrefixIO;
+import com.puttysoftware.mazer5d.files.format.SuffixIO;
 import com.puttysoftware.mazer5d.files.io.MazeDataReader;
 import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.objects.GameObjects;
@@ -36,8 +36,8 @@ public class Maze {
     private String mazeStartMessage;
     private String mazeEndMessage;
     private String basePath;
-    private XMLPrefixIO xmlPrefixHandler;
-    private XMLSuffixIO xmlSuffixHandler;
+    private PrefixIO xmlPrefixHandler;
+    private SuffixIO xmlSuffixHandler;
     private final int[] savedStart;
     private static final int MIN_LEVELS = 1;
     private static final int MAX_LEVELS = Integer.MAX_VALUE;
@@ -208,11 +208,11 @@ public class Maze {
 	return this.basePath;
     }
 
-    public void setXMLPrefixHandler(final XMLPrefixIO xph) {
+    public void setPrefixHandler(final PrefixIO xph) {
 	this.xmlPrefixHandler = xph;
     }
 
-    public void setXMLSuffixHandler(final XMLSuffixIO xsh) {
+    public void setSuffixHandler(final SuffixIO xsh) {
 	this.xmlSuffixHandler = xsh;
     }
 
@@ -420,18 +420,18 @@ public class Maze {
     private void switchLevelInternal(final int level) {
 	if (this.activeLevel != level) {
 	    if (this.mazeData != null) {
-		try (MazeDataWriter writer = this.getLevelWriterXML()) {
+		try (MazeDataWriter writer = this.getLevelWriter()) {
 		    // Save old level
-		    this.writeMazeLevelXML(writer);
+		    this.writeMazeLevel(writer);
 		    writer.close();
 		} catch (final IOException io) {
 		    // Ignore
 		}
 	    }
 	    this.activeLevel = level;
-	    try (MazeDataReader reader = this.getLevelReaderXML()) {
+	    try (MazeDataReader reader = this.getLevelReader()) {
 		// Load new level
-		this.readMazeLevelXML(reader);
+		this.readMazeLevel(reader);
 		reader.close();
 	    } catch (final IOException io) {
 		// Ignore
@@ -486,9 +486,9 @@ public class Maze {
     public boolean addLevel(final int rows, final int cols, final int floors) {
 	if (this.levelCount < Maze.MAX_LEVELS) {
 	    if (this.mazeData != null) {
-		try (MazeDataWriter writer = this.getLevelWriterXML()) {
+		try (MazeDataWriter writer = this.getLevelWriter()) {
 		    // Save old level
-		    this.writeMazeLevelXML(writer);
+		    this.writeMazeLevel(writer);
 		    writer.close();
 		} catch (final IOException io) {
 		    // Ignore
@@ -875,51 +875,51 @@ public class Maze {
 	this.mazeData.extendTimerByInitialValueDoubled();
     }
 
-    public Maze readMazeXML() throws IOException {
+    public Maze readMaze() throws IOException {
 	final Maze m = new Maze();
 	// Attach handlers
-	m.setXMLPrefixHandler(this.xmlPrefixHandler);
-	m.setXMLSuffixHandler(this.xmlSuffixHandler);
+	m.setPrefixHandler(this.xmlPrefixHandler);
+	m.setSuffixHandler(this.xmlSuffixHandler);
 	// Make base paths the same
 	m.basePath = this.basePath;
 	// Create metafile reader
 	try (MazeDataReader metaReader = new MazeDataReader(m.basePath + File.separator + "metafile.xml", "maze")) {
 	    // Read metafile
-	    final int version = m.readMazeMetafileXML(metaReader);
-	    // Set XML compatibility flags
-	    if (version == XMLFormatConstants.XML_MAZE_FORMAT_1) {
-		Mazer5D.getBagOStuff().getMazeManager().setMazeXML1Compatible(true);
-		Mazer5D.getBagOStuff().getMazeManager().setMazeXML2Compatible(true);
-		Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(true);
-	    } else if (version == XMLFormatConstants.XML_MAZE_FORMAT_2) {
-		Mazer5D.getBagOStuff().getMazeManager().setMazeXML1Compatible(false);
-		Mazer5D.getBagOStuff().getMazeManager().setMazeXML2Compatible(true);
-		Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(true);
-	    } else if (version == XMLFormatConstants.XML_MAZE_FORMAT_3
-		    || version == XMLFormatConstants.XML_MAZE_FORMAT_4) {
-		Mazer5D.getBagOStuff().getMazeManager().setMazeXML1Compatible(false);
-		Mazer5D.getBagOStuff().getMazeManager().setMazeXML2Compatible(false);
-		Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(true);
+	    final int version = m.readMazeMetafile(metaReader);
+	    // Set  compatibility flags
+	    if (version == FormatConstants._MAZE_FORMAT_1) {
+		Mazer5D.getBagOStuff().getMazeManager().setMaze1Compatible(true);
+		Mazer5D.getBagOStuff().getMazeManager().setMaze2Compatible(true);
+		Mazer5D.getBagOStuff().getMazeManager().setMaze4Compatible(true);
+	    } else if (version == FormatConstants._MAZE_FORMAT_2) {
+		Mazer5D.getBagOStuff().getMazeManager().setMaze1Compatible(false);
+		Mazer5D.getBagOStuff().getMazeManager().setMaze2Compatible(true);
+		Mazer5D.getBagOStuff().getMazeManager().setMaze4Compatible(true);
+	    } else if (version == FormatConstants._MAZE_FORMAT_3
+		    || version == FormatConstants._MAZE_FORMAT_4) {
+		Mazer5D.getBagOStuff().getMazeManager().setMaze1Compatible(false);
+		Mazer5D.getBagOStuff().getMazeManager().setMaze2Compatible(false);
+		Mazer5D.getBagOStuff().getMazeManager().setMaze4Compatible(true);
 	    } else {
-		Mazer5D.getBagOStuff().getMazeManager().setMazeXML1Compatible(false);
-		Mazer5D.getBagOStuff().getMazeManager().setMazeXML2Compatible(false);
-		Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(false);
+		Mazer5D.getBagOStuff().getMazeManager().setMaze1Compatible(false);
+		Mazer5D.getBagOStuff().getMazeManager().setMaze2Compatible(false);
+		Mazer5D.getBagOStuff().getMazeManager().setMaze4Compatible(false);
 	    }
 	    // Create data reader
-	    try (MazeDataReader dataReader = m.getLevelReaderXML()) {
+	    try (MazeDataReader dataReader = m.getLevelReader()) {
 		// Read data
-		m.readMazeLevelXML(dataReader, version);
+		m.readMazeLevel(dataReader, version);
 	    }
 	}
 	return m;
     }
 
-    private MazeDataReader getLevelReaderXML() throws IOException {
+    private MazeDataReader getLevelReader() throws IOException {
 	return new MazeDataReader(this.basePath + File.separator + "level" + this.activeLevel + ".xml", "level");
     }
 
-    private int readMazeMetafileXML(final MazeDataReader reader) throws IOException {
-	int ver = XMLFormatConstants.XML_MAZE_FORMAT_1;
+    private int readMazeMetafile(final MazeDataReader reader) throws IOException {
+	int ver = FormatConstants._MAZE_FORMAT_1;
 	if (this.xmlPrefixHandler != null) {
 	    ver = this.xmlPrefixHandler.readPrefix(reader);
 	}
@@ -937,26 +937,26 @@ public class Maze {
 	return ver;
     }
 
-    private void readMazeLevelXML(final MazeDataReader reader) throws IOException {
-	this.readMazeLevelXML(reader, XMLFormatConstants.XML_MAZE_FORMAT_5);
+    private void readMazeLevel(final MazeDataReader reader) throws IOException {
+	this.readMazeLevel(reader, FormatConstants._MAZE_FORMAT_5);
     }
 
-    private void readMazeLevelXML(final MazeDataReader reader, final int formatVersion) throws IOException {
-	if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_1) {
-	    this.mazeData = MazeData.readXMLMazeDataModelV1(reader, formatVersion);
-	    this.mazeData.readSavedTowerStateXML(reader, formatVersion);
-	} else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_2) {
-	    this.mazeData = MazeData.readXMLMazeDataModelV2(reader, formatVersion);
-	    this.mazeData.readSavedTowerStateXML(reader, formatVersion);
-	} else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_3) {
-	    this.mazeData = MazeData.readXMLMazeDataModelV3(reader, formatVersion);
-	    this.mazeData.readSavedTowerStateXML(reader, formatVersion);
-	} else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_4) {
-	    this.mazeData = MazeData.readXMLMazeDataModelV4(reader, formatVersion);
-	    this.mazeData.readSavedTowerStateXML(reader, formatVersion);
-	} else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_5) {
-	    this.mazeData = MazeData.readXMLMazeDataModelV5(reader, formatVersion);
-	    this.mazeData.readSavedTowerStateXML(reader, formatVersion);
+    private void readMazeLevel(final MazeDataReader reader, final int formatVersion) throws IOException {
+	if (formatVersion == FormatConstants._MAZE_FORMAT_1) {
+	    this.mazeData = MazeData.readMazeDataModelV1(reader, formatVersion);
+	    this.mazeData.readSavedTowerState(reader, formatVersion);
+	} else if (formatVersion == FormatConstants._MAZE_FORMAT_2) {
+	    this.mazeData = MazeData.readMazeDataModelV2(reader, formatVersion);
+	    this.mazeData.readSavedTowerState(reader, formatVersion);
+	} else if (formatVersion == FormatConstants._MAZE_FORMAT_3) {
+	    this.mazeData = MazeData.readMazeDataModelV3(reader, formatVersion);
+	    this.mazeData.readSavedTowerState(reader, formatVersion);
+	} else if (formatVersion == FormatConstants._MAZE_FORMAT_4) {
+	    this.mazeData = MazeData.readMazeDataModelV4(reader, formatVersion);
+	    this.mazeData.readSavedTowerState(reader, formatVersion);
+	} else if (formatVersion == FormatConstants._MAZE_FORMAT_5) {
+	    this.mazeData = MazeData.readMazeDataModelV5(reader, formatVersion);
+	    this.mazeData.readSavedTowerState(reader, formatVersion);
 	} else {
 	    throw new IOException("Unknown maze format version!");
 	}
@@ -966,30 +966,30 @@ public class Maze {
 	return new File(this.basePath + File.separator + level + ".level");
     }
 
-    public void writeMazeXML() throws IOException {
-	// Clear XML compatibility flag
-	Mazer5D.getBagOStuff().getMazeManager().setMazeXML1Compatible(false);
-	// Clear XML 2 compatibility flag
-	Mazer5D.getBagOStuff().getMazeManager().setMazeXML2Compatible(false);
-	// Clear XML 4 compatibility flag
-	Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(false);
+    public void writeMaze() throws IOException {
+	// Clear  compatibility flag
+	Mazer5D.getBagOStuff().getMazeManager().setMaze1Compatible(false);
+	// Clear  2 compatibility flag
+	Mazer5D.getBagOStuff().getMazeManager().setMaze2Compatible(false);
+	// Clear  4 compatibility flag
+	Mazer5D.getBagOStuff().getMazeManager().setMaze4Compatible(false);
 	// Create metafile writer
 	try (MazeDataWriter metaWriter = new MazeDataWriter(this.basePath + File.separator + "metafile.xml", "maze")) {
 	    // Write metafile
-	    this.writeMazeMetafileXML(metaWriter);
+	    this.writeMazeMetafile(metaWriter);
 	    // Create data writer
-	    try (MazeDataWriter dataWriter = this.getLevelWriterXML()) {
+	    try (MazeDataWriter dataWriter = this.getLevelWriter()) {
 		// Write data
-		this.writeMazeLevelXML(dataWriter);
+		this.writeMazeLevel(dataWriter);
 	    }
 	}
     }
 
-    private MazeDataWriter getLevelWriterXML() throws IOException {
+    private MazeDataWriter getLevelWriter() throws IOException {
 	return new MazeDataWriter(this.basePath + File.separator + "level" + this.activeLevel + ".xml", "level");
     }
 
-    private void writeMazeMetafileXML(final MazeDataWriter writer) throws IOException {
+    private void writeMazeMetafile(final MazeDataWriter writer) throws IOException {
 	if (this.xmlPrefixHandler != null) {
 	    this.xmlPrefixHandler.writePrefix(writer);
 	}
@@ -1005,15 +1005,15 @@ public class Maze {
 	}
     }
 
-    private void writeMazeLevelXML(final MazeDataWriter writer) throws IOException {
-	// Clear XML compatibility flag
-	Mazer5D.getBagOStuff().getMazeManager().setMazeXML1Compatible(false);
-	// Clear XML 2 compatibility flag
-	Mazer5D.getBagOStuff().getMazeManager().setMazeXML2Compatible(false);
-	// Clear XML 4 compatibility flag
-	Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(false);
+    private void writeMazeLevel(final MazeDataWriter writer) throws IOException {
+	// Clear  compatibility flag
+	Mazer5D.getBagOStuff().getMazeManager().setMaze1Compatible(false);
+	// Clear  2 compatibility flag
+	Mazer5D.getBagOStuff().getMazeManager().setMaze2Compatible(false);
+	// Clear  4 compatibility flag
+	Mazer5D.getBagOStuff().getMazeManager().setMaze4Compatible(false);
 	// Write the level
-	this.mazeData.writeXMLLayeredTower(writer);
-	this.mazeData.writeSavedTowerStateXML(writer);
+	this.mazeData.writeLayeredTower(writer);
+	this.mazeData.writeSavedTowerState(writer);
     }
 }

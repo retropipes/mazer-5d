@@ -462,7 +462,7 @@ public final class ObjectInventory implements Cloneable {
 	return clone;
     }
 
-    public static ObjectInventory readInventoryXML(final MazeDataReader reader, final int formatVersion)
+    public static ObjectInventory readInventory(final MazeDataReader reader, final int formatVersion)
 	    throws IOException {
 	final ObjectInventory i = new ObjectInventory();
 	i.boots = (GenericBoots) GameObjects.readObject(reader, formatVersion);
@@ -488,9 +488,9 @@ public final class ObjectInventory implements Cloneable {
 	return i;
     }
 
-    public void writeInventoryXML(final MazeDataWriter writer) throws IOException {
-	this.boots.writeMazeObjectXML(writer);
-	this.amulet.writeMazeObjectXML(writer);
+    public void writeInventory(final MazeDataWriter writer) throws IOException {
+	this.boots.writeMazeObject(writer);
+	this.amulet.writeMazeObject(writer);
 	for (final int content : this.contents) {
 	    writer.writeInt(content);
 	}

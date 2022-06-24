@@ -85,7 +85,7 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
 
     @Override
     public int getCustomFormat() {
-	if (Mazer5D.getBagOStuff().getMazeManager().isMazeXML4Compatible()) {
+	if (Mazer5D.getBagOStuff().getMazeManager().isMaze4Compatible()) {
 	    return 7;
 	} else {
 	    return 8;

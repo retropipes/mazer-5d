@@ -79,18 +79,18 @@ public abstract class GenericContainer extends GenericLock {
     public abstract MazeObject editorPropertiesHook();
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion)
+    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final int formatVersion)
 	    throws IOException {
 	this.setSavedObject(GameObjects.readObject(reader, formatVersion));
 	return this;
     }
 
     @Override
-    protected void writeMazeObjectHookXML(final MazeDataWriter writer) throws IOException {
+    protected void writeMazeObjectHook(final MazeDataWriter writer) throws IOException {
 	if (this.getSavedObject() == null) {
-	    GameObjects.getEmptySpace().writeMazeObjectXML(writer);
+	    GameObjects.getEmptySpace().writeMazeObject(writer);
 	} else {
-	    this.getSavedObject().writeMazeObjectXML(writer);
+	    this.getSavedObject().writeMazeObject(writer);
 	}
     }
 }

@@ -9,10 +9,10 @@ import com.puttysoftware.mazer5d.files.versions.MazeVersion;
 
 public class SuffixIO {
     public void writeSuffix(final MazeDataWriter writer) throws IOException {
-	Mazer5D.getBagOStuff().getGameManager().saveGameHookXML(writer);
+	Mazer5D.getBagOStuff().getGameManager().saveGameHook(writer);
     }
 
     public void readSuffix(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
-	Mazer5D.getBagOStuff().getGameManager().loadGameHookXML(reader, formatVersion.ordinal());
+	Mazer5D.getBagOStuff().getGameManager().loadGameHook(reader, formatVersion.ordinal());
     }
 }

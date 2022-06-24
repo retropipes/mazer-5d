@@ -13,10 +13,10 @@ import javax.swing.JFileChooser;
 import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
-import com.puttysoftware.mazer5d.files.format.XMLExtension;
-import com.puttysoftware.mazer5d.files.format.XMLRuleSetFilter;
-import com.puttysoftware.mazer5d.files.format.XMLRuleSetLoadTask;
-import com.puttysoftware.mazer5d.files.format.XMLRuleSetSaveTask;
+import com.puttysoftware.mazer5d.files.format.Extension;
+import com.puttysoftware.mazer5d.files.format.RuleSetFilter;
+import com.puttysoftware.mazer5d.files.format.RuleSetLoadTask;
+import com.puttysoftware.mazer5d.files.format.RuleSetSaveTask;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 
 public class RuleSetManager {
@@ -30,7 +30,7 @@ public class RuleSetManager {
 	final BagOStuff app = Mazer5D.getBagOStuff();
 	String filename, extension;
 	final JFileChooser fc = new JFileChooser();
-	final XMLRuleSetFilter xrsf = new XMLRuleSetFilter();
+	final RuleSetFilter xrsf = new RuleSetFilter();
 	fc.setAcceptAllFileFilterUsed(false);
 	fc.addChoosableFileFilter(xrsf);
 	final int returnVal = fc.showOpenDialog((Frame) null);
@@ -39,7 +39,7 @@ public class RuleSetManager {
 	    filename = file.getAbsolutePath();
 	    extension = RuleSetManager.getExtension(file);
 	    app.getGameManager().resetObjectInventory();
-	    if (extension.equals(XMLExtension.getXMLRuleSetExtension())) {
+	    if (extension.equals(Extension.getRuleSetExtension())) {
 		RuleSetManager.importFile(filename);
 	    } else {
 		CommonDialogs.showDialog(
@@ -56,7 +56,7 @@ public class RuleSetManager {
 		    + "Files named con, nul, or prn are illegal, as are files\n"
 		    + "named com1 through com9 and lpt1 through lpt9.", "Load");
 	} else {
-	    final XMLRuleSetLoadTask xrslt = new XMLRuleSetLoadTask(filename);
+	    final RuleSetLoadTask xrslt = new RuleSetLoadTask(filename);
 	    xrslt.start();
 	}
     }
@@ -66,7 +66,7 @@ public class RuleSetManager {
 	String fileOnly = "\\";
 	String extension;
 	final JFileChooser fc = new JFileChooser();
-	final XMLRuleSetFilter xrsf = new XMLRuleSetFilter();
+	final RuleSetFilter xrsf = new RuleSetFilter();
 	fc.setAcceptAllFileFilterUsed(false);
 	fc.addChoosableFileFilter(xrsf);
 	while (!FilenameChecker.isFilenameOK(fileOnly)) {
@@ -84,12 +84,12 @@ public class RuleSetManager {
 			    + "named com1 through com9 and lpt1 through lpt9.", "Save");
 		} else {
 		    if (extension != null) {
-			if (!extension.equals(XMLExtension.getXMLRuleSetExtension())) {
+			if (!extension.equals(Extension.getRuleSetExtension())) {
 			    filename = RuleSetManager.getNameWithoutExtension(file)
-				    + XMLExtension.getXMLRuleSetExtensionWithPeriod();
+				    + Extension.getRuleSetExtensionWithPeriod();
 			}
 		    } else {
-			filename += XMLExtension.getXMLRuleSetExtensionWithPeriod();
+			filename += Extension.getRuleSetExtensionWithPeriod();
 		    }
 		    RuleSetManager.exportFile(filename);
 		}
@@ -101,7 +101,7 @@ public class RuleSetManager {
     }
 
     private static void exportFile(final String filename) {
-	final XMLRuleSetSaveTask xrsst = new XMLRuleSetSaveTask(filename);
+	final RuleSetSaveTask xrsst = new RuleSetSaveTask(filename);
 	xrsst.start();
     }
 

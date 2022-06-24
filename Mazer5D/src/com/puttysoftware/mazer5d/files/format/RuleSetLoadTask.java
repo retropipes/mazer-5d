@@ -15,14 +15,14 @@ import com.puttysoftware.mazer5d.files.io.MazeDataReader;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 
-public class XMLRuleSetLoadTask extends Thread {
+public class RuleSetLoadTask extends Thread {
     // Fields
     private final String filename;
 
     // Constructors
-    public XMLRuleSetLoadTask(final String file) {
+    public RuleSetLoadTask(final String file) {
 	this.filename = file;
-	this.setName("XML Rule Set File Reader");
+	this.setName(" Rule Set File Reader");
     }
 
     // Methods

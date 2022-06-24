@@ -13,23 +13,23 @@ import com.puttysoftware.mazer5d.editor.rulesets.RuleSetConstants;
 import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 
-public class XMLRuleSetSaveTask extends Thread {
+public class RuleSetSaveTask extends Thread {
     // Fields
     private String filename;
 
     // Constructors
-    public XMLRuleSetSaveTask(final String file) {
+    public RuleSetSaveTask(final String file) {
 	this.filename = file;
-	this.setName("XML Rule Set File Writer");
+	this.setName(" Rule Set File Writer");
     }
 
     @Override
     public void run() {
 	final String sg = "Rule Set";
 	// filename check
-	final boolean hasExtension = XMLRuleSetSaveTask.hasExtension(this.filename);
+	final boolean hasExtension = RuleSetSaveTask.hasExtension(this.filename);
 	if (!hasExtension) {
-	    this.filename += XMLExtension.getXMLRuleSetExtensionWithPeriod();
+	    this.filename += Extension.getRuleSetExtensionWithPeriod();
 	}
 	try (MazeDataWriter ruleSetFile = new MazeDataWriter(this.filename, "ruleset")) {
 	    ruleSetFile.writeInt(RuleSetConstants.MAGIC_NUMBER_2);

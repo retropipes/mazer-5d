@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.game;
 import java.io.File;
 
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
-import com.puttysoftware.mazer5d.files.format.XMLExtension;
+import com.puttysoftware.mazer5d.files.format.Extension;
 import com.puttysoftware.mazer5d.scoremanager.SavedScoreManager;
 import com.puttysoftware.mazer5d.scoremanager.ScoreManager;
 
@@ -128,7 +128,7 @@ public class ScoreTracker {
 	b.append(ScoreTracker.getScoreDirPrefix());
 	b.append(ScoreTracker.getScoreDirectory());
 	b.append(filename);
-	b.append(XMLExtension.getXMLScoresExtensionWithPeriod());
+	b.append(Extension.getScoresExtensionWithPeriod());
 	return new File(b.toString());
     }
 }

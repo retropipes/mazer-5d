@@ -18,11 +18,11 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
-import com.puttysoftware.mazer5d.files.format.XMLExtension;
-import com.puttysoftware.mazer5d.files.format.XMLGameFilter;
-import com.puttysoftware.mazer5d.files.format.XMLLoadTask;
-import com.puttysoftware.mazer5d.files.format.XMLMazeFilter;
-import com.puttysoftware.mazer5d.files.format.XMLSaveTask;
+import com.puttysoftware.mazer5d.files.format.Extension;
+import com.puttysoftware.mazer5d.files.format.GameFilter;
+import com.puttysoftware.mazer5d.files.format.LoadTask;
+import com.puttysoftware.mazer5d.files.format.MazeFilter;
+import com.puttysoftware.mazer5d.files.format.SaveTask;
 import com.puttysoftware.mazer5d.files.locking.LockedFilter;
 import com.puttysoftware.mazer5d.files.locking.LockedLoadTask;
 import com.puttysoftware.mazer5d.files.locking.LockedSaveTask;
@@ -37,9 +37,9 @@ public class MazeManager implements OpenFilesHandler {
     private String scoresFileName;
     private String lastUsedMazeFile;
     private String lastUsedGameFile;
-    private boolean mazeXML1Compatible;
-    private boolean mazeXML2Compatible;
-    private boolean mazeXML4Compatible;
+    private boolean maze1Compatible;
+    private boolean maze2Compatible;
+    private boolean maze4Compatible;
 
     // Constructors
     public MazeManager() {
@@ -48,9 +48,9 @@ public class MazeManager implements OpenFilesHandler {
 	this.lastUsedMazeFile = "";
 	this.lastUsedGameFile = "";
 	this.scoresFileName = "";
-	this.mazeXML1Compatible = false;
-	this.mazeXML2Compatible = false;
-	this.mazeXML4Compatible = false;
+	this.maze1Compatible = false;
+	this.maze2Compatible = false;
+	this.maze4Compatible = false;
 	this.gameMaze = new Maze();
     }
 
@@ -63,28 +63,28 @@ public class MazeManager implements OpenFilesHandler {
 	this.gameMaze = newMaze;
     }
 
-    public boolean isMazeXML1Compatible() {
-	return this.mazeXML1Compatible;
+    public boolean isMaze1Compatible() {
+	return this.maze1Compatible;
     }
 
-    public void setMazeXML1Compatible(final boolean value) {
-	this.mazeXML1Compatible = value;
+    public void setMaze1Compatible(final boolean value) {
+	this.maze1Compatible = value;
     }
 
-    public boolean isMazeXML2Compatible() {
-	return this.mazeXML2Compatible;
+    public boolean isMaze2Compatible() {
+	return this.maze2Compatible;
     }
 
-    public void setMazeXML2Compatible(final boolean value) {
-	this.mazeXML2Compatible = value;
+    public void setMaze2Compatible(final boolean value) {
+	this.maze2Compatible = value;
     }
 
-    public boolean isMazeXML4Compatible() {
-	return this.mazeXML4Compatible;
+    public boolean isMaze4Compatible() {
+	return this.maze4Compatible;
     }
 
-    public void setMazeXML4Compatible(final boolean value) {
-	this.mazeXML4Compatible = value;
+    public void setMaze4Compatible(final boolean value) {
+	this.maze4Compatible = value;
     }
 
     public void handleDeferredSuccess(final boolean value) {
@@ -188,7 +188,7 @@ public class MazeManager implements OpenFilesHandler {
 		loadFile = file.getAbsolutePath();
 		extension = MazeManager.getExtension(file);
 		app.getGameManager().resetObjectInventory();
-		if (extension.equals(XMLExtension.getXMLMazeExtension())) {
+		if (extension.equals(Extension.getMazeExtension())) {
 		    this.lastUsedMazeFile = loadFile;
 		    this.scoresFileName = MazeManager.getNameWithoutExtension(file.getName());
 		    MazeManager.loadFile(loadFile, false, false);
@@ -196,16 +196,16 @@ public class MazeManager implements OpenFilesHandler {
 		    this.lastUsedMazeFile = loadFile;
 		    this.scoresFileName = MazeManager.getNameWithoutExtension(file.getName());
 		    MazeManager.loadFile(loadFile, false, true);
-		} else if (extension.equals(XMLExtension.getXMLGameExtension())) {
+		} else if (extension.equals(Extension.getGameExtension())) {
 		    this.lastUsedGameFile = loadFile;
 		    MazeManager.loadFile(loadFile, true, false);
-		} else if (extension.equals(XMLExtension.getXMLScoresExtension())) {
+		} else if (extension.equals(Extension.getScoresExtension())) {
 		    CommonDialogs.showDialog(
 			    "You double-clicked a scores file. These are automatically loaded when their associated maze is loaded, and need not be double-clicked.");
 		} else if (extension.equals(FileExtensions.getPrefsExtension())) {
 		    CommonDialogs.showDialog(
 			    "You double-clicked a preferences file. These are automatically loaded when the program is loaded, and need not be double-clicked.");
-		} else if (extension.equals(XMLExtension.getXMLRuleSetExtension())) {
+		} else if (extension.equals(Extension.getRuleSetExtension())) {
 		    CommonDialogs.showDialog(
 			    "You double-clicked a rule set file. These are loaded by the Rule Set Picker, and need not be double-clicked.");
 		}
@@ -224,8 +224,8 @@ public class MazeManager implements OpenFilesHandler {
 	    lastOpenDir = new File(lastOpen);
 	}
 	final JFileChooser fc = new JFileChooser(lastOpenDir);
-	final XMLMazeFilter xmf = new XMLMazeFilter();
-	final XMLGameFilter xgf = new XMLGameFilter();
+	final MazeFilter xmf = new MazeFilter();
+	final GameFilter xgf = new GameFilter();
 	if (this.getDirty()) {
 	    status = this.showSaveDialog();
 	    if (status == CommonDialogs.YES_OPTION) {
@@ -260,12 +260,12 @@ public class MazeManager implements OpenFilesHandler {
 		filename = file.getAbsolutePath();
 		extension = MazeManager.getExtension(file);
 		app.getGameManager().resetObjectInventory();
-		if (extension.equals(XMLExtension.getXMLMazeExtension())) {
+		if (extension.equals(Extension.getMazeExtension())) {
 		    this.lastUsedMazeFile = filename;
 		    this.scoresFileName = MazeManager.getNameWithoutExtension(file.getName());
 		    MazeManager.loadFile(filename, false, false);
 		    this.setLoaded(true);
-		} else if (extension.equals(XMLExtension.getXMLGameExtension())) {
+		} else if (extension.equals(Extension.getGameExtension())) {
 		    this.lastUsedGameFile = filename;
 		    MazeManager.loadFile(filename, true, false);
 		    this.setLoaded(true);
@@ -337,7 +337,7 @@ public class MazeManager implements OpenFilesHandler {
 		final LockedLoadTask llt = new LockedLoadTask(filename);
 		llt.start();
 	    } else {
-		final XMLLoadTask xlt = new XMLLoadTask(filename, isSavedGame);
+		final LoadTask xlt = new LoadTask(filename, isSavedGame);
 		xlt.start();
 	    }
 	}
@@ -345,19 +345,19 @@ public class MazeManager implements OpenFilesHandler {
 
     public void saveMaze() {
 	if (this.getLoaded()) {
-	    this.setMazeXML1Compatible(false);
-	    this.setMazeXML2Compatible(false);
-	    this.setMazeXML4Compatible(false);
+	    this.setMaze1Compatible(false);
+	    this.setMaze2Compatible(false);
+	    this.setMaze4Compatible(false);
 	    if (Modes.inGame()) {
 		if (this.lastUsedGameFile != null && !this.lastUsedGameFile.equals("")) {
 		    final String extension = MazeManager.getExtension(this.lastUsedGameFile);
 		    if (extension != null) {
-			if (!extension.equals(XMLExtension.getXMLGameExtension())) {
+			if (!extension.equals(Extension.getGameExtension())) {
 			    this.lastUsedGameFile = MazeManager.getNameWithoutExtension(this.lastUsedGameFile)
-				    + XMLExtension.getXMLGameExtensionWithPeriod();
+				    + Extension.getGameExtensionWithPeriod();
 			}
 		    } else {
-			this.lastUsedGameFile += XMLExtension.getXMLGameExtensionWithPeriod();
+			this.lastUsedGameFile += Extension.getGameExtensionWithPeriod();
 		    }
 		    MazeManager.saveFile(this.lastUsedGameFile, true, false);
 		} else {
@@ -367,12 +367,12 @@ public class MazeManager implements OpenFilesHandler {
 		if (this.lastUsedMazeFile != null && !this.lastUsedMazeFile.equals("")) {
 		    final String extension = MazeManager.getExtension(this.lastUsedMazeFile);
 		    if (extension != null) {
-			if (!extension.equals(XMLExtension.getXMLMazeExtension())) {
+			if (!extension.equals(Extension.getMazeExtension())) {
 			    this.lastUsedMazeFile = MazeManager.getNameWithoutExtension(this.lastUsedMazeFile)
-				    + XMLExtension.getXMLMazeExtensionWithPeriod();
+				    + Extension.getMazeExtensionWithPeriod();
 			}
 		    } else {
-			this.lastUsedMazeFile += XMLExtension.getXMLMazeExtensionWithPeriod();
+			this.lastUsedMazeFile += Extension.getMazeExtensionWithPeriod();
 		    }
 		    MazeManager.saveFile(this.lastUsedMazeFile, false, false);
 		} else {
@@ -386,9 +386,9 @@ public class MazeManager implements OpenFilesHandler {
 
     public void saveMazeAs() {
 	if (this.getLoaded()) {
-	    this.setMazeXML1Compatible(false);
-	    this.setMazeXML2Compatible(false);
-	    this.setMazeXML4Compatible(false);
+	    this.setMaze1Compatible(false);
+	    this.setMaze2Compatible(false);
+	    this.setMaze4Compatible(false);
 	    String filename = "";
 	    String fileOnly = "\\";
 	    String extension;
@@ -398,8 +398,8 @@ public class MazeManager implements OpenFilesHandler {
 		lastSaveDir = new File(lastSave);
 	    }
 	    final JFileChooser fc = new JFileChooser(lastSaveDir);
-	    final XMLMazeFilter xmf = new XMLMazeFilter();
-	    final XMLGameFilter xgf = new XMLGameFilter();
+	    final MazeFilter xmf = new MazeFilter();
+	    final GameFilter xgf = new GameFilter();
 	    fc.setAcceptAllFileFilterUsed(false);
 	    if (Modes.inGame()) {
 		fc.addChoosableFileFilter(xgf);
@@ -425,23 +425,23 @@ public class MazeManager implements OpenFilesHandler {
 			Prefs.setLastDirSave(fc.getCurrentDirectory().getAbsolutePath());
 			if (Modes.inGame()) {
 			    if (extension != null) {
-				if (!extension.equals(XMLExtension.getXMLGameExtension())) {
+				if (!extension.equals(Extension.getGameExtension())) {
 				    filename = MazeManager.getNameWithoutExtension(file)
-					    + XMLExtension.getXMLGameExtensionWithPeriod();
+					    + Extension.getGameExtensionWithPeriod();
 				}
 			    } else {
-				filename += XMLExtension.getXMLGameExtensionWithPeriod();
+				filename += Extension.getGameExtensionWithPeriod();
 			    }
 			    this.lastUsedGameFile = filename;
 			    MazeManager.saveFile(filename, true, false);
 			} else {
 			    if (extension != null) {
-				if (!extension.equals(XMLExtension.getXMLMazeExtension())) {
+				if (!extension.equals(Extension.getMazeExtension())) {
 				    filename = MazeManager.getNameWithoutExtension(file)
-					    + XMLExtension.getXMLMazeExtensionWithPeriod();
+					    + Extension.getMazeExtensionWithPeriod();
 				}
 			    } else {
-				filename += XMLExtension.getXMLMazeExtensionWithPeriod();
+				filename += Extension.getMazeExtensionWithPeriod();
 			    }
 			    this.lastUsedMazeFile = filename;
 			    this.scoresFileName = MazeManager.getNameWithoutExtension(file.getName());
@@ -459,9 +459,9 @@ public class MazeManager implements OpenFilesHandler {
 
     public void saveLockedMaze() {
 	if (this.getLoaded()) {
-	    this.setMazeXML1Compatible(false);
-	    this.setMazeXML2Compatible(false);
-	    this.setMazeXML4Compatible(false);
+	    this.setMaze1Compatible(false);
+	    this.setMaze2Compatible(false);
+	    this.setMaze4Compatible(false);
 	    String filename = "";
 	    String fileOnly = "\\";
 	    String extension;
@@ -527,7 +527,7 @@ public class MazeManager implements OpenFilesHandler {
 	    final LockedSaveTask lst = new LockedSaveTask(filename);
 	    lst.start();
 	} else {
-	    final XMLSaveTask xst = new XMLSaveTask(filename, isSavedGame);
+	    final SaveTask xst = new SaveTask(filename, isSavedGame);
 	    xst.start();
 	}
     }

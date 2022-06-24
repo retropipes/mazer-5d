@@ -13,7 +13,7 @@ import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.files.InvalidMazeException;
-import com.puttysoftware.mazer5d.files.format.XMLPrefixHandler;
+import com.puttysoftware.mazer5d.files.format.PrefixHandler;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.maze.Maze;
 
@@ -46,10 +46,10 @@ public class LockedLoadTask extends Thread {
 		ZipUtilities.unzipDirectory(tempLock, new File(this.gameMaze.getBasePath()));
 		tempLock.delete();
 		// Set prefix handler
-		this.gameMaze.setXMLPrefixHandler(new XMLPrefixHandler());
+		this.gameMaze.setPrefixHandler(new PrefixHandler());
 		// Set suffix handler
-		this.gameMaze.setXMLSuffixHandler(null);
-		this.gameMaze = this.gameMaze.readMazeXML();
+		this.gameMaze.setSuffixHandler(null);
+		this.gameMaze = this.gameMaze.readMaze();
 		if (this.gameMaze == null) {
 		    throw new InvalidMazeException("Unknown object encountered.");
 		}

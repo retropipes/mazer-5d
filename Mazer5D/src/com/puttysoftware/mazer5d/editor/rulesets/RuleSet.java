@@ -101,7 +101,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
 	return this.generateQuantity;
     }
 
-    public void readRuleSetXML(final MazeDataReader reader, final int rsFormat) throws IOException {
+    public void readRuleSet(final MazeDataReader reader, final int rsFormat) throws IOException {
 	this.maxQuantity = reader.readInt();
 	this.minQuantity = reader.readInt();
 	this.percentageFlag = reader.readBoolean();
@@ -114,7 +114,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
 	}
     }
 
-    public void writeRuleSetXML(final MazeDataWriter writer) throws IOException {
+    public void writeRuleSet(final MazeDataWriter writer) throws IOException {
 	writer.writeInt(this.maxQuantity);
 	writer.writeInt(this.minQuantity);
 	writer.writeBoolean(this.percentageFlag);

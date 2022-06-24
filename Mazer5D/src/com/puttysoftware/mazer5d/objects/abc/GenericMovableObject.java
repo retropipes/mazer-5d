@@ -61,15 +61,15 @@ public abstract class GenericMovableObject extends MazeObject {
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion)
+    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final int formatVersion)
 	    throws IOException {
 	this.setSavedObject(GameObjects.readObject(reader, formatVersion));
 	return this;
     }
 
     @Override
-    protected void writeMazeObjectHookXML(final MazeDataWriter writer) throws IOException {
-	this.getSavedObject().writeMazeObjectXML(writer);
+    protected void writeMazeObjectHook(final MazeDataWriter writer) throws IOException {
+	this.getSavedObject().writeMazeObject(writer);
     }
 
     @Override

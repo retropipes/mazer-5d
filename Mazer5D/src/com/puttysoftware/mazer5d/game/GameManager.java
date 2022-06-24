@@ -1577,18 +1577,18 @@ public class GameManager implements MazeEffectConstants {
 	}
     }
 
-    public void loadGameHookXML(final MazeDataReader mazeFile, final int formatVersion) throws IOException {
+    public void loadGameHook(final MazeDataReader mazeFile, final int formatVersion) throws IOException {
 	final BagOStuff app = Mazer5D.getBagOStuff();
-	this.objectInv = ObjectInventory.readInventoryXML(mazeFile, formatVersion);
-	this.savedObjectInv = ObjectInventory.readInventoryXML(mazeFile, formatVersion);
+	this.objectInv = ObjectInventory.readInventory(mazeFile, formatVersion);
+	this.savedObjectInv = ObjectInventory.readInventory(mazeFile, formatVersion);
 	app.getMazeManager().setScoresFileName(mazeFile.readString());
 	this.st.setScore(mazeFile.readLong());
     }
 
-    public void saveGameHookXML(final MazeDataWriter mazeFile) throws IOException {
+    public void saveGameHook(final MazeDataWriter mazeFile) throws IOException {
 	final BagOStuff app = Mazer5D.getBagOStuff();
-	this.objectInv.writeInventoryXML(mazeFile);
-	this.savedObjectInv.writeInventoryXML(mazeFile);
+	this.objectInv.writeInventory(mazeFile);
+	this.savedObjectInv.writeInventory(mazeFile);
 	mazeFile.writeString(app.getMazeManager().getScoresFileName());
 	mazeFile.writeLong(this.st.getScore());
     }

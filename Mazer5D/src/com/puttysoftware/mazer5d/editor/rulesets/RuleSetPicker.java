@@ -38,7 +38,7 @@ public class RuleSetPicker {
     private final MazeObject[] objects;
     private final BufferedImageIcon[] editorAppearances;
     private int index;
-    private JButton create, destroy, edit, importXML, exportXML, done;
+    private JButton create, destroy, edit, importFile, exportFile, done;
     private final RuleSetEditor rsEditor;
 
     public RuleSetPicker() {
@@ -105,8 +105,8 @@ public class RuleSetPicker {
 	this.create = new JButton("Create");
 	this.destroy = new JButton("Destroy");
 	this.edit = new JButton("Edit");
-	this.importXML = new JButton("Load");
-	this.exportXML = new JButton("Save");
+	this.importFile = new JButton("Load");
+	this.exportFile = new JButton("Save");
 	this.done = new JButton("Done");
 	this.borderPane.setLayout(new BorderLayout());
 	this.borderPane.add(this.outputPane, BorderLayout.SOUTH);
@@ -114,14 +114,14 @@ public class RuleSetPicker {
 	this.outputPane.add(this.create);
 	this.outputPane.add(this.destroy);
 	this.outputPane.add(this.edit);
-	this.outputPane.add(this.importXML);
-	this.outputPane.add(this.exportXML);
+	this.outputPane.add(this.importFile);
+	this.outputPane.add(this.exportFile);
 	this.outputPane.add(this.done);
 	this.create.addActionListener(this.handler);
 	this.destroy.addActionListener(this.handler);
 	this.edit.addActionListener(this.handler);
-	this.importXML.addActionListener(this.handler);
-	this.exportXML.addActionListener(this.handler);
+	this.importFile.addActionListener(this.handler);
+	this.exportFile.addActionListener(this.handler);
 	this.done.addActionListener(this.handler);
 	this.picker = new PicturePicker(this.editorAppearances, this.names);
 	this.picker.changePickerColor(new Color(223, 223, 223));

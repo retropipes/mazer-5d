@@ -125,7 +125,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion)
+    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final int formatVersion)
 	    throws IOException {
 	final MazeObject o = GameObjects.readObject(reader, formatVersion);
 	if (o == null) {
@@ -137,7 +137,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     }
 
     @Override
-    protected void writeMazeObjectHookXML(final MazeDataWriter writer) throws IOException {
-	this.getKey().writeMazeObjectXML(writer);
+    protected void writeMazeObjectHook(final MazeDataWriter writer) throws IOException {
+	this.getKey().writeMazeObject(writer);
     }
 }

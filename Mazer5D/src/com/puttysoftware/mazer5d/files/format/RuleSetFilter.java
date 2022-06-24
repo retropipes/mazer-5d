@@ -9,15 +9,15 @@ import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
 
-public class XMLRuleSetFilter extends FileFilter {
+public class RuleSetFilter extends FileFilter {
     @Override
     public boolean accept(final File f) {
 	if (f.isDirectory()) {
 	    return true;
 	}
-	final String extension = XMLRuleSetFilter.getExtension(f);
+	final String extension = RuleSetFilter.getExtension(f);
 	if (extension != null) {
-	    if (extension.equals(XMLExtension.getXMLRuleSetExtension())) {
+	    if (extension.equals(Extension.getRuleSetExtension())) {
 		return true;
 	    } else {
 		return false;
@@ -28,7 +28,7 @@ public class XMLRuleSetFilter extends FileFilter {
 
     @Override
     public String getDescription() {
-	return "Mazer5D XML Rule Sets (" + XMLExtension.getXMLRuleSetExtensionWithPeriod() + ")";
+	return "Mazer5D  Rule Sets (" + Extension.getRuleSetExtensionWithPeriod() + ")";
     }
 
     private static String getExtension(final File f) {

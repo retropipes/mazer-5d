@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.MazeObject;
-import com.puttysoftware.mazer5d.files.format.XMLFormatConstants;
+import com.puttysoftware.mazer5d.files.format.FormatConstants;
 import com.puttysoftware.mazer5d.files.io.MazeDataReader;
 import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.loaders.ObjectImageLoader;
@@ -1269,30 +1269,30 @@ public class GameObjects {
     public static MazeObject readObject(final MazeDataReader reader, final int formatVersion) throws IOException {
 	MazeObject o = null;
 	String UID = "";
-	if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_1) {
+	if (formatVersion == FormatConstants._MAZE_FORMAT_1) {
 	    UID = reader.readString();
-	} else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_2) {
+	} else if (formatVersion == FormatConstants._MAZE_FORMAT_2) {
 	    UID = reader.readString();
-	} else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_3) {
+	} else if (formatVersion == FormatConstants._MAZE_FORMAT_3) {
 	    UID = reader.readString();
-	} else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_4) {
+	} else if (formatVersion == FormatConstants._MAZE_FORMAT_4) {
 	    UID = reader.readString();
-	} else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_5) {
+	} else if (formatVersion == FormatConstants._MAZE_FORMAT_5) {
 	    UID = reader.readString();
 	}
 	for (final MazeObject allObject : GameObjects.allObjects) {
 	    try {
 		final MazeObject instance = allObject.getClass().getConstructor().newInstance();
-		if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_1) {
-		    o = instance.readMazeObjectXML(reader, UID, formatVersion);
-		} else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_2) {
-		    o = instance.readMazeObjectXML2(reader, UID, formatVersion);
-		} else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_3) {
-		    o = instance.readMazeObjectXML3(reader, UID, formatVersion);
-		} else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_4) {
-		    o = instance.readMazeObjectXML4(reader, UID, formatVersion);
-		} else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_5) {
-		    o = instance.readMazeObjectXML5(reader, UID, formatVersion);
+		if (formatVersion == FormatConstants._MAZE_FORMAT_1) {
+		    o = instance.readMazeObject(reader, UID, formatVersion);
+		} else if (formatVersion == FormatConstants._MAZE_FORMAT_2) {
+		    o = instance.readMazeObject2(reader, UID, formatVersion);
+		} else if (formatVersion == FormatConstants._MAZE_FORMAT_3) {
+		    o = instance.readMazeObject3(reader, UID, formatVersion);
+		} else if (formatVersion == FormatConstants._MAZE_FORMAT_4) {
+		    o = instance.readMazeObject4(reader, UID, formatVersion);
+		} else if (formatVersion == FormatConstants._MAZE_FORMAT_5) {
+		    o = instance.readMazeObject5(reader, UID, formatVersion);
 		}
 		if (o != null) {
 		    return o;
@@ -1317,7 +1317,7 @@ public class GameObjects {
 	for (int x = 0; x < mapLen; x++) {
 	    if (map[x]) {
 		GameObjects.allObjects[x].giveRuleSet();
-		GameObjects.allObjects[x].getRuleSet().readRuleSetXML(reader, rsFormat);
+		GameObjects.allObjects[x].getRuleSet().readRuleSet(reader, rsFormat);
 	    }
 	}
     }
@@ -1333,7 +1333,7 @@ public class GameObjects {
 	// Write data
 	for (int x = 0; x < map.length; x++) {
 	    if (map[x]) {
-		GameObjects.allObjects[x].getRuleSet().writeRuleSetXML(writer);
+		GameObjects.allObjects[x].getRuleSet().writeRuleSet(writer);
 	    }
 	}
     }

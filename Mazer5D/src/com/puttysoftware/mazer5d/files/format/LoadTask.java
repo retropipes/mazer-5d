@@ -15,17 +15,17 @@ import com.puttysoftware.mazer5d.files.InvalidMazeException;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.maze.Maze;
 
-public class XMLLoadTask extends Thread {
+public class LoadTask extends Thread {
     // Fields
     private Maze gameMaze;
     private final String filename;
     private final boolean isSavedGame;
 
     // Constructors
-    public XMLLoadTask(final String file, final boolean saved) {
+    public LoadTask(final String file, final boolean saved) {
 	this.filename = file;
 	this.isSavedGame = saved;
-	this.setName("XML File Loader");
+	this.setName(" File Loader");
     }
 
     // Methods
@@ -46,14 +46,14 @@ public class XMLLoadTask extends Thread {
 	    this.gameMaze = new Maze();
 	    ZipUtilities.unzipDirectory(mazeFile, new File(this.gameMaze.getBasePath()));
 	    // Set prefix handler
-	    this.gameMaze.setXMLPrefixHandler(new XMLPrefixHandler());
+	    this.gameMaze.setPrefixHandler(new PrefixHandler());
 	    // Set suffix handler
 	    if (this.isSavedGame) {
-		this.gameMaze.setXMLSuffixHandler(new XMLSuffixHandler());
+		this.gameMaze.setSuffixHandler(new SuffixHandler());
 	    } else {
-		this.gameMaze.setXMLSuffixHandler(null);
+		this.gameMaze.setSuffixHandler(null);
 	    }
-	    this.gameMaze = this.gameMaze.readMazeXML();
+	    this.gameMaze = this.gameMaze.readMaze();
 	    if (this.gameMaze == null) {
 		throw new InvalidMazeException("Unknown object encountered.");
 	    }

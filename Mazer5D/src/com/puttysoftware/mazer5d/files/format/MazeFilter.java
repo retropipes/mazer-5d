@@ -9,15 +9,15 @@ import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
 
-public class XMLGameFilter extends FileFilter {
+public class MazeFilter extends FileFilter {
     @Override
     public boolean accept(final File f) {
 	if (f.isDirectory()) {
 	    return true;
 	}
-	final String extension = XMLGameFilter.getExtension(f);
+	final String extension = MazeFilter.getExtension(f);
 	if (extension != null) {
-	    if (extension.equals(XMLExtension.getXMLGameExtension())) {
+	    if (extension.equals(Extension.getMazeExtension())) {
 		return true;
 	    } else {
 		return false;
@@ -28,7 +28,7 @@ public class XMLGameFilter extends FileFilter {
 
     @Override
     public String getDescription() {
-	return "Mazer5D XML Saved Games (" + XMLExtension.getXMLGameExtensionWithPeriod() + ")";
+	return "Mazer5D  Mazes (" + Extension.getMazeExtensionWithPeriod() + ")";
     }
 
     private static String getExtension(final File f) {

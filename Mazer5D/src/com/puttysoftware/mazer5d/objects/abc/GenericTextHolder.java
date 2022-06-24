@@ -51,14 +51,14 @@ public abstract class GenericTextHolder extends MazeObject {
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion)
+    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final int formatVersion)
 	    throws IOException {
 	this.setSignText(reader.readString());
 	return this;
     }
 
     @Override
-    protected void writeMazeObjectHookXML(final MazeDataWriter writer) throws IOException {
+    protected void writeMazeObjectHook(final MazeDataWriter writer) throws IOException {
 	writer.writeString(this.getSignText());
     }
 }

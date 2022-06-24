@@ -1140,7 +1140,7 @@ public class MazeObject implements RandomGenerationRule {
     }
 
     // File I/O-related methods
-    public final String getXMLIdentifier() {
+    public final String getIdentifier() {
 	return this.getNameHook();
     }
 
@@ -1156,20 +1156,20 @@ public class MazeObject implements RandomGenerationRule {
 	return MazeObjects._NONE;
     }
 
-    public final void writeMazeObjectXML(final MazeDataWriter writer) throws IOException {
-	writer.writeString(this.getXMLIdentifier());
+    public final void writeMazeObject(final MazeDataWriter writer) throws IOException {
+	writer.writeString(this.getIdentifier());
 	final int ccf = this.customCounterCount();
 	if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
 	    for (int x = 0; x < ccf; x++) {
 		writer.writeInt(this.getCustomCounter(x + 1));
 	    }
 	}
-	this.writeMazeObjectHookXML(writer);
+	this.writeMazeObjectHook(writer);
     }
 
-    public final MazeObject readMazeObjectXML(final MazeDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObject(final MazeDataReader reader, final String ident, final int ver)
 	    throws IOException {
-	if (ident.equals(this.getXMLIdentifier())) {
+	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
 	    if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
 		for (int x = 0; x < ccf; x++) {
@@ -1177,15 +1177,15 @@ public class MazeObject implements RandomGenerationRule {
 		    this.setCustomCounter(x + 1, cx);
 		}
 	    }
-	    return this.readMazeObjectHookXML(reader, ver);
+	    return this.readMazeObjectHook(reader, ver);
 	} else {
 	    return null;
 	}
     }
 
-    public final MazeObject readMazeObjectXML2(final MazeDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObject2(final MazeDataReader reader, final String ident, final int ver)
 	    throws IOException {
-	if (ident.equals(this.getXMLIdentifier())) {
+	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
 	    if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
 		for (int x = 0; x < ccf; x++) {
@@ -1193,15 +1193,15 @@ public class MazeObject implements RandomGenerationRule {
 		    this.setCustomCounter(x + 1, cx);
 		}
 	    }
-	    return this.readMazeObjectHookXML(reader, ver);
+	    return this.readMazeObjectHook(reader, ver);
 	} else {
 	    return null;
 	}
     }
 
-    public final MazeObject readMazeObjectXML3(final MazeDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObject3(final MazeDataReader reader, final String ident, final int ver)
 	    throws IOException {
-	if (ident.equals(this.getXMLIdentifier())) {
+	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
 	    if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
 		for (int x = 0; x < ccf; x++) {
@@ -1209,15 +1209,15 @@ public class MazeObject implements RandomGenerationRule {
 		    this.setCustomCounter(x + 1, cx);
 		}
 	    }
-	    return this.readMazeObjectHookXML(reader, ver);
+	    return this.readMazeObjectHook(reader, ver);
 	} else {
 	    return null;
 	}
     }
 
-    public final MazeObject readMazeObjectXML4(final MazeDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObject4(final MazeDataReader reader, final String ident, final int ver)
 	    throws IOException {
-	if (ident.equals(this.getXMLIdentifier())) {
+	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
 	    if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
 		for (int x = 0; x < ccf; x++) {
@@ -1225,15 +1225,15 @@ public class MazeObject implements RandomGenerationRule {
 		    this.setCustomCounter(x + 1, cx);
 		}
 	    }
-	    return this.readMazeObjectHookXML(reader, ver);
+	    return this.readMazeObjectHook(reader, ver);
 	} else {
 	    return null;
 	}
     }
 
-    public final MazeObject readMazeObjectXML5(final MazeDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObject5(final MazeDataReader reader, final String ident, final int ver)
 	    throws IOException {
-	if (ident.equals(this.getXMLIdentifier())) {
+	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
 	    if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
 		for (int x = 0; x < ccf; x++) {
@@ -1241,7 +1241,7 @@ public class MazeObject implements RandomGenerationRule {
 		    this.setCustomCounter(x + 1, cx);
 		}
 	    }
-	    return this.readMazeObjectHookXML(reader, ver);
+	    return this.readMazeObjectHook(reader, ver);
 	} else {
 	    return null;
 	}
@@ -1252,7 +1252,7 @@ public class MazeObject implements RandomGenerationRule {
      * @param writer
      * @throws IOException
      */
-    protected void writeMazeObjectHookXML(final MazeDataWriter writer) throws IOException {
+    protected void writeMazeObjectHook(final MazeDataWriter writer) throws IOException {
 	// Do nothing - but let subclasses override
     }
 
@@ -1263,7 +1263,7 @@ public class MazeObject implements RandomGenerationRule {
      * @return
      * @throws IOException
      */
-    protected MazeObject readMazeObjectHookXML(final MazeDataReader reader, final int formatVersion)
+    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final int formatVersion)
 	    throws IOException {
 	// Dummy implementation, subclasses can override
 	return this;

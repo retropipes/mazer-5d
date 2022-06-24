@@ -34,7 +34,7 @@ class SavedState {
 	this.saveData[x][y][z][e] = newData;
     }
 
-    public void writeSavedTowerStateXML(final MazeDataWriter writer) throws IOException {
+    public void writeSavedTowerState(final MazeDataWriter writer) throws IOException {
 	int x, y, z, e;
 	writer.writeInt(this.c);
 	writer.writeInt(this.r);
@@ -43,14 +43,14 @@ class SavedState {
 	    for (y = 0; y < this.r; y++) {
 		for (z = 0; z < this.f; z++) {
 		    for (e = 0; e < Layers.COUNT; e++) {
-			this.saveData[x][y][z][e].writeMazeObjectXML(writer);
+			this.saveData[x][y][z][e].writeMazeObject(writer);
 		    }
 		}
 	    }
 	}
     }
 
-    public static SavedState readSavedStateXML(final MazeDataReader reader, final int formatVersion) throws IOException {
+    public static SavedState readSavedState(final MazeDataReader reader, final int formatVersion) throws IOException {
 	int x, y, z, e, sizeX, sizeY, sizeZ;
 	sizeX = reader.readInt();
 	sizeY = reader.readInt();

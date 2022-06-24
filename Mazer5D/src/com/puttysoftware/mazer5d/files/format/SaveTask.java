@@ -12,17 +12,17 @@ import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 
-public class XMLSaveTask extends Thread {
+public class SaveTask extends Thread {
     // Fields
     private String filename;
     private final boolean isSavedGame;
     private int savedLevel;
 
     // Constructors
-    public XMLSaveTask(final String file, final boolean saved) {
+    public SaveTask(final String file, final boolean saved) {
 	this.filename = file;
 	this.isSavedGame = saved;
-	this.setName("XML File Writer");
+	this.setName(" File Writer");
     }
 
     @Override
@@ -36,23 +36,23 @@ public class XMLSaveTask extends Thread {
 	    sg = "Maze";
 	}
 	// filename check
-	final boolean hasExtension = XMLSaveTask.hasExtension(this.filename);
+	final boolean hasExtension = SaveTask.hasExtension(this.filename);
 	if (!hasExtension) {
 	    if (this.isSavedGame) {
-		this.filename += XMLExtension.getXMLGameExtensionWithPeriod();
+		this.filename += Extension.getGameExtensionWithPeriod();
 	    } else {
-		this.filename += XMLExtension.getXMLMazeExtensionWithPeriod();
+		this.filename += Extension.getMazeExtensionWithPeriod();
 	    }
 	}
 	final File mazeFile = new File(this.filename);
 	try {
 	    // Set prefix handler
-	    app.getMazeManager().getMaze().setXMLPrefixHandler(new XMLPrefixHandler());
+	    app.getMazeManager().getMaze().setPrefixHandler(new PrefixHandler());
 	    // Set suffix handler
 	    if (this.isSavedGame) {
-		app.getMazeManager().getMaze().setXMLSuffixHandler(new XMLSuffixHandler());
+		app.getMazeManager().getMaze().setSuffixHandler(new SuffixHandler());
 	    } else {
-		app.getMazeManager().getMaze().setXMLSuffixHandler(null);
+		app.getMazeManager().getMaze().setSuffixHandler(null);
 	    }
 	    if (this.isSavedGame) {
 		// Save start location
@@ -65,7 +65,7 @@ public class XMLSaveTask extends Thread {
 		app.getMazeManager().getMaze().switchLevel(currW);
 		app.getMazeManager().getMaze().findStart();
 	    }
-	    app.getMazeManager().getMaze().writeMazeXML();
+	    app.getMazeManager().getMaze().writeMaze();
 	    if (this.isSavedGame) {
 		// Restore active level
 		app.getMazeManager().getMaze().switchLevel(this.savedLevel);
