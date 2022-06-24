@@ -9,12 +9,12 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 public class MazeDataReader extends XDataReader {
     // Constructors
-    public MazeDataReader(final String filename) throws IOException {
-	super(filename, "customxml");
+    public MazeDataReader(final String filename, final String docTag) throws IOException {
+	super(filename, docTag);
     }
 
-    public MazeDataReader(final InputStream stream) throws IOException {
-	super(stream, "customxml");
+    public MazeDataReader(final InputStream stream, final String docTag) throws IOException {
+	super(stream, docTag);
     }
 
     // Methods

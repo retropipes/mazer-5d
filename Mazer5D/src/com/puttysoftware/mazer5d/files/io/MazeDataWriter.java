@@ -8,8 +8,8 @@ import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 public class MazeDataWriter extends XDataWriter {
     // Constructors
-    public MazeDataWriter(final String filename) throws IOException {
-	super(filename, "customxml");
+    public MazeDataWriter(final String filename, final String docTag) throws IOException {
+	super(filename, docTag);
     }
 
     // Methods
