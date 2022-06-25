@@ -5,7 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.files;
 
-import com.puttysoftware.mazer5d.locale.LocaleLoader;
+import com.puttysoftware.mazer5d.loaders.DataFileLoader;
 
 public class FileExtensions {
     // Constants
@@ -27,123 +27,123 @@ public class FileExtensions {
 
     // Methods (no period)
     public static String getSoundExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.SOUND);
+	return DataFileLoader.loadFileExtension(FileExtensions.SOUND);
     }
 
     public static String getImageExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.IMAGE);
+	return DataFileLoader.loadFileExtension(FileExtensions.IMAGE);
     }
 
     public static String getMusicExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.MUSIC);
+	return DataFileLoader.loadFileExtension(FileExtensions.MUSIC);
     }
 
     public static String getMazeExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.MAZE);
+	return DataFileLoader.loadFileExtension(FileExtensions.MAZE);
     }
 
     public static String getGameExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.GAME);
+	return DataFileLoader.loadFileExtension(FileExtensions.GAME);
     }
 
     public static String getLockedMazeExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.LOCKED_MAZE);
+	return DataFileLoader.loadFileExtension(FileExtensions.LOCKED_MAZE);
     }
 
     public static String getMazeLevelExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.MAZE_LEVEL);
+	return DataFileLoader.loadFileExtension(FileExtensions.MAZE_LEVEL);
     }
 
     public static String getMazeTempExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.MAZE_TEMP);
+	return DataFileLoader.loadFileExtension(FileExtensions.MAZE_TEMP);
     }
 
     public static String getScoresExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.SCORES);
+	return DataFileLoader.loadFileExtension(FileExtensions.SCORES);
     }
 
     public static String getRuleSetExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.RULE_SET);
+	return DataFileLoader.loadFileExtension(FileExtensions.RULE_SET);
     }
 
     public static String getCharacterExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.CHARACTER);
+	return DataFileLoader.loadFileExtension(FileExtensions.CHARACTER);
     }
 
     public static String getRegistryExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.REGISTRY);
+	return DataFileLoader.loadFileExtension(FileExtensions.REGISTRY);
     }
 
     public static String getPrefsExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.PREFS);
+	return DataFileLoader.loadFileExtension(FileExtensions.PREFS);
     }
 
     public static String getDataFileExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.DATA_FILE);
+	return DataFileLoader.loadFileExtension(FileExtensions.DATA_FILE);
     }
 
     public static String getRawFileExtension() {
-	return LocaleLoader.loadFileExtension(FileExtensions.RAW_FILE);
+	return DataFileLoader.loadFileExtension(FileExtensions.RAW_FILE);
     }
 
     // Methods (with period)
     public static String getSoundExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtensionWithPeriod(FileExtensions.SOUND);
+	return DataFileLoader.loadFileExtensionWithPeriod(FileExtensions.SOUND);
     }
 
     public static String getImageExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtensionWithPeriod(FileExtensions.IMAGE);
+	return DataFileLoader.loadFileExtensionWithPeriod(FileExtensions.IMAGE);
     }
 
     public static String getMusicExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtensionWithPeriod(FileExtensions.MUSIC);
+	return DataFileLoader.loadFileExtensionWithPeriod(FileExtensions.MUSIC);
     }
 
     public static String getMazeExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtensionWithPeriod(FileExtensions.MAZE);
+	return DataFileLoader.loadFileExtensionWithPeriod(FileExtensions.MAZE);
     }
 
     public static String getGameExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtensionWithPeriod(FileExtensions.GAME);
+	return DataFileLoader.loadFileExtensionWithPeriod(FileExtensions.GAME);
     }
 
     public static String getLockedMazeExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtensionWithPeriod(FileExtensions.LOCKED_MAZE);
+	return DataFileLoader.loadFileExtensionWithPeriod(FileExtensions.LOCKED_MAZE);
     }
 
     public static String getMazeLevelExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtension(FileExtensions.MAZE_LEVEL);
+	return DataFileLoader.loadFileExtension(FileExtensions.MAZE_LEVEL);
     }
 
     public static String getMazeTempExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtension(FileExtensions.MAZE_TEMP);
+	return DataFileLoader.loadFileExtension(FileExtensions.MAZE_TEMP);
     }
 
     public static String getScoresExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtensionWithPeriod(FileExtensions.SCORES);
+	return DataFileLoader.loadFileExtensionWithPeriod(FileExtensions.SCORES);
     }
 
     public static String getRuleSetExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtensionWithPeriod(FileExtensions.RULE_SET);
+	return DataFileLoader.loadFileExtensionWithPeriod(FileExtensions.RULE_SET);
     }
 
     public static String getCharacterExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtensionWithPeriod(FileExtensions.CHARACTER);
+	return DataFileLoader.loadFileExtensionWithPeriod(FileExtensions.CHARACTER);
     }
 
     public static String getRegistryExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtensionWithPeriod(FileExtensions.REGISTRY);
+	return DataFileLoader.loadFileExtensionWithPeriod(FileExtensions.REGISTRY);
     }
 
     public static String getPrefsExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtensionWithPeriod(FileExtensions.PREFS);
+	return DataFileLoader.loadFileExtensionWithPeriod(FileExtensions.PREFS);
     }
 
     public static String getDataFileExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtensionWithPeriod(FileExtensions.DATA_FILE);
+	return DataFileLoader.loadFileExtensionWithPeriod(FileExtensions.DATA_FILE);
     }
 
     public static String getRawFileExtensionWithPeriod() {
-	return LocaleLoader.loadFileExtensionWithPeriod(FileExtensions.RAW_FILE);
+	return DataFileLoader.loadFileExtensionWithPeriod(FileExtensions.RAW_FILE);
     }
 }

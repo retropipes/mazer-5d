@@ -39,6 +39,8 @@ import com.puttysoftware.mazer5d.loaders.ImageConstants;
 import com.puttysoftware.mazer5d.loaders.MusicPlayer;
 import com.puttysoftware.mazer5d.loaders.ObjectImageLoader;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.locale.GameResource;
+import com.puttysoftware.mazer5d.locale.GameResources;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazer5d.maze.effects.MazeEffectManager;
@@ -1070,7 +1072,7 @@ public class GameManager implements MazeEffectConstants {
     public void resetCurrentLevel() {
 	if (!this.usingAnItem()) {
 	    final int result = CommonDialogs.showConfirmDialog("Are you sure you want to reset the current level?",
-		    "Mazer5D");
+		    GameResources.translate(GameResource.PROGRAM_NAME));
 	    if (result == CommonDialogs.YES_OPTION) {
 		this.resetLevel(this.plMgr.getPlayerLocationW());
 	    }
@@ -1414,7 +1416,7 @@ public class GameManager implements MazeEffectConstants {
 	    int x;
 	    final MazeObject[] choices = GameObjects.getAllUsableObjects();
 	    final String[] userChoices = this.objectInv.generateUseStringArray();
-	    final String result = CommonDialogs.showInputDialog("Use which item?", "Mazer5D", userChoices,
+	    final String result = CommonDialogs.showInputDialog("Use which item?", GameResources.translate(GameResource.PROGRAM_NAME), userChoices,
 		    userChoices[this.lastUsedObjectIndex]);
 	    try {
 		for (x = 0; x < choices.length; x++) {
@@ -1441,7 +1443,7 @@ public class GameManager implements MazeEffectConstants {
 	    int x;
 	    final MazeObject[] choices = GameObjects.getAllBows();
 	    final String[] userChoices = this.objectInv.generateBowStringArray();
-	    final String result = CommonDialogs.showInputDialog("Switch to which bow?", "Mazer5D", userChoices,
+	    final String result = CommonDialogs.showInputDialog("Switch to which bow?", GameResources.translate(GameResource.PROGRAM_NAME), userChoices,
 		    userChoices[this.lastUsedBowIndex]);
 	    try {
 		for (x = 0; x < choices.length; x++) {
@@ -1654,7 +1656,7 @@ public class GameManager implements MazeEffectConstants {
     public void showOutput() {
 	MusicPlayer.playMusic(MusicIndex.EXPLORING, MusicGroup.GAME);
 	this.outputFrame.attachAndSave(this.borderPane);
-	this.outputFrame.setTitle("Mazer5D");
+	this.outputFrame.setTitle(GameResources.translate(GameResource.PROGRAM_NAME));
 	this.outputFrame.addKeyListener(this.handler);
 	this.outputPane.addMouseListener(this.handler);
     }

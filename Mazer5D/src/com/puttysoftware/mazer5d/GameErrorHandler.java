@@ -7,13 +7,13 @@ package com.puttysoftware.mazer5d;
 
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.errorlogger.ErrorLogger;
+import com.puttysoftware.mazer5d.locale.GameResource;
+import com.puttysoftware.mazer5d.locale.GameResources;
 
 final class GameErrorHandler implements Thread.UncaughtExceptionHandler {
-    private static final String LOG_NAME = "Mazer5D";
-    private static final String ERROR_MESSAGE = "Perhaps a bug is to blame for this error message.\n"
-	    + "Include the error log with your bug report.\n" + "Email bug reports to: products@puttysoftware.com\n"
-	    + "Subject: Mazer5D Bug Report";
-    private static final String ERROR_TITLE = "Mazer5D Error";
+    private static final String LOG_NAME = GameResources.translate(GameResource.PROGRAM_NAME);
+    private static final String ERROR_MESSAGE = GameResources.translate(GameResource.ERROR_MESSAGE);
+    private static final String ERROR_TITLE = GameResources.translate(GameResource.ERROR_TITLE);
     private final ErrorLogger logger;
 
     GameErrorHandler() {

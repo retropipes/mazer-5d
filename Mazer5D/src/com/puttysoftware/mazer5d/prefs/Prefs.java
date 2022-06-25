@@ -30,6 +30,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Clock;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -136,6 +137,10 @@ public class Prefs {
     }
 
     // Methods
+    public static Locale activeLanguage() {
+	return Locale.getDefault();
+    }
+
     public static String getLastDirOpen() {
 	return Prefs.lastDirOpen;
     }

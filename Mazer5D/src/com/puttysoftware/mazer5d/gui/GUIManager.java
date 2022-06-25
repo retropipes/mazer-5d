@@ -28,6 +28,8 @@ import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.files.MazeManager;
 import com.puttysoftware.mazer5d.files.TempDirCleanup;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
+import com.puttysoftware.mazer5d.locale.GameResource;
+import com.puttysoftware.mazer5d.locale.GameResources;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class GUIManager implements QuitHandler {
@@ -50,7 +52,7 @@ public class GUIManager implements QuitHandler {
 	this.setUpGUI();
 	Modes.setInGUI();
 	this.guiFrame.attachAndSave(this.guiPane);
-	this.guiFrame.setTitle("Mazer5D");
+	this.guiFrame.setTitle(GameResources.translate(GameResource.PROGRAM_NAME));
 	this.checkFlags();
     }
 

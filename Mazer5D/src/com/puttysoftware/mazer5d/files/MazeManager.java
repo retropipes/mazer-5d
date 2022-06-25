@@ -27,6 +27,8 @@ import com.puttysoftware.mazer5d.files.locking.LockedFilter;
 import com.puttysoftware.mazer5d.files.locking.LockedLoadTask;
 import com.puttysoftware.mazer5d.files.locking.LockedSaveTask;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
+import com.puttysoftware.mazer5d.locale.GameResource;
+import com.puttysoftware.mazer5d.locale.GameResources;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
@@ -111,7 +113,7 @@ public class MazeManager implements OpenFilesHandler {
 	    source = "Editor";
 	} else if (Modes.inGame()) {
 	    type = "game";
-	    source = "Mazer5D";
+	    source = GameResources.translate(GameResource.PROGRAM_NAME);
 	} else {
 	    // Not in the game or editor, so abort
 	    return CommonDialogs.NO_OPTION;
