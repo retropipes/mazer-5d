@@ -8,6 +8,8 @@ import javax.swing.JColorChooser;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.loaders.AvatarImageLoader;
+import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.randomrange.RandomRange;
 
 public class AvatarPicker {
@@ -130,8 +132,8 @@ public class AvatarPicker {
     }
 
     private static int pickAvatarFamily() throws IOException {
-	final String labelText = "Avatar Families";
-	final String title = "Pick Avatar Family";
+	final String labelText = Translations.load(Strings.AVATAR_FAMILIES);
+	final String title = Translations.load(Strings.PICK_AVATAR_FAMILY);
 	final BufferedImageIcon[] input = new BufferedImageIcon[] { AvatarImageLoader.load(0, rules),
 		AvatarImageLoader.load(1, rules), AvatarImageLoader.load(2, rules), AvatarImageLoader.load(3, rules),
 		AvatarImageLoader.load(4, rules), AvatarImageLoader.load(5, rules), AvatarImageLoader.load(6, rules),
@@ -143,8 +145,8 @@ public class AvatarPicker {
     }
 
     private static int pickAvatarWeapon() throws IOException {
-	final String labelText = "Avatar Weapons";
-	final String title = "Pick Avatar Weapon";
+	final String labelText = Translations.load(Strings.AVATAR_WEAPONS);
+	final String title = Translations.load(Strings.PICK_AVATAR_WEAPON);
 	final BufferedImageIcon[] input = new BufferedImageIcon[] { AvatarImageLoader.loadWeapon(0, weaponRules),
 		AvatarImageLoader.loadWeapon(1, weaponRules), AvatarImageLoader.loadWeapon(2, weaponRules),
 		AvatarImageLoader.loadWeapon(3, weaponRules) };
@@ -153,8 +155,8 @@ public class AvatarPicker {
     }
 
     private static int pickAvatarAccessory() throws IOException {
-	final String labelText = "Avatar Accessories";
-	final String title = "Pick Avatar Accessory";
+	final String labelText =  Translations.load(Strings.AVATAR_ACCESSORIES);
+	final String title = Translations.load(Strings.PICK_AVATAR_ACCESSORY);
 	final BufferedImageIcon[] input = new BufferedImageIcon[] { AvatarImageLoader.loadAccessory(0, accessoryRules),
 		AvatarImageLoader.loadAccessory(1, accessoryRules), AvatarImageLoader.loadAccessory(2, accessoryRules),
 		AvatarImageLoader.loadAccessory(3, accessoryRules) };
@@ -163,52 +165,52 @@ public class AvatarPicker {
     }
 
     private static Color pickAvatarSkinColor() {
-	final String title = "Pick Avatar Skin Color";
+	final String title = Translations.load(Strings.PICK_AVATAR_SKIN_COLOR);
 	return JColorChooser.showDialog(null, title, currentSkinColor, false);
     }
 
     private static Color pickAvatarHairColor() {
-	final String title = "Pick Avatar Hair Color";
+	final String title = Translations.load(Strings.PICK_AVATAR_HAIR_COLOR);
 	return JColorChooser.showDialog(null, title, currentHairColor, false);
     }
 
     private static Color pickAvatarEyesColor() {
-	final String title = "Pick Avatar Eyes Color";
+	final String title = Translations.load(Strings.PICK_AVATAR_EYES_COLOR);
 	return JColorChooser.showDialog(null, title, currentEyesColor, false);
     }
 
     private static Color pickAvatarTorsoColor() {
-	final String title = "Pick Avatar Torso Color";
+	final String title = Translations.load(Strings.PICK_AVATAR_TORSO_COLOR);
 	return JColorChooser.showDialog(null, title, currentTorsoColor, false);
     }
 
     private static Color pickAvatarLegsColor() {
-	final String title = "Pick Avatar Legs Color";
+	final String title = Translations.load(Strings.PICK_AVATAR_LEGS_COLOR);
 	return JColorChooser.showDialog(null, title, currentLegsColor, false);
     }
 
     private static Color pickAvatarFeetColor() {
-	final String title = "Pick Avatar Feet Color";
+	final String title = Translations.load(Strings.PICK_AVATAR_FEET_COLOR);
 	return JColorChooser.showDialog(null, title, currentFeetColor, false);
     }
 
     private static Color pickAvatarWeaponColor1() {
-	final String title = "Pick First Avatar Weapon Color";
+	final String title = Translations.load(Strings.PICK_AVATAR_FIRST_WEAPON_COLOR);
 	return JColorChooser.showDialog(null, title, currentWeaponColor1, false);
     }
 
     private static Color pickAvatarWeaponColor2() {
-	final String title = "Pick Second Avatar Weapon Color";
+	final String title = Translations.load(Strings.PICK_AVATAR_SECOND_WEAPON_COLOR);
 	return JColorChooser.showDialog(null, title, currentWeaponColor2, false);
     }
 
     private static Color pickAvatarAccessoryColor1() {
-	final String title = "Pick First Avatar Accessory Color";
+	final String title = Translations.load(Strings.PICK_AVATAR_FIRST_ACCESSORY_COLOR);
 	return JColorChooser.showDialog(null, title, currentAccessoryColor1, false);
     }
 
     private static Color pickAvatarAccessoryColor2() {
-	final String title = "Pick Second Avatar Accessory Color";
+	final String title = Translations.load(Strings.PICK_AVATAR_SECOND_ACCESSORY_COLOR);;
 	return JColorChooser.showDialog(null, title, currentAccessoryColor2, false);
     }
 }
