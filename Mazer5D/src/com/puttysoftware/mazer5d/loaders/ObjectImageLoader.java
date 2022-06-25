@@ -106,7 +106,7 @@ public class ObjectImageLoader {
 	// Get it from the cache
 	return ObjectImageCache.getCachedObjectImage(obj, game);
     }
-    
+
     public static BufferedImageIcon loadHelp(final String name) {
 	// Get it from the cache
 	return ObjectImageCache.getCachedHelpImage(name);
@@ -128,7 +128,7 @@ public class ObjectImageLoader {
 	    return null;
 	}
     }
-    
+
     static BufferedImageIcon getUncachedObjectImage(final MazeObject obj) {
 	try {
 	    String name = obj.getImageName();

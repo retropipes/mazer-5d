@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.loaders.AvatarImageLoader;
+import com.puttysoftware.mazer5d.locale.Strings;
 
 public final class AvatarImageModel {
     // Fields
@@ -149,14 +150,14 @@ public final class AvatarImageModel {
     }
 
     private static String intToHex4(int value) {
-	return String.format("%1$01X", value);
+	return String.format(Strings.HEX_4, value);
     }
 
     private static String intToHex8(int value) {
-	return String.format("%1$02X", value);
+	return String.format(Strings.HEX_8, value);
     }
 
     private static String colorToHex24(Color value) {
-	return String.format("%1$06X", value.getRGB() << 8 >>> 8);
+	return String.format(Strings.HEX_24, value.getRGB() << 8 >>> 8);
     }
 }

@@ -28,7 +28,7 @@ public class ObjectImageCache {
 	}
 	return null;
     }
-    
+
     static BufferedImageIcon getCachedObjectImage(final MazeObject obj, final boolean game) {
 	MazeObject realObj;
 	if (game) {

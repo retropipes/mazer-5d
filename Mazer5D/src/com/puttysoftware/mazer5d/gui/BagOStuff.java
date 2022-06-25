@@ -106,10 +106,11 @@ public class BagOStuff {
 
     private String getVersionString() {
 	if (this.isBetaModeEnabled()) {
-	    return Strings.EMPTY + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR + "." + BagOStuff.VERSION_BUGFIX + "b"
-		    + BagOStuff.VERSION_BETA;
+	    return Strings.EMPTY + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR + "."
+		    + BagOStuff.VERSION_BUGFIX + "b" + BagOStuff.VERSION_BETA;
 	} else {
-	    return Strings.EMPTY + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR + "." + BagOStuff.VERSION_BUGFIX;
+	    return Strings.EMPTY + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR + "."
+		    + BagOStuff.VERSION_BUGFIX;
 	}
     }
 

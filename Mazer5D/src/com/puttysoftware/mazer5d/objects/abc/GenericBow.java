@@ -33,8 +33,7 @@ public abstract class GenericBow extends GenericUsableObject {
     }
 
     @Override
-    protected
-    abstract String getNameHook();
+    protected abstract String getNameHook();
 
     public int getArrowType() {
 	return this.AT;

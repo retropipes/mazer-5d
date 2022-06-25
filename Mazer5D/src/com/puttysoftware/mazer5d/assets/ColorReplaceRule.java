@@ -24,7 +24,7 @@ final class ColorReplaceRule {
     // Methods
     public BufferedImageIcon apply(final BufferedImageIcon input) {
 	if (input == null) {
-	    throw new IllegalArgumentException("input == NULL!");
+	    return input;
 	}
 	final int width = input.getWidth();
 	final int height = input.getHeight();

@@ -34,8 +34,7 @@ public abstract class GenericInvisibleTeleport extends GenericTeleport {
     }
 
     @Override
-    protected
-    abstract String getNameHook();
+    protected abstract String getNameHook();
 
     @Override
     public abstract MazeObject editorPropertiesHook();

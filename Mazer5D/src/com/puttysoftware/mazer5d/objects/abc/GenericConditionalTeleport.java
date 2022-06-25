@@ -58,8 +58,7 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
     }
 
     @Override
-    protected
-    abstract String getNameHook();
+    protected abstract String getNameHook();
 
     @Override
     protected int getLayerHook() {

@@ -20,6 +20,5 @@ public abstract class GenericBoots extends GenericPass {
     }
 
     @Override
-    protected
-    abstract String getNameHook();
+    protected abstract String getNameHook();
 }

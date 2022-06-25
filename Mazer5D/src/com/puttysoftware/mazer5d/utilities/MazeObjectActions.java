@@ -48,7 +48,7 @@ public class MazeObjectActions {
     public boolean has(final int val) {
 	return this.bits.get(val);
     }
-    
+
     public boolean any() {
 	return !this.bits.isEmpty();
     }

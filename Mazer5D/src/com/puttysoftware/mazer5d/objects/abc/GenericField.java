@@ -50,8 +50,7 @@ public abstract class GenericField extends GenericInfiniteLock {
     }
 
     @Override
-    protected
-    abstract String getNameHook();
+    protected abstract String getNameHook();
 
     @Override
     protected int getLayerHook() {

@@ -63,7 +63,8 @@ public class Maze {
 	this.savedStart = new int[4];
 	final long random = new RandomLongRange(0, Long.MAX_VALUE).generate();
 	final String randomID = Long.toHexString(random);
-	this.basePath = System.getProperty("java.io.tmpdir") + File.separator + GameResources.translate(GameResource.PROGRAM_NAME) + File.separator + randomID
+	this.basePath = System.getProperty("java.io.tmpdir") + File.separator
+		+ GameResources.translate(GameResource.PROGRAM_NAME) + File.separator + randomID
 		+ FileExtensions.getMazeTempExtensionWithPeriod();
 	final File base = new File(this.basePath);
 	base.mkdirs();
@@ -76,7 +77,8 @@ public class Maze {
 
     // Static methods
     public static String getMazeTempFolder() {
-	return System.getProperty("java.io.tmpdir") + File.separator + GameResources.translate(GameResource.PROGRAM_NAME);
+	return System.getProperty("java.io.tmpdir") + File.separator
+		+ GameResources.translate(GameResource.PROGRAM_NAME);
     }
 
     public static int getMinLevels() {
@@ -893,7 +895,7 @@ public class Maze {
 	try (MazeDataReader metaReader = new MazeDataReader(m.basePath + File.separator + "metafile.xml", "maze")) {
 	    // Read metafile
 	    final int version = m.readMazeMetafile(metaReader);
-	    // Set  compatibility flags
+	    // Set compatibility flags
 	    if (version == FormatConstants._MAZE_FORMAT_1) {
 		Mazer5D.getBagOStuff().getMazeManager().setMaze1Compatible(true);
 		Mazer5D.getBagOStuff().getMazeManager().setMaze2Compatible(true);
@@ -902,8 +904,7 @@ public class Maze {
 		Mazer5D.getBagOStuff().getMazeManager().setMaze1Compatible(false);
 		Mazer5D.getBagOStuff().getMazeManager().setMaze2Compatible(true);
 		Mazer5D.getBagOStuff().getMazeManager().setMaze4Compatible(true);
-	    } else if (version == FormatConstants._MAZE_FORMAT_3
-		    || version == FormatConstants._MAZE_FORMAT_4) {
+	    } else if (version == FormatConstants._MAZE_FORMAT_3 || version == FormatConstants._MAZE_FORMAT_4) {
 		Mazer5D.getBagOStuff().getMazeManager().setMaze1Compatible(false);
 		Mazer5D.getBagOStuff().getMazeManager().setMaze2Compatible(false);
 		Mazer5D.getBagOStuff().getMazeManager().setMaze4Compatible(true);
@@ -974,11 +975,11 @@ public class Maze {
     }
 
     public void writeMaze() throws IOException {
-	// Clear  compatibility flag
+	// Clear compatibility flag
 	Mazer5D.getBagOStuff().getMazeManager().setMaze1Compatible(false);
-	// Clear  2 compatibility flag
+	// Clear 2 compatibility flag
 	Mazer5D.getBagOStuff().getMazeManager().setMaze2Compatible(false);
-	// Clear  4 compatibility flag
+	// Clear 4 compatibility flag
 	Mazer5D.getBagOStuff().getMazeManager().setMaze4Compatible(false);
 	// Create metafile writer
 	try (MazeDataWriter metaWriter = new MazeDataWriter(this.basePath + File.separator + "metafile.xml", "maze")) {
@@ -1013,11 +1014,11 @@ public class Maze {
     }
 
     private void writeMazeLevel(final MazeDataWriter writer) throws IOException {
-	// Clear  compatibility flag
+	// Clear compatibility flag
 	Mazer5D.getBagOStuff().getMazeManager().setMaze1Compatible(false);
-	// Clear  2 compatibility flag
+	// Clear 2 compatibility flag
 	Mazer5D.getBagOStuff().getMazeManager().setMaze2Compatible(false);
-	// Clear  4 compatibility flag
+	// Clear 4 compatibility flag
 	Mazer5D.getBagOStuff().getMazeManager().setMaze4Compatible(false);
 	// Write the level
 	this.mazeData.writeLayeredTower(writer);

@@ -62,8 +62,7 @@ public abstract class GenericTeleport extends MazeObject {
     }
 
     @Override
-    protected
-    abstract String getNameHook();
+    protected abstract String getNameHook();
 
     @Override
     protected int getLayerHook() {

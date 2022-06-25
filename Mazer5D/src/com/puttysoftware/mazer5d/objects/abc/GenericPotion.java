@@ -42,8 +42,7 @@ public abstract class GenericPotion extends MazeObject {
     }
 
     @Override
-    protected
-    abstract String getNameHook();
+    protected abstract String getNameHook();
 
     @Override
     protected int getLayerHook() {

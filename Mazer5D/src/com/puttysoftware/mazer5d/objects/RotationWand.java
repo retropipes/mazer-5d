@@ -48,7 +48,8 @@ class RotationWand extends GenericWand {
 	app.getGameManager().setRemoteAction(x, y, z);
 	int r = 1;
 	final String[] rChoices = new String[] { "1", "2", "3" };
-	final String rres = CommonDialogs.showInputDialog("Rotation Radius:", GameResources.translate(GameResource.PROGRAM_NAME), rChoices, rChoices[r - 1]);
+	final String rres = CommonDialogs.showInputDialog("Rotation Radius:",
+		GameResources.translate(GameResource.PROGRAM_NAME), rChoices, rChoices[r - 1]);
 	try {
 	    r = Integer.parseInt(rres);
 	} catch (final NumberFormatException nf) {
@@ -62,7 +63,8 @@ class RotationWand extends GenericWand {
 	    di = 1;
 	}
 	final String[] dChoices = new String[] { "Clockwise", "Counterclockwise" };
-	final String dres = CommonDialogs.showInputDialog("Rotation Direction:", GameResources.translate(GameResource.PROGRAM_NAME), dChoices, dChoices[di]);
+	final String dres = CommonDialogs.showInputDialog("Rotation Direction:",
+		GameResources.translate(GameResource.PROGRAM_NAME), dChoices, dChoices[di]);
 	if (dres.equals(dChoices[0])) {
 	    d = RotationWand.CLOCKWISE;
 	} else {

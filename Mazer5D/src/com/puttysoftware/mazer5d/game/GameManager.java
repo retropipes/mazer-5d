@@ -577,7 +577,7 @@ public class GameManager implements MazeEffectConstants {
 			    this.objectInv);
 		    this.decayEffects();
 		    this.fireStepActions();
-		    Mazer5D.getBagOStuff().showMessage("Can't go that way");
+		    Mazer5D.getBagOStuff().showMessage(GameResources.translate(GameResource.MOVE_FAIL_DEFAULT));
 		    o = GameManager.EMPTY;
 		    proceed = false;
 		}
@@ -1416,7 +1416,8 @@ public class GameManager implements MazeEffectConstants {
 	    int x;
 	    final MazeObject[] choices = GameObjects.getAllUsableObjects();
 	    final String[] userChoices = this.objectInv.generateUseStringArray();
-	    final String result = CommonDialogs.showInputDialog("Use which item?", GameResources.translate(GameResource.PROGRAM_NAME), userChoices,
+	    final String result = CommonDialogs.showInputDialog("Use which item?",
+		    GameResources.translate(GameResource.PROGRAM_NAME), userChoices,
 		    userChoices[this.lastUsedObjectIndex]);
 	    try {
 		for (x = 0; x < choices.length; x++) {
@@ -1443,7 +1444,8 @@ public class GameManager implements MazeEffectConstants {
 	    int x;
 	    final MazeObject[] choices = GameObjects.getAllBows();
 	    final String[] userChoices = this.objectInv.generateBowStringArray();
-	    final String result = CommonDialogs.showInputDialog("Switch to which bow?", GameResources.translate(GameResource.PROGRAM_NAME), userChoices,
+	    final String result = CommonDialogs.showInputDialog("Switch to which bow?",
+		    GameResources.translate(GameResource.PROGRAM_NAME), userChoices,
 		    userChoices[this.lastUsedBowIndex]);
 	    try {
 		for (x = 0; x < choices.length; x++) {

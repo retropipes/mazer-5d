@@ -14,7 +14,7 @@ public class ScoreTable {
     protected int scoreCount;
     protected ArrayList<Score> table;
     protected String[] unit;
-    protected static final String DEFAULT_UNIT = Strings.EMPTY; //$NON-NLS-1$
+    protected static final String DEFAULT_UNIT = Strings.EMPTY; // $NON-NLS-1$
 
     // Constructors
     public ScoreTable() {

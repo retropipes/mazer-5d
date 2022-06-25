@@ -28,7 +28,7 @@ public final class ColorReplaceRules {
 
     public BufferedImageIcon applyAll(final BufferedImageIcon input) {
 	if (input == null) {
-	    throw new IllegalArgumentException("input == NULL!");
+	    return input;
 	}
 	BufferedImageIcon result = input;
 	for (final ColorReplaceRule rule : this.rules) {

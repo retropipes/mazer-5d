@@ -35,8 +35,7 @@ public abstract class GenericTextHolder extends MazeObject {
     }
 
     @Override
-    protected
-    abstract String getNameHook();
+    protected abstract String getNameHook();
 
     @Override
     protected int getLayerHook() {
@@ -51,8 +50,7 @@ public abstract class GenericTextHolder extends MazeObject {
     }
 
     @Override
-    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final int formatVersion)
-	    throws IOException {
+    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final int formatVersion) throws IOException {
 	this.setSignText(reader.readString());
 	return this;
     }

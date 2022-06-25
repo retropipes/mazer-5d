@@ -19,6 +19,5 @@ public abstract class GenericPass extends GenericInfiniteKey {
     }
 
     @Override
-    protected
-    abstract String getNameHook();
+    protected abstract String getNameHook();
 }

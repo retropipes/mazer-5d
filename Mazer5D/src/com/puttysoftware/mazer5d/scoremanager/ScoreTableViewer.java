@@ -32,7 +32,7 @@ public final class ScoreTableViewer {
 	int y;
 	int z;
 	for (x = 0; x < table.getLength(); x += ScoreTableViewer.ENTRIES_PER_PAGE) {
-	    msg = Strings.EMPTY; //$NON-NLS-1$
+	    msg = Strings.EMPTY; // $NON-NLS-1$
 	    for (y = 1; y <= ScoreTableViewer.ENTRIES_PER_PAGE; y++) {
 		try {
 		    msgBuilder.append(table.getEntryName(x + y - 1));

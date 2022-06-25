@@ -81,7 +81,7 @@ public final class GraphicalHelpViewer {
     }
 
     public void exportHelp() {
-	String filename = Strings.EMPTY; //$NON-NLS-1$
+	String filename = Strings.EMPTY; // $NON-NLS-1$
 	String fileOnly = "\\"; //$NON-NLS-1$
 	String extension;
 	final FileDialog fc = new FileDialog((Frame) null, "Export Help", //$NON-NLS-1$
@@ -103,10 +103,11 @@ public final class GraphicalHelpViewer {
 		} else {
 		    if (extension != null) {
 			if (!extension.equals("png")) { //$NON-NLS-1$
-			    filename = GraphicalHelpViewer.getNameWithoutExtension(file) + FileExtensions.getImageExtensionWithPeriod(); //$NON-NLS-1$
+			    filename = GraphicalHelpViewer.getNameWithoutExtension(file)
+				    + FileExtensions.getImageExtensionWithPeriod(); // $NON-NLS-1$
 			}
 		    } else {
-			filename += FileExtensions.getImageExtensionWithPeriod(); //$NON-NLS-1$
+			filename += FileExtensions.getImageExtensionWithPeriod(); // $NON-NLS-1$
 		    }
 		    final JPanel c = this.choicePanel;
 		    final Dimension d = c.getPreferredSize();

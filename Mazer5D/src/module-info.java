@@ -11,7 +11,7 @@ module com.puttysoftware.mazer5d {
     requires com.puttysoftware.randomrange;
     requires com.puttysoftware.storage;
     requires com.puttysoftware.updater;
-    
+
     uses javax.sound.sampled.spi.AudioFileReader;
     uses javax.sound.sampled.spi.FormatConversionProvider;
 }

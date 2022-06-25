@@ -23,8 +23,7 @@ public abstract class GenericMovingObject extends MazeObject {
     }
 
     @Override
-    protected
-    abstract String getNameHook();
+    protected abstract String getNameHook();
 
     @Override
     protected int getLayerHook() {

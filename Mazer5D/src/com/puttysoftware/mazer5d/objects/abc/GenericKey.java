@@ -17,6 +17,5 @@ public abstract class GenericKey extends GenericInventoryableObject {
     }
 
     @Override
-    protected
-    abstract String getNameHook();
+    protected abstract String getNameHook();
 }
