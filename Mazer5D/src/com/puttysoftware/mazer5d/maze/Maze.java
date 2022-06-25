@@ -63,9 +63,8 @@ public class Maze {
 	this.savedStart = new int[4];
 	final long random = new RandomLongRange(0, Long.MAX_VALUE).generate();
 	final String randomID = Long.toHexString(random);
-	this.basePath = System.getProperty("java.io.tmpdir") + File.separator
-		+ Translations.load(Strings.PROGRAM_NAME) + File.separator + randomID
-		+ FileExtensions.getMazeTempExtensionWithPeriod();
+	this.basePath = System.getProperty("java.io.tmpdir") + File.separator + Translations.load(Strings.PROGRAM_NAME)
+		+ File.separator + randomID + FileExtensions.getMazeTempExtensionWithPeriod();
 	final File base = new File(this.basePath);
 	base.mkdirs();
     }
@@ -77,8 +76,7 @@ public class Maze {
 
     // Static methods
     public static String getMazeTempFolder() {
-	return System.getProperty("java.io.tmpdir") + File.separator
-		+ Translations.load(Strings.PROGRAM_NAME);
+	return System.getProperty("java.io.tmpdir") + File.separator + Translations.load(Strings.PROGRAM_NAME);
     }
 
     public static int getMinLevels() {

@@ -1417,8 +1417,7 @@ public class GameManager implements MazeEffectConstants {
 	    final MazeObject[] choices = GameObjects.getAllUsableObjects();
 	    final String[] userChoices = this.objectInv.generateUseStringArray();
 	    final String result = CommonDialogs.showInputDialog("Use which item?",
-		    Translations.load(Strings.PROGRAM_NAME), userChoices,
-		    userChoices[this.lastUsedObjectIndex]);
+		    Translations.load(Strings.PROGRAM_NAME), userChoices, userChoices[this.lastUsedObjectIndex]);
 	    try {
 		for (x = 0; x < choices.length; x++) {
 		    if (result.equals(userChoices[x])) {
@@ -1445,8 +1444,7 @@ public class GameManager implements MazeEffectConstants {
 	    final MazeObject[] choices = GameObjects.getAllBows();
 	    final String[] userChoices = this.objectInv.generateBowStringArray();
 	    final String result = CommonDialogs.showInputDialog("Switch to which bow?",
-		    Translations.load(Strings.PROGRAM_NAME), userChoices,
-		    userChoices[this.lastUsedBowIndex]);
+		    Translations.load(Strings.PROGRAM_NAME), userChoices, userChoices[this.lastUsedBowIndex]);
 	    try {
 		for (x = 0; x < choices.length; x++) {
 		    if (result.equals(userChoices[x])) {

@@ -48,8 +48,8 @@ class RotationWand extends GenericWand {
 	app.getGameManager().setRemoteAction(x, y, z);
 	int r = 1;
 	final String[] rChoices = new String[] { "1", "2", "3" };
-	final String rres = CommonDialogs.showInputDialog("Rotation Radius:",
-		Translations.load(Strings.PROGRAM_NAME), rChoices, rChoices[r - 1]);
+	final String rres = CommonDialogs.showInputDialog("Rotation Radius:", Translations.load(Strings.PROGRAM_NAME),
+		rChoices, rChoices[r - 1]);
 	try {
 	    r = Integer.parseInt(rres);
 	} catch (final NumberFormatException nf) {

@@ -59,7 +59,8 @@ public class AboutThisGame implements AboutHandler {
 	this.buttonPane = new JPanel();
 	this.logoPane = new JPanel();
 	this.aboutOK = new JButton("OK");
-	this.miniLabel = new JLabel(StaticStrings.EMPTY, LogoImageLoader.load(LogoImageIndex.MINI_LOGO), SwingConstants.LEFT);
+	this.miniLabel = new JLabel(StaticStrings.EMPTY, LogoImageLoader.load(LogoImageIndex.MINI_LOGO),
+		SwingConstants.LEFT);
 	this.aboutOK.setDefaultCapable(true);
 	this.aboutFrame.setDefaultButton(this.aboutOK);
 	this.aboutPane.setLayout(new BorderLayout());
