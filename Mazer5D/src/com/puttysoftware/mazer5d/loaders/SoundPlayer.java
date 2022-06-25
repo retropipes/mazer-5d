@@ -30,7 +30,7 @@ public class SoundPlayer {
 	if (Prefs.isSoundGroupEnabled(group)) {
 	    if (sound != null && sound != SoundIndex._NONE) {
 		final String filename = SoundPlayer.getSoundFilename(sound);
-		SoundPlayer.play(SoundPlayer.class.getResource("/assets/sound/" + filename));
+		SoundPlayer.play(SoundPlayer.class.getResource("/asset/sound/" + filename));
 	    }
 	}
     }

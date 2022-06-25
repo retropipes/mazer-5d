@@ -31,7 +31,7 @@ public class LogoImageLoader {
 	    LogoImageLoader.allFilenames = DataLoader.loadLogoImageData();
 	    final String imageExt = FileExtensions.getImageExtensionWithPeriod();
 	    for (int i = 1; i <= LogoImageLoader.MAX_INDEX; i++) {
-		final String name = "/assets/image/logo/" + LogoImageLoader.allFilenames[i] + imageExt;
+		final String name = "/asset/image/logo/" + LogoImageLoader.allFilenames[i] + imageExt;
 		ImageLoader.load(name, LogoImageLoader.class.getResource(name));
 	    }
 	}
@@ -40,7 +40,7 @@ public class LogoImageLoader {
     public static BufferedImageIcon load(final LogoImageIndex image) {
 	LogoImageLoader.preInit();
 	final String imageExt = FileExtensions.getImageExtensionWithPeriod();
-	final String name = "/assets/image/logo/" + LogoImageLoader.allFilenames[image.ordinal()] + imageExt;
+	final String name = "/asset/image/logo/" + LogoImageLoader.allFilenames[image.ordinal()] + imageExt;
 	return ImageLoader.load(name, LogoImageLoader.class.getResource(name));
     }
 }

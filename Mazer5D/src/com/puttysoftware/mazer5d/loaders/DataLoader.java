@@ -21,7 +21,7 @@ public class DataLoader {
 
     public static String[] loadMusicData() {
 	try (final ResourceStreamReader rsr = new ResourceStreamReader(DataLoader.class
-		.getResourceAsStream("/assets/data/music/files" + FileExtensions.getDataFileExtensionWithPeriod()))) {
+		.getResourceAsStream("/asset/data/music/files" + FileExtensions.getDataFileExtensionWithPeriod()))) {
 	    // Fetch data
 	    final ArrayList<String> data = new ArrayList<>();
 	    String raw = "0";
@@ -40,7 +40,7 @@ public class DataLoader {
 
     public static String[] loadSoundData() {
 	try (final ResourceStreamReader rsr = new ResourceStreamReader(DataLoader.class
-		.getResourceAsStream("/assets/data/sound/files" + FileExtensions.getDataFileExtensionWithPeriod()))) {
+		.getResourceAsStream("/asset/data/sound/files" + FileExtensions.getDataFileExtensionWithPeriod()))) {
 	    // Fetch data
 	    final ArrayList<String> data = new ArrayList<>();
 	    String raw = "0";
@@ -60,7 +60,7 @@ public class DataLoader {
     public static MazeObjectActions loadObjectActionData(final int objectID) {
 	if (DataLoader.ACTION_CACHE == null) {
 	    try (final ResourceStreamReader rsr = new ResourceStreamReader(DataLoader.class.getResourceAsStream(
-		    "/assets/data/object/actions" + FileExtensions.getDataFileExtensionWithPeriod()))) {
+		    "/asset/data/object/actions" + FileExtensions.getDataFileExtensionWithPeriod()))) {
 		// Fetch data
 		final ArrayList<MazeObjectActions> data = new ArrayList<>();
 		String raw = "0";
@@ -86,7 +86,7 @@ public class DataLoader {
 	if (DataLoader.ACTION_ADDON_CACHE[actionID] == null) {
 	    final String name = "action-" + Integer.toString(actionID);
 	    try (final ResourceStreamReader rsr = new ResourceStreamReader(DataLoader.class.getResourceAsStream(
-		    "/assets/data/object/" + name + FileExtensions.getDataFileExtensionWithPeriod()))) {
+		    "/asset/data/object/" + name + FileExtensions.getDataFileExtensionWithPeriod()))) {
 		// Fetch data
 		final ArrayList<Integer> rawData = new ArrayList<>();
 		String raw = "0";
@@ -114,7 +114,7 @@ public class DataLoader {
     public static int loadObjectLayerData(final int objectID) {
 	if (DataLoader.LAYER_CACHE == null) {
 	    try (final ResourceStreamReader rsr = new ResourceStreamReader(DataLoader.class.getResourceAsStream(
-		    "/assets/data/object/layer" + FileExtensions.getDataFileExtensionWithPeriod()))) {
+		    "/asset/data/object/layer" + FileExtensions.getDataFileExtensionWithPeriod()))) {
 		// Fetch data
 		final ArrayList<Integer> rawData = new ArrayList<>();
 		String raw = "0";
@@ -141,7 +141,7 @@ public class DataLoader {
 
     public static String[] loadEffectImageData() {
 	try (final ResourceStreamReader rsr = new ResourceStreamReader(DataLoader.class
-		.getResourceAsStream("/assets/data/image/effect" + FileExtensions.getDataFileExtensionWithPeriod()))) {
+		.getResourceAsStream("/asset/data/image/effect" + FileExtensions.getDataFileExtensionWithPeriod()))) {
 	    // Fetch data
 	    final ArrayList<String> data = new ArrayList<>();
 	    String raw = "0";
@@ -170,7 +170,7 @@ public class DataLoader {
 
     public static String[] loadAllObjectHelpDescriptions() {
 	try (final ResourceStreamReader rsr = new ResourceStreamReader(DataLoader.class.getResourceAsStream(
-		"/assets/data/image/objecthelpdesc" + FileExtensions.getDataFileExtensionWithPeriod()))) {
+		"/asset/data/image/objecthelpdesc" + FileExtensions.getDataFileExtensionWithPeriod()))) {
 	    // Fetch data
 	    final ArrayList<String> data = new ArrayList<>();
 	    String raw = "0";
@@ -189,7 +189,7 @@ public class DataLoader {
 
     public static String[] loadLogoImageData() {
 	try (final ResourceStreamReader rsr = new ResourceStreamReader(DataLoader.class
-		.getResourceAsStream("/assets/data/image/logo" + FileExtensions.getDataFileExtensionWithPeriod()))) {
+		.getResourceAsStream("/asset/data/image/logo" + FileExtensions.getDataFileExtensionWithPeriod()))) {
 	    // Fetch data
 	    final ArrayList<String> data = new ArrayList<>();
 	    String raw = "0";
@@ -209,7 +209,7 @@ public class DataLoader {
     private static void updateObjectImageDataCache() {
 	if (DataLoader.OBJECT_IMAGE_NAME_CACHE == null) {
 	    try (final ResourceStreamReader rsr = new ResourceStreamReader(DataLoader.class.getResourceAsStream(
-		    "/assets/data/image/object" + FileExtensions.getDataFileExtensionWithPeriod()))) {
+		    "/asset/data/image/object" + FileExtensions.getDataFileExtensionWithPeriod()))) {
 		// Fetch data
 		final ArrayList<String> data = new ArrayList<>();
 		String raw = "0";

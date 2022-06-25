@@ -34,7 +34,7 @@ public class EffectImageLoader {
 	}
 	if (image != EffectImageIndex._NONE) {
 	    final String imageExt = FileExtensions.getImageExtensionWithPeriod();
-	    final String name = "/assets/image/effect/" + EffectImageLoader.allFilenames[image.ordinal()] + imageExt;
+	    final String name = "/asset/image/effect/" + EffectImageLoader.allFilenames[image.ordinal()] + imageExt;
 	    return ImageLoader.load(name, EffectImageLoader.class.getResource(name));
 	}
 	return null;
@@ -113,7 +113,7 @@ public class EffectImageLoader {
 	EffectImageLoader.allFilenames = DataLoader.loadEffectImageData();
 	final String imageExt = FileExtensions.getImageExtensionWithPeriod();
 	for (int i = 0; i <= EffectImageLoader.MAX_INDEX; i++) {
-	    final String name = "/assets/image/effect/" + EffectImageLoader.allFilenames[i] + imageExt;
+	    final String name = "/asset/image/effect/" + EffectImageLoader.allFilenames[i] + imageExt;
 	    try {
 		ImageLoader.load(name, EffectImageLoader.class.getResource(name));
 	    } catch (final IllegalArgumentException iae) {

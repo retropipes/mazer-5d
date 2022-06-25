@@ -17,7 +17,7 @@ import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.files.FileExtensions;
 
 public class ObjectImageLoader {
-    private static final String DEFAULT_LOAD_PATH = "/assets/image/object/";
+    private static final String DEFAULT_LOAD_PATH = "/asset/image/object/";
     private static String LOAD_PATH = ObjectImageLoader.DEFAULT_LOAD_PATH;
     private static Class<?> LOAD_CLASS = ObjectImageLoader.class;
     private static final Color TRANSPARENT = new Color(200, 100, 100);

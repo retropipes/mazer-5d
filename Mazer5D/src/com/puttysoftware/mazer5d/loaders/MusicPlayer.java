@@ -33,7 +33,7 @@ public class MusicPlayer {
 		    OggPlayer.stopPlaying();
 		}
 		MusicPlayer.MUSIC = OggPlayer
-			.loadLoopedResource(MusicPlayer.class.getResource("/assets/music/" + filename));
+			.loadLoopedResource(MusicPlayer.class.getResource("/asset/music/" + filename));
 		MusicPlayer.MUSIC.play();
 	    }
 	}

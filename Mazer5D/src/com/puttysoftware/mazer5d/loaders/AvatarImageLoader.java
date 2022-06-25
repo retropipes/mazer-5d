@@ -10,13 +10,13 @@ import com.puttysoftware.mazer5d.files.FileExtensions;
 public class AvatarImageLoader {
     public static BufferedImageIcon load(final int familyID, final ColorReplaceRules rules) throws IOException {
 	final String imageExt = FileExtensions.getImageExtensionWithPeriod();
-	final String name = "/assets/image/avatar/" + Integer.toHexString(familyID).toUpperCase() + imageExt;
+	final String name = "/asset/image/avatar/" + Integer.toHexString(familyID).toUpperCase() + imageExt;
 	return rules.applyAll(ImageLoader.load(name, AvatarImageLoader.class.getResource(name)));
     }
 
     public static BufferedImageIcon loadFromModel(final AvatarImageModel model) throws IOException {
 	final String imageExt = FileExtensions.getImageExtensionWithPeriod();
-	final String name = "/assets/image/avatar/" + Integer.toHexString(model.getAvatarFamilyID()).toUpperCase()
+	final String name = "/asset/image/avatar/" + Integer.toHexString(model.getAvatarFamilyID()).toUpperCase()
 		+ imageExt;
 	BufferedImageIcon image = ImageLoader.load(name, AvatarImageLoader.class.getResource(name));
 	image = model.getRules().applyAll(image);
@@ -28,14 +28,14 @@ public class AvatarImageLoader {
 
     public static BufferedImageIcon loadWeapon(final int weaponID, final ColorReplaceRules rules) throws IOException {
 	final String imageExt = FileExtensions.getImageExtensionWithPeriod();
-	final String name = "/assets/image/avatar/weapon/" + Integer.toHexString(weaponID).toUpperCase() + imageExt;
+	final String name = "/asset/image/avatar/weapon/" + Integer.toHexString(weaponID).toUpperCase() + imageExt;
 	return rules.applyAll(ImageLoader.load(name, AvatarImageLoader.class.getResource(name)));
     }
 
     public static BufferedImageIcon loadAccessory(final int accessoryID, final ColorReplaceRules rules)
 	    throws IOException {
 	final String imageExt = FileExtensions.getImageExtensionWithPeriod();
-	final String name = "/assets/image/avatar/accessory/" + Integer.toHexString(accessoryID).toUpperCase()
+	final String name = "/asset/image/avatar/accessory/" + Integer.toHexString(accessoryID).toUpperCase()
 		+ imageExt;
 	return rules.applyAll(ImageLoader.load(name, AvatarImageLoader.class.getResource(name)));
     }
