@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public final class Translations {
-    private static final String RESOURCES = "asset.locale.GameResources"; //$NON-NLS-1$
+    private static final String RESOURCES = "asset.locale.Translations"; //$NON-NLS-1$
     private static final String PLACEHOLDER = "$"; //$NON-NLS-1$
 
     // Class contains only static methods.
