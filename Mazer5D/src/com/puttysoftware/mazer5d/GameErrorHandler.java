@@ -7,13 +7,13 @@ package com.puttysoftware.mazer5d;
 
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.errorlogger.ErrorLogger;
-import com.puttysoftware.mazer5d.locale.GameResource;
+import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 
 final class GameErrorHandler implements Thread.UncaughtExceptionHandler {
-    private static final String LOG_NAME = Translations.load(GameResource.PROGRAM_NAME);
-    private static final String ERROR_MESSAGE = Translations.load(GameResource.ERROR_MESSAGE);
-    private static final String ERROR_TITLE = Translations.load(GameResource.ERROR_TITLE);
+    private static final String LOG_NAME = Translations.load(Strings.PROGRAM_NAME);
+    private static final String ERROR_MESSAGE = Translations.load(Strings.ERROR_MESSAGE);
+    private static final String ERROR_TITLE = Translations.load(Strings.ERROR_TITLE);
     private final ErrorLogger logger;
 
     GameErrorHandler() {

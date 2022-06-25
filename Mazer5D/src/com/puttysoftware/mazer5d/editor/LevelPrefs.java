@@ -24,7 +24,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
-import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.maze.Maze;
 
 public class LevelPrefs {
@@ -198,9 +198,9 @@ public class LevelPrefs {
 	this.horizontalWrap = new JCheckBox("Enable horizontal wraparound", false);
 	this.verticalWrap = new JCheckBox("Enable vertical wraparound", false);
 	this.thirdDimensionalWrap = new JCheckBox("Enable 3rd dimension wraparound", false);
-	this.levelTitle = new JTextField(Strings.EMPTY);
-	this.levelStartMessage = new JTextArea(Strings.EMPTY);
-	this.levelEndMessage = new JTextArea(Strings.EMPTY);
+	this.levelTitle = new JTextField(StaticStrings.EMPTY);
+	this.levelStartMessage = new JTextArea(StaticStrings.EMPTY);
+	this.levelEndMessage = new JTextArea(StaticStrings.EMPTY);
 	this.poisonPowerChoiceArray = new String[Maze.getMaxPoisonPower() + 1];
 	for (int x = 0; x < this.poisonPowerChoiceArray.length; x++) {
 	    if (x == 0) {
@@ -214,17 +214,17 @@ public class LevelPrefs {
 	final DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(this.poisonPowerChoiceArray);
 	this.poisonPowerChoices = new JComboBox<>();
 	this.poisonPowerChoices.setModel(model);
-	this.timeLimit = new JTextField(Strings.EMPTY);
+	this.timeLimit = new JTextField(StaticStrings.EMPTY);
 	this.autoFinishEnabled = new JCheckBox("Enable Auto-Finish");
-	this.autoFinishThreshold = new JTextField(Strings.EMPTY);
-	this.alternateAutoFinishThreshold = new JTextField(Strings.EMPTY);
+	this.autoFinishThreshold = new JTextField(StaticStrings.EMPTY);
+	this.alternateAutoFinishThreshold = new JTextField(StaticStrings.EMPTY);
 	this.useOffset = new JCheckBox("Next Level Is Relative");
-	this.nextLevel = new JTextField(Strings.EMPTY);
+	this.nextLevel = new JTextField(StaticStrings.EMPTY);
 	this.useAlternateOffset = new JCheckBox("Alternate Next Level Is Relative");
-	this.alternateNextLevel = new JTextField(Strings.EMPTY);
-	this.illumination = new JTextField(Strings.EMPTY);
-	this.finishMoveSpeed = new JTextField(Strings.EMPTY);
-	this.exploreRadius = new JTextField(Strings.EMPTY);
+	this.alternateNextLevel = new JTextField(StaticStrings.EMPTY);
+	this.illumination = new JTextField(StaticStrings.EMPTY);
+	this.finishMoveSpeed = new JTextField(StaticStrings.EMPTY);
+	this.exploreRadius = new JTextField(StaticStrings.EMPTY);
 	this.mainPrefPane.setLayout(new BorderLayout());
 	this.contentPane.setLayout(new BoxLayout(this.contentPane, BoxLayout.Y_AXIS));
 	this.contentPane.add(this.horizontalWrap);

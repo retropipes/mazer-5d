@@ -23,7 +23,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
-import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.maze.Maze;
 
 public class MazePrefs {
@@ -103,10 +103,10 @@ public class MazePrefs {
 	this.prefsCancel = new JButton("Cancel");
 	this.prefsCancel.setDefaultCapable(false);
 	this.startLevelChoices = new JComboBox<>();
-	this.health = new JTextField(Strings.EMPTY);
-	this.mazeTitle = new JTextField(Strings.EMPTY);
-	this.mazeStartMessage = new JTextArea(Strings.EMPTY);
-	this.mazeEndMessage = new JTextArea(Strings.EMPTY);
+	this.health = new JTextField(StaticStrings.EMPTY);
+	this.mazeTitle = new JTextField(StaticStrings.EMPTY);
+	this.mazeStartMessage = new JTextArea(StaticStrings.EMPTY);
+	this.mazeEndMessage = new JTextArea(StaticStrings.EMPTY);
 	this.mainPrefPane.setLayout(new BorderLayout());
 	this.contentPane.setLayout(new GridLayout(10, 1));
 	this.contentPane.add(new JLabel("Starting Level"));

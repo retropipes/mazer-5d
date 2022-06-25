@@ -12,7 +12,7 @@ public final class Translations {
     private Translations() {
     }
 
-    public static String load(GameResource item, String... replacements) {
+    public static String load(Strings item, String... replacements) {
 	String result = ResourceBundle.getBundle(Translations.RESOURCES, Prefs.activeLanguage())
 		.getString(item.toString());
 	for (int x = 0; x < replacements.length; x++) {

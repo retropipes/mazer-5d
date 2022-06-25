@@ -18,9 +18,9 @@ import com.puttysoftware.mazer5d.files.format.PrefixIO;
 import com.puttysoftware.mazer5d.files.format.SuffixIO;
 import com.puttysoftware.mazer5d.files.io.MazeDataReader;
 import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
-import com.puttysoftware.mazer5d.locale.GameResource;
-import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.Translations;
+import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.objects.abc.GenericCharacter;
 import com.puttysoftware.mazer5d.objects.abc.GenericMovingObject;
@@ -64,7 +64,7 @@ public class Maze {
 	final long random = new RandomLongRange(0, Long.MAX_VALUE).generate();
 	final String randomID = Long.toHexString(random);
 	this.basePath = System.getProperty("java.io.tmpdir") + File.separator
-		+ Translations.load(GameResource.PROGRAM_NAME) + File.separator + randomID
+		+ Translations.load(Strings.PROGRAM_NAME) + File.separator + randomID
 		+ FileExtensions.getMazeTempExtensionWithPeriod();
 	final File base = new File(this.basePath);
 	base.mkdirs();
@@ -78,7 +78,7 @@ public class Maze {
     // Static methods
     public static String getMazeTempFolder() {
 	return System.getProperty("java.io.tmpdir") + File.separator
-		+ Translations.load(GameResource.PROGRAM_NAME);
+		+ Translations.load(Strings.PROGRAM_NAME);
     }
 
     public static int getMinLevels() {
@@ -228,7 +228,7 @@ public class Maze {
 
     public void setMazeTitle(final String title) {
 	if (title == null) {
-	    this.mazeTitle = Strings.EMPTY;
+	    this.mazeTitle = StaticStrings.EMPTY;
 	} else {
 	    this.mazeTitle = title;
 	}
@@ -240,7 +240,7 @@ public class Maze {
 
     public void setMazeStartMessage(final String msg) {
 	if (msg == null) {
-	    this.mazeStartMessage = Strings.EMPTY;
+	    this.mazeStartMessage = StaticStrings.EMPTY;
 	} else {
 	    this.mazeStartMessage = msg;
 	}
@@ -252,7 +252,7 @@ public class Maze {
 
     public void setMazeEndMessage(final String msg) {
 	if (msg == null) {
-	    this.mazeEndMessage = Strings.EMPTY;
+	    this.mazeEndMessage = StaticStrings.EMPTY;
 	} else {
 	    this.mazeEndMessage = msg;
 	}

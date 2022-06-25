@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 
-import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.StaticStrings;
 
 final class CustomTexts {
     // Fields
@@ -33,13 +33,13 @@ final class CustomTexts {
 	if (this.texts.size() != 0) {
 	    return false;
 	}
-	this.texts.addAll(Collections.nCopies(count, Strings.EMPTY));
+	this.texts.addAll(Collections.nCopies(count, StaticStrings.EMPTY));
 	return true;
     }
 
     public void addOne() {
 	if (this.texts.size() == 0) {
-	    this.texts.add(Strings.EMPTY);
+	    this.texts.add(StaticStrings.EMPTY);
 	}
     }
 

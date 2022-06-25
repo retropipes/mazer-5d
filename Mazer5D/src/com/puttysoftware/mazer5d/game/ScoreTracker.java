@@ -9,7 +9,7 @@ import java.io.File;
 
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.files.format.Extension;
-import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.scoremanager.SavedScoreManager;
 import com.puttysoftware.mazer5d.scoremanager.ScoreManager;
 
@@ -27,7 +27,7 @@ public class ScoreTracker {
 
     // Constructors
     public ScoreTracker() {
-	this.scoresFile = Strings.EMPTY;
+	this.scoresFile = StaticStrings.EMPTY;
 	this.score = 0L;
 	this.ssMgr = null;
     }
@@ -56,7 +56,7 @@ public class ScoreTracker {
     public void setScoreFile(final String filename) {
 	// Check filename argument
 	if (filename != null) {
-	    if (filename.equals(Strings.EMPTY)) {
+	    if (filename.equals(StaticStrings.EMPTY)) {
 		throw new IllegalArgumentException("Filename cannot be empty!");
 	    }
 	} else {

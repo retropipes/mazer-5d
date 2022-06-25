@@ -27,9 +27,9 @@ import com.puttysoftware.mazer5d.files.locking.LockedFilter;
 import com.puttysoftware.mazer5d.files.locking.LockedLoadTask;
 import com.puttysoftware.mazer5d.files.locking.LockedSaveTask;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
-import com.puttysoftware.mazer5d.locale.GameResource;
-import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.Translations;
+import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
@@ -48,9 +48,9 @@ public class MazeManager implements OpenFilesHandler {
     public MazeManager() {
 	this.loaded = false;
 	this.isDirty = false;
-	this.lastUsedMazeFile = Strings.EMPTY;
-	this.lastUsedGameFile = Strings.EMPTY;
-	this.scoresFileName = Strings.EMPTY;
+	this.lastUsedMazeFile = StaticStrings.EMPTY;
+	this.lastUsedGameFile = StaticStrings.EMPTY;
+	this.scoresFileName = StaticStrings.EMPTY;
 	this.maze1Compatible = false;
 	this.maze2Compatible = false;
 	this.maze4Compatible = false;
@@ -114,7 +114,7 @@ public class MazeManager implements OpenFilesHandler {
 	    source = "Editor";
 	} else if (Modes.inGame()) {
 	    type = "game";
-	    source = Translations.load(GameResource.PROGRAM_NAME);
+	    source = Translations.load(Strings.PROGRAM_NAME);
 	} else {
 	    // Not in the game or editor, so abort
 	    return CommonDialogs.NO_OPTION;
@@ -153,8 +153,8 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     public void clearLastUsedFilenames() {
-	this.lastUsedMazeFile = Strings.EMPTY;
-	this.lastUsedGameFile = Strings.EMPTY;
+	this.lastUsedMazeFile = StaticStrings.EMPTY;
+	this.lastUsedGameFile = StaticStrings.EMPTY;
     }
 
     public String getLastUsedMaze() {
@@ -352,7 +352,7 @@ public class MazeManager implements OpenFilesHandler {
 	    this.setMaze2Compatible(false);
 	    this.setMaze4Compatible(false);
 	    if (Modes.inGame()) {
-		if (this.lastUsedGameFile != null && !this.lastUsedGameFile.equals(Strings.EMPTY)) {
+		if (this.lastUsedGameFile != null && !this.lastUsedGameFile.equals(StaticStrings.EMPTY)) {
 		    final String extension = MazeManager.getExtension(this.lastUsedGameFile);
 		    if (extension != null) {
 			if (!extension.equals(Extension.getGameExtension())) {
@@ -367,7 +367,7 @@ public class MazeManager implements OpenFilesHandler {
 		    this.saveMazeAs();
 		}
 	    } else {
-		if (this.lastUsedMazeFile != null && !this.lastUsedMazeFile.equals(Strings.EMPTY)) {
+		if (this.lastUsedMazeFile != null && !this.lastUsedMazeFile.equals(StaticStrings.EMPTY)) {
 		    final String extension = MazeManager.getExtension(this.lastUsedMazeFile);
 		    if (extension != null) {
 			if (!extension.equals(Extension.getMazeExtension())) {
@@ -392,7 +392,7 @@ public class MazeManager implements OpenFilesHandler {
 	    this.setMaze1Compatible(false);
 	    this.setMaze2Compatible(false);
 	    this.setMaze4Compatible(false);
-	    String filename = Strings.EMPTY;
+	    String filename = StaticStrings.EMPTY;
 	    String fileOnly = "\\";
 	    String extension;
 	    final String lastSave = Prefs.getLastDirSave();
@@ -465,7 +465,7 @@ public class MazeManager implements OpenFilesHandler {
 	    this.setMaze1Compatible(false);
 	    this.setMaze2Compatible(false);
 	    this.setMaze4Compatible(false);
-	    String filename = Strings.EMPTY;
+	    String filename = StaticStrings.EMPTY;
 	    String fileOnly = "\\";
 	    String extension;
 	    final String lastSave = Prefs.getLastDirSave();

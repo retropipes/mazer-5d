@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.puttysoftware.mazer5d.locale.GameResource;
+import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
@@ -17,12 +17,12 @@ public class DataFileLoader {
     private static void cacheFile(final DataFile file) {
 	final String filename = DataFileNames.getFileName(file);
 	try (final InputStream is = DataFileLoader.LOAD_CLASS.getResourceAsStream(
-		DataFileLoader.LOAD_PATH + filename + Translations.load(GameResource.BUNDLE_EXTENSION))) {
+		DataFileLoader.LOAD_PATH + filename + Translations.load(Strings.BUNDLE_EXTENSION))) {
 	    Properties loaded = new Properties();
 	    loaded.load(is);
 	    DataFileLoader.CACHE.add(loaded);
 	} catch (final IOException ioe) {
-	    System.err.println(Translations.load(GameResource.FILE_LOAD_ERROR, filename));
+	    System.err.println(Translations.load(Strings.FILE_LOAD_ERROR, filename));
 	    ioe.printStackTrace();
 	    System.exit(2);
 	}

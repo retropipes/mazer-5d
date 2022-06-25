@@ -1,12 +1,12 @@
 package com.puttysoftware.mazer5d.locale;
 
-public final class Strings {
-    // Class contains only static properties.
-    private Strings() {
-    }
-
-    public static final String EMPTY = ""; //$NON-NLS-1$
-    public static final String HEX_4 = "%1$01X"; //$NON-NLS-1$
-    public static final String HEX_8 = "%1$02X"; //$NON-NLS-1$
-    public static final String HEX_24 = "%1$06X"; //$NON-NLS-1$
+public enum Strings {
+    PROGRAM_NAME,
+    ERROR_MESSAGE,
+    ERROR_TITLE,
+    MOVE_FAIL_DEFAULT,
+    PUSH_FAIL_DEFAULT,
+    PULL_FAIL_DEFAULT,
+    BUNDLE_EXTENSION,
+    FILE_LOAD_ERROR
 }

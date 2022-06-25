@@ -39,7 +39,7 @@ import com.puttysoftware.mazer5d.loaders.ImageConstants;
 import com.puttysoftware.mazer5d.loaders.MusicPlayer;
 import com.puttysoftware.mazer5d.loaders.ObjectImageLoader;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
-import com.puttysoftware.mazer5d.locale.GameResource;
+import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.maze.effects.MazeEffectConstants;
@@ -577,7 +577,7 @@ public class GameManager implements MazeEffectConstants {
 			    this.objectInv);
 		    this.decayEffects();
 		    this.fireStepActions();
-		    Mazer5D.getBagOStuff().showMessage(Translations.load(GameResource.MOVE_FAIL_DEFAULT));
+		    Mazer5D.getBagOStuff().showMessage(Translations.load(Strings.MOVE_FAIL_DEFAULT));
 		    o = GameManager.EMPTY;
 		    proceed = false;
 		}
@@ -1072,7 +1072,7 @@ public class GameManager implements MazeEffectConstants {
     public void resetCurrentLevel() {
 	if (!this.usingAnItem()) {
 	    final int result = CommonDialogs.showConfirmDialog("Are you sure you want to reset the current level?",
-		    Translations.load(GameResource.PROGRAM_NAME));
+		    Translations.load(Strings.PROGRAM_NAME));
 	    if (result == CommonDialogs.YES_OPTION) {
 		this.resetLevel(this.plMgr.getPlayerLocationW());
 	    }
@@ -1417,7 +1417,7 @@ public class GameManager implements MazeEffectConstants {
 	    final MazeObject[] choices = GameObjects.getAllUsableObjects();
 	    final String[] userChoices = this.objectInv.generateUseStringArray();
 	    final String result = CommonDialogs.showInputDialog("Use which item?",
-		    Translations.load(GameResource.PROGRAM_NAME), userChoices,
+		    Translations.load(Strings.PROGRAM_NAME), userChoices,
 		    userChoices[this.lastUsedObjectIndex]);
 	    try {
 		for (x = 0; x < choices.length; x++) {
@@ -1445,7 +1445,7 @@ public class GameManager implements MazeEffectConstants {
 	    final MazeObject[] choices = GameObjects.getAllBows();
 	    final String[] userChoices = this.objectInv.generateBowStringArray();
 	    final String result = CommonDialogs.showInputDialog("Switch to which bow?",
-		    Translations.load(GameResource.PROGRAM_NAME), userChoices,
+		    Translations.load(Strings.PROGRAM_NAME), userChoices,
 		    userChoices[this.lastUsedBowIndex]);
 	    try {
 		for (x = 0; x < choices.length; x++) {
@@ -1658,7 +1658,7 @@ public class GameManager implements MazeEffectConstants {
     public void showOutput() {
 	MusicPlayer.playMusic(MusicIndex.EXPLORING, MusicGroup.GAME);
 	this.outputFrame.attachAndSave(this.borderPane);
-	this.outputFrame.setTitle(Translations.load(GameResource.PROGRAM_NAME));
+	this.outputFrame.setTitle(Translations.load(Strings.PROGRAM_NAME));
 	this.outputFrame.addKeyListener(this.handler);
 	this.outputPane.addMouseListener(this.handler);
     }

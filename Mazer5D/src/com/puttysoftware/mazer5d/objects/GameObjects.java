@@ -20,7 +20,7 @@ import com.puttysoftware.mazer5d.files.io.MazeDataReader;
 import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.loaders.DataLoader;
 import com.puttysoftware.mazer5d.loaders.ObjectImageLoader;
-import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
 import com.puttysoftware.mazer5d.utilities.Layers;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
@@ -1279,7 +1279,7 @@ public class GameObjects {
 
     public static MazeObject readObject(final MazeDataReader reader, final int formatVersion) throws IOException {
 	MazeObject o = null;
-	String UID = Strings.EMPTY;
+	String UID = StaticStrings.EMPTY;
 	if (formatVersion == FormatConstants._MAZE_FORMAT_1) {
 	    UID = reader.readString();
 	} else if (formatVersion == FormatConstants._MAZE_FORMAT_2) {

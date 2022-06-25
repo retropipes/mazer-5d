@@ -18,7 +18,7 @@ import com.puttysoftware.mazer5d.files.format.RuleSetFilter;
 import com.puttysoftware.mazer5d.files.format.RuleSetLoadTask;
 import com.puttysoftware.mazer5d.files.format.RuleSetSaveTask;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
-import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.StaticStrings;
 
 public class RuleSetManager {
     // Constructors
@@ -63,7 +63,7 @@ public class RuleSetManager {
     }
 
     public static boolean exportRuleSet() {
-	String filename = Strings.EMPTY;
+	String filename = StaticStrings.EMPTY;
 	String fileOnly = "\\";
 	String extension;
 	final JFileChooser fc = new JFileChooser();

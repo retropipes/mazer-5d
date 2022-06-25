@@ -28,9 +28,9 @@ import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.files.MazeManager;
 import com.puttysoftware.mazer5d.files.TempDirCleanup;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
-import com.puttysoftware.mazer5d.locale.GameResource;
-import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.Translations;
+import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class GUIManager implements QuitHandler {
@@ -53,7 +53,7 @@ public class GUIManager implements QuitHandler {
 	this.setUpGUI();
 	Modes.setInGUI();
 	this.guiFrame.attachAndSave(this.guiPane);
-	this.guiFrame.setTitle(Translations.load(GameResource.PROGRAM_NAME));
+	this.guiFrame.setTitle(Translations.load(Strings.PROGRAM_NAME));
 	this.checkFlags();
     }
 
@@ -143,7 +143,7 @@ public class GUIManager implements QuitHandler {
 	    this.logoPane = new JPanel();
 	    this.logoPane.setLayout(new GridLayout(1, 1));
 	    final BufferedImageIcon logo = LogoImageLoader.load(LogoImageIndex.LOGO);
-	    this.logoLabel = new JLabel(Strings.EMPTY, logo, SwingConstants.CENTER);
+	    this.logoLabel = new JLabel(StaticStrings.EMPTY, logo, SwingConstants.CENTER);
 	    this.logoLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
 	    this.logoPane.add(this.logoLabel);
 	    this.commandPane = new JPanel();

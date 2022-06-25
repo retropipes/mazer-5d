@@ -17,9 +17,9 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.DataFileLoader;
 import com.puttysoftware.mazer5d.loaders.DataLoader;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
-import com.puttysoftware.mazer5d.locale.GameResource;
-import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.Translations;
+import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.utilities.ArrowTypes;
@@ -765,7 +765,7 @@ public class MazeObject implements RandomGenerationRule {
      */
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
-	Mazer5D.getBagOStuff().showMessage(Translations.load(GameResource.MOVE_FAIL_DEFAULT));
+	Mazer5D.getBagOStuff().showMessage(Translations.load(Strings.MOVE_FAIL_DEFAULT));
     }
 
     /**
@@ -857,7 +857,7 @@ public class MazeObject implements RandomGenerationRule {
 	// Play push failed sound, if it's enabled
 	SoundPlayer.playSound(SoundIndex.ACTION_FAILED, SoundGroup.GAME);
 	Mazer5D.getBagOStuff().getGameManager().keepNextMessage();
-	Mazer5D.getBagOStuff().showMessage(Translations.load(GameResource.PUSH_FAIL_DEFAULT));
+	Mazer5D.getBagOStuff().showMessage(Translations.load(Strings.PUSH_FAIL_DEFAULT));
     }
 
     /**
@@ -912,7 +912,7 @@ public class MazeObject implements RandomGenerationRule {
 	    final int pullY) {
 	SoundPlayer.playSound(SoundIndex.ACTION_FAILED, SoundGroup.GAME);
 	Mazer5D.getBagOStuff().getGameManager().keepNextMessage();
-	Mazer5D.getBagOStuff().showMessage(Translations.load(GameResource.PULL_FAIL_DEFAULT));
+	Mazer5D.getBagOStuff().showMessage(Translations.load(Strings.PULL_FAIL_DEFAULT));
     }
 
     /**
@@ -1019,7 +1019,7 @@ public class MazeObject implements RandomGenerationRule {
 
     // FIXME: Hack
     public String getGameName() {
-	return Strings.EMPTY;
+	return StaticStrings.EMPTY;
     }
 
     /**
@@ -1046,7 +1046,7 @@ public class MazeObject implements RandomGenerationRule {
 
     // FIXME: Hack
     protected String getNameHook() {
-	return Strings.EMPTY;
+	return StaticStrings.EMPTY;
     }
 
     public final String getPluralName() {
@@ -1055,7 +1055,7 @@ public class MazeObject implements RandomGenerationRule {
 
     // FIXME: Hack
     protected String getPluralNameHook() {
-	return Strings.EMPTY;
+	return StaticStrings.EMPTY;
     }
 
     public final String getDescription() {
@@ -1064,7 +1064,7 @@ public class MazeObject implements RandomGenerationRule {
 
     // FIXME: Hack
     protected String getDescriptionHook() {
-	return Strings.EMPTY;
+	return StaticStrings.EMPTY;
     }
 
     public final int getLayer() {

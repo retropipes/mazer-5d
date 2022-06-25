@@ -10,7 +10,7 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
-import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
 public abstract class GenericPort extends GenericInfiniteLock {
@@ -28,7 +28,7 @@ public abstract class GenericPort extends GenericInfiniteLock {
     // Scriptability
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	String fill = Strings.EMPTY;
+	String fill = StaticStrings.EMPTY;
 	if (this.isLetterVowel()) {
 	    fill = "an";
 	} else {

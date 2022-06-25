@@ -38,7 +38,7 @@ import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.ImageConstants;
 import com.puttysoftware.mazer5d.loaders.ObjectImageLoader;
-import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.objects.abc.GenericConditionalTeleport;
@@ -608,14 +608,14 @@ public class MazeEditor {
 		    this.elMgr.getEditorLocationY(), z + 1, Layers.OBJECT);
 	    name2 = mo2.getName();
 	} catch (final ArrayIndexOutOfBoundsException e) {
-	    name2 = Strings.EMPTY;
+	    name2 = StaticStrings.EMPTY;
 	}
 	try {
 	    final MazeObject mo3 = app.getMazeManager().getMaze().getCell(this.elMgr.getEditorLocationX(),
 		    this.elMgr.getEditorLocationY(), z - 1, Layers.OBJECT);
 	    name3 = mo3.getName();
 	} catch (final ArrayIndexOutOfBoundsException e) {
-	    name3 = Strings.EMPTY;
+	    name3 = StaticStrings.EMPTY;
 	}
 	if (!name1.equals("Stairs Up")) {
 	    if (name2.equals("Stairs Down")) {
@@ -639,14 +639,14 @@ public class MazeEditor {
 		    this.elMgr.getEditorLocationY(), z + 1, Layers.OBJECT);
 	    name2 = mo2.getName();
 	} catch (final ArrayIndexOutOfBoundsException e) {
-	    name2 = Strings.EMPTY;
+	    name2 = StaticStrings.EMPTY;
 	}
 	try {
 	    final MazeObject mo3 = app.getMazeManager().getMaze().getCell(this.elMgr.getEditorLocationX(),
 		    this.elMgr.getEditorLocationY(), z - 1, Layers.OBJECT);
 	    name3 = mo3.getName();
 	} catch (final ArrayIndexOutOfBoundsException e) {
-	    name3 = Strings.EMPTY;
+	    name3 = StaticStrings.EMPTY;
 	}
 	if (name1.equals("Stairs Up")) {
 	    if (!name2.equals("Stairs Down")) {
@@ -1687,7 +1687,7 @@ public class MazeEditor {
 		final int destZ = gt.getDestinationFloor();
 		final int destW = this.elMgr.getEditorLocationW();
 		this.updateEditorPositionAbsolute(destX, destY, destZ, destW);
-		Mazer5D.getBagOStuff().showMessage(Strings.EMPTY);
+		Mazer5D.getBagOStuff().showMessage(StaticStrings.EMPTY);
 		this.redrawVirtual(destX, destY, MazeEditor.DEST);
 	    } else {
 		Mazer5D.getBagOStuff().showMessage("This object does not have a destination.");

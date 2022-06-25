@@ -15,7 +15,7 @@ import com.puttysoftware.mazer5d.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.DataFileLoader;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
-import com.puttysoftware.mazer5d.locale.GameResource;
+import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.mazer5d.utilities.GUIConstants;
@@ -24,7 +24,7 @@ public class Mazer5D {
     // Constants
     private static BagOStuff bagOStuff;
     private static GameErrorHandler errhand;
-    private static final String PROGRAM_NAME = Translations.load(GameResource.PROGRAM_NAME);
+    private static final String PROGRAM_NAME = Translations.load(Strings.PROGRAM_NAME);
 
     // Methods
     public static BagOStuff getBagOStuff() {
