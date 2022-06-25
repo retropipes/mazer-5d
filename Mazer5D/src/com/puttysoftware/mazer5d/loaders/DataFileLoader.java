@@ -5,22 +5,24 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.puttysoftware.mazer5d.locale.GameResource;
+import com.puttysoftware.mazer5d.locale.GameResources;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 public class DataFileLoader {
-    private static final String LOAD_PATH = "/locale/";
+    private static final String LOAD_PATH = "/asset/data/"; //$NON-NLS-1$
     private static Class<?> LOAD_CLASS = DataFileLoader.class;
     private static ArrayList<Properties> CACHE;
 
     private static void cacheFile(final DataFile file) {
 	final String filename = DataFileNames.getFileName(file);
-	try (final InputStream is = DataFileLoader.LOAD_CLASS
-		.getResourceAsStream(DataFileLoader.LOAD_PATH + filename + ".properties")) {
+	try (final InputStream is = DataFileLoader.LOAD_CLASS.getResourceAsStream(
+		DataFileLoader.LOAD_PATH + filename + GameResources.translate(GameResource.BUNDLE_EXTENSION))) {
 	    Properties loaded = new Properties();
 	    loaded.load(is);
 	    DataFileLoader.CACHE.add(loaded);
 	} catch (final IOException ioe) {
-	    System.err.println("Something has gone horribly wrong trying to load locale file " + filename + "!");
+	    System.err.println(GameResources.translate(GameResource.FILE_LOAD_ERROR, filename));
 	    ioe.printStackTrace();
 	    System.exit(2);
 	}
