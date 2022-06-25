@@ -24,6 +24,8 @@ import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
+import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.maze.Maze;
 
 public class MazePrefs {
@@ -97,10 +99,10 @@ public class MazePrefs {
 	this.mainPrefPane = this.prefFrame.createContent();
 	this.contentPane = new JPanel();
 	this.buttonPane = new JPanel();
-	this.prefsOK = new JButton("OK");
+	this.prefsOK = new JButton(Translations.load(Strings.OK_BUTTON));
 	this.prefsOK.setDefaultCapable(true);
 	this.prefFrame.setDefaultButton(this.prefsOK);
-	this.prefsCancel = new JButton("Cancel");
+	this.prefsCancel = new JButton(Translations.load(Strings.CANCEL_BUTTON));
 	this.prefsCancel.setDefaultCapable(false);
 	this.startLevelChoices = new JComboBox<>();
 	this.health = new JTextField(StaticStrings.EMPTY);
@@ -141,10 +143,10 @@ public class MazePrefs {
 		public void run() {
 		    final MazePrefs mpm = MazePrefs.this;
 		    final String cmd = e.getActionCommand();
-		    if (cmd.equals("OK")) {
+		    if (cmd.equals(Translations.load(Strings.OK_BUTTON))) {
 			mpm.setPrefs();
 			mpm.hidePrefs();
-		    } else if (cmd.equals("Cancel")) {
+		    } else if (cmd.equals(Translations.load(Strings.CANCEL_BUTTON))) {
 			mpm.hidePrefs();
 		    }
 		}

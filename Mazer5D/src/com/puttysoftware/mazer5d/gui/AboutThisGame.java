@@ -24,6 +24,8 @@ import com.puttysoftware.mazer5d.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
+import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.Translations;
 
 public class AboutThisGame implements AboutHandler {
     // Fields
@@ -43,7 +45,7 @@ public class AboutThisGame implements AboutHandler {
     public void showAboutDialog() {
 	Modes.setInAbout();
 	this.aboutFrame.attachAndSave(this.aboutPane);
-	this.aboutFrame.setTitle("About Mazer5D");
+	this.aboutFrame.setTitle(Translations.load(Strings.ABOUT_TITLE));
     }
 
     void hideAboutDialog() {
@@ -58,7 +60,7 @@ public class AboutThisGame implements AboutHandler {
 	this.textPane = new JPanel();
 	this.buttonPane = new JPanel();
 	this.logoPane = new JPanel();
-	this.aboutOK = new JButton("OK");
+	this.aboutOK = new JButton(Translations.load(Strings.OK_BUTTON));
 	this.miniLabel = new JLabel(StaticStrings.EMPTY, LogoImageLoader.load(LogoImageIndex.MINI_LOGO),
 		SwingConstants.LEFT);
 	this.aboutOK.setDefaultCapable(true);
@@ -89,7 +91,7 @@ public class AboutThisGame implements AboutHandler {
 	public void actionPerformed(final ActionEvent e) {
 	    final AboutThisGame ad = AboutThisGame.this;
 	    final String cmd = e.getActionCommand();
-	    if (cmd.equals("OK")) {
+	    if (cmd.equals(Translations.load(Strings.OK_BUTTON))) {
 		ad.hideAboutDialog();
 	    }
 	}

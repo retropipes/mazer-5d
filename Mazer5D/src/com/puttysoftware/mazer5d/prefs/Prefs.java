@@ -54,6 +54,8 @@ import com.puttysoftware.mazer5d.files.io.MazeDataReader;
 import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.files.versions.PrefsVersionException;
 import com.puttysoftware.mazer5d.files.versions.PrefsVersions;
+import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 import com.puttysoftware.updater.ProductData;
@@ -418,9 +420,9 @@ public class Prefs {
 	final JPanel miscPane = new JPanel();
 	final JPanel buttonPane = new JPanel();
 	Prefs.prefTabPane.setOpaque(true);
-	Prefs.prefsOK = new JButton("OK");
+	Prefs.prefsOK = new JButton(Translations.load(Strings.OK_BUTTON));
 	Prefs.prefsOK.setDefaultCapable(true);
-	Prefs.prefsCancel = new JButton("Cancel");
+	Prefs.prefsCancel = new JButton(Translations.load(Strings.CANCEL_BUTTON));
 	Prefs.prefsCancel.setDefaultCapable(false);
 	Prefs.prefsExport = new JButton("Export...");
 	Prefs.prefsExport.setDefaultCapable(false);
@@ -714,10 +716,10 @@ public class Prefs {
 		@Override
 		public void run() {
 		    final String cmd = e.getActionCommand();
-		    if (cmd.equals("OK")) {
+		    if (cmd.equals(Translations.load(Strings.OK_BUTTON))) {
 			Prefs.savePrefs();
 			Prefs.hidePrefs();
-		    } else if (cmd.equals("Cancel")) {
+		    } else if (cmd.equals(Translations.load(Strings.CANCEL_BUTTON))) {
 			Prefs.loadPrefs();
 			Prefs.hidePrefs();
 		    } else if (cmd.equals("Export...")) {

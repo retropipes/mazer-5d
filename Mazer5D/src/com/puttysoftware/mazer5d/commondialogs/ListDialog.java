@@ -28,6 +28,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.Translations;
 
 class ListDialog {
     private static MainWindow dialogFrame;
@@ -50,14 +52,14 @@ class ListDialog {
 	    dialogFrame = MainWindow.getMainWindow();
 	    dialogPane = dialogFrame.createContent();
 	    // Create and initialize the buttons.
-	    final JButton cancelButton = new JButton("Cancel");
+	    final JButton cancelButton = new JButton(Translations.load(Strings.CANCEL_BUTTON));
 	    cancelButton.addActionListener(h -> {
 		ListDialog.setValue(null);
 		dialogFrame.restoreSaved();
 	    });
 	    //
-	    final JButton setButton = new JButton("OK");
-	    setButton.setActionCommand("OK");
+	    final JButton setButton = new JButton(Translations.load(Strings.OK_BUTTON));
+	    setButton.setActionCommand(Translations.load(Strings.OK_BUTTON));
 	    setButton.addActionListener(h -> {
 		ListDialog.setValue(ListDialog.list.getSelectedValue());
 		dialogFrame.restoreSaved();

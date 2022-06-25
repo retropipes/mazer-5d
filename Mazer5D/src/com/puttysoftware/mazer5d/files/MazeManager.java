@@ -27,9 +27,9 @@ import com.puttysoftware.mazer5d.files.locking.LockedFilter;
 import com.puttysoftware.mazer5d.files.locking.LockedLoadTask;
 import com.puttysoftware.mazer5d.files.locking.LockedSaveTask;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
+import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
-import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 

@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.Translations;
 
 class GeneralDialog {
     private static MainWindow dialogFrame;
@@ -29,8 +31,8 @@ class GeneralDialog {
 	    dialogFrame = MainWindow.getMainWindow();
 	    dialogPane = dialogFrame.createContent();
 	    // Create and initialize the buttons.
-	    final JButton setButton = new JButton("OK");
-	    setButton.setActionCommand("OK");
+	    final JButton setButton = new JButton(Translations.load(Strings.OK_BUTTON));
+	    setButton.setActionCommand(Translations.load(Strings.OK_BUTTON));
 	    setButton.addActionListener(h -> {
 		completer.complete(null);
 		dialogFrame.restoreSaved();

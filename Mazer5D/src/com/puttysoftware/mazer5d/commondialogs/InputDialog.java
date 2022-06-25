@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.Translations;
 
 class InputDialog {
     private static MainWindow dialogFrame;
@@ -42,7 +44,7 @@ class InputDialog {
 	    final BufferedImageIcon icon) {
 	completer = new CompletableFuture<>();
 	Executors.newSingleThreadExecutor().submit(() -> {
-	    final String[] possibleValues = new String[] { "Yes", "No", "Cancel" };
+	    final String[] possibleValues = new String[] { "Yes", "No", Translations.load(Strings.CANCEL_BUTTON) };
 	    initializeDialog(labelText, title, icon, possibleValues);
 	});
 	return completer;

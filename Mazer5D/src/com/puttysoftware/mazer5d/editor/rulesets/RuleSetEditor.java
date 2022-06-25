@@ -21,6 +21,8 @@ import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
+import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.Translations;
 
 class RuleSetEditor {
     // Fields
@@ -92,10 +94,10 @@ class RuleSetEditor {
 	this.mainEditPane = this.editFrame.createContent();
 	this.contentPane = new JPanel();
 	this.buttonPane = new JPanel();
-	this.editOK = new JButton("OK");
+	this.editOK = new JButton(Translations.load(Strings.OK_BUTTON));
 	this.editOK.setDefaultCapable(true);
 	this.editFrame.setDefaultButton(this.editOK);
-	this.editCancel = new JButton("Cancel");
+	this.editCancel = new JButton(Translations.load(Strings.CANCEL_BUTTON));
 	this.editCancel.setDefaultCapable(false);
 	this.required = new JCheckBox("Is Object Required?", true);
 	this.percentage = new JCheckBox("Are Quantities Percents?", false);
@@ -134,10 +136,10 @@ class RuleSetEditor {
 		public void run() {
 		    final RuleSetEditor ge = RuleSetEditor.this;
 		    final String cmd = e.getActionCommand();
-		    if (cmd.equals("OK")) {
+		    if (cmd.equals(Translations.load(Strings.OK_BUTTON))) {
 			ge.saveRuleSetEditor();
 			ge.hideRuleSetEditor();
-		    } else if (cmd.equals("Cancel")) {
+		    } else if (cmd.equals(Translations.load(Strings.CANCEL_BUTTON))) {
 			ge.hideRuleSetEditor();
 		    }
 		}

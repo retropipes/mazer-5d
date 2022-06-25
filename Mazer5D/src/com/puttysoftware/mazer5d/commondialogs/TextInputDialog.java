@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.locale.Strings;
+import com.puttysoftware.mazer5d.locale.Translations;
 
 class TextInputDialog {
     private static MainWindow dialogFrame;
@@ -37,13 +39,13 @@ class TextInputDialog {
 	    dialogFrame = MainWindow.getMainWindow();
 	    dialogPane = dialogFrame.createContent();
 	    // Create and initialize the buttons.
-	    final JButton cancelButton = new JButton("Cancel");
+	    final JButton cancelButton = new JButton(Translations.load(Strings.CANCEL_BUTTON));
 	    cancelButton.addActionListener(h -> {
 		TextInputDialog.setValue(null);
 		dialogFrame.restoreSaved();
 	    });
-	    final JButton setButton = new JButton("OK");
-	    setButton.setActionCommand("OK");
+	    final JButton setButton = new JButton(Translations.load(Strings.OK_BUTTON));
+	    setButton.setActionCommand(Translations.load(Strings.OK_BUTTON));
 	    setButton.addActionListener(h -> {
 		TextInputDialog.setValue(TextInputDialog.input.getText());
 		dialogFrame.restoreSaved();
