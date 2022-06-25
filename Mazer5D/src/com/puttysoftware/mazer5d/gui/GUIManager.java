@@ -30,6 +30,7 @@ import com.puttysoftware.mazer5d.files.TempDirCleanup;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.locale.GameResource;
 import com.puttysoftware.mazer5d.locale.GameResources;
+import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class GUIManager implements QuitHandler {
@@ -142,7 +143,7 @@ public class GUIManager implements QuitHandler {
 	    this.logoPane = new JPanel();
 	    this.logoPane.setLayout(new GridLayout(1, 1));
 	    final BufferedImageIcon logo = LogoImageLoader.load(LogoImageIndex.LOGO);
-	    this.logoLabel = new JLabel("", logo, SwingConstants.CENTER);
+	    this.logoLabel = new JLabel(Strings.EMPTY, logo, SwingConstants.CENTER);
 	    this.logoLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
 	    this.logoPane.add(this.logoLabel);
 	    this.commandPane = new JPanel();

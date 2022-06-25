@@ -6,6 +6,7 @@
 package com.puttysoftware.mazer5d.scoremanager;
 
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
+import com.puttysoftware.mazer5d.locale.Strings;
 
 public class ScoreManager {
     // Fields and Constants
@@ -21,7 +22,7 @@ public class ScoreManager {
     // Constructors
     public ScoreManager() {
 	this.table = new SortedScoreTable();
-	this.name = ""; //$NON-NLS-1$
+	this.name = Strings.EMPTY; //$NON-NLS-1$
 	this.title = ScoreManager.DIALOG_TITLE;
 	this.viewerTitle = ScoreManager.DIALOG_TITLE;
     }
@@ -29,8 +30,8 @@ public class ScoreManager {
     public ScoreManager(final int mv, final int length, final boolean sortOrder, final long startingScore,
 	    final String customTitle, final String[] customUnit) {
 	this.table = new SortedScoreTable(mv, length, sortOrder, startingScore, customUnit);
-	this.name = ""; //$NON-NLS-1$
-	if (customTitle == null || customTitle.equals("")) { //$NON-NLS-1$
+	this.name = Strings.EMPTY; //$NON-NLS-1$
+	if (customTitle == null || customTitle.equals(Strings.EMPTY)) { //$NON-NLS-1$
 	    this.title = ScoreManager.DIALOG_TITLE;
 	} else {
 	    this.title = customTitle;

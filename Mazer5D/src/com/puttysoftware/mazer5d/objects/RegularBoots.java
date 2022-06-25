@@ -5,6 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
+import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
@@ -26,7 +27,7 @@ class RegularBoots extends GenericBoots {
 
     @Override
     protected String getDescriptionHook() {
-	return "";
+	return Strings.EMPTY;
     }
 
     @Override

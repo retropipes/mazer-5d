@@ -15,6 +15,7 @@ import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.EffectImageIndex;
 import com.puttysoftware.mazer5d.loaders.EffectImageLoader;
+import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.maze.Maze;
 
 class StatGUI {
@@ -45,13 +46,13 @@ class StatGUI {
 	this.statsPane = new JPanel();
 	this.statsPane.setLayout(new GridLayout(3, 1));
 	final BufferedImageIcon hpImage = EffectImageLoader.load(EffectImageIndex.HEALTH);
-	this.hpLabel = new JLabel("", hpImage, SwingConstants.LEFT);
+	this.hpLabel = new JLabel(Strings.EMPTY, hpImage, SwingConstants.LEFT);
 	this.statsPane.add(this.hpLabel);
 	final BufferedImageIcon poisonImage = EffectImageLoader.load(EffectImageIndex.POISON);
-	this.poisonLabel = new JLabel("", poisonImage, SwingConstants.LEFT);
+	this.poisonLabel = new JLabel(Strings.EMPTY, poisonImage, SwingConstants.LEFT);
 	this.statsPane.add(this.poisonLabel);
 	final BufferedImageIcon timeImage = EffectImageLoader.load(EffectImageIndex.TIME_19);
-	this.timeLabel = new JLabel("", timeImage, SwingConstants.LEFT);
+	this.timeLabel = new JLabel(Strings.EMPTY, timeImage, SwingConstants.LEFT);
 	this.statsPane.add(this.timeLabel);
     }
 

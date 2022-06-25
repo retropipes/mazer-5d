@@ -11,6 +11,7 @@ import java.util.Collections;
 
 import com.puttysoftware.mazer5d.files.io.MazeDataReader;
 import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.locale.Strings;
 
 public class SortedScoreTable extends ScoreTable {
     // Fields
@@ -88,7 +89,7 @@ public class SortedScoreTable extends ScoreTable {
     }
 
     public boolean checkScore(final long[] newScore) {
-	final Score newEntry = new Score(this.scoreCount, newScore, ""); //$NON-NLS-1$
+	final Score newEntry = new Score(this.scoreCount, newScore, Strings.EMPTY); //$NON-NLS-1$
 	final ArrayList<Score> temp = new ArrayList<>(this.table);
 	if (this.sortOrder) {
 	    // Copy the current table to the temporary table

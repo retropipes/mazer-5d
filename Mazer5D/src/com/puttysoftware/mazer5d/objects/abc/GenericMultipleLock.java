@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 
@@ -43,11 +44,11 @@ public abstract class GenericMultipleLock extends GenericLock {
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	String fill = "";
+	String fill = Strings.EMPTY;
 	if (this.getKeyCount() > 1) {
 	    fill = "s";
 	} else {
-	    fill = "";
+	    fill = Strings.EMPTY;
 	}
 	Mazer5D.getBagOStuff().showMessage("You need " + this.getKeyCount() + " " + this.getKey().getName() + fill);
 	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);

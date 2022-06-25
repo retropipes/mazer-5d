@@ -20,6 +20,7 @@ import com.puttysoftware.mazer5d.files.io.MazeDataReader;
 import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.locale.GameResource;
 import com.puttysoftware.mazer5d.locale.GameResources;
+import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.objects.abc.GenericCharacter;
 import com.puttysoftware.mazer5d.objects.abc.GenericMovingObject;
@@ -225,7 +226,7 @@ public class Maze {
 
     public void setMazeTitle(final String title) {
 	if (title == null) {
-	    this.mazeTitle = "";
+	    this.mazeTitle = Strings.EMPTY;
 	} else {
 	    this.mazeTitle = title;
 	}
@@ -237,7 +238,7 @@ public class Maze {
 
     public void setMazeStartMessage(final String msg) {
 	if (msg == null) {
-	    this.mazeStartMessage = "";
+	    this.mazeStartMessage = Strings.EMPTY;
 	} else {
 	    this.mazeStartMessage = msg;
 	}
@@ -249,7 +250,7 @@ public class Maze {
 
     public void setMazeEndMessage(final String msg) {
 	if (msg == null) {
-	    this.mazeEndMessage = "";
+	    this.mazeEndMessage = Strings.EMPTY;
 	} else {
 	    this.mazeEndMessage = msg;
 	}

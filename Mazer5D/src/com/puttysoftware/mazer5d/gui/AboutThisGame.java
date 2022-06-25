@@ -23,6 +23,7 @@ import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
+import com.puttysoftware.mazer5d.locale.Strings;
 
 public class AboutThisGame implements AboutHandler {
     // Fields
@@ -58,7 +59,7 @@ public class AboutThisGame implements AboutHandler {
 	this.buttonPane = new JPanel();
 	this.logoPane = new JPanel();
 	this.aboutOK = new JButton("OK");
-	this.miniLabel = new JLabel("", LogoImageLoader.load(LogoImageIndex.MINI_LOGO), SwingConstants.LEFT);
+	this.miniLabel = new JLabel(Strings.EMPTY, LogoImageLoader.load(LogoImageIndex.MINI_LOGO), SwingConstants.LEFT);
 	this.aboutOK.setDefaultCapable(true);
 	this.aboutFrame.setDefaultButton(this.aboutOK);
 	this.aboutPane.setLayout(new BorderLayout());

@@ -17,6 +17,7 @@ import com.puttysoftware.mazer5d.files.MazeManager;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.loaders.MusicPlayer;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.locale.Strings;
 
 public class BagOStuff {
     // Fields
@@ -105,10 +106,10 @@ public class BagOStuff {
 
     private String getVersionString() {
 	if (this.isBetaModeEnabled()) {
-	    return "" + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR + "." + BagOStuff.VERSION_BUGFIX + "b"
+	    return Strings.EMPTY + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR + "." + BagOStuff.VERSION_BUGFIX + "b"
 		    + BagOStuff.VERSION_BETA;
 	} else {
-	    return "" + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR + "." + BagOStuff.VERSION_BUGFIX;
+	    return Strings.EMPTY + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR + "." + BagOStuff.VERSION_BUGFIX;
 	}
     }
 

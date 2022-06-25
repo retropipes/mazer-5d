@@ -21,6 +21,7 @@ import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.files.FileExtensions;
+import com.puttysoftware.mazer5d.locale.Strings;
 
 public final class GraphicalHelpViewer {
     // Fields
@@ -80,7 +81,7 @@ public final class GraphicalHelpViewer {
     }
 
     public void exportHelp() {
-	String filename = ""; //$NON-NLS-1$
+	String filename = Strings.EMPTY; //$NON-NLS-1$
 	String fileOnly = "\\"; //$NON-NLS-1$
 	String extension;
 	final FileDialog fc = new FileDialog((Frame) null, "Export Help", //$NON-NLS-1$

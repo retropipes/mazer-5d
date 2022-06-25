@@ -1,5 +1,7 @@
 package com.puttysoftware.mazer5d.maze.effects;
 
+import com.puttysoftware.mazer5d.locale.Strings;
+
 public class MazeEffect {
     // Fields
     protected String name;
@@ -66,8 +68,8 @@ public class MazeEffect {
     }
 
     public String getEffectString() {
-	if (this.name.equals("")) {
-	    return "";
+	if (this.name.equals(Strings.EMPTY)) {
+	    return Strings.EMPTY;
 	} else {
 	    if (this.areRoundsInfinite()) {
 		return this.name;

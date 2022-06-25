@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.commondialogs.MainWindow;
 import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
+import com.puttysoftware.mazer5d.locale.Strings;
 
 class RuleSetEditor {
     // Fields
@@ -98,9 +99,9 @@ class RuleSetEditor {
 	this.editCancel.setDefaultCapable(false);
 	this.required = new JCheckBox("Is Object Required?", true);
 	this.percentage = new JCheckBox("Are Quantities Percents?", false);
-	this.minQuantity = new JTextField("");
-	this.maxQuantity = new JTextField("");
-	this.generateQuantity = new JTextField("");
+	this.minQuantity = new JTextField(Strings.EMPTY);
+	this.maxQuantity = new JTextField(Strings.EMPTY);
+	this.generateQuantity = new JTextField(Strings.EMPTY);
 	this.mainEditPane.setLayout(new BorderLayout());
 	this.contentPane.setLayout(new GridLayout(8, 1));
 	this.contentPane.add(this.required);

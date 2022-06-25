@@ -7,12 +7,14 @@ package com.puttysoftware.mazer5d.scoremanager;
 
 import java.util.ArrayList;
 
+import com.puttysoftware.mazer5d.locale.Strings;
+
 public class ScoreTable {
     // Fields and Constants
     protected int scoreCount;
     protected ArrayList<Score> table;
     protected String[] unit;
-    protected static final String DEFAULT_UNIT = ""; //$NON-NLS-1$
+    protected static final String DEFAULT_UNIT = Strings.EMPTY; //$NON-NLS-1$
 
     // Constructors
     public ScoreTable() {

@@ -6,6 +6,7 @@
 package com.puttysoftware.mazer5d.scoremanager;
 
 import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
+import com.puttysoftware.mazer5d.locale.Strings;
 
 public final class ScoreTableViewer {
     // Private constants
@@ -31,7 +32,7 @@ public final class ScoreTableViewer {
 	int y;
 	int z;
 	for (x = 0; x < table.getLength(); x += ScoreTableViewer.ENTRIES_PER_PAGE) {
-	    msg = ""; //$NON-NLS-1$
+	    msg = Strings.EMPTY; //$NON-NLS-1$
 	    for (y = 1; y <= ScoreTableViewer.ENTRIES_PER_PAGE; y++) {
 		try {
 		    msgBuilder.append(table.getEntryName(x + y - 1));

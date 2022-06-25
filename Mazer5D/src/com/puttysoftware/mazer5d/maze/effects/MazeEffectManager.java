@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.utilities.DirectionResolver;
 
 public class MazeEffectManager {
@@ -44,7 +45,7 @@ public class MazeEffectManager {
 	this.activeEffectMessages = new JLabel[MazeEffectManager.MAX_ACTIVE_EFFECTS];
 	this.activeEffectMessagePanel.setLayout(new GridLayout(MazeEffectManager.MAX_ACTIVE_EFFECTS, 1));
 	for (int z = 0; z < MazeEffectManager.MAX_ACTIVE_EFFECTS; z++) {
-	    this.activeEffectMessages[z] = new JLabel("");
+	    this.activeEffectMessages[z] = new JLabel(Strings.EMPTY);
 	    this.activeEffectMessagePanel.add(this.activeEffectMessages[z]);
 	}
 	// Set up miscellaneous things
@@ -190,7 +191,7 @@ public class MazeEffectManager {
     private void clearAllGridEntries() {
 	this.newEffectIndex = -1;
 	for (int z = 0; z < MazeEffectManager.MAX_ACTIVE_EFFECTS - 1; z++) {
-	    this.activeEffectMessages[z].setText("");
+	    this.activeEffectMessages[z].setText(Strings.EMPTY);
 	    this.activeEffectIndices[z] = -1;
 	}
     }
@@ -212,7 +213,7 @@ public class MazeEffectManager {
 
     private void clearGridEntryText(final int index) {
 	this.activeEffectIndices[index] = -1;
-	this.activeEffectMessages[index].setText("");
+	this.activeEffectMessages[index].setText(Strings.EMPTY);
     }
 
     private void updateGridEntry(final int effectID) {

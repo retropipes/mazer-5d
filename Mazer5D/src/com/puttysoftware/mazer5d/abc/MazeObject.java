@@ -17,6 +17,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.DataFileLoader;
 import com.puttysoftware.mazer5d.loaders.DataLoader;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.utilities.ArrowTypes;
@@ -1016,7 +1017,7 @@ public class MazeObject implements RandomGenerationRule {
 
     // FIXME: Hack
     public String getGameName() {
-	return "";
+	return Strings.EMPTY;
     }
 
     /**
@@ -1043,7 +1044,7 @@ public class MazeObject implements RandomGenerationRule {
 
     // FIXME: Hack
     protected String getNameHook() {
-	return "";
+	return Strings.EMPTY;
     }
 
     public final String getPluralName() {
@@ -1052,7 +1053,7 @@ public class MazeObject implements RandomGenerationRule {
 
     // FIXME: Hack
     protected String getPluralNameHook() {
-	return "";
+	return Strings.EMPTY;
     }
 
     public final String getDescription() {
@@ -1061,7 +1062,7 @@ public class MazeObject implements RandomGenerationRule {
 
     // FIXME: Hack
     protected String getDescriptionHook() {
-	return "";
+	return Strings.EMPTY;
     }
 
     public final int getLayer() {
