@@ -19,7 +19,7 @@ import com.puttysoftware.mazer5d.files.format.SuffixIO;
 import com.puttysoftware.mazer5d.files.io.MazeDataReader;
 import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.locale.GameResource;
-import com.puttysoftware.mazer5d.locale.GameResources;
+import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.objects.abc.GenericCharacter;
@@ -64,7 +64,7 @@ public class Maze {
 	final long random = new RandomLongRange(0, Long.MAX_VALUE).generate();
 	final String randomID = Long.toHexString(random);
 	this.basePath = System.getProperty("java.io.tmpdir") + File.separator
-		+ GameResources.translate(GameResource.PROGRAM_NAME) + File.separator + randomID
+		+ Translations.load(GameResource.PROGRAM_NAME) + File.separator + randomID
 		+ FileExtensions.getMazeTempExtensionWithPeriod();
 	final File base = new File(this.basePath);
 	base.mkdirs();
@@ -78,7 +78,7 @@ public class Maze {
     // Static methods
     public static String getMazeTempFolder() {
 	return System.getProperty("java.io.tmpdir") + File.separator
-		+ GameResources.translate(GameResource.PROGRAM_NAME);
+		+ Translations.load(GameResource.PROGRAM_NAME);
     }
 
     public static int getMinLevels() {

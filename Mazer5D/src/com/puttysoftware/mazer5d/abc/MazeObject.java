@@ -18,7 +18,7 @@ import com.puttysoftware.mazer5d.loaders.DataFileLoader;
 import com.puttysoftware.mazer5d.loaders.DataLoader;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.locale.GameResource;
-import com.puttysoftware.mazer5d.locale.GameResources;
+import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.objects.GameObjects;
@@ -765,7 +765,7 @@ public class MazeObject implements RandomGenerationRule {
      */
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
-	Mazer5D.getBagOStuff().showMessage(GameResources.translate(GameResource.MOVE_FAIL_DEFAULT));
+	Mazer5D.getBagOStuff().showMessage(Translations.load(GameResource.MOVE_FAIL_DEFAULT));
     }
 
     /**
@@ -857,7 +857,7 @@ public class MazeObject implements RandomGenerationRule {
 	// Play push failed sound, if it's enabled
 	SoundPlayer.playSound(SoundIndex.ACTION_FAILED, SoundGroup.GAME);
 	Mazer5D.getBagOStuff().getGameManager().keepNextMessage();
-	Mazer5D.getBagOStuff().showMessage(GameResources.translate(GameResource.PUSH_FAIL_DEFAULT));
+	Mazer5D.getBagOStuff().showMessage(Translations.load(GameResource.PUSH_FAIL_DEFAULT));
     }
 
     /**
@@ -912,7 +912,7 @@ public class MazeObject implements RandomGenerationRule {
 	    final int pullY) {
 	SoundPlayer.playSound(SoundIndex.ACTION_FAILED, SoundGroup.GAME);
 	Mazer5D.getBagOStuff().getGameManager().keepNextMessage();
-	Mazer5D.getBagOStuff().showMessage(GameResources.translate(GameResource.PULL_FAIL_DEFAULT));
+	Mazer5D.getBagOStuff().showMessage(Translations.load(GameResource.PULL_FAIL_DEFAULT));
     }
 
     /**

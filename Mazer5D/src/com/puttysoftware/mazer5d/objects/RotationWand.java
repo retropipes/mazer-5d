@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.locale.GameResource;
-import com.puttysoftware.mazer5d.locale.GameResources;
+import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.objects.abc.GenericWand;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
@@ -49,7 +49,7 @@ class RotationWand extends GenericWand {
 	int r = 1;
 	final String[] rChoices = new String[] { "1", "2", "3" };
 	final String rres = CommonDialogs.showInputDialog("Rotation Radius:",
-		GameResources.translate(GameResource.PROGRAM_NAME), rChoices, rChoices[r - 1]);
+		Translations.load(GameResource.PROGRAM_NAME), rChoices, rChoices[r - 1]);
 	try {
 	    r = Integer.parseInt(rres);
 	} catch (final NumberFormatException nf) {
@@ -64,7 +64,7 @@ class RotationWand extends GenericWand {
 	}
 	final String[] dChoices = new String[] { "Clockwise", "Counterclockwise" };
 	final String dres = CommonDialogs.showInputDialog("Rotation Direction:",
-		GameResources.translate(GameResource.PROGRAM_NAME), dChoices, dChoices[di]);
+		Translations.load(GameResource.PROGRAM_NAME), dChoices, dChoices[di]);
 	if (dres.equals(dChoices[0])) {
 	    d = RotationWand.CLOCKWISE;
 	} else {
