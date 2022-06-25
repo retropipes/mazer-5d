@@ -16,22 +16,22 @@ import com.puttysoftware.mazer5d.utilities.Layers;
 class SavedState {
     // Properties
     private final int r, c, f;
-    private final MazeObject[][][][] saveData;
+    private final MazeStorage saveData;
 
     // Constructors
     public SavedState(final int rows, final int cols, final int floors) {
-	this.saveData = new MazeObject[cols][rows][floors][Layers.COUNT];
+	this.saveData = new MazeStorage(cols, rows, floors, Layers.COUNT);
 	this.c = cols;
 	this.r = rows;
 	this.f = floors;
     }
 
     public MazeObject getDataCell(final int x, final int y, final int z, final int e) {
-	return this.saveData[x][y][z][e];
+	return this.saveData.getMazeCell(x, y, z, e);
     }
 
     public void setDataCell(final MazeObject newData, final int x, final int y, final int z, final int e) {
-	this.saveData[x][y][z][e] = newData;
+	this.saveData.setCell(newData, x, y, z, e);
     }
 
     public void writeSavedTowerState(final MazeDataWriter writer) throws IOException {
@@ -43,7 +43,7 @@ class SavedState {
 	    for (y = 0; y < this.r; y++) {
 		for (z = 0; z < this.f; z++) {
 		    for (e = 0; e < Layers.COUNT; e++) {
-			this.saveData[x][y][z][e].writeMazeObject(writer);
+			this.saveData.getMazeCell(x, y, z, e).writeMazeObject(writer);
 		    }
 		}
 	    }
@@ -60,7 +60,7 @@ class SavedState {
 	    for (y = 0; y < sts.r; y++) {
 		for (z = 0; z < sts.f; z++) {
 		    for (e = 0; e < Layers.COUNT; e++) {
-			sts.saveData[x][y][z][e] = GameObjects.readObject(reader, formatVersion);
+			sts.saveData.setCell(GameObjects.readObject(reader, formatVersion), x, y, z, e);
 		    }
 		}
 	    }
