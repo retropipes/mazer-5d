@@ -7,9 +7,9 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.util.Objects;
 
+import com.puttysoftware.diane.storage.FlagStorage;
 import com.puttysoftware.mazer5d.utilities.DirectionResolver;
 import com.puttysoftware.mazer5d.utilities.Directions;
-import com.puttysoftware.storage.FlagStorage;
 
 class SolidProperties {
     // Private enumeration

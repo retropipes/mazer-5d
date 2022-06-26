@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.util.Objects;
 
-import com.puttysoftware.storage.FlagStorage;
+import com.puttysoftware.diane.storage.FlagStorage;
 
 class TypeProperties {
     // Properties

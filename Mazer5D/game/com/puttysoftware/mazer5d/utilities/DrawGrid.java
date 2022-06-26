@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.utilities;
 
 import com.puttysoftware.diane.asset.BufferedImageIcon;
-import com.puttysoftware.storage.ObjectStorage;
+import com.puttysoftware.diane.storage.ObjectStorage;
 
 public class DrawGrid extends ObjectStorage {
     public DrawGrid(final int numSquares) {

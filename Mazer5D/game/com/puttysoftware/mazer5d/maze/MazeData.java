@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import com.puttysoftware.diane.gui.dialog.CommonDialogs;
+import com.puttysoftware.diane.storage.FlagStorage;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.files.io.MazeDataReader;
@@ -26,7 +27,6 @@ import com.puttysoftware.mazer5d.utilities.RandomGenerationRule;
 import com.puttysoftware.mazer5d.utilities.TypeConstants;
 import com.puttysoftware.mazer5d.utilities.VisionModes;
 import com.puttysoftware.randomrange.RandomRange;
-import com.puttysoftware.storage.FlagStorage;
 
 class MazeData {
     // Properties
