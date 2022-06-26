@@ -13,11 +13,11 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
+import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.MazeObject;
-import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.files.format.Extension;
 import com.puttysoftware.mazer5d.files.format.GameFilter;
 import com.puttysoftware.mazer5d.files.format.LoadTask;

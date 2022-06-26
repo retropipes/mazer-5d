@@ -8,8 +8,8 @@ package com.puttysoftware.mazer5d.files.format;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetConstants;
 import com.puttysoftware.mazer5d.files.io.MazeDataReader;
 import com.puttysoftware.mazer5d.gui.BagOStuff;

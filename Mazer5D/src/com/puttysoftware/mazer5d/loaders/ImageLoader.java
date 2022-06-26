@@ -13,7 +13,7 @@ import java.util.Objects;
 
 import javax.imageio.ImageIO;
 
-import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.diane.asset.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 
 public class ImageLoader {

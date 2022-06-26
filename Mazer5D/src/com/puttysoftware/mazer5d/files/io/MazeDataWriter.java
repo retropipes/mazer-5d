@@ -2,8 +2,8 @@ package com.puttysoftware.mazer5d.files.io;
 
 import java.io.IOException;
 
-import com.puttysoftware.fileio.DataIOException;
-import com.puttysoftware.fileio.XDataWriter;
+import com.puttysoftware.diane.fileio.DataIOException;
+import com.puttysoftware.diane.fileio.XDataWriter;
 import com.puttysoftware.mazer5d.utilities.MazeObjects;
 
 public class MazeDataWriter extends XDataWriter {

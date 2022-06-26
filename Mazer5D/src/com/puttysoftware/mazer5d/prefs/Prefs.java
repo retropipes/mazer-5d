@@ -42,13 +42,13 @@ import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.JTabbedPane;
 
+import com.puttysoftware.diane.gui.dialog.CommonDialogs;
+import com.puttysoftware.diane.gui.dialog.MainWindow;
+import com.puttysoftware.diane.gui.dialog.MainWindowContent;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
-import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
-import com.puttysoftware.mazer5d.commondialogs.MainWindow;
-import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.files.CommonPaths;
 import com.puttysoftware.mazer5d.files.io.MazeDataReader;
 import com.puttysoftware.mazer5d.files.io.MazeDataWriter;

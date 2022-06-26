@@ -12,7 +12,7 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.diane.asset.BufferedImageIcon;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.files.FileExtensions;
 

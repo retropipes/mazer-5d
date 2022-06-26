@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.diane.asset.BufferedImageIcon;
 
 public class ImageCompositor {
     private static BufferedImageIcon compositeTwo(final BufferedImageIcon input1, final BufferedImageIcon input2) {

@@ -17,9 +17,9 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
+import com.puttysoftware.diane.asset.BufferedImageIcon;
+import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
-import com.puttysoftware.images.BufferedImageIcon;
-import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.files.FileExtensions;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 

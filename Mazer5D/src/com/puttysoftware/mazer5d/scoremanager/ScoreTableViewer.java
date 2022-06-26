@@ -5,7 +5,7 @@
  */
 package com.puttysoftware.mazer5d.scoremanager;
 
-import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
+import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 
 public final class ScoreTableViewer {

@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.assets;
 import java.awt.Color;
 import java.util.Objects;
 
-import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.diane.asset.BufferedImageIcon;
 
 final class ColorReplaceRule {
     // Fields

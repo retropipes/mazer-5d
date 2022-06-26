@@ -14,18 +14,18 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.diane.asset.BufferedImageIcon;
+import com.puttysoftware.diane.gui.dialog.CommonDialogs;
+import com.puttysoftware.diane.gui.dialog.MainWindow;
+import com.puttysoftware.diane.gui.dialog.MainWindowContent;
+import com.puttysoftware.diane.picturepicker.PicturePicker;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.MazeObject;
-import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
-import com.puttysoftware.mazer5d.commondialogs.MainWindow;
-import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.files.RuleSetManager;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.prefs.Prefs;
-import com.puttysoftware.picturepicker.PicturePicker;
 
 public class RuleSetPicker {
     // Declarations

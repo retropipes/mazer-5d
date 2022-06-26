@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.game;
 
 import java.io.File;
 
-import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
+import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.mazer5d.files.format.Extension;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.scoremanager.SavedScoreManager;

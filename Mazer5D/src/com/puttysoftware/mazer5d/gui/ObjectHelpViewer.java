@@ -14,10 +14,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.diane.asset.BufferedImageIcon;
+import com.puttysoftware.diane.gui.dialog.MainWindow;
+import com.puttysoftware.diane.gui.dialog.MainWindowContent;
 import com.puttysoftware.mazer5d.Modes;
-import com.puttysoftware.mazer5d.commondialogs.MainWindow;
-import com.puttysoftware.mazer5d.commondialogs.MainWindowContent;
 import com.puttysoftware.mazer5d.help.GraphicalHelpViewer;
 import com.puttysoftware.mazer5d.loaders.DataLoader;
 import com.puttysoftware.mazer5d.objects.GameObjects;

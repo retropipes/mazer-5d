@@ -5,8 +5,8 @@ import java.io.IOException;
 
 import javax.swing.JColorChooser;
 
-import com.puttysoftware.images.BufferedImageIcon;
-import com.puttysoftware.mazer5d.commondialogs.CommonDialogs;
+import com.puttysoftware.diane.asset.BufferedImageIcon;
+import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.mazer5d.loaders.AvatarImageLoader;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
