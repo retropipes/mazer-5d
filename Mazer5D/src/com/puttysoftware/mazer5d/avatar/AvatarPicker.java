@@ -210,7 +210,7 @@ public class AvatarPicker {
     }
 
     private static Color pickAvatarAccessoryColor2() {
-	final String title = Translations.load(Strings.PICK_AVATAR_SECOND_ACCESSORY_COLOR);;
+	final String title = Translations.load(Strings.PICK_AVATAR_SECOND_ACCESSORY_COLOR);
 	return JColorChooser.showDialog(null, title, currentAccessoryColor2, false);
     }
 }
