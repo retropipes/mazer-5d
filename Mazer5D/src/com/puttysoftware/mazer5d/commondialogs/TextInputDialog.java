@@ -32,7 +32,7 @@ class TextInputDialog {
      * otherwise, it should be the component on top of which the dialog should
      * appear.
      */
-    public static Future<String> showDialog(final String labelText, final String title, final BufferedImageIcon icon,
+    public static Future<String> showDialog(final String text, final String title, final BufferedImageIcon icon,
 	    final String initialValue) {
 	Executors.newSingleThreadExecutor().submit(() -> {
 	    // Create and initialize the dialog.
@@ -52,13 +52,17 @@ class TextInputDialog {
 	    });
 	    // main part of the dialog
 	    TextInputDialog.input = new JTextField(initialValue);
-	    final JPanel listPane = new JPanel();
-	    listPane.setLayout(new BoxLayout(listPane, BoxLayout.PAGE_AXIS));
-	    final JLabel label = new JLabel(icon);
-	    listPane.add(label);
-	    listPane.add(Box.createRigidArea(new Dimension(0, 5)));
-	    listPane.add(input);
-	    listPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+	    final JPanel iconPane = new JPanel();
+	    final JLabel iconLabel = new JLabel(icon);
+	    iconPane.setLayout(new BoxLayout(iconPane, BoxLayout.PAGE_AXIS));
+	    iconPane.add(iconLabel);
+	    final JPanel mainPane = new JPanel();
+	    mainPane.setLayout(new BoxLayout(mainPane, BoxLayout.PAGE_AXIS));
+	    final JLabel textLabel = new JLabel(text);
+	    mainPane.add(textLabel);
+	    mainPane.add(Box.createRigidArea(new Dimension(0, 5)));
+	    mainPane.add(input);
+	    mainPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 	    // Lay out the buttons from left to right.
 	    final JPanel buttonPane = new JPanel();
 	    buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.LINE_AXIS));
@@ -68,8 +72,9 @@ class TextInputDialog {
 	    buttonPane.add(Box.createRigidArea(new Dimension(10, 0)));
 	    buttonPane.add(setButton);
 	    // Put everything together, using the content pane's BorderLayout.
-	    dialogPane.add(listPane, BorderLayout.NORTH);
-	    dialogPane.add(buttonPane, BorderLayout.PAGE_END);
+	    dialogPane.add(iconPane, BorderLayout.WEST);
+	    dialogPane.add(mainPane, BorderLayout.CENTER);
+	    dialogPane.add(buttonPane, BorderLayout.SOUTH);
 	    // Initialize values.
 	    TextInputDialog.setValue(initialValue);
 	    dialogFrame.attachAndSave(dialogPane);

@@ -25,7 +25,7 @@ class GeneralDialog {
     /**
      * Set up and show the dialog.
      */
-    public static Future<Void> showDialog(final String labelText, final String title, final BufferedImageIcon icon) {
+    public static Future<Void> showDialog(final String text, final String title, final BufferedImageIcon icon) {
 	Executors.newSingleThreadExecutor().submit(() -> {
 	    // Create and initialize the dialog.
 	    dialogFrame = MainWindow.getMainWindow();
@@ -38,11 +38,15 @@ class GeneralDialog {
 		dialogFrame.restoreSaved();
 	    });
 	    // main part of the dialog
-	    final JPanel listPane = new JPanel();
-	    listPane.setLayout(new BoxLayout(listPane, BoxLayout.PAGE_AXIS));
-	    final JLabel label = new JLabel(icon);
-	    listPane.add(label);
-	    listPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+	    final JPanel iconPane = new JPanel();
+	    final JLabel iconLabel = new JLabel(icon);
+	    iconPane.setLayout(new BoxLayout(iconPane, BoxLayout.PAGE_AXIS));
+	    iconPane.add(iconLabel);
+	    final JPanel mainPane = new JPanel();
+	    mainPane.setLayout(new BoxLayout(mainPane, BoxLayout.PAGE_AXIS));
+	    final JLabel textLabel = new JLabel(text);
+	    mainPane.add(textLabel);
+	    mainPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 	    // Lay out the buttons from left to right.
 	    final JPanel buttonPane = new JPanel();
 	    buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.LINE_AXIS));
@@ -51,8 +55,9 @@ class GeneralDialog {
 	    buttonPane.add(Box.createRigidArea(new Dimension(10, 0)));
 	    buttonPane.add(setButton);
 	    // Put everything together, using the content pane's BorderLayout.
-	    dialogPane.add(listPane, BorderLayout.NORTH);
-	    dialogPane.add(buttonPane, BorderLayout.PAGE_END);
+	    dialogPane.add(iconPane, BorderLayout.WEST);
+	    dialogPane.add(mainPane, BorderLayout.CENTER);
+	    dialogPane.add(buttonPane, BorderLayout.SOUTH);
 	    dialogFrame.attachAndSave(dialogPane);
 	});
 	return completer;
