@@ -1,8 +1,10 @@
 package com.puttysoftware.mazer5d.loaders;
 
+import java.io.IOException;
 import java.util.Properties;
 
-import com.puttysoftware.audio.ogg.OggPlayer;
+import com.puttysoftware.audio.mod.ModPlayer;
+import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
 import com.puttysoftware.mazer5d.files.FileExtensions;
@@ -15,7 +17,7 @@ public class MusicPlayer {
 
     private static String[] allFilenames;
     private static Properties fileExtensions;
-    private static OggPlayer MUSIC;
+    private static ModPlayer MUSIC;
 
     private static String getMusicFilename(final MusicIndex music) {
 	if (MusicPlayer.allFilenames == null && MusicPlayer.fileExtensions == null) {
@@ -30,11 +32,15 @@ public class MusicPlayer {
 	    if (music != null && music != MusicIndex._NONE) {
 		final String filename = MusicPlayer.getMusicFilename(music);
 		if (MusicPlayer.MUSIC != null && MusicPlayer.MUSIC.isPlaying()) {
-		    OggPlayer.stopPlaying();
+		    MusicPlayer.MUSIC.stopPlaying();
 		}
-		MusicPlayer.MUSIC = OggPlayer
-			.loadLoopedResource(MusicPlayer.class.getResource("/asset/music/" + filename));
-		MusicPlayer.MUSIC.play();
+		try {
+		    MusicPlayer.MUSIC = ModPlayer
+			    .loadResource(MusicPlayer.class.getResource("/asset/music/" + filename));
+		    MusicPlayer.MUSIC.play();
+		} catch (final IOException e) {
+		    Mazer5D.logError(e);
+		}
 	    }
 	}
     }
