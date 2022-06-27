@@ -7,7 +7,7 @@ package com.puttysoftware.diane.edge;
 
 import java.awt.Color;
 
-import com.puttysoftware.diane.asset.BufferedImageIcon;
+import com.puttysoftware.diane.image.BufferedImageIcon;
 
 public class EdgeGenerator {
     // Constants

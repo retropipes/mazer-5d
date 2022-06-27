@@ -2,7 +2,7 @@ package com.puttysoftware.mazer5d.loader;
 
 import java.io.IOException;
 
-import com.puttysoftware.diane.asset.BufferedImageIcon;
+import com.puttysoftware.diane.image.BufferedImageIcon;
 import com.puttysoftware.mazer5d.avatar.AvatarImageModel;
 import com.puttysoftware.mazer5d.avatar.ColorReplaceRules;
 import com.puttysoftware.mazer5d.file.FileExtensions;

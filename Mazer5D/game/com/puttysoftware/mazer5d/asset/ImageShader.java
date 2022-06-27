@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import com.puttysoftware.diane.asset.BufferedImageIcon;
+import com.puttysoftware.diane.image.BufferedImageIcon;
 
 public class ImageShader {
     static BufferedImageIcon shadeUncached(final String name, final BufferedImageIcon input, final ColorShader shade) {

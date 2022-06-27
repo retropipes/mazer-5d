@@ -14,10 +14,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import com.puttysoftware.diane.asset.BufferedImageIcon;
 import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.diane.gui.dialog.MainWindow;
 import com.puttysoftware.diane.gui.dialog.MainWindowContent;
+import com.puttysoftware.diane.image.BufferedImageIcon;
 import com.puttysoftware.diane.picturepicker.PicturePicker;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;

@@ -18,7 +18,7 @@ Any questions should be directed to the author via email at: fantastle@worldwiza
  */
 package com.puttysoftware.mazer5d.loader;
 
-import com.puttysoftware.diane.asset.BufferedImageIcon;
+import com.puttysoftware.diane.image.BufferedImageIcon;
 import com.puttysoftware.mazer5d.asset.EffectImageIndex;
 import com.puttysoftware.mazer5d.file.FileExtensions;
 

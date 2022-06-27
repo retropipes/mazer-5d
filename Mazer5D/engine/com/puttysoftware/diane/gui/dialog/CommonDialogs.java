@@ -5,7 +5,7 @@ import java.io.FilenameFilter;
 import java.util.concurrent.ExecutionException;
 
 import com.puttysoftware.diane.Diane;
-import com.puttysoftware.diane.asset.BufferedImageIcon;
+import com.puttysoftware.diane.image.BufferedImageIcon;
 
 public class CommonDialogs {
     // Fields

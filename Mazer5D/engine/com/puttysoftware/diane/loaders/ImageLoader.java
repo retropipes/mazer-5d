@@ -14,8 +14,8 @@ import java.util.Objects;
 import javax.imageio.ImageIO;
 
 import com.puttysoftware.diane.Diane;
-import com.puttysoftware.diane.asset.BufferedImageIcon;
 import com.puttysoftware.diane.asset.DianeImage;
+import com.puttysoftware.diane.image.BufferedImageIcon;
 
 public class ImageLoader {
     static BufferedImageIcon loadUncached(final String name, final URL url) {

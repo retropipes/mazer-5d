@@ -8,7 +8,7 @@ package com.puttysoftware.diane.loaders;
 import java.awt.Color;
 import java.util.Objects;
 
-import com.puttysoftware.diane.asset.BufferedImageIcon;
+import com.puttysoftware.diane.image.BufferedImageIcon;
 
 final class ColorReplaceRule {
     // Fields

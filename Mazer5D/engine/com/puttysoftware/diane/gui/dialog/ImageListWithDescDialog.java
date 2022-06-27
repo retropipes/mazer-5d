@@ -28,7 +28,7 @@ import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 
-import com.puttysoftware.diane.asset.BufferedImageIcon;
+import com.puttysoftware.diane.image.BufferedImageIcon;
 import com.puttysoftware.diane.locale.EngineStrings;
 import com.puttysoftware.diane.locale.EngineTranslations;
 

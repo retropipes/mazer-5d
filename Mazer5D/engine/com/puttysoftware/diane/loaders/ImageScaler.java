@@ -12,7 +12,7 @@ import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.lang.reflect.Field;
 
-import com.puttysoftware.diane.asset.BufferedImageIcon;
+import com.puttysoftware.diane.image.BufferedImageIcon;
 
 class ImageScaler {
     // Fields

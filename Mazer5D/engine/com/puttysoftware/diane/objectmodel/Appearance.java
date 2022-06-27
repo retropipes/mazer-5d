@@ -5,8 +5,8 @@ Any questions should be directed to the author via email at: support@puttysoftwa
  */
 package com.puttysoftware.diane.objectmodel;
 
-import com.puttysoftware.diane.asset.BufferedImageIcon;
 import com.puttysoftware.diane.asset.DianeImage;
+import com.puttysoftware.diane.image.BufferedImageIcon;
 import com.puttysoftware.diane.loaders.ColorReplaceRules;
 import com.puttysoftware.diane.loaders.ColorShader;
 
