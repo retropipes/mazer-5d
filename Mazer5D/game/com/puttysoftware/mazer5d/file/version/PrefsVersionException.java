@@ -1,4 +1,4 @@
-package com.puttysoftware.mazer5d.file.versions;
+package com.puttysoftware.mazer5d.file.version;
 
 public class PrefsVersionException extends VersionException {
     /**

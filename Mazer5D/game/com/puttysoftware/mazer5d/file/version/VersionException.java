@@ -1,4 +1,4 @@
-package com.puttysoftware.mazer5d.file.versions;
+package com.puttysoftware.mazer5d.file.version;
 
 import java.io.IOException;
 import java.io.NotSerializableException;

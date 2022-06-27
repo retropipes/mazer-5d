@@ -4,9 +4,9 @@ import java.io.IOException;
 
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
-import com.puttysoftware.mazer5d.file.versions.MazeVersion;
-import com.puttysoftware.mazer5d.file.versions.MazeVersionException;
-import com.puttysoftware.mazer5d.file.versions.MazeVersions;
+import com.puttysoftware.mazer5d.file.version.MazeVersion;
+import com.puttysoftware.mazer5d.file.version.MazeVersionException;
+import com.puttysoftware.mazer5d.file.version.MazeVersions;
 
 public class PrefixIO {
     private static final byte FORMAT_VERSION_MAJOR = (byte) MazeVersions.LATEST.ordinal();

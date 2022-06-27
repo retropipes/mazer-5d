@@ -5,7 +5,7 @@ import java.io.IOException;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
-import com.puttysoftware.mazer5d.file.versions.MazeVersion;
+import com.puttysoftware.mazer5d.file.version.MazeVersion;
 
 public class SuffixIO {
     public void writeSuffix(final MazeDataWriter writer) throws IOException {

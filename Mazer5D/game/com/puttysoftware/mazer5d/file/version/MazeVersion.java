@@ -1,4 +1,4 @@
-package com.puttysoftware.mazer5d.file.versions;
+package com.puttysoftware.mazer5d.file.version;
 
 public enum MazeVersion {
     V1,
