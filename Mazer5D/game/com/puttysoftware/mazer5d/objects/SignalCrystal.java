@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.objects;
 import com.puttysoftware.mazer5d.objects.abc.GenericProgrammableKey;
 import com.puttysoftware.mazer5d.utility.MazeObjects;
 
-class SignalCrystal extends GenericProgrammableKey {
+public class SignalCrystal extends GenericProgrammableKey {
     // Constructors
     public SignalCrystal() {
 	super("Signal");

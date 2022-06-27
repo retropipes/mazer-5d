@@ -20,11 +20,12 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loader.SoundPlayer;
 import com.puttysoftware.mazer5d.maze.effect.MazeEffectConstants;
+import com.puttysoftware.mazer5d.objects.SignalCrystal;
 import com.puttysoftware.mazer5d.utility.MazeObjects;
 import com.puttysoftware.mazer5d.utility.TypeConstants;
 
 public abstract class GenericProgrammableLock extends GenericSingleLock {
-    private static final MazeObject SIGNAL = new MazeObject(MazeObjects.SIGNAL_CRYSTAL);
+    private static final SignalCrystal SIGNAL = new SignalCrystal();
 
     protected GenericProgrammableLock() {
 	super(GenericProgrammableLock.SIGNAL);
