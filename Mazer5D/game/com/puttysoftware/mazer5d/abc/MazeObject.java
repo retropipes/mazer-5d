@@ -24,7 +24,6 @@ import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.maze.Maze;
-import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.utility.ArrowTypes;
 import com.puttysoftware.mazer5d.utility.Layers;
 import com.puttysoftware.mazer5d.utility.MazeObjectActions;
@@ -61,6 +60,71 @@ public class MazeObject implements RandomGenerationRule {
 	this.cf = new CustomFlags();
 	this.ct = new CustomTexts();
 	this.tp = new TypeProperties();
+    }
+    
+    public MazeObject(final MazeObjects uid, final MazeObjects contentsUID) {
+	this.uniqueID = uid;
+	this.savedObject = new MazeObject(contentsUID);
+	this.sp = new SolidProperties();
+	this.mp = new MoveProperties();
+	this.op = new OtherProperties();
+	this.oc = new OtherCounters();
+	this.vp = new VisionProperties();
+	this.cc = new CustomCounters();
+	this.cf = new CustomFlags();
+	this.ct = new CustomTexts();
+	this.tp = new TypeProperties();
+    }
+    
+    public MazeObject(final MazeObjects uid, final int dr, final int dc) {
+	this.uniqueID = uid;
+	this.sp = new SolidProperties();
+	this.mp = new MoveProperties();
+	this.op = new OtherProperties();
+	this.oc = new OtherCounters();
+	this.vp = new VisionProperties();
+	this.cc = new CustomCounters();
+	this.cf = new CustomFlags();
+	this.ct = new CustomTexts();
+	this.tp = new TypeProperties();
+	this.cc.add(2);
+	this.cc.set(0, dr);
+	this.cc.set(1, dc);
+    }
+    
+    public MazeObject(final MazeObjects uid, final int dr, final int dc, final int df) {
+	this.uniqueID = uid;
+	this.sp = new SolidProperties();
+	this.mp = new MoveProperties();
+	this.op = new OtherProperties();
+	this.oc = new OtherCounters();
+	this.vp = new VisionProperties();
+	this.cc = new CustomCounters();
+	this.cf = new CustomFlags();
+	this.ct = new CustomTexts();
+	this.tp = new TypeProperties();
+	this.cc.add(3);
+	this.cc.set(0, dr);
+	this.cc.set(1, dc);
+	this.cc.set(2, df);
+    }
+    
+    public MazeObject(final MazeObjects uid, final int dr, final int dc, final int df, final int dl) {
+	this.uniqueID = uid;
+	this.sp = new SolidProperties();
+	this.mp = new MoveProperties();
+	this.op = new OtherProperties();
+	this.oc = new OtherCounters();
+	this.vp = new VisionProperties();
+	this.cc = new CustomCounters();
+	this.cf = new CustomFlags();
+	this.ct = new CustomTexts();
+	this.tp = new TypeProperties();
+	this.cc.add(4);
+	this.cc.set(0, dr);
+	this.cc.set(1, dc);
+	this.cc.set(2, df);
+	this.cc.set(3, dl);
     }
 
     protected MazeObject(final boolean isSolid) {

@@ -10,10 +10,10 @@ import java.io.IOException;
 
 import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.editor.ruleset.RuleSetConstants;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
-import com.puttysoftware.mazer5d.objects.GameObjects;
 
 public class RuleSetLoadTask extends Thread {
     // Fields

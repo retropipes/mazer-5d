@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.asset.SoundGroup;
 import com.puttysoftware.mazer5d.asset.SoundIndex;
@@ -19,12 +20,11 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loader.SoundPlayer;
 import com.puttysoftware.mazer5d.maze.effect.MazeEffectConstants;
-import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.utility.MazeObjects;
 import com.puttysoftware.mazer5d.utility.TypeConstants;
 
 public abstract class GenericProgrammableLock extends GenericSingleLock {
-    private static final GenericSingleKey SIGNAL = GameObjects.createSignalCrystal();
+    private static final MazeObject SIGNAL = new MazeObject(MazeObjects.SIGNAL_CRYSTAL);
 
     protected GenericProgrammableLock() {
 	super(GenericProgrammableLock.SIGNAL);
@@ -126,7 +126,8 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     }
 
     @Override
-    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
+    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final MazeVersion formatVersion)
+	    throws IOException {
 	final MazeObject o = GameObjects.readObject(reader, formatVersion);
 	if (o == null) {
 	    this.setKey(GenericProgrammableLock.SIGNAL);

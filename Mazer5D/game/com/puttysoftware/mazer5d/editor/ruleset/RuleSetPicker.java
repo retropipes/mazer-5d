@@ -21,10 +21,10 @@ import com.puttysoftware.diane.image.BufferedImageIcon;
 import com.puttysoftware.diane.picturepicker.PicturePicker;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
+import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.file.RuleSetManager;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
-import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class RuleSetPicker {

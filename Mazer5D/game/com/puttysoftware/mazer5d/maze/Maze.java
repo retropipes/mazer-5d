@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.file.FileExtensions;
 import com.puttysoftware.mazer5d.file.TempDirCleanup;
@@ -21,7 +22,6 @@ import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
-import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.objects.abc.GenericCharacter;
 import com.puttysoftware.mazer5d.objects.abc.GenericMovingObject;
 import com.puttysoftware.mazer5d.prefs.Prefs;

@@ -3,6 +3,7 @@ package com.puttysoftware.mazer5d.objects;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
