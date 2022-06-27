@@ -1209,12 +1209,7 @@ public class GameObjects {
 	if (instance == null) {
 	    return null;
 	} else {
-	    try {
-		return instance.getClass().getConstructor().newInstance();
-	    } catch (final InstantiationException | IllegalAccessException | IllegalArgumentException
-		    | InvocationTargetException | NoSuchMethodException | SecurityException e) {
-		return null;
-	    }
+	    return new MazeObject(instance);
 	}
     }
 
@@ -1228,6 +1223,7 @@ public class GameObjects {
 		return instance.getClass().getConstructor(contents.getClass()).newInstance(contents);
 	    } catch (final InstantiationException | IllegalAccessException | IllegalArgumentException
 		    | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+		Mazer5D.logError(e);
 		return null;
 	    }
 	}
@@ -1242,6 +1238,7 @@ public class GameObjects {
 		return instance.getClass().getConstructor(int.class, int.class).newInstance(dr, dc);
 	    } catch (final InstantiationException | IllegalAccessException | IllegalArgumentException
 		    | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+		Mazer5D.logError(e);
 		return null;
 	    }
 	}
@@ -1256,6 +1253,7 @@ public class GameObjects {
 		return instance.getClass().getConstructor(int.class, int.class, int.class).newInstance(dr, dc, df);
 	    } catch (final InstantiationException | IllegalAccessException | IllegalArgumentException
 		    | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+		Mazer5D.logError(e);
 		return null;
 	    }
 	}
@@ -1272,12 +1270,14 @@ public class GameObjects {
 			dc, df, dl);
 	    } catch (final InstantiationException | IllegalAccessException | IllegalArgumentException
 		    | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+		Mazer5D.logError(e);
 		return null;
 	    }
 	}
     }
 
-    public static MazeObject readObject(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
+    public static MazeObject readObject(final MazeDataReader reader, final MazeVersion formatVersion)
+	    throws IOException {
 	MazeObject o = null;
 	String UID = StaticStrings.EMPTY;
 	if (formatVersion == MazeVersion.V1) {
