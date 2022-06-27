@@ -7,6 +7,6 @@ package com.puttysoftware.diane.asset;
 
 import java.net.URL;
 
-public interface SoundIndex {
+public interface DianeSound {
     URL getSoundURL();
 }

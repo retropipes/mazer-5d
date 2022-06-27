@@ -18,7 +18,7 @@ import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import com.puttysoftware.diane.Diane;
-import com.puttysoftware.diane.asset.SoundIndex;
+import com.puttysoftware.diane.asset.DianeSound;
 
 public class SoundLoader {
     private SoundLoader() {
@@ -27,7 +27,7 @@ public class SoundLoader {
 
     private static final int BUFFER_SIZE = 4096; // 4Kb
 
-    public static void play(final SoundIndex sound) {
+    public static void play(final DianeSound sound) {
 	SoundLoader.play(sound.getSoundURL());
     }
 
