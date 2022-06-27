@@ -446,8 +446,8 @@ public class Prefs {
 	Prefs.music[Prefs.MUSIC_GAME] = new JCheckBox("Enable game music", true);
 	Prefs.checkUpdatesStartup = new JCheckBox("Check for Updates at Startup", true);
 	Prefs.moveOneAtATime = new JCheckBox("One Move at a Time", true);
-	Prefs.updateCheckIntervalValues = new String[] { "Daily", "EformatVersiony 2nd Day", "Weekly", "EformatVersiony 2nd Week",
-		"Monthly" };
+	Prefs.updateCheckIntervalValues = new String[] { "Daily", "EformatVersiony 2nd Day", "Weekly",
+		"EformatVersiony 2nd Week", "Monthly" };
 	Prefs.updateCheckInterval = new JComboBox<>(Prefs.updateCheckIntervalValues);
 	Prefs.generatorConstrainedRandom = new JRadioButton("Randomness with limits", true);
 	Prefs.generatorTwister = new JRadioButton("Twisted Hallways With Rooms", false);
@@ -521,10 +521,15 @@ public class Prefs {
 		    Prefs.DOC_TAG)) {
 		// Read the preferences from the file
 		// Read format version
-		final PrefsVersion formatVersion = PrefsVersion.values()[reader.readInt()];
+		final int raw = reader.readInt();
 		// Version check
-		if (!PrefsVersions.isCompatible(formatVersion)) {
-		    throw new PrefsVersionException(formatVersion);
+		try {
+		    final PrefsVersion formatVersion = PrefsVersion.values()[raw];
+		    if (!PrefsVersions.isCompatible(formatVersion)) {
+			throw new PrefsVersionException(raw);
+		    }
+		} catch (ArrayIndexOutOfBoundsException e) {
+		    throw new PrefsVersionException(raw, e);
 		}
 		Prefs.editorFill = reader.readMazeObjectID();
 		Prefs.checkUpdatesStartupEnabled = reader.readBoolean();
@@ -609,10 +614,16 @@ public class Prefs {
 	    try (final MazeDataReader reader = new MazeDataReader(importFile.getAbsolutePath(), Prefs.DOC_TAG)) {
 		// Read the preferences from the file
 		// Read format version
-		final PrefsVersion formatVersion = PrefsVersion.values()[reader.readInt()];
+		final int raw = reader.readInt();
+		PrefsVersion formatVersion;
 		// Version check
-		if (!PrefsVersions.isCompatible(formatVersion)) {
-		    throw new PrefsVersionException(formatVersion);
+		try {
+		    formatVersion = PrefsVersion.values()[raw];
+		    if (!PrefsVersions.isCompatible(formatVersion)) {
+			throw new PrefsVersionException(raw);
+		    }
+		} catch (ArrayIndexOutOfBoundsException e) {
+		    throw new PrefsVersionException(raw, e);
 		}
 		Prefs.editorFill = reader.readMazeObjectID();
 		Prefs.checkUpdatesStartupEnabled = reader.readBoolean();

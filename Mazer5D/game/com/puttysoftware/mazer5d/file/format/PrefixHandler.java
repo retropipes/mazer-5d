@@ -5,13 +5,19 @@ import java.io.IOException;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.file.version.MazeVersion;
+import com.puttysoftware.mazer5d.file.version.MazeVersionException;
 
 public class PrefixHandler implements PrefixIO {
     private static final MazeVersion FORMAT_VERSION = MazeVersion.V5;
 
     @Override
     public MazeVersion readPrefix(final MazeDataReader reader) throws IOException {
-	return MazeVersion.values()[PrefixHandler.readFormatVersion(reader)];
+	final int raw = PrefixHandler.readFormatVersion(reader);
+	try {
+	    return MazeVersion.values()[raw];
+	} catch (ArrayIndexOutOfBoundsException e) {
+	    throw new MazeVersionException(raw, e);
+	}
     }
 
     @Override

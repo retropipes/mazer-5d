@@ -14,6 +14,10 @@ public abstract class VersionException extends RuntimeException {
     VersionException(final String message) {
 	super(message);
     }
+    
+    VersionException(final String message, final Exception cause) {
+	super(message, cause);
+    }
 
     @SuppressWarnings("static-method")
     private void writeObject(final ObjectOutputStream out) throws IOException {
