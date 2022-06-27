@@ -10,7 +10,7 @@ import java.io.File;
 import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.diane.scores.SavedScoreManager;
 import com.puttysoftware.diane.scores.ScoreManager;
-import com.puttysoftware.mazer5d.file.format.Extension;
+import com.puttysoftware.mazer5d.file.FileExtensions;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 
 public class ScoreTracker {
@@ -129,7 +129,7 @@ public class ScoreTracker {
 	b.append(ScoreTracker.getScoreDirPrefix());
 	b.append(ScoreTracker.getScoreDirectory());
 	b.append(filename);
-	b.append(Extension.getScoresExtensionWithPeriod());
+	b.append(FileExtensions.getScoresExtensionWithPeriod());
 	return new File(b.toString());
     }
 }

@@ -3,21 +3,23 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.file.format;
+package com.puttysoftware.mazer5d.file.filter;
 
 import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
 
-public class MazeFilter extends FileFilter {
+import com.puttysoftware.mazer5d.file.FileExtensions;
+
+public class GameFilter extends FileFilter {
     @Override
     public boolean accept(final File f) {
 	if (f.isDirectory()) {
 	    return true;
 	}
-	final String extension = MazeFilter.getExtension(f);
+	final String extension = GameFilter.getExtension(f);
 	if (extension != null) {
-	    if (extension.equals(Extension.getMazeExtension())) {
+	    if (extension.equals(FileExtensions.getGameExtension())) {
 		return true;
 	    } else {
 		return false;
@@ -28,7 +30,7 @@ public class MazeFilter extends FileFilter {
 
     @Override
     public String getDescription() {
-	return "Mazer5D  Mazes (" + Extension.getMazeExtensionWithPeriod() + ")";
+	return "Mazer5D  Saved Games (" + FileExtensions.getGameExtensionWithPeriod() + ")";
     }
 
     private static String getExtension(final File f) {

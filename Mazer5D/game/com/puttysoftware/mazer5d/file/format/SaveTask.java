@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.file.FileExtensions;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 
 public class SaveTask extends Thread {
@@ -39,9 +40,9 @@ public class SaveTask extends Thread {
 	final boolean hasExtension = SaveTask.hasExtension(this.filename);
 	if (!hasExtension) {
 	    if (this.isSavedGame) {
-		this.filename += Extension.getGameExtensionWithPeriod();
+		this.filename += FileExtensions.getGameExtensionWithPeriod();
 	    } else {
-		this.filename += Extension.getMazeExtensionWithPeriod();
+		this.filename += FileExtensions.getMazeExtensionWithPeriod();
 	    }
 	}
 	final File mazeFile = new File(this.filename);

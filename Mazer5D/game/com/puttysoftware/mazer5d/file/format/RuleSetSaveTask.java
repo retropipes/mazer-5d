@@ -10,6 +10,7 @@ import java.io.IOException;
 import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.ruleset.RuleSetConstants;
+import com.puttysoftware.mazer5d.file.FileExtensions;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 
@@ -29,7 +30,7 @@ public class RuleSetSaveTask extends Thread {
 	// filename check
 	final boolean hasExtension = RuleSetSaveTask.hasExtension(this.filename);
 	if (!hasExtension) {
-	    this.filename += Extension.getRuleSetExtensionWithPeriod();
+	    this.filename += FileExtensions.getRuleSetExtensionWithPeriod();
 	}
 	try (MazeDataWriter ruleSetFile = new MazeDataWriter(this.filename, "ruleset")) {
 	    ruleSetFile.writeInt(RuleSetConstants.MAGIC_NUMBER_2);

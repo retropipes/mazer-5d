@@ -3,11 +3,13 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.file.format;
+package com.puttysoftware.mazer5d.file.filter;
 
 import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
+
+import com.puttysoftware.mazer5d.file.FileExtensions;
 
 public class RuleSetFilter extends FileFilter {
     @Override
@@ -17,7 +19,7 @@ public class RuleSetFilter extends FileFilter {
 	}
 	final String extension = RuleSetFilter.getExtension(f);
 	if (extension != null) {
-	    if (extension.equals(Extension.getRuleSetExtension())) {
+	    if (extension.equals(FileExtensions.getRuleSetExtension())) {
 		return true;
 	    } else {
 		return false;
@@ -28,7 +30,7 @@ public class RuleSetFilter extends FileFilter {
 
     @Override
     public String getDescription() {
-	return "Mazer5D  Rule Sets (" + Extension.getRuleSetExtensionWithPeriod() + ")";
+	return "Mazer5D  Rule Sets (" + FileExtensions.getRuleSetExtensionWithPeriod() + ")";
     }
 
     private static String getExtension(final File f) {

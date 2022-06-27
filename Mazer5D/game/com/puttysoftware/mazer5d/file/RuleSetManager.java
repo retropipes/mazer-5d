@@ -13,8 +13,7 @@ import javax.swing.JFileChooser;
 import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.file.format.Extension;
-import com.puttysoftware.mazer5d.file.format.RuleSetFilter;
+import com.puttysoftware.mazer5d.file.filter.RuleSetFilter;
 import com.puttysoftware.mazer5d.file.format.RuleSetLoadTask;
 import com.puttysoftware.mazer5d.file.format.RuleSetSaveTask;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
@@ -40,7 +39,7 @@ public class RuleSetManager {
 	    filename = file.getAbsolutePath();
 	    extension = RuleSetManager.getExtension(file);
 	    app.getGameManager().resetObjectInventory();
-	    if (extension.equals(Extension.getRuleSetExtension())) {
+	    if (extension.equals(FileExtensions.getRuleSetExtension())) {
 		RuleSetManager.importFile(filename);
 	    } else {
 		CommonDialogs.showDialog(
@@ -85,12 +84,12 @@ public class RuleSetManager {
 			    + "named com1 through com9 and lpt1 through lpt9.", "Save");
 		} else {
 		    if (extension != null) {
-			if (!extension.equals(Extension.getRuleSetExtension())) {
+			if (!extension.equals(FileExtensions.getRuleSetExtension())) {
 			    filename = RuleSetManager.getNameWithoutExtension(file)
-				    + Extension.getRuleSetExtensionWithPeriod();
+				    + FileExtensions.getRuleSetExtensionWithPeriod();
 			}
 		    } else {
-			filename += Extension.getRuleSetExtensionWithPeriod();
+			filename += FileExtensions.getRuleSetExtensionWithPeriod();
 		    }
 		    RuleSetManager.exportFile(filename);
 		}
