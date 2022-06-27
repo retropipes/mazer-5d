@@ -1,6 +1,7 @@
 package com.puttysoftware.mazer5d.editor.ruleset;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
@@ -34,6 +35,26 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
 	this.required = source.required;
 	this.generateQuantity = source.generateQuantity;
 	this.rng = source.rng;
+    }
+
+    @Override
+    public int hashCode() {
+	return Objects.hash(this.generateQuantity, this.maxQuantity, this.minQuantity, this.percentageFlag,
+		this.required);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+	if (this == obj) {
+	    return true;
+	}
+	if (!(obj instanceof RuleSet)) {
+	    return false;
+	}
+	RuleSet other = (RuleSet) obj;
+	return this.generateQuantity == other.generateQuantity && this.maxQuantity == other.maxQuantity
+		&& this.minQuantity == other.minQuantity && this.percentageFlag == other.percentageFlag
+		&& this.required == other.required;
     }
 
     // Methods

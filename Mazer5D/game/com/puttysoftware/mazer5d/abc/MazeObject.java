@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.abc;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import com.puttysoftware.diane.utilties.Directions;
 import com.puttysoftware.mazer5d.Mazer5D;
@@ -34,15 +35,15 @@ import com.puttysoftware.randomrange.RandomRange;
 
 public class MazeObject implements RandomGenerationRule {
     // Properties
-    private SolidProperties sp;
-    private MoveProperties mp;
-    private OtherProperties op;
-    private OtherCounters oc;
-    private VisionProperties vp;
-    private CustomCounters cc;
-    private CustomFlags cf;
-    private CustomTexts ct;
-    private TypeProperties tp;
+    private final SolidProperties sp;
+    private final MoveProperties mp;
+    private final OtherProperties op;
+    private final OtherCounters oc;
+    private final VisionProperties vp;
+    private final CustomCounters cc;
+    private final CustomFlags cf;
+    private final CustomTexts ct;
+    private final TypeProperties tp;
     private RuleSet ruleSet;
     private MazeObject savedObject;
     private MazeObjects uniqueID;
@@ -190,20 +191,15 @@ public class MazeObject implements RandomGenerationRule {
 	this.tp = new TypeProperties();
     }
 
-    protected MazeObject() {
-	this.sp = new SolidProperties();
-	this.mp = new MoveProperties();
-	this.op = new OtherProperties();
-	this.oc = new OtherCounters();
-	this.vp = new VisionProperties();
-	this.cc = new CustomCounters();
-	this.cf = new CustomFlags();
-	this.ct = new CustomTexts();
-	this.tp = new TypeProperties();
-    }
-
     // Copy constructor
     public MazeObject(final MazeObject source) {
+	this.uniqueID = source.uniqueID;
+	if (source.savedObject != null) {
+	    this.savedObject = new MazeObject(source.savedObject);
+	}
+	if (source.ruleSet != null) {
+	    this.ruleSet = new RuleSet(source.ruleSet);
+	}
 	this.sp = new SolidProperties(source.sp);
 	this.mp = new MoveProperties(source.mp);
 	this.op = new OtherProperties(source.op);
@@ -218,96 +214,25 @@ public class MazeObject implements RandomGenerationRule {
     // General methods
     @Override
     public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + (this.mp == null ? 0 : this.mp.hashCode());
-	result = prime * result + (this.sp == null ? 0 : this.sp.hashCode());
-	result = prime * result + (this.op == null ? 0 : this.op.hashCode());
-	result = prime * result + (this.oc == null ? 0 : this.oc.hashCode());
-	result = prime * result + (this.vp == null ? 0 : this.vp.hashCode());
-	result = prime * result + (this.cc == null ? 0 : this.cc.hashCode());
-	result = prime * result + (this.cf == null ? 0 : this.cf.hashCode());
-	result = prime * result + (this.ct == null ? 0 : this.ct.hashCode());
-	result = prime * result + (this.tp == null ? 0 : this.tp.hashCode());
-	return result;
+	return Objects.hash(this.cc, this.cf, this.ct, this.mp, this.oc, this.op, this.ruleSet, this.savedObject,
+		this.sp, this.tp, this.uniqueID, this.vp);
     }
 
     @Override
-    public boolean equals(final Object obj) {
+    public boolean equals(Object obj) {
 	if (this == obj) {
 	    return true;
-	}
-	if (obj == null) {
-	    return false;
 	}
 	if (!(obj instanceof MazeObject)) {
 	    return false;
 	}
-	final MazeObject other = (MazeObject) obj;
-	if (this.mp == null) {
-	    if (other.mp != null) {
-		return false;
-	    }
-	} else if (!this.mp.equals(other.mp)) {
-	    return false;
-	}
-	if (this.sp == null) {
-	    if (other.sp != null) {
-		return false;
-	    }
-	} else if (!this.sp.equals(other.sp)) {
-	    return false;
-	}
-	if (this.op == null) {
-	    if (other.op != null) {
-		return false;
-	    }
-	} else if (!this.op.equals(other.op)) {
-	    return false;
-	}
-	if (this.oc == null) {
-	    if (other.oc != null) {
-		return false;
-	    }
-	} else if (!this.oc.equals(other.oc)) {
-	    return false;
-	}
-	if (this.vp == null) {
-	    if (other.vp != null) {
-		return false;
-	    }
-	} else if (!this.vp.equals(other.vp)) {
-	    return false;
-	}
-	if (this.cc == null) {
-	    if (other.cc != null) {
-		return false;
-	    }
-	} else if (!this.cc.equals(other.cc)) {
-	    return false;
-	}
-	if (this.cf == null) {
-	    if (other.cf != null) {
-		return false;
-	    }
-	} else if (!this.cf.equals(other.cf)) {
-	    return false;
-	}
-	if (this.ct == null) {
-	    if (other.ct != null) {
-		return false;
-	    }
-	} else if (!this.ct.equals(other.ct)) {
-	    return false;
-	}
-	if (this.tp == null) {
-	    if (other.tp != null) {
-		return false;
-	    }
-	} else if (!this.tp.equals(other.tp)) {
-	    return false;
-	}
-	return true;
+	MazeObject other = (MazeObject) obj;
+	return Objects.equals(this.cc, other.cc) && Objects.equals(this.cf, other.cf)
+		&& Objects.equals(this.ct, other.ct) && Objects.equals(this.mp, other.mp)
+		&& Objects.equals(this.oc, other.oc) && Objects.equals(this.op, other.op)
+		&& Objects.equals(this.ruleSet, other.ruleSet) && Objects.equals(this.savedObject, other.savedObject)
+		&& Objects.equals(this.sp, other.sp) && Objects.equals(this.tp, other.tp)
+		&& this.uniqueID == other.uniqueID && Objects.equals(this.vp, other.vp);
     }
 
     // Object state methods
@@ -1166,8 +1091,8 @@ public class MazeObject implements RandomGenerationRule {
 	this.writeMazeObjectHook(writer);
     }
 
-    public final MazeObject readMazeObject(final MazeDataReader reader, final String ident, final MazeVersion formatVersion)
-	    throws IOException {
+    public final MazeObject readMazeObject(final MazeDataReader reader, final String ident,
+	    final MazeVersion formatVersion) throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
 	    if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
@@ -1182,8 +1107,8 @@ public class MazeObject implements RandomGenerationRule {
 	}
     }
 
-    public final MazeObject readMazeObject2(final MazeDataReader reader, final String ident, final MazeVersion formatVersion)
-	    throws IOException {
+    public final MazeObject readMazeObject2(final MazeDataReader reader, final String ident,
+	    final MazeVersion formatVersion) throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
 	    if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
@@ -1198,8 +1123,8 @@ public class MazeObject implements RandomGenerationRule {
 	}
     }
 
-    public final MazeObject readMazeObject3(final MazeDataReader reader, final String ident, final MazeVersion formatVersion)
-	    throws IOException {
+    public final MazeObject readMazeObject3(final MazeDataReader reader, final String ident,
+	    final MazeVersion formatVersion) throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
 	    if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
@@ -1214,8 +1139,8 @@ public class MazeObject implements RandomGenerationRule {
 	}
     }
 
-    public final MazeObject readMazeObject4(final MazeDataReader reader, final String ident, final MazeVersion formatVersion)
-	    throws IOException {
+    public final MazeObject readMazeObject4(final MazeDataReader reader, final String ident,
+	    final MazeVersion formatVersion) throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
 	    if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
@@ -1230,8 +1155,8 @@ public class MazeObject implements RandomGenerationRule {
 	}
     }
 
-    public final MazeObject readMazeObject5(final MazeDataReader reader, final String ident, final MazeVersion formatVersion)
-	    throws IOException {
+    public final MazeObject readMazeObject5(final MazeDataReader reader, final String ident,
+	    final MazeVersion formatVersion) throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
 	    if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
@@ -1262,7 +1187,8 @@ public class MazeObject implements RandomGenerationRule {
      * @return
      * @throws IOException
      */
-    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
+    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final MazeVersion formatVersion)
+	    throws IOException {
 	// Dummy implementation, subclasses can oformatVersionride
 	return this;
     }
