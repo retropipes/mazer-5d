@@ -7,28 +7,28 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.io.IOException;
 
+import com.puttysoftware.diane.utilties.Directions;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assets.SoundGroup;
-import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.editor.rulesets.RuleSet;
-import com.puttysoftware.mazer5d.files.io.MazeDataReader;
-import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.asset.SoundGroup;
+import com.puttysoftware.mazer5d.asset.SoundIndex;
+import com.puttysoftware.mazer5d.editor.ruleset.RuleSet;
+import com.puttysoftware.mazer5d.file.io.MazeDataReader;
+import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.loaders.DataFileLoader;
-import com.puttysoftware.mazer5d.loaders.DataLoader;
-import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.loader.DataFileLoader;
+import com.puttysoftware.mazer5d.loader.DataLoader;
+import com.puttysoftware.mazer5d.loader.SoundPlayer;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.objects.GameObjects;
-import com.puttysoftware.mazer5d.utilities.ArrowTypes;
-import com.puttysoftware.mazer5d.utilities.Directions;
-import com.puttysoftware.mazer5d.utilities.Layers;
-import com.puttysoftware.mazer5d.utilities.MazeObjectActions;
-import com.puttysoftware.mazer5d.utilities.MazeObjects;
-import com.puttysoftware.mazer5d.utilities.RandomGenerationRule;
-import com.puttysoftware.mazer5d.utilities.TypeConstants;
+import com.puttysoftware.mazer5d.utility.ArrowTypes;
+import com.puttysoftware.mazer5d.utility.Layers;
+import com.puttysoftware.mazer5d.utility.MazeObjectActions;
+import com.puttysoftware.mazer5d.utility.MazeObjects;
+import com.puttysoftware.mazer5d.utility.RandomGenerationRule;
+import com.puttysoftware.mazer5d.utility.TypeConstants;
 import com.puttysoftware.randomrange.RandomRange;
 
 public class MazeObject implements RandomGenerationRule {

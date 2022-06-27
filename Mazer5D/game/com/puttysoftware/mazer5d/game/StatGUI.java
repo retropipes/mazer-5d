@@ -13,8 +13,8 @@ import javax.swing.SwingConstants;
 
 import com.puttysoftware.diane.asset.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assets.EffectImageIndex;
-import com.puttysoftware.mazer5d.loaders.EffectImageLoader;
+import com.puttysoftware.mazer5d.asset.EffectImageIndex;
+import com.puttysoftware.mazer5d.loader.EffectImageLoader;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.maze.Maze;
 

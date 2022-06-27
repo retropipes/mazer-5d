@@ -10,22 +10,22 @@ import java.util.Arrays;
 
 import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.diane.storage.FlagStorage;
+import com.puttysoftware.diane.utilties.DirectionResolver;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.MazeObject;
-import com.puttysoftware.mazer5d.files.io.MazeDataReader;
-import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.file.io.MazeDataReader;
+import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.objects.abc.GenericLightModifier;
 import com.puttysoftware.mazer5d.objects.abc.GenericMovingObject;
 import com.puttysoftware.mazer5d.objects.abc.GenericTeleport;
 import com.puttysoftware.mazer5d.prefs.Prefs;
-import com.puttysoftware.mazer5d.utilities.DirectionResolver;
-import com.puttysoftware.mazer5d.utilities.Layers;
-import com.puttysoftware.mazer5d.utilities.MazeObjects;
-import com.puttysoftware.mazer5d.utilities.RandomGenerationRule;
-import com.puttysoftware.mazer5d.utilities.TypeConstants;
-import com.puttysoftware.mazer5d.utilities.VisionModes;
+import com.puttysoftware.mazer5d.utility.Layers;
+import com.puttysoftware.mazer5d.utility.MazeObjects;
+import com.puttysoftware.mazer5d.utility.RandomGenerationRule;
+import com.puttysoftware.mazer5d.utility.TypeConstants;
+import com.puttysoftware.mazer5d.utility.VisionModes;
 import com.puttysoftware.randomrange.RandomRange;
 
 class MazeData {

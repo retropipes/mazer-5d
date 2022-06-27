@@ -9,11 +9,11 @@ import java.io.IOException;
 
 import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.mazer5d.abc.MazeObject;
-import com.puttysoftware.mazer5d.files.io.MazeDataReader;
-import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.file.io.MazeDataReader;
+import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.utilities.Layers;
-import com.puttysoftware.mazer5d.utilities.TypeConstants;
+import com.puttysoftware.mazer5d.utility.Layers;
+import com.puttysoftware.mazer5d.utility.TypeConstants;
 
 public abstract class GenericTextHolder extends MazeObject {
     // Constructors

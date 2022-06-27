@@ -6,9 +6,9 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.maze.effects.MazeEffectConstants;
+import com.puttysoftware.mazer5d.maze.effect.MazeEffectConstants;
 import com.puttysoftware.mazer5d.objects.abc.GenericAmulet;
-import com.puttysoftware.mazer5d.utilities.MazeObjects;
+import com.puttysoftware.mazer5d.utility.MazeObjects;
 
 class PoisonousAmulet extends GenericAmulet {
     // Constants

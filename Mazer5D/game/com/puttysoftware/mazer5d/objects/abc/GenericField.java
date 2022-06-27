@@ -6,8 +6,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects.abc;
 
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.utilities.Layers;
-import com.puttysoftware.mazer5d.utilities.TypeConstants;
+import com.puttysoftware.mazer5d.utility.Layers;
+import com.puttysoftware.mazer5d.utility.TypeConstants;
 
 public abstract class GenericField extends GenericInfiniteLock {
     // Constructors

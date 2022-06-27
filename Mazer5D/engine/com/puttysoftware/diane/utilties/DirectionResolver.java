@@ -1,7 +1,7 @@
-/*  Diane Game Engine
-Copyleft (C) 2019 Eric Ahnell
+/*  Mazer5D: A Maze-Solving Game
+Copyright (C) 2008-2020 Eric Ahnell
 
-Any questions should be directed to the author via email at: support@puttysoftware.com
+Any questions should be directed to the author via email at: products@puttysoftware.com
  */
 package com.puttysoftware.diane.utilties;
 
@@ -63,6 +63,28 @@ public class DirectionResolver {
 	    res[1] = -1;
 	} else {
 	    res = null;
+	}
+	return res;
+    }
+
+    public static final String resolveToName(final int dir) {
+	String res = null;
+	if (dir == Directions.NORTH) {
+	    res = Directions.NORTH_NAME;
+	} else if (dir == Directions.SOUTH) {
+	    res = Directions.SOUTH_NAME;
+	} else if (dir == Directions.WEST) {
+	    res = Directions.WEST_NAME;
+	} else if (dir == Directions.EAST) {
+	    res = Directions.EAST_NAME;
+	} else if (dir == Directions.SOUTHEAST) {
+	    res = Directions.SOUTHEAST_NAME;
+	} else if (dir == Directions.SOUTHWEST) {
+	    res = Directions.SOUTHWEST_NAME;
+	} else if (dir == Directions.NORTHWEST) {
+	    res = Directions.NORTHWEST_NAME;
+	} else if (dir == Directions.NORTHEAST) {
+	    res = Directions.NORTHEAST_NAME;
 	}
 	return res;
     }

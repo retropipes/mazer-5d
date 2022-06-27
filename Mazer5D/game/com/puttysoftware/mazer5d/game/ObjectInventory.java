@@ -8,14 +8,14 @@ package com.puttysoftware.mazer5d.game;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.abc.MazeObject;
-import com.puttysoftware.mazer5d.files.io.MazeDataReader;
-import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.file.io.MazeDataReader;
+import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.objects.abc.GenericAmulet;
 import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
 import com.puttysoftware.mazer5d.objects.abc.GenericBow;
-import com.puttysoftware.mazer5d.utilities.MazeObjects;
-import com.puttysoftware.mazer5d.utilities.TypeConstants;
+import com.puttysoftware.mazer5d.utility.MazeObjects;
+import com.puttysoftware.mazer5d.utility.TypeConstants;
 
 public final class ObjectInventory implements Cloneable {
     // Properties

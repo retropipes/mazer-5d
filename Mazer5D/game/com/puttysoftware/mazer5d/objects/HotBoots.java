@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
-import com.puttysoftware.mazer5d.utilities.MazeObjects;
+import com.puttysoftware.mazer5d.utility.MazeObjects;
 
 class HotBoots extends GenericBoots {
     // Constructors

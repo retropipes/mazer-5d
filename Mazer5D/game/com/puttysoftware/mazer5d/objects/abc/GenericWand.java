@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.objects.abc;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
-import com.puttysoftware.mazer5d.utilities.TypeConstants;
+import com.puttysoftware.mazer5d.utility.TypeConstants;
 
 public abstract class GenericWand extends GenericUsableObject {
     // Fields

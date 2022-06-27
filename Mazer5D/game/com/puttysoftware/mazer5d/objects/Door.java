@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.objects.abc.GenericPassThroughObject;
-import com.puttysoftware.mazer5d.utilities.MazeObjects;
+import com.puttysoftware.mazer5d.utility.MazeObjects;
 
 class Door extends GenericPassThroughObject {
     // Constructors

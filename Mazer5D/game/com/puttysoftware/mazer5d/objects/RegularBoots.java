@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
-import com.puttysoftware.mazer5d.utilities.MazeObjects;
+import com.puttysoftware.mazer5d.utility.MazeObjects;
 
 class RegularBoots extends GenericBoots {
     // Constructors

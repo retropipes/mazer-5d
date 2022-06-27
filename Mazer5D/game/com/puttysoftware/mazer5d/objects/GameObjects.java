@@ -15,16 +15,16 @@ import java.util.stream.Collectors;
 import com.puttysoftware.diane.asset.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.MazeObject;
-import com.puttysoftware.mazer5d.files.format.FormatConstants;
-import com.puttysoftware.mazer5d.files.io.MazeDataReader;
-import com.puttysoftware.mazer5d.files.io.MazeDataWriter;
-import com.puttysoftware.mazer5d.loaders.DataLoader;
-import com.puttysoftware.mazer5d.loaders.ObjectImageLoader;
+import com.puttysoftware.mazer5d.file.format.FormatConstants;
+import com.puttysoftware.mazer5d.file.io.MazeDataReader;
+import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.loader.DataLoader;
+import com.puttysoftware.mazer5d.loader.ObjectImageLoader;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
-import com.puttysoftware.mazer5d.utilities.Layers;
-import com.puttysoftware.mazer5d.utilities.MazeObjects;
-import com.puttysoftware.mazer5d.utilities.TypeConstants;
+import com.puttysoftware.mazer5d.utility.Layers;
+import com.puttysoftware.mazer5d.utility.MazeObjects;
+import com.puttysoftware.mazer5d.utility.TypeConstants;
 
 public class GameObjects {
     // Fields

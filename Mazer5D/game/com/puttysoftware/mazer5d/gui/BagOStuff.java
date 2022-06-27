@@ -7,16 +7,16 @@ package com.puttysoftware.mazer5d.gui;
 
 import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.mazer5d.Modes;
-import com.puttysoftware.mazer5d.assets.MusicGroup;
-import com.puttysoftware.mazer5d.assets.MusicIndex;
-import com.puttysoftware.mazer5d.assets.SoundGroup;
-import com.puttysoftware.mazer5d.assets.SoundIndex;
+import com.puttysoftware.mazer5d.asset.MusicGroup;
+import com.puttysoftware.mazer5d.asset.MusicIndex;
+import com.puttysoftware.mazer5d.asset.SoundGroup;
+import com.puttysoftware.mazer5d.asset.SoundIndex;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
-import com.puttysoftware.mazer5d.editor.rulesets.RuleSetPicker;
-import com.puttysoftware.mazer5d.files.MazeManager;
+import com.puttysoftware.mazer5d.editor.ruleset.RuleSetPicker;
+import com.puttysoftware.mazer5d.file.MazeManager;
 import com.puttysoftware.mazer5d.game.GameManager;
-import com.puttysoftware.mazer5d.loaders.MusicPlayer;
-import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.loader.MusicPlayer;
+import com.puttysoftware.mazer5d.loader.SoundPlayer;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 
 public class BagOStuff {

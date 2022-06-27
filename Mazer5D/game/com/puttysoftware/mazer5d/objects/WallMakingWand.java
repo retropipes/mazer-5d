@@ -5,11 +5,11 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.assets.SoundGroup;
-import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.asset.SoundGroup;
+import com.puttysoftware.mazer5d.asset.SoundIndex;
+import com.puttysoftware.mazer5d.loader.SoundPlayer;
 import com.puttysoftware.mazer5d.objects.abc.GenericWand;
-import com.puttysoftware.mazer5d.utilities.MazeObjects;
+import com.puttysoftware.mazer5d.utility.MazeObjects;
 
 class WallMakingWand extends GenericWand {
     public WallMakingWand() {

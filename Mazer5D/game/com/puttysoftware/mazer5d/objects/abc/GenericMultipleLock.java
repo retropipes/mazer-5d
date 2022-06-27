@@ -8,13 +8,13 @@ package com.puttysoftware.mazer5d.objects.abc;
 import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.MazeObject;
-import com.puttysoftware.mazer5d.assets.SoundGroup;
-import com.puttysoftware.mazer5d.assets.SoundIndex;
+import com.puttysoftware.mazer5d.asset.SoundGroup;
+import com.puttysoftware.mazer5d.asset.SoundIndex;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.loader.SoundPlayer;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
-import com.puttysoftware.mazer5d.utilities.MazeObjects;
-import com.puttysoftware.mazer5d.utilities.TypeConstants;
+import com.puttysoftware.mazer5d.utility.MazeObjects;
+import com.puttysoftware.mazer5d.utility.TypeConstants;
 
 public abstract class GenericMultipleLock extends GenericLock {
     // Constructors

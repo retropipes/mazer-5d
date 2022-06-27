@@ -8,10 +8,10 @@ package com.puttysoftware.mazer5d.game;
 import java.io.File;
 
 import com.puttysoftware.diane.gui.dialog.CommonDialogs;
-import com.puttysoftware.mazer5d.files.format.Extension;
+import com.puttysoftware.diane.scores.SavedScoreManager;
+import com.puttysoftware.diane.scores.ScoreManager;
+import com.puttysoftware.mazer5d.file.format.Extension;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
-import com.puttysoftware.mazer5d.scoremanager.SavedScoreManager;
-import com.puttysoftware.mazer5d.scoremanager.ScoreManager;
 
 public class ScoreTracker {
     // Fields

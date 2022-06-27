@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.objects.abc.GenericPlug;
-import com.puttysoftware.mazer5d.utilities.MazeObjects;
+import com.puttysoftware.mazer5d.utility.MazeObjects;
 
 class VPlug extends GenericPlug {
     // Constructors

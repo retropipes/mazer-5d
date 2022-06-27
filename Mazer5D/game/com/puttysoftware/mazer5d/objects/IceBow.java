@@ -6,8 +6,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.objects.abc.GenericBow;
-import com.puttysoftware.mazer5d.utilities.ArrowTypes;
-import com.puttysoftware.mazer5d.utilities.MazeObjects;
+import com.puttysoftware.mazer5d.utility.ArrowTypes;
+import com.puttysoftware.mazer5d.utility.MazeObjects;
 
 class IceBow extends GenericBow {
     // Constants

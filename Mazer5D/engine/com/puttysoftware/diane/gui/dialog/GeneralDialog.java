@@ -14,8 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.puttysoftware.diane.asset.BufferedImageIcon;
-import com.puttysoftware.diane.locale.Strings;
-import com.puttysoftware.diane.locale.Translations;
+import com.puttysoftware.diane.locale.EngineStrings;
+import com.puttysoftware.diane.locale.EngineTranslations;
 
 class GeneralDialog {
     private static MainWindow dialogFrame;
@@ -31,8 +31,8 @@ class GeneralDialog {
 	    dialogFrame = MainWindow.getMainWindow();
 	    dialogPane = dialogFrame.createContent();
 	    // Create and initialize the buttons.
-	    final JButton setButton = new JButton(Translations.load(Strings.OK_BUTTON));
-	    setButton.setActionCommand(Translations.load(Strings.OK_BUTTON));
+	    final JButton setButton = new JButton(EngineTranslations.load(EngineStrings.OK_BUTTON));
+	    setButton.setActionCommand(EngineTranslations.load(EngineStrings.OK_BUTTON));
 	    setButton.addActionListener(h -> {
 		completer.complete(null);
 		dialogFrame.restoreSaved();

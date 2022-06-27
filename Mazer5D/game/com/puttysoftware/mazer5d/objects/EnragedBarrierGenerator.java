@@ -9,8 +9,8 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objects.abc.GenericGenerator;
-import com.puttysoftware.mazer5d.utilities.ArrowTypes;
-import com.puttysoftware.mazer5d.utilities.MazeObjects;
+import com.puttysoftware.mazer5d.utility.ArrowTypes;
+import com.puttysoftware.mazer5d.utility.MazeObjects;
 
 class EnragedBarrierGenerator extends GenericGenerator {
     // Fields

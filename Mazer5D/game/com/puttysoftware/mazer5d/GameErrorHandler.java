@@ -5,12 +5,13 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d;
 
+import com.puttysoftware.diane.ErrorHandler;
+import com.puttysoftware.diane.ErrorLogger;
 import com.puttysoftware.diane.gui.dialog.CommonDialogs;
-import com.puttysoftware.mazer5d.errorlogger.ErrorLogger;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 
-final class GameErrorHandler implements Thread.UncaughtExceptionHandler {
+final class GameErrorHandler implements ErrorHandler {
     private static final String LOG_NAME = Translations.load(Strings.PROGRAM_NAME);
     private static final String ERROR_MESSAGE = Translations.load(Strings.ERROR_MESSAGE);
     private static final String ERROR_TITLE = Translations.load(Strings.ERROR_TITLE);
