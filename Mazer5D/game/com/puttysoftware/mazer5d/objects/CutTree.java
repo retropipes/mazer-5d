@@ -26,7 +26,7 @@ class CutTree extends GenericPassThroughObject {
 
     @Override
     protected String getDescriptionHook() {
-	return "Cut Trees are the leftover stubs of Trees that have been cut by an Axe.";
+	return "Cut Trees are the leftoformatVersion stubs of Trees that have been cut by an Axe.";
     }
 
     @Override

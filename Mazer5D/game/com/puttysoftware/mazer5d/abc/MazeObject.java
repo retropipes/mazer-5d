@@ -14,6 +14,7 @@ import com.puttysoftware.mazer5d.asset.SoundIndex;
 import com.puttysoftware.mazer5d.editor.ruleset.RuleSet;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loader.DataFileLoader;
 import com.puttysoftware.mazer5d.loader.DataLoader;
@@ -1013,7 +1014,7 @@ public class MazeObject implements RandomGenerationRule {
 	return false;
     }
 
-    public boolean overridesDefaultPostMove() {
+    public boolean oformatVersionridesDefaultPostMove() {
 	return false;
     }
 
@@ -1165,7 +1166,7 @@ public class MazeObject implements RandomGenerationRule {
 	this.writeMazeObjectHook(writer);
     }
 
-    public final MazeObject readMazeObject(final MazeDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObject(final MazeDataReader reader, final String ident, final MazeVersion formatVersion)
 	    throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1175,13 +1176,13 @@ public class MazeObject implements RandomGenerationRule {
 		    this.setCustomCounter(x + 1, cx);
 		}
 	    }
-	    return this.readMazeObjectHook(reader, ver);
+	    return this.readMazeObjectHook(reader, formatVersion);
 	} else {
 	    return null;
 	}
     }
 
-    public final MazeObject readMazeObject2(final MazeDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObject2(final MazeDataReader reader, final String ident, final MazeVersion formatVersion)
 	    throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1191,13 +1192,13 @@ public class MazeObject implements RandomGenerationRule {
 		    this.setCustomCounter(x + 1, cx);
 		}
 	    }
-	    return this.readMazeObjectHook(reader, ver);
+	    return this.readMazeObjectHook(reader, formatVersion);
 	} else {
 	    return null;
 	}
     }
 
-    public final MazeObject readMazeObject3(final MazeDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObject3(final MazeDataReader reader, final String ident, final MazeVersion formatVersion)
 	    throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1207,13 +1208,13 @@ public class MazeObject implements RandomGenerationRule {
 		    this.setCustomCounter(x + 1, cx);
 		}
 	    }
-	    return this.readMazeObjectHook(reader, ver);
+	    return this.readMazeObjectHook(reader, formatVersion);
 	} else {
 	    return null;
 	}
     }
 
-    public final MazeObject readMazeObject4(final MazeDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObject4(final MazeDataReader reader, final String ident, final MazeVersion formatVersion)
 	    throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1223,13 +1224,13 @@ public class MazeObject implements RandomGenerationRule {
 		    this.setCustomCounter(x + 1, cx);
 		}
 	    }
-	    return this.readMazeObjectHook(reader, ver);
+	    return this.readMazeObjectHook(reader, formatVersion);
 	} else {
 	    return null;
 	}
     }
 
-    public final MazeObject readMazeObject5(final MazeDataReader reader, final String ident, final int ver)
+    public final MazeObject readMazeObject5(final MazeDataReader reader, final String ident, final MazeVersion formatVersion)
 	    throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1239,7 +1240,7 @@ public class MazeObject implements RandomGenerationRule {
 		    this.setCustomCounter(x + 1, cx);
 		}
 	    }
-	    return this.readMazeObjectHook(reader, ver);
+	    return this.readMazeObjectHook(reader, formatVersion);
 	} else {
 	    return null;
 	}
@@ -1251,7 +1252,7 @@ public class MazeObject implements RandomGenerationRule {
      * @throws IOException
      */
     protected void writeMazeObjectHook(final MazeDataWriter writer) throws IOException {
-	// Do nothing - but let subclasses override
+	// Do nothing - but let subclasses oformatVersionride
     }
 
     /**
@@ -1261,8 +1262,8 @@ public class MazeObject implements RandomGenerationRule {
      * @return
      * @throws IOException
      */
-    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final int formatVersion) throws IOException {
-	// Dummy implementation, subclasses can override
+    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
+	// Dummy implementation, subclasses can oformatVersionride
 	return this;
     }
 }

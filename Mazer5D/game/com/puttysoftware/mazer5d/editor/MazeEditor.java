@@ -628,7 +628,7 @@ public class MazeEditor {
 	}
     }
 
-    private void reverseCheckStairPair(final int z) {
+    private void reformatVersionseCheckStairPair(final int z) {
 	final BagOStuff app = Mazer5D.getBagOStuff();
 	final MazeObject mo1 = app.getMazeManager().getMaze().getCell(this.elMgr.getEditorLocationX(),
 		this.elMgr.getEditorLocationY(), z, Layers.OBJECT);
@@ -753,7 +753,7 @@ public class MazeEditor {
 	}
     }
 
-    private void reverseCheckTwoWayTeleportPair(final int z) {
+    private void reformatVersionseCheckTwoWayTeleportPair(final int z) {
 	final BagOStuff app = Mazer5D.getBagOStuff();
 	final MazeObject mo1 = app.getMazeManager().getMaze().getCell(this.elMgr.getEditorLocationX(),
 		this.elMgr.getEditorLocationY(), z, Layers.OBJECT);
@@ -1404,7 +1404,7 @@ public class MazeEditor {
     }
 
     public void fillLevel() {
-	if (this.confirmNonUndoable("overwrite the active level with default data")) {
+	if (this.confirmNonUndoable("oformatVersionwrite the active level with default data")) {
 	    Mazer5D.getBagOStuff().getMazeManager().getMaze().fillLevelDefault();
 	    Mazer5D.getBagOStuff().showMessage("Level filled.");
 	    Mazer5D.getBagOStuff().getMazeManager().setDirty(true);
@@ -1413,7 +1413,7 @@ public class MazeEditor {
     }
 
     public void fillFloor() {
-	if (this.confirmNonUndoable("overwrite the active floor within the active level with default data")) {
+	if (this.confirmNonUndoable("oformatVersionwrite the active floor within the active level with default data")) {
 	    Mazer5D.getBagOStuff().getMazeManager().getMaze().fillFloorDefault(this.elMgr.getEditorLocationZ());
 	    Mazer5D.getBagOStuff().showMessage("Floor filled.");
 	    Mazer5D.getBagOStuff().getMazeManager().setDirty(true);
@@ -1422,7 +1422,7 @@ public class MazeEditor {
     }
 
     public void fillLevelRandomly() {
-	if (this.confirmNonUndoable("overwrite the active level with random data")) {
+	if (this.confirmNonUndoable("oformatVersionwrite the active level with random data")) {
 	    if (this.useFillRuleSets()) {
 		Mazer5D.getBagOStuff().getMazeManager().getMaze().fillLevelRandomlyCustom();
 	    } else {
@@ -1435,7 +1435,7 @@ public class MazeEditor {
     }
 
     public void fillFloorRandomly() {
-	if (this.confirmNonUndoable("overwrite the active floor within the active level with random data")) {
+	if (this.confirmNonUndoable("oformatVersionwrite the active floor within the active level with random data")) {
 	    if (this.useFillRuleSets()) {
 		Mazer5D.getBagOStuff().getMazeManager().getMaze()
 			.fillFloorRandomlyCustom(this.elMgr.getEditorLocationZ());
@@ -2025,7 +2025,7 @@ public class MazeEditor {
 	this.editorSetStartPoint.setEnabled(true);
 	this.editorSetFirstMovingFinish.setEnabled(true);
 	this.editorExit.setEnabled(true);
-	// Assemble everything together
+	// Assemble eformatVersionything together
 	this.commandPane.add(this.editorUndo);
 	this.commandPane.add(this.editorRedo);
 	this.commandPane.add(this.editorCutLevel);
@@ -2108,7 +2108,7 @@ public class MazeEditor {
 		    && !obj.getName().equals(GameObjects.createObject(MazeObjects.STAIRS_DOWN).getName())) {
 		if (obj.getName().equals(GameObjects.createObject(MazeObjects.TWO_WAY_TELEPORT).getName())) {
 		    app.getMazeManager().getMaze().setCell(obj, x, y, z, e);
-		    this.reverseCheckTwoWayTeleportPair(z);
+		    this.reformatVersionseCheckTwoWayTeleportPair(z);
 		    this.checkStairPair(z);
 		} else {
 		    this.checkTwoWayTeleportPair(z);
@@ -2117,7 +2117,7 @@ public class MazeEditor {
 		}
 	    } else {
 		app.getMazeManager().getMaze().setCell(obj, x, y, z, e);
-		this.reverseCheckStairPair(z);
+		this.reformatVersionseCheckStairPair(z);
 	    }
 	    this.updateRedoHistory(oldObj, x, y, z, w, e);
 	    this.checkFlags();
@@ -2145,7 +2145,7 @@ public class MazeEditor {
 		    && !obj.getName().equals(GameObjects.createObject(MazeObjects.STAIRS_DOWN).getName())) {
 		if (obj.getName().equals(GameObjects.createObject(MazeObjects.TWO_WAY_TELEPORT).getName())) {
 		    app.getMazeManager().getMaze().setCell(obj, x, y, z, e);
-		    this.reverseCheckTwoWayTeleportPair(z);
+		    this.reformatVersionseCheckTwoWayTeleportPair(z);
 		    this.checkStairPair(z);
 		} else {
 		    this.checkTwoWayTeleportPair(z);
@@ -2154,7 +2154,7 @@ public class MazeEditor {
 		}
 	    } else {
 		app.getMazeManager().getMaze().setCell(obj, x, y, z, e);
-		this.reverseCheckStairPair(z);
+		this.reformatVersionseCheckStairPair(z);
 	    }
 	    this.updateUndoHistory(oldObj, x, y, z, w, e);
 	    this.checkFlags();

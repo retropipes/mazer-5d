@@ -8,25 +8,25 @@ package com.puttysoftware.mazer5d.objects;
 import com.puttysoftware.mazer5d.objects.abc.GenericMultipleLock;
 import com.puttysoftware.mazer5d.utility.MazeObjects;
 
-class SilverWall extends GenericMultipleLock {
+class SilformatVersionWall extends GenericMultipleLock {
     // Constructors
-    public SilverWall() {
-	super(new SilverSquare());
+    public SilformatVersionWall() {
+	super(new SilformatVersionSquare());
     }
 
     @Override
     protected String getNameHook() {
-	return "Silver Wall";
+	return "SilformatVersion Wall";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Silver Walls";
+	return "SilformatVersion Walls";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Silver Walls are impassable without enough Silver Squares.";
+	return "SilformatVersion Walls are impassable without enough SilformatVersion Squares.";
     }
 
     @Override

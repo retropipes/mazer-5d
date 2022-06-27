@@ -26,7 +26,7 @@ class Tile extends GenericGround {
 
     @Override
     protected String getDescriptionHook() {
-	return "Tile is one of the many types of ground - unlike other types of ground, objects can be pushed and pulled over Tiles.";
+	return "Tile is one of the many types of ground - unlike other types of ground, objects can be pushed and pulled oformatVersion Tiles.";
     }
 
     @Override

@@ -7,10 +7,10 @@ public class CommonPaths {
     private static final String WIN_PREFIX = "APPDATA";
     private static final String UNIX_PREFIX = "XDG_CONFIG_HOME";
     private static final String UNIX_FALLBACK_PREFIX = "HOME";
-    private static final String MAC_PREFS_DIR = "/Library/Preferences/com.puttysoftware.mazer5d.versioned";
-    private static final String WIN_PREFS_DIR = "\\com.puttysoftware.mazer5d\\prefs.versioned";
-    private static final String UNIX_PREFS_DIR = "/com.puttysoftware.mazer5d/prefs.versioned";
-    private static final String UNIX_FALLBACK_PREFS_DIR = "/.config/com.puttysoftware.mazer5d/prefs.versioned";
+    private static final String MAC_PREFS_DIR = "/Library/Preferences/com.puttysoftware.mazer5d.formatVersioned";
+    private static final String WIN_PREFS_DIR = "\\com.puttysoftware.mazer5d\\prefs.formatVersioned";
+    private static final String UNIX_PREFS_DIR = "/com.puttysoftware.mazer5d/prefs.formatVersioned";
+    private static final String UNIX_FALLBACK_PREFS_DIR = "/.config/com.puttysoftware.mazer5d/prefs.formatVersioned";
 
     private CommonPaths() {
 	super();

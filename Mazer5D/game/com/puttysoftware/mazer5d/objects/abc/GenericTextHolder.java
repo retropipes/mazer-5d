@@ -11,6 +11,7 @@ import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.utility.Layers;
 import com.puttysoftware.mazer5d.utility.TypeConstants;
@@ -50,7 +51,7 @@ public abstract class GenericTextHolder extends MazeObject {
     }
 
     @Override
-    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final int formatVersion) throws IOException {
+    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
 	this.setSignText(reader.readString());
 	return this;
     }

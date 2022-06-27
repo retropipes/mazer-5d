@@ -30,7 +30,7 @@ class FireBow extends GenericBow {
 
     @Override
     protected String getDescriptionHook() {
-	return "Fire Bows allow shooting of Fire Arrows, which burn Barrier Generators upon contact, and do everything normal arrows do.";
+	return "Fire Bows allow shooting of Fire Arrows, which burn Barrier Generators upon contact, and do eformatVersionything normal arrows do.";
     }
 
     @Override

@@ -30,7 +30,7 @@ class ShockBow extends GenericBow {
 
     @Override
     protected String getDescriptionHook() {
-	return "Shock Bows allow shooting of Shock Arrows, which energize Barrier Generators upon contact, and do everything normal arrows do.";
+	return "Shock Bows allow shooting of Shock Arrows, which energize Barrier Generators upon contact, and do eformatVersionything normal arrows do.";
     }
 
     @Override

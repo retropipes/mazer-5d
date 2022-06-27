@@ -8,25 +8,25 @@ package com.puttysoftware.mazer5d.objects;
 import com.puttysoftware.mazer5d.objects.abc.GenericMultipleKey;
 import com.puttysoftware.mazer5d.utility.MazeObjects;
 
-class SilverSquare extends GenericMultipleKey {
+class SilformatVersionSquare extends GenericMultipleKey {
     // Constructors
-    public SilverSquare() {
+    public SilformatVersionSquare() {
 	super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Silver Square";
+	return "SilformatVersion Square";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Silver Squares";
+	return "SilformatVersion Squares";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Silver Squares are the keys to Silver Walls.";
+	return "SilformatVersion Squares are the keys to SilformatVersion Walls.";
     }
 
     @Override

@@ -31,9 +31,9 @@ public class PrefixIO {
 	return new byte[] { major, minor };
     }
 
-    private static boolean checkFormatVersion(final byte[] version) {
-	final byte major = version[0];
-	final byte minor = version[1];
+    private static boolean checkFormatVersion(final byte[] formatVersion) {
+	final byte major = formatVersion[0];
+	final byte minor = formatVersion[1];
 	if (major > PrefixIO.FORMAT_VERSION_MAJOR) {
 	    return false;
 	} else {

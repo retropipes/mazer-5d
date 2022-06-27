@@ -13,11 +13,11 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.file.FileExtensions;
 import com.puttysoftware.mazer5d.file.TempDirCleanup;
-import com.puttysoftware.mazer5d.file.format.FormatConstants;
 import com.puttysoftware.mazer5d.file.format.PrefixIO;
 import com.puttysoftware.mazer5d.file.format.SuffixIO;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
@@ -892,17 +892,17 @@ public class Maze {
 	// Create metafile reader
 	try (MazeDataReader metaReader = new MazeDataReader(m.basePath + File.separator + "metafile.xml", "maze")) {
 	    // Read metafile
-	    final int version = m.readMazeMetafile(metaReader);
+	    final MazeVersion formatVersion = m.readMazeMetafile(metaReader);
 	    // Set compatibility flags
-	    if (version == FormatConstants._MAZE_FORMAT_1) {
+	    if (formatVersion == MazeVersion.V1) {
 		Mazer5D.getBagOStuff().getMazeManager().setMaze1Compatible(true);
 		Mazer5D.getBagOStuff().getMazeManager().setMaze2Compatible(true);
 		Mazer5D.getBagOStuff().getMazeManager().setMaze4Compatible(true);
-	    } else if (version == FormatConstants._MAZE_FORMAT_2) {
+	    } else if (formatVersion == MazeVersion.V2) {
 		Mazer5D.getBagOStuff().getMazeManager().setMaze1Compatible(false);
 		Mazer5D.getBagOStuff().getMazeManager().setMaze2Compatible(true);
 		Mazer5D.getBagOStuff().getMazeManager().setMaze4Compatible(true);
-	    } else if (version == FormatConstants._MAZE_FORMAT_3 || version == FormatConstants._MAZE_FORMAT_4) {
+	    } else if (formatVersion == MazeVersion.V3 || formatVersion == MazeVersion.V4) {
 		Mazer5D.getBagOStuff().getMazeManager().setMaze1Compatible(false);
 		Mazer5D.getBagOStuff().getMazeManager().setMaze2Compatible(false);
 		Mazer5D.getBagOStuff().getMazeManager().setMaze4Compatible(true);
@@ -914,7 +914,7 @@ public class Maze {
 	    // Create data reader
 	    try (MazeDataReader dataReader = m.getLevelReader()) {
 		// Read data
-		m.readMazeLevel(dataReader, version);
+		m.readMazeLevel(dataReader, formatVersion);
 	    }
 	}
 	return m;
@@ -924,10 +924,10 @@ public class Maze {
 	return new MazeDataReader(this.basePath + File.separator + "level" + this.activeLevel + ".xml", "level");
     }
 
-    private int readMazeMetafile(final MazeDataReader reader) throws IOException {
-	int ver = FormatConstants._MAZE_FORMAT_1;
+    private MazeVersion readMazeMetafile(final MazeDataReader reader) throws IOException {
+	MazeVersion formatVersion = MazeVersion.V1;
 	if (this.prefixHandler != null) {
-	    ver = this.prefixHandler.readPrefix(reader);
+	    formatVersion = this.prefixHandler.readPrefix(reader);
 	}
 	final int levels = reader.readInt();
 	this.levelCount = levels;
@@ -938,33 +938,33 @@ public class Maze {
 	this.mazeStartMessage = reader.readString();
 	this.mazeEndMessage = reader.readString();
 	if (this.suffixHandler != null) {
-	    this.suffixHandler.readSuffix(reader, ver);
+	    this.suffixHandler.readSuffix(reader, formatVersion);
 	}
-	return ver;
+	return formatVersion;
     }
 
     private void readMazeLevel(final MazeDataReader reader) throws IOException {
-	this.readMazeLevel(reader, FormatConstants._MAZE_FORMAT_5);
+	this.readMazeLevel(reader, MazeVersion.V5);
     }
 
-    private void readMazeLevel(final MazeDataReader reader, final int formatVersion) throws IOException {
-	if (formatVersion == FormatConstants._MAZE_FORMAT_1) {
+    private void readMazeLevel(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
+	if (formatVersion == MazeVersion.V1) {
 	    this.mazeData = MazeData.readMazeDataModelV1(reader, formatVersion);
 	    this.mazeData.readSavedTowerState(reader, formatVersion);
-	} else if (formatVersion == FormatConstants._MAZE_FORMAT_2) {
+	} else if (formatVersion == MazeVersion.V2) {
 	    this.mazeData = MazeData.readMazeDataModelV2(reader, formatVersion);
 	    this.mazeData.readSavedTowerState(reader, formatVersion);
-	} else if (formatVersion == FormatConstants._MAZE_FORMAT_3) {
+	} else if (formatVersion == MazeVersion.V3) {
 	    this.mazeData = MazeData.readMazeDataModelV3(reader, formatVersion);
 	    this.mazeData.readSavedTowerState(reader, formatVersion);
-	} else if (formatVersion == FormatConstants._MAZE_FORMAT_4) {
+	} else if (formatVersion == MazeVersion.V4) {
 	    this.mazeData = MazeData.readMazeDataModelV4(reader, formatVersion);
 	    this.mazeData.readSavedTowerState(reader, formatVersion);
-	} else if (formatVersion == FormatConstants._MAZE_FORMAT_5) {
+	} else if (formatVersion == MazeVersion.V5) {
 	    this.mazeData = MazeData.readMazeDataModelV5(reader, formatVersion);
 	    this.mazeData.readSavedTowerState(reader, formatVersion);
 	} else {
-	    throw new IOException("Unknown maze format version!");
+	    throw new IOException("Unknown maze format formatVersion!");
 	}
     }
 

@@ -26,7 +26,7 @@ class Axe extends GenericInfiniteKey {
 
     @Override
     protected String getDescriptionHook() {
-	return "With an Axe, Trees can be cut down. Axes never lose their ability to cut trees.";
+	return "With an Axe, Trees can be cut down. Axes neformatVersion lose their ability to cut trees.";
     }
 
     @Override

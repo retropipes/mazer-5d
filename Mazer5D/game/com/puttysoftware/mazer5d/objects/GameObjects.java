@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
 import com.puttysoftware.diane.asset.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.MazeObject;
-import com.puttysoftware.mazer5d.file.format.FormatConstants;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.loader.DataLoader;
 import com.puttysoftware.mazer5d.loader.ObjectImageLoader;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
@@ -450,8 +450,8 @@ public class GameObjects {
 	GameObjects.allObjectsLookup.put(MazeObjects.SHUFFLE_BOMB, new ShuffleBomb());
 	GameObjects.allObjectsLookup.put(MazeObjects.SIGN, new Sign());
 	GameObjects.allObjectsLookup.put(MazeObjects.SIGNAL_CRYSTAL, null);
-	GameObjects.allObjectsLookup.put(MazeObjects.SILVER_SQUARE, new SilverSquare());
-	GameObjects.allObjectsLookup.put(MazeObjects.SILVER_WALL, new SilverWall());
+	GameObjects.allObjectsLookup.put(MazeObjects.SILVER_SQUARE, new SilformatVersionSquare());
+	GameObjects.allObjectsLookup.put(MazeObjects.SILVER_WALL, new SilformatVersionWall());
 	GameObjects.allObjectsLookup.put(MazeObjects.SKY_BUTTON, new SkyButton());
 	GameObjects.allObjectsLookup.put(MazeObjects.SKY_CARPET, new SkyCarpet());
 	GameObjects.allObjectsLookup.put(MazeObjects.SKY_CRYSTAL, new SkyCrystal());
@@ -1277,32 +1277,32 @@ public class GameObjects {
 	}
     }
 
-    public static MazeObject readObject(final MazeDataReader reader, final int formatVersion) throws IOException {
+    public static MazeObject readObject(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
 	MazeObject o = null;
 	String UID = StaticStrings.EMPTY;
-	if (formatVersion == FormatConstants._MAZE_FORMAT_1) {
+	if (formatVersion == MazeVersion.V1) {
 	    UID = reader.readString();
-	} else if (formatVersion == FormatConstants._MAZE_FORMAT_2) {
+	} else if (formatVersion == MazeVersion.V2) {
 	    UID = reader.readString();
-	} else if (formatVersion == FormatConstants._MAZE_FORMAT_3) {
+	} else if (formatVersion == MazeVersion.V3) {
 	    UID = reader.readString();
-	} else if (formatVersion == FormatConstants._MAZE_FORMAT_4) {
+	} else if (formatVersion == MazeVersion.V4) {
 	    UID = reader.readString();
-	} else if (formatVersion == FormatConstants._MAZE_FORMAT_5) {
+	} else if (formatVersion == MazeVersion.V5) {
 	    UID = reader.readString();
 	}
 	for (final MazeObject allObject : GameObjects.allObjects) {
 	    try {
 		final MazeObject instance = allObject.getClass().getConstructor().newInstance();
-		if (formatVersion == FormatConstants._MAZE_FORMAT_1) {
+		if (formatVersion == MazeVersion.V1) {
 		    o = instance.readMazeObject(reader, UID, formatVersion);
-		} else if (formatVersion == FormatConstants._MAZE_FORMAT_2) {
+		} else if (formatVersion == MazeVersion.V2) {
 		    o = instance.readMazeObject2(reader, UID, formatVersion);
-		} else if (formatVersion == FormatConstants._MAZE_FORMAT_3) {
+		} else if (formatVersion == MazeVersion.V3) {
 		    o = instance.readMazeObject3(reader, UID, formatVersion);
-		} else if (formatVersion == FormatConstants._MAZE_FORMAT_4) {
+		} else if (formatVersion == MazeVersion.V4) {
 		    o = instance.readMazeObject4(reader, UID, formatVersion);
-		} else if (formatVersion == FormatConstants._MAZE_FORMAT_5) {
+		} else if (formatVersion == MazeVersion.V5) {
 		    o = instance.readMazeObject5(reader, UID, formatVersion);
 		}
 		if (o != null) {

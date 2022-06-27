@@ -13,6 +13,6 @@ public class SuffixIO {
     }
 
     public void readSuffix(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
-	Mazer5D.getBagOStuff().getGameManager().loadGameHook(reader, formatVersion.ordinal());
+	Mazer5D.getBagOStuff().getGameManager().loadGameHook(reader, formatVersion);
     }
 }

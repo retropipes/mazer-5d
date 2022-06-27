@@ -41,7 +41,7 @@ class Lava extends GenericField {
     }
 
     @Override
-    public boolean overridesDefaultPostMove() {
+    public boolean oformatVersionridesDefaultPostMove() {
 	return true;
     }
 

@@ -37,8 +37,8 @@ public class AboutThisGame implements AboutHandler {
     private JLabel miniLabel;
 
     // Constructors
-    public AboutThisGame(final String ver) {
-	this.setUpGUI(ver);
+    public AboutThisGame(final String formatVersion) {
+	this.setUpGUI(formatVersion);
     }
 
     // Methods
@@ -53,7 +53,7 @@ public class AboutThisGame implements AboutHandler {
 	Modes.restore();
     }
 
-    private void setUpGUI(final String ver) {
+    private void setUpGUI(final String formatVersion) {
 	this.handler = new EventHandler();
 	this.aboutFrame = MainWindow.getMainWindow();
 	this.aboutPane = this.aboutFrame.createContent();
@@ -69,7 +69,7 @@ public class AboutThisGame implements AboutHandler {
 	this.logoPane.setLayout(new FlowLayout());
 	this.logoPane.add(this.miniLabel);
 	this.textPane.setLayout(new GridLayout(4, 1));
-	this.textPane.add(new JLabel("Mazer5D Version: " + ver));
+	this.textPane.add(new JLabel("Mazer5D Version: " + formatVersion));
 	this.textPane.add(new JLabel("Author: Eric Ahnell"));
 	this.textPane.add(new JLabel("Web Site: http://www.puttysoftware.com/mazer5d/"));
 	this.textPane.add(new JLabel("E-mail bug reports to: products@puttysoftware.com  "));

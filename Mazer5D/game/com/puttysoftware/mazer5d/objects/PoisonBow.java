@@ -30,7 +30,7 @@ class PoisonBow extends GenericBow {
 
     @Override
     protected String getDescriptionHook() {
-	return "Poison Bows allow shooting of Poison Arrows, which weaken Barrier Generators upon contact, and do everything normal arrows do.";
+	return "Poison Bows allow shooting of Poison Arrows, which weaken Barrier Generators upon contact, and do eformatVersionything normal arrows do.";
     }
 
     @Override

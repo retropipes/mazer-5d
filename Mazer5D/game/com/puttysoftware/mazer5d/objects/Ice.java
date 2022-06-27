@@ -28,7 +28,7 @@ class Ice extends GenericGround {
     }
 
     @Override
-    public boolean overridesDefaultPostMove() {
+    public boolean oformatVersionridesDefaultPostMove() {
 	return true;
     }
 

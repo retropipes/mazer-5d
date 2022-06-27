@@ -34,6 +34,7 @@ import com.puttysoftware.mazer5d.asset.SoundIndex;
 import com.puttysoftware.mazer5d.file.MazeManager;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loader.ImageConstants;
 import com.puttysoftware.mazer5d.loader.MusicPlayer;
@@ -155,7 +156,7 @@ public class GameManager implements MazeEffectConstants {
 	this.arrowActive = false;
 	this.objectInv.useBow(this.activeBow);
 	this.getStatGUI().updateStats();
-	this.checkGameOver();
+	this.checkGameOformatVersion();
     }
 
     public MazeObject getSavedMazeObject() {
@@ -506,7 +507,7 @@ public class GameManager implements MazeEffectConstants {
 			}
 			groundInto = m.getCell(px, py, pz, Layers.GROUND);
 			m.setCell(groundInto, px, py, pz, Layers.GROUND);
-			if (groundInto.overridesDefaultPostMove()) {
+			if (groundInto.oformatVersionridesDefaultPostMove()) {
 			    groundInto.postMoveAction(false, px, py, this.objectInv);
 			    if (!this.savedMazeObject.isOfType(TypeConstants.TYPE_PASS_THROUGH)) {
 				this.savedMazeObject.postMoveAction(false, px, py, this.objectInv);
@@ -541,7 +542,7 @@ public class GameManager implements MazeEffectConstants {
 				}
 				groundInto = m.getCell(px, py, pz, Layers.GROUND);
 				m.setCell(groundInto, px, py, pz, Layers.GROUND);
-				if (groundInto.overridesDefaultPostMove()) {
+				if (groundInto.oformatVersionridesDefaultPostMove()) {
 				    groundInto.postMoveAction(false, px, py, this.objectInv);
 				    if (!this.savedMazeObject.isOfType(TypeConstants.TYPE_PASS_THROUGH)) {
 					this.savedMazeObject.postMoveAction(false, px, py, this.objectInv);
@@ -596,7 +597,7 @@ public class GameManager implements MazeEffectConstants {
 	    }
 	} while (this.checkLoopCondition(proceed, fX, fY, groundInto, below, nextBelow, nextAbove));
 	this.getStatGUI().updateStats();
-	this.checkGameOver();
+	this.checkGameOformatVersion();
 	// Check for auto-finish
 	if (this.autoFinishEnabled) {
 	    // Normal auto-finish
@@ -776,7 +777,7 @@ public class GameManager implements MazeEffectConstants {
 		    this.plMgr.getPlayerLocationZ(), Layers.OBJECT);
 	    m.setCell(o, this.plMgr.getPlayerLocationX() + pushX, this.plMgr.getPlayerLocationY() + pushY,
 		    this.plMgr.getPlayerLocationZ(), Layers.OBJECT);
-	    if (g.overridesDefaultPostMove()) {
+	    if (g.oformatVersionridesDefaultPostMove()) {
 		g.postMoveAction(false, this.plMgr.getPlayerLocationX(), this.plMgr.getPlayerLocationY(),
 			this.objectInv);
 	    }
@@ -1295,15 +1296,15 @@ public class GameManager implements MazeEffectConstants {
 	app.getGUIManager().showGUI();
     }
 
-    public void checkGameOver() {
+    public void checkGameOformatVersion() {
 	if (!Mazer5D.getBagOStuff().getMazeManager().getMaze().isAlive()) {
-	    this.gameOver();
+	    this.gameOformatVersion();
 	}
     }
 
-    private void gameOver() {
+    private void gameOformatVersion() {
 	SoundPlayer.playSound(SoundIndex.GAME_OVER, SoundGroup.USER_INTERFACE);
-	CommonDialogs.showDialog("You have died - Game Over!");
+	CommonDialogs.showDialog("You have died - Game OformatVersion!");
 	this.exitGame();
     }
 
@@ -1579,7 +1580,7 @@ public class GameManager implements MazeEffectConstants {
 	}
     }
 
-    public void loadGameHook(final MazeDataReader mazeFile, final int formatVersion) throws IOException {
+    public void loadGameHook(final MazeDataReader mazeFile, final MazeVersion formatVersion) throws IOException {
 	final BagOStuff app = Mazer5D.getBagOStuff();
 	this.objectInv = ObjectInventory.readInventory(mazeFile, formatVersion);
 	this.savedObjectInv = ObjectInventory.readInventory(mazeFile, formatVersion);
@@ -1646,7 +1647,7 @@ public class GameManager implements MazeEffectConstants {
 	    this.showOutput();
 	    this.getStatGUI().updateImages();
 	    this.getStatGUI().updateStats();
-	    this.checkGameOver();
+	    this.checkGameOformatVersion();
 	    this.redrawMaze();
 	} else {
 	    CommonDialogs.showDialog("No Maze Opened");
@@ -1766,7 +1767,7 @@ public class GameManager implements MazeEffectConstants {
 	this.showScore.setEnabled(true);
 	this.showTable.setEnabled(true);
 	this.endGame.setEnabled(true);
-	// Assemble everything together
+	// Assemble eformatVersionything together
 	for (int x = 0; x < this.vwMgr.getViewingWindowSizeX(); x++) {
 	    for (int y = 0; y < this.vwMgr.getViewingWindowSizeY(); y++) {
 		this.drawGrid[x][y] = new JLabel();

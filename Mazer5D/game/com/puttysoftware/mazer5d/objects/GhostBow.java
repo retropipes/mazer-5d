@@ -30,7 +30,7 @@ class GhostBow extends GenericBow {
 
     @Override
     protected String getDescriptionHook() {
-	return "Ghost Bows allow shooting of Ghost Arrows, which pass through objects that do not react to arrows, even if they are solid, and do everything normal arrows do.";
+	return "Ghost Bows allow shooting of Ghost Arrows, which pass through objects that do not react to arrows, even if they are solid, and do eformatVersionything normal arrows do.";
     }
 
     @Override

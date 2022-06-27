@@ -3,8 +3,8 @@ Copyright (C) 2008-2010 Eric Ahnell
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+the Free Software Foundation, either formatVersion 3 of the License, or
+(at your option) any later formatVersion.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -52,6 +52,7 @@ import com.puttysoftware.mazer5d.asset.SoundGroup;
 import com.puttysoftware.mazer5d.file.CommonPaths;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.file.version.PrefsVersion;
 import com.puttysoftware.mazer5d.file.version.PrefsVersionException;
 import com.puttysoftware.mazer5d.file.version.PrefsVersions;
 import com.puttysoftware.mazer5d.locale.Strings;
@@ -445,7 +446,7 @@ public class Prefs {
 	Prefs.music[Prefs.MUSIC_GAME] = new JCheckBox("Enable game music", true);
 	Prefs.checkUpdatesStartup = new JCheckBox("Check for Updates at Startup", true);
 	Prefs.moveOneAtATime = new JCheckBox("One Move at a Time", true);
-	Prefs.updateCheckIntervalValues = new String[] { "Daily", "Every 2nd Day", "Weekly", "Every 2nd Week",
+	Prefs.updateCheckIntervalValues = new String[] { "Daily", "EformatVersiony 2nd Day", "Weekly", "EformatVersiony 2nd Week",
 		"Monthly" };
 	Prefs.updateCheckInterval = new JComboBox<>(Prefs.updateCheckIntervalValues);
 	Prefs.generatorConstrainedRandom = new JRadioButton("Randomness with limits", true);
@@ -519,11 +520,11 @@ public class Prefs {
 	    try (final MazeDataReader reader = new MazeDataReader(CommonPaths.getPrefsFile().getAbsolutePath(),
 		    Prefs.DOC_TAG)) {
 		// Read the preferences from the file
-		// Read version
-		final int version = reader.readInt();
+		// Read format version
+		final PrefsVersion formatVersion = PrefsVersion.values()[reader.readInt()];
 		// Version check
-		if (!PrefsVersions.isCompatible(version)) {
-		    throw new PrefsVersionException(version);
+		if (!PrefsVersions.isCompatible(formatVersion)) {
+		    throw new PrefsVersionException(formatVersion);
 		}
 		Prefs.editorFill = reader.readMazeObjectID();
 		Prefs.checkUpdatesStartupEnabled = reader.readBoolean();
@@ -552,7 +553,7 @@ public class Prefs {
 		Prefs.loadPrefs();
 		return true;
 	    } catch (final PrefsVersionException pe) {
-		CommonDialogs.showErrorDialog("Incompatible preferences version found; using defaults.");
+		CommonDialogs.showErrorDialog("Incompatible preferences formatVersion found; using defaults.");
 		return false;
 	    } catch (final IOException ie) {
 		CommonDialogs.showErrorDialog("Unexpected preferences format found; using defaults.");
@@ -607,11 +608,11 @@ public class Prefs {
 	public boolean importPreferencesFile(final File importFile) {
 	    try (final MazeDataReader reader = new MazeDataReader(importFile.getAbsolutePath(), Prefs.DOC_TAG)) {
 		// Read the preferences from the file
-		// Read version
-		final int version = reader.readInt();
+		// Read format version
+		final PrefsVersion formatVersion = PrefsVersion.values()[reader.readInt()];
 		// Version check
-		if (!PrefsVersions.isCompatible(version)) {
-		    throw new PrefsVersionException(version);
+		if (!PrefsVersions.isCompatible(formatVersion)) {
+		    throw new PrefsVersionException(formatVersion);
 		}
 		Prefs.editorFill = reader.readMazeObjectID();
 		Prefs.checkUpdatesStartupEnabled = reader.readBoolean();
@@ -621,7 +622,7 @@ public class Prefs {
 		}
 		Prefs.updateCheckIntervalIndex = reader.readInt();
 		int cachedBugfix = -1;
-		if (version == 1) {
+		if (formatVersion == PrefsVersion.V1) {
 		    reader.readString();
 		    reader.readString();
 		    reader.readInt();
@@ -638,7 +639,7 @@ public class Prefs {
 		final int cachedMajor = reader.readInt();
 		Prefs.randomHallSizeIndex = reader.readInt();
 		final int cachedMinor = reader.readInt();
-		if (version == 1) {
+		if (formatVersion == PrefsVersion.V1) {
 		    Prefs.lastUpdateCheck = Prefs.DEFAULT_NEXT_UPDATE;
 		} else {
 		    Prefs.cachedMajorVersion = cachedMajor;
@@ -651,7 +652,7 @@ public class Prefs {
 		Prefs.loadPrefs();
 		return true;
 	    } catch (final PrefsVersionException pe) {
-		CommonDialogs.showErrorDialog("Incompatible preferences version found; aborting import.");
+		CommonDialogs.showErrorDialog("Incompatible preferences formatVersion found; aborting import.");
 		return false;
 	    } catch (final IOException ie) {
 		Mazer5D.logError(ie);

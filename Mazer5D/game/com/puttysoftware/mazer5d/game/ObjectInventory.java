@@ -10,6 +10,7 @@ import java.io.IOException;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.objects.abc.GenericAmulet;
 import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
@@ -462,7 +463,7 @@ public final class ObjectInventory implements Cloneable {
 	return clone;
     }
 
-    public static ObjectInventory readInventory(final MazeDataReader reader, final int formatVersion)
+    public static ObjectInventory readInventory(final MazeDataReader reader, final MazeVersion formatVersion)
 	    throws IOException {
 	final ObjectInventory i = new ObjectInventory();
 	i.boots = (GenericBoots) GameObjects.readObject(reader, formatVersion);

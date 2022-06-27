@@ -33,7 +33,7 @@ class Crevasse extends GenericWall {
 
     @Override
     protected String getDescriptionHook() {
-	return "Crevasses stop movement, but not arrows, which pass over them unimpeded.";
+	return "Crevasses stop movement, but not arrows, which pass oformatVersion them unimpeded.";
     }
 
     @Override

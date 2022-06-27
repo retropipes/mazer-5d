@@ -8,8 +8,8 @@ public class MazeVersions {
 	// Do nothing
     }
 
-    public static boolean isCompatible(final MazeVersion version) {
-	return version.ordinal() >= MazeVersions.MINIMUM.ordinal()
-		&& version.ordinal() <= MazeVersions.LATEST.ordinal();
+    public static boolean isCompatible(final MazeVersion formatVersion) {
+	return formatVersion.ordinal() >= MazeVersions.MINIMUM.ordinal()
+		&& formatVersion.ordinal() <= MazeVersions.LATEST.ordinal();
     }
 }

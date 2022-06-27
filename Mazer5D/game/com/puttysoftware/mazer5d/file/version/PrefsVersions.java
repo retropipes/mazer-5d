@@ -8,7 +8,7 @@ public class PrefsVersions {
 	// Do nothing
     }
 
-    public static boolean isCompatible(final int version) {
-	return version >= PrefsVersions.MINIMUM && version <= PrefsVersions.LATEST;
+    public static boolean isCompatible(final PrefsVersion formatVersion) {
+	return formatVersion.ordinal() >= PrefsVersions.MINIMUM && formatVersion.ordinal() <= PrefsVersions.LATEST;
     }
 }

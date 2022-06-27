@@ -30,7 +30,7 @@ class IceBow extends GenericBow {
 
     @Override
     protected String getDescriptionHook() {
-	return "Ice Bows allow shooting of Ice Arrows, which freeze Barrier Generators upon contact, and do everything normal arrows do.";
+	return "Ice Bows allow shooting of Ice Arrows, which freeze Barrier Generators upon contact, and do eformatVersionything normal arrows do.";
     }
 
     @Override

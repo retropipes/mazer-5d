@@ -281,7 +281,7 @@ public class GUIManager implements QuitHandler {
 	    this.quit.setEnabled(true);
 	    this.helpAbout.setEnabled(true);
 	    this.helpObjectHelp.setEnabled(true);
-	    // Assemble everything together
+	    // Assemble eformatVersionything together
 	    this.commandPane.add(this.fileNew);
 	    this.commandPane.add(this.fileOpen);
 	    this.commandPane.add(this.fileOpenLocked);

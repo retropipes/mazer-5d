@@ -15,6 +15,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
+import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 import com.puttysoftware.mazer5d.objects.abc.GenericLightModifier;
@@ -903,7 +904,7 @@ class MazeData {
 			final Maze m = app.getMazeManager().getMaze();
 			app.getGameManager().keepNextMessage();
 			app.showMessage(
-				"You find yourself caught in the quake, and fall over, hurting yourself a bit.");
+				"You find yourself caught in the quake, and fall oformatVersion, hurting yourself a bit.");
 			m.doDamagePercentage(2);
 		    }
 		} catch (final ArrayIndexOutOfBoundsException aioob) {
@@ -1711,7 +1712,7 @@ class MazeData {
 	writer.writeInt(this.alternateNextLevelOffset);
     }
 
-    public static MazeData readMazeDataModelV1(final MazeDataReader reader, final int ver) throws IOException {
+    public static MazeData readMazeDataModelV1(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
 	int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
 	mazeSizeX = reader.readInt();
 	mazeSizeY = reader.readInt();
@@ -1721,7 +1722,7 @@ class MazeData {
 	    for (y = 0; y < lt.getRows(); y++) {
 		for (z = 0; z < lt.getFloors(); z++) {
 		    for (e = 0; e < Layers.COUNT; e++) {
-			lt.setCell(GameObjects.readObject(reader, ver), y, x, z, e);
+			lt.setCell(GameObjects.readObject(reader, formatVersion), y, x, z, e);
 			if (lt.getCell(y, x, z, e) == null) {
 			    return null;
 			}
@@ -1747,7 +1748,7 @@ class MazeData {
 	return lt;
     }
 
-    public static MazeData readMazeDataModelV2(final MazeDataReader reader, final int ver) throws IOException {
+    public static MazeData readMazeDataModelV2(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
 	int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
 	mazeSizeX = reader.readInt();
 	mazeSizeY = reader.readInt();
@@ -1757,48 +1758,7 @@ class MazeData {
 	    for (y = 0; y < lt.getRows(); y++) {
 		for (z = 0; z < lt.getFloors(); z++) {
 		    for (e = 0; e < Layers.COUNT; e++) {
-			lt.setCell(GameObjects.readObject(reader, ver), y, x, z, e);
-			if (lt.getCell(y, x, z, e) == null) {
-			    return null;
-			}
-		    }
-		}
-	    }
-	}
-	for (y = 0; y < 3; y++) {
-	    lt.playerData[y] = reader.readInt();
-	}
-	lt.horizontalWraparoundEnabled = reader.readBoolean();
-	lt.verticalWraparoundEnabled = reader.readBoolean();
-	lt.thirdDimensionWraparoundEnabled = reader.readBoolean();
-	lt.levelTitle = reader.readString();
-	lt.levelStartMessage = reader.readString();
-	lt.levelEndMessage = reader.readString();
-	lt.poisonPower = reader.readInt();
-	lt.oldPoisonPower = lt.poisonPower;
-	lt.timerValue = reader.readInt();
-	lt.initialTimerValue = lt.timerValue;
-	lt.timerActive = reader.readBoolean();
-	lt.autoFinishThresholdEnabled = reader.readBoolean();
-	lt.autoFinishThreshold = reader.readInt();
-	lt.useOffset = reader.readBoolean();
-	lt.nextLevel = reader.readInt();
-	lt.nextLevelOffset = reader.readInt();
-	lt.initialVisionRadius = MazeData.MAX_VISION_RADIUS;
-	return lt;
-    }
-
-    public static MazeData readMazeDataModelV3(final MazeDataReader reader, final int ver) throws IOException {
-	int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
-	mazeSizeX = reader.readInt();
-	mazeSizeY = reader.readInt();
-	mazeSizeZ = reader.readInt();
-	final MazeData lt = new MazeData(mazeSizeX, mazeSizeY, mazeSizeZ);
-	for (x = 0; x < lt.getColumns(); x++) {
-	    for (y = 0; y < lt.getRows(); y++) {
-		for (z = 0; z < lt.getFloors(); z++) {
-		    for (e = 0; e < Layers.COUNT; e++) {
-			lt.setCell(GameObjects.readObject(reader, ver), y, x, z, e);
+			lt.setCell(GameObjects.readObject(reader, formatVersion), y, x, z, e);
 			if (lt.getCell(y, x, z, e) == null) {
 			    return null;
 			}
@@ -1829,7 +1789,7 @@ class MazeData {
 	return lt;
     }
 
-    public static MazeData readMazeDataModelV4(final MazeDataReader reader, final int ver) throws IOException {
+    public static MazeData readMazeDataModelV3(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
 	int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
 	mazeSizeX = reader.readInt();
 	mazeSizeY = reader.readInt();
@@ -1839,7 +1799,48 @@ class MazeData {
 	    for (y = 0; y < lt.getRows(); y++) {
 		for (z = 0; z < lt.getFloors(); z++) {
 		    for (e = 0; e < Layers.COUNT; e++) {
-			lt.setCell(GameObjects.readObject(reader, ver), y, x, z, e);
+			lt.setCell(GameObjects.readObject(reader, formatVersion), y, x, z, e);
+			if (lt.getCell(y, x, z, e) == null) {
+			    return null;
+			}
+		    }
+		}
+	    }
+	}
+	for (y = 0; y < 3; y++) {
+	    lt.playerData[y] = reader.readInt();
+	}
+	lt.horizontalWraparoundEnabled = reader.readBoolean();
+	lt.verticalWraparoundEnabled = reader.readBoolean();
+	lt.thirdDimensionWraparoundEnabled = reader.readBoolean();
+	lt.levelTitle = reader.readString();
+	lt.levelStartMessage = reader.readString();
+	lt.levelEndMessage = reader.readString();
+	lt.poisonPower = reader.readInt();
+	lt.oldPoisonPower = lt.poisonPower;
+	lt.timerValue = reader.readInt();
+	lt.initialTimerValue = lt.timerValue;
+	lt.timerActive = reader.readBoolean();
+	lt.autoFinishThresholdEnabled = reader.readBoolean();
+	lt.autoFinishThreshold = reader.readInt();
+	lt.useOffset = reader.readBoolean();
+	lt.nextLevel = reader.readInt();
+	lt.nextLevelOffset = reader.readInt();
+	lt.initialVisionRadius = MazeData.MAX_VISION_RADIUS;
+	return lt;
+    }
+
+    public static MazeData readMazeDataModelV4(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
+	int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
+	mazeSizeX = reader.readInt();
+	mazeSizeY = reader.readInt();
+	mazeSizeZ = reader.readInt();
+	final MazeData lt = new MazeData(mazeSizeX, mazeSizeY, mazeSizeZ);
+	for (x = 0; x < lt.getColumns(); x++) {
+	    for (y = 0; y < lt.getRows(); y++) {
+		for (z = 0; z < lt.getFloors(); z++) {
+		    for (e = 0; e < Layers.COUNT; e++) {
+			lt.setCell(GameObjects.readObject(reader, formatVersion), y, x, z, e);
 			if (lt.getCell(y, x, z, e) == null) {
 			    return null;
 			}
@@ -1875,7 +1876,7 @@ class MazeData {
 	return lt;
     }
 
-    public static MazeData readMazeDataModelV5(final MazeDataReader reader, final int ver) throws IOException {
+    public static MazeData readMazeDataModelV5(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
 	int y, x, z, e, mazeSizeX, mazeSizeY, mazeSizeZ;
 	mazeSizeX = reader.readInt();
 	mazeSizeY = reader.readInt();
@@ -1885,7 +1886,7 @@ class MazeData {
 	    for (y = 0; y < lt.getRows(); y++) {
 		for (z = 0; z < lt.getFloors(); z++) {
 		    for (e = 0; e < Layers.COUNT; e++) {
-			lt.setCell(GameObjects.readObject(reader, ver), y, x, z, e);
+			lt.setCell(GameObjects.readObject(reader, formatVersion), y, x, z, e);
 			if (lt.getCell(y, x, z, e) == null) {
 			    return null;
 			}
@@ -1931,7 +1932,7 @@ class MazeData {
 	this.savedState.writeSavedTowerState(writer);
     }
 
-    public void readSavedTowerState(final MazeDataReader reader, final int formatVersion) throws IOException {
+    public void readSavedTowerState(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
 	this.savedState = SavedState.readSavedState(reader, formatVersion);
     }
 }
