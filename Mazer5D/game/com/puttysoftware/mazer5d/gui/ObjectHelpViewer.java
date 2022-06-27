@@ -17,8 +17,8 @@ import javax.swing.JPanel;
 import com.puttysoftware.diane.asset.BufferedImageIcon;
 import com.puttysoftware.diane.gui.dialog.MainWindow;
 import com.puttysoftware.diane.gui.dialog.MainWindowContent;
-import com.puttysoftware.help.GraphicalHelpViewer;
 import com.puttysoftware.mazer5d.Modes;
+import com.puttysoftware.mazer5d.help.GraphicalHelpViewer;
 import com.puttysoftware.mazer5d.loader.DataLoader;
 import com.puttysoftware.mazer5d.objects.GameObjects;
 

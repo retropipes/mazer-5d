@@ -1,4 +1,4 @@
-package com.puttysoftware.help;
+package com.puttysoftware.mazer5d.help;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
