@@ -1,6 +1,6 @@
-package com.puttysoftware.mazer5d.loader;
+package com.puttysoftware.mazer5d.locale;
 
-enum DataFile {
+enum LocalData {
     OBJECT_NAME,
     OBJECT_PLURAL,
     OBJECT_DESCRIPTION,

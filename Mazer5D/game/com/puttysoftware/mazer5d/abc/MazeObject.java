@@ -17,9 +17,9 @@ import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.loader.DataFileLoader;
 import com.puttysoftware.mazer5d.loader.DataLoader;
 import com.puttysoftware.mazer5d.loader.SoundPlayer;
+import com.puttysoftware.mazer5d.locale.LocalDataLoader;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
@@ -1031,7 +1031,7 @@ public class MazeObject implements RandomGenerationRule {
     }
 
     public final String getName() {
-	return DataFileLoader.loadObjectName(this.getUniqueID());
+	return LocalDataLoader.loadObjectName(this.getUniqueID());
     }
 
     // FIXME: Hack
@@ -1040,7 +1040,7 @@ public class MazeObject implements RandomGenerationRule {
     }
 
     public final String getPluralName() {
-	return DataFileLoader.loadObjectPluralName(this.getUniqueID());
+	return LocalDataLoader.loadObjectPluralName(this.getUniqueID());
     }
 
     // FIXME: Hack
@@ -1049,7 +1049,7 @@ public class MazeObject implements RandomGenerationRule {
     }
 
     public final String getDescription() {
-	return DataFileLoader.loadObjectDescription(this.getUniqueID());
+	return LocalDataLoader.loadObjectDescription(this.getUniqueID());
     }
 
     // FIXME: Hack

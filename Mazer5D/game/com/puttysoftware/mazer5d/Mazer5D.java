@@ -13,8 +13,8 @@ import com.puttysoftware.diane.gui.dialog.MainWindow;
 import com.puttysoftware.integration.Integration;
 import com.puttysoftware.mazer5d.asset.LogoImageIndex;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
-import com.puttysoftware.mazer5d.loader.DataFileLoader;
 import com.puttysoftware.mazer5d.loader.LogoImageLoader;
+import com.puttysoftware.mazer5d.locale.LocalDataLoader;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.prefs.Prefs;
@@ -42,7 +42,7 @@ public class Mazer5D {
 	// Integrate with host platform
 	final Integration ni = new Integration();
 	ni.configureLookAndFeel();
-	DataFileLoader.init();
+	LocalDataLoader.init();
 	MainWindow.createMainWindow(GUIConstants.GUI_WIDTH, GUIConstants.GUI_HEIGHT);
 	Mazer5D.bagOStuff = new BagOStuff();
 	ni.setAboutHandler(Mazer5D.bagOStuff.getAboutThisGame());

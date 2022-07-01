@@ -2,6 +2,7 @@ package com.puttysoftware.mazer5d.loader;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.mazer5d.Mazer5D;
@@ -17,6 +18,14 @@ public class DataLoader {
 
     private DataLoader() {
 	// Do nothing
+    }
+    
+    public static String loadFileExtension(final int extID) {
+	return ResourceBundle.getBundle("asset.data.extension").getString(Integer.toString(extID));
+    }
+
+    public static String loadFileExtensionWithPeriod(final int extID) {
+	return ResourceBundle.getBundle("asset.data.extensionperiod").getString(Integer.toString(extID));
     }
 
     public static String[] loadMusicData() {

@@ -1,21 +1,21 @@
-package com.puttysoftware.mazer5d.loader;
+package com.puttysoftware.mazer5d.locale;
 
-class DataFileNames {
+class LocalDataNames {
     // Static fields
     private static String[] LIST = new String[] { "objectname", "objectplural", "objectdesc", "extension",
 	    "extensionperiod" };
 
     // Private constructor
-    private DataFileNames() {
+    private LocalDataNames() {
 	// Do nothing
     }
 
     // Static methods
     static int getFileCount() {
-	return DataFileNames.LIST.length;
+	return LocalDataNames.LIST.length;
     }
 
-    static String getFileName(final DataFile file) {
-	return DataFileNames.LIST[file.ordinal()];
+    static String getFileName(final LocalData file) {
+	return LocalDataNames.LIST[file.ordinal()];
     }
 }
