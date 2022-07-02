@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.puttysoftware.mazer5d.utility.MazeObjects;
+import com.puttysoftware.mazer5d.abc.MazeObjects;
 
 public class LocalDataLoader {
     private static final String LOAD_PATH = "/asset/data/"; //$NON-NLS-1$

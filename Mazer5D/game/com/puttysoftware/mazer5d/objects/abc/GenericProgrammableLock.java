@@ -11,6 +11,8 @@ import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.abc.MazeObject;
+import com.puttysoftware.mazer5d.abc.MazeObjects;
+import com.puttysoftware.mazer5d.abc.TypeConstants;
 import com.puttysoftware.mazer5d.asset.SoundGroup;
 import com.puttysoftware.mazer5d.asset.SoundIndex;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
@@ -21,8 +23,6 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loader.SoundPlayer;
 import com.puttysoftware.mazer5d.maze.effect.MazeEffectConstants;
 import com.puttysoftware.mazer5d.objects.SignalCrystal;
-import com.puttysoftware.mazer5d.utility.MazeObjects;
-import com.puttysoftware.mazer5d.utility.TypeConstants;
 
 public abstract class GenericProgrammableLock extends GenericSingleLock {
     private static final SignalCrystal SIGNAL = new SignalCrystal();

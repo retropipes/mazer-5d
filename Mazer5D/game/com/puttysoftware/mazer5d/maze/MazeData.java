@@ -13,7 +13,12 @@ import com.puttysoftware.diane.storage.FlagStorage;
 import com.puttysoftware.diane.utilties.DirectionResolver;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.GameObjects;
+import com.puttysoftware.mazer5d.abc.Layers;
 import com.puttysoftware.mazer5d.abc.MazeObject;
+import com.puttysoftware.mazer5d.abc.MazeObjects;
+import com.puttysoftware.mazer5d.abc.RandomGenerationRule;
+import com.puttysoftware.mazer5d.abc.TypeConstants;
+import com.puttysoftware.mazer5d.abc.VisionModes;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.file.version.MazeVersion;
@@ -22,11 +27,6 @@ import com.puttysoftware.mazer5d.objects.abc.GenericLightModifier;
 import com.puttysoftware.mazer5d.objects.abc.GenericMovingObject;
 import com.puttysoftware.mazer5d.objects.abc.GenericTeleport;
 import com.puttysoftware.mazer5d.prefs.Prefs;
-import com.puttysoftware.mazer5d.utility.Layers;
-import com.puttysoftware.mazer5d.utility.MazeObjects;
-import com.puttysoftware.mazer5d.utility.RandomGenerationRule;
-import com.puttysoftware.mazer5d.utility.TypeConstants;
-import com.puttysoftware.mazer5d.utility.VisionModes;
 import com.puttysoftware.randomrange.RandomRange;
 
 class MazeData {

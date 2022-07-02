@@ -13,12 +13,12 @@ import com.puttysoftware.diane.gui.dialog.MainWindow;
 import com.puttysoftware.integration.Integration;
 import com.puttysoftware.mazer5d.asset.LogoImageIndex;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
+import com.puttysoftware.mazer5d.gui.GUIConstants;
 import com.puttysoftware.mazer5d.loader.LogoImageLoader;
 import com.puttysoftware.mazer5d.locale.LocalDataLoader;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.prefs.Prefs;
-import com.puttysoftware.mazer5d.utility.GUIConstants;
 
 public class Mazer5D {
     // Constants

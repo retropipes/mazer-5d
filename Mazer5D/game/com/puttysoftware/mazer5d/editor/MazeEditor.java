@@ -34,7 +34,9 @@ import com.puttysoftware.diane.picturepicker.PicturePicker;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.GameObjects;
+import com.puttysoftware.mazer5d.abc.Layers;
 import com.puttysoftware.mazer5d.abc.MazeObject;
+import com.puttysoftware.mazer5d.abc.MazeObjects;
 import com.puttysoftware.mazer5d.file.MazeManager;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
@@ -46,8 +48,6 @@ import com.puttysoftware.mazer5d.objects.abc.GenericConditionalTeleport;
 import com.puttysoftware.mazer5d.objects.abc.GenericContainer;
 import com.puttysoftware.mazer5d.objects.abc.GenericTeleport;
 import com.puttysoftware.mazer5d.prefs.Prefs;
-import com.puttysoftware.mazer5d.utility.Layers;
-import com.puttysoftware.mazer5d.utility.MazeObjects;
 
 public class MazeEditor {
     // Declarations

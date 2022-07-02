@@ -3,10 +3,10 @@ package com.puttysoftware.mazer5d.editor.ruleset;
 import java.io.IOException;
 import java.util.Objects;
 
+import com.puttysoftware.mazer5d.abc.RandomGenerationRule;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.maze.Maze;
-import com.puttysoftware.mazer5d.utility.RandomGenerationRule;
 import com.puttysoftware.randomrange.RandomRange;
 
 public final class RuleSet implements Cloneable, RandomGenerationRule {

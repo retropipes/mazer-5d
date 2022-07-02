@@ -1,4 +1,4 @@
-package com.puttysoftware.mazer5d.utility;
+package com.puttysoftware.mazer5d.abc;
 
 import com.puttysoftware.mazer5d.maze.Maze;
 

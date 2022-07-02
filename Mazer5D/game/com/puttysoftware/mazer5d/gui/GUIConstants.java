@@ -1,4 +1,4 @@
-package com.puttysoftware.mazer5d.utility;
+package com.puttysoftware.mazer5d.gui;
 
 public class GUIConstants {
     private GUIConstants() {

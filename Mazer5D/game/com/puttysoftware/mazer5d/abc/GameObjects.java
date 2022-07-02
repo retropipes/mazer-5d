@@ -16,9 +16,6 @@ import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.loader.DataLoader;
 import com.puttysoftware.mazer5d.loader.ObjectImageLoader;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
-import com.puttysoftware.mazer5d.utility.Layers;
-import com.puttysoftware.mazer5d.utility.MazeObjects;
-import com.puttysoftware.mazer5d.utility.TypeConstants;
 
 public class GameObjects {
     // Fields

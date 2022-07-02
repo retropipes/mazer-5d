@@ -8,8 +8,11 @@ package com.puttysoftware.mazer5d.objects.abc;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.abc.ArrowTypes;
 import com.puttysoftware.mazer5d.abc.GameObjects;
+import com.puttysoftware.mazer5d.abc.Layers;
 import com.puttysoftware.mazer5d.abc.MazeObject;
+import com.puttysoftware.mazer5d.abc.TypeConstants;
 import com.puttysoftware.mazer5d.asset.SoundGroup;
 import com.puttysoftware.mazer5d.asset.SoundIndex;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
@@ -17,9 +20,6 @@ import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loader.SoundPlayer;
-import com.puttysoftware.mazer5d.utility.ArrowTypes;
-import com.puttysoftware.mazer5d.utility.Layers;
-import com.puttysoftware.mazer5d.utility.TypeConstants;
 
 public abstract class GenericCharacter extends MazeObject {
     // Fields

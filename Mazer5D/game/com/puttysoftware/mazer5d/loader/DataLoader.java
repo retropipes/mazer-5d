@@ -6,8 +6,8 @@ import java.util.ResourceBundle;
 
 import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.abc.MazeObjectActions;
 import com.puttysoftware.mazer5d.file.FileExtensions;
-import com.puttysoftware.mazer5d.utility.MazeObjectActions;
 
 public class DataLoader {
     private static MazeObjectActions[] ACTION_CACHE;

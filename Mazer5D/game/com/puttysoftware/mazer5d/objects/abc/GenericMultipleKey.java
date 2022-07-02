@@ -5,7 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects.abc;
 
-import com.puttysoftware.mazer5d.utility.TypeConstants;
+import com.puttysoftware.mazer5d.abc.TypeConstants;
 
 public abstract class GenericMultipleKey extends GenericKey {
     // Constructors

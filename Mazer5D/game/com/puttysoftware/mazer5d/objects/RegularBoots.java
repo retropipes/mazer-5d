@@ -5,9 +5,9 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
+import com.puttysoftware.mazer5d.abc.MazeObjects;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
-import com.puttysoftware.mazer5d.utility.MazeObjects;
 
 class RegularBoots extends GenericBoots {
     // Constructors

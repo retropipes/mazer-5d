@@ -5,7 +5,7 @@ import java.io.InputStream;
 
 import com.puttysoftware.diane.fileio.DataIOException;
 import com.puttysoftware.diane.fileio.XDataReader;
-import com.puttysoftware.mazer5d.utility.MazeObjects;
+import com.puttysoftware.mazer5d.abc.MazeObjects;
 
 public class MazeDataReader extends XDataReader {
     // Constructors

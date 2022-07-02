@@ -7,9 +7,9 @@ package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.MazeObject;
+import com.puttysoftware.mazer5d.abc.MazeObjects;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.objects.abc.GenericInvisibleTeleport;
-import com.puttysoftware.mazer5d.utility.MazeObjects;
 
 class InvisibleTeleport extends GenericInvisibleTeleport {
     // Constructors

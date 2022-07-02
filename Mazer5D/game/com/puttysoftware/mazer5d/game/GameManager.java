@@ -26,8 +26,12 @@ import com.puttysoftware.diane.gui.dialog.MainWindow;
 import com.puttysoftware.diane.gui.dialog.MainWindowContent;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
+import com.puttysoftware.mazer5d.abc.ArrowTypes;
 import com.puttysoftware.mazer5d.abc.GameObjects;
+import com.puttysoftware.mazer5d.abc.Layers;
 import com.puttysoftware.mazer5d.abc.MazeObject;
+import com.puttysoftware.mazer5d.abc.MazeObjects;
+import com.puttysoftware.mazer5d.abc.TypeConstants;
 import com.puttysoftware.mazer5d.asset.MusicGroup;
 import com.puttysoftware.mazer5d.asset.MusicIndex;
 import com.puttysoftware.mazer5d.asset.SoundGroup;
@@ -50,10 +54,6 @@ import com.puttysoftware.mazer5d.objects.abc.GenericBow;
 import com.puttysoftware.mazer5d.objects.abc.GenericCharacter;
 import com.puttysoftware.mazer5d.objects.abc.GenericMovableObject;
 import com.puttysoftware.mazer5d.prefs.Prefs;
-import com.puttysoftware.mazer5d.utility.ArrowTypes;
-import com.puttysoftware.mazer5d.utility.Layers;
-import com.puttysoftware.mazer5d.utility.MazeObjects;
-import com.puttysoftware.mazer5d.utility.TypeConstants;
 
 public class GameManager implements MazeEffectConstants {
     // Fields

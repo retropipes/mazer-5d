@@ -24,12 +24,6 @@ import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.maze.Maze;
-import com.puttysoftware.mazer5d.utility.ArrowTypes;
-import com.puttysoftware.mazer5d.utility.Layers;
-import com.puttysoftware.mazer5d.utility.MazeObjectActions;
-import com.puttysoftware.mazer5d.utility.MazeObjects;
-import com.puttysoftware.mazer5d.utility.RandomGenerationRule;
-import com.puttysoftware.mazer5d.utility.TypeConstants;
 import com.puttysoftware.randomrange.RandomRange;
 
 public class MazeObject implements RandomGenerationRule {

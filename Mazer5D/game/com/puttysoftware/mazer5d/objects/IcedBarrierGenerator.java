@@ -6,12 +6,12 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.abc.ArrowTypes;
+import com.puttysoftware.mazer5d.abc.MazeObjects;
+import com.puttysoftware.mazer5d.abc.TypeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objects.abc.GenericWall;
-import com.puttysoftware.mazer5d.utility.ArrowTypes;
-import com.puttysoftware.mazer5d.utility.MazeObjects;
-import com.puttysoftware.mazer5d.utility.TypeConstants;
 
 class IcedBarrierGenerator extends GenericWall {
     // Constants

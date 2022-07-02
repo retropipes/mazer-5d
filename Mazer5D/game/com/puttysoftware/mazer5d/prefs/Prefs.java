@@ -48,6 +48,7 @@ import com.puttysoftware.diane.gui.dialog.MainWindowContent;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.GameObjects;
+import com.puttysoftware.mazer5d.abc.MazeObjects;
 import com.puttysoftware.mazer5d.asset.MusicGroup;
 import com.puttysoftware.mazer5d.asset.SoundGroup;
 import com.puttysoftware.mazer5d.file.CommonPaths;
@@ -58,7 +59,6 @@ import com.puttysoftware.mazer5d.file.version.PrefsVersionException;
 import com.puttysoftware.mazer5d.file.version.PrefsVersions;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
-import com.puttysoftware.mazer5d.utility.MazeObjects;
 import com.puttysoftware.updater.ProductData;
 import com.puttysoftware.updater.UpdateCheckResults;
 
