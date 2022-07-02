@@ -22,9 +22,6 @@ public abstract class GenericUsableObject extends GenericInventoryableObject {
     public abstract void useAction(MazeObject mo, int x, int y, int z);
 
     @Override
-    protected abstract String getNameHook();
-
-    @Override
     protected int getLayerHook() {
 	return Layers.OBJECT;
     }

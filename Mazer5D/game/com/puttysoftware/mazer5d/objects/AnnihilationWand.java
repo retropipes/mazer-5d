@@ -19,24 +19,9 @@ class AnnihilationWand extends GenericWand {
     }
 
     @Override
-    protected String getNameHook() {
-	return "Annihilation Wand";
-    }
-
-    @Override
-    protected String getPluralNameHook() {
-	return "Annihilation Wands";
-    }
-
-    @Override
     public void useHelper(final int x, final int y, final int z) {
 	this.useAction(GameObjects.getEmptySpace(), x, y, z);
 	SoundPlayer.playSound(SoundIndex.DESTROY, SoundGroup.GAME);
-    }
-
-    @Override
-    protected String getDescriptionHook() {
-	return "Annihilation Wands will destroy any object (not ground) when used, except the Void or a Sealing Wall.";
     }
 
     @Override

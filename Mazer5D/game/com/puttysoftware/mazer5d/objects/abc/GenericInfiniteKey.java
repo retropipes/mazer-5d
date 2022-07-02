@@ -16,8 +16,4 @@ public abstract class GenericInfiniteKey extends GenericKey {
 	this.setType(TypeConstants.TYPE_INVENTORYABLE);
 	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
-
-    // Scriptability
-    @Override
-    protected abstract String getNameHook();
 }

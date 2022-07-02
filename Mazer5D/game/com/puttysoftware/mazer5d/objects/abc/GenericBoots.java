@@ -18,7 +18,4 @@ public abstract class GenericBoots extends GenericPass {
 	this.setType(TypeConstants.TYPE_INVENTORYABLE);
 	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
-
-    @Override
-    protected abstract String getNameHook();
 }

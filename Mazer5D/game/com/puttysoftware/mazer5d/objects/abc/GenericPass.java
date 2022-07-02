@@ -17,7 +17,4 @@ public abstract class GenericPass extends GenericInfiniteKey {
 	this.setType(TypeConstants.TYPE_INVENTORYABLE);
 	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
-
-    @Override
-    protected abstract String getNameHook();
 }

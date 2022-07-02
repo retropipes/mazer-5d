@@ -24,9 +24,6 @@ public abstract class GenericWand extends GenericUsableObject {
     }
 
     @Override
-    protected abstract String getNameHook();
-
-    @Override
     public void useAction(final MazeObject mo, final int x, final int y, final int z) {
 	final BagOStuff app = Mazer5D.getBagOStuff();
 	app.getGameManager().morph(mo, x, y, z);

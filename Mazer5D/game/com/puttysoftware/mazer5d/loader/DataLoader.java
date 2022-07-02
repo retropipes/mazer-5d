@@ -12,14 +12,15 @@ import com.puttysoftware.mazer5d.utility.MazeObjectActions;
 public class DataLoader {
     private static MazeObjectActions[] ACTION_CACHE;
     private static int[][] ACTION_ADDON_CACHE;
-    private static int[] LAYER_CACHE;
+    private static int[] OBJECT_LAYER_CACHE;
+    private static long[] OBJECT_TYPE_CACHE;
     private static String[] OBJECT_IMAGE_NAME_CACHE;
     private static final int ACTION_ADDON_LENGTH = 33;
 
     private DataLoader() {
 	// Do nothing
     }
-    
+
     public static String loadFileExtension(final int extID) {
 	return ResourceBundle.getBundle("asset.data.extension").getString(Integer.toString(extID));
     }
@@ -121,7 +122,7 @@ public class DataLoader {
     }
 
     public static int loadObjectLayerData(final int objectID) {
-	if (DataLoader.LAYER_CACHE == null) {
+	if (DataLoader.OBJECT_LAYER_CACHE == null) {
 	    try (final ResourceStreamReader rsr = new ResourceStreamReader(DataLoader.class.getResourceAsStream(
 		    "/asset/data/object/layer" + FileExtensions.getDataFileExtensionWithPeriod()))) {
 		// Fetch data
@@ -139,13 +140,41 @@ public class DataLoader {
 		    data[index] = rawItem;
 		    index++;
 		}
-		DataLoader.LAYER_CACHE = data;
+		DataLoader.OBJECT_LAYER_CACHE = data;
 	    } catch (final IOException e) {
 		Mazer5D.logError(e);
 		return 0;
 	    }
 	}
-	return DataLoader.LAYER_CACHE[objectID];
+	return DataLoader.OBJECT_LAYER_CACHE[objectID];
+    }
+
+    public static long loadObjectTypeData(final int objectID) {
+	if (DataLoader.OBJECT_TYPE_CACHE == null) {
+	    try (final ResourceStreamReader rsr = new ResourceStreamReader(DataLoader.class.getResourceAsStream(
+		    "/asset/data/object/type" + FileExtensions.getDataFileExtensionWithPeriod()))) {
+		// Fetch data
+		final ArrayList<Long> rawData = new ArrayList<>();
+		String raw = "0";
+		while (raw != null) {
+		    raw = rsr.readString();
+		    if (raw != null) {
+			rawData.add(Long.parseLong(raw));
+		    }
+		}
+		int index = 0;
+		final long[] data = new long[rawData.size()];
+		for (final Long rawItem : rawData) {
+		    data[index] = rawItem;
+		    index++;
+		}
+		DataLoader.OBJECT_TYPE_CACHE = data;
+	    } catch (final IOException e) {
+		Mazer5D.logError(e);
+		return 0;
+	    }
+	}
+	return DataLoader.OBJECT_TYPE_CACHE[objectID];
     }
 
     public static String[] loadEffectImageData() {

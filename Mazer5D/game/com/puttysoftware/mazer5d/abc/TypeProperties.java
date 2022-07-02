@@ -7,20 +7,25 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.util.Objects;
 
-import com.puttysoftware.diane.storage.FlagStorage;
+import com.puttysoftware.diane.storage.PackedFlagStorage;
 
 class TypeProperties {
     // Properties
-    private final FlagStorage typeData;
-    private static final int TYPE_PROPERTY_INDICES = 53;
+    private final PackedFlagStorage typeData;
 
-    // Constructors
+    // Main constructor
     public TypeProperties() {
-	this.typeData = new FlagStorage(TypeProperties.TYPE_PROPERTY_INDICES);
+	this.typeData = new PackedFlagStorage();
     }
 
+    // Deserialization constructor
+    public TypeProperties(final long source) {
+	this.typeData = new PackedFlagStorage(source);
+    }
+
+    // Copy constructor
     public TypeProperties(final TypeProperties source) {
-	this.typeData = new FlagStorage(source.typeData);
+	this.typeData = new PackedFlagStorage(source.typeData);
     }
 
     // Methods
@@ -47,10 +52,10 @@ class TypeProperties {
     }
 
     public boolean isOfType(final int testType) {
-	return this.typeData.getCell(testType);
+	return this.typeData.getFlag(testType);
     }
 
     public void setType(final int newType, final boolean value) {
-	this.typeData.setCell(value, newType);
+	this.typeData.setFlag(value, newType);
     }
 }

@@ -59,9 +59,10 @@ public class MazeObject implements RandomGenerationRule {
 	this.cc = new CustomCounters();
 	this.cf = new CustomFlags();
 	this.ct = new CustomTexts();
-	this.tp = new TypeProperties();
+	long td = DataLoader.loadObjectTypeData(uid.ordinal());
+	this.tp = new TypeProperties(td);
     }
-    
+
     public MazeObject(final MazeObjects uid, final MazeObjects contentsUID) {
 	this.uniqueID = uid;
 	this.savedObject = new MazeObject(contentsUID);
@@ -75,7 +76,7 @@ public class MazeObject implements RandomGenerationRule {
 	this.ct = new CustomTexts();
 	this.tp = new TypeProperties();
     }
-    
+
     public MazeObject(final MazeObjects uid, final int dr, final int dc) {
 	this.uniqueID = uid;
 	this.sp = new SolidProperties();
@@ -91,7 +92,7 @@ public class MazeObject implements RandomGenerationRule {
 	this.cc.set(0, dr);
 	this.cc.set(1, dc);
     }
-    
+
     public MazeObject(final MazeObjects uid, final int dr, final int dc, final int df) {
 	this.uniqueID = uid;
 	this.sp = new SolidProperties();
@@ -108,7 +109,7 @@ public class MazeObject implements RandomGenerationRule {
 	this.cc.set(1, dc);
 	this.cc.set(2, df);
     }
-    
+
     public MazeObject(final MazeObjects uid, final int dr, final int dc, final int df, final int dl) {
 	this.uniqueID = uid;
 	this.sp = new SolidProperties();

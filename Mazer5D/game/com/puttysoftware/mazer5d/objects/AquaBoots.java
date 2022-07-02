@@ -15,21 +15,6 @@ class AquaBoots extends GenericBoots {
     }
 
     @Override
-    protected String getNameHook() {
-	return "Aqua Boots";
-    }
-
-    @Override
-    protected String getPluralNameHook() {
-	return "Pairs of Aqua Boots";
-    }
-
-    @Override
-    protected String getDescriptionHook() {
-	return "Aqua Boots allow walking on water. Note that you can only wear one pair of boots at once.";
-    }
-
-    @Override
     protected MazeObjects getUniqueIDHook() {
 	return MazeObjects.AQUA_BOOTS;
     }
