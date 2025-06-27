@@ -15,7 +15,7 @@ public class RandomDecimalRange {
      */
     // Constructor
     private RandomDecimalRange() {
-	// Do nothing
+        // Do nothing
     }
 
     /**
@@ -25,7 +25,7 @@ public class RandomDecimalRange {
      */
     // Methods
     public static void setMinimum(final double newMin) {
-	RandomDecimalRange.minimum = newMin;
+        RandomDecimalRange.minimum = newMin;
     }
 
     /**
@@ -34,7 +34,7 @@ public class RandomDecimalRange {
      * @param newMax the new maximum
      */
     public static void setMaximum(final double newMax) {
-	RandomDecimalRange.maximum = newMax;
+        RandomDecimalRange.maximum = newMax;
     }
 
     /**
@@ -43,7 +43,7 @@ public class RandomDecimalRange {
      * @return the float
      */
     public static float generateFloat() {
-	return (float) RandomDecimalRange.generateDouble();
+        return (float) RandomDecimalRange.generateDouble();
     }
 
     /**
@@ -52,8 +52,8 @@ public class RandomDecimalRange {
      * @return the double
      */
     public static double generateDouble() {
-	return Math.abs(RandomnessSource.nextDouble() % (RandomDecimalRange.maximum - RandomDecimalRange.minimum + 1))
-		+ RandomDecimalRange.minimum;
+        return Math.abs(RandomnessSource.nextDouble() % (RandomDecimalRange.maximum - RandomDecimalRange.minimum + 1))
+                + RandomDecimalRange.minimum;
     }
 
     /**
@@ -62,6 +62,6 @@ public class RandomDecimalRange {
      * @return the double
      */
     public static double generateRawDouble() {
-	return RandomnessSource.nextDouble();
+        return RandomnessSource.nextDouble();
     }
 }

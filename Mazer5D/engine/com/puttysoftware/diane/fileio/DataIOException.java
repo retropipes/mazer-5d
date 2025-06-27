@@ -11,18 +11,18 @@ public class DataIOException extends IOException {
     private static final long serialVersionUID = 23250505322336L;
 
     public DataIOException() {
-	super();
+        super();
     }
 
     public DataIOException(String message, Throwable cause) {
-	super(message, cause);
+        super(message, cause);
     }
 
     public DataIOException(String message) {
-	super(message);
+        super(message);
     }
 
     public DataIOException(Throwable cause) {
-	super(cause);
+        super(cause);
     }
 }

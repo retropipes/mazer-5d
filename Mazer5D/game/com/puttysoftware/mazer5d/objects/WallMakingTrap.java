@@ -15,32 +15,32 @@ import com.puttysoftware.mazer5d.objects.abc.GenericTrap;
 
 class WallMakingTrap extends GenericTrap {
     public WallMakingTrap() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Wall-Making Trap";
+        return "Wall-Making Trap";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Wall-Making Traps";
+        return "Wall-Making Traps";
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
-	Mazer5D.getBagOStuff().getGameManager().delayedDecayTo(new Wall());
+        SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
+        Mazer5D.getBagOStuff().getGameManager().delayedDecayTo(new Wall());
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Wall-Making Traps create a Wall when you step OFF them.";
+        return "Wall-Making Traps create a Wall when you step OFF them.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.WALL_MAKING_TRAP;
+        return MazeObjects.WALL_MAKING_TRAP;
     }
 }

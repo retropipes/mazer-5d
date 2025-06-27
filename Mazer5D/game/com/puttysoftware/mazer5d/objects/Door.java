@@ -12,33 +12,33 @@ import com.puttysoftware.mazer5d.objects.abc.GenericPassThroughObject;
 class Door extends GenericPassThroughObject {
     // Constructors
     public Door() {
-	super();
+        super();
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-	return "Door";
+        return "Door";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Doors";
+        return "Doors";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Doors are purely decorative, but they do stop arrows from passing through.";
+        return "Doors are purely decorative, but they do stop arrows from passing through.";
     }
 
     @Override
     protected boolean customArrowHitAction(final int locX, final int locY, final int locZ, final int dirX,
-	    final int dirY, final int arrowType, final ObjectInventory inv) {
-	return false;
+            final int dirY, final int arrowType, final ObjectInventory inv) {
+        return false;
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.DOOR;
+        return MazeObjects.DOOR;
     }
 }

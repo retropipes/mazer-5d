@@ -10,26 +10,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericButton;
 
 class WhiteButton extends GenericButton {
     public WhiteButton() {
-	super(new WhiteWallOff(), new WhiteWallOn());
+        super(new WhiteWallOff(), new WhiteWallOn());
     }
 
     @Override
     protected String getNameHook() {
-	return "White Button";
+        return "White Button";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "White Buttons";
+        return "White Buttons";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "White Buttons will cause all White Walls Off to become On, and all White Walls On to become Off.";
+        return "White Buttons will cause all White Walls Off to become On, and all White Walls On to become Off.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.WHITE_BUTTON;
+        return MazeObjects.WHITE_BUTTON;
     }
 }

@@ -12,24 +12,24 @@ public class PrefixHandler implements PrefixIO {
 
     @Override
     public MazeVersion readPrefix(final MazeDataReader reader) throws IOException {
-	final int raw = PrefixHandler.readFormatVersion(reader);
-	try {
-	    return MazeVersion.values()[raw];
-	} catch (ArrayIndexOutOfBoundsException e) {
-	    throw new MazeVersionException(raw, e);
-	}
+        final int raw = PrefixHandler.readFormatVersion(reader);
+        try {
+            return MazeVersion.values()[raw];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new MazeVersionException(raw, e);
+        }
     }
 
     @Override
     public void writePrefix(final MazeDataWriter writer) throws IOException {
-	PrefixHandler.writeFormatVersion(writer);
+        PrefixHandler.writeFormatVersion(writer);
     }
 
     private static int readFormatVersion(final MazeDataReader reader) throws IOException {
-	return reader.readInt();
+        return reader.readInt();
     }
 
     private static void writeFormatVersion(final MazeDataWriter writer) throws IOException {
-	writer.writeInt(PrefixHandler.FORMAT_VERSION.ordinal());
+        writer.writeInt(PrefixHandler.FORMAT_VERSION.ordinal());
     }
 }

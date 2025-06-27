@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
 class RoseKey extends GenericSingleKey {
     // Constructors
     public RoseKey() {
-	super();
+        super();
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-	return "Rose Key";
+        return "Rose Key";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Rose Keys";
+        return "Rose Keys";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Rose Keys will unlock Rose Locks, and can only be used once.";
+        return "Rose Keys will unlock Rose Locks, and can only be used once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.ROSE_KEY;
+        return MazeObjects.ROSE_KEY;
     }
 }

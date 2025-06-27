@@ -16,34 +16,34 @@ import com.puttysoftware.mazer5d.loader.SoundPlayer;
 class YellowHouse extends FinishTo {
     // Constructors
     public YellowHouse() {
-	super();
+        super();
     }
 
     // Scriptability
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	final BagOStuff app = Mazer5D.getBagOStuff();
-	SoundPlayer.playSound(SoundIndex.UP, SoundGroup.GAME);
-	app.getGameManager().goToLevel(this.getDestinationLevel());
+        final BagOStuff app = Mazer5D.getBagOStuff();
+        SoundPlayer.playSound(SoundIndex.UP, SoundGroup.GAME);
+        app.getGameManager().goToLevel(this.getDestinationLevel());
     }
 
     @Override
     protected String getNameHook() {
-	return "Yellow House";
+        return "Yellow House";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Yellow Houses";
+        return "Yellow Houses";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Yellow Houses send you inside when walked on.";
+        return "Yellow Houses send you inside when walked on.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.YELLOW_HOUSE;
+        return MazeObjects.YELLOW_HOUSE;
     }
 }

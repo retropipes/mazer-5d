@@ -18,12 +18,12 @@ final class GameErrorHandler implements ErrorHandler {
     private final ErrorLogger logger;
 
     GameErrorHandler() {
-	this.logger = new ErrorLogger(GameErrorHandler.LOG_NAME);
+        this.logger = new ErrorLogger(GameErrorHandler.LOG_NAME);
     }
 
     @Override
     public void uncaughtException(final Thread t, final Throwable e) {
-	CommonDialogs.showErrorDialog(GameErrorHandler.ERROR_MESSAGE, GameErrorHandler.ERROR_TITLE);
-	this.logger.logError(e);
+        CommonDialogs.showErrorDialog(GameErrorHandler.ERROR_MESSAGE, GameErrorHandler.ERROR_TITLE);
+        this.logger.logError(e);
     }
 }

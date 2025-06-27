@@ -5,11 +5,11 @@ public class MazeVersions {
     public static final MazeVersion LATEST = MazeVersion.V6;
 
     private MazeVersions() {
-	// Do nothing
+        // Do nothing
     }
 
     public static boolean isCompatible(final MazeVersion formatVersion) {
-	return formatVersion.ordinal() >= MazeVersions.MINIMUM.ordinal()
-		&& formatVersion.ordinal() <= MazeVersions.LATEST.ordinal();
+        return formatVersion.ordinal() >= MazeVersions.MINIMUM.ordinal()
+                && formatVersion.ordinal() <= MazeVersions.LATEST.ordinal();
     }
 }

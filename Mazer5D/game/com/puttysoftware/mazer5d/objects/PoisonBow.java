@@ -15,26 +15,26 @@ class PoisonBow extends GenericBow {
 
     // Constructors
     public PoisonBow() {
-	super(PoisonBow.BOW_USES, ArrowTypes.POISON);
+        super(PoisonBow.BOW_USES, ArrowTypes.POISON);
     }
 
     @Override
     protected String getNameHook() {
-	return "Poison Bow";
+        return "Poison Bow";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Poison Bows";
+        return "Poison Bows";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Poison Bows allow shooting of Poison Arrows, which weaken Barrier Generators upon contact, and do eformatVersionything normal arrows do.";
+        return "Poison Bows allow shooting of Poison Arrows, which weaken Barrier Generators upon contact, and do eformatVersionything normal arrows do.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.POISON_BOW;
+        return MazeObjects.POISON_BOW;
     }
 }

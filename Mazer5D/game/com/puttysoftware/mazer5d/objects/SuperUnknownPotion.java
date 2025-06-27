@@ -15,26 +15,26 @@ class SuperUnknownPotion extends GenericPotion {
 
     // Constructors
     public SuperUnknownPotion() {
-	super(true, SuperUnknownPotion.MIN_EFFECT, SuperUnknownPotion.MAX_EFFECT);
+        super(true, SuperUnknownPotion.MIN_EFFECT, SuperUnknownPotion.MAX_EFFECT);
     }
 
     @Override
     protected String getNameHook() {
-	return "Super Unknown Potion";
+        return "Super Unknown Potion";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Super Unknown Potions";
+        return "Super Unknown Potions";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Super Unknown Potions might heal you almost fully or hurt you to the brink of death when picked up.";
+        return "Super Unknown Potions might heal you almost fully or hurt you to the brink of death when picked up.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.SUPER_UNKNOWN_POTION;
+        return MazeObjects.SUPER_UNKNOWN_POTION;
     }
 }

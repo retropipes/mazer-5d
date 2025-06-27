@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericToggleWall;
 class SkyWallOff extends GenericToggleWall {
     // Constructors
     public SkyWallOff() {
-	super(false);
+        super(false);
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-	return "Sky Wall Off";
+        return "Sky Wall Off";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Sky Walls Off";
+        return "Sky Walls Off";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Sky Walls Off can be walked through, and will change to Sky Walls On when a Sky Button is pressed.";
+        return "Sky Walls Off can be walked through, and will change to Sky Walls On when a Sky Button is pressed.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.SKY_WALL_OFF;
+        return MazeObjects.SKY_WALL_OFF;
     }
 }

@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
 class Key extends GenericSingleKey {
     // Constructors
     public Key() {
-	super();
+        super();
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-	return "Key";
+        return "Key";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Keys";
+        return "Keys";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Keys unlock Locks, and can only be used once.";
+        return "Keys unlock Locks, and can only be used once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.KEY;
+        return MazeObjects.KEY;
     }
 }

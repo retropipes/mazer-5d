@@ -19,19 +19,19 @@ import com.puttysoftware.mazer5d.locale.Translations;
 public abstract class GenericToggleWall extends MazeObject {
     // Constructors
     protected GenericToggleWall(final boolean solidState) {
-	super(solidState);
-	this.setType(TypeConstants.TYPE_TOGGLE_WALL);
+        super(solidState);
+        this.setType(TypeConstants.TYPE_TOGGLE_WALL);
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	Mazer5D.getBagOStuff().showMessage(Translations.load(Strings.MOVE_FAIL_DEFAULT));
-	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+        Mazer5D.getBagOStuff().showMessage(Translations.load(Strings.MOVE_FAIL_DEFAULT));
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
@@ -39,6 +39,6 @@ public abstract class GenericToggleWall extends MazeObject {
 
     @Override
     protected int getLayerHook() {
-	return Layers.OBJECT;
+        return Layers.OBJECT;
     }
 }

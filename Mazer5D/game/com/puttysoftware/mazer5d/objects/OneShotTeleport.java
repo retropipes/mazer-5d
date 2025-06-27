@@ -32,47 +32,47 @@ import com.puttysoftware.mazer5d.objects.abc.GenericTeleport;
 class OneShotTeleport extends GenericTeleport {
     // Constructors
     public OneShotTeleport() {
-	super(0, 0, 0);
+        super(0, 0, 0);
     }
 
     public OneShotTeleport(final int destinationRow, final int destinationColumn, final int destinationFloor) {
-	super(destinationRow, destinationColumn, destinationFloor);
+        super(destinationRow, destinationColumn, destinationFloor);
     }
 
     // Scriptability
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	final BagOStuff app = Mazer5D.getBagOStuff();
-	app.getGameManager().decay();
-	app.getGameManager().updatePositionAbsolute(this.getDestinationRow(), this.getDestinationColumn(),
-		this.getDestinationFloor());
-	SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
+        final BagOStuff app = Mazer5D.getBagOStuff();
+        app.getGameManager().decay();
+        app.getGameManager().updatePositionAbsolute(this.getDestinationRow(), this.getDestinationColumn(),
+                this.getDestinationFloor());
+        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override
     protected String getNameHook() {
-	return "One-Shot Teleport";
+        return "One-Shot Teleport";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "One-Shot Teleports";
+        return "One-Shot Teleports";
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-	final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-	final MazeObject mo = me.editTeleportDestination(MazeEditor.TELEPORT_TYPE_ONESHOT);
-	return mo;
+        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
+        final MazeObject mo = me.editTeleportDestination(MazeEditor.TELEPORT_TYPE_ONESHOT);
+        return mo;
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "One-Shot Teleports behave like regular Teleports, except they only work once.";
+        return "One-Shot Teleports behave like regular Teleports, except they only work once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.ONE_SHOT_TELEPORT;
+        return MazeObjects.ONE_SHOT_TELEPORT;
     }
 }

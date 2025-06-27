@@ -15,47 +15,47 @@ class TypeProperties {
 
     // Main constructor
     public TypeProperties() {
-	this.typeData = new PackedFlagStorage();
+        this.typeData = new PackedFlagStorage();
     }
 
     // Deserialization constructor
     public TypeProperties(final long source) {
-	this.typeData = new PackedFlagStorage(source);
+        this.typeData = new PackedFlagStorage(source);
     }
 
     // Copy constructor
     public TypeProperties(final TypeProperties source) {
-	this.typeData = new PackedFlagStorage(source.typeData);
+        this.typeData = new PackedFlagStorage(source.typeData);
     }
 
     // Methods
     @Override
     public boolean equals(final Object obj) {
-	if (obj == null) {
-	    return false;
-	}
-	if (this.getClass() != obj.getClass()) {
-	    return false;
-	}
-	final TypeProperties other = (TypeProperties) obj;
-	if (!Objects.equals(this.typeData, other.typeData)) {
-	    return false;
-	}
-	return true;
+        if (obj == null) {
+            return false;
+        }
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        final TypeProperties other = (TypeProperties) obj;
+        if (!Objects.equals(this.typeData, other.typeData)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public int hashCode() {
-	int hash = 3;
-	hash = 89 * hash + Objects.hashCode(this.typeData);
-	return hash;
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.typeData);
+        return hash;
     }
 
     public boolean isOfType(final int testType) {
-	return this.typeData.getFlag(testType);
+        return this.typeData.getFlag(testType);
     }
 
     public void setType(final int newType, final boolean value) {
-	this.typeData.setFlag(value, newType);
+        this.typeData.setFlag(value, newType);
     }
 }

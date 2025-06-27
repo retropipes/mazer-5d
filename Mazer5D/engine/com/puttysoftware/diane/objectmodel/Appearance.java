@@ -17,48 +17,48 @@ public abstract class Appearance {
     private final ColorReplaceRules replacements;
 
     public Appearance(final String name, final DianeImage imageIndex) {
-	this.cacheName = name;
-	this.whichImage = imageIndex;
-	this.shading = null;
-	this.replacements = null;
+        this.cacheName = name;
+        this.whichImage = imageIndex;
+        this.shading = null;
+        this.replacements = null;
     }
 
     public Appearance(final String name, final DianeImage imageIndex, final ColorShader shader) {
-	this.cacheName = name;
-	this.whichImage = imageIndex;
-	this.shading = shader;
-	this.replacements = null;
+        this.cacheName = name;
+        this.whichImage = imageIndex;
+        this.shading = shader;
+        this.replacements = null;
     }
 
     public Appearance(final String name, final DianeImage imageIndex, final ColorReplaceRules replaceRules) {
-	this.cacheName = name;
-	this.whichImage = imageIndex;
-	this.shading = null;
-	this.replacements = replaceRules;
+        this.cacheName = name;
+        this.whichImage = imageIndex;
+        this.shading = null;
+        this.replacements = replaceRules;
     }
 
     public final String getCacheName() {
-	return this.cacheName;
+        return this.cacheName;
     }
 
     protected final DianeImage getWhichImage() {
-	return this.whichImage;
+        return this.whichImage;
     }
 
     public final boolean hasShading() {
-	return this.shading != null;
+        return this.shading != null;
     }
 
     public final ColorShader getShading() {
-	return this.shading;
+        return this.shading;
     }
 
     public final boolean hasReplacementRules() {
-	return this.replacements != null;
+        return this.replacements != null;
     }
 
     public final ColorReplaceRules getReplacementRules() {
-	return this.replacements;
+        return this.replacements;
     }
 
     public abstract BufferedImageIcon getImage();

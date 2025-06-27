@@ -11,20 +11,20 @@ import com.puttysoftware.mazer5d.abc.MazeObjects;
 public class TrueSight extends MazeEffect {
     // Constructor
     public TrueSight(final int newRounds) {
-	super("True Sight", newRounds);
+        super("True Sight", newRounds);
     }
 
     @Override
     public void customExtendLogic() {
-	// Apply the effect
-	Mazer5D.getBagOStuff().getGameManager().enableTrueSight();
+        // Apply the effect
+        Mazer5D.getBagOStuff().getGameManager().enableTrueSight();
     }
 
     @Override
     public void customTerminateLogic() {
-	// Remove item that granted effect from inventory
-	Mazer5D.getBagOStuff().getGameManager().getObjectInventory().removeItem(MazeObjects.TRUE_SIGHT_AMULET);
-	// Undo the effect
-	Mazer5D.getBagOStuff().getGameManager().disableTrueSight();
+        // Remove item that granted effect from inventory
+        Mazer5D.getBagOStuff().getGameManager().getObjectInventory().removeItem(MazeObjects.TRUE_SIGHT_AMULET);
+        // Undo the effect
+        Mazer5D.getBagOStuff().getGameManager().disableTrueSight();
     }
 }

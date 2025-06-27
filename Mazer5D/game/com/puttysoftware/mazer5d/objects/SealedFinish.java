@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericPassThroughObject;
 class SealedFinish extends GenericPassThroughObject {
     // Constructors
     public SealedFinish() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Sealed Finish";
+        return "Sealed Finish";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return null;
+        return null;
     }
 
     @Override
     protected String getDescriptionHook() {
-	return null;
+        return null;
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.SEALED_FINISH;
+        return MazeObjects.SEALED_FINISH;
     }
 }

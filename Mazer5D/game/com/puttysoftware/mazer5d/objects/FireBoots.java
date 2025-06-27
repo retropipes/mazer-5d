@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
 class FireBoots extends GenericBoots {
     // Constructors
     public FireBoots() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Fire Boots";
+        return "Fire Boots";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Pairs of Fire Boots";
+        return "Pairs of Fire Boots";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Fire Boots allow walking on lava. Note that you can only wear one pair of boots at once.";
+        return "Fire Boots allow walking on lava. Note that you can only wear one pair of boots at once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.FIRE_BOOTS;
+        return MazeObjects.FIRE_BOOTS;
     }
 }

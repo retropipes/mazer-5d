@@ -10,19 +10,19 @@ import com.puttysoftware.mazer5d.abc.MazeObjects;
 public class MazeDataReader extends XDataReader {
     // Constructors
     public MazeDataReader(final String filename, final String docTag) throws IOException {
-	super(filename, docTag);
+        super(filename, docTag);
     }
 
     public MazeDataReader(final InputStream stream, final String docTag) throws IOException {
-	super(stream, docTag);
+        super(stream, docTag);
     }
 
     // Methods
     public MazeObjects readMazeObjectID() throws DataIOException {
-	final String line = this.readString();
-	if (line != null) {
-	    return MazeObjects.valueOf(line);
-	}
-	throw new DataIOException("End of file!"); //$NON-NLS-1$
+        final String line = this.readString();
+        if (line != null) {
+            return MazeObjects.valueOf(line);
+        }
+        throw new DataIOException("End of file!"); //$NON-NLS-1$
     }
 }

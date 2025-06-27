@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericPass;
 class EnergySphere extends GenericPass {
     // Constructors
     public EnergySphere() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Energy Sphere";
+        return "Energy Sphere";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Energy Spheres";
+        return "Energy Spheres";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Energy Spheres permit walking on Force Fields.";
+        return "Energy Spheres permit walking on Force Fields.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.ENERGY_SPHERE;
+        return MazeObjects.ENERGY_SPHERE;
     }
 }

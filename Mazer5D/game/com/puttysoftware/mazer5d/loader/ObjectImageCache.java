@@ -9,81 +9,81 @@ import com.puttysoftware.diane.image.BufferedImageIcon;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 
 public class ObjectImageCache {
-    // Fields
-    private static BufferedImageIcon[] cache;
-    private static String[] nameCache;
-    private static int CACHE_INCREMENT = 20;
-    private static int CACHE_SIZE = 0;
+	// Fields
+	private static BufferedImageIcon[] cache;
+	private static String[] nameCache;
+	private static int CACHE_INCREMENT = 20;
+	private static int CACHE_SIZE = 0;
 
-    // Methods
-    static BufferedImageIcon getCachedHelpImage(final String name) {
-	if (!ObjectImageCache.isInCache(name)) {
-	    final BufferedImageIcon bii = ObjectImageLoader.getUncachedHelpImage(name);
-	    ObjectImageCache.addToCache(name, bii);
+	// Methods
+	static BufferedImageIcon getCachedHelpImage(final String name) {
+		if (!ObjectImageCache.isInCache(name)) {
+			final BufferedImageIcon bii = ObjectImageLoader.getUncachedHelpImage(name);
+			ObjectImageCache.addToCache(name, bii);
+		}
+		for (int x = 0; x < ObjectImageCache.nameCache.length; x++) {
+			if (name.equals(ObjectImageCache.nameCache[x])) {
+				return ObjectImageCache.cache[x];
+			}
+		}
+		return null;
 	}
-	for (int x = 0; x < ObjectImageCache.nameCache.length; x++) {
-	    if (name.equals(ObjectImageCache.nameCache[x])) {
-		return ObjectImageCache.cache[x];
-	    }
-	}
-	return null;
-    }
 
-    static BufferedImageIcon getCachedObjectImage(final MazeObject obj, final boolean game) {
-	MazeObject realObj;
-	if (game) {
-	    realObj = obj.gameRenderHook();
-	} else {
-	    realObj = obj;
+	static BufferedImageIcon getCachedObjectImage(final MazeObject obj, final boolean game) {
+		MazeObject realObj;
+		if (game) {
+			realObj = obj.gameRenderHook();
+		} else {
+			realObj = obj;
+		}
+		String name = realObj.getImageName();
+		if (!ObjectImageCache.isInCache(name)) {
+			final BufferedImageIcon bii = ObjectImageLoader.getUncachedObjectImage(realObj);
+			ObjectImageCache.addToCache(name, bii);
+		}
+		for (int x = 0; x < ObjectImageCache.nameCache.length; x++) {
+			if (name.equals(ObjectImageCache.nameCache[x])) {
+				return ObjectImageCache.cache[x];
+			}
+		}
+		return null;
 	}
-	String name = realObj.getImageName();
-	if (!ObjectImageCache.isInCache(name)) {
-	    final BufferedImageIcon bii = ObjectImageLoader.getUncachedObjectImage(realObj);
-	    ObjectImageCache.addToCache(name, bii);
-	}
-	for (int x = 0; x < ObjectImageCache.nameCache.length; x++) {
-	    if (name.equals(ObjectImageCache.nameCache[x])) {
-		return ObjectImageCache.cache[x];
-	    }
-	}
-	return null;
-    }
 
-    private static void expandCache() {
-	final BufferedImageIcon[] tempCache = new BufferedImageIcon[ObjectImageCache.cache.length
-		+ ObjectImageCache.CACHE_INCREMENT];
-	final String[] tempNameCache = new String[ObjectImageCache.cache.length + ObjectImageCache.CACHE_INCREMENT];
-	for (int x = 0; x < ObjectImageCache.CACHE_SIZE; x++) {
-	    tempCache[x] = ObjectImageCache.cache[x];
-	    tempNameCache[x] = ObjectImageCache.nameCache[x];
+	private static void expandCache() {
+		final BufferedImageIcon[] tempCache = new BufferedImageIcon[ObjectImageCache.cache.length
+				+ ObjectImageCache.CACHE_INCREMENT];
+		final String[] tempNameCache = new String[ObjectImageCache.cache.length + ObjectImageCache.CACHE_INCREMENT];
+		for (int x = 0; x < ObjectImageCache.CACHE_SIZE; x++) {
+			tempCache[x] = ObjectImageCache.cache[x];
+			tempNameCache[x] = ObjectImageCache.nameCache[x];
+		}
+		ObjectImageCache.cache = tempCache;
+		ObjectImageCache.nameCache = tempNameCache;
 	}
-	ObjectImageCache.cache = tempCache;
-	ObjectImageCache.nameCache = tempNameCache;
-    }
 
-    private static void addToCache(final String name, final BufferedImageIcon bii) {
-	if (ObjectImageCache.cache == null || ObjectImageCache.nameCache == null) {
-	    ObjectImageCache.cache = new BufferedImageIcon[ObjectImageCache.CACHE_INCREMENT];
-	    ObjectImageCache.nameCache = new String[ObjectImageCache.CACHE_INCREMENT];
+	private static void addToCache(final String name, final BufferedImageIcon bii) {
+		if (ObjectImageCache.cache == null || ObjectImageCache.nameCache == null) {
+			ObjectImageCache.cache = new BufferedImageIcon[ObjectImageCache.CACHE_INCREMENT];
+			ObjectImageCache.nameCache = new String[ObjectImageCache.CACHE_INCREMENT];
+		}
+		if (ObjectImageCache.CACHE_SIZE == ObjectImageCache.cache.length) {
+			ObjectImageCache.expandCache();
+		}
+		ObjectImageCache.cache[ObjectImageCache.CACHE_SIZE] = bii;
+		ObjectImageCache.nameCache[ObjectImageCache.CACHE_SIZE] = name;
+		ObjectImageCache.CACHE_SIZE++;
 	}
-	if (ObjectImageCache.CACHE_SIZE == ObjectImageCache.cache.length) {
-	    ObjectImageCache.expandCache();
-	}
-	ObjectImageCache.cache[ObjectImageCache.CACHE_SIZE] = bii;
-	ObjectImageCache.nameCache[ObjectImageCache.CACHE_SIZE] = name;
-	ObjectImageCache.CACHE_SIZE++;
-    }
 
-    private static boolean isInCache(final String name) {
-	if (ObjectImageCache.cache == null || ObjectImageCache.nameCache == null) {
-	    ObjectImageCache.cache = new BufferedImageIcon[ObjectImageCache.CACHE_INCREMENT];
-	    ObjectImageCache.nameCache = new String[ObjectImageCache.CACHE_INCREMENT];
+	private static boolean isInCache(final String name) {
+		if (ObjectImageCache.cache == null || ObjectImageCache.nameCache == null) {
+			ObjectImageCache.cache = new BufferedImageIcon[ObjectImageCache.CACHE_INCREMENT];
+			ObjectImageCache.nameCache = new String[ObjectImageCache.CACHE_INCREMENT];
+		}
+		for (int x = 0; x < ObjectImageCache.CACHE_SIZE; x++) {
+			if (name.equals(ObjectImageCache.nameCache[x])) {
+				return true;
+			}
+		}
+		return false;
 	}
-	for (int x = 0; x < ObjectImageCache.CACHE_SIZE; x++) {
-	    if (name.equals(ObjectImageCache.nameCache[x])) {
-		return true;
-	    }
-	}
-	return false;
-    }
 }

@@ -22,7 +22,7 @@ public class PackedFlagStorage {
      *
      */
     public PackedFlagStorage() {
-	this.dataStore = 0L;
+        this.dataStore = 0L;
     }
 
     // Copy constructor
@@ -32,7 +32,7 @@ public class PackedFlagStorage {
      * @param source the @self to make a copy of
      */
     public PackedFlagStorage(final PackedFlagStorage source) {
-	this.dataStore = source.dataStore;
+        this.dataStore = source.dataStore;
     }
 
     // Protected copy constructor
@@ -42,7 +42,7 @@ public class PackedFlagStorage {
      * @param source the underlying long where stored data came from
      */
     public PackedFlagStorage(final long source) {
-	this.dataStore = source;
+        this.dataStore = source;
     }
 
     // Methods
@@ -54,20 +54,20 @@ public class PackedFlagStorage {
      */
     @Override
     public boolean equals(final Object obj) {
-	if (this == obj) {
-	    return true;
-	}
-	if (obj == null) {
-	    return false;
-	}
-	if (!(obj instanceof PackedFlagStorage)) {
-	    return false;
-	}
-	final PackedFlagStorage other = (PackedFlagStorage) obj;
-	if (this.dataStore != other.dataStore) {
-	    return false;
-	}
-	return true;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof PackedFlagStorage)) {
+            return false;
+        }
+        final PackedFlagStorage other = (PackedFlagStorage) obj;
+        if (this.dataStore != other.dataStore) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -77,8 +77,8 @@ public class PackedFlagStorage {
      * @return the data at that location
      */
     public final boolean getFlag(final int loc) {
-	final long check = this.dataStore | (long) Math.pow(2, loc);
-	return this.dataStore == check;
+        final long check = this.dataStore | (long) Math.pow(2, loc);
+        return this.dataStore == check;
     }
 
     /**
@@ -87,7 +87,7 @@ public class PackedFlagStorage {
      * @return the underlying long
      */
     public final long serialize() {
-	return this.dataStore;
+        return this.dataStore;
     }
 
     /**
@@ -95,9 +95,9 @@ public class PackedFlagStorage {
      */
     @Override
     public int hashCode() {
-	final int prime = 31;
-	final int result = 1;
-	return prime * result + Long.hashCode(this.dataStore);
+        final int prime = 31;
+        final int result = 1;
+        return prime * result + Long.hashCode(this.dataStore);
     }
 
     /**
@@ -107,14 +107,14 @@ public class PackedFlagStorage {
      * @param loc the location to modify
      */
     public final void setFlag(final boolean val, final int loc) {
-	final long check = this.dataStore | (long) Math.pow(2, loc);
-	final boolean test = this.dataStore == check;
-	if (test != val) {
-	    if (val) {
-		this.dataStore = check;
-	    } else {
-		this.dataStore = this.dataStore & ~(long) Math.pow(2, loc);
-	    }
-	}
+        final long check = this.dataStore | (long) Math.pow(2, loc);
+        final boolean test = this.dataStore == check;
+        if (test != val) {
+            if (val) {
+                this.dataStore = check;
+            } else {
+                this.dataStore = this.dataStore & ~(long) Math.pow(2, loc);
+            }
+        }
     }
 }

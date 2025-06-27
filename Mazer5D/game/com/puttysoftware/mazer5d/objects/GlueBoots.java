@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
 class GlueBoots extends GenericBoots {
     // Constructors
     public GlueBoots() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Glue Boots";
+        return "Glue Boots";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Pairs of Glue Boots";
+        return "Pairs of Glue Boots";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Glue Boots allow walking on Ice without slipping. Note that you can only wear one pair of boots at once.";
+        return "Glue Boots allow walking on Ice without slipping. Note that you can only wear one pair of boots at once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.GLUE_BOOTS;
+        return MazeObjects.GLUE_BOOTS;
     }
 }

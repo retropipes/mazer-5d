@@ -15,26 +15,26 @@ class GhostBow extends GenericBow {
 
     // Constructors
     public GhostBow() {
-	super(GhostBow.BOW_USES, ArrowTypes.GHOST);
+        super(GhostBow.BOW_USES, ArrowTypes.GHOST);
     }
 
     @Override
     protected String getNameHook() {
-	return "Ghost Bow";
+        return "Ghost Bow";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Ghost Bows";
+        return "Ghost Bows";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Ghost Bows allow shooting of Ghost Arrows, which pass through objects that do not react to arrows, even if they are solid, and do eformatVersionything normal arrows do.";
+        return "Ghost Bows allow shooting of Ghost Arrows, which pass through objects that do not react to arrows, even if they are solid, and do eformatVersionything normal arrows do.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.GHOST_BOW;
+        return MazeObjects.GHOST_BOW;
     }
 }

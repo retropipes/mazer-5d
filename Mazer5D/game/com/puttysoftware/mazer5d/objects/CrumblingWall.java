@@ -18,43 +18,43 @@ import com.puttysoftware.mazer5d.objects.abc.GenericWall;
 class CrumblingWall extends GenericWall {
     // Constructors
     public CrumblingWall() {
-	super();
-	this.setType(TypeConstants.TYPE_BREAKABLE_WALL);
-	this.setType(TypeConstants.TYPE_WALL);
+        super();
+        this.setType(TypeConstants.TYPE_BREAKABLE_WALL);
+        this.setType(TypeConstants.TYPE_WALL);
     }
 
     @Override
     protected boolean customArrowHitAction(final int locX, final int locY, final int locZ, final int dirX,
-	    final int dirY, final int arrowType, final ObjectInventory inv) {
-	this.moveFailedAction(true, locX, locY, inv);
-	return false;
+            final int dirY, final int arrowType, final ObjectInventory inv) {
+        this.moveFailedAction(true, locX, locY, inv);
+        return false;
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	// Destroy the wall
-	final int pz = Mazer5D.getBagOStuff().getGameManager().getPlayerManager().getPlayerLocationZ();
-	Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), dirX, dirY, pz);
-	SoundPlayer.playSound(SoundIndex.CRACK, SoundGroup.GAME);
+        // Destroy the wall
+        final int pz = Mazer5D.getBagOStuff().getGameManager().getPlayerManager().getPlayerLocationZ();
+        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), dirX, dirY, pz);
+        SoundPlayer.playSound(SoundIndex.CRACK, SoundGroup.GAME);
     }
 
     @Override
     protected String getNameHook() {
-	return "Crumbling Wall";
+        return "Crumbling Wall";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Crumbling Walls";
+        return "Crumbling Walls";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Crumbling Walls crumble to nothing when hit.";
+        return "Crumbling Walls crumble to nothing when hit.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.CRUMBLING_WALL;
+        return MazeObjects.CRUMBLING_WALL;
     }
 }

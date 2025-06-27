@@ -28,6 +28,6 @@ public class Directions {
     public static final String WEST_NAME = "West";
 
     private Directions() {
-	// Do nothing
+        // Do nothing
     }
 }

@@ -16,35 +16,35 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleLock;
 class SkyLock extends GenericSingleLock {
     // Constructors
     public SkyLock() {
-	super(new SkyKey());
+        super(new SkyKey());
     }
 
     // Scriptability
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-	    Mazer5D.getBagOStuff().showMessage("You need a sky key");
-	}
-	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+            Mazer5D.getBagOStuff().showMessage("You need a sky key");
+        }
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     protected String getNameHook() {
-	return "Sky Lock";
+        return "Sky Lock";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Sky Locks";
+        return "Sky Locks";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Sky Locks require Sky Keys to open.";
+        return "Sky Locks require Sky Keys to open.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.SKY_LOCK;
+        return MazeObjects.SKY_LOCK;
     }
 }

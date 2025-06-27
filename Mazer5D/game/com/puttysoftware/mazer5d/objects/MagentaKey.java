@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
 class MagentaKey extends GenericSingleKey {
     // Constructors
     public MagentaKey() {
-	super();
+        super();
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-	return "Magenta Key";
+        return "Magenta Key";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Magenta Keys";
+        return "Magenta Keys";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Magenta Keys will unlock Magenta Locks, and can only be used once.";
+        return "Magenta Keys will unlock Magenta Locks, and can only be used once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.MAGENTA_KEY;
+        return MazeObjects.MAGENTA_KEY;
     }
 }

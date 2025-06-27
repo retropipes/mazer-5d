@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericProgrammableLock;
 class CrystalWall extends GenericProgrammableLock {
     // Constructors
     public CrystalWall() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Crystal Wall";
+        return "Crystal Wall";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Crystal Walls";
+        return "Crystal Walls";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Crystal Walls require one Crystal to open. The crystal type required may be different from wall to wall.";
+        return "Crystal Walls require one Crystal to open. The crystal type required may be different from wall to wall.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.CRYSTAL_WALL;
+        return MazeObjects.CRYSTAL_WALL;
     }
 }

@@ -8,9 +8,9 @@ package com.puttysoftware.mazer5d.objects.abc;
 import com.puttysoftware.mazer5d.abc.TypeConstants;
 
 public abstract class GenericSingleLock extends GenericLock {
-    protected GenericSingleLock(final GenericSingleKey mgk) {
-	super(mgk);
-	this.setType(TypeConstants.TYPE_UNLOCKED_LOSE_KEY);
-	this.setType(TypeConstants.TYPE_LOCK);
-    }
+	protected GenericSingleLock(final GenericSingleKey mgk) {
+		super(mgk);
+		this.setType(TypeConstants.TYPE_UNLOCKED_LOSE_KEY);
+		this.setType(TypeConstants.TYPE_LOCK);
+	}
 }

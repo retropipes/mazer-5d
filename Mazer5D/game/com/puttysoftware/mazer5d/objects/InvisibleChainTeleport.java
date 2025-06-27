@@ -19,52 +19,52 @@ import com.puttysoftware.mazer5d.objects.abc.GenericInvisibleTeleport;
 class InvisibleChainTeleport extends GenericInvisibleTeleport {
     // Constructors
     public InvisibleChainTeleport() {
-	super(0, 0, 0);
+        super(0, 0, 0);
     }
 
     public InvisibleChainTeleport(final int destinationRow, final int destinationColumn, final int destinationFloor) {
-	super(destinationRow, destinationColumn, destinationFloor);
+        super(destinationRow, destinationColumn, destinationFloor);
     }
 
     // Scriptability
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	final BagOStuff app = Mazer5D.getBagOStuff();
-	app.getGameManager().updatePositionAbsoluteNoEvents(this.getDestinationRow(), this.getDestinationColumn(),
-		this.getDestinationFloor(), this.getDestinationLevel());
-	Mazer5D.getBagOStuff().showMessage("Invisible Teleport!");
-	SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
+        final BagOStuff app = Mazer5D.getBagOStuff();
+        app.getGameManager().updatePositionAbsoluteNoEvents(this.getDestinationRow(), this.getDestinationColumn(),
+                this.getDestinationFloor(), this.getDestinationLevel());
+        Mazer5D.getBagOStuff().showMessage("Invisible Teleport!");
+        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override
     protected String getNameHook() {
-	return "Invisible Chain Teleport";
+        return "Invisible Chain Teleport";
     }
 
     @Override
     public String getGameName() {
-	return "Empty";
+        return "Empty";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Invisible Chain Teleports";
+        return "Invisible Chain Teleports";
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-	final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-	final MazeObject mo = me.editTeleportDestination(MazeEditor.TELEPORT_TYPE_INVISIBLE_GENERIC);
-	return mo;
+        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
+        final MazeObject mo = me.editTeleportDestination(MazeEditor.TELEPORT_TYPE_INVISIBLE_GENERIC);
+        return mo;
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Invisible Chain Teleports behave like regular teleports, except for the fact that they can't be seen.";
+        return "Invisible Chain Teleports behave like regular teleports, except for the fact that they can't be seen.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.INVISIBLE_CHAIN_TELEPORT;
+        return MazeObjects.INVISIBLE_CHAIN_TELEPORT;
     }
 }

@@ -27,123 +27,123 @@ public class FileExtensions {
 
     // Methods (no period)
     public static String getSoundExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.SOUND);
+        return DataLoader.loadFileExtension(FileExtensions.SOUND);
     }
 
     public static String getImageExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.IMAGE);
+        return DataLoader.loadFileExtension(FileExtensions.IMAGE);
     }
 
     public static String getMusicExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.MUSIC);
+        return DataLoader.loadFileExtension(FileExtensions.MUSIC);
     }
 
     public static String getMazeExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.MAZE);
+        return DataLoader.loadFileExtension(FileExtensions.MAZE);
     }
 
     public static String getGameExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.GAME);
+        return DataLoader.loadFileExtension(FileExtensions.GAME);
     }
 
     public static String getLockedMazeExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.LOCKED_MAZE);
+        return DataLoader.loadFileExtension(FileExtensions.LOCKED_MAZE);
     }
 
     public static String getMazeLevelExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.MAZE_LEVEL);
+        return DataLoader.loadFileExtension(FileExtensions.MAZE_LEVEL);
     }
 
     public static String getMazeTempExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.MAZE_TEMP);
+        return DataLoader.loadFileExtension(FileExtensions.MAZE_TEMP);
     }
 
     public static String getScoresExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.SCORES);
+        return DataLoader.loadFileExtension(FileExtensions.SCORES);
     }
 
     public static String getRuleSetExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.RULE_SET);
+        return DataLoader.loadFileExtension(FileExtensions.RULE_SET);
     }
 
     public static String getCharacterExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.CHARACTER);
+        return DataLoader.loadFileExtension(FileExtensions.CHARACTER);
     }
 
     public static String getRegistryExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.REGISTRY);
+        return DataLoader.loadFileExtension(FileExtensions.REGISTRY);
     }
 
     public static String getPrefsExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.PREFS);
+        return DataLoader.loadFileExtension(FileExtensions.PREFS);
     }
 
     public static String getDataFileExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.DATA_FILE);
+        return DataLoader.loadFileExtension(FileExtensions.DATA_FILE);
     }
 
     public static String getRawFileExtension() {
-	return DataLoader.loadFileExtension(FileExtensions.RAW_FILE);
+        return DataLoader.loadFileExtension(FileExtensions.RAW_FILE);
     }
 
     // Methods (with period)
     public static String getSoundExtensionWithPeriod() {
-	return DataLoader.loadFileExtensionWithPeriod(FileExtensions.SOUND);
+        return DataLoader.loadFileExtensionWithPeriod(FileExtensions.SOUND);
     }
 
     public static String getImageExtensionWithPeriod() {
-	return DataLoader.loadFileExtensionWithPeriod(FileExtensions.IMAGE);
+        return DataLoader.loadFileExtensionWithPeriod(FileExtensions.IMAGE);
     }
 
     public static String getMusicExtensionWithPeriod() {
-	return DataLoader.loadFileExtensionWithPeriod(FileExtensions.MUSIC);
+        return DataLoader.loadFileExtensionWithPeriod(FileExtensions.MUSIC);
     }
 
     public static String getMazeExtensionWithPeriod() {
-	return DataLoader.loadFileExtensionWithPeriod(FileExtensions.MAZE);
+        return DataLoader.loadFileExtensionWithPeriod(FileExtensions.MAZE);
     }
 
     public static String getGameExtensionWithPeriod() {
-	return DataLoader.loadFileExtensionWithPeriod(FileExtensions.GAME);
+        return DataLoader.loadFileExtensionWithPeriod(FileExtensions.GAME);
     }
 
     public static String getLockedMazeExtensionWithPeriod() {
-	return DataLoader.loadFileExtensionWithPeriod(FileExtensions.LOCKED_MAZE);
+        return DataLoader.loadFileExtensionWithPeriod(FileExtensions.LOCKED_MAZE);
     }
 
     public static String getMazeLevelExtensionWithPeriod() {
-	return DataLoader.loadFileExtension(FileExtensions.MAZE_LEVEL);
+        return DataLoader.loadFileExtension(FileExtensions.MAZE_LEVEL);
     }
 
     public static String getMazeTempExtensionWithPeriod() {
-	return DataLoader.loadFileExtension(FileExtensions.MAZE_TEMP);
+        return DataLoader.loadFileExtension(FileExtensions.MAZE_TEMP);
     }
 
     public static String getScoresExtensionWithPeriod() {
-	return DataLoader.loadFileExtensionWithPeriod(FileExtensions.SCORES);
+        return DataLoader.loadFileExtensionWithPeriod(FileExtensions.SCORES);
     }
 
     public static String getRuleSetExtensionWithPeriod() {
-	return DataLoader.loadFileExtensionWithPeriod(FileExtensions.RULE_SET);
+        return DataLoader.loadFileExtensionWithPeriod(FileExtensions.RULE_SET);
     }
 
     public static String getCharacterExtensionWithPeriod() {
-	return DataLoader.loadFileExtensionWithPeriod(FileExtensions.CHARACTER);
+        return DataLoader.loadFileExtensionWithPeriod(FileExtensions.CHARACTER);
     }
 
     public static String getRegistryExtensionWithPeriod() {
-	return DataLoader.loadFileExtensionWithPeriod(FileExtensions.REGISTRY);
+        return DataLoader.loadFileExtensionWithPeriod(FileExtensions.REGISTRY);
     }
 
     public static String getPrefsExtensionWithPeriod() {
-	return DataLoader.loadFileExtensionWithPeriod(FileExtensions.PREFS);
+        return DataLoader.loadFileExtensionWithPeriod(FileExtensions.PREFS);
     }
 
     public static String getDataFileExtensionWithPeriod() {
-	return DataLoader.loadFileExtensionWithPeriod(FileExtensions.DATA_FILE);
+        return DataLoader.loadFileExtensionWithPeriod(FileExtensions.DATA_FILE);
     }
 
     public static String getRawFileExtensionWithPeriod() {
-	return DataLoader.loadFileExtensionWithPeriod(FileExtensions.RAW_FILE);
+        return DataLoader.loadFileExtensionWithPeriod(FileExtensions.RAW_FILE);
     }
 }

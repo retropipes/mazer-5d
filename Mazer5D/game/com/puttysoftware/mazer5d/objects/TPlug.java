@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.objects.abc.GenericPlug;
 class TPlug extends GenericPlug {
     // Constructors
     public TPlug() {
-	super();
+        super();
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.T_PLUG;
+        return MazeObjects.T_PLUG;
     }
 }

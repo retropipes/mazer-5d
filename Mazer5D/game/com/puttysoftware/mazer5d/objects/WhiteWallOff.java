@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericToggleWall;
 class WhiteWallOff extends GenericToggleWall {
     // Constructors
     public WhiteWallOff() {
-	super(false);
+        super(false);
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-	return "White Wall Off";
+        return "White Wall Off";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "White Walls Off";
+        return "White Walls Off";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "White Walls Off can be walked through, and will change to White Walls On when a White Button is pressed.";
+        return "White Walls Off can be walked through, and will change to White Walls On when a White Button is pressed.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.WHITE_WALL_OFF;
+        return MazeObjects.WHITE_WALL_OFF;
     }
 }

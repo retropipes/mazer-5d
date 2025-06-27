@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.objects.abc.GenericProgrammableKey;
 class SkyCrystal extends GenericProgrammableKey {
     // Constructors
     public SkyCrystal() {
-	super("Sky");
+        super("Sky");
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.SKY_CRYSTAL;
+        return MazeObjects.SKY_CRYSTAL;
     }
 }

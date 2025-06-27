@@ -11,31 +11,31 @@ import com.puttysoftware.mazer5d.objects.abc.GenericConditionalTeleport;
 class InvisibleConditionalTeleport extends GenericConditionalTeleport {
     // Constructors
     public InvisibleConditionalTeleport() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Invisible Conditional Teleport";
+        return "Invisible Conditional Teleport";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Invisible Conditional Teleports";
+        return "Invisible Conditional Teleports";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Invisible Conditional Teleports send you to one of two predetermined destinations when stepped on, depending on how many Sun or Moon Stones are in your inventory, and cannot be seen.";
+        return "Invisible Conditional Teleports send you to one of two predetermined destinations when stepped on, depending on how many Sun or Moon Stones are in your inventory, and cannot be seen.";
     }
 
     @Override
     public String getGameName() {
-	return "Empty";
+        return "Empty";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.INVISIBLE_CONDITIONAL_TELEPORT;
+        return MazeObjects.INVISIBLE_CONDITIONAL_TELEPORT;
     }
 }

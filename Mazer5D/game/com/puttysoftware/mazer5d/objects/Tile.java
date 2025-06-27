@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericGround;
 class Tile extends GenericGround {
     // Constructors
     public Tile() {
-	super(true, true, true, true);
+        super(true, true, true, true);
     }
 
     @Override
     protected String getNameHook() {
-	return "Tile";
+        return "Tile";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Tiles";
+        return "Tiles";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Tile is one of the many types of ground - unlike other types of ground, objects can be pushed and pulled oformatVersion Tiles.";
+        return "Tile is one of the many types of ground - unlike other types of ground, objects can be pushed and pulled oformatVersion Tiles.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.TILE;
+        return MazeObjects.TILE;
     }
 }

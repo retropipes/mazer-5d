@@ -19,20 +19,20 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 public abstract class GenericTextHolder extends MazeObject {
     // Constructors
     protected GenericTextHolder() {
-	super(true);
-	this.addOneCustomText();
-	this.setSignText("Empty");
-	this.setType(TypeConstants.TYPE_TEXT_HOLDER);
+        super(true);
+        this.addOneCustomText();
+        this.setSignText("Empty");
+        this.setType(TypeConstants.TYPE_TEXT_HOLDER);
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	// Do nothing
+        // Do nothing
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	CommonDialogs.showDialog(this.getSignText());
+        CommonDialogs.showDialog(this.getSignText());
     }
 
     @Override
@@ -40,24 +40,25 @@ public abstract class GenericTextHolder extends MazeObject {
 
     @Override
     protected int getLayerHook() {
-	return Layers.OBJECT;
+        return Layers.OBJECT;
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-	this.setSignText(CommonDialogs.showTextInputDialogWithDefault("Set Text for " + this.getName(), "Editor",
-		this.getSignText()));
-	return this;
+        this.setSignText(CommonDialogs.showTextInputDialogWithDefault("Set Text for " + this.getName(), "Editor",
+                this.getSignText()));
+        return this;
     }
 
     @Override
-    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final MazeVersion formatVersion) throws IOException {
-	this.setSignText(reader.readString());
-	return this;
+    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final MazeVersion formatVersion)
+            throws IOException {
+        this.setSignText(reader.readString());
+        return this;
     }
 
     @Override
     protected void writeMazeObjectHook(final MazeDataWriter writer) throws IOException {
-	writer.writeString(this.getSignText());
+        writer.writeString(this.getSignText());
     }
 }

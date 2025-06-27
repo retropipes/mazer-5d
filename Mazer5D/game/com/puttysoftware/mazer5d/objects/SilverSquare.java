@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericMultipleKey;
 class SilformatVersionSquare extends GenericMultipleKey {
     // Constructors
     public SilformatVersionSquare() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "SilformatVersion Square";
+        return "SilformatVersion Square";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "SilformatVersion Squares";
+        return "SilformatVersion Squares";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "SilformatVersion Squares are the keys to SilformatVersion Walls.";
+        return "SilformatVersion Squares are the keys to SilformatVersion Walls.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.SILVER_SQUARE;
+        return MazeObjects.SILVER_SQUARE;
     }
 }

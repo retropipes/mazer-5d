@@ -11,12 +11,12 @@ import com.puttysoftware.mazer5d.abc.MazeObjects;
 public class Fiery extends MazeEffect {
     // Constructor
     public Fiery(final int newRounds) {
-	super("Fiery", newRounds);
+        super("Fiery", newRounds);
     }
 
     @Override
     public void customTerminateLogic() {
-	// Remove item that granted effect from inventory
-	Mazer5D.getBagOStuff().getGameManager().getObjectInventory().removeItem(MazeObjects.FIRE_AMULET);
+        // Remove item that granted effect from inventory
+        Mazer5D.getBagOStuff().getGameManager().getObjectInventory().removeItem(MazeObjects.FIRE_AMULET);
     }
 }

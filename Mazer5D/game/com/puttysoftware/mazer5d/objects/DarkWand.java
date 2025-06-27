@@ -19,41 +19,41 @@ import com.puttysoftware.mazer5d.objects.abc.GenericWand;
 class DarkWand extends GenericWand {
     // Constructors
     public DarkWand() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Dark Wand";
+        return "Dark Wand";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Dark Wands";
+        return "Dark Wands";
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-	final Maze m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
-	final MazeObject obj = m.getCell(x, y, z, Layers.OBJECT);
-	if (obj.getName().equals("Empty")) {
-	    // Create a Dark Gem
-	    this.useAction(new DarkGem(), x, y, z);
-	    SoundPlayer.playSound(SoundIndex.DARKNESS, SoundGroup.GAME);
-	} else if (obj.getName().equals("Light Gem")) {
-	    // Destroy the Light Gem
-	    this.useAction(GameObjects.getEmptySpace(), x, y, z);
-	    SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
-	}
+        final Maze m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
+        final MazeObject obj = m.getCell(x, y, z, Layers.OBJECT);
+        if (obj.getName().equals("Empty")) {
+            // Create a Dark Gem
+            this.useAction(new DarkGem(), x, y, z);
+            SoundPlayer.playSound(SoundIndex.DARKNESS, SoundGroup.GAME);
+        } else if (obj.getName().equals("Light Gem")) {
+            // Destroy the Light Gem
+            this.useAction(GameObjects.getEmptySpace(), x, y, z);
+            SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
+        }
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Dark Wands have 2 uses. When aimed at an empty space, they create a Dark Gem. When aimed at a Light Gem, it is destroyed.";
+        return "Dark Wands have 2 uses. When aimed at an empty space, they create a Dark Gem. When aimed at a Light Gem, it is destroyed.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.DARK_WAND;
+        return MazeObjects.DARK_WAND;
     }
 }

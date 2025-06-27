@@ -16,42 +16,42 @@ import com.puttysoftware.mazer5d.objects.abc.GenericField;
 class Slime extends GenericField {
     // Constructors
     public Slime() {
-	super(new BioHazardBoots());
+        super(new BioHazardBoots());
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	SoundPlayer.playSound(SoundIndex.WALK_ON_SLIME, SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK_ON_SLIME, SoundGroup.GAME);
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	Mazer5D.getBagOStuff().showMessage("You'll corrode");
-	SoundPlayer.playSound(SoundIndex.SLIME, SoundGroup.GAME);
+        Mazer5D.getBagOStuff().showMessage("You'll corrode");
+        SoundPlayer.playSound(SoundIndex.SLIME, SoundGroup.GAME);
     }
 
     @Override
     protected String getNameHook() {
-	return "Slime";
+        return "Slime";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Squares of Slime";
+        return "Squares of Slime";
     }
 
     @Override
     public boolean oformatVersionridesDefaultPostMove() {
-	return true;
+        return true;
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Slime is too corrosive to walk on without Bio-Hazard Boots.";
+        return "Slime is too corrosive to walk on without Bio-Hazard Boots.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.SLIME;
+        return MazeObjects.SLIME;
     }
 }

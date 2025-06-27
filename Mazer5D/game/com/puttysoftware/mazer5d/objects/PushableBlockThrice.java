@@ -19,35 +19,35 @@ import com.puttysoftware.mazer5d.objects.abc.GenericMovableObject;
 class PushableBlockThrice extends GenericMovableObject {
     // Constructors
     public PushableBlockThrice() {
-	super(true, false);
+        super(true, false);
     }
 
     @Override
     protected String getNameHook() {
-	return "Pushable Block Thrice";
+        return "Pushable Block Thrice";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Pushable Blocks Thrice";
+        return "Pushable Blocks Thrice";
     }
 
     @Override
     public void pushAction(final ObjectInventory inv, final MazeObject mo, final int x, final int y, final int pushX,
-	    final int pushY) {
-	final BagOStuff app = Mazer5D.getBagOStuff();
-	app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
-	SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
-	app.getGameManager().morphOther(new PushableBlockTwice(), pushX, pushY, Layers.OBJECT);
+            final int pushY) {
+        final BagOStuff app = Mazer5D.getBagOStuff();
+        app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
+        SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
+        app.getGameManager().morphOther(new PushableBlockTwice(), pushX, pushY, Layers.OBJECT);
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Pushable Blocks Thrice can only be pushed three times, before turning into a wall.";
+        return "Pushable Blocks Thrice can only be pushed three times, before turning into a wall.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.PUSHABLE_BLOCK_THRICE;
+        return MazeObjects.PUSHABLE_BLOCK_THRICE;
     }
 }

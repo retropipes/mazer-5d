@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericMultipleKey;
 class RubySquare extends GenericMultipleKey {
     // Constructors
     public RubySquare() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Ruby Square";
+        return "Ruby Square";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Ruby Squares";
+        return "Ruby Squares";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Ruby Squares are the keys to Ruby Walls.";
+        return "Ruby Squares are the keys to Ruby Walls.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.RUBY_SQUARE;
+        return MazeObjects.RUBY_SQUARE;
     }
 }

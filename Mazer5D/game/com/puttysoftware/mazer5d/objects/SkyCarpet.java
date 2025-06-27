@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.objects.abc.GenericCarpet;
 class SkyCarpet extends GenericCarpet {
     // Constructors
     public SkyCarpet() {
-	super("Sky");
+        super("Sky");
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.SKY_CARPET;
+        return MazeObjects.SKY_CARPET;
     }
 }

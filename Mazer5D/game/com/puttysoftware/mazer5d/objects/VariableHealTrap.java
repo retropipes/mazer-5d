@@ -22,38 +22,38 @@ class VariableHealTrap extends GenericTrap {
 
     // Constructors
     public VariableHealTrap() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Variable Heal Trap";
+        return "Variable Heal Trap";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Variable Heal Traps";
+        return "Variable Heal Traps";
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	this.maxHealing = Mazer5D.getBagOStuff().getMazeManager().getMaze().getMaximumHP() / 10;
-	if (this.maxHealing < VariableHealTrap.MIN_HEALING) {
-	    this.maxHealing = VariableHealTrap.MIN_HEALING;
-	}
-	this.healingGiven = new RandomRange(VariableHealTrap.MIN_HEALING, this.maxHealing);
-	Mazer5D.getBagOStuff().getMazeManager().getMaze().heal(this.healingGiven.generate());
-	SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
-	Mazer5D.getBagOStuff().getGameManager().decay();
+        this.maxHealing = Mazer5D.getBagOStuff().getMazeManager().getMaze().getMaximumHP() / 10;
+        if (this.maxHealing < VariableHealTrap.MIN_HEALING) {
+            this.maxHealing = VariableHealTrap.MIN_HEALING;
+        }
+        this.healingGiven = new RandomRange(VariableHealTrap.MIN_HEALING, this.maxHealing);
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().heal(this.healingGiven.generate());
+        SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
+        Mazer5D.getBagOStuff().getGameManager().decay();
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Variable Heal Traps heal you when stepped on, then disappear.";
+        return "Variable Heal Traps heal you when stepped on, then disappear.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.VARIABLE_HEAL_TRAP;
+        return MazeObjects.VARIABLE_HEAL_TRAP;
     }
 }

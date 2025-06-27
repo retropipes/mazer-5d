@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
 class RedKey extends GenericSingleKey {
     // Constructors
     public RedKey() {
-	super();
+        super();
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-	return "Red Key";
+        return "Red Key";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Red Keys";
+        return "Red Keys";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Red Keys will unlock Red Locks, and can only be used once.";
+        return "Red Keys will unlock Red Locks, and can only be used once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.RED_KEY;
+        return MazeObjects.RED_KEY;
     }
 }

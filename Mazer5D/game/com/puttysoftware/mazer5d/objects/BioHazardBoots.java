@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
 class BioHazardBoots extends GenericBoots {
     // Constructors
     public BioHazardBoots() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Bio-Hazard Boots";
+        return "Bio-Hazard Boots";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Pairs of Bio-Hazard Boots";
+        return "Pairs of Bio-Hazard Boots";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Bio-Hazard Boots allow walking on slime. Note that you can only wear one pair of boots at once.";
+        return "Bio-Hazard Boots allow walking on slime. Note that you can only wear one pair of boots at once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.BIO_HAZARD_BOOTS;
+        return MazeObjects.BIO_HAZARD_BOOTS;
     }
 }

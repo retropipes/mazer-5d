@@ -15,31 +15,31 @@ public final class MainWindowContent {
     private JPanel content;
 
     MainWindowContent(final Dimension contentSize) {
-	super();
-	this.content = new JPanel();
-	this.content.setPreferredSize(contentSize);
-	this.content.setMinimumSize(contentSize);
-	this.content.setMaximumSize(contentSize);
-	this.content.setSize(contentSize);
+        super();
+        this.content = new JPanel();
+        this.content.setPreferredSize(contentSize);
+        this.content.setMinimumSize(contentSize);
+        this.content.setMaximumSize(contentSize);
+        this.content.setSize(contentSize);
     }
 
     JPanel owner() {
-	return this.content;
+        return this.content;
     }
 
     public void add(final Component comp) {
-	this.content.add(comp);
+        this.content.add(comp);
     }
 
     public void add(final Component comp, final Object constraints) {
-	this.content.add(comp, constraints);
+        this.content.add(comp, constraints);
     }
 
     public void setLayout(final LayoutManager mgr) {
-	this.content.setLayout(mgr);
+        this.content.setLayout(mgr);
     }
 
     public void removeAll() {
-	this.content.removeAll();
+        this.content.removeAll();
     }
 }

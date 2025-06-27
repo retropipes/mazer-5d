@@ -15,26 +15,26 @@ class Bow extends GenericBow {
 
     // Constructors
     public Bow() {
-	super(Bow.BOW_USES, ArrowTypes.PLAIN);
+        super(Bow.BOW_USES, ArrowTypes.PLAIN);
     }
 
     @Override
     protected String getNameHook() {
-	return "Bow";
+        return "Bow";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Bows";
+        return "Bows";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Bows shoot an unlimited supply of normal arrows.";
+        return "Bows shoot an unlimited supply of normal arrows.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.BOW;
+        return MazeObjects.BOW;
     }
 }

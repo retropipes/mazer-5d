@@ -14,35 +14,35 @@ final class Tile {
     private final Appearance appearance;
 
     public Tile(final Appearance look) {
-	super();
-	this.appearance = look;
+        super();
+        this.appearance = look;
     }
 
     public void setGameLook(final Appearance look) {
-	this.gameAppearance = look;
+        this.gameAppearance = look;
     }
 
     public void setEditorLook(final Appearance look) {
-	this.editorAppearance = look;
+        this.editorAppearance = look;
     }
 
     public void setBattleLook(final Appearance look) {
-	this.battleAppearance = look;
+        this.battleAppearance = look;
     }
 
     public BufferedImageIcon getImage() {
-	return this.appearance.getImage();
+        return this.appearance.getImage();
     }
 
     public BufferedImageIcon getGameImage() {
-	return this.gameAppearance != null ? this.gameAppearance.getImage() : this.getImage();
+        return this.gameAppearance != null ? this.gameAppearance.getImage() : this.getImage();
     }
 
     public BufferedImageIcon getEditorImage() {
-	return this.editorAppearance != null ? this.editorAppearance.getImage() : this.getGameImage();
+        return this.editorAppearance != null ? this.editorAppearance.getImage() : this.getGameImage();
     }
 
     public BufferedImageIcon getBattleImage() {
-	return this.battleAppearance != null ? this.battleAppearance.getImage() : this.getGameImage();
+        return this.battleAppearance != null ? this.battleAppearance.getImage() : this.getGameImage();
     }
 }

@@ -14,28 +14,28 @@ public abstract class GenericBow extends GenericUsableObject {
 
     // Constructors
     protected GenericBow(final int uses, final int arrowType) {
-	super(uses);
-	this.AT = arrowType;
-	this.setType(TypeConstants.TYPE_BOW);
-	this.setType(TypeConstants.TYPE_USABLE);
-	this.setType(TypeConstants.TYPE_INVENTORYABLE);
-	this.setType(TypeConstants.TYPE_CONTAINABLE);
+        super(uses);
+        this.AT = arrowType;
+        this.setType(TypeConstants.TYPE_BOW);
+        this.setType(TypeConstants.TYPE_USABLE);
+        this.setType(TypeConstants.TYPE_INVENTORYABLE);
+        this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-	// Do nothing
+        // Do nothing
     }
 
     @Override
     public void useAction(final MazeObject mo, final int x, final int y, final int z) {
-	// Do nothing
+        // Do nothing
     }
 
     @Override
     protected abstract String getNameHook();
 
     public int getArrowType() {
-	return this.AT;
+        return this.AT;
     }
 }

@@ -32,47 +32,47 @@ import com.puttysoftware.mazer5d.objects.abc.GenericTeleport;
 class OneShotChainTeleport extends GenericTeleport {
     // Constructors
     public OneShotChainTeleport() {
-	super(0, 0, 0);
+        super(0, 0, 0);
     }
 
     public OneShotChainTeleport(final int destinationRow, final int destinationColumn, final int destinationFloor) {
-	super(destinationRow, destinationColumn, destinationFloor);
+        super(destinationRow, destinationColumn, destinationFloor);
     }
 
     // Scriptability
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	final BagOStuff app = Mazer5D.getBagOStuff();
-	app.getGameManager().decay();
-	app.getGameManager().updatePositionAbsoluteNoEvents(this.getDestinationRow(), this.getDestinationColumn(),
-		this.getDestinationFloor(), this.getDestinationLevel());
-	SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
+        final BagOStuff app = Mazer5D.getBagOStuff();
+        app.getGameManager().decay();
+        app.getGameManager().updatePositionAbsoluteNoEvents(this.getDestinationRow(), this.getDestinationColumn(),
+                this.getDestinationFloor(), this.getDestinationLevel());
+        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override
     protected String getNameHook() {
-	return "One-Shot Chain Teleport";
+        return "One-Shot Chain Teleport";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "One-Shot Chain Teleports";
+        return "One-Shot Chain Teleports";
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-	final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-	final MazeObject mo = me.editTeleportDestination(MazeEditor.TELEPORT_TYPE_ONESHOT);
-	return mo;
+        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
+        final MazeObject mo = me.editTeleportDestination(MazeEditor.TELEPORT_TYPE_ONESHOT);
+        return mo;
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "One-Shot Chain Teleports behave like regular Teleports, except they only work once.";
+        return "One-Shot Chain Teleports behave like regular Teleports, except they only work once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.ONE_SHOT_CHAIN_TELEPORT;
+        return MazeObjects.ONE_SHOT_CHAIN_TELEPORT;
     }
 }

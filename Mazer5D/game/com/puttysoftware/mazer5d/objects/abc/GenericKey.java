@@ -8,11 +8,11 @@ package com.puttysoftware.mazer5d.objects.abc;
 import com.puttysoftware.mazer5d.abc.TypeConstants;
 
 public abstract class GenericKey extends GenericInventoryableObject {
-    // Constructors
-    protected GenericKey(final boolean infiniteUse) {
-	super(false, 0);
-	this.setType(TypeConstants.TYPE_KEY);
-	this.setType(TypeConstants.TYPE_INVENTORYABLE);
-	this.setType(TypeConstants.TYPE_CONTAINABLE);
-    }
+	// Constructors
+	protected GenericKey(final boolean infiniteUse) {
+		super(false, 0);
+		this.setType(TypeConstants.TYPE_KEY);
+		this.setType(TypeConstants.TYPE_INVENTORYABLE);
+		this.setType(TypeConstants.TYPE_CONTAINABLE);
+	}
 }

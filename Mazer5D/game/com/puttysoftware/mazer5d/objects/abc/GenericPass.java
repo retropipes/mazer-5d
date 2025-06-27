@@ -8,13 +8,13 @@ package com.puttysoftware.mazer5d.objects.abc;
 import com.puttysoftware.mazer5d.abc.TypeConstants;
 
 public abstract class GenericPass extends GenericInfiniteKey {
-    // Constructors
-    protected GenericPass() {
-	super();
-	this.setType(TypeConstants.TYPE_PASS);
-	this.setType(TypeConstants.TYPE_INFINITE_USE);
-	this.setType(TypeConstants.TYPE_KEY);
-	this.setType(TypeConstants.TYPE_INVENTORYABLE);
-	this.setType(TypeConstants.TYPE_CONTAINABLE);
-    }
+	// Constructors
+	protected GenericPass() {
+		super();
+		this.setType(TypeConstants.TYPE_PASS);
+		this.setType(TypeConstants.TYPE_INFINITE_USE);
+		this.setType(TypeConstants.TYPE_KEY);
+		this.setType(TypeConstants.TYPE_INVENTORYABLE);
+		this.setType(TypeConstants.TYPE_CONTAINABLE);
+	}
 }

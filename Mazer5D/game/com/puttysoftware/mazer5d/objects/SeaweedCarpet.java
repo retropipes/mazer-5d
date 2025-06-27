@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.objects.abc.GenericCarpet;
 class SeaweedCarpet extends GenericCarpet {
     // Constructors
     public SeaweedCarpet() {
-	super("Seaweed");
+        super("Seaweed");
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.SEAWEED_CARPET;
+        return MazeObjects.SEAWEED_CARPET;
     }
 }

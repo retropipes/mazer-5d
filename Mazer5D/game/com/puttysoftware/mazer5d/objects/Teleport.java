@@ -14,37 +14,37 @@ import com.puttysoftware.mazer5d.objects.abc.GenericTeleport;
 class Teleport extends GenericTeleport {
     // Constructors
     public Teleport() {
-	super(0, 0, 0);
+        super(0, 0, 0);
     }
 
     public Teleport(final int destinationRow, final int destinationColumn, final int destinationFloor) {
-	super(destinationRow, destinationColumn, destinationFloor);
+        super(destinationRow, destinationColumn, destinationFloor);
     }
 
     @Override
     protected String getNameHook() {
-	return "Teleport";
+        return "Teleport";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Teleports";
+        return "Teleports";
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-	final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-	final MazeObject mo = me.editTeleportDestination(MazeEditor.TELEPORT_TYPE_GENERIC);
-	return mo;
+        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
+        final MazeObject mo = me.editTeleportDestination(MazeEditor.TELEPORT_TYPE_GENERIC);
+        return mo;
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Teleports send you to a predetermined destination when stepped on.";
+        return "Teleports send you to a predetermined destination when stepped on.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.TELEPORT;
+        return MazeObjects.TELEPORT;
     }
 }

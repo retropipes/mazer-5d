@@ -17,33 +17,33 @@ import com.puttysoftware.mazer5d.objects.abc.GenericTrap;
 class NoExploreTrap extends GenericTrap {
     // Constructors
     public NoExploreTrap() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "No Explore Trap";
+        return "No Explore Trap";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "No Explore Traps";
+        return "No Explore Traps";
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
-	Mazer5D.getBagOStuff().getMazeManager().getMaze().removeVisionMode(VisionModes.EXPLORE);
-	Mazer5D.getBagOStuff().getGameManager().decay();
+        SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().removeVisionMode(VisionModes.EXPLORE);
+        Mazer5D.getBagOStuff().getGameManager().decay();
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "No Explore Traps turn exploring mode off, then disappear.";
+        return "No Explore Traps turn exploring mode off, then disappear.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.NO_EXPLORE_TRAP;
+        return MazeObjects.NO_EXPLORE_TRAP;
     }
 }

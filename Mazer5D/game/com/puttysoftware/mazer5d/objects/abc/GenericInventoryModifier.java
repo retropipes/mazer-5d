@@ -13,16 +13,16 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 public abstract class GenericInventoryModifier extends MazeObject {
     // Constructors
     protected GenericInventoryModifier() {
-	super(false);
-	this.setType(TypeConstants.TYPE_INVENTORY_MODIFIER);
+        super(false);
+        this.setType(TypeConstants.TYPE_INVENTORY_MODIFIER);
     }
 
     @Override
     protected abstract void customPostMoveAction(final boolean ie, final int dirX, final int dirY,
-	    final ObjectInventory inv);
+            final ObjectInventory inv);
 
     @Override
     protected int getLayerHook() {
-	return Layers.OBJECT;
+        return Layers.OBJECT;
     }
 }

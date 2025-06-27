@@ -15,7 +15,7 @@ class RandomnessSource {
      */
     // Constructor
     private RandomnessSource() {
-	// Do nothing
+        // Do nothing
     }
 
     /**
@@ -25,7 +25,7 @@ class RandomnessSource {
      */
     // Methods
     private static Random getSource() {
-	return RandomnessSource.theSource;
+        return RandomnessSource.theSource;
     }
 
     /**
@@ -34,7 +34,7 @@ class RandomnessSource {
      * @return the integer
      */
     static int nextInt() {
-	return RandomnessSource.getSource().nextInt();
+        return RandomnessSource.getSource().nextInt();
     }
 
     /**
@@ -43,7 +43,7 @@ class RandomnessSource {
      * @return the long
      */
     static long nextLong() {
-	return RandomnessSource.getSource().nextLong();
+        return RandomnessSource.getSource().nextLong();
     }
 
     /**
@@ -52,6 +52,6 @@ class RandomnessSource {
      * @return the double
      */
     static double nextDouble() {
-	return RandomnessSource.getSource().nextDouble();
+        return RandomnessSource.getSource().nextDouble();
     }
 }

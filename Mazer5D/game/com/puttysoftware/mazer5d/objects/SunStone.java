@@ -20,35 +20,35 @@ class SunStone extends GenericInventoryableObject {
 
     // Constructors
     public SunStone() {
-	super(false, 0);
+        super(false, 0);
     }
 
     @Override
     protected String getNameHook() {
-	return "Sun Stone";
+        return "Sun Stone";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Sun Stones";
+        return "Sun Stones";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Sun Stones act as a trigger for other actions when collected.";
+        return "Sun Stones act as a trigger for other actions when collected.";
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	inv.addItem(this);
-	final BagOStuff app = Mazer5D.getBagOStuff();
-	app.getGameManager().decay();
-	SoundPlayer.playSound(SoundIndex.SUN_STONE, SoundGroup.GAME);
-	Mazer5D.getBagOStuff().getGameManager().addToScore(SunStone.SCORE_GRAB_STONE);
+        inv.addItem(this);
+        final BagOStuff app = Mazer5D.getBagOStuff();
+        app.getGameManager().decay();
+        SoundPlayer.playSound(SoundIndex.SUN_STONE, SoundGroup.GAME);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(SunStone.SCORE_GRAB_STONE);
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.SUN_STONE;
+        return MazeObjects.SUN_STONE;
     }
 }

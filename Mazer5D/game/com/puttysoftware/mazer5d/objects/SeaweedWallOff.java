@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericToggleWall;
 class SeaweedWallOff extends GenericToggleWall {
     // Constructors
     public SeaweedWallOff() {
-	super(false);
+        super(false);
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-	return "Seaweed Wall Off";
+        return "Seaweed Wall Off";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Seaweed Walls Off";
+        return "Seaweed Walls Off";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Seaweed Walls Off can be walked through, and will change to Seaweed Walls On when a Seaweed Button is pressed.";
+        return "Seaweed Walls Off can be walked through, and will change to Seaweed Walls On when a Seaweed Button is pressed.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.SEAWEED_WALL_OFF;
+        return MazeObjects.SEAWEED_WALL_OFF;
     }
 }

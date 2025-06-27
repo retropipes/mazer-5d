@@ -16,35 +16,35 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleLock;
 class YellowLock extends GenericSingleLock {
     // Constructors
     public YellowLock() {
-	super(new YellowKey());
+        super(new YellowKey());
     }
 
     // Scriptability
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-	    Mazer5D.getBagOStuff().showMessage("You need a yellow key");
-	}
-	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+            Mazer5D.getBagOStuff().showMessage("You need a yellow key");
+        }
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     protected String getNameHook() {
-	return "Yellow Lock";
+        return "Yellow Lock";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Yellow Locks";
+        return "Yellow Locks";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Yellow Locks require Yellow Keys to open.";
+        return "Yellow Locks require Yellow Keys to open.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.YELLOW_LOCK;
+        return MazeObjects.YELLOW_LOCK;
     }
 }

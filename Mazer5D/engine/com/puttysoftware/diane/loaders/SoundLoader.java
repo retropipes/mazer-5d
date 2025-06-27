@@ -21,49 +21,49 @@ import com.puttysoftware.diane.Diane;
 import com.puttysoftware.diane.asset.DianeSound;
 
 public class SoundLoader {
-    private SoundLoader() {
-	// Do nothing
-    }
+	private SoundLoader() {
+		// Do nothing
+	}
 
-    private static final int BUFFER_SIZE = 4096; // 4Kb
+	private static final int BUFFER_SIZE = 4096; // 4Kb
 
-    public static void play(final DianeSound sound) {
-	SoundLoader.play(sound.getSoundURL());
-    }
+	public static void play(final DianeSound sound) {
+		SoundLoader.play(sound.getSoundURL());
+	}
 
-    public static void play(final URL sound) {
-	new Thread() {
-	    @Override
-	    public void run() {
-		try (AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(sound)) {
-		    final AudioFormat format = audioInputStream.getFormat();
-		    final DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
-		    try (Line line = AudioSystem.getLine(info); SourceDataLine auline = (SourceDataLine) line) {
-			auline.open(format);
-			auline.start();
-			int nBytesRead = 0;
-			final byte[] abData = new byte[SoundLoader.BUFFER_SIZE];
-			try {
-			    while (nBytesRead != -1) {
-				nBytesRead = audioInputStream.read(abData, 0, abData.length);
-				if (nBytesRead >= 0) {
-				    auline.write(abData, 0, nBytesRead);
+	public static void play(final URL sound) {
+		new Thread() {
+			@Override
+			public void run() {
+				try (AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(sound)) {
+					final AudioFormat format = audioInputStream.getFormat();
+					final DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+					try (Line line = AudioSystem.getLine(info); SourceDataLine auline = (SourceDataLine) line) {
+						auline.open(format);
+						auline.start();
+						int nBytesRead = 0;
+						final byte[] abData = new byte[SoundLoader.BUFFER_SIZE];
+						try {
+							while (nBytesRead != -1) {
+								nBytesRead = audioInputStream.read(abData, 0, abData.length);
+								if (nBytesRead >= 0) {
+									auline.write(abData, 0, nBytesRead);
+								}
+							}
+						} catch (final IOException e) {
+							Diane.handleError(e);
+						} finally {
+							auline.drain();
+						}
+					} catch (final LineUnavailableException e) {
+						Diane.handleError(e);
+					}
+				} catch (final UnsupportedAudioFileException e) {
+					Diane.handleError(e);
+				} catch (final IOException e) {
+					Diane.handleError(e);
 				}
-			    }
-			} catch (final IOException e) {
-			    Diane.handleError(e);
-			} finally {
-			    auline.drain();
 			}
-		    } catch (final LineUnavailableException e) {
-			Diane.handleError(e);
-		    }
-		} catch (final UnsupportedAudioFileException e) {
-		    Diane.handleError(e);
-		} catch (final IOException e) {
-		    Diane.handleError(e);
-		}
-	    }
-	}.start();
-    }
+		}.start();
+	}
 }

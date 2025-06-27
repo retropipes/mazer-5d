@@ -8,18 +8,18 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 public abstract class GenericMovingObject extends MazeObject {
     // Constructors
     public GenericMovingObject(final boolean solid) {
-	super(solid);
-	this.setType(TypeConstants.TYPE_MOVING);
+        super(solid);
+        this.setType(TypeConstants.TYPE_MOVING);
     }
 
     // Methods
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	this.postMoveActionHook();
+        this.postMoveActionHook();
     }
 
     public void postMoveActionHook() {
-	// Do nothing
+        // Do nothing
     }
 
     @Override
@@ -27,6 +27,6 @@ public abstract class GenericMovingObject extends MazeObject {
 
     @Override
     protected int getLayerHook() {
-	return Layers.OBJECT;
+        return Layers.OBJECT;
     }
 }

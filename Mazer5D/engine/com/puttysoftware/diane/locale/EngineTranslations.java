@@ -13,19 +13,20 @@ public final class EngineTranslations {
     }
 
     public static String load(EngineStrings item) {
-	return ResourceBundle.getBundle(EngineTranslations.RESOURCES, EngineTranslations.ACTIVE).getString(item.toString());
+        return ResourceBundle.getBundle(EngineTranslations.RESOURCES, EngineTranslations.ACTIVE)
+                .getString(item.toString());
     }
 
     public static String load(EngineStrings item, String... replacements) {
-	String result = ResourceBundle.getBundle(EngineTranslations.RESOURCES, EngineTranslations.ACTIVE)
-		.getString(item.toString());
-	for (int x = 0; x < replacements.length; x++) {
-	    result = result.replace(EngineTranslations.PLACEHOLDER + x, replacements[x]);
-	}
-	return result;
+        String result = ResourceBundle.getBundle(EngineTranslations.RESOURCES, EngineTranslations.ACTIVE)
+                .getString(item.toString());
+        for (int x = 0; x < replacements.length; x++) {
+            result = result.replace(EngineTranslations.PLACEHOLDER + x, replacements[x]);
+        }
+        return result;
     }
 
     public static void setActiveLanguage(final Locale newActive) {
-	EngineTranslations.ACTIVE = newActive;
+        EngineTranslations.ACTIVE = newActive;
     }
 }

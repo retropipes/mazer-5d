@@ -11,20 +11,20 @@ import com.puttysoftware.mazer5d.abc.MazeObjects;
 public class Poisonous extends MazeEffect {
     // Constructor
     public Poisonous(final int newRounds) {
-	super("Poisonous", newRounds);
+        super("Poisonous", newRounds);
     }
 
     @Override
     public void customExtendLogic() {
-	// Apply the effect
-	Mazer5D.getBagOStuff().getMazeManager().getMaze().doPoisonousAmulet();
+        // Apply the effect
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().doPoisonousAmulet();
     }
 
     @Override
     public void customTerminateLogic() {
-	// Remove item that granted effect from inventory
-	Mazer5D.getBagOStuff().getGameManager().getObjectInventory().removeItem(MazeObjects.POISONOUS_AMULET);
-	// Undo the effect
-	Mazer5D.getBagOStuff().getMazeManager().getMaze().undoPoisonAmulets();
+        // Remove item that granted effect from inventory
+        Mazer5D.getBagOStuff().getGameManager().getObjectInventory().removeItem(MazeObjects.POISONOUS_AMULET);
+        // Undo the effect
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().undoPoisonAmulets();
     }
 }

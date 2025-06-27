@@ -20,34 +20,34 @@ class DizzinessTrap extends GenericTrap {
 
     // Constructors
     public DizzinessTrap() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Dizziness Trap";
+        return "Dizziness Trap";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Dizziness Traps";
+        return "Dizziness Traps";
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	Mazer5D.getBagOStuff().showMessage("You feel dizzy!");
-	Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_DIZZY,
-		DizzinessTrap.EFFECT_DURATION);
-	SoundPlayer.playSound(SoundIndex.DIZZY, SoundGroup.GAME);
+        Mazer5D.getBagOStuff().showMessage("You feel dizzy!");
+        Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_DIZZY,
+                DizzinessTrap.EFFECT_DURATION);
+        SoundPlayer.playSound(SoundIndex.DIZZY, SoundGroup.GAME);
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Dizziness Traps randomly alter your controls each step for 10 steps when stepped on.";
+        return "Dizziness Traps randomly alter your controls each step for 10 steps when stepped on.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.DIZZINESS_TRAP;
+        return MazeObjects.DIZZINESS_TRAP;
     }
 }

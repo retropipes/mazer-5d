@@ -23,24 +23,24 @@ import com.puttysoftware.mazer5d.asset.LogoImageIndex;
 import com.puttysoftware.mazer5d.file.FileExtensions;
 
 public class LogoImageLoader {
-    private static String[] allFilenames;
-    private static final int MAX_INDEX = 2;
+	private static String[] allFilenames;
+	private static final int MAX_INDEX = 2;
 
-    private static void preInit() {
-	if (LogoImageLoader.allFilenames == null) {
-	    LogoImageLoader.allFilenames = DataLoader.loadLogoImageData();
-	    final String imageExt = FileExtensions.getImageExtensionWithPeriod();
-	    for (int i = 1; i <= LogoImageLoader.MAX_INDEX; i++) {
-		final String name = "/asset/image/logo/" + LogoImageLoader.allFilenames[i] + imageExt;
-		ImageLoader.load(name, LogoImageLoader.class.getResource(name));
-	    }
+	private static void preInit() {
+		if (LogoImageLoader.allFilenames == null) {
+			LogoImageLoader.allFilenames = DataLoader.loadLogoImageData();
+			final String imageExt = FileExtensions.getImageExtensionWithPeriod();
+			for (int i = 1; i <= LogoImageLoader.MAX_INDEX; i++) {
+				final String name = "/asset/image/logo/" + LogoImageLoader.allFilenames[i] + imageExt;
+				ImageLoader.load(name, LogoImageLoader.class.getResource(name));
+			}
+		}
 	}
-    }
 
-    public static BufferedImageIcon load(final LogoImageIndex image) {
-	LogoImageLoader.preInit();
-	final String imageExt = FileExtensions.getImageExtensionWithPeriod();
-	final String name = "/asset/image/logo/" + LogoImageLoader.allFilenames[image.ordinal()] + imageExt;
-	return ImageLoader.load(name, LogoImageLoader.class.getResource(name));
-    }
+	public static BufferedImageIcon load(final LogoImageIndex image) {
+		LogoImageLoader.preInit();
+		final String imageExt = FileExtensions.getImageExtensionWithPeriod();
+		final String name = "/asset/image/logo/" + LogoImageLoader.allFilenames[image.ordinal()] + imageExt;
+		return ImageLoader.load(name, LogoImageLoader.class.getResource(name));
+	}
 }

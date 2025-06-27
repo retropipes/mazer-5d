@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
 class AquaBoots extends GenericBoots {
     // Constructors
     public AquaBoots() {
-	super();
+        super();
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.AQUA_BOOTS;
+        return MazeObjects.AQUA_BOOTS;
     }
 }

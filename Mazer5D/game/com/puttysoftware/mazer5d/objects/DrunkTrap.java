@@ -20,34 +20,34 @@ class DrunkTrap extends GenericTrap {
 
     // Constructors
     public DrunkTrap() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Drunk Trap";
+        return "Drunk Trap";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Drunk Traps";
+        return "Drunk Traps";
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	Mazer5D.getBagOStuff().showMessage("You stumble around drunkenly!");
-	Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_DRUNK,
-		DrunkTrap.EFFECT_DURATION);
-	SoundPlayer.playSound(SoundIndex.DRUNK, SoundGroup.GAME);
+        Mazer5D.getBagOStuff().showMessage("You stumble around drunkenly!");
+        Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_DRUNK,
+                DrunkTrap.EFFECT_DURATION);
+        SoundPlayer.playSound(SoundIndex.DRUNK, SoundGroup.GAME);
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Drunk Traps alter your movement in a way that resembles being intoxicated for 10 steps when stepped on.";
+        return "Drunk Traps alter your movement in a way that resembles being intoxicated for 10 steps when stepped on.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.DRUNK_TRAP;
+        return MazeObjects.DRUNK_TRAP;
     }
 }

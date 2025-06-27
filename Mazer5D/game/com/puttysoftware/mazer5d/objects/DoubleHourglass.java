@@ -19,34 +19,34 @@ class DoubleHourglass extends GenericTimeModifier {
 
     // Constructors
     public DoubleHourglass() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Double Hourglass";
+        return "Double Hourglass";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Double Hourglasses";
+        return "Double Hourglasses";
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	Mazer5D.getBagOStuff().getGameManager().decay();
-	Mazer5D.getBagOStuff().getMazeManager().getMaze().extendTimerByInitialValueDoubled();
-	SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
-	Mazer5D.getBagOStuff().getGameManager().addToScore(DoubleHourglass.SCORE_GRAB);
+        Mazer5D.getBagOStuff().getGameManager().decay();
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().extendTimerByInitialValueDoubled();
+        SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(DoubleHourglass.SCORE_GRAB);
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Double Hourglasses extend the time to solve the current level by double the initial value.";
+        return "Double Hourglasses extend the time to solve the current level by double the initial value.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.DOUBLE_HOURGLASS;
+        return MazeObjects.DOUBLE_HOURGLASS;
     }
 }

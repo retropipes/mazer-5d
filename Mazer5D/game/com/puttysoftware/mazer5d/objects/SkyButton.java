@@ -10,26 +10,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericButton;
 
 class SkyButton extends GenericButton {
     public SkyButton() {
-	super(new SkyWallOff(), new SkyWallOn());
+        super(new SkyWallOff(), new SkyWallOn());
     }
 
     @Override
     protected String getNameHook() {
-	return "Sky Button";
+        return "Sky Button";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Sky Buttons";
+        return "Sky Buttons";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Sky Buttons will cause all Sky Walls Off to become On, and all Sky Walls On to become Off.";
+        return "Sky Buttons will cause all Sky Walls Off to become On, and all Sky Walls On to become Off.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.SKY_BUTTON;
+        return MazeObjects.SKY_BUTTON;
     }
 }

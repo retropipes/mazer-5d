@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericGround;
 class HotRock extends GenericGround {
     // Constructors
     public HotRock() {
-	super();
+        super();
     }
 
     @Override
     protected String getNameHook() {
-	return "Hot Rock";
+        return "Hot Rock";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Squares of Hot Rock";
+        return "Squares of Hot Rock";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Hot Rock is one of the many types of ground. It is created by Fire Amulets and Hot Boots, but can also exist on its own.";
+        return "Hot Rock is one of the many types of ground. It is created by Fire Amulets and Hot Boots, but can also exist on its own.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.HOT_ROCK;
+        return MazeObjects.HOT_ROCK;
     }
 }

@@ -5,10 +5,10 @@ public class PrefsVersions {
     private static final int MINIMUM = 1;
 
     private PrefsVersions() {
-	// Do nothing
+        // Do nothing
     }
 
     public static boolean isCompatible(final PrefsVersion formatVersion) {
-	return formatVersion.ordinal() >= PrefsVersions.MINIMUM && formatVersion.ordinal() <= PrefsVersions.LATEST;
+        return formatVersion.ordinal() >= PrefsVersions.MINIMUM && formatVersion.ordinal() <= PrefsVersions.LATEST;
     }
 }

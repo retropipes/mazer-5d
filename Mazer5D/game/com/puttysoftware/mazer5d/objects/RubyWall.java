@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericMultipleLock;
 class RubyWall extends GenericMultipleLock {
     // Constructors
     public RubyWall() {
-	super(new RubySquare());
+        super(new RubySquare());
     }
 
     @Override
     protected String getNameHook() {
-	return "Ruby Wall";
+        return "Ruby Wall";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "Ruby Walls";
+        return "Ruby Walls";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Ruby Walls are impassable without enough Ruby Squares.";
+        return "Ruby Walls are impassable without enough Ruby Squares.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.RUBY_WALL;
+        return MazeObjects.RUBY_WALL;
     }
 }

@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.objects.abc.GenericProgrammableKey;
 class SeaweedCrystal extends GenericProgrammableKey {
     // Constructors
     public SeaweedCrystal() {
-	super("Seaweed");
+        super("Seaweed");
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.SEAWEED_CRYSTAL;
+        return MazeObjects.SEAWEED_CRYSTAL;
     }
 }

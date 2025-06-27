@@ -16,35 +16,35 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleLock;
 class WhiteLock extends GenericSingleLock {
     // Constructors
     public WhiteLock() {
-	super(new WhiteKey());
+        super(new WhiteKey());
     }
 
     // Scriptability
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-	    Mazer5D.getBagOStuff().showMessage("You need a white key");
-	}
-	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+            Mazer5D.getBagOStuff().showMessage("You need a white key");
+        }
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     protected String getNameHook() {
-	return "White Lock";
+        return "White Lock";
     }
 
     @Override
     protected String getPluralNameHook() {
-	return "White Locks";
+        return "White Locks";
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "White Locks require White Keys to open.";
+        return "White Locks require White Keys to open.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.WHITE_LOCK;
+        return MazeObjects.WHITE_LOCK;
     }
 }

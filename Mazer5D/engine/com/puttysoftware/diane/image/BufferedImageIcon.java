@@ -31,7 +31,7 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      * @param height
      */
     public BufferedImageIcon(final int width, final int height) {
-	super(width, height, BufferedImageIcon.DEFAULT_TYPE);
+        super(width, height, BufferedImageIcon.DEFAULT_TYPE);
     }
 
     /**
@@ -40,12 +40,12 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      * @param bi
      */
     public BufferedImageIcon(final BufferedImage bi) {
-	super(bi.getWidth(), bi.getHeight(), BufferedImageIcon.DEFAULT_TYPE);
-	for (int x = 0; x < bi.getWidth(); x++) {
-	    for (int y = 0; y < bi.getHeight(); y++) {
-		this.setRGB(x, y, bi.getRGB(x, y));
-	    }
-	}
+        super(bi.getWidth(), bi.getHeight(), BufferedImageIcon.DEFAULT_TYPE);
+        for (int x = 0; x < bi.getWidth(); x++) {
+            for (int y = 0; y < bi.getHeight(); y++) {
+                this.setRGB(x, y, bi.getRGB(x, y));
+            }
+        }
     }
 
     /**
@@ -55,12 +55,12 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      * @param color
      */
     public BufferedImageIcon(final int size, final Color color) {
-	super(size, size, BufferedImageIcon.DEFAULT_TYPE);
-	for (int x = 0; x < size; x++) {
-	    for (int y = 0; y < size; y++) {
-		this.setRGB(x, y, color.getRGB());
-	    }
-	}
+        super(size, size, BufferedImageIcon.DEFAULT_TYPE);
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                this.setRGB(x, y, color.getRGB());
+            }
+        }
     }
 
     /**
@@ -70,7 +70,7 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      * @return the output
      */
     public static int getScaledValue(final int value) {
-	return (int) (value * BufferedImageIcon.SCALE / BufferedImageIcon.SCALE_MULT);
+        return (int) (value * BufferedImageIcon.SCALE / BufferedImageIcon.SCALE_MULT);
     }
 
     /**
@@ -79,7 +79,7 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      * @return the normalized scale value
      */
     public static double getNormalizedScale() {
-	return BufferedImageIcon.SCALE / BufferedImageIcon.SCALE_MULT;
+        return BufferedImageIcon.SCALE / BufferedImageIcon.SCALE_MULT;
     }
 
     /**
@@ -88,7 +88,7 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      * @return the scaling multiplier
      */
     public static int getScaleMult() {
-	return (int) BufferedImageIcon.SCALE_MULT;
+        return (int) BufferedImageIcon.SCALE_MULT;
     }
 
     /**
@@ -97,7 +97,7 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      * @return the global scaling factor
      */
     public static int getScale() {
-	return BufferedImageIcon.SCALE;
+        return BufferedImageIcon.SCALE;
     }
 
     /**
@@ -109,10 +109,10 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      * @throws IllegalArgumentException if the global scaling factor isn't valid
      */
     public static void setScale(final int value) {
-	if (value < BufferedImageIcon.SCALE_MIN) {
-	    throw new IllegalArgumentException(Integer.toString(value));
-	}
-	BufferedImageIcon.SCALE = value;
+        if (value < BufferedImageIcon.SCALE_MIN) {
+            throw new IllegalArgumentException(Integer.toString(value));
+        }
+        BufferedImageIcon.SCALE = value;
     }
 
     /**
@@ -126,22 +126,22 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      */
     @Override
     public void paintIcon(final Component c, final Graphics g, final int x, final int y) {
-	if (BufferedImageIcon.SCALE > BufferedImageIcon.SCALE_MIN) {
-	    if (g != null) {
-		final double factor = BufferedImageIcon.SCALE_MULT / BufferedImageIcon.SCALE;
-		final int width = this.getWidth(c);
-		final int height = this.getHeight(c);
-		final Graphics2D g2d = (Graphics2D) g.create(x, y, width, height);
-		g2d.scale(factor, factor);
-		g2d.drawImage(this, 0, 0, c);
-		g2d.scale(1, 1);
-		g2d.dispose();
-	    }
-	} else {
-	    if (g != null) {
-		g.drawImage(this, x, y, c);
-	    }
-	}
+        if (BufferedImageIcon.SCALE > BufferedImageIcon.SCALE_MIN) {
+            if (g != null) {
+                final double factor = BufferedImageIcon.SCALE_MULT / BufferedImageIcon.SCALE;
+                final int width = this.getWidth(c);
+                final int height = this.getHeight(c);
+                final Graphics2D g2d = (Graphics2D) g.create(x, y, width, height);
+                g2d.scale(factor, factor);
+                g2d.drawImage(this, 0, 0, c);
+                g2d.scale(1, 1);
+                g2d.dispose();
+            }
+        } else {
+            if (g != null) {
+                g.drawImage(this, x, y, c);
+            }
+        }
     }
 
     /**
@@ -152,7 +152,7 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      */
     @Override
     public int getIconWidth() {
-	return (int) BufferedImageIcon.SCALE_MULT * this.getWidth() / BufferedImageIcon.SCALE;
+        return (int) BufferedImageIcon.SCALE_MULT * this.getWidth() / BufferedImageIcon.SCALE;
     }
 
     /**
@@ -163,6 +163,6 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      */
     @Override
     public int getIconHeight() {
-	return (int) BufferedImageIcon.SCALE_MULT * this.getHeight() / BufferedImageIcon.SCALE;
+        return (int) BufferedImageIcon.SCALE_MULT * this.getHeight() / BufferedImageIcon.SCALE;
     }
 }

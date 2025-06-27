@@ -10,16 +10,16 @@ import com.puttysoftware.mazer5d.objects.abc.GenericTrappedWall;
 
 class TrappedWall15 extends GenericTrappedWall {
     public TrappedWall15() {
-	super(15);
+        super(15);
     }
 
     @Override
     protected String getDescriptionHook() {
-	return "Trapped Walls 15 disappear when any Wall Trap 15 is triggered.";
+        return "Trapped Walls 15 disappear when any Wall Trap 15 is triggered.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-	return MazeObjects.TRAPPED_WALL_15;
+        return MazeObjects.TRAPPED_WALL_15;
     }
 }

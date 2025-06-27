@@ -19,10 +19,10 @@ public abstract class GenericAmulet extends GenericInventoryableObject {
 
     // Constructors
     protected GenericAmulet() {
-	super(false, 0);
-	this.setType(TypeConstants.TYPE_AMULET);
-	this.setType(TypeConstants.TYPE_INVENTORYABLE);
-	this.setType(TypeConstants.TYPE_CONTAINABLE);
+        super(false, 0);
+        this.setType(TypeConstants.TYPE_AMULET);
+        this.setType(TypeConstants.TYPE_INVENTORYABLE);
+        this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
@@ -30,12 +30,12 @@ public abstract class GenericAmulet extends GenericInventoryableObject {
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	final BagOStuff app = Mazer5D.getBagOStuff();
-	app.getGameManager().decay();
-	SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
-	Mazer5D.getBagOStuff().getGameManager().addToScore(GenericAmulet.SCORE_INCREASE);
-	this.postMoveActionHook();
-	inv.addItem(this);
+        final BagOStuff app = Mazer5D.getBagOStuff();
+        app.getGameManager().decay();
+        SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(GenericAmulet.SCORE_INCREASE);
+        this.postMoveActionHook();
+        inv.addItem(this);
     }
 
     public abstract void postMoveActionHook();

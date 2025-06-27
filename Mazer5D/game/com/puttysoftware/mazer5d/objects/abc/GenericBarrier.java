@@ -20,19 +20,19 @@ public abstract class GenericBarrier extends GenericWall {
 
     // Constructors
     protected GenericBarrier() {
-	super();
-	this.setType(TypeConstants.TYPE_BARRIER);
-	this.setType(TypeConstants.TYPE_WALL);
+        super();
+        this.setType(TypeConstants.TYPE_BARRIER);
+        this.setType(TypeConstants.TYPE_WALL);
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	// Display impassable barrier message
-	final BagOStuff app = Mazer5D.getBagOStuff();
-	Mazer5D.getBagOStuff().showMessage("The barrier is impassable!");
-	SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
-	// Hurt the player for trying to cross the barrier
-	app.getMazeManager().getMaze().doDamagePercentage(GenericBarrier.BARRIER_DAMAGE_PERCENT);
+        // Display impassable barrier message
+        final BagOStuff app = Mazer5D.getBagOStuff();
+        Mazer5D.getBagOStuff().showMessage("The barrier is impassable!");
+        SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
+        // Hurt the player for trying to cross the barrier
+        app.getMazeManager().getMaze().doDamagePercentage(GenericBarrier.BARRIER_DAMAGE_PERCENT);
     }
 
     @Override
@@ -40,6 +40,6 @@ public abstract class GenericBarrier extends GenericWall {
 
     @Override
     protected int getLayerHook() {
-	return Layers.OBJECT;
+        return Layers.OBJECT;
     }
 }
