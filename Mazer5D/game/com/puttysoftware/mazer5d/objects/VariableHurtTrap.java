@@ -12,7 +12,6 @@ import com.puttysoftware.mazer5d.asset.SoundIndex;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loader.SoundPlayer;
 import com.puttysoftware.mazer5d.objects.abc.GenericTrap;
-import com.puttysoftware.randomrange.RandomRange;
 
 class VariableHurtTrap extends GenericTrap {
     // Fields

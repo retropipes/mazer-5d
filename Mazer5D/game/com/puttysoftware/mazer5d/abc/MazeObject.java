@@ -8,7 +8,6 @@ package com.puttysoftware.mazer5d.abc;
 import java.io.IOException;
 import java.util.Objects;
 
-import com.puttysoftware.diane.utilties.Directions;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.asset.SoundGroup;
 import com.puttysoftware.mazer5d.asset.SoundIndex;
@@ -24,7 +23,6 @@ import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.maze.Maze;
-import com.puttysoftware.randomrange.RandomRange;
 
 public class MazeObject implements RandomGenerationRule {
 	// Properties

@@ -8,9 +8,6 @@ package com.puttysoftware.mazer5d;
 import java.awt.desktop.PreferencesEvent;
 import java.awt.desktop.PreferencesHandler;
 
-import com.puttysoftware.diane.gui.dialog.CommonDialogs;
-import com.puttysoftware.diane.gui.dialog.MainWindow;
-import com.puttysoftware.integration.Integration;
 import com.puttysoftware.mazer5d.asset.LogoImageIndex;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.gui.GUIConstants;
@@ -19,6 +16,8 @@ import com.puttysoftware.mazer5d.locale.LocalDataLoader;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.prefs.Prefs;
+
+import org.retropipes.diane.Diane;
 
 public class Mazer5D {
 	// Constants
@@ -37,8 +36,7 @@ public class Mazer5D {
 
 	public static void main(final String[] args) {
 		// Install error handler
-		Mazer5D.errhand = new GameErrorHandler();
-		Thread.setDefaultUncaughtExceptionHandler(Mazer5D.errhand);
+		Diane.installDefaultErrorHandler(PROGRAM_NAME);
 		// Integrate with host platform
 		final Integration ni = new Integration();
 		ni.configureLookAndFeel();

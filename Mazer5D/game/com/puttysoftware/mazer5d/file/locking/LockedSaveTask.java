@@ -9,8 +9,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import com.puttysoftware.diane.gui.dialog.CommonDialogs;
-import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.file.FileExtensions;
 import com.puttysoftware.mazer5d.file.format.PrefixHandler;

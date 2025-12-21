@@ -8,7 +8,6 @@ package com.puttysoftware.mazer5d.maze;
 import java.io.File;
 import java.io.IOException;
 
-import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.abc.MazeObject;
@@ -25,7 +24,6 @@ import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.objects.abc.GenericCharacter;
 import com.puttysoftware.mazer5d.objects.abc.GenericMovingObject;
 import com.puttysoftware.mazer5d.prefs.Prefs;
-import com.puttysoftware.randomrange.RandomLongRange;
 
 public class Maze {
 	// Properties

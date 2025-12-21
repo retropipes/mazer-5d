@@ -19,8 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.puttysoftware.diane.gui.dialog.MainWindow;
-import com.puttysoftware.diane.gui.dialog.MainWindowContent;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.locale.StaticStrings;

@@ -5,9 +5,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d;
 
-import com.puttysoftware.diane.ErrorHandler;
-import com.puttysoftware.diane.ErrorLogger;
-import com.puttysoftware.diane.gui.dialog.CommonDialogs;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 

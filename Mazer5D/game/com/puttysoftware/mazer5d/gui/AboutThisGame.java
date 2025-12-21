@@ -18,8 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import com.puttysoftware.diane.gui.dialog.MainWindow;
-import com.puttysoftware.diane.gui.dialog.MainWindowContent;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.asset.LogoImageIndex;
 import com.puttysoftware.mazer5d.loader.LogoImageLoader;

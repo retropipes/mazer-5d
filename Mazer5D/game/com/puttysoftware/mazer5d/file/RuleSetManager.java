@@ -10,8 +10,6 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 
-import com.puttysoftware.diane.gui.dialog.CommonDialogs;
-import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.file.filter.RuleSetFilter;
 import com.puttysoftware.mazer5d.file.format.RuleSetLoadTask;

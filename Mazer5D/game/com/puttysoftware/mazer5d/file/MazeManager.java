@@ -13,8 +13,6 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
-import com.puttysoftware.diane.gui.dialog.CommonDialogs;
-import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.MazeObject;

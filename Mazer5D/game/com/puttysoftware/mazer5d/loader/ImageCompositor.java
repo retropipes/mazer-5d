@@ -7,8 +7,6 @@ package com.puttysoftware.mazer5d.loader;
 
 import java.awt.Color;
 
-import com.puttysoftware.diane.image.BufferedImageIcon;
-
 class ImageCompositor {
 	private static BufferedImageIcon compositeTwo(final BufferedImageIcon input1, final BufferedImageIcon input2) {
 		if (input1 != null && input2 != null) {

@@ -8,9 +8,6 @@ package com.puttysoftware.mazer5d.maze;
 import java.io.IOException;
 import java.util.Arrays;
 
-import com.puttysoftware.diane.gui.dialog.CommonDialogs;
-import com.puttysoftware.diane.storage.FlagStorage;
-import com.puttysoftware.diane.utilties.DirectionResolver;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.abc.Layers;
@@ -27,7 +24,6 @@ import com.puttysoftware.mazer5d.objects.abc.GenericLightModifier;
 import com.puttysoftware.mazer5d.objects.abc.GenericMovingObject;
 import com.puttysoftware.mazer5d.objects.abc.GenericTeleport;
 import com.puttysoftware.mazer5d.prefs.Prefs;
-import com.puttysoftware.randomrange.RandomRange;
 
 class MazeData {
 	// Properties

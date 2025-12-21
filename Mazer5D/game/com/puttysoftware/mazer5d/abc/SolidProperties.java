@@ -7,10 +7,6 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.util.Objects;
 
-import com.puttysoftware.diane.storage.FlagStorage;
-import com.puttysoftware.diane.utilties.DirectionResolver;
-import com.puttysoftware.diane.utilties.Directions;
-
 class SolidProperties {
 	// Private enumeration
 	private enum SolidDataTypes {

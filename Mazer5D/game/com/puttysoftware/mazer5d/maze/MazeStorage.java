@@ -1,6 +1,5 @@
 package com.puttysoftware.mazer5d.maze;
 
-import com.puttysoftware.diane.storage.ObjectStorage;
 import com.puttysoftware.mazer5d.abc.MazeObject;
 
 class MazeStorage extends ObjectStorage {

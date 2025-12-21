@@ -5,8 +5,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.maze.effect;
 
-import com.puttysoftware.diane.utilties.Directions;
-
 public class UTurned extends MazeEffect {
 	// Constructor
 	public UTurned(final int newRounds) {

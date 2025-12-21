@@ -15,7 +15,6 @@ import com.puttysoftware.mazer5d.asset.SoundIndex;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loader.SoundPlayer;
 import com.puttysoftware.mazer5d.maze.Maze;
-import com.puttysoftware.randomrange.RandomRange;
 
 public abstract class GenericPotion extends MazeObject {
 	// Fields

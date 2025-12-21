@@ -8,8 +8,6 @@ package com.puttysoftware.mazer5d.file.format;
 import java.io.File;
 import java.io.IOException;
 
-import com.puttysoftware.diane.gui.dialog.CommonDialogs;
-import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.file.InvalidMazeException;
 import com.puttysoftware.mazer5d.gui.BagOStuff;

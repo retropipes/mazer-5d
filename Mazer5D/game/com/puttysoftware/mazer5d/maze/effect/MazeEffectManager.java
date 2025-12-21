@@ -10,7 +10,6 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.puttysoftware.diane.utilties.DirectionResolver;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 
