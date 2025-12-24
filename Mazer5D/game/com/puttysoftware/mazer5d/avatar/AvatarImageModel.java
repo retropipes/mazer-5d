@@ -1,9 +1,9 @@
 package com.puttysoftware.mazer5d.avatar;
 
 import java.awt.Color;
-import java.io.IOException;
 
-import com.puttysoftware.diane.image.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+
 import com.puttysoftware.mazer5d.loader.AvatarImageLoader;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 
@@ -145,7 +145,7 @@ public final class AvatarImageModel {
 		return builder.toString();
 	}
 
-	public BufferedImageIcon generateAvatarImage() throws IOException {
+	public BufferedImageIcon generateAvatarImage() {
 		return AvatarImageLoader.loadFromModel(this);
 	}
 

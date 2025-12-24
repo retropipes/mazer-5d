@@ -8,7 +8,8 @@ package com.puttysoftware.mazer5d.abc;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
-import com.puttysoftware.diane.image.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;

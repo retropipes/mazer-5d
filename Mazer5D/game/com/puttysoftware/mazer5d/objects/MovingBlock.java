@@ -2,6 +2,8 @@ package com.puttysoftware.mazer5d.objects;
 
 import java.io.IOException;
 
+import org.retropipes.diane.random.RandomRange;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.abc.MazeObject;
@@ -10,7 +12,6 @@ import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.objects.abc.GenericMovingObject;
-import com.puttysoftware.randomrange.RandomRange;
 
 class MovingBlock extends GenericMovingObject implements Cloneable {
     // Constructors

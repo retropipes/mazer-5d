@@ -5,6 +5,9 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d;
 
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+import org.retropipes.diane.internal.ErrorLogger;
+
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 

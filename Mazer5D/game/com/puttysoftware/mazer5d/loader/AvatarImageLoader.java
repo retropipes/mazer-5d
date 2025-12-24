@@ -1,20 +1,19 @@
 package com.puttysoftware.mazer5d.loader;
 
-import java.io.IOException;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
 
-import com.puttysoftware.diane.image.BufferedImageIcon;
 import com.puttysoftware.mazer5d.avatar.AvatarImageModel;
 import com.puttysoftware.mazer5d.avatar.ColorReplaceRules;
 import com.puttysoftware.mazer5d.file.FileExtensions;
 
 public class AvatarImageLoader {
-	public static BufferedImageIcon load(final int familyID, final ColorReplaceRules rules) throws IOException {
+	public static BufferedImageIcon load(final int familyID, final ColorReplaceRules rules) {
 		final String imageExt = FileExtensions.getImageExtensionWithPeriod();
 		final String name = "/asset/image/avatar/" + Integer.toHexString(familyID).toUpperCase() + imageExt;
 		return rules.applyAll(ImageLoader.load(name, AvatarImageLoader.class.getResource(name)));
 	}
 
-	public static BufferedImageIcon loadFromModel(final AvatarImageModel model) throws IOException {
+	public static BufferedImageIcon loadFromModel(final AvatarImageModel model) {
 		final String imageExt = FileExtensions.getImageExtensionWithPeriod();
 		final String name = "/asset/image/avatar/" + Integer.toHexString(model.getAvatarFamilyID()).toUpperCase()
 				+ imageExt;
@@ -26,14 +25,13 @@ public class AvatarImageLoader {
 		return ImageCompositor.composite(image, accessoryImage, weaponImage);
 	}
 
-	public static BufferedImageIcon loadWeapon(final int weaponID, final ColorReplaceRules rules) throws IOException {
+	public static BufferedImageIcon loadWeapon(final int weaponID, final ColorReplaceRules rules) {
 		final String imageExt = FileExtensions.getImageExtensionWithPeriod();
 		final String name = "/asset/image/avatar/weapon/" + Integer.toHexString(weaponID).toUpperCase() + imageExt;
 		return rules.applyAll(ImageLoader.load(name, AvatarImageLoader.class.getResource(name)));
 	}
 
-	public static BufferedImageIcon loadAccessory(final int accessoryID, final ColorReplaceRules rules)
-			throws IOException {
+	public static BufferedImageIcon loadAccessory(final int accessoryID, final ColorReplaceRules rules) {
 		final String imageExt = FileExtensions.getImageExtensionWithPeriod();
 		final String name = "/asset/image/avatar/accessory/" + Integer.toHexString(accessoryID).toUpperCase()
 				+ imageExt;

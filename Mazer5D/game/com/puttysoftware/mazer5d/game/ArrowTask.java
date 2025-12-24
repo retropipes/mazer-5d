@@ -5,7 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.game;
 
-import com.puttysoftware.diane.utilties.DirectionResolver;
+import org.retropipes.diane.direction.DirectionResolver;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.ArrowTypes;
 import com.puttysoftware.mazer5d.abc.GameObjects;

@@ -21,6 +21,9 @@ import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import org.retropipes.diane.gui.MainWindow;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.ArrowTypes;
@@ -1672,7 +1675,7 @@ public class GameManager implements MazeEffectConstants {
 		this.handler = new EventHandler();
 		// Create content containers
 		this.outputFrame = MainWindow.getMainWindow();
-		this.borderPane = this.outputFrame.createContent();
+		this.borderPane = MainWindow.createContent();
 		this.borderPane.setLayout(new BorderLayout());
 		this.summaryPane = new JPanel();
 		this.summaryPane.setLayout(new BorderLayout());

@@ -8,6 +8,9 @@ package com.puttysoftware.mazer5d.maze;
 import java.io.File;
 import java.io.IOException;
 
+import org.retropipes.diane.fileio.utility.FileUtilities;
+import org.retropipes.diane.random.RandomLongRange;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.abc.MazeObject;

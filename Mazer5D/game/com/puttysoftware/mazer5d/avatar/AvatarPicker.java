@@ -1,9 +1,12 @@
 package com.puttysoftware.mazer5d.avatar;
 
 import java.awt.Color;
-import java.io.IOException;
 
 import javax.swing.JColorChooser;
+
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+import org.retropipes.diane.random.RandomRange;
 
 import com.puttysoftware.mazer5d.loader.AvatarImageLoader;
 import com.puttysoftware.mazer5d.locale.Strings;
@@ -58,7 +61,7 @@ public class AvatarPicker {
 	}
 
 	// Methods
-	public static AvatarImageModel constructAvatar() throws IOException {
+	public static AvatarImageModel constructAvatar() {
 		// Populate rules
 		rules.add(AvatarColors.hairBase, currentHairColor);
 		rules.add(AvatarColors.skinBase, currentSkinColor);
@@ -128,7 +131,7 @@ public class AvatarPicker {
 				currentWeaponColor1, currentWeaponColor2, currentAccessoryColor1, currentAccessoryColor2);
 	}
 
-	private static int pickAvatarFamily() throws IOException {
+	private static int pickAvatarFamily() {
 		final String labelText = Translations.load(Strings.AVATAR_FAMILIES);
 		final String title = Translations.load(Strings.PICK_AVATAR_FAMILY);
 		final BufferedImageIcon[] input = new BufferedImageIcon[] { AvatarImageLoader.load(0, rules),
@@ -141,7 +144,7 @@ public class AvatarPicker {
 		return CommonDialogs.showImageListDialog(labelText, title, input, currentFamilyID);
 	}
 
-	private static int pickAvatarWeapon() throws IOException {
+	private static int pickAvatarWeapon() {
 		final String labelText = Translations.load(Strings.AVATAR_WEAPONS);
 		final String title = Translations.load(Strings.PICK_AVATAR_WEAPON);
 		final BufferedImageIcon[] input = new BufferedImageIcon[] { AvatarImageLoader.loadWeapon(0, weaponRules),
@@ -151,7 +154,7 @@ public class AvatarPicker {
 		return CommonDialogs.showImageListWithDescDialog(labelText, title, input, 0, descriptions[0], descriptions);
 	}
 
-	private static int pickAvatarAccessory() throws IOException {
+	private static int pickAvatarAccessory() {
 		final String labelText = Translations.load(Strings.AVATAR_ACCESSORIES);
 		final String title = Translations.load(Strings.PICK_AVATAR_ACCESSORY);
 		final BufferedImageIcon[] input = new BufferedImageIcon[] { AvatarImageLoader.loadAccessory(0, accessoryRules),

@@ -7,7 +7,8 @@ package com.puttysoftware.mazer5d.objects.abc;
 
 import java.io.IOException;
 
-import com.puttysoftware.diane.gui.dialog.CommonDialogs;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.abc.MazeObject;

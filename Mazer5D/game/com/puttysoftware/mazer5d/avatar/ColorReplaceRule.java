@@ -3,7 +3,7 @@ package com.puttysoftware.mazer5d.avatar;
 import java.awt.Color;
 import java.util.Objects;
 
-import com.puttysoftware.diane.image.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
 
 public final class ColorReplaceRule {
 	// Fields

@@ -5,6 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.maze.effect;
 
+import org.retropipes.diane.random.RandomRange;
+
 public class Drunk extends MazeEffect {
     // Constructor
     public Drunk(final int newRounds) {

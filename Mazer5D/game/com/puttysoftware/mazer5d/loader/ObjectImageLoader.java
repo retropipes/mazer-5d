@@ -12,7 +12,8 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import com.puttysoftware.diane.image.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+
 import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.file.FileExtensions;
 

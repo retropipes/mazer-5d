@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import com.puttysoftware.randomrange.RandomRange;
+import org.retropipes.diane.random.RandomRange;
 
 class LockedWrapper {
 	private LockedWrapper() {

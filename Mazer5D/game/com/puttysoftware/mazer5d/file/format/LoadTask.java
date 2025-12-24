@@ -8,6 +8,9 @@ package com.puttysoftware.mazer5d.file.format;
 import java.io.File;
 import java.io.IOException;
 
+import org.retropipes.diane.fileio.utility.ZipUtilities;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.file.InvalidMazeException;
 import com.puttysoftware.mazer5d.gui.BagOStuff;

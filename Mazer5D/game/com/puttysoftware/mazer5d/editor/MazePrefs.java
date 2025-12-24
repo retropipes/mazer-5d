@@ -19,6 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import org.retropipes.diane.gui.MainWindow;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
@@ -94,7 +96,7 @@ public class MazePrefs {
 	private void setUpGUI() {
 		this.handler = new EventHandler();
 		this.prefFrame = MainWindow.getMainWindow();
-		this.mainPrefPane = this.prefFrame.createContent();
+		this.mainPrefPane = MainWindow.createContent();
 		this.contentPane = new JPanel();
 		this.buttonPane = new JPanel();
 		this.prefsOK = new JButton(Translations.load(Strings.OK_BUTTON));

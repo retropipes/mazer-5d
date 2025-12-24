@@ -1,8 +1,10 @@
 package com.puttysoftware.mazer5d.maze;
 
+import org.retropipes.diane.storage.ObjectStorage;
+
 import com.puttysoftware.mazer5d.abc.MazeObject;
 
-class MazeStorage extends ObjectStorage {
+class MazeStorage extends ObjectStorage<MazeObject> {
     // Constructor
     public MazeStorage(final int... shape) {
         super(shape);
@@ -10,6 +12,6 @@ class MazeStorage extends ObjectStorage {
 
     // Methods
     public MazeObject getMazeCell(final int... loc) {
-        return (MazeObject) this.getCell(loc);
+        return this.getCell(loc);
     }
 }

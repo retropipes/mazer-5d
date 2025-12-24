@@ -18,6 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import org.retropipes.diane.gui.MainWindow;
+
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.asset.LogoImageIndex;
 import com.puttysoftware.mazer5d.loader.LogoImageLoader;
@@ -54,7 +56,7 @@ public class AboutThisGame implements AboutHandler {
 	private void setUpGUI(final String formatVersion) {
 		this.handler = new EventHandler();
 		this.aboutFrame = MainWindow.getMainWindow();
-		this.aboutPane = this.aboutFrame.createContent();
+		this.aboutPane = MainWindow.createContent();
 		this.textPane = new JPanel();
 		this.buttonPane = new JPanel();
 		this.logoPane = new JPanel();

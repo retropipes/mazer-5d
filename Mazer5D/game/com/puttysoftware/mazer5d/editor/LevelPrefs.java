@@ -20,7 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.puttysoftware.diane.gui.dialog.MainWindow;
+import org.retropipes.diane.gui.MainWindow;
+
 import com.puttysoftware.diane.gui.dialog.MainWindowContent;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
@@ -189,7 +190,7 @@ public class LevelPrefs {
 	private void setUpGUI() {
 		this.handler = new EventHandler();
 		this.prefFrame = MainWindow.getMainWindow();
-		this.mainPrefPane = this.prefFrame.createContent();
+		this.mainPrefPane = MainWindow.createContent();
 		this.contentPane = new JPanel();
 		this.buttonPane = new JPanel();
 		this.prefsOK = new JButton(Translations.load(Strings.OK_BUTTON));

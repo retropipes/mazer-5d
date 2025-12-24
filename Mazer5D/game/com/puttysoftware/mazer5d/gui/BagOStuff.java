@@ -5,7 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.gui;
 
-import com.puttysoftware.diane.gui.dialog.CommonDialogs;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.asset.MusicGroup;
 import com.puttysoftware.mazer5d.asset.MusicIndex;

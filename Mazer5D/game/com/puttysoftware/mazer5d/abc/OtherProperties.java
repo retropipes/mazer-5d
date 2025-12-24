@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.util.Objects;
 
-import com.puttysoftware.diane.storage.FlagStorage;
+import org.retropipes.diane.storage.FlagStorage;
 
 class OtherProperties {
     // Private enumeration

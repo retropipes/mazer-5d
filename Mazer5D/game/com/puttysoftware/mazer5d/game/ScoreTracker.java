@@ -7,9 +7,10 @@ package com.puttysoftware.mazer5d.game;
 
 import java.io.File;
 
-import com.puttysoftware.diane.gui.dialog.CommonDialogs;
-import com.puttysoftware.diane.scores.SavedScoreManager;
-import com.puttysoftware.diane.scores.ScoreManager;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+import org.retropipes.diane.scoring.SavedScoreManager;
+import org.retropipes.diane.scoring.ScoreManager;
+
 import com.puttysoftware.mazer5d.file.FileExtensions;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 

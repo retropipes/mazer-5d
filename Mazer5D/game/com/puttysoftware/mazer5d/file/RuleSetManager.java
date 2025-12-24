@@ -10,6 +10,9 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 
+import org.retropipes.diane.fileio.utility.FilenameChecker;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.file.filter.RuleSetFilter;
 import com.puttysoftware.mazer5d.file.format.RuleSetLoadTask;

@@ -14,9 +14,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import com.puttysoftware.diane.gui.dialog.MainWindow;
-import com.puttysoftware.diane.gui.dialog.MainWindowContent;
-import com.puttysoftware.diane.image.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.gui.MainWindow;
+
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.help.GraphicalHelpViewer;
@@ -60,7 +60,7 @@ public class ObjectHelpViewer {
 		this.done = new JButton("Done");
 		this.done.addActionListener(this.buttonHandler);
 		this.helpFrame = MainWindow.getMainWindow();
-		this.helpPane = this.helpFrame.createContent();
+		this.helpPane = MainWindow.createContent();
 		this.helpPane.setLayout(new BorderLayout());
 		this.buttonPane = new JPanel();
 		this.buttonPane.setLayout(new FlowLayout());

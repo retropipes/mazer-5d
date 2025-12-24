@@ -14,11 +14,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import com.puttysoftware.diane.gui.dialog.CommonDialogs;
-import com.puttysoftware.diane.gui.dialog.MainWindow;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.gui.MainWindow;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+import org.retropipes.diane.gui.picker.PicturePicker;
+
 import com.puttysoftware.diane.gui.dialog.MainWindowContent;
-import com.puttysoftware.diane.image.BufferedImageIcon;
-import com.puttysoftware.diane.picturepicker.PicturePicker;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.GameObjects;
@@ -100,7 +101,7 @@ public class RuleSetPicker {
 
 	private void setUpGUI() {
 		this.outputFrame = MainWindow.getMainWindow();
-		this.borderPane = this.outputFrame.createContent();
+		this.borderPane = MainWindow.createContent();
 		this.outputPane = new JPanel();
 		this.create = new JButton("Create");
 		this.destroy = new JButton("Destroy");

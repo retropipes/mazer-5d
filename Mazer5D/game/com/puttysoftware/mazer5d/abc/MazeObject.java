@@ -8,6 +8,8 @@ package com.puttysoftware.mazer5d.abc;
 import java.io.IOException;
 import java.util.Objects;
 
+import org.retropipes.diane.random.RandomRange;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.asset.SoundGroup;
 import com.puttysoftware.mazer5d.asset.SoundIndex;
@@ -735,6 +737,12 @@ public class MazeObject implements RandomGenerationRule {
 		}
 	}
 
+	/**
+	 * @param ie 
+	 * @param dirX  
+	 * @param dirY 
+	 * @param inv 
+	 */
 	protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
 		// Do nothing
 	}

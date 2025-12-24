@@ -17,8 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.puttysoftware.diane.gui.dialog.MainWindow;
-import com.puttysoftware.diane.gui.dialog.MainWindowContent;
+import org.retropipes.diane.gui.MainWindow;
+
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
 import com.puttysoftware.mazer5d.locale.Strings;
@@ -91,7 +91,7 @@ class RuleSetEditor {
 	private void setUpGUI() {
 		this.handler = new EventHandler();
 		this.editFrame = MainWindow.getMainWindow();
-		this.mainEditPane = this.editFrame.createContent();
+		this.mainEditPane = MainWindow.createContent();
 		this.contentPane = new JPanel();
 		this.buttonPane = new JPanel();
 		this.editOK = new JButton(Translations.load(Strings.OK_BUTTON));

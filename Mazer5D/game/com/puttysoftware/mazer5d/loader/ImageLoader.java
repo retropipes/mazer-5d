@@ -13,10 +13,14 @@ import java.util.Objects;
 
 import javax.imageio.ImageIO;
 
-import com.puttysoftware.diane.image.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 
 public class ImageLoader {
+	/**
+	 * @param name  
+	 */
 	static BufferedImageIcon loadUncached(final String name, final URL url) {
 		try {
 			final BufferedImage image = ImageIO.read(url);

@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.util.Objects;
 
-import com.puttysoftware.diane.storage.NumberStorage;
+import org.retropipes.diane.storage.NumberStorage;
 
 class OtherCounters {
     // Private enumeration

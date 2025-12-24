@@ -8,6 +8,8 @@ package com.puttysoftware.mazer5d.file.format;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.editor.ruleset.RuleSetConstants;

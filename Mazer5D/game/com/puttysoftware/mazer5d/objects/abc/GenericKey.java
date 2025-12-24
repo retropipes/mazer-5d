@@ -9,6 +9,9 @@ import com.puttysoftware.mazer5d.abc.TypeConstants;
 
 public abstract class GenericKey extends GenericInventoryableObject {
 	// Constructors
+	/**
+	 * @param infiniteUse  
+	 */
 	protected GenericKey(final boolean infiniteUse) {
 		super(false, 0);
 		this.setType(TypeConstants.TYPE_KEY);

@@ -42,6 +42,11 @@ import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.JTabbedPane;
 
+import org.retropipes.diane.gui.MainWindow;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+import org.retropipes.diane.update.ProductData;
+import org.retropipes.diane.update.UpdateCheckResults;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.GameObjects;
@@ -408,7 +413,7 @@ public class Prefs {
 		Prefs.prefFrame = MainWindow.getMainWindow();
 		Prefs.handler = new EventHandler();
 		Prefs.prefTabPane = new JTabbedPane();
-		Prefs.mainPrefPane = Prefs.prefFrame.createContent();
+		Prefs.mainPrefPane = MainWindow.createContent();
 		final JPanel editorPane = new JPanel();
 		Prefs.twisterPane = new JPanel();
 		final JPanel soundPane = new JPanel();

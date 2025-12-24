@@ -18,10 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import com.puttysoftware.diane.gui.dialog.CommonDialogs;
-import com.puttysoftware.diane.gui.dialog.MainWindow;
-import com.puttysoftware.diane.gui.dialog.MainWindowContent;
-import com.puttysoftware.diane.image.BufferedImageIcon;
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.gui.MainWindow;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.asset.LogoImageIndex;
@@ -138,7 +138,7 @@ public class GUIManager implements QuitHandler {
 			// Create content containers
 			final BagOStuff bag = Mazer5D.getBagOStuff();
 			this.guiFrame = MainWindow.getMainWindow();
-			this.guiPane = this.guiFrame.createContent();
+			this.guiPane = MainWindow.createContent();
 			this.guiPane.setLayout(new BorderLayout());
 			this.logoPane = new JPanel();
 			this.logoPane.setLayout(new GridLayout(1, 1));

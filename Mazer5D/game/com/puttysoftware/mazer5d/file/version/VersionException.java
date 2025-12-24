@@ -19,13 +19,19 @@ public abstract class VersionException extends RuntimeException {
         super(message, cause);
     }
 
+    /**
+     * @param out  
+     */
     @SuppressWarnings("static-method")
     private void writeObject(final ObjectOutputStream out) throws IOException {
         throw new NotSerializableException();
     }
 
+    /**
+     * @param in  
+     */
     @SuppressWarnings("static-method")
-    private void readObject(final ObjectInputStream in) throws IOException, ClassNotFoundException {
+    private void readObject(final ObjectInputStream in) throws IOException {
         throw new NotSerializableException();
     }
 }

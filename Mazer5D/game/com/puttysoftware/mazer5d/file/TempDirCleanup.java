@@ -2,7 +2,8 @@ package com.puttysoftware.mazer5d.file;
 
 import java.io.File;
 
-import com.puttysoftware.fileutils.DirectoryUtilities;
+import org.retropipes.diane.fileio.utility.DirectoryUtilities;
+
 import com.puttysoftware.mazer5d.maze.Maze;
 
 public class TempDirCleanup extends Thread {

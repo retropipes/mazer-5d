@@ -26,6 +26,11 @@ import javax.swing.JScrollBar;
 import javax.swing.JToggleButton;
 import javax.swing.border.EmptyBorder;
 
+import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.gui.MainWindow;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+import org.retropipes.diane.gui.picker.PicturePicker;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.GameObjects;
@@ -1726,11 +1731,11 @@ public class MazeEditor {
 	private void setUpGUI() {
 		// Create content containers
 		this.outputFrame = MainWindow.getMainWindow();
-		this.borderPane = this.outputFrame.createContent();
+		this.borderPane = MainWindow.createContent();
 		this.outputPane = new JPanel();
 		this.secondaryPane = new JPanel();
 		this.commandPane = new JPanel();
-		this.treasurePane = this.outputFrame.createContent();
+		this.treasurePane = MainWindow.createContent();
 		// Configure content containers
 		this.borderPane.setLayout(new BorderLayout());
 		this.gridbag = new GridBagLayout();

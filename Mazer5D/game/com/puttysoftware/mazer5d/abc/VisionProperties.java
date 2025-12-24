@@ -7,6 +7,9 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.util.Objects;
 
+import org.retropipes.diane.direction.DirectionResolver;
+import org.retropipes.diane.storage.FlagStorage;
+
 class VisionProperties {
 	// Private enumeration
 	private enum VisionDataTypes {

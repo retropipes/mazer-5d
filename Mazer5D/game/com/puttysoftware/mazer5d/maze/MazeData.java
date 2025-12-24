@@ -8,6 +8,11 @@ package com.puttysoftware.mazer5d.maze;
 import java.io.IOException;
 import java.util.Arrays;
 
+import org.retropipes.diane.direction.DirectionResolver;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+import org.retropipes.diane.random.RandomRange;
+import org.retropipes.diane.storage.FlagStorage;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.abc.Layers;

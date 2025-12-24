@@ -8,6 +8,11 @@ package com.puttysoftware.mazer5d;
 import java.awt.desktop.PreferencesEvent;
 import java.awt.desktop.PreferencesHandler;
 
+import org.retropipes.diane.Diane;
+import org.retropipes.diane.gui.MainWindow;
+import org.retropipes.diane.gui.dialog.CommonDialogs;
+import org.retropipes.diane.integration.Integration;
+
 import com.puttysoftware.mazer5d.asset.LogoImageIndex;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.gui.GUIConstants;
@@ -16,8 +21,6 @@ import com.puttysoftware.mazer5d.locale.LocalDataLoader;
 import com.puttysoftware.mazer5d.locale.Strings;
 import com.puttysoftware.mazer5d.locale.Translations;
 import com.puttysoftware.mazer5d.prefs.Prefs;
-
-import org.retropipes.diane.Diane;
 
 public class Mazer5D {
 	// Constants

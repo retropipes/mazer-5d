@@ -7,8 +7,9 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.util.Objects;
 
-import com.puttysoftware.diane.storage.FlagStorage;
-import com.puttysoftware.diane.utilties.DirectionResolver;
+import org.retropipes.diane.direction.DirectionResolver;
+import org.retropipes.diane.storage.FlagStorage;
+
 import com.puttysoftware.diane.utilties.Directions;
 
 class MoveProperties {
