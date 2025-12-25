@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
 class MetalBoots extends GenericBoots {
     // Constructors
     public MetalBoots() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Metal Boots";
+	return "Metal Boots";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Pairs of Metal Boots";
+	return "Pairs of Metal Boots";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Metal Boots allow Metal Buttons to be triggered. Note that you can only wear one pair of boots at once.";
+	return "Metal Boots allow Metal Buttons to be triggered. Note that you can only wear one pair of boots at once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.METAL_BOOTS;
+	return MazeObjects.METAL_BOOTS;
     }
 }

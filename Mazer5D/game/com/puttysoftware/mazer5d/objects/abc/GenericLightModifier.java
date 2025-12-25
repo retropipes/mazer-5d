@@ -16,21 +16,21 @@ public abstract class GenericLightModifier extends MazeObject {
 
     // Constructors
     protected GenericLightModifier() {
-        super(true);
-        this.setType(TypeConstants.TYPE_LIGHT_MODIFIER);
+	super(true);
+	this.setType(TypeConstants.TYPE_LIGHT_MODIFIER);
     }
 
     public int getEffectRadius() {
-        return this.EFFECT_RADIUS;
+	return this.EFFECT_RADIUS;
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        // Do nothing
+	// Do nothing
     }
 
     @Override
     protected int getLayerHook() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
 }

@@ -12,26 +12,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
 class RegularBoots extends GenericBoots {
     // Constructors
     public RegularBoots() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Regular Boots";
+	return "Regular Boots";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Pairs of Regular Boots";
+	return "Pairs of Regular Boots";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return StaticStrings.EMPTY;
+	return StaticStrings.EMPTY;
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.REGULAR_BOOTS;
+	return MazeObjects.REGULAR_BOOTS;
     }
 }

@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
 class PasswallBoots extends GenericBoots {
     // Constructors
     public PasswallBoots() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Passwall Boots";
+	return "Passwall Boots";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Pairs of Passwall Boots";
+	return "Pairs of Passwall Boots";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Passwall Boots allow you to pass through most walls as you walk. Note that you can only wear one pair of boots at once.";
+	return "Passwall Boots allow you to pass through most walls as you walk. Note that you can only wear one pair of boots at once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.PASSWALL_BOOTS;
+	return MazeObjects.PASSWALL_BOOTS;
     }
 }

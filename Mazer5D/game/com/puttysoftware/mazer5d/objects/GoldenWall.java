@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericMultipleLock;
 class GoldenWall extends GenericMultipleLock {
     // Constructors
     public GoldenWall() {
-        super(new GoldenSquare());
+	super(new GoldenSquare());
     }
 
     @Override
     protected String getNameHook() {
-        return "Golden Wall";
+	return "Golden Wall";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Golden Walls";
+	return "Golden Walls";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Golden Walls are impassable without enough Golden Squares.";
+	return "Golden Walls are impassable without enough Golden Squares.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.GOLDEN_WALL;
+	return MazeObjects.GOLDEN_WALL;
     }
 }

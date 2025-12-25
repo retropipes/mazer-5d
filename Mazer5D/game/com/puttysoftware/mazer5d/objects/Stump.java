@@ -12,32 +12,32 @@ import com.puttysoftware.mazer5d.objects.abc.GenericWall;
 class Stump extends GenericWall {
     // Constructors
     public Stump() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Stump";
+	return "Stump";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Stumps";
+	return "Stumps";
     }
 
     @Override
     protected boolean customArrowHitAction(final int locX, final int locY, final int locZ, final int dirX,
-            final int dirY, final int arrowType, final ObjectInventory inv) {
-        return true;
+	    final int dirY, final int arrowType, final ObjectInventory inv) {
+	return true;
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Stumps stop movement, but not arrows.";
+	return "Stumps stop movement, but not arrows.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.STUMP;
+	return MazeObjects.STUMP;
     }
 }

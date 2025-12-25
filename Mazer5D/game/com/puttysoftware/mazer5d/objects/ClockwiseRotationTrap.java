@@ -20,34 +20,34 @@ class ClockwiseRotationTrap extends GenericTrap {
 
     // Constructors
     public ClockwiseRotationTrap() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Clockwise Rotation Trap";
+	return "Clockwise Rotation Trap";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Clockwise Rotation Traps";
+	return "Clockwise Rotation Traps";
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().showMessage("Your controls are rotated!");
-        Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE,
-                ClockwiseRotationTrap.EFFECT_DURATION);
+	SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().showMessage("Your controls are rotated!");
+	Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE,
+		ClockwiseRotationTrap.EFFECT_DURATION);
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Clockwise Rotation Traps rotate your controls clockwise for 10 steps when stepped on.";
+	return "Clockwise Rotation Traps rotate your controls clockwise for 10 steps when stepped on.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.CLOCKWISE_ROTATION_TRAP;
+	return MazeObjects.CLOCKWISE_ROTATION_TRAP;
     }
 }

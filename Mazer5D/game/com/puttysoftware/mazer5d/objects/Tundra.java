@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericGround;
 class Tundra extends GenericGround {
     // Constructors
     public Tundra() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Tundra";
+	return "Tundra";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Squares of Tundra";
+	return "Squares of Tundra";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Tundra is one of the many types of ground.";
+	return "Tundra is one of the many types of ground.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.TUNDRA;
+	return MazeObjects.TUNDRA;
     }
 }

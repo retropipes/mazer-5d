@@ -13,32 +13,32 @@ import com.puttysoftware.mazer5d.objects.abc.GenericWand;
 
 class WallMakingWand extends GenericWand {
     public WallMakingWand() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Wall-Making Wand";
+	return "Wall-Making Wand";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Wall-Making Wands";
+	return "Wall-Making Wands";
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-        this.useAction(new Wall(), x, y, z);
-        SoundPlayer.playSound(SoundIndex.CREATE, SoundGroup.GAME);
+	this.useAction(new Wall(), x, y, z);
+	SoundPlayer.playSound(SoundIndex.CREATE, SoundGroup.GAME);
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Wall-Making Wands will create an ordinary wall in the target square when used.";
+	return "Wall-Making Wands will create an ordinary wall in the target square when used.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.WALL_MAKING_WAND;
+	return MazeObjects.WALL_MAKING_WAND;
     }
 }

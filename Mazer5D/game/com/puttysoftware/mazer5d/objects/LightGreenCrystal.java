@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.objects.abc.GenericProgrammableKey;
 class LightGreenCrystal extends GenericProgrammableKey {
     // Constructors
     public LightGreenCrystal() {
-        super("Light Green");
+	super("Light Green");
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.LIGHT_GREEN_CRYSTAL;
+	return MazeObjects.LIGHT_GREEN_CRYSTAL;
     }
 }

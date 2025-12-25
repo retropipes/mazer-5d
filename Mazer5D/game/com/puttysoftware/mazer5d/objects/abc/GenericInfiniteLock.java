@@ -8,21 +8,21 @@ package com.puttysoftware.mazer5d.objects.abc;
 import com.puttysoftware.mazer5d.abc.TypeConstants;
 
 public abstract class GenericInfiniteLock extends GenericLock {
-	protected GenericInfiniteLock(final GenericInfiniteKey mgk) {
-		super(mgk);
-		this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
-		this.setType(TypeConstants.TYPE_LOCK);
-	}
+    protected GenericInfiniteLock(final GenericInfiniteKey mgk) {
+	super(mgk);
+	this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
+	this.setType(TypeConstants.TYPE_LOCK);
+    }
 
-	protected GenericInfiniteLock(final GenericInfiniteKey mgk, final boolean doesAcceptPushInto) {
-		super(mgk, doesAcceptPushInto);
-		this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
-		this.setType(TypeConstants.TYPE_LOCK);
-	}
+    protected GenericInfiniteLock(final GenericInfiniteKey mgk, final boolean doesAcceptPushInto) {
+	super(mgk, doesAcceptPushInto);
+	this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
+	this.setType(TypeConstants.TYPE_LOCK);
+    }
 
-	protected GenericInfiniteLock(final boolean isSolid, final GenericKey mgk) {
-		super(isSolid, mgk);
-		this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
-		this.setType(TypeConstants.TYPE_LOCK);
-	}
+    protected GenericInfiniteLock(final boolean isSolid, final GenericKey mgk) {
+	super(isSolid, mgk);
+	this.setType(TypeConstants.TYPE_UNLOCKED_KEEP_KEY);
+	this.setType(TypeConstants.TYPE_LOCK);
+    }
 }

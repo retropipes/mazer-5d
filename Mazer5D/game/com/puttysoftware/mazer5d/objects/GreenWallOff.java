@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericToggleWall;
 class GreenWallOff extends GenericToggleWall {
     // Constructors
     public GreenWallOff() {
-        super(false);
+	super(false);
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-        return "Green Wall Off";
+	return "Green Wall Off";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Green Walls Off";
+	return "Green Walls Off";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Green Walls Off can be walked through, and will change to Green Walls On when a Green Button is pressed.";
+	return "Green Walls Off can be walked through, and will change to Green Walls On when a Green Button is pressed.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.GREEN_WALL_OFF;
+	return MazeObjects.GREEN_WALL_OFF;
     }
 }

@@ -18,45 +18,45 @@ import com.puttysoftware.mazer5d.objects.abc.GenericTeleport;
 
 class TwoWayTeleport extends GenericTeleport {
     public TwoWayTeleport() {
-        super(0, 0, 0);
+	super(0, 0, 0);
     }
 
     public TwoWayTeleport(final int destRow, final int destCol, final int destFloor) {
-        super(destRow, destCol, destFloor);
+	super(destRow, destCol, destFloor);
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().updatePositionAbsoluteNoEvents(this.getDestinationRow(), this.getDestinationColumn(),
-                this.getDestinationFloor(), this.getDestinationLevel());
-        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getGameManager().updatePositionAbsoluteNoEvents(this.getDestinationRow(), this.getDestinationColumn(),
+		this.getDestinationFloor(), this.getDestinationLevel());
+	SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        final MazeObject mo = me.editTeleportDestination(MazeEditor.TELEPORT_TYPE_TWOWAY);
-        return mo;
+	final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
+	final MazeObject mo = me.editTeleportDestination(MazeEditor.TELEPORT_TYPE_TWOWAY);
+	return mo;
     }
 
     @Override
     protected String getNameHook() {
-        return "Two-Way Teleport";
+	return "Two-Way Teleport";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Two-Way Teleports";
+	return "Two-Way Teleports";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Two-Way Teleports send you to their companion at their destination, and are linked such that stepping on the companion sends you back to the original.";
+	return "Two-Way Teleports send you to their companion at their destination, and are linked such that stepping on the companion sends you back to the original.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.TWO_WAY_TELEPORT;
+	return MazeObjects.TWO_WAY_TELEPORT;
     }
 }

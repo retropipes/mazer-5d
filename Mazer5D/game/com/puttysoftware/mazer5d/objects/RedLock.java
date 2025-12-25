@@ -16,35 +16,35 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleLock;
 class RedLock extends GenericSingleLock {
     // Constructors
     public RedLock() {
-        super(new RedKey());
+	super(new RedKey());
     }
 
     // Scriptability
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need a red key");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need a red key");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     protected String getNameHook() {
-        return "Red Lock";
+	return "Red Lock";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Red Locks";
+	return "Red Locks";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Red Locks require Red Keys to open.";
+	return "Red Locks require Red Keys to open.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.RED_LOCK;
+	return MazeObjects.RED_LOCK;
     }
 }

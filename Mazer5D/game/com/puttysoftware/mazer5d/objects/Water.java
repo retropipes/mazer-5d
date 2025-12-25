@@ -20,54 +20,54 @@ import com.puttysoftware.mazer5d.objects.abc.GenericField;
 class Water extends GenericField {
     // Constructors
     public Water() {
-        super(new AquaBoots(), true);
+	super(new AquaBoots(), true);
     }
 
     // Scriptability
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK_ON_WATER, SoundGroup.GAME);
+	SoundPlayer.playSound(SoundIndex.WALK_ON_WATER, SoundGroup.GAME);
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().showMessage("You'll drown");
-        SoundPlayer.playSound(SoundIndex.WATER, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().showMessage("You'll drown");
+	SoundPlayer.playSound(SoundIndex.WATER, SoundGroup.GAME);
     }
 
     @Override
     public void pushIntoAction(final ObjectInventory inv, final MazeObject pushed, final int x, final int y,
-            final int z) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        if (pushed.isPushable()) {
-            app.getGameManager().morph(new SunkenBlock(), x, y, z, Layers.GROUND);
-            app.getGameManager().morph(GameObjects.getEmptySpace(), x, y, z, Layers.OBJECT);
-            SoundPlayer.playSound(SoundIndex.SINK_BLOCK, SoundGroup.GAME);
-        }
+	    final int z) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	if (pushed.isPushable()) {
+	    app.getGameManager().morph(new SunkenBlock(), x, y, z, Layers.GROUND);
+	    app.getGameManager().morph(GameObjects.getEmptySpace(), x, y, z, Layers.OBJECT);
+	    SoundPlayer.playSound(SoundIndex.SINK_BLOCK, SoundGroup.GAME);
+	}
     }
 
     @Override
     protected String getNameHook() {
-        return "Water";
+	return "Water";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Squares of Water";
+	return "Squares of Water";
     }
 
     @Override
     public boolean oformatVersionridesDefaultPostMove() {
-        return true;
+	return true;
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Water is too unstable to walk on without Aqua Boots.";
+	return "Water is too unstable to walk on without Aqua Boots.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.WATER;
+	return MazeObjects.WATER;
     }
 }

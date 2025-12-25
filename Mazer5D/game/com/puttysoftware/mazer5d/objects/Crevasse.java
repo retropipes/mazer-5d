@@ -12,32 +12,32 @@ import com.puttysoftware.mazer5d.objects.abc.GenericWall;
 class Crevasse extends GenericWall {
     // Constructors
     public Crevasse() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Crevasse";
+	return "Crevasse";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Crevasses";
+	return "Crevasses";
     }
 
     @Override
     protected boolean customArrowHitAction(final int locX, final int locY, final int locZ, final int dirX,
-            final int dirY, final int arrowType, final ObjectInventory inv) {
-        return true;
+	    final int dirY, final int arrowType, final ObjectInventory inv) {
+	return true;
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Crevasses stop movement, but not arrows, which pass oformatVersion them unimpeded.";
+	return "Crevasses stop movement, but not arrows, which pass oformatVersion them unimpeded.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.CREVASSE;
+	return MazeObjects.CREVASSE;
     }
 }

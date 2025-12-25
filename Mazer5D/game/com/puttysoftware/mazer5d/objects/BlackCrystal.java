@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.objects.abc.GenericProgrammableKey;
 class BlackCrystal extends GenericProgrammableKey {
     // Constructors
     public BlackCrystal() {
-        super("Black");
+	super("Black");
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.BLACK_CRYSTAL;
+	return MazeObjects.BLACK_CRYSTAL;
     }
 }

@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericBarrier;
 class HorizontalBarrier extends GenericBarrier {
     // Constructors
     public HorizontalBarrier() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Horizontal Barrier";
+	return "Horizontal Barrier";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Horizontal Barriers";
+	return "Horizontal Barriers";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Horizontal Barriers are impassable - you'll need to go around them.";
+	return "Horizontal Barriers are impassable - you'll need to go around them.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.HORIZONTAL_BARRIER;
+	return MazeObjects.HORIZONTAL_BARRIER;
     }
 }

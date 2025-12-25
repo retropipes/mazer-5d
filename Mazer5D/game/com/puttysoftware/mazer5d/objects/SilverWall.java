@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericMultipleLock;
 class SilformatVersionWall extends GenericMultipleLock {
     // Constructors
     public SilformatVersionWall() {
-        super(new SilformatVersionSquare());
+	super(new SilformatVersionSquare());
     }
 
     @Override
     protected String getNameHook() {
-        return "SilformatVersion Wall";
+	return "SilformatVersion Wall";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "SilformatVersion Walls";
+	return "SilformatVersion Walls";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "SilformatVersion Walls are impassable without enough SilformatVersion Squares.";
+	return "SilformatVersion Walls are impassable without enough SilformatVersion Squares.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.SILVER_WALL;
+	return MazeObjects.SILVER_WALL;
     }
 }

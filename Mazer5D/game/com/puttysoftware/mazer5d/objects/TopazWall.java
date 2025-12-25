@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericMultipleLock;
 class TopazWall extends GenericMultipleLock {
     // Constructors
     public TopazWall() {
-        super(new TopazSquare());
+	super(new TopazSquare());
     }
 
     @Override
     protected String getNameHook() {
-        return "Topaz Wall";
+	return "Topaz Wall";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Topaz Walls";
+	return "Topaz Walls";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Topaz Walls are impassable without enough Topaz Squares.";
+	return "Topaz Walls are impassable without enough Topaz Squares.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.TOPAZ_WALL;
+	return MazeObjects.TOPAZ_WALL;
     }
 }

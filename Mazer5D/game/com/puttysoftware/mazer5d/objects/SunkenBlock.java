@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericGround;
 class SunkenBlock extends GenericGround {
     // Constructors
     public SunkenBlock() {
-        super(true, true, true, true);
+	super(true, true, true, true);
     }
 
     @Override
     protected String getNameHook() {
-        return "Sunken Block";
+	return "Sunken Block";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Sunken Blocks";
+	return "Sunken Blocks";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Sunken Blocks are created when Pushable Blocks are pushed into Water, and behave just like Tiles.";
+	return "Sunken Blocks are created when Pushable Blocks are pushed into Water, and behave just like Tiles.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.SUNKEN_BLOCK;
+	return MazeObjects.SUNKEN_BLOCK;
     }
 }

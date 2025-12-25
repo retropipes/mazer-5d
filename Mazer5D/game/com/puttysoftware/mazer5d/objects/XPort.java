@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.objects.abc.GenericPort;
 class XPort extends GenericPort {
     // Constructors
     public XPort() {
-        super(new XPlug(), 'X');
+	super(new XPlug(), 'X');
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.X_PORT;
+	return MazeObjects.X_PORT;
     }
 }

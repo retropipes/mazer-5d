@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
 class BlueKey extends GenericSingleKey {
     // Constructors
     public BlueKey() {
-        super();
+	super();
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-        return "Blue Key";
+	return "Blue Key";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Blue Keys";
+	return "Blue Keys";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Blue Keys will unlock Blue Locks, and can only be used once.";
+	return "Blue Keys will unlock Blue Locks, and can only be used once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.BLUE_KEY;
+	return MazeObjects.BLUE_KEY;
     }
 }

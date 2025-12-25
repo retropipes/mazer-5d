@@ -15,26 +15,26 @@ class MinorUnknownPotion extends GenericPotion {
 
     // Constructors
     public MinorUnknownPotion() {
-        super(true, MinorUnknownPotion.MIN_EFFECT, MinorUnknownPotion.MAX_EFFECT);
+	super(true, MinorUnknownPotion.MIN_EFFECT, MinorUnknownPotion.MAX_EFFECT);
     }
 
     @Override
     protected String getNameHook() {
-        return "Minor Unknown Potion";
+	return "Minor Unknown Potion";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Minor Unknown Potions";
+	return "Minor Unknown Potions";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Minor Unknown Potions might heal you or hurt you slightly when picked up.";
+	return "Minor Unknown Potions might heal you or hurt you slightly when picked up.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.MINOR_UNKNOWN_POTION;
+	return MazeObjects.MINOR_UNKNOWN_POTION;
     }
 }

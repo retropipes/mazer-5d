@@ -15,17 +15,17 @@ import com.puttysoftware.mazer5d.objects.abc.GenericWand;
 class AnnihilationWand extends GenericWand {
     // Constructors
     public AnnihilationWand() {
-        super();
+	super();
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-        this.useAction(GameObjects.getEmptySpace(), x, y, z);
-        SoundPlayer.playSound(SoundIndex.DESTROY, SoundGroup.GAME);
+	this.useAction(GameObjects.getEmptySpace(), x, y, z);
+	SoundPlayer.playSound(SoundIndex.DESTROY, SoundGroup.GAME);
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.ANNIHILATION_WAND;
+	return MazeObjects.ANNIHILATION_WAND;
     }
 }

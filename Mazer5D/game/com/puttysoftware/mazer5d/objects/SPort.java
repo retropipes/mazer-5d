@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.objects.abc.GenericPort;
 class SPort extends GenericPort {
     // Constructors
     public SPort() {
-        super(new SPlug(), 'S');
+	super(new SPlug(), 'S');
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.S_PORT;
+	return MazeObjects.S_PORT;
     }
 }

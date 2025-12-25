@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericBoots;
 class SlipperyBoots extends GenericBoots {
     // Constructors
     public SlipperyBoots() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Slippery Boots";
+	return "Slippery Boots";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Pairs of Slippery Boots";
+	return "Pairs of Slippery Boots";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Slippery Boots make all ground frictionless as you walk. Note that you can only wear one pair of boots at once.";
+	return "Slippery Boots make all ground frictionless as you walk. Note that you can only wear one pair of boots at once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.SLIPPERY_BOOTS;
+	return MazeObjects.SLIPPERY_BOOTS;
     }
 }

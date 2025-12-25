@@ -41,15 +41,15 @@ public class MazeObjectActions {
     private final BitSet bits;
 
     public MazeObjectActions(final long... val) {
-        super();
-        this.bits = BitSet.valueOf(LongBuffer.wrap(val));
+	super();
+	this.bits = BitSet.valueOf(LongBuffer.wrap(val));
     }
 
     public boolean has(final int val) {
-        return this.bits.get(val);
+	return this.bits.get(val);
     }
 
     public boolean any() {
-        return !this.bits.isEmpty();
+	return !this.bits.isEmpty();
     }
 }

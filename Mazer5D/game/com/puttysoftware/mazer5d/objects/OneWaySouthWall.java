@@ -11,28 +11,28 @@ import com.puttysoftware.mazer5d.objects.abc.GenericWall;
 
 class OneWaySouthWall extends GenericWall {
     public OneWaySouthWall() {
-        super(true, false, true, true, true, false, true, true);
-        this.setType(TypeConstants.TYPE_PLAIN_WALL);
-        this.setType(TypeConstants.TYPE_WALL);
+	super(true, false, true, true, true, false, true, true);
+	this.setType(TypeConstants.TYPE_PLAIN_WALL);
+	this.setType(TypeConstants.TYPE_WALL);
     }
 
     @Override
     protected String getNameHook() {
-        return "One-Way South Wall";
+	return "One-Way South Wall";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "One-Way South Walls";
+	return "One-Way South Walls";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "One-Way South Walls allow movement through them only South.";
+	return "One-Way South Walls allow movement through them only South.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.ONE_WAY_SOUTH_WALL;
+	return MazeObjects.ONE_WAY_SOUTH_WALL;
     }
 }

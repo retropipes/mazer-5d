@@ -14,54 +14,54 @@ import com.puttysoftware.mazer5d.objects.abc.GenericCharacter;
 class Player extends GenericCharacter {
     // Constructors
     public Player() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Player";
+	return "Player";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Players";
+	return "Players";
     }
 
     @Override
     public void editorPlaceHook() {
-        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        me.setPlayerLocation();
+	final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
+	me.setPlayerLocation();
     }
 
     @Override
     public void editorGenerateHook(final int x, final int y, final int z) {
-        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        me.setPlayerLocation(x, y, z);
+	final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
+	me.setPlayerLocation(x, y, z);
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "This is you - the Player.";
+	return "This is you - the Player.";
     }
 
     // Random Generation Rules
     @Override
     public boolean isRequired() {
-        return true;
+	return true;
     }
 
     @Override
     public int getMinimumRequiredQuantity(final Maze maze) {
-        return 1;
+	return 1;
     }
 
     @Override
     public int getMaximumRequiredQuantity(final Maze maze) {
-        return 1;
+	return 1;
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.PLAYER;
+	return MazeObjects.PLAYER;
     }
 }

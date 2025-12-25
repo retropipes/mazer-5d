@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
 class YellowKey extends GenericSingleKey {
     // Constructors
     public YellowKey() {
-        super();
+	super();
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-        return "Yellow Key";
+	return "Yellow Key";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Yellow Keys";
+	return "Yellow Keys";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Yellow Keys will unlock Yellow Locks, and can only be used once.";
+	return "Yellow Keys will unlock Yellow Locks, and can only be used once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.YELLOW_KEY;
+	return MazeObjects.YELLOW_KEY;
     }
 }

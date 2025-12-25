@@ -10,26 +10,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericButton;
 
 class GreenButton extends GenericButton {
     public GreenButton() {
-        super(new GreenWallOff(), new GreenWallOn());
+	super(new GreenWallOff(), new GreenWallOn());
     }
 
     @Override
     protected String getNameHook() {
-        return "Green Button";
+	return "Green Button";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Green Buttons";
+	return "Green Buttons";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Green Buttons will cause all Green Walls Off to become On, and all Green Walls On to become Off.";
+	return "Green Buttons will cause all Green Walls Off to become On, and all Green Walls On to become Off.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.GREEN_BUTTON;
+	return MazeObjects.GREEN_BUTTON;
     }
 }

@@ -15,31 +15,31 @@ class HealBoots extends GenericBoots {
 
     // Constructors
     public HealBoots() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Heal Boots";
+	return "Heal Boots";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Pairs of Heal Boots";
+	return "Pairs of Heal Boots";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Heal Boots restore your health as you walk. Note that you can only wear one pair of boots at once.";
+	return "Heal Boots restore your health as you walk. Note that you can only wear one pair of boots at once.";
     }
 
     @Override
     public void stepAction() {
-        Mazer5D.getBagOStuff().getMazeManager().getMaze().heal(HealBoots.HEAL_AMOUNT);
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().heal(HealBoots.HEAL_AMOUNT);
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.HEAL_BOOTS;
+	return MazeObjects.HEAL_BOOTS;
     }
 }

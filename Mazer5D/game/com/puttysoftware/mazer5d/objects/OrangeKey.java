@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
 class OrangeKey extends GenericSingleKey {
     // Constructors
     public OrangeKey() {
-        super();
+	super();
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-        return "Orange Key";
+	return "Orange Key";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Orange Keys";
+	return "Orange Keys";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Orange Keys will unlock Orange Locks, and can only be used once.";
+	return "Orange Keys will unlock Orange Locks, and can only be used once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.ORANGE_KEY;
+	return MazeObjects.ORANGE_KEY;
     }
 }

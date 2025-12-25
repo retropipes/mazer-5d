@@ -7,6 +7,6 @@ public class Layers {
     public static final int COUNT = 2;
 
     private Layers() {
-        // Do nothing
+	// Do nothing
     }
 }

@@ -16,32 +16,32 @@ class TrueSightAmulet extends GenericAmulet {
 
     // Constructors
     public TrueSightAmulet() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "True Sight Amulet";
+	return "True Sight Amulet";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "True Sight Amulets";
+	return "True Sight Amulets";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "True Sight Amulets grant the power to see what things really are for 30 steps. Note that you can only wear one amulet at once.";
+	return "True Sight Amulets grant the power to see what things really are for 30 steps. Note that you can only wear one amulet at once.";
     }
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_TRUE_SIGHT,
-                TrueSightAmulet.EFFECT_DURATION);
+	Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_TRUE_SIGHT,
+		TrueSightAmulet.EFFECT_DURATION);
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.TRUE_SIGHT_AMULET;
+	return MazeObjects.TRUE_SIGHT_AMULET;
     }
 }

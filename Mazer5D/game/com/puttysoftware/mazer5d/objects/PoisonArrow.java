@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.objects.abc.GenericTransientObject;
 class PoisonArrow extends GenericTransientObject {
     // Constructors
     public PoisonArrow() {
-        super("Poison Arrow");
+	super("Poison Arrow");
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.POISON_ARROW;
+	return MazeObjects.POISON_ARROW;
     }
 }

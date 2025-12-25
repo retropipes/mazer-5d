@@ -16,33 +16,33 @@ import com.puttysoftware.mazer5d.objects.abc.GenericInventoryModifier;
 class NoBoots extends GenericInventoryModifier {
     // Constructors
     public NoBoots() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "No Boots";
+	return "No Boots";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Pairs of No Boots";
+	return "Pairs of No Boots";
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().getGameManager().decay();
-        inv.removeAllBoots();
-        SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().getGameManager().decay();
+	inv.removeAllBoots();
+	SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "No Boots remove any boots worn when picked up.";
+	return "No Boots remove any boots worn when picked up.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.NO_BOOTS;
+	return MazeObjects.NO_BOOTS;
     }
 }

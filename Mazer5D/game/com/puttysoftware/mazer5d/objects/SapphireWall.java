@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericMultipleLock;
 class SapphireWall extends GenericMultipleLock {
     // Constructors
     public SapphireWall() {
-        super(new SapphireSquare());
+	super(new SapphireSquare());
     }
 
     @Override
     protected String getNameHook() {
-        return "Sapphire Wall";
+	return "Sapphire Wall";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Sapphire Walls";
+	return "Sapphire Walls";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Sapphire Walls are impassable without enough Sapphire Squares.";
+	return "Sapphire Walls are impassable without enough Sapphire Squares.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.SAPPHIRE_WALL;
+	return MazeObjects.SAPPHIRE_WALL;
     }
 }

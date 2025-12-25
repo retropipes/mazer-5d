@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericToggleWall;
 class CyanWallOn extends GenericToggleWall {
     // Constructors
     public CyanWallOn() {
-        super(true);
+	super(true);
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-        return "Cyan Wall On";
+	return "Cyan Wall On";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Cyan Walls On";
+	return "Cyan Walls On";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Cyan Walls On can NOT be walked through, and will change to Cyan Walls Off when a Cyan Button is pressed.";
+	return "Cyan Walls On can NOT be walked through, and will change to Cyan Walls Off when a Cyan Button is pressed.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.CYAN_WALL_ON;
+	return MazeObjects.CYAN_WALL_ON;
     }
 }

@@ -29,15 +29,15 @@ public abstract class GenericCharacter extends MazeObject {
 
     // Constructors
     protected GenericCharacter() {
-        super(false);
-        this.setSavedObject(GameObjects.getEmptySpace());
-        this.setType(TypeConstants.TYPE_CHARACTER);
+	super(false);
+	this.setSavedObject(GameObjects.getEmptySpace());
+	this.setType(TypeConstants.TYPE_CHARACTER);
     }
 
     // Methods
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        // Do nothing
+	// Do nothing
     }
 
     @Override
@@ -45,37 +45,37 @@ public abstract class GenericCharacter extends MazeObject {
 
     @Override
     protected int getLayerHook() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
 
     @Override
     protected boolean customArrowHitAction(final int locX, final int locY, final int locZ, final int dirX,
-            final int dirY, final int arrowType, final ObjectInventory inv) {
-        // Shot self
-        Mazer5D.getBagOStuff().showMessage("Ouch, you shot yourself!");
-        if (arrowType == ArrowTypes.PLAIN) {
-            Mazer5D.getBagOStuff().getMazeManager().getMaze().doDamage(GenericCharacter.SHOT_SELF_NORMAL_DAMAGE);
-        } else {
-            Mazer5D.getBagOStuff().getMazeManager().getMaze().doDamage(GenericCharacter.SHOT_SELF_SPECIAL_DAMAGE);
-        }
-        SoundPlayer.playSound(SoundIndex.LAVA, SoundGroup.GAME);
-        return false;
+	    final int dirY, final int arrowType, final ObjectInventory inv) {
+	// Shot self
+	Mazer5D.getBagOStuff().showMessage("Ouch, you shot yourself!");
+	if (arrowType == ArrowTypes.PLAIN) {
+	    Mazer5D.getBagOStuff().getMazeManager().getMaze().doDamage(GenericCharacter.SHOT_SELF_NORMAL_DAMAGE);
+	} else {
+	    Mazer5D.getBagOStuff().getMazeManager().getMaze().doDamage(GenericCharacter.SHOT_SELF_SPECIAL_DAMAGE);
+	}
+	SoundPlayer.playSound(SoundIndex.LAVA, SoundGroup.GAME);
+	return false;
     }
 
     @Override
     public int getCustomFormat() {
-        return 0;
+	return 0;
     }
 
     @Override
     protected void writeMazeObjectHook(final MazeDataWriter writer) throws IOException {
-        this.getSavedObject().writeMazeObject(writer);
+	this.getSavedObject().writeMazeObject(writer);
     }
 
     @Override
     protected MazeObject readMazeObjectHook(final MazeDataReader reader, final MazeVersion formatVersion)
-            throws IOException {
-        this.setSavedObject(GameObjects.readObject(reader, formatVersion));
-        return this;
+	    throws IOException {
+	this.setSavedObject(GameObjects.readObject(reader, formatVersion));
+	return this;
     }
 }

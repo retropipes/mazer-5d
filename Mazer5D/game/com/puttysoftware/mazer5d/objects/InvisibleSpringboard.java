@@ -16,45 +16,45 @@ import com.puttysoftware.mazer5d.loader.SoundPlayer;
 class InvisibleSpringboard extends Springboard {
     // Constructors
     public InvisibleSpringboard() {
-        super();
+	super();
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().showMessage("Some unseen force prevents movement that way...");
+	Mazer5D.getBagOStuff().showMessage("Some unseen force prevents movement that way...");
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().updatePositionAbsolute(this.getDestinationRow(), this.getDestinationColumn(),
-                this.getDestinationFloor());
-        SoundPlayer.playSound(SoundIndex.SPRINGBOARD, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().showMessage("Invisible Springboard!");
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getGameManager().updatePositionAbsolute(this.getDestinationRow(), this.getDestinationColumn(),
+		this.getDestinationFloor());
+	SoundPlayer.playSound(SoundIndex.SPRINGBOARD, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().showMessage("Invisible Springboard!");
     }
 
     @Override
     protected String getNameHook() {
-        return "Invisible Springboard";
+	return "Invisible Springboard";
     }
 
     @Override
     public String getGameName() {
-        return "Empty";
+	return "Empty";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Invislble Springboards";
+	return "Invislble Springboards";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Invisible Springboards bounce anything that wanders into them to the floor above. If one of these is placed on the top-most floor, it is impassable.";
+	return "Invisible Springboards bounce anything that wanders into them to the floor above. If one of these is placed on the top-most floor, it is impassable.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.INVISIBLE_SPRINGBOARD;
+	return MazeObjects.INVISIBLE_SPRINGBOARD;
     }
 }

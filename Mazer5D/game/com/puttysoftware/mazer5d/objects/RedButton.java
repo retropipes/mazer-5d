@@ -10,26 +10,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericButton;
 
 class RedButton extends GenericButton {
     public RedButton() {
-        super(new RedWallOff(), new RedWallOn());
+	super(new RedWallOff(), new RedWallOn());
     }
 
     @Override
     protected String getNameHook() {
-        return "Red Button";
+	return "Red Button";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Red Buttons";
+	return "Red Buttons";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Red Buttons will cause all Red Walls Off to become On, and all Red Walls On to become Off.";
+	return "Red Buttons will cause all Red Walls Off to become On, and all Red Walls On to become Off.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.RED_BUTTON;
+	return MazeObjects.RED_BUTTON;
     }
 }

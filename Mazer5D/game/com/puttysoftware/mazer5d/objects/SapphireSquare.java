@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericMultipleKey;
 class SapphireSquare extends GenericMultipleKey {
     // Constructors
     public SapphireSquare() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Sapphire Square";
+	return "Sapphire Square";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Sapphire Squares";
+	return "Sapphire Squares";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Sapphire Squares are the keys to Sapphire Walls.";
+	return "Sapphire Squares are the keys to Sapphire Walls.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.SAPPHIRE_SQUARE;
+	return MazeObjects.SAPPHIRE_SQUARE;
     }
 }

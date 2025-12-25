@@ -20,35 +20,35 @@ class MoonStone extends GenericInventoryableObject {
 
     // Constructors
     public MoonStone() {
-        super(false, 0);
+	super(false, 0);
     }
 
     @Override
     protected String getNameHook() {
-        return "Moon Stone";
+	return "Moon Stone";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Moon Stones";
+	return "Moon Stones";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Moon Stones act as a trigger for other actions when collected.";
+	return "Moon Stones act as a trigger for other actions when collected.";
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        inv.addItem(this);
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().decay();
-        SoundPlayer.playSound(SoundIndex.SUN_STONE, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager().addToScore(MoonStone.SCORE_GRAB_STONE);
+	inv.addItem(this);
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getGameManager().decay();
+	SoundPlayer.playSound(SoundIndex.SUN_STONE, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().getGameManager().addToScore(MoonStone.SCORE_GRAB_STONE);
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.MOON_STONE;
+	return MazeObjects.MOON_STONE;
     }
 }

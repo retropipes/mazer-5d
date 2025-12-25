@@ -11,12 +11,12 @@ import com.puttysoftware.mazer5d.abc.MazeObjects;
 public class Icy extends MazeEffect {
     // Constructor
     public Icy(final int newRounds) {
-        super("Icy", newRounds);
+	super("Icy", newRounds);
     }
 
     @Override
     public void customTerminateLogic() {
-        // Remove item that granted effect from inventory
-        Mazer5D.getBagOStuff().getGameManager().getObjectInventory().removeItem(MazeObjects.ICE_AMULET);
+	// Remove item that granted effect from inventory
+	Mazer5D.getBagOStuff().getGameManager().getObjectInventory().removeItem(MazeObjects.ICE_AMULET);
     }
 }

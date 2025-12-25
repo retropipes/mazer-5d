@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.objects.abc.GenericProgrammableKey;
 class PlantCrystal extends GenericProgrammableKey {
     // Constructors
     public PlantCrystal() {
-        super("Plant");
+	super("Plant");
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.PLANT_CRYSTAL;
+	return MazeObjects.PLANT_CRYSTAL;
     }
 }

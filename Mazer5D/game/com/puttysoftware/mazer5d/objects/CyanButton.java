@@ -10,26 +10,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericButton;
 
 class CyanButton extends GenericButton {
     public CyanButton() {
-        super(new CyanWallOff(), new CyanWallOn());
+	super(new CyanWallOff(), new CyanWallOn());
     }
 
     @Override
     protected String getNameHook() {
-        return "Cyan Button";
+	return "Cyan Button";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Cyan Buttons";
+	return "Cyan Buttons";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Cyan Buttons will cause all Cyan Walls Off to become On, and all Cyan Walls On to become Off.";
+	return "Cyan Buttons will cause all Cyan Walls Off to become On, and all Cyan Walls On to become Off.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.CYAN_BUTTON;
+	return MazeObjects.CYAN_BUTTON;
     }
 }

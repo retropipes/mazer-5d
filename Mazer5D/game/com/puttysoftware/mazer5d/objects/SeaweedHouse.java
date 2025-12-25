@@ -16,34 +16,34 @@ import com.puttysoftware.mazer5d.loader.SoundPlayer;
 class SeaweedHouse extends FinishTo {
     // Constructors
     public SeaweedHouse() {
-        super();
+	super();
     }
 
     // Scriptability
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        SoundPlayer.playSound(SoundIndex.UP, SoundGroup.GAME);
-        app.getGameManager().goToLevel(this.getDestinationLevel());
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	SoundPlayer.playSound(SoundIndex.UP, SoundGroup.GAME);
+	app.getGameManager().goToLevel(this.getDestinationLevel());
     }
 
     @Override
     protected String getNameHook() {
-        return "Seaweed House";
+	return "Seaweed House";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Seaweed Houses";
+	return "Seaweed Houses";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Seaweed Houses send you inside when walked on.";
+	return "Seaweed Houses send you inside when walked on.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.SEAWEED_HOUSE;
+	return MazeObjects.SEAWEED_HOUSE;
     }
 }

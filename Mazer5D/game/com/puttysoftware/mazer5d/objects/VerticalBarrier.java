@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericBarrier;
 class VerticalBarrier extends GenericBarrier {
     // Constructors
     public VerticalBarrier() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Vertical Barrier";
+	return "Vertical Barrier";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Vertical Barriers";
+	return "Vertical Barriers";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Vertical Barriers are impassable - you'll need to go around them.";
+	return "Vertical Barriers are impassable - you'll need to go around them.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.VERTICAL_BARRIER;
+	return MazeObjects.VERTICAL_BARRIER;
     }
 }

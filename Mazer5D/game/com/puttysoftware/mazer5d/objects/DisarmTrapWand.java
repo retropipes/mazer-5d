@@ -15,32 +15,32 @@ import com.puttysoftware.mazer5d.objects.abc.GenericWand;
 class DisarmTrapWand extends GenericWand {
     // Constructors
     public DisarmTrapWand() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Disarm Trap Wand";
+	return "Disarm Trap Wand";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Disarm Trap Wands";
+	return "Disarm Trap Wands";
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-        this.useAction(GameObjects.getEmptySpace(), x, y, z);
-        SoundPlayer.playSound(SoundIndex.DESTROY, SoundGroup.GAME);
+	this.useAction(GameObjects.getEmptySpace(), x, y, z);
+	SoundPlayer.playSound(SoundIndex.DESTROY, SoundGroup.GAME);
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Disarm Trap Wands will make one trap disappear when used, if aimed at a trap.";
+	return "Disarm Trap Wands will make one trap disappear when used, if aimed at a trap.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.DISARM_TRAP_WAND;
+	return MazeObjects.DISARM_TRAP_WAND;
     }
 }

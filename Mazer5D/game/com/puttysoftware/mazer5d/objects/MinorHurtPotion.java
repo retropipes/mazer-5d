@@ -15,26 +15,26 @@ class MinorHurtPotion extends GenericPotion {
 
     // Constructors
     public MinorHurtPotion() {
-        super(true, MinorHurtPotion.MAX_HURT, MinorHurtPotion.MIN_HURT);
+	super(true, MinorHurtPotion.MAX_HURT, MinorHurtPotion.MIN_HURT);
     }
 
     @Override
     protected String getNameHook() {
-        return "Minor Hurt Potion";
+	return "Minor Hurt Potion";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Minor Hurt Potions";
+	return "Minor Hurt Potions";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Minor Hurt Potions hurt you slightly when picked up.";
+	return "Minor Hurt Potions hurt you slightly when picked up.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.MINOR_HURT_POTION;
+	return MazeObjects.MINOR_HURT_POTION;
     }
 }

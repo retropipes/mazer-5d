@@ -11,31 +11,31 @@ import com.puttysoftware.mazer5d.objects.abc.GenericPassThroughObject;
 class FakeWall extends GenericPassThroughObject {
     // Constructors
     public FakeWall() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Fake Wall";
+	return "Fake Wall";
     }
 
     @Override
     public String getGameName() {
-        return "Wall";
+	return "Wall";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Fake Walls";
+	return "Fake Walls";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Fake Walls look like walls, but can be walked through.";
+	return "Fake Walls look like walls, but can be walked through.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.FAKE_WALL;
+	return MazeObjects.FAKE_WALL;
     }
 }

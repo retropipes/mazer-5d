@@ -17,45 +17,45 @@ import com.puttysoftware.mazer5d.objects.abc.GenericInfiniteLock;
 class Tree extends GenericInfiniteLock {
     // Constructors
     public Tree() {
-        super(new Axe());
+	super(new Axe());
     }
 
     // Scriptability
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need an axe");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need an axe");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        if (!this.getKey().isInfinite()) {
-            inv.removeItem(this.getKey().getUniqueID());
-        }
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().decayTo(new CutTree());
-        SoundPlayer.playSound(SoundIndex.UNLOCK, SoundGroup.GAME);
+	if (!this.getKey().isInfinite()) {
+	    inv.removeItem(this.getKey().getUniqueID());
+	}
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getGameManager().decayTo(new CutTree());
+	SoundPlayer.playSound(SoundIndex.UNLOCK, SoundGroup.GAME);
     }
 
     @Override
     protected String getNameHook() {
-        return "Tree";
+	return "Tree";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Trees";
+	return "Trees";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Trees transform into Cut Trees when hit with an Axe.";
+	return "Trees transform into Cut Trees when hit with an Axe.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.TREE;
+	return MazeObjects.TREE;
     }
 }

@@ -16,42 +16,42 @@ import com.puttysoftware.mazer5d.objects.abc.GenericField;
 class Lava extends GenericField {
     // Constructors
     public Lava() {
-        super(new FireBoots());
+	super(new FireBoots());
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK_ON_LAVA, SoundGroup.GAME);
+	SoundPlayer.playSound(SoundIndex.WALK_ON_LAVA, SoundGroup.GAME);
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().showMessage("You'll burn");
-        SoundPlayer.playSound(SoundIndex.LAVA, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().showMessage("You'll burn");
+	SoundPlayer.playSound(SoundIndex.LAVA, SoundGroup.GAME);
     }
 
     @Override
     protected String getNameHook() {
-        return "Lava";
+	return "Lava";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Squares of Lava";
+	return "Squares of Lava";
     }
 
     @Override
     public boolean oformatVersionridesDefaultPostMove() {
-        return true;
+	return true;
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Lava is too hot to walk on without Fire Boots.";
+	return "Lava is too hot to walk on without Fire Boots.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.LAVA;
+	return MazeObjects.LAVA;
     }
 }

@@ -11,36 +11,36 @@ import com.puttysoftware.mazer5d.objects.abc.GenericRandomInvisibleTeleport;
 class RandomInvisibleTeleport extends GenericRandomInvisibleTeleport {
     // Constructors
     public RandomInvisibleTeleport() {
-        super(0, 0);
+	super(0, 0);
     }
 
     public RandomInvisibleTeleport(final int newRandomRangeY, final int newRandomRangeX) {
-        super(newRandomRangeY, newRandomRangeX);
+	super(newRandomRangeY, newRandomRangeX);
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-        return "Random Invisible Teleport";
+	return "Random Invisible Teleport";
     }
 
     @Override
     public String getGameName() {
-        return "Empty";
+	return "Empty";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Random Invisible Teleports";
+	return "Random Invisible Teleports";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Random Invisible Teleports are both random and invisible.";
+	return "Random Invisible Teleports are both random and invisible.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.RANDOM_INVISIBLE_TELEPORT;
+	return MazeObjects.RANDOM_INVISIBLE_TELEPORT;
     }
 }

@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.objects.abc.GenericTransientObject;
 class FireArrow extends GenericTransientObject {
     // Constructors
     public FireArrow() {
-        super("Fire Arrow");
+	super("Fire Arrow");
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.FIRE_ARROW;
+	return MazeObjects.FIRE_ARROW;
     }
 }

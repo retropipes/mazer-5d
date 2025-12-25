@@ -10,26 +10,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericButton;
 
 class MagentaButton extends GenericButton {
     public MagentaButton() {
-        super(new MagentaWallOff(), new MagentaWallOn());
+	super(new MagentaWallOff(), new MagentaWallOn());
     }
 
     @Override
     protected String getNameHook() {
-        return "Magenta Button";
+	return "Magenta Button";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Magenta Buttons";
+	return "Magenta Buttons";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Magenta Buttons will cause all Magenta Walls Off to become On, and all Magenta Walls On to become Off.";
+	return "Magenta Buttons will cause all Magenta Walls Off to become On, and all Magenta Walls On to become Off.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.MAGENTA_BUTTON;
+	return MazeObjects.MAGENTA_BUTTON;
     }
 }

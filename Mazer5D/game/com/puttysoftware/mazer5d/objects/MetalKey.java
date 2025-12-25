@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
 class MetalKey extends GenericSingleKey {
     // Constructors
     public MetalKey() {
-        super();
+	super();
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-        return "Metal Key";
+	return "Metal Key";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Metal Keys";
+	return "Metal Keys";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Metal Keys will open Metal Doors, and can only be used once.";
+	return "Metal Keys will open Metal Doors, and can only be used once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.METAL_KEY;
+	return MazeObjects.METAL_KEY;
     }
 }

@@ -3,19 +3,19 @@ package com.puttysoftware.mazer5d.locale;
 class LocalDataNames {
     // Static fields
     private static String[] LIST = new String[] { "objectname", "objectplural", "objectdesc", "extension",
-            "extensionperiod" };
+	    "extensionperiod" };
 
     // Private constructor
     private LocalDataNames() {
-        // Do nothing
+	// Do nothing
     }
 
     // Static methods
     static int getFileCount() {
-        return LocalDataNames.LIST.length;
+	return LocalDataNames.LIST.length;
     }
 
     static String getFileName(final LocalData file) {
-        return LocalDataNames.LIST[file.ordinal()];
+	return LocalDataNames.LIST[file.ordinal()];
     }
 }

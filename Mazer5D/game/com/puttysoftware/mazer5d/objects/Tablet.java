@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericInfiniteKey;
 class Tablet extends GenericInfiniteKey {
     // Constructors
     public Tablet() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Tablet";
+	return "Tablet";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Tablets";
+	return "Tablets";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Tablets are used to fill Tablet Slots, and make them disappear. Tablets can be used infinitely many times.";
+	return "Tablets are used to fill Tablet Slots, and make them disappear. Tablets can be used infinitely many times.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.TABLET;
+	return MazeObjects.TABLET;
     }
 }

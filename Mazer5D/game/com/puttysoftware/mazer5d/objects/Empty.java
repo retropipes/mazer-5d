@@ -12,28 +12,28 @@ import com.puttysoftware.mazer5d.objects.abc.GenericPassThroughObject;
 class Empty extends GenericPassThroughObject {
     // Constructors
     public Empty() {
-        super(true, true, true, true);
-        this.setType(TypeConstants.TYPE_PASS_THROUGH);
-        this.setType(TypeConstants.TYPE_EMPTY_SPACE);
+	super(true, true, true, true);
+	this.setType(TypeConstants.TYPE_PASS_THROUGH);
+	this.setType(TypeConstants.TYPE_EMPTY_SPACE);
     }
 
     @Override
     protected String getNameHook() {
-        return "Empty";
+	return "Empty";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Squares of Emptiness";
+	return "Squares of Emptiness";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Squares of Emptiness are what fills areas that aren't occupied by other objects.";
+	return "Squares of Emptiness are what fills areas that aren't occupied by other objects.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.EMPTY;
+	return MazeObjects.EMPTY;
     }
 }

@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericWall;
 class SealingWall extends GenericWall {
     // Constructors
     public SealingWall() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Sealing Wall";
+	return "Sealing Wall";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Sealing Walls";
+	return "Sealing Walls";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Sealing Walls are impassable and impossible to destroy.";
+	return "Sealing Walls are impassable and impossible to destroy.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.SEALING_WALL;
+	return MazeObjects.SEALING_WALL;
     }
 }

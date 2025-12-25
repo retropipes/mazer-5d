@@ -11,11 +11,11 @@ import com.puttysoftware.mazer5d.objects.abc.GenericCarpet;
 class MagentaCarpet extends GenericCarpet {
     // Constructors
     public MagentaCarpet() {
-        super("Magenta");
+	super("Magenta");
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.MAGENTA_CARPET;
+	return MazeObjects.MAGENTA_CARPET;
     }
 }

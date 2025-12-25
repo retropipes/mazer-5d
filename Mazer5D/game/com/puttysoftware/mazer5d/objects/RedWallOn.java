@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericToggleWall;
 class RedWallOn extends GenericToggleWall {
     // Constructors
     public RedWallOn() {
-        super(true);
+	super(true);
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-        return "Red Wall On";
+	return "Red Wall On";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Red Walls On";
+	return "Red Walls On";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Red Walls On can NOT be walked through, and will change to Red Walls Off when a Red Button is pressed.";
+	return "Red Walls On can NOT be walked through, and will change to Red Walls Off when a Red Button is pressed.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.RED_WALL_ON;
+	return MazeObjects.RED_WALL_ON;
     }
 }

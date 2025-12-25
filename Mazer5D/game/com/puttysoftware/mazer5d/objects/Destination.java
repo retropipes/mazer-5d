@@ -12,31 +12,31 @@ import com.puttysoftware.mazer5d.objects.abc.GenericTeleport;
 class Destination extends GenericTeleport {
     // Constructors
     public Destination() {
-        super(0, 0, 0);
+	super(0, 0, 0);
     }
 
     @Override
     protected String getNameHook() {
-        return "Destination";
+	return "Destination";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Destinations";
+	return "Destinations";
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-        return null;
+	return null;
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Destinations are where Teleports take you to.";
+	return "Destinations are where Teleports take you to.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.DESTINATION;
+	return MazeObjects.DESTINATION;
     }
 }

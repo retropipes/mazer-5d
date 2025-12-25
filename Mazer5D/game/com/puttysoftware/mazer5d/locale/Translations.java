@@ -13,19 +13,19 @@ public final class Translations {
     }
 
     public static String load(Strings item) {
-        return ResourceBundle.getBundle(Translations.RESOURCES, Translations.ACTIVE).getString(item.toString());
+	return ResourceBundle.getBundle(Translations.RESOURCES, Translations.ACTIVE).getString(item.toString());
     }
 
     public static String load(Strings item, String... replacements) {
-        String result = ResourceBundle.getBundle(Translations.RESOURCES, Translations.ACTIVE)
-                .getString(item.toString());
-        for (int x = 0; x < replacements.length; x++) {
-            result = result.replace(Translations.PLACEHOLDER + x, replacements[x]);
-        }
-        return result;
+	String result = ResourceBundle.getBundle(Translations.RESOURCES, Translations.ACTIVE)
+		.getString(item.toString());
+	for (int x = 0; x < replacements.length; x++) {
+	    result = result.replace(Translations.PLACEHOLDER + x, replacements[x]);
+	}
+	return result;
     }
 
     public static void setActiveLanguage(final Locale newActive) {
-        Translations.ACTIVE = newActive;
+	Translations.ACTIVE = newActive;
     }
 }

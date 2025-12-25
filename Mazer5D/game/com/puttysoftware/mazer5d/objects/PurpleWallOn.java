@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericToggleWall;
 class PurpleWallOn extends GenericToggleWall {
     // Constructors
     public PurpleWallOn() {
-        super(true);
+	super(true);
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-        return "Purple Wall On";
+	return "Purple Wall On";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Purple Walls On";
+	return "Purple Walls On";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Purple Walls On can NOT be walked through, and will change to Purple Walls Off when a Purple Button is pressed.";
+	return "Purple Walls On can NOT be walked through, and will change to Purple Walls Off when a Purple Button is pressed.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.PURPLE_WALL_ON;
+	return MazeObjects.PURPLE_WALL_ON;
     }
 }

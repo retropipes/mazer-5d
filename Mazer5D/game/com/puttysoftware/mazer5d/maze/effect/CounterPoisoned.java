@@ -11,20 +11,20 @@ import com.puttysoftware.mazer5d.abc.MazeObjects;
 public class CounterPoisoned extends MazeEffect {
     // Constructor
     public CounterPoisoned(final int newRounds) {
-        super("Counter-Poisoned", newRounds);
+	super("Counter-Poisoned", newRounds);
     }
 
     @Override
     public void customExtendLogic() {
-        // Apply the effect
-        Mazer5D.getBagOStuff().getMazeManager().getMaze().doCounterpoisonAmulet();
+	// Apply the effect
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().doCounterpoisonAmulet();
     }
 
     @Override
     public void customTerminateLogic() {
-        // Remove item that granted effect from inventory
-        Mazer5D.getBagOStuff().getGameManager().getObjectInventory().removeItem(MazeObjects.COUNTERPOISON_AMULET);
-        // Undo the effect
-        Mazer5D.getBagOStuff().getMazeManager().getMaze().undoPoisonAmulets();
+	// Remove item that granted effect from inventory
+	Mazer5D.getBagOStuff().getGameManager().getObjectInventory().removeItem(MazeObjects.COUNTERPOISON_AMULET);
+	// Undo the effect
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().undoPoisonAmulets();
     }
 }

@@ -7,11 +7,11 @@ import com.puttysoftware.mazer5d.abc.MazeObject;
 class MazeStorage extends ObjectStorage<MazeObject> {
     // Constructor
     public MazeStorage(final int... shape) {
-        super(shape);
+	super(shape);
     }
 
     // Methods
     public MazeObject getMazeCell(final int... loc) {
-        return this.getCell(loc);
+	return this.getCell(loc);
     }
 }

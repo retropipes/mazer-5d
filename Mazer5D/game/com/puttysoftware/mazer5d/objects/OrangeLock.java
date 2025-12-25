@@ -16,35 +16,35 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleLock;
 class OrangeLock extends GenericSingleLock {
     // Constructors
     public OrangeLock() {
-        super(new OrangeKey());
+	super(new OrangeKey());
     }
 
     // Scriptability
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getBagOStuff().showMessage("You need an orange key");
-        }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
+	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+	    Mazer5D.getBagOStuff().showMessage("You need an orange key");
+	}
+	SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
     protected String getNameHook() {
-        return "Orange Lock";
+	return "Orange Lock";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Orange Locks";
+	return "Orange Locks";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Orange Locks require Orange Keys to open.";
+	return "Orange Locks require Orange Keys to open.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.ORANGE_LOCK;
+	return MazeObjects.ORANGE_LOCK;
     }
 }

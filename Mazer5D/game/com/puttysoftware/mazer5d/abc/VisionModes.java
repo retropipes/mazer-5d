@@ -7,6 +7,6 @@ public class VisionModes {
     public static final int RADIUS = 4;
 
     private VisionModes() {
-        // Do nothing
+	// Do nothing
     }
 }

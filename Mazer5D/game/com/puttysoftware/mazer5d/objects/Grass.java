@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericGround;
 class Grass extends GenericGround {
     // Constructors
     public Grass() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Grass";
+	return "Grass";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Squares of Grass";
+	return "Squares of Grass";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Grass is one of the many types of ground.";
+	return "Grass is one of the many types of ground.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.GRASS;
+	return MazeObjects.GRASS;
     }
 }

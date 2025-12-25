@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericInfiniteKey;
 class Axe extends GenericInfiniteKey {
     // Constructors
     public Axe() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Axe";
+	return "Axe";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Axe";
+	return "Axe";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "With an Axe, Trees can be cut down. Axes neformatVersion lose their ability to cut trees.";
+	return "With an Axe, Trees can be cut down. Axes neformatVersion lose their ability to cut trees.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.AXE;
+	return MazeObjects.AXE;
     }
 }

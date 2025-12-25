@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericGround;
 class Sand extends GenericGround {
     // Constructors
     public Sand() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Sand";
+	return "Sand";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Squares of Sand";
+	return "Squares of Sand";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Sand is one of the many types of ground.";
+	return "Sand is one of the many types of ground.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.SAND;
+	return MazeObjects.SAND;
     }
 }

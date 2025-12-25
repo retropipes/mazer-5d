@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericMultipleLock;
 class GarnetWall extends GenericMultipleLock {
     // Constructors
     public GarnetWall() {
-        super(new GarnetSquare());
+	super(new GarnetSquare());
     }
 
     @Override
     protected String getNameHook() {
-        return "Garnet Wall";
+	return "Garnet Wall";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Garnet Walls";
+	return "Garnet Walls";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Garnet Walls are impassable without enough Garnet Squares.";
+	return "Garnet Walls are impassable without enough Garnet Squares.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.GARNET_WALL;
+	return MazeObjects.GARNET_WALL;
     }
 }

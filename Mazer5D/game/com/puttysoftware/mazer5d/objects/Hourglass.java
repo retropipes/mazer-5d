@@ -19,34 +19,34 @@ class Hourglass extends GenericTimeModifier {
 
     // Constructors
     public Hourglass() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Hourglass";
+	return "Hourglass";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Hourglasses";
+	return "Hourglasses";
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().getGameManager().decay();
-        Mazer5D.getBagOStuff().getMazeManager().getMaze().extendTimerByInitialValue();
-        SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager().addToScore(Hourglass.SCORE_GRAB);
+	Mazer5D.getBagOStuff().getGameManager().decay();
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().extendTimerByInitialValue();
+	SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().getGameManager().addToScore(Hourglass.SCORE_GRAB);
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Hourglasses extend the time to solve the current level by the initial value.";
+	return "Hourglasses extend the time to solve the current level by the initial value.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.HOURGLASS;
+	return MazeObjects.HOURGLASS;
     }
 }

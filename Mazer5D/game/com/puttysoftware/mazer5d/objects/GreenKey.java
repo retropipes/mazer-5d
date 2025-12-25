@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
 class GreenKey extends GenericSingleKey {
     // Constructors
     public GreenKey() {
-        super();
+	super();
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-        return "Green Key";
+	return "Green Key";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Green Keys";
+	return "Green Keys";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Green Keys will unlock Green Locks, and can only be used once.";
+	return "Green Keys will unlock Green Locks, and can only be used once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.GREEN_KEY;
+	return MazeObjects.GREEN_KEY;
     }
 }

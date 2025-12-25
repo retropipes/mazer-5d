@@ -16,34 +16,34 @@ import com.puttysoftware.mazer5d.loader.SoundPlayer;
 class SkyHouse extends FinishTo {
     // Constructors
     public SkyHouse() {
-        super();
+	super();
     }
 
     // Scriptability
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        SoundPlayer.playSound(SoundIndex.UP, SoundGroup.GAME);
-        app.getGameManager().goToLevel(this.getDestinationLevel());
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	SoundPlayer.playSound(SoundIndex.UP, SoundGroup.GAME);
+	app.getGameManager().goToLevel(this.getDestinationLevel());
     }
 
     @Override
     protected String getNameHook() {
-        return "Sky House";
+	return "Sky House";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Sky Houses";
+	return "Sky Houses";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Sky Houses send you inside when walked on.";
+	return "Sky Houses send you inside when walked on.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.SKY_HOUSE;
+	return MazeObjects.SKY_HOUSE;
     }
 }

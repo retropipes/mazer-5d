@@ -15,32 +15,32 @@ import com.puttysoftware.mazer5d.objects.abc.GenericGem;
 class DarknessGem extends GenericGem {
     // Constructors
     public DarknessGem() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Darkness Gem";
+	return "Darkness Gem";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Darkness Gems";
+	return "Darkness Gems";
     }
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getBagOStuff().getMazeManager().getMaze().setVisionRadiusToMinimum();
-        SoundPlayer.playSound(SoundIndex.DARKNESS, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().getMazeManager().getMaze().setVisionRadiusToMinimum();
+	SoundPlayer.playSound(SoundIndex.DARKNESS, SoundGroup.GAME);
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Darkness Gems decrease the visible area to its minimum.";
+	return "Darkness Gems decrease the visible area to its minimum.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.DARKNESS_GEM;
+	return MazeObjects.DARKNESS_GEM;
     }
 }

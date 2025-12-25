@@ -11,27 +11,27 @@ import com.puttysoftware.mazer5d.objects.abc.GenericSingleKey;
 class SeaweedKey extends GenericSingleKey {
     // Constructors
     public SeaweedKey() {
-        super();
+	super();
     }
 
     // Scriptability
     @Override
     protected String getNameHook() {
-        return "Seaweed Key";
+	return "Seaweed Key";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Seaweed Keys";
+	return "Seaweed Keys";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Seaweed Keys will unlock Seaweed Locks, and can only be used once.";
+	return "Seaweed Keys will unlock Seaweed Locks, and can only be used once.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.SEAWEED_KEY;
+	return MazeObjects.SEAWEED_KEY;
     }
 }

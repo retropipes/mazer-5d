@@ -16,34 +16,34 @@ import com.puttysoftware.mazer5d.loader.SoundPlayer;
 class BlueHouse extends FinishTo {
     // Constructors
     public BlueHouse() {
-        super();
+	super();
     }
 
     // Scriptability
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        SoundPlayer.playSound(SoundIndex.UP, SoundGroup.GAME);
-        app.getGameManager().goToLevel(this.getDestinationLevel());
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	SoundPlayer.playSound(SoundIndex.UP, SoundGroup.GAME);
+	app.getGameManager().goToLevel(this.getDestinationLevel());
     }
 
     @Override
     protected String getNameHook() {
-        return "Blue House";
+	return "Blue House";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Blue Houses";
+	return "Blue Houses";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Blue Houses send you inside when walked on.";
+	return "Blue Houses send you inside when walked on.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.BLUE_HOUSE;
+	return MazeObjects.BLUE_HOUSE;
     }
 }

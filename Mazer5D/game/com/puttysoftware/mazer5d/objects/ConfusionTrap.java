@@ -20,34 +20,34 @@ class ConfusionTrap extends GenericTrap {
 
     // Constructors
     public ConfusionTrap() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Confusion Trap";
+	return "Confusion Trap";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Confusion Traps";
+	return "Confusion Traps";
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().showMessage("You are confused!");
-        Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_CONFUSED,
-                ConfusionTrap.EFFECT_DURATION);
-        SoundPlayer.playSound(SoundIndex.CONFUSED, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().showMessage("You are confused!");
+	Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_CONFUSED,
+		ConfusionTrap.EFFECT_DURATION);
+	SoundPlayer.playSound(SoundIndex.CONFUSED, SoundGroup.GAME);
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Confusion Traps randomly alter your controls for 10 steps when stepped on.";
+	return "Confusion Traps randomly alter your controls for 10 steps when stepped on.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.CONFUSION_TRAP;
+	return MazeObjects.CONFUSION_TRAP;
     }
 }

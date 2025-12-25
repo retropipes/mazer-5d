@@ -16,32 +16,32 @@ class GhostAmulet extends GenericAmulet {
 
     // Constructors
     public GhostAmulet() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Ghost Amulet";
+	return "Ghost Amulet";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Ghost Amulets";
+	return "Ghost Amulets";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Ghost Amulets grant the power to walk through walls for 30 steps. Note that you can only wear one amulet at once.";
+	return "Ghost Amulets grant the power to walk through walls for 30 steps. Note that you can only wear one amulet at once.";
     }
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_GHOSTLY,
-                GhostAmulet.EFFECT_DURATION);
+	Mazer5D.getBagOStuff().getGameManager().activateEffect(MazeEffectConstants.EFFECT_GHOSTLY,
+		GhostAmulet.EFFECT_DURATION);
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.GHOST_AMULET;
+	return MazeObjects.GHOST_AMULET;
     }
 }

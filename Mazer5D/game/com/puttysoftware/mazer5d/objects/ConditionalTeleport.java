@@ -11,26 +11,26 @@ import com.puttysoftware.mazer5d.objects.abc.GenericConditionalTeleport;
 class ConditionalTeleport extends GenericConditionalTeleport {
     // Constructors
     public ConditionalTeleport() {
-        super();
+	super();
     }
 
     @Override
     protected String getNameHook() {
-        return "Conditional Teleport";
+	return "Conditional Teleport";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Conditional Teleports";
+	return "Conditional Teleports";
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Conditional Teleports send you to one of two predetermined destinations when stepped on, depending on how many Sun or Moon Stones are in your inventory.";
+	return "Conditional Teleports send you to one of two predetermined destinations when stepped on, depending on how many Sun or Moon Stones are in your inventory.";
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.CONDITIONAL_TELEPORT;
+	return MazeObjects.CONDITIONAL_TELEPORT;
     }
 }

@@ -14,32 +14,32 @@ public abstract class GenericTrappedWall extends GenericWall {
 
     // Constructors
     protected GenericTrappedWall(final int newNumber) {
-        super();
-        this.number = newNumber;
-        this.setType(TypeConstants.TYPE_TRAPPED_WALL);
-        this.setType(TypeConstants.TYPE_WALL);
+	super();
+	this.number = newNumber;
+	this.setType(TypeConstants.TYPE_TRAPPED_WALL);
+	this.setType(TypeConstants.TYPE_WALL);
     }
 
     @Override
     protected String getNameHook() {
-        if (this.number == GenericTrappedWall.NUMBER_MASTER) {
-            return "Master Trapped Wall";
-        } else {
-            return "Trapped Wall " + this.number;
-        }
+	if (this.number == GenericTrappedWall.NUMBER_MASTER) {
+	    return "Master Trapped Wall";
+	} else {
+	    return "Trapped Wall " + this.number;
+	}
     }
 
     @Override
     public String getGameName() {
-        return "Wall";
+	return "Wall";
     }
 
     @Override
     protected String getPluralNameHook() {
-        if (this.number == GenericTrappedWall.NUMBER_MASTER) {
-            return "Master Trapped Walls";
-        } else {
-            return "Trapped Walls " + this.number;
-        }
+	if (this.number == GenericTrappedWall.NUMBER_MASTER) {
+	    return "Master Trapped Walls";
+	} else {
+	    return "Trapped Walls " + this.number;
+	}
     }
 }

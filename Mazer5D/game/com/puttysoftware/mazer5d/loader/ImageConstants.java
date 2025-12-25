@@ -22,6 +22,6 @@ public class ImageConstants {
     public static final int SIZE = 64;
 
     private ImageConstants() {
-        // Do nothing
+	// Do nothing
     }
 }

@@ -18,49 +18,49 @@ import com.puttysoftware.mazer5d.objects.abc.GenericTeleport;
 class ControllableTeleport extends GenericTeleport {
     // Constructors
     public ControllableTeleport() {
-        super(0, 0, 0);
+	super(0, 0, 0);
     }
 
     // Scriptability
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
-        app.getGameManager().controllableTeleport();
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
+	app.getGameManager().controllableTeleport();
     }
 
     @Override
     protected String getNameHook() {
-        return "Controllable Teleport";
+	return "Controllable Teleport";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Controllable Teleports";
+	return "Controllable Teleports";
     }
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getBagOStuff().showMessage(this.getName());
+	Mazer5D.getBagOStuff().showMessage(this.getName());
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-        return null;
+	return null;
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Controllable Teleports let you choose the place you teleport to.";
+	return "Controllable Teleports let you choose the place you teleport to.";
     }
 
     @Override
     public int getCustomFormat() {
-        return 0;
+	return 0;
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.CONTROLLABLE_TELEPORT;
+	return MazeObjects.CONTROLLABLE_TELEPORT;
     }
 }

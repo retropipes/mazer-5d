@@ -18,57 +18,57 @@ import com.puttysoftware.mazer5d.loader.SoundPlayer;
 class FinishTo extends Finish {
     // Constructors
     public FinishTo() {
-        super();
-        this.addOneCustomCounter();
+	super();
+	this.addOneCustomCounter();
     }
 
     // Scriptability
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        SoundPlayer.playSound(SoundIndex.FINISH, SoundGroup.GAME);
-        app.getGameManager().solvedLevelWarp(this.getDestinationLevel());
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	SoundPlayer.playSound(SoundIndex.FINISH, SoundGroup.GAME);
+	app.getGameManager().solvedLevelWarp(this.getDestinationLevel());
     }
 
     @Override
     protected String getNameHook() {
-        return "Finish To";
+	return "Finish To";
     }
 
     @Override
     protected String getPluralNameHook() {
-        return "Finishes To";
+	return "Finishes To";
     }
 
     @Override
     public void gameProbeHook() {
-        Mazer5D.getBagOStuff().showMessage(this.getName() + " Level " + (this.getDestinationLevel() + 1));
+	Mazer5D.getBagOStuff().showMessage(this.getName() + " Level " + (this.getDestinationLevel() + 1));
     }
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getBagOStuff().showMessage(this.getName() + " Level " + (this.getDestinationLevel() + 1));
+	Mazer5D.getBagOStuff().showMessage(this.getName() + " Level " + (this.getDestinationLevel() + 1));
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        me.editFinishToDestination(this);
-        return this;
+	final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
+	me.editFinishToDestination(this);
+	return this;
     }
 
     @Override
     protected String getDescriptionHook() {
-        return "Finishes To behave like regular Finishes, except that the level they send you to might not be the next one.";
+	return "Finishes To behave like regular Finishes, except that the level they send you to might not be the next one.";
     }
 
     @Override
     public int getCustomFormat() {
-        return 1;
+	return 1;
     }
 
     @Override
     protected MazeObjects getUniqueIDHook() {
-        return MazeObjects.FINISH_TO;
+	return MazeObjects.FINISH_TO;
     }
 }

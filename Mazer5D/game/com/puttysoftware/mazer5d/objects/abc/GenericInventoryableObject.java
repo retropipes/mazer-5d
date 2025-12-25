@@ -21,22 +21,22 @@ public abstract class GenericInventoryableObject extends MazeObject {
 
     // Constructors
     protected GenericInventoryableObject(final boolean isUsable, final int newUses) {
-        super(false, isUsable, newUses, true);
-        this.setType(TypeConstants.TYPE_INVENTORYABLE);
-        this.setType(TypeConstants.TYPE_CONTAINABLE);
+	super(false, isUsable, newUses, true);
+	this.setType(TypeConstants.TYPE_INVENTORYABLE);
+	this.setType(TypeConstants.TYPE_CONTAINABLE);
     }
 
     @Override
     protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-        inv.addItem(this);
-        final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().decay();
-        SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager().addToScore(GenericInventoryableObject.SCORE_GRAB);
+	inv.addItem(this);
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	app.getGameManager().decay();
+	SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
+	Mazer5D.getBagOStuff().getGameManager().addToScore(GenericInventoryableObject.SCORE_GRAB);
     }
 
     @Override
     protected int getLayerHook() {
-        return Layers.OBJECT;
+	return Layers.OBJECT;
     }
 }
