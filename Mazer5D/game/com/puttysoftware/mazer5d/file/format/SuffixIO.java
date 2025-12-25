@@ -2,12 +2,13 @@ package com.puttysoftware.mazer5d.file.format;
 
 import java.io.IOException;
 
-import com.puttysoftware.mazer5d.file.io.MazeDataReader;
-import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+
 import com.puttysoftware.mazer5d.file.version.MazeVersion;
 
 public interface SuffixIO {
-    void writeSuffix(MazeDataWriter writer) throws IOException;
+    void writeSuffix(XDataWriter writer) throws IOException;
 
-    void readSuffix(MazeDataReader reader, MazeVersion formatVersion) throws IOException;
+    void readSuffix(XDataReader reader, MazeVersion formatVersion) throws IOException;
 }

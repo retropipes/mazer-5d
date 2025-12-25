@@ -5,6 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.maze.effect;
 
+import org.retropipes.diane.direction.legacy.Directions;
+
 public class UTurned extends MazeEffect {
     // Constructor
     public UTurned(final int newRounds) {

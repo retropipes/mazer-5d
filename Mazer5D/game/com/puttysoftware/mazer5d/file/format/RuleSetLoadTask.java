@@ -8,12 +8,13 @@ package com.puttysoftware.mazer5d.file.format;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataReader;
 import org.retropipes.diane.gui.dialog.CommonDialogs;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.editor.ruleset.RuleSetConstants;
-import com.puttysoftware.mazer5d.file.io.MazeDataReader;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 
 public class RuleSetLoadTask extends Thread {
@@ -31,7 +32,7 @@ public class RuleSetLoadTask extends Thread {
     public void run() {
 	final BagOStuff app = Mazer5D.getBagOStuff();
 	final String sg = "Rule Set";
-	try (MazeDataReader ruleSetFile = new MazeDataReader(this.filename, "ruleset")) {
+	try (XDataReader ruleSetFile = DataIOFactory.createTagReader(this.filename, "ruleset")) {
 	    final int magic = ruleSetFile.readInt();
 	    if (magic == RuleSetConstants.MAGIC_NUMBER_2) {
 		// Format 2 file

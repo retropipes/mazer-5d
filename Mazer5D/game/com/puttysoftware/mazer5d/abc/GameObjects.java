@@ -9,10 +9,10 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.file.io.MazeDataReader;
-import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.loader.DataLoader;
 import com.puttysoftware.mazer5d.loader.ObjectImageLoader;
@@ -671,7 +671,7 @@ public class GameObjects {
 	return new MazeObject(uid, dr, dc, df, dl);
     }
 
-    public static MazeObject readObject(final MazeDataReader reader, final MazeVersion formatVersion)
+    public static MazeObject readObject(final XDataReader reader, final MazeVersion formatVersion)
 	    throws IOException {
 	MazeObject o = null;
 	String UID = StaticStrings.EMPTY;
@@ -711,7 +711,7 @@ public class GameObjects {
 	return null;
     }
 
-    public static void readRuleSet(final MazeDataReader reader, final int rsFormat) throws IOException {
+    public static void readRuleSet(final XDataReader reader, final int rsFormat) throws IOException {
 	// Read map length
 	final int mapLen = reader.readInt();
 	final boolean[] map = new boolean[mapLen];
@@ -728,7 +728,7 @@ public class GameObjects {
 	}
     }
 
-    public static void writeRuleSet(final MazeDataWriter writer) throws IOException {
+    public static void writeRuleSet(final XDataWriter writer) throws IOException {
 	final boolean[] map = GameObjects.generateMap();
 	// Write map length
 	writer.writeInt(map.length);

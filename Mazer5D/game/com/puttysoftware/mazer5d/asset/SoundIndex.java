@@ -1,6 +1,14 @@
 package com.puttysoftware.mazer5d.asset;
 
-public enum SoundIndex {
+import java.net.URL;
+import java.util.Properties;
+
+import org.retropipes.diane.asset.sound.DianeSoundIndex;
+
+import com.puttysoftware.mazer5d.file.FileExtensions;
+import com.puttysoftware.mazer5d.loader.DataLoader;
+
+public enum SoundIndex implements DianeSoundIndex {
     ACTION_FAILED,
     ARROW_FIRED,
     ARROW_DEAD,
@@ -47,5 +55,22 @@ public enum SoundIndex {
     WALL_TRAP,
     WATER,
     WIN_GAME,
-    _NONE
+    _NONE;
+
+    private static String[] allFilenames;
+    private static Properties fileExtensions;
+
+    @Override
+    public String getName() {
+	if (SoundIndex.allFilenames == null && SoundIndex.fileExtensions == null) {
+	    SoundIndex.allFilenames = DataLoader.loadSoundData();
+	}
+	final String soundExt = FileExtensions.getSoundExtensionWithPeriod();
+	return SoundIndex.allFilenames[this.ordinal()] + soundExt;
+    }
+
+    @Override
+    public URL getURL() {
+	return SoundIndex.class.getResource("/asset/sound/" + this.getName());
+    }
 }

@@ -7,11 +7,12 @@ package com.puttysoftware.mazer5d.maze;
 
 import java.io.IOException;
 
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+
 import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.abc.Layers;
 import com.puttysoftware.mazer5d.abc.MazeObject;
-import com.puttysoftware.mazer5d.file.io.MazeDataReader;
-import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.file.version.MazeVersion;
 
 class SavedState {
@@ -35,7 +36,7 @@ class SavedState {
 	this.saveData.setCell(newData, x, y, z, e);
     }
 
-    public void writeSavedTowerState(final MazeDataWriter writer) throws IOException {
+    public void writeSavedTowerState(final XDataWriter writer) throws IOException {
 	int x, y, z, e;
 	writer.writeInt(this.c);
 	writer.writeInt(this.r);
@@ -51,7 +52,7 @@ class SavedState {
 	}
     }
 
-    public static SavedState readSavedState(final MazeDataReader reader, final MazeVersion formatVersion)
+    public static SavedState readSavedState(final XDataReader reader, final MazeVersion formatVersion)
 	    throws IOException {
 	int x, y, z, e, sizeX, sizeY, sizeZ;
 	sizeX = reader.readInt();

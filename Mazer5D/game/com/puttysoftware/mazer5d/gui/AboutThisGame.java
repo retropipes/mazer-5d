@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import org.retropipes.diane.gui.MainContent;
 import org.retropipes.diane.gui.MainWindow;
 
 import com.puttysoftware.mazer5d.Modes;
@@ -30,7 +31,7 @@ import com.puttysoftware.mazer5d.locale.Translations;
 public class AboutThisGame implements AboutHandler {
     // Fields
     private MainWindow aboutFrame;
-    private MainWindowContent aboutPane;
+    private MainContent aboutPane;
     private JPanel textPane, buttonPane, logoPane;
     private JButton aboutOK;
     private EventHandler handler;
@@ -44,7 +45,7 @@ public class AboutThisGame implements AboutHandler {
     // Methods
     public void showAboutDialog() {
 	Modes.setInAbout();
-	this.aboutFrame.attachAndSave(this.aboutPane);
+	this.aboutFrame.setAndSave(this.aboutPane);
 	this.aboutFrame.setTitle(Translations.load(Strings.ABOUT_TITLE));
     }
 
@@ -55,7 +56,7 @@ public class AboutThisGame implements AboutHandler {
 
     private void setUpGUI(final String formatVersion) {
 	this.handler = new EventHandler();
-	this.aboutFrame = MainWindow.getMainWindow();
+	this.aboutFrame = MainWindow.mainWindow();
 	this.aboutPane = MainWindow.createContent();
 	this.textPane = new JPanel();
 	this.buttonPane = new JPanel();

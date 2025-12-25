@@ -42,6 +42,10 @@ import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.JTabbedPane;
 
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+import org.retropipes.diane.gui.MainContent;
 import org.retropipes.diane.gui.MainWindow;
 import org.retropipes.diane.gui.dialog.CommonDialogs;
 import org.retropipes.diane.update.ProductData;
@@ -66,7 +70,7 @@ public class Prefs {
     // Fields
     private static MainWindow prefFrame;
     private static JTabbedPane prefTabPane;
-    private static MainWindowContent mainPrefPane;
+    private static MainContent mainPrefPane;
     private static JPanel twisterPane;
     private static JButton prefsOK, prefsCancel;
     private static JButton prefsExport, prefsImport;
@@ -288,7 +292,7 @@ public class Prefs {
 	}
 	Prefs.prefFrame.setTitle("Preferences");
 	Prefs.prefFrame.setDefaultButton(Prefs.prefsOK);
-	Prefs.prefFrame.attachAndSave(Prefs.mainPrefPane);
+	Prefs.prefFrame.setAndSave(Prefs.mainPrefPane);
 	Modes.setInPrefs();
     }
 
@@ -410,7 +414,7 @@ public class Prefs {
     }
 
     private static void setUpGUI() {
-	Prefs.prefFrame = MainWindow.getMainWindow();
+	Prefs.prefFrame = MainWindow.mainWindow();
 	Prefs.handler = new EventHandler();
 	Prefs.prefTabPane = new JTabbedPane();
 	Prefs.mainPrefPane = MainWindow.createContent();
@@ -517,7 +521,7 @@ public class Prefs {
 		// Abort early if the file does not exist
 		return false;
 	    }
-	    try (final MazeDataReader reader = new MazeDataReader(CommonPaths.getPrefsFile().getAbsolutePath(),
+	    try (final XDataReader reader = DataIOFactory.createTagReader(CommonPaths.getPrefsFile().getAbsolutePath(),
 		    Prefs.DOC_TAG)) {
 		// Read the preferences from the file
 		// Read format version
@@ -531,7 +535,7 @@ public class Prefs {
 		} catch (ArrayIndexOutOfBoundsException e) {
 		    throw new PrefsVersionException(raw, e);
 		}
-		Prefs.editorFill = reader.readMazeObjectID();
+		Prefs.editorFill = MazeDataReader.readMazeObjectID(reader);
 		Prefs.checkUpdatesStartupEnabled = reader.readBoolean();
 		Prefs.moveOneAtATimeEnabled = reader.readBoolean();
 		for (int x = 0; x < Prefs.SOUNDS_LENGTH; x++) {
@@ -573,10 +577,10 @@ public class Prefs {
 	    if (!prefsFile.canWrite()) {
 		prefsParent.mkdirs();
 	    }
-	    try (final MazeDataWriter writer = new MazeDataWriter(prefsFile.getAbsolutePath(), Prefs.DOC_TAG)) {
+	    try (final XDataWriter writer = DataIOFactory.createTagWriter(prefsFile.getAbsolutePath(), Prefs.DOC_TAG)) {
 		// Write the preferences to the file
 		writer.writeInt(PrefsVersions.LATEST);
-		writer.writeMazeObjectID(Prefs.editorFill);
+		MazeDataWriter.writeMazeObjectID(Prefs.editorFill, writer);
 		writer.writeBoolean(Prefs.checkUpdatesStartupEnabled);
 		writer.writeBoolean(Prefs.moveOneAtATimeEnabled);
 		for (int x = 0; x < Prefs.SOUNDS_LENGTH; x++) {
@@ -611,7 +615,7 @@ public class Prefs {
 
 	// Methods
 	public boolean importPreferencesFile(final File importFile) {
-	    try (final MazeDataReader reader = new MazeDataReader(importFile.getAbsolutePath(), Prefs.DOC_TAG)) {
+	    try (final XDataReader reader = DataIOFactory.createTagReader(importFile.getAbsolutePath(), Prefs.DOC_TAG)) {
 		// Read the preferences from the file
 		// Read format version
 		final int raw = reader.readInt();
@@ -625,7 +629,7 @@ public class Prefs {
 		} catch (ArrayIndexOutOfBoundsException e) {
 		    throw new PrefsVersionException(raw, e);
 		}
-		Prefs.editorFill = reader.readMazeObjectID();
+		Prefs.editorFill = MazeDataReader.readMazeObjectID(reader);
 		Prefs.checkUpdatesStartupEnabled = reader.readBoolean();
 		Prefs.moveOneAtATimeEnabled = reader.readBoolean();
 		for (int x = 0; x < Prefs.SOUNDS_LENGTH; x++) {
@@ -672,10 +676,10 @@ public class Prefs {
 	}
 
 	public boolean exportPreferencesFile(final File exportFile) {
-	    try (final MazeDataWriter writer = new MazeDataWriter(exportFile.getAbsolutePath(), Prefs.DOC_TAG)) {
+	    try (final XDataWriter writer = DataIOFactory.createTagWriter(exportFile.getAbsolutePath(), Prefs.DOC_TAG)) {
 		// Write the preferences to the file
 		writer.writeInt(PrefsVersions.LATEST);
-		writer.writeMazeObjectID(Prefs.editorFill);
+		MazeDataWriter.writeMazeObjectID(Prefs.editorFill, writer);
 		writer.writeBoolean(Prefs.checkUpdatesStartupEnabled);
 		writer.writeBoolean(Prefs.moveOneAtATimeEnabled);
 		for (int x = 0; x < Prefs.SOUNDS_LENGTH; x++) {

@@ -7,6 +7,8 @@ package com.puttysoftware.mazer5d.objects;
 
 import java.io.IOException;
 
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
 import org.retropipes.diane.gui.dialog.CommonDialogs;
 
 import com.puttysoftware.mazer5d.Mazer5D;
@@ -14,8 +16,6 @@ import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.abc.MazeObjects;
 import com.puttysoftware.mazer5d.asset.SoundGroup;
 import com.puttysoftware.mazer5d.asset.SoundIndex;
-import com.puttysoftware.mazer5d.file.io.MazeDataReader;
-import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loader.SoundPlayer;
@@ -93,7 +93,7 @@ class RotationTrap extends GenericTrap implements Cloneable {
     }
 
     @Override
-    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final MazeVersion formatVersion)
+    protected MazeObject readMazeObjectHook(final XDataReader reader, final MazeVersion formatVersion)
 	    throws IOException {
 	this.setRotationRadius(reader.readInt());
 	this.setRotationDirection(reader.readBoolean());
@@ -101,7 +101,7 @@ class RotationTrap extends GenericTrap implements Cloneable {
     }
 
     @Override
-    protected void writeMazeObjectHook(final MazeDataWriter writer) throws IOException {
+    protected void writeMazeObjectHook(final XDataWriter writer) throws IOException {
 	writer.writeInt(this.getRotationRadius());
 	writer.writeBoolean(this.getRotationDirection());
     }

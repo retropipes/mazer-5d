@@ -21,6 +21,9 @@ import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+import org.retropipes.diane.gui.MainContent;
 import org.retropipes.diane.gui.MainWindow;
 import org.retropipes.diane.gui.dialog.CommonDialogs;
 
@@ -37,8 +40,6 @@ import com.puttysoftware.mazer5d.asset.MusicIndex;
 import com.puttysoftware.mazer5d.asset.SoundGroup;
 import com.puttysoftware.mazer5d.asset.SoundIndex;
 import com.puttysoftware.mazer5d.file.MazeManager;
-import com.puttysoftware.mazer5d.file.io.MazeDataReader;
-import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loader.ImageConstants;
@@ -58,7 +59,7 @@ import com.puttysoftware.mazer5d.prefs.Prefs;
 public class GameManager implements MazeEffectConstants {
     // Fields
     private MainWindow outputFrame;
-    private MainWindowContent borderPane;
+    private MainContent borderPane;
     private JPanel outputPane, progressPane, summaryPane, commandPane;
     private JLabel messageLabel;
     private JProgressBar autoFinishProgress, alternateAutoFinishProgress;
@@ -1580,7 +1581,7 @@ public class GameManager implements MazeEffectConstants {
 	}
     }
 
-    public void loadGameHook(final MazeDataReader mazeFile, final MazeVersion formatVersion) throws IOException {
+    public void loadGameHook(final XDataReader mazeFile, final MazeVersion formatVersion) throws IOException {
 	final BagOStuff app = Mazer5D.getBagOStuff();
 	this.objectInv = ObjectInventory.readInventory(mazeFile, formatVersion);
 	this.savedObjectInv = ObjectInventory.readInventory(mazeFile, formatVersion);
@@ -1588,7 +1589,7 @@ public class GameManager implements MazeEffectConstants {
 	this.st.setScore(mazeFile.readLong());
     }
 
-    public void saveGameHook(final MazeDataWriter mazeFile) throws IOException {
+    public void saveGameHook(final XDataWriter mazeFile) throws IOException {
 	final BagOStuff app = Mazer5D.getBagOStuff();
 	this.objectInv.writeInventory(mazeFile);
 	this.savedObjectInv.writeInventory(mazeFile);
@@ -1656,7 +1657,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void showOutput() {
 	MusicPlayer.playMusic(MusicIndex.EXPLORING, MusicGroup.GAME);
-	this.outputFrame.attachAndSave(this.borderPane);
+	this.outputFrame.setAndSave(this.borderPane);
 	this.outputFrame.setTitle(Translations.load(Strings.PROGRAM_NAME));
 	this.outputFrame.addKeyListener(this.handler);
 	this.outputPane.addMouseListener(this.handler);
@@ -1674,7 +1675,7 @@ public class GameManager implements MazeEffectConstants {
 	this.objectInv = new ObjectInventory();
 	this.handler = new EventHandler();
 	// Create content containers
-	this.outputFrame = MainWindow.getMainWindow();
+	this.outputFrame = MainWindow.mainWindow();
 	this.borderPane = MainWindow.createContent();
 	this.borderPane.setLayout(new BorderLayout());
 	this.summaryPane = new JPanel();
@@ -1703,7 +1704,7 @@ public class GameManager implements MazeEffectConstants {
 	this.showTable = new JButton("Show Score Table");
 	this.endGame = new JButton("End Game");
 	// Attach event handlers
-	this.showObjectInventory.addActionListener(h -> {
+	this.showObjectInventory.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1711,7 +1712,7 @@ public class GameManager implements MazeEffectConstants {
 		}
 	    }.start();
 	});
-	this.useObject.addActionListener(h -> {
+	this.useObject.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1719,7 +1720,7 @@ public class GameManager implements MazeEffectConstants {
 		}
 	    }.start();
 	});
-	this.switchBow.addActionListener(h -> {
+	this.switchBow.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1727,7 +1728,7 @@ public class GameManager implements MazeEffectConstants {
 		}
 	    }.start();
 	});
-	this.reset.addActionListener(h -> {
+	this.reset.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1735,7 +1736,7 @@ public class GameManager implements MazeEffectConstants {
 		}
 	    }.start();
 	});
-	this.showScore.addActionListener(h -> {
+	this.showScore.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1743,7 +1744,7 @@ public class GameManager implements MazeEffectConstants {
 		}
 	    }.start();
 	});
-	this.showTable.addActionListener(h -> {
+	this.showTable.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1751,7 +1752,7 @@ public class GameManager implements MazeEffectConstants {
 		}
 	    }.start();
 	});
-	this.endGame.addActionListener(h -> {
+	this.endGame.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {

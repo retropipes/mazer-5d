@@ -7,10 +7,9 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.util.Objects;
 
-import org.retropipes.diane.direction.DirectionResolver;
+import org.retropipes.diane.direction.legacy.Directions;
+import org.retropipes.diane.direction.legacy.DirectionsResolver;
 import org.retropipes.diane.storage.FlagStorage;
-
-import com.puttysoftware.diane.utilties.Directions;
 
 class MoveProperties {
     // Private enumeration
@@ -74,7 +73,7 @@ class MoveProperties {
     }
 
     public boolean isDirectionallyPushable(final int dirX, final int dirY) {
-	final int dir = DirectionResolver.resolve(dirX, dirY);
+	final int dir = DirectionsResolver.resolve(dirX, dirY);
 	try {
 	    if (dir != Directions.NONE) {
 		return this.moveData.getCell(MoveDataTypes.PUSH.index, dir);
@@ -95,7 +94,7 @@ class MoveProperties {
     }
 
     public boolean isDirectionallyPullable(final int dirX, final int dirY) {
-	final int dir = DirectionResolver.resolve(dirX, dirY);
+	final int dir = DirectionsResolver.resolve(dirX, dirY);
 	try {
 	    if (dir != Directions.NONE) {
 		return this.moveData.getCell(MoveDataTypes.PULL.index, dir);
@@ -116,7 +115,7 @@ class MoveProperties {
     }
 
     public boolean isDirectionallyPushableInto(final int dirX, final int dirY) {
-	final int dir = DirectionResolver.resolve(dirX, dirY);
+	final int dir = DirectionsResolver.resolve(dirX, dirY);
 	try {
 	    if (dir != Directions.NONE) {
 		return this.moveData.getCell(MoveDataTypes.PUSH_INTO.index, dir);
@@ -137,7 +136,7 @@ class MoveProperties {
     }
 
     public boolean isDirectionallyPullableInto(final int dirX, final int dirY) {
-	final int dir = DirectionResolver.resolve(dirX, dirY);
+	final int dir = DirectionsResolver.resolve(dirX, dirY);
 	try {
 	    if (dir != Directions.NONE) {
 		return this.moveData.getCell(MoveDataTypes.PULL_INTO.index, dir);
@@ -158,7 +157,7 @@ class MoveProperties {
     }
 
     public boolean isDirectionallyPushableOut(final int dirX, final int dirY) {
-	final int dir = DirectionResolver.resolve(dirX, dirY);
+	final int dir = DirectionsResolver.resolve(dirX, dirY);
 	try {
 	    if (dir != Directions.NONE) {
 		return this.moveData.getCell(MoveDataTypes.PUSH_OUT.index, dir);
@@ -179,7 +178,7 @@ class MoveProperties {
     }
 
     public boolean isDirectionallyPullableOut(final int dirX, final int dirY) {
-	final int dir = DirectionResolver.resolve(dirX, dirY);
+	final int dir = DirectionsResolver.resolve(dirX, dirY);
 	try {
 	    if (dir != Directions.NONE) {
 		return this.moveData.getCell(MoveDataTypes.PULL_OUT.index, dir);

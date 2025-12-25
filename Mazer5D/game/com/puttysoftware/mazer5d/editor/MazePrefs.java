@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import org.retropipes.diane.gui.MainContent;
 import org.retropipes.diane.gui.MainWindow;
 
 import com.puttysoftware.mazer5d.Mazer5D;
@@ -31,7 +32,7 @@ import com.puttysoftware.mazer5d.maze.Maze;
 public class MazePrefs {
     // Fields
     private MainWindow prefFrame;
-    private MainWindowContent mainPrefPane;
+    private MainContent mainPrefPane;
     private JPanel contentPane, buttonPane;
     private JButton prefsOK, prefsCancel;
     private JComboBox<String> startLevelChoices;
@@ -52,7 +53,7 @@ public class MazePrefs {
 	this.loadPrefs();
 	Mazer5D.getBagOStuff().getEditor().disableOutput();
 	Modes.setInMazePrefs();
-	this.prefFrame.attachAndSave(this.mainPrefPane);
+	this.prefFrame.setAndSave(this.mainPrefPane);
 	this.prefFrame.setTitle("Maze Preferences");
     }
 
@@ -95,7 +96,7 @@ public class MazePrefs {
 
     private void setUpGUI() {
 	this.handler = new EventHandler();
-	this.prefFrame = MainWindow.getMainWindow();
+	this.prefFrame = MainWindow.mainWindow();
 	this.mainPrefPane = MainWindow.createContent();
 	this.contentPane = new JPanel();
 	this.buttonPane = new JPanel();

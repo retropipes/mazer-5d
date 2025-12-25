@@ -8,14 +8,15 @@ package com.puttysoftware.mazer5d.abc;
 import java.io.IOException;
 import java.util.Objects;
 
+import org.retropipes.diane.direction.legacy.Directions;
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
 import org.retropipes.diane.random.RandomRange;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.asset.SoundGroup;
 import com.puttysoftware.mazer5d.asset.SoundIndex;
 import com.puttysoftware.mazer5d.editor.ruleset.RuleSet;
-import com.puttysoftware.mazer5d.file.io.MazeDataReader;
-import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loader.DataLoader;
@@ -1145,7 +1146,7 @@ public class MazeObject implements RandomGenerationRule {
 	return MazeObjects._NONE;
     }
 
-    public final void writeMazeObject(final MazeDataWriter writer) throws IOException {
+    public final void writeMazeObject(final XDataWriter writer) throws IOException {
 	writer.writeString(this.getIdentifier());
 	final int ccf = this.customCounterCount();
 	if (ccf != MazeObject.NO_CUSTOM_COUNTERS) {
@@ -1156,7 +1157,7 @@ public class MazeObject implements RandomGenerationRule {
 	this.writeMazeObjectHook(writer);
     }
 
-    public final MazeObject readMazeObject(final MazeDataReader reader, final String ident,
+    public final MazeObject readMazeObject(final XDataReader reader, final String ident,
 	    final MazeVersion formatVersion) throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1172,7 +1173,7 @@ public class MazeObject implements RandomGenerationRule {
 	}
     }
 
-    public final MazeObject readMazeObject2(final MazeDataReader reader, final String ident,
+    public final MazeObject readMazeObject2(final XDataReader reader, final String ident,
 	    final MazeVersion formatVersion) throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1188,7 +1189,7 @@ public class MazeObject implements RandomGenerationRule {
 	}
     }
 
-    public final MazeObject readMazeObject3(final MazeDataReader reader, final String ident,
+    public final MazeObject readMazeObject3(final XDataReader reader, final String ident,
 	    final MazeVersion formatVersion) throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1204,7 +1205,7 @@ public class MazeObject implements RandomGenerationRule {
 	}
     }
 
-    public final MazeObject readMazeObject4(final MazeDataReader reader, final String ident,
+    public final MazeObject readMazeObject4(final XDataReader reader, final String ident,
 	    final MazeVersion formatVersion) throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1220,7 +1221,7 @@ public class MazeObject implements RandomGenerationRule {
 	}
     }
 
-    public final MazeObject readMazeObject5(final MazeDataReader reader, final String ident,
+    public final MazeObject readMazeObject5(final XDataReader reader, final String ident,
 	    final MazeVersion formatVersion) throws IOException {
 	if (ident.equals(this.getIdentifier())) {
 	    final int ccf = this.customCounterCount();
@@ -1241,7 +1242,7 @@ public class MazeObject implements RandomGenerationRule {
      * @param writer
      * @throws IOException
      */
-    protected void writeMazeObjectHook(final MazeDataWriter writer) throws IOException {
+    protected void writeMazeObjectHook(final XDataWriter writer) throws IOException {
 	// Do nothing - but let subclasses oformatVersionride
     }
 
@@ -1252,7 +1253,7 @@ public class MazeObject implements RandomGenerationRule {
      * @return
      * @throws IOException
      */
-    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final MazeVersion formatVersion)
+    protected MazeObject readMazeObjectHook(final XDataReader reader, final MazeVersion formatVersion)
 	    throws IOException {
 	// Dummy implementation, subclasses can oformatVersionride
 	return this;

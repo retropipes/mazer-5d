@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.gui.MainContent;
 import org.retropipes.diane.gui.MainWindow;
 import org.retropipes.diane.gui.dialog.CommonDialogs;
 
@@ -36,7 +37,7 @@ import com.puttysoftware.mazer5d.prefs.Prefs;
 public class GUIManager implements QuitHandler {
     // Fields
     private MainWindow guiFrame;
-    private MainWindowContent guiPane;
+    private MainContent guiPane;
     private JPanel logoPane, commandPane;
     private JLabel logoLabel;
     private JButton fileNew, fileOpen, fileOpenLocked, fileClose, fileSave, fileSaveAs, fileSaveLocked, quit, play,
@@ -52,7 +53,7 @@ public class GUIManager implements QuitHandler {
     public void showGUI() {
 	this.setUpGUI();
 	Modes.setInGUI();
-	this.guiFrame.attachAndSave(this.guiPane);
+	this.guiFrame.setAndSave(this.guiPane);
 	this.guiFrame.setTitle(Translations.load(Strings.PROGRAM_NAME));
 	this.checkFlags();
     }
@@ -137,7 +138,7 @@ public class GUIManager implements QuitHandler {
 	if (!this.setUp) {
 	    // Create content containers
 	    final BagOStuff bag = Mazer5D.getBagOStuff();
-	    this.guiFrame = MainWindow.getMainWindow();
+	    this.guiFrame = MainWindow.mainWindow();
 	    this.guiPane = MainWindow.createContent();
 	    this.guiPane.setLayout(new BorderLayout());
 	    this.logoPane = new JPanel();
@@ -163,7 +164,7 @@ public class GUIManager implements QuitHandler {
 	    this.helpAbout = new JButton("About This Game");
 	    this.helpObjectHelp = new JButton("Object Help");
 	    // Attach event handlers
-	    this.fileNew.addActionListener(h -> {
+	    this.fileNew.addActionListener(_ -> {
 		new Thread() {
 		    @Override
 		    public void run() {
@@ -172,7 +173,7 @@ public class GUIManager implements QuitHandler {
 		    }
 		}.start();
 	    });
-	    this.fileOpen.addActionListener(h -> {
+	    this.fileOpen.addActionListener(_ -> {
 		new Thread() {
 		    @Override
 		    public void run() {
@@ -181,7 +182,7 @@ public class GUIManager implements QuitHandler {
 		    }
 		}.start();
 	    });
-	    this.fileOpenLocked.addActionListener(h -> {
+	    this.fileOpenLocked.addActionListener(_ -> {
 		new Thread() {
 		    @Override
 		    public void run() {
@@ -190,7 +191,7 @@ public class GUIManager implements QuitHandler {
 		    }
 		}.start();
 	    });
-	    this.fileClose.addActionListener(h -> {
+	    this.fileClose.addActionListener(_ -> {
 		new Thread() {
 		    @Override
 		    public void run() {
@@ -199,7 +200,7 @@ public class GUIManager implements QuitHandler {
 		    }
 		}.start();
 	    });
-	    this.fileSave.addActionListener(h -> {
+	    this.fileSave.addActionListener(_ -> {
 		new Thread() {
 		    @Override
 		    public void run() {
@@ -208,7 +209,7 @@ public class GUIManager implements QuitHandler {
 		    }
 		}.start();
 	    });
-	    this.fileSaveAs.addActionListener(h -> {
+	    this.fileSaveAs.addActionListener(_ -> {
 		new Thread() {
 		    @Override
 		    public void run() {
@@ -217,7 +218,7 @@ public class GUIManager implements QuitHandler {
 		    }
 		}.start();
 	    });
-	    this.fileSaveLocked.addActionListener(h -> {
+	    this.fileSaveLocked.addActionListener(_ -> {
 		new Thread() {
 		    @Override
 		    public void run() {
@@ -226,7 +227,7 @@ public class GUIManager implements QuitHandler {
 		    }
 		}.start();
 	    });
-	    this.showPreferences.addActionListener(h -> {
+	    this.showPreferences.addActionListener(_ -> {
 		new Thread() {
 		    @Override
 		    public void run() {
@@ -234,8 +235,8 @@ public class GUIManager implements QuitHandler {
 		    }
 		}.start();
 	    });
-	    this.quit.addActionListener(h -> System.exit(0));
-	    this.play.addActionListener(h -> {
+	    this.quit.addActionListener(_ -> System.exit(0));
+	    this.play.addActionListener(_ -> {
 		new Thread() {
 		    @Override
 		    public void run() {
@@ -243,7 +244,7 @@ public class GUIManager implements QuitHandler {
 		    }
 		}.start();
 	    });
-	    this.edit.addActionListener(h -> {
+	    this.edit.addActionListener(_ -> {
 		new Thread() {
 		    @Override
 		    public void run() {
@@ -251,7 +252,7 @@ public class GUIManager implements QuitHandler {
 		    }
 		}.start();
 	    });
-	    this.helpAbout.addActionListener(h -> {
+	    this.helpAbout.addActionListener(_ -> {
 		new Thread() {
 		    @Override
 		    public void run() {
@@ -259,7 +260,7 @@ public class GUIManager implements QuitHandler {
 		    }
 		}.start();
 	    });
-	    this.helpObjectHelp.addActionListener(h -> {
+	    this.helpObjectHelp.addActionListener(_ -> {
 		new Thread() {
 		    @Override
 		    public void run() {

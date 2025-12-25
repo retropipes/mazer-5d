@@ -7,8 +7,6 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.util.Objects;
 
-import com.puttysoftware.diane.storage.PackedFlagStorage;
-
 class TypeProperties {
     // Properties
     private final PackedFlagStorage typeData;

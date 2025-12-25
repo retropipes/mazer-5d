@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.gui.MainContent;
 import org.retropipes.diane.gui.MainWindow;
 
 import com.puttysoftware.mazer5d.Modes;
@@ -25,7 +26,7 @@ import com.puttysoftware.mazer5d.loader.DataLoader;
 public class ObjectHelpViewer {
     // Fields
     private MainWindow helpFrame;
-    private MainWindowContent helpPane;
+    private MainContent helpPane;
     private JPanel buttonPane;
     private JButton export, done;
     private String[] objectNames;
@@ -41,7 +42,7 @@ public class ObjectHelpViewer {
     // Methods
     public void showHelp() {
 	Modes.setInHelp();
-	this.helpFrame.attachAndSave(this.helpPane);
+	this.helpFrame.setAndSave(this.helpPane);
 	this.helpFrame.setTitle("Mazer5D Object Help");
     }
 
@@ -59,7 +60,7 @@ public class ObjectHelpViewer {
 	this.export.addActionListener(this.buttonHandler);
 	this.done = new JButton("Done");
 	this.done.addActionListener(this.buttonHandler);
-	this.helpFrame = MainWindow.getMainWindow();
+	this.helpFrame = MainWindow.mainWindow();
 	this.helpPane = MainWindow.createContent();
 	this.helpPane.setLayout(new BorderLayout());
 	this.buttonPane = new JPanel();

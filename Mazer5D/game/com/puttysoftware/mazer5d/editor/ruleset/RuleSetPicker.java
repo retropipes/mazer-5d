@@ -15,11 +15,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.gui.MainContent;
 import org.retropipes.diane.gui.MainWindow;
 import org.retropipes.diane.gui.dialog.CommonDialogs;
 import org.retropipes.diane.gui.picker.PicturePicker;
 
-import com.puttysoftware.diane.gui.dialog.MainWindowContent;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.abc.GameObjects;
@@ -31,7 +31,7 @@ import com.puttysoftware.mazer5d.prefs.Prefs;
 public class RuleSetPicker {
     // Declarations
     private MainWindow outputFrame;
-    private MainWindowContent borderPane;
+    private MainContent borderPane;
     private JPanel outputPane;
     private final EventHandler handler;
     private PicturePicker picker;
@@ -84,7 +84,7 @@ public class RuleSetPicker {
 
     public void showOutput() {
 	Modes.setInRulePicker();
-	this.outputFrame.attachAndSave(this.borderPane);
+	this.outputFrame.setAndSave(this.borderPane);
 	this.outputFrame.setTitle("Rule Set Picker");
     }
 
@@ -100,7 +100,7 @@ public class RuleSetPicker {
     }
 
     private void setUpGUI() {
-	this.outputFrame = MainWindow.getMainWindow();
+	this.outputFrame = MainWindow.mainWindow();
 	this.borderPane = MainWindow.createContent();
 	this.outputPane = new JPanel();
 	this.create = new JButton("Create");

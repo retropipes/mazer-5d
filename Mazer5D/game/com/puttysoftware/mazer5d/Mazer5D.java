@@ -25,7 +25,6 @@ import com.puttysoftware.mazer5d.prefs.Prefs;
 public class Mazer5D {
     // Constants
     private static BagOStuff bagOStuff;
-    private static GameErrorHandler errhand;
     private static final String PROGRAM_NAME = Translations.load(Strings.PROGRAM_NAME);
 
     // Methods
@@ -34,7 +33,7 @@ public class Mazer5D {
     }
 
     public static void logError(final Throwable t) {
-	Mazer5D.errhand.uncaughtException(Thread.currentThread(), t);
+	Diane.handleError(t);
     }
 
     public static void main(final String[] args) {

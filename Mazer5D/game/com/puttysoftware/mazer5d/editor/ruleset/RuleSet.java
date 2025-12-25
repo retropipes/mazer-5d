@@ -3,11 +3,11 @@ package com.puttysoftware.mazer5d.editor.ruleset;
 import java.io.IOException;
 import java.util.Objects;
 
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
 import org.retropipes.diane.random.RandomRange;
 
 import com.puttysoftware.mazer5d.abc.RandomGenerationRule;
-import com.puttysoftware.mazer5d.file.io.MazeDataReader;
-import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.maze.Maze;
 
 public final class RuleSet implements Cloneable, RandomGenerationRule {
@@ -123,7 +123,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
 	return this.generateQuantity;
     }
 
-    public void readRuleSet(final MazeDataReader reader, final int rsFormat) throws IOException {
+    public void readRuleSet(final XDataReader reader, final int rsFormat) throws IOException {
 	this.maxQuantity = reader.readInt();
 	this.minQuantity = reader.readInt();
 	this.percentageFlag = reader.readBoolean();
@@ -136,7 +136,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
 	}
     }
 
-    public void writeRuleSet(final MazeDataWriter writer) throws IOException {
+    public void writeRuleSet(final XDataWriter writer) throws IOException {
 	writer.writeInt(this.maxQuantity);
 	writer.writeInt(this.minQuantity);
 	writer.writeBoolean(this.percentageFlag);

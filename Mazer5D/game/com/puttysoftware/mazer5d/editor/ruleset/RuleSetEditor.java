@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.retropipes.diane.gui.MainContent;
 import org.retropipes.diane.gui.MainWindow;
 
 import com.puttysoftware.mazer5d.Modes;
@@ -28,7 +29,7 @@ class RuleSetEditor {
     // Fields
     private RuleSet generator;
     private MainWindow editFrame;
-    private MainWindowContent mainEditPane;
+    private MainContent mainEditPane;
     private JPanel contentPane, buttonPane;
     private JButton editOK, editCancel;
     private JCheckBox required;
@@ -51,7 +52,7 @@ class RuleSetEditor {
 
     public void showRuleSetEditor() {
 	Modes.setInRuleEditor();
-	this.editFrame.attachAndSave(this.mainEditPane);
+	this.editFrame.setAndSave(this.mainEditPane);
 	this.editFrame.setTitle("Rule Set Editor");
     }
 
@@ -90,7 +91,7 @@ class RuleSetEditor {
 
     private void setUpGUI() {
 	this.handler = new EventHandler();
-	this.editFrame = MainWindow.getMainWindow();
+	this.editFrame = MainWindow.mainWindow();
 	this.mainEditPane = MainWindow.createContent();
 	this.contentPane = new JPanel();
 	this.buttonPane = new JPanel();

@@ -7,13 +7,14 @@ package com.puttysoftware.mazer5d.file.format;
 
 import java.io.IOException;
 
+import org.retropipes.diane.fileio.DataIOFactory;
+import org.retropipes.diane.fileio.XDataWriter;
 import org.retropipes.diane.gui.dialog.CommonDialogs;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.GameObjects;
 import com.puttysoftware.mazer5d.editor.ruleset.RuleSetConstants;
 import com.puttysoftware.mazer5d.file.FileExtensions;
-import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 
 public class RuleSetSaveTask extends Thread {
     // Fields
@@ -33,7 +34,7 @@ public class RuleSetSaveTask extends Thread {
 	if (!hasExtension) {
 	    this.filename += FileExtensions.getRuleSetExtensionWithPeriod();
 	}
-	try (MazeDataWriter ruleSetFile = new MazeDataWriter(this.filename, "ruleset")) {
+	try (XDataWriter ruleSetFile = DataIOFactory.createTagWriter(this.filename, "ruleset")) {
 	    ruleSetFile.writeInt(RuleSetConstants.MAGIC_NUMBER_2);
 	    GameObjects.writeRuleSet(ruleSetFile);
 	    CommonDialogs.showTitledDialog(sg + " file saved.", "Rule Set Picker");

@@ -5,7 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.maze.effect;
 
-import com.puttysoftware.diane.utilties.Directions;
+import org.retropipes.diane.direction.legacy.Directions;
 
 public class RotatedCCW extends MazeEffect {
     // Constructor

@@ -5,9 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.maze.effect;
 
+import org.retropipes.diane.direction.legacy.Directions;
 import org.retropipes.diane.random.RandomRange;
-
-import com.puttysoftware.diane.utilties.Directions;
 
 public class Dizzy extends MazeEffect {
     // Fields

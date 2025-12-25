@@ -7,6 +7,9 @@ package com.puttysoftware.mazer5d.objects.abc;
 
 import java.io.IOException;
 
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
+
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.abc.ArrowTypes;
 import com.puttysoftware.mazer5d.abc.GameObjects;
@@ -15,8 +18,6 @@ import com.puttysoftware.mazer5d.abc.MazeObject;
 import com.puttysoftware.mazer5d.abc.TypeConstants;
 import com.puttysoftware.mazer5d.asset.SoundGroup;
 import com.puttysoftware.mazer5d.asset.SoundIndex;
-import com.puttysoftware.mazer5d.file.io.MazeDataReader;
-import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loader.SoundPlayer;
@@ -68,12 +69,12 @@ public abstract class GenericCharacter extends MazeObject {
     }
 
     @Override
-    protected void writeMazeObjectHook(final MazeDataWriter writer) throws IOException {
+    protected void writeMazeObjectHook(final XDataWriter writer) throws IOException {
 	this.getSavedObject().writeMazeObject(writer);
     }
 
     @Override
-    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final MazeVersion formatVersion)
+    protected MazeObject readMazeObjectHook(final XDataReader reader, final MazeVersion formatVersion)
 	    throws IOException {
 	this.setSavedObject(GameObjects.readObject(reader, formatVersion));
 	return this;

@@ -10,7 +10,7 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.retropipes.diane.direction.DirectionResolver;
+import org.retropipes.diane.direction.legacy.DirectionsResolver;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.locale.StaticStrings;
@@ -169,11 +169,11 @@ public class MazeEffectManager {
 
     public int[] doEffects(final int x, final int y) {
 	int[] res = new int[] { x, y };
-	int dir = DirectionResolver.resolve(x, y);
+	int dir = DirectionsResolver.resolve(x, y);
 	for (int z = 0; z < MazeEffectManager.NUM_EFFECTS; z++) {
 	    if (this.activeEffects[z].isActive()) {
 		dir = this.activeEffects[z].modifyMove1(dir);
-		res = DirectionResolver.unresolve(dir);
+		res = DirectionsResolver.unresolve(dir);
 		res = this.activeEffects[z].modifyMove2(res);
 	    }
 	}

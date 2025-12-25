@@ -7,6 +7,8 @@ package com.puttysoftware.mazer5d.objects.abc;
 
 import java.io.IOException;
 
+import org.retropipes.diane.fileio.XDataReader;
+import org.retropipes.diane.fileio.XDataWriter;
 import org.retropipes.diane.gui.dialog.CommonDialogs;
 
 import com.puttysoftware.mazer5d.Mazer5D;
@@ -16,8 +18,6 @@ import com.puttysoftware.mazer5d.abc.MazeObjects;
 import com.puttysoftware.mazer5d.abc.TypeConstants;
 import com.puttysoftware.mazer5d.asset.SoundGroup;
 import com.puttysoftware.mazer5d.asset.SoundIndex;
-import com.puttysoftware.mazer5d.file.io.MazeDataReader;
-import com.puttysoftware.mazer5d.file.io.MazeDataWriter;
 import com.puttysoftware.mazer5d.file.version.MazeVersion;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
@@ -128,7 +128,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     }
 
     @Override
-    protected MazeObject readMazeObjectHook(final MazeDataReader reader, final MazeVersion formatVersion)
+    protected MazeObject readMazeObjectHook(final XDataReader reader, final MazeVersion formatVersion)
 	    throws IOException {
 	final MazeObject o = GameObjects.readObject(reader, formatVersion);
 	if (o == null) {
@@ -140,7 +140,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     }
 
     @Override
-    protected void writeMazeObjectHook(final MazeDataWriter writer) throws IOException {
+    protected void writeMazeObjectHook(final XDataWriter writer) throws IOException {
 	this.getKey().writeMazeObject(writer);
     }
 }

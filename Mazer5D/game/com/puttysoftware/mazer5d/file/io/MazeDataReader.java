@@ -1,26 +1,17 @@
 package com.puttysoftware.mazer5d.file.io;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.retropipes.diane.fileio.DataIOException;
 import org.retropipes.diane.fileio.XDataReader;
 
 import com.puttysoftware.mazer5d.abc.MazeObjects;
 
-public class MazeDataReader extends XDataReader {
-    // Constructors
-    public MazeDataReader(final String filename, final String docTag) throws IOException {
-	super(filename, docTag);
-    }
-
-    public MazeDataReader(final InputStream stream, final String docTag) throws IOException {
-	super(stream, docTag);
+public class MazeDataReader {
+    private MazeDataReader() {
     }
 
     // Methods
-    public MazeObjects readMazeObjectID() throws DataIOException {
-	final String line = this.readString();
+    public static MazeObjects readMazeObjectID(final XDataReader reader) throws DataIOException {
+	final String line = reader.readString();
 	if (line != null) {
 	    return MazeObjects.valueOf(line);
 	}

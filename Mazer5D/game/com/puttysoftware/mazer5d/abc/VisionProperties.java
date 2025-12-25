@@ -7,7 +7,8 @@ package com.puttysoftware.mazer5d.abc;
 
 import java.util.Objects;
 
-import org.retropipes.diane.direction.DirectionResolver;
+import org.retropipes.diane.direction.legacy.Directions;
+import org.retropipes.diane.direction.legacy.DirectionsResolver;
 import org.retropipes.diane.storage.FlagStorage;
 
 class VisionProperties {
@@ -69,7 +70,7 @@ class VisionProperties {
     }
 
     public boolean isDirectionallySightBlocking(final boolean ie, final int dirX, final int dirY) {
-	final int dir = DirectionResolver.resolve(dirX, dirY);
+	final int dir = DirectionsResolver.resolve(dirX, dirY);
 	if (ie) {
 	    return this.visionData.getCell(VisionDataTypes.EXTERNAL.index, dir);
 	} else {

@@ -27,6 +27,7 @@ import javax.swing.JToggleButton;
 import javax.swing.border.EmptyBorder;
 
 import org.retropipes.diane.asset.image.BufferedImageIcon;
+import org.retropipes.diane.gui.MainContent;
 import org.retropipes.diane.gui.MainWindow;
 import org.retropipes.diane.gui.dialog.CommonDialogs;
 import org.retropipes.diane.gui.picker.PicturePicker;
@@ -53,7 +54,7 @@ public class MazeEditor {
     // Declarations
     private MainWindow outputFrame;
     private JPanel outputPane, secondaryPane, commandPane;
-    private MainWindowContent borderPane, treasurePane;
+    private MainContent borderPane, treasurePane;
     private JLabel messageLabel;
     private MazeObject savedMazeObject;
     private GridBagLayout gridbag;
@@ -962,7 +963,7 @@ public class MazeEditor {
 	this.setDefaultContents();
 	this.disableOutput();
 	Modes.setInTreasure();
-	this.outputFrame.attachAndSave(this.treasurePane);
+	this.outputFrame.setAndSave(this.treasurePane);
 	this.outputFrame.setTitle("Pick Treasure Chest Contents");
 	return null;
     }
@@ -1697,7 +1698,7 @@ public class MazeEditor {
 
     public void showOutput() {
 	this.checkFlags();
-	this.outputFrame.attachAndSave(this.borderPane);
+	this.outputFrame.setAndSave(this.borderPane);
 	this.outputFrame.setTitle("Editor");
     }
 
@@ -1730,7 +1731,7 @@ public class MazeEditor {
 
     private void setUpGUI() {
 	// Create content containers
-	this.outputFrame = MainWindow.getMainWindow();
+	this.outputFrame = MainWindow.mainWindow();
 	this.borderPane = MainWindow.createContent();
 	this.outputPane = new JPanel();
 	this.secondaryPane = new JPanel();
@@ -1787,7 +1788,7 @@ public class MazeEditor {
 	this.editorSetFirstMovingFinish = new JButton("Set First Moving Finish...");
 	this.editorExit = new JButton("Exit Editor");
 	// Attach command event handlers
-	this.editorUndo.addActionListener(h -> {
+	this.editorUndo.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1795,7 +1796,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorRedo.addActionListener(h -> {
+	this.editorRedo.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1803,7 +1804,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorCutLevel.addActionListener(h -> {
+	this.editorCutLevel.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1811,7 +1812,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorCopyLevel.addActionListener(h -> {
+	this.editorCopyLevel.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1819,7 +1820,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorPasteLevel.addActionListener(h -> {
+	this.editorPasteLevel.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1827,8 +1828,8 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorInsertLevelFromClipboard.addActionListener(h -> this.insertLevelFromClipboard());
-	this.editorClearHistory.addActionListener(h -> {
+	this.editorInsertLevelFromClipboard.addActionListener(_ -> this.insertLevelFromClipboard());
+	this.editorClearHistory.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1836,7 +1837,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorGoToLocation.addActionListener(h -> {
+	this.editorGoToLocation.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1844,7 +1845,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorGoToDestination.addActionListener(h -> {
+	this.editorGoToDestination.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1852,7 +1853,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorUpOneFloor.addActionListener(h -> {
+	this.editorUpOneFloor.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1860,7 +1861,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorDownOneFloor.addActionListener(h -> {
+	this.editorDownOneFloor.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1868,7 +1869,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorUpOneLevel.addActionListener(h -> {
+	this.editorUpOneLevel.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1876,7 +1877,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorDownOneLevel.addActionListener(h -> {
+	this.editorDownOneLevel.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1884,7 +1885,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorAddLevel.addActionListener(h -> {
+	this.editorAddLevel.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1892,7 +1893,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorRemoveLevel.addActionListener(h -> {
+	this.editorRemoveLevel.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1900,7 +1901,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorResizeLevel.addActionListener(h -> {
+	this.editorResizeLevel.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1908,7 +1909,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorFillFloor.addActionListener(h -> {
+	this.editorFillFloor.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1916,7 +1917,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorFillLevel.addActionListener(h -> {
+	this.editorFillLevel.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1924,7 +1925,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorFillFloorRandomly.addActionListener(h -> {
+	this.editorFillFloorRandomly.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1932,7 +1933,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorFillLevelRandomly.addActionListener(h -> {
+	this.editorFillLevelRandomly.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1940,7 +1941,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorFillRuleSets.addActionListener(h -> {
+	this.editorFillRuleSets.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1948,7 +1949,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorToggleLayer.addActionListener(h -> {
+	this.editorToggleLayer.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1956,7 +1957,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorLevelPreferences.addActionListener(h -> {
+	this.editorLevelPreferences.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1964,7 +1965,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorMazePreferences.addActionListener(h -> {
+	this.editorMazePreferences.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1972,7 +1973,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorSetStartPoint.addActionListener(h -> {
+	this.editorSetStartPoint.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1980,7 +1981,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorSetFirstMovingFinish.addActionListener(h -> {
+	this.editorSetFirstMovingFinish.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
@@ -1988,7 +1989,7 @@ public class MazeEditor {
 		}
 	    }.start();
 	});
-	this.editorExit.addActionListener(h -> {
+	this.editorExit.addActionListener(_ -> {
 	    new Thread() {
 		@Override
 		public void run() {
