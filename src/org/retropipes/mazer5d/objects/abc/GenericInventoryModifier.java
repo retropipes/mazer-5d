@@ -1,0 +1,28 @@
+/*  Mazer5D: A Maze-Solving Game
+Copyright (C) 2008-2013 Eric Ahnell
+
+Any questions should be directed to the author via email at: products@puttysoftware.com
+ */
+package org.retropipes.mazer5d.objects.abc;
+
+import org.retropipes.mazer5d.abc.Layers;
+import org.retropipes.mazer5d.abc.MazeObject;
+import org.retropipes.mazer5d.abc.TypeConstants;
+import org.retropipes.mazer5d.game.ObjectInventory;
+
+public abstract class GenericInventoryModifier extends MazeObject {
+    // Constructors
+    protected GenericInventoryModifier() {
+	super(false);
+	this.setType(TypeConstants.TYPE_INVENTORY_MODIFIER);
+    }
+
+    @Override
+    protected abstract void customPostMoveAction(final boolean ie, final int dirX, final int dirY,
+	    final ObjectInventory inv);
+
+    @Override
+    protected int getLayerHook() {
+	return Layers.OBJECT;
+    }
+}

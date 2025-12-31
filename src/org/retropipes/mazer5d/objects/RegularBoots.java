@@ -1,0 +1,37 @@
+/*  Mazer5D: A Maze-Solving Game
+Copyright (C) 2008-2013 Eric Ahnell
+
+Any questions should be directed to the author via email at: products@puttysoftware.com
+ */
+package org.retropipes.mazer5d.objects;
+
+import org.retropipes.mazer5d.abc.MazeObjects;
+import org.retropipes.mazer5d.locale.StaticStrings;
+import org.retropipes.mazer5d.objects.abc.GenericBoots;
+
+class RegularBoots extends GenericBoots {
+    // Constructors
+    public RegularBoots() {
+	super();
+    }
+
+    @Override
+    protected String getNameHook() {
+	return "Regular Boots";
+    }
+
+    @Override
+    protected String getPluralNameHook() {
+	return "Pairs of Regular Boots";
+    }
+
+    @Override
+    protected String getDescriptionHook() {
+	return StaticStrings.EMPTY;
+    }
+
+    @Override
+    protected MazeObjects getUniqueIDHook() {
+	return MazeObjects.REGULAR_BOOTS;
+    }
+}

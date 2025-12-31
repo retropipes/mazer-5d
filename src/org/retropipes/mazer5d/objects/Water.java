@@ -1,0 +1,73 @@
+/*  Mazer5D: A Maze-Solving Game
+Copyright (C) 2008-2013 Eric Ahnell
+
+Any questions should be directed to the author via email at: products@puttysoftware.com
+ */
+package org.retropipes.mazer5d.objects;
+
+import org.retropipes.mazer5d.Mazer5D;
+import org.retropipes.mazer5d.abc.GameObjects;
+import org.retropipes.mazer5d.abc.Layers;
+import org.retropipes.mazer5d.abc.MazeObject;
+import org.retropipes.mazer5d.abc.MazeObjects;
+import org.retropipes.mazer5d.asset.SoundGroup;
+import org.retropipes.mazer5d.asset.SoundIndex;
+import org.retropipes.mazer5d.game.ObjectInventory;
+import org.retropipes.mazer5d.gui.BagOStuff;
+import org.retropipes.mazer5d.loader.SoundPlayer;
+import org.retropipes.mazer5d.objects.abc.GenericField;
+
+class Water extends GenericField {
+    // Constructors
+    public Water() {
+	super(new AquaBoots(), true);
+    }
+
+    // Scriptability
+    @Override
+    protected void customPostMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	SoundPlayer.playSound(SoundIndex.WALK_ON_WATER, SoundGroup.GAME);
+    }
+
+    @Override
+    public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
+	Mazer5D.getBagOStuff().showMessage("You'll drown");
+	SoundPlayer.playSound(SoundIndex.WATER, SoundGroup.GAME);
+    }
+
+    @Override
+    public void pushIntoAction(final ObjectInventory inv, final MazeObject pushed, final int x, final int y,
+	    final int z) {
+	final BagOStuff app = Mazer5D.getBagOStuff();
+	if (pushed.isPushable()) {
+	    app.getGameManager().morph(new SunkenBlock(), x, y, z, Layers.GROUND);
+	    app.getGameManager().morph(GameObjects.getEmptySpace(), x, y, z, Layers.OBJECT);
+	    SoundPlayer.playSound(SoundIndex.SINK_BLOCK, SoundGroup.GAME);
+	}
+    }
+
+    @Override
+    protected String getNameHook() {
+	return "Water";
+    }
+
+    @Override
+    protected String getPluralNameHook() {
+	return "Squares of Water";
+    }
+
+    @Override
+    public boolean oformatVersionridesDefaultPostMove() {
+	return true;
+    }
+
+    @Override
+    protected String getDescriptionHook() {
+	return "Water is too unstable to walk on without Aqua Boots.";
+    }
+
+    @Override
+    protected MazeObjects getUniqueIDHook() {
+	return MazeObjects.WATER;
+    }
+}
